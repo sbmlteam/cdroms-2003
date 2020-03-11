@@ -1,0 +1,123 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: FW: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: Eira Enuyr <fira.fnuyrNrzy.ivyyn&#45;obfpu.qr> -->
+<!--X-Date: Fri, 11 Jul 2003 06:13:50 &#45;0700 -->
+<!--X-Message-Id: 200307111512.21536.sven.sahle@eml.villa&#45;bosch.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 601BBB4D9640CB4693A2384E4B37872E15B50F@dell2650&#45;0550.kgi.edu.96.173.134.in&#45;addr.arpa -->
+<!--X-Reference: 3F0C6426.2080804@systemsbiology.org -->
+<!--X-Reference: qrrd6gjypcd.wl@daemon.symbio.jst.go.jp -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: FW: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:sven.sahle@eml.villa-bosch.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00543.html">Date Prev</A>][<A HREF="msg00545.html">Date Next</A>][<A HREF="msg00540.html">Thread Prev</A>][<A HREF="msg00546.html">Thread Next</A>][<A HREF="maillist.html#00544">Date Index</A>][<A HREF="threads.html#00544">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: FW: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: FW: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: Sven Sahle &lt;<A HREF="mailto:sven.sahle@eml.villa-bosch.de">sven.sahle@eml.villa-bosch.de</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 11 Jul 2003 15:12:21 +0200</LI>
+<LI><em>Organization</em>: EML</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello,
+
+Herbert, Rowan, and Akira suggested to have a line-type field and some 
+additional information that needs to be interpreted according to what line 
+type was chosen (polylines, splines, bezier, ...). 
+This is one of the possibilities that we were also considering. For discussion 
+I want to contrast this with the other possibility (while I´m not shure 
+myself what I would prefer):
+We could also focus on one way to describe curves that can describe all curves 
+that we would like to describe (although with unecessary overhead for 
+straigth lines). This could be a sequence of curves (I mean the curves that 
+are descibed by start point and end point and two additional points that 
+define the tangents to these points, I believe they are called bezier, but 
+I´m not shure about the terminology). This seems to be the way drawing 
+programs like adobe illustrator (or kontour) work.
+
+The first way (different curve types) would be easy to write, since all 
+programs could write just like they internally represent the curves, but 
+might involve conversion calculations while reading (if the curves are given 
+as a curve type that my program doesn´t use internally).
+The other way (just one general curve type) would be easy to read (at least 
+only one conversion routine is needed) while it might be difficult to 
+translate the internally used curves to the one standard curve type in the 
+sbml output.
+
+Sven
+
+On Thursday 10 July 2003 06:31, Akira Funahashi wrote:
+&gt; Current version of CellDesigner uses polylines to draw edges, and
+&gt; the selection of line-type depends on the design of application, so
+&gt; I completely agree with Herbert and Rowan that we will introduce
+&gt; a line-type.
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00538" HREF="msg00538.html">FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert Sauro&quot; &lt;Herbert_Sauro@kgi.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00539" HREF="msg00539.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Rowan Christmas &lt;xmas@systemsbiology.org&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00540" HREF="msg00540.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Akira Funahashi &lt;funa@symbio.jst.go.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00543.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00545.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00540.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00546.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00544"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00544"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

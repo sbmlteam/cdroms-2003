@@ -1,0 +1,127 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] support for membranes -->
+<!--X-From-R13: "Oaqemrw Bemrxjnf" <nwcNpsqep.pbz> -->
+<!--X-Date: Fri, 23 May 2003 20:46:51 &#45;0700 -->
+<!--X-Message-Id: PAEMIFGOKNLLFIPMGODBIEPDDNAA.ajp@cfdrc.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD36E38@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] support for membranes</TITLE>
+<LINK REV="made" HREF="mailto:ajp@cfdrc.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00301.html">Date Prev</A>][<A HREF="msg00303.html">Date Next</A>][<A HREF="msg00295.html">Thread Prev</A>][<A HREF="msg00303.html">Thread Next</A>][<A HREF="maillist.html#00302">Date Index</A>][<A HREF="threads.html#00302">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] support for membranes</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] support for membranes</LI>
+<LI><em>From</em>: &quot;Andrzej Przekwas&quot; &lt;<A HREF="mailto:ajp@cfdrc.com">ajp@cfdrc.com</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 22:46:12 -0500</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I glanced over the "Support for Membrane" discussion and found out
+that we have a long way ahead of us to enable evolutionary changes to
+SBML to allow spatial modeling. I don't think we have much chance to
+bring truly multi-dimensional language constructs soon.
+I like the idea to incorporate 0D, 1D, 2D, 2.5D, 3D, etc. compartments
+with spatial dimension scales (length, area, volume, mass). They need
+to be function of time and should be considered as dependent variables
+(if constant we will use initial conditions).
+
+I am not sure if any bio cell ODE solver has tried to incorporate spatial
+diffusive advective fluxes (it can be easily done) and time varying integral
+formulation but we have to assume that before full blown 3D cell models
+are linked to SBML we should plan to accommodate "spatial fluxes" in ODEs.
+We will needed to make sure that 1D objects (filaments, axons) have length
+that can be part of the solution process e.g. F actin polymerization form
+alpha-actin.
+How to model supercoiled DNA (length + size or just volume) is another
+question?
+Similarly membrane should have independent surface area and size
+(e.g. mitochondrial membrane can be very convoluted) and again membrane
+surface area should be a dependent variable.
+
+The other issue I would like to raise is the consistency of volumes,
+characteristic dimensions, and the inheritance of internally embedded
+volumes (e.g. nucleus in cytoplasm, or virus translocating in a cytoplasm).
+I will need to calculate the mass of a volume compartment with and
+without the sub-compartments. Again the volume or mass of the
+compartment should be the dependent variable.
+
+I do not know yet enough about SBML to propose the solutions
+but we have significant experience in solving PDEs for cellular
+biology to help at lease as a sanity test. During the next couple
+of yeas we will work with LBL on spatial models and SBML
+will be an issue for us as well.
+
+Cheers,
+
+Andrzej
+______________________________________________________
+Andrzej Przekwas, (PhD), Sr. V.P./Research
+CFD Research Corp. 215 Wynn Dr. Huntsville AL 35805
+Phone: 256-726-4815, (4800), Fax(4806) , ajp@cfdrc.com
+Home Page   : <A  HREF="http://www.cfdrc.com">http://www.cfdrc.com</A>
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00295" HREF="msg00295.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00301.html">[sbml-discuss] Membranes: a proposal</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00303.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00295.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00303.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00302"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00302"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

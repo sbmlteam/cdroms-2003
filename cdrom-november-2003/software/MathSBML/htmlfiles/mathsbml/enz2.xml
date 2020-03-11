@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<sbml xmlns='http://www.sbml.org/sbml/level2'
+    level='2'
+    version='1'>
+ <model id='enzyme'>
+  <listOfCompartments>
+   <compartment id='cell'/>
+  </listOfCompartments>
+  <listOfSpecies>
+   <species id='A'
+       compartment='cell'
+       initialConcentration='1'
+       boundaryCondition='false'/>
+   <species id='B'
+       compartment='cell'
+       initialConcentration='0.999'
+       boundaryCondition='false'/>
+   <species id='X'
+       compartment='cell'
+       initialConcentration='0.001'
+       boundaryCondition='false'/>
+   <species id='C'
+       compartment='cell'
+       initialConcentration='0'
+       boundaryCondition='false'/>
+  </listOfSpecies>
+  <listOfReactions>
+   <reaction id='R1'
+       reversible='true'
+       fast='false'>
+    <listOfReactants>
+     <speciesReference species='A'/>
+     <speciesReference species='B'/>
+    </listOfReactants>
+    <listOfProducts>
+     <speciesReference species='X'/>
+    </listOfProducts>
+    <listOfModifiers/>
+    <kineticLaw>
+     <math xmlns='http://www.w3.org/1998/Math/MathML'>
+      <apply>
+       <plus/>
+       <apply>
+        <times/>
+        <ci>a</ci>
+        <ci>A</ci>
+        <ci>B</ci>
+       </apply>
+       <apply>
+        <times/>
+        <cn type='integer'>-1</cn>
+        <apply>
+         <times/>
+         <ci>d</ci>
+         <ci>X</ci>
+        </apply>
+       </apply>
+      </apply>
+     </math>
+     <listOfParameters>
+      <parameter id='a'
+          value='1'/>
+      <parameter id='d'
+          value='1'/>
+     </listOfParameters>
+    </kineticLaw>
+   </reaction>
+   <reaction id='R2'
+       reversible='false'
+       fast='false'>
+    <listOfReactants>
+     <speciesReference species='X'/>
+    </listOfReactants>
+    <listOfProducts>
+     <speciesReference species='B'/>
+     <speciesReference species='C'/>
+    </listOfProducts>
+    <listOfModifiers/>
+    <kineticLaw>
+     <math xmlns='http://www.w3.org/1998/Math/MathML'>
+      <apply>
+       <times/>
+       <ci>k</ci>
+       <ci>X</ci>
+      </apply>
+     </math>
+     <listOfParameters>
+      <parameter id='k'
+          value='1'/>
+     </listOfParameters>
+    </kineticLaw>
+   </reaction>
+  </listOfReactions>
+ </model>
+</sbml>

@@ -1,0 +1,342 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage" ></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table>
+</div>
+<table width="100%" border="0" cellspacing="2" cellpadding="0">
+	<tr>
+		<td><h1>
+		<span class="function">SBMLRead</span> Return Value</h1>
+		<a href="mathsbml-sbmlread.html">Return Value</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="mathsbml-sbmlread-options.html">Options</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="mathsbml-contexts.html">Variable Names and Scoping</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="mathsbml-sbmlread-examples.html">Examples</a>
+
+	</td>
+	</tr>
+
+	
+	
+	
+	<tr>
+		<td><hr/></td>
+	</tr>
+	
+
+	<tr>
+		<td>
+		<p>
+		<span class="function">SBMLRead</span>
+		 reads an SBML file and translates it into a Mathematica data structure consisting of Mathematica 
+		 differential and/or algebraic equations, intitial conditions, a list of variables, and replacement rules for  parameters. 
+		 </p>
+		 <p>
+		 <span class="function">SBMLRead</span> can 
+		 also be used to generate an interpretive listing of the SBML file, and/or to automatically generate calls to
+		 <span class="function">SBMLNDSolve</span> and 
+		 <span class="function">SBMLPlot</span>
+		  subsequent to reading the SBML file. 
+		 </p>
+		 <hr/>
+		<h1>Return Value</h1>
+		 <p>
+		 
+		 The return value of <span class="function">
+		 SBMLRead</span> is a Mathematica rule list of the following form:
+		 </p>
+		 
+		<pre  class="function">
+	{
+	SBMLODES -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">list of differential equations</span>,
+	SBMLParameters -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">list of parameter rules</span>,
+	SBMLIC -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">list of initial conditions</span>,
+	SBMLSpecies -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">list of variables</span>,
+	SBMLAlgebraicRules -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">list of algebraic rules</span>,
+	SBMLUnitDefinitions -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">list of unit definitions</span>,
+	SBMLUnitAssociations -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">list of unit associations</span>,
+	SBMLReactions -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">list of reactions</span>,
+	SBMLFunctions -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">list of pure function defintions</span>,
+	SBMLNameIDAssociations -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">list of id/name associations</span>,
+	SBMLEvents -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">list of events</span>,
+	SBMLModelName -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">name of the model</span>,
+	SBMLNumericalSolution -> <span style="font-style:italic;font-family:arial,verdana,helvetica,san-serif;color:black;">numerical solution</span>
+	}
+		</pre>
+		
+		
+		<p>
+		By default, all of this information is returned.  If a model does not have a particular feature, for example, if
+		it does nto have any functions, then the corresponding field is returned as a null list, e.g., as
+		<span class="function"> SBMLEvents->{}</span>.
+		
+		 However, the user is allowed to 
+		inhibit return of  any portions of this information by using the return option to <span class="function">SBMLRead</span>. Several of the
+		fields (<span class="function">SBMLFunctions</span>, <span class="function">SBMLNameIDAssociations</span>, <span class="function">SBMLEvents</span>) are only returned in SBML Level 2. 
+		
+		</p>
+			
+		<p>
+		These return files are perhaps best illustrated with an example. Suppose that the file <a href="mathsbml-enzyme.xml">enzyme.xml</a> contains the
+		following model:</p>
+		<p>
+		<img border="1" src="mathsbml-images/enzymedotxml.gif" />
+		</p>
+		<p>
+		Then a mathematica session will look like this:
+		</p>
+		<p>
+		<img border="1" src="mathsbml-images/enzymedotxml-sbmlread.gif" />
+		</p>
+		
+		<p>
+		
+		Some of the fields such as <span class="function">SBMLAlgebraicRules</span> point to empty lists because there are
+		no such objects in this model; ot her fields are absent, such as <span class="function">SBMLEvents</span>, because this
+		model is expressed in SBML Level 1, which does not have events. For an explanation of the funny identifier names, namely the 
+		addition of strings like <span class="function">EnzymeKinetics`</span> to the front 
+		of each identifier, see the web page on <a href="mathsbml-contexts.html">contexts in MathSBML</a>.
+		</p>
+		
+		<p>
+		The <span style="font-style:italic;font-family:san-serif;color:red;">list of variables</span> has the form
+		<pre class="function">
+	{var1[t], var2[2],...}</pre>
+		where each of &nbsp;<span class="function">var1, var2, ...</span>
+		are variables that are governed by rate laws in the SBML models; i.e., any species, parameter, or compartment that is 
+		described by a rate law in a rule, and species that are either products or reactants in reactions, 
+		and are not boundary conditions. Each species in the SBML model is translated into a time-dependent function in the 
+		Mathematica model. In level 2, the <span class="function">"id"</span> field is used to identify the variable. In level 1, the <span class="function">"name"</span> field is used.
+		</p>
+		
+		<p>
+		The global variable (i.e., in the Mathematica context &nbsp;<span class="function">Global`</span>)  
+		&nbsp;<span class="function">t</span>
+		 is reserved for time. It is anticipated that in future releases of 
+		 MathSBML the name and context of the time variable can be reassigned at the user's direction.  In contrast to the 
+		 SBML specification, &nbsp;<span class="function">SBMLRead</span>
+		 does not yet make use of the csymbol for time; this will also be corrected in future versions. 
+
+		</p>
+		
+		<p>
+		The
+		<span style="font-style:italic;font-family:san-serif;color:red;">list of differential equations</span>
+		has the form
+		<pre class="function">
+	{var1'[t] == expression1, var2'[t] == expression2, ... }</pre>
+		where each of 
+		<span class="function">
+		expression1, expression2, ... 
+		</span>
+		are Mathematica expressions formed by applying all of the rules and reactions that affect that corresponding species.  
+		In level 2, the <span class="function">"id"</span> field is used to identify all variables and constants in the expression. In level 1, the <span class="function">"name"</span> field is used.
+		</p>
+		
+		
+		<p>
+		The 
+		<span style="font-style:italic;font-family:san-serif;color:red;">list of parameter rules
+		</span>has the form
+		<pre class="function">
+	{par1 -> expression1, par2 -> expression2, ... }</pre>	
+		where each of 
+		<span class="function">par2, par2, ...</span>, 
+		are constant parameters or variable parameters described by scalar type <span class="function">ParameterRules</span>; 
+		compartments with volumes that 
+		are either fixed or described by scalar type <span class="function">CompartmentVolumeRules</span>;
+		species that are described by scalar type 
+		<span class="function">SpeciesConcentrationRules</span>; 
+		or species that are boundary condtions. 
+		Each of  <span class="function">
+		expression1, expression2, ... 
+		</span> are either constants (for fixed values) or algebraic expressions that give the value of the parameter. 
+		It is possible for the same parameter to be listed more than once in this list if the same local parameter name 
+		is used in multiple reactions. 
+		The parameters are listed in the same order in which they are defined in the SBML model. In level 2, the 
+		<span class="function">"id"</span> field is used to identify the 
+		parameter. In level 1, the <span class="function">"name"</span> field is used.
+		</p>
+		
+		<p>
+		The
+ 		<span style="font-style:italic;font-family:san-serif;color:red;">list of initial conditions</span>
+ 		has the form
+		<pre class="function">
+	{var1[0] == value1, var2[0] == value2, ... }</pre>
+		where each of <span class="function">
+		var1, var2, ...</span>, are the same as defined in list of variables above, and each of the
+		<span class="function">value1, value2,...</span> are 
+		the numeric values of the corresponding variables at time t=0.
+		The lengths of the lists of initial conditions, variables, and differential equations are all the same. As usual, In level 2, the <span class="function">"id"</span> field is used to identify the variable. In level 1, the <span class="function">"name"</span> field is used.
+		</p>
+		
+		<p>
+		The <span style="font-style:italic;font-family:san-serif;color:red;">list of algebraic rules</span> has the form
+		<pre class="function">
+	{expression1==0, expression2==0, ... }</pre>
+		where each of <span class="function">expression1, expression2, ...</span>
+		are Mathematica expressions formed from the corresponding <span class="function">algebraicRule</span> in the SBML file.  In level 2, the <span class="function">"id"</span> field is used to identify all variables. In level 1, the <span class="function">"name"</span> field is used.
+		</p>
+		
+		
+		<p>
+		The <span style="font-style:italic;font-family:san-serif;color:red;">list of reactions</span> has the form
+		<pre class="function">
+	{reaction1, reaction2, ...}</pre>
+		where each of <span class="function">
+		reaction1, reaction2, ...</span>
+		 are representations of the corresponding reaction in the SBML model. Reactions are expressed in the form
+		<pre class="function">
+	n1*r1 + n2*r2 + ... -> m1*p1 + m2*p2 + m3*p3</pre>
+		where each of the <span class="function">r1, r2, ...</span>
+		and  <span class="function">p1, p2, ...</span> are the 
+		reactants and products, and each of the 
+		 <span class="function">n1, n2, ...</span> and 
+		  <span class="function">m1, m2, ...</span> are their
+		  corresponding stoichiometries.
+		</p>
+		<p>
+		In SBML level 1, if any product or reactant occurs more than once in a single reaction, 
+		the composite stoichiometry is given by the sum of (sk/dk) where sk and dk are the values of the stoichiometry and 
+		denominator field of the kth occurance of the corresponding reactanct or product in the reaction.
+		</p>
+		
+		<p>
+		The  <span style="font-style:italic;font-family:san-serif;color:red;">list of pure function definitions</span> (level 2 only) has the form
+		<pre class="function">
+	{id1->Function[{arglist1}, definition1], 
+	 id2->Function[arglist2, definition2], ...}</pre>
+		where each of 
+		<span class="function">id1, id2, ...</span> are the values of the function 
+		<span class="function">"id"</span> fields specified in the SBML function
+		defintion, each of the 
+		<span class="function">arglist1, arglist2, ...</span>, 
+		are the arguments of the corresponding function as dummy variables, and each of the 
+		<span class="function">definition1, definiton2 ...</span>, 
+		are expressions that evaluate to the value of the corresponding function in terms of the dummy variables. 
+		
+		represents a standard 
+		Mathematica technique for defining a function. 
+		</p>
+		<p>
+		To illustrate a pure function definition in Matheamtica, suppose the SBML (level 2) file which encodes a model by 
+		the name of Example, has  the following implementation for a function foo(x)=1/(1+x^2).
+		</p>
+		<p>
+		<img src="mathsbml-images/foo.gif" border="1" />
+		</p>
+		<p>
+		Then the value returned by SBMLRead will include 
+		<pre class="function">
+	SBMLFunctions->{Example`foo->Function[{x},1/(x^2 + 1)], ... } </pre>
+		To evaluate a function such as <span class="function">
+		Function[{x},1/(x^2 + 1)]</span>, say to find the value of foo(y+z), one would enter the expression
+		<span class="function">Function[{x},1/(x^2 + 1)][y+z]</span>,
+		 to which Mathematica would return the expression <span class="function">(1+(y+z)^2)^-1</span>.
+		Alternatively, one could define a function with the expression
+		<pre class="function">
+	foo[u_]:=Function[{x},1/(x^2 + 1)][u]</pre>
+		and then type <span class="function">foo[y+z]</span> to obtain the same result.	
+		 More detail on pure functions is given The Mathematica Book [5th Edition, S. Wolfram, Cambridge University Press/Wolfram Media, 2003].
+		 </p>
+		
+		<p>
+		The <span style="font-style:italic;font-family:san-serif;color:red;">list of name/id associations</span> (level 2 only) is a 
+		list of the form <span class="function">
+		{id1->name1, id2->name2,....}</span> describing the relationship between the
+		<span class="function">"id"</span> and 
+		<span class="function">"name"</span> 
+		fields for every object in the model for which a <span class="function">"name"</span> is given.
+		</p>
+		
+		<p>The <span style="font-style:italic;font-family:san-serif;color:red;">list of events</span> (level 2 only) describes the events in the SBML file in the following form,
+		<pre class="function">
+	{event1->{"trigger"->trigger expression, 
+	          "delay"->delay expression, 
+	          "events"->{id1->expression1, 
+	                     id2->expression2, ...}, event2->{...}, 
+		...}</pre>		
+		where each of <span class="function">event1, event2, ...</span>
+		are the event identifiers (values of the <span class="function">"id"</span> fields),
+		<span class="function">trigger expression</span> is  is the event trigger formatted as a Mathematica logical expression whose value will be 
+		<span class="function">True</span> if and only if the trigger condition is met;
+		<span class="function">delay expression</span> is a Mathematica algebraic expression giving the required time delay; and each of 
+		<span class="function">expression1, expression2,...</span> are algebraic
+		expressions that give the values to which each of
+		<span class="function">id1, id2, ...</span> are to be set should
+		the event be triggered.
+		</p>
+
+		<p>
+		The  <span style="font-style:italic;font-family:san-serif;color:red;">numerical solution</span>
+		 is returned only if the option  <span class="function">SBMLNumericalSolution</span> is set to a positive value within the
+		option  <span class="function">return</span>. The standard way
+		to obtain a numerical solution is to first read the file with
+		<span class="function">SBMLRead</span> and then solve the 
+		 model with either <span class="function">SBMLNDSolve</span> or
+		<span class="function">NDSolve</span>, as in
+		<pre class="function">
+	m = SBMLRead["myfile.xml",...];
+	n = SBMLNDSolve[m,200];</pre>
+		This will return a list of interpolating functions for 200 time units,
+		<pre class="function">
+	{{foo`var1->InterpolatingFunction[{0, 200},&lt;&gt;][t],
+	  foo`var2->InterpolatingFunction[{0, 200},&lt;&gt;][t],...}</pre>
+	  	Alternatively, if the call to SBMLRead has the form
+	  	<pre class="function">
+	m=SBMLRead["myfile.xml", return->{SBMLNumericalSolution->200,...},...]</pre>  	
+	  	then the same interpolating functions will be returned as the numerical solution. 
+	  	</p>
+	  	<p>
+	  	To use <span class="function">NDSolve</span> instead of <span class="function">SBMLNDSolve</span>, one would enter
+<pre class="function">	NDSolve[Join[SBMLODES /. m, 
+	             SBMLIC /. m, 
+	             SBMLAlgebraicRules/.m], 
+	        SBMLSpecies /. m, 
+	        {t, 0, 100}]</pre>
+	  	Note that the solution of Differential-Algebraic systems (DAEs) requires Mathematica version 5.0 or higher.
+	  	If you have an earlier version, you may not include the algebraic rules. 
+	  	</p>
+	  	<p>
+	  	</p>
+	  	<p>
+	  	The user can then subsequently call 
+	  	 <span class="function">SBMLPlot</span>
+	  	  or  <span class="function">Plot</span> manually, 
+	  	  or can automatically invoke  <span class="function">SBMLPlot</span> if 
+	 the call to  <span class="function">SBMLRead</span> sets any value except for   <span class="function">False</span> to the option   <span class="function">PlotOptions</span>.
+	  	
+	  	
+	  	
+		</p>
+<hr />
+</td>
+	</tr>
+
+	
+	<!-- Go to the Top Button -->
+	<tr>
+		<td >
+			<a  href="#TopOfPage">&nbsp;&nbsp;Go to the top of this page&nbsp;&nbsp;</a>
+		</td>
+	</tr>
+	<!-- End of Go to the Top Button -->
+
+		
+</table>
+<br /><br /><br /><span style="font-size:8px;">[09-04-03]</span>
+</body>
+</html>
+

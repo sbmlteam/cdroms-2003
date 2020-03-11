@@ -1,0 +1,1476 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;arrays] more from Victoria -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Fri, 11 Jan 2002 11:15:09 &#45;0800 -->
+<!--X-Message-Id: OCEOLCAAEIFELNNEPMPLMEEOCIAA.afinney@cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-arrays] more from Victoria</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00001.html">Date Prev</A>][<A HREF="msg00003.html">Date Next</A>][<A HREF="msg00001.html">Thread Prev</A>][<A HREF="msg00003.html">Thread Next</A>][<A HREF="maillist.html#00002">Date Index</A>][<A HREF="threads.html#00002">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-arrays] more from Victoria</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-arrays@symbio.jst.go.jp">sbml-arrays@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-arrays] more from Victoria</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 11 Jan 2002 11:14:53 -0800</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Victoria Gor emailed me the following....
+
+To refresh your memory, we were thinking that the best way to introduce
+arrays and graphs in SBML2 is through examples. So, the first example I took
+is the SBML model produced by Bruce Shapiro's cellerator (it is attached to
+this message). I renamed some elements and introduced some new ones (since
+we
+are using a compact array notation now), but the model described should be
+the
+same. Of course, SBML2 representation below is by far not unique, and I
+would
+have to do the same procedure for a lot more examples in order to finalize
+SBML2 structures and may be even restate them in more elegant ways. But for
+now, I would be happy with any comments and directions you have for me.
+I numbered some lines in this example so I can refer to them. Now let's
+list some of "new"(SBML2) features provided by this example.
+
+0) "range" element as in lines 17. and 18. provides the range for specified
+in "name"
+attribute variables. Listed in "", such variable names refer to an entire
+range as in
+3., 7., 8. If such variable names are listed without "", as in 11 it means
+that range
+variable name would have to be immediately expanded by
+interpreting program (could be program that translates SBML2 into SBML or
+could be a
+direct parser of SBML2). In any case all the unquoted references to range
+name should
+be expanded first for all possible values of the range.
+
+1) "[]" notation. It means that the element with name containing "[]" is an
+array.
+If no index is specified inside the brackets, that means an entire array is
+used.
+"dimension" element specifies the dimension of the array by referring to
+pre-defined
+ranges.   If there is a ":" in one of the "[]" as in line 11., it means that
+given variable is a vector and vector operations should be applied to it.
+":" in two
+dimensions implies matrices and matrix operations.
+
+2) "instance" inside the array element is used to assign values to
+attributes of
+individual members of the array.
+
+3) "connection" (line 6.) is an element that describes a set of links (as we
+discussed
+previously). "function_based" connection will contain a "mapping"  element,
+whose attribute:
+"formula" is a boolean formula which is true when connection exist, and
+false otherwise.
+To process connections, interpreting program might create both a binary map
+(sparse matrix)
+which indicates which connections exist and lists of indexes for each array
+index indicating
+to what array elements given array element is pointing. So 9x9 map will be
+created for
+connections ngb[][] (line 6.) and 9 lists pointing to different number of
+array elements,
+representing adjacent neighbors in given example.
+
+4) "compartmentReference" in line 9. specifies an array of arrays and it
+means that every
+cell in cell array contains a 3-dimensional array of species s[].
+
+5) "connectionParameterRule" is an element that assigns an attribute to
+every valid
+connection. That is why "connectionReference = "ngb[][]"" is used. By valid
+connection
+I mean the value of 1 in the ngb map of interpreting program.
+
+6) "sigmoid()" is a predefined function that should be added to built-in
+functions for SBML.
+
+7) "sum{}" should be a built in function in the interpreting program. It
+means that such function
+should be expanded immediately after all the range variables are expanded.
+This function
+passes two string parameters. First parameter indicates what is a summing
+variable and it's
+range. So, in line 13. after expansion we will have "L in ngb[1][L]"... "L
+in ngb[9][L]",
+which will mean that "L is a set of neighbors of cell[1] ... L is a set of
+neighbors of
+cell[9]". the second string is a formula of L which would have to be
+evaluated for each L
+in the set and then summed.
+
+////////////////////////////////////////////////////////////////////////////
+//////
+&lt;sbml level="2" version="0"&gt;
+  &lt;model name="GRN_Equations_20011220T111052"&gt;
+
+    &lt;listOfRanges&gt;
+              &lt;range name="K" start="1" finish="9"/&gt;				17.
+              &lt;range name="I" start="1" finish="9"/&gt;				18.
+              &lt;range name="J" start="1" finish="9"/&gt;
+              &lt;range name="i" start="1" finish="3"/&gt;
+    &lt;/listOfRanges&gt;
+
+    &lt;listOfCompartments&gt;
+      &lt;compartment name="cell[]"&gt;						1.
+          &lt;listOfDimensions&gt;							2.
+              &lt;dimension rangeReference ="K" /&gt;					3.
+          &lt;/listOfDimensions&gt;
+          &lt;listOfInstances&gt;							4.
+              &lt;instance id = "1" x = "3" y = "2"/&gt; 				5.
+	      &lt;instance id = "2" x = "2" y = "1"/&gt;
+	      &lt;instance id = "3" x = "2" y = "3"/&gt;
+	      &lt;instance id = "4" x = "1" y = "2"/&gt;
+	      &lt;instance id = "5" x = "3" y = "1"/&gt;
+	      &lt;instance id = "6" x = "3" y = "3"/&gt;
+	      &lt;instance id = "7" x = "2" y = "2"/&gt;
+	      &lt;instance id = "8" x = "1" y = "1"/&gt;
+	      &lt;instance id = "9" x = "1" y = "3"/&gt;
+          &lt;/listOfInstances&gt;
+          &lt;listOfConnections&gt;
+              &lt;connection name="ngb[][]" type = "function_based"&gt;		6.
+                 &lt;listOfDimensions&gt;
+                      &lt;dimension rangeReference ="I" /&gt;	        	        7.
+                      &lt;dimension rangeReference ="J"/&gt;				8.
+                 &lt;/listOfDimensions&gt;
+                 &lt;mapping formula ="( (abs(cell[I].x-cell[J].x) &lt;=1) &amp;&amp;
+(abs(cell[I].y-cell[J].y) &lt;=1)  &amp;&amp; (I!=J) )"/&gt;
+              &lt;/connection&gt;
+          &lt;/listOfConnections&gt;
+      &lt;/compartment&gt;
+    &lt;/listOfCompartments&gt;
+
+    &lt;listOfSpecies&gt;
+      &lt;specie name="s[]" initialAmount="0" compartmentReference="cell[]"&gt;	9.
+        &lt;listOfDimensions&gt;
+           &lt;dimension rangeReference ="i" /&gt;					12.
+        &lt;/listOfDimensions&gt;
+      &lt;/specie&gt;
+    &lt;/listOfSpecies&gt;
+
+    &lt;listOfParameters&gt;								13.
+        &lt;parameter name="h[]" value="1"&gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;					14.
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="lambda[]" value="1"&gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;					15.
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="tau[]" value="1" &gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;					16.
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="Tin[][]" value="1" &gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="TOne[][]" value="1" &gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="Tout[][]" value="1" &gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="TTwo[][]" value="1"&gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+    &lt;/listOfParameters&gt;
+
+    &lt;listOfRules&gt;
+        &lt;connectionParameterRule name="LAMBDA" formula="1"
+                                 connectionReference = "ngb[][]" /&gt;
+        &lt;specieConcentrationRule specie="cell[K].s[i]" type="rate"		10.
+            formula = "(
+                      (-lambda[i]*cell[K].s[i])+				11.
+                      sigmoid(  h[i]+cell[K].s[:]*Tin[i][:]+
+                      sum{"L in ngb[K][L]",
+                         "ngb[K][L].LAMBDA*cell[L].s[:]*Tout[i][:]"} +
+                      sum{"L in ngb[K][L]",
+
+"ngb[K][L].LAMBDA*cell[L].s[:]*cell[K].s[:]*Tone[:][i]*Ttwo[i][:]"})
+                      )/tau[i]" /&gt;
+    &lt;/listOfRules&gt;
+
+  &lt;/model&gt;
+&lt;/sbml&gt;
+////////////////////////////////////////////////////////////////////////////
+//
+----------
+X-Sun-Data-Type: default
+X-Sun-Data-Description: default
+X-Sun-Data-Name: ex4.sbml
+X-Sun-Charset: us-ascii
+X-Sun-Content-Lines: 1155
+
+&lt;sbml level="1" version="1"&gt;
+  &lt;model name="GRN_Equations_20011220T111052"&gt;
+    &lt;notes&gt;
+       Arrays marked by underscores
+       Generated by Cellerator version 1.1220
+       Mathematica Version used: 4.1 for Power Macintosh (November 2, 2000)
+       This file was written: December 20, 2001 11:10:55
+       reference: <A  HREF="http://www.cds.caltech.edu/erato">http://www.cds.caltech.edu/erato</A>
+    &lt;/notes&gt;
+    &lt;listOfCompartments&gt;
+       &lt;compartment name="GRN_Equation_Compartment" /&gt;
+    &lt;/listOfCompartments&gt;
+    &lt;listOfSpecies&gt;
+       &lt;specie name="PA_1"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PA_2"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PA_3"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PA_4"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PA_5"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PA_6"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PA_7"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PA_8"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PA_9"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PB_1"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PB_2"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PB_3"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PB_4"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PB_5"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PB_6"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PB_7"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PB_8"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PB_9"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PC_1"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PC_2"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PC_3"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PC_4"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PC_5"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PC_6"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PC_7"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PC_8"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+       &lt;specie name="PC_9"
+               compartment="GRN_Equation_Compartment"
+               initialAmount="0" /&gt;
+    &lt;/listOfSpecies&gt;
+    &lt;listOfRules&gt;
+      &lt;parameterRule name="h_1" formula="1" /&gt;
+      &lt;parameterRule name="h_2" formula="1" /&gt;
+      &lt;parameterRule name="h_3" formula="1" /&gt;
+      &lt;parameterRule name="lambda_1" formula="1" /&gt;
+      &lt;parameterRule name="lambda_2" formula="1" /&gt;
+      &lt;parameterRule name="lambda_3" formula="1" /&gt;
+      &lt;parameterRule name="tau_1" formula="1" /&gt;
+      &lt;parameterRule name="tau_2" formula="1" /&gt;
+      &lt;parameterRule name="tau_3" formula="1" /&gt;
+      &lt;parameterRule name="Tin_1_1" formula="1" /&gt;
+      &lt;parameterRule name="Tin_1_2" formula="1" /&gt;
+      &lt;parameterRule name="Tin_1_3" formula="1" /&gt;
+      &lt;parameterRule name="Tin_2_1" formula="1" /&gt;
+      &lt;parameterRule name="Tin_2_2" formula="1" /&gt;
+      &lt;parameterRule name="Tin_2_3" formula="1" /&gt;
+      &lt;parameterRule name="Tin_3_1" formula="1" /&gt;
+      &lt;parameterRule name="Tin_3_2" formula="1" /&gt;
+      &lt;parameterRule name="Tin_3_3" formula="1" /&gt;
+      &lt;parameterRule name="TOne_1_1" formula="1" /&gt;
+      &lt;parameterRule name="TOne_1_2" formula="1" /&gt;
+      &lt;parameterRule name="TOne_1_3" formula="1" /&gt;
+      &lt;parameterRule name="TOne_2_1" formula="1" /&gt;
+      &lt;parameterRule name="TOne_2_2" formula="1" /&gt;
+      &lt;parameterRule name="TOne_2_3" formula="1" /&gt;
+      &lt;parameterRule name="TOne_3_1" formula="1" /&gt;
+      &lt;parameterRule name="TOne_3_2" formula="1" /&gt;
+      &lt;parameterRule name="TOne_3_3" formula="1" /&gt;
+      &lt;parameterRule name="Tout_1_1" formula="1" /&gt;
+      &lt;parameterRule name="Tout_1_2" formula="1" /&gt;
+      &lt;parameterRule name="Tout_1_3" formula="1" /&gt;
+      &lt;parameterRule name="Tout_2_1" formula="1" /&gt;
+      &lt;parameterRule name="Tout_2_2" formula="1" /&gt;
+      &lt;parameterRule name="Tout_2_3" formula="1" /&gt;
+      &lt;parameterRule name="Tout_3_1" formula="1" /&gt;
+      &lt;parameterRule name="Tout_3_2" formula="1" /&gt;
+      &lt;parameterRule name="Tout_3_3" formula="1" /&gt;
+      &lt;parameterRule name="TTwo_1_1" formula="1" /&gt;
+      &lt;parameterRule name="TTwo_1_2" formula="1" /&gt;
+      &lt;parameterRule name="TTwo_1_3" formula="1" /&gt;
+      &lt;parameterRule name="TTwo_2_1" formula="1" /&gt;
+      &lt;parameterRule name="TTwo_2_2" formula="1" /&gt;
+      &lt;parameterRule name="TTwo_2_3" formula="1" /&gt;
+      &lt;parameterRule name="TTwo_3_1" formula="1" /&gt;
+      &lt;parameterRule name="TTwo_3_2" formula="1" /&gt;
+      &lt;parameterRule name="TTwo_3_3" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_1_2" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_1_3" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_1_5" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_1_6" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_1_7" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_2_1" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_2_4" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_2_5" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_2_7" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_2_8" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_3_1" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_3_4" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_3_6" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_3_7" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_3_9" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_4_2" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_4_3" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_4_7" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_4_8" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_4_9" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_5_1" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_5_2" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_5_7" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_6_1" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_6_3" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_6_7" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_7_1" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_7_2" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_7_3" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_7_4" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_7_5" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_7_6" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_7_8" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_7_9" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_8_2" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_8_4" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_8_7" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_9_3" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_9_4" formula="1" /&gt;
+      &lt;parameterRule name="LAMBDA_9_7" formula="1" /&gt;
+      &lt;parameterRule name="rho" formula="1" /&gt;
+      &lt;parameterRule name="mu" formula="0.065" /&gt;
+      &lt;specieConcentrationRule specie="PA_1" type="rate"
+             formula="(-(lambda_1*PA_1) + sigmoid(h_1 + PA_1*Tin_1_1 +
+                   PB_1*Tin_2_1 + PC_1*Tin_3_1 + LAMBDA_2_1*PA_2*Tout_1_1 +
+                   LAMBDA_3_1*PA_3*Tout_1_1 + LAMBDA_5_1*PA_5*Tout_1_1 +
+                   LAMBDA_6_1*PA_6*Tout_1_1 + LAMBDA_7_1*PA_7*Tout_1_1 +
+                   LAMBDA_2_1*PB_2*Tout_2_1 + LAMBDA_3_1*PB_3*Tout_2_1 +
+                   LAMBDA_5_1*PB_5*Tout_2_1 + LAMBDA_6_1*PB_6*Tout_2_1 +
+                   LAMBDA_7_1*PB_7*Tout_2_1 + LAMBDA_2_1*PC_2*Tout_3_1 +
+                   LAMBDA_3_1*PC_3*Tout_3_1 + LAMBDA_5_1*PC_5*Tout_3_1 +
+                   LAMBDA_6_1*PC_6*Tout_3_1 + LAMBDA_7_1*PC_7*Tout_3_1 +
+                   LAMBDA_2_1*PA_2*(PA_1*TOne_1_1*TTwo_1_1 +
+                   PB_1*TOne_2_1*TTwo_1_2 + PC_1*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_3_1*PA_3*(PA_1*TOne_1_1*TTwo_1_1 +
+                   PB_1*TOne_2_1*TTwo_1_2 + PC_1*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_5_1*PA_5*(PA_1*TOne_1_1*TTwo_1_1 +
+                   PB_1*TOne_2_1*TTwo_1_2 + PC_1*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_6_1*PA_6*(PA_1*TOne_1_1*TTwo_1_1 +
+                   PB_1*TOne_2_1*TTwo_1_2 + PC_1*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_7_1*PA_7*(PA_1*TOne_1_1*TTwo_1_1 +
+                   PB_1*TOne_2_1*TTwo_1_2 + PC_1*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_2_1*PB_2*(PA_1*TOne_1_2*TTwo_1_1 +
+                   PB_1*TOne_2_2*TTwo_1_2 + PC_1*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_3_1*PB_3*(PA_1*TOne_1_2*TTwo_1_1 +
+                   PB_1*TOne_2_2*TTwo_1_2 + PC_1*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_5_1*PB_5*(PA_1*TOne_1_2*TTwo_1_1 +
+                   PB_1*TOne_2_2*TTwo_1_2 + PC_1*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_6_1*PB_6*(PA_1*TOne_1_2*TTwo_1_1 +
+                   PB_1*TOne_2_2*TTwo_1_2 + PC_1*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_7_1*PB_7*(PA_1*TOne_1_2*TTwo_1_1 +
+                   PB_1*TOne_2_2*TTwo_1_2 + PC_1*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_2_1*PC_2*(PA_1*TOne_1_3*TTwo_1_1 +
+                   PB_1*TOne_2_3*TTwo_1_2 + PC_1*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_3_1*PC_3*(PA_1*TOne_1_3*TTwo_1_1 +
+                   PB_1*TOne_2_3*TTwo_1_2 + PC_1*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_5_1*PC_5*(PA_1*TOne_1_3*TTwo_1_1 +
+                   PB_1*TOne_2_3*TTwo_1_2 + PC_1*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_6_1*PC_6*(PA_1*TOne_1_3*TTwo_1_1 +
+                   PB_1*TOne_2_3*TTwo_1_2 + PC_1*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_7_1*PC_7*(PA_1*TOne_1_3*TTwo_1_1 +
+                   PB_1*TOne_2_3*TTwo_1_2 + PC_1*TOne_3_3*TTwo_1_3)))/tau_1"
+/&gt;
+      &lt;specieConcentrationRule specie="PA_2" type="rate"
+             formula="(-(lambda_1*PA_2) + sigmoid(h_1 + PA_2*Tin_1_1 +
+                   PB_2*Tin_2_1 + PC_2*Tin_3_1 + LAMBDA_1_2*PA_1*Tout_1_1 +
+                   LAMBDA_4_2*PA_4*Tout_1_1 + LAMBDA_5_2*PA_5*Tout_1_1 +
+                   LAMBDA_7_2*PA_7*Tout_1_1 + LAMBDA_8_2*PA_8*Tout_1_1 +
+                   LAMBDA_1_2*PB_1*Tout_2_1 + LAMBDA_4_2*PB_4*Tout_2_1 +
+                   LAMBDA_5_2*PB_5*Tout_2_1 + LAMBDA_7_2*PB_7*Tout_2_1 +
+                   LAMBDA_8_2*PB_8*Tout_2_1 + LAMBDA_1_2*PC_1*Tout_3_1 +
+                   LAMBDA_4_2*PC_4*Tout_3_1 + LAMBDA_5_2*PC_5*Tout_3_1 +
+                   LAMBDA_7_2*PC_7*Tout_3_1 + LAMBDA_8_2*PC_8*Tout_3_1 +
+                   LAMBDA_1_2*PA_1*(PA_2*TOne_1_1*TTwo_1_1 +
+                   PB_2*TOne_2_1*TTwo_1_2 + PC_2*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_4_2*PA_4*(PA_2*TOne_1_1*TTwo_1_1 +
+                   PB_2*TOne_2_1*TTwo_1_2 + PC_2*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_5_2*PA_5*(PA_2*TOne_1_1*TTwo_1_1 +
+                   PB_2*TOne_2_1*TTwo_1_2 + PC_2*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_7_2*PA_7*(PA_2*TOne_1_1*TTwo_1_1 +
+                   PB_2*TOne_2_1*TTwo_1_2 + PC_2*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_8_2*PA_8*(PA_2*TOne_1_1*TTwo_1_1 +
+                   PB_2*TOne_2_1*TTwo_1_2 + PC_2*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_1_2*PB_1*(PA_2*TOne_1_2*TTwo_1_1 +
+                   PB_2*TOne_2_2*TTwo_1_2 + PC_2*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_4_2*PB_4*(PA_2*TOne_1_2*TTwo_1_1 +
+                   PB_2*TOne_2_2*TTwo_1_2 + PC_2*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_5_2*PB_5*(PA_2*TOne_1_2*TTwo_1_1 +
+                   PB_2*TOne_2_2*TTwo_1_2 + PC_2*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_7_2*PB_7*(PA_2*TOne_1_2*TTwo_1_1 +
+                   PB_2*TOne_2_2*TTwo_1_2 + PC_2*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_8_2*PB_8*(PA_2*TOne_1_2*TTwo_1_1 +
+                   PB_2*TOne_2_2*TTwo_1_2 + PC_2*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_1_2*PC_1*(PA_2*TOne_1_3*TTwo_1_1 +
+                   PB_2*TOne_2_3*TTwo_1_2 + PC_2*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_4_2*PC_4*(PA_2*TOne_1_3*TTwo_1_1 +
+                   PB_2*TOne_2_3*TTwo_1_2 + PC_2*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_5_2*PC_5*(PA_2*TOne_1_3*TTwo_1_1 +
+                   PB_2*TOne_2_3*TTwo_1_2 + PC_2*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_7_2*PC_7*(PA_2*TOne_1_3*TTwo_1_1 +
+                   PB_2*TOne_2_3*TTwo_1_2 + PC_2*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_8_2*PC_8*(PA_2*TOne_1_3*TTwo_1_1 +
+                   PB_2*TOne_2_3*TTwo_1_2 + PC_2*TOne_3_3*TTwo_1_3)))/tau_1"
+/&gt;
+      &lt;specieConcentrationRule specie="PA_3" type="rate"
+             formula="(-(lambda_1*PA_3) + sigmoid(h_1 + PA_3*Tin_1_1 +
+                   PB_3*Tin_2_1 + PC_3*Tin_3_1 + LAMBDA_1_3*PA_1*Tout_1_1 +
+                   LAMBDA_4_3*PA_4*Tout_1_1 + LAMBDA_6_3*PA_6*Tout_1_1 +
+                   LAMBDA_7_3*PA_7*Tout_1_1 + LAMBDA_9_3*PA_9*Tout_1_1 +
+                   LAMBDA_1_3*PB_1*Tout_2_1 + LAMBDA_4_3*PB_4*Tout_2_1 +
+                   LAMBDA_6_3*PB_6*Tout_2_1 + LAMBDA_7_3*PB_7*Tout_2_1 +
+                   LAMBDA_9_3*PB_9*Tout_2_1 + LAMBDA_1_3*PC_1*Tout_3_1 +
+                   LAMBDA_4_3*PC_4*Tout_3_1 + LAMBDA_6_3*PC_6*Tout_3_1 +
+                   LAMBDA_7_3*PC_7*Tout_3_1 + LAMBDA_9_3*PC_9*Tout_3_1 +
+                   LAMBDA_1_3*PA_1*(PA_3*TOne_1_1*TTwo_1_1 +
+                   PB_3*TOne_2_1*TTwo_1_2 + PC_3*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_4_3*PA_4*(PA_3*TOne_1_1*TTwo_1_1 +
+                   PB_3*TOne_2_1*TTwo_1_2 + PC_3*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_6_3*PA_6*(PA_3*TOne_1_1*TTwo_1_1 +
+                   PB_3*TOne_2_1*TTwo_1_2 + PC_3*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_7_3*PA_7*(PA_3*TOne_1_1*TTwo_1_1 +
+                   PB_3*TOne_2_1*TTwo_1_2 + PC_3*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_9_3*PA_9*(PA_3*TOne_1_1*TTwo_1_1 +
+                   PB_3*TOne_2_1*TTwo_1_2 + PC_3*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_1_3*PB_1*(PA_3*TOne_1_2*TTwo_1_1 +
+                   PB_3*TOne_2_2*TTwo_1_2 + PC_3*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_4_3*PB_4*(PA_3*TOne_1_2*TTwo_1_1 +
+                   PB_3*TOne_2_2*TTwo_1_2 + PC_3*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_6_3*PB_6*(PA_3*TOne_1_2*TTwo_1_1 +
+                   PB_3*TOne_2_2*TTwo_1_2 + PC_3*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_7_3*PB_7*(PA_3*TOne_1_2*TTwo_1_1 +
+                   PB_3*TOne_2_2*TTwo_1_2 + PC_3*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_9_3*PB_9*(PA_3*TOne_1_2*TTwo_1_1 +
+                   PB_3*TOne_2_2*TTwo_1_2 + PC_3*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_1_3*PC_1*(PA_3*TOne_1_3*TTwo_1_1 +
+                   PB_3*TOne_2_3*TTwo_1_2 + PC_3*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_4_3*PC_4*(PA_3*TOne_1_3*TTwo_1_1 +
+                   PB_3*TOne_2_3*TTwo_1_2 + PC_3*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_6_3*PC_6*(PA_3*TOne_1_3*TTwo_1_1 +
+                   PB_3*TOne_2_3*TTwo_1_2 + PC_3*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_7_3*PC_7*(PA_3*TOne_1_3*TTwo_1_1 +
+                   PB_3*TOne_2_3*TTwo_1_2 + PC_3*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_9_3*PC_9*(PA_3*TOne_1_3*TTwo_1_1 +
+                   PB_3*TOne_2_3*TTwo_1_2 + PC_3*TOne_3_3*TTwo_1_3)))/tau_1"
+/&gt;
+      &lt;specieConcentrationRule specie="PA_4" type="rate"
+             formula="(-(lambda_1*PA_4) + sigmoid(h_1 + PA_4*Tin_1_1 +
+                   PB_4*Tin_2_1 + PC_4*Tin_3_1 + LAMBDA_2_4*PA_2*Tout_1_1 +
+                   LAMBDA_3_4*PA_3*Tout_1_1 + LAMBDA_7_4*PA_7*Tout_1_1 +
+                   LAMBDA_8_4*PA_8*Tout_1_1 + LAMBDA_9_4*PA_9*Tout_1_1 +
+                   LAMBDA_2_4*PB_2*Tout_2_1 + LAMBDA_3_4*PB_3*Tout_2_1 +
+                   LAMBDA_7_4*PB_7*Tout_2_1 + LAMBDA_8_4*PB_8*Tout_2_1 +
+                   LAMBDA_9_4*PB_9*Tout_2_1 + LAMBDA_2_4*PC_2*Tout_3_1 +
+                   LAMBDA_3_4*PC_3*Tout_3_1 + LAMBDA_7_4*PC_7*Tout_3_1 +
+                   LAMBDA_8_4*PC_8*Tout_3_1 + LAMBDA_9_4*PC_9*Tout_3_1 +
+                   LAMBDA_2_4*PA_2*(PA_4*TOne_1_1*TTwo_1_1 +
+                   PB_4*TOne_2_1*TTwo_1_2 + PC_4*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_3_4*PA_3*(PA_4*TOne_1_1*TTwo_1_1 +
+                   PB_4*TOne_2_1*TTwo_1_2 + PC_4*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_7_4*PA_7*(PA_4*TOne_1_1*TTwo_1_1 +
+                   PB_4*TOne_2_1*TTwo_1_2 + PC_4*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_8_4*PA_8*(PA_4*TOne_1_1*TTwo_1_1 +
+                   PB_4*TOne_2_1*TTwo_1_2 + PC_4*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_9_4*PA_9*(PA_4*TOne_1_1*TTwo_1_1 +
+                   PB_4*TOne_2_1*TTwo_1_2 + PC_4*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_2_4*PB_2*(PA_4*TOne_1_2*TTwo_1_1 +
+                   PB_4*TOne_2_2*TTwo_1_2 + PC_4*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_3_4*PB_3*(PA_4*TOne_1_2*TTwo_1_1 +
+                   PB_4*TOne_2_2*TTwo_1_2 + PC_4*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_7_4*PB_7*(PA_4*TOne_1_2*TTwo_1_1 +
+                   PB_4*TOne_2_2*TTwo_1_2 + PC_4*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_8_4*PB_8*(PA_4*TOne_1_2*TTwo_1_1 +
+                   PB_4*TOne_2_2*TTwo_1_2 + PC_4*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_9_4*PB_9*(PA_4*TOne_1_2*TTwo_1_1 +
+                   PB_4*TOne_2_2*TTwo_1_2 + PC_4*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_2_4*PC_2*(PA_4*TOne_1_3*TTwo_1_1 +
+                   PB_4*TOne_2_3*TTwo_1_2 + PC_4*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_3_4*PC_3*(PA_4*TOne_1_3*TTwo_1_1 +
+                   PB_4*TOne_2_3*TTwo_1_2 + PC_4*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_7_4*PC_7*(PA_4*TOne_1_3*TTwo_1_1 +
+                   PB_4*TOne_2_3*TTwo_1_2 + PC_4*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_8_4*PC_8*(PA_4*TOne_1_3*TTwo_1_1 +
+                   PB_4*TOne_2_3*TTwo_1_2 + PC_4*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_9_4*PC_9*(PA_4*TOne_1_3*TTwo_1_1 +
+                   PB_4*TOne_2_3*TTwo_1_2 + PC_4*TOne_3_3*TTwo_1_3)))/tau_1"
+/&gt;
+      &lt;specieConcentrationRule specie="PA_5" type="rate"
+             formula="(-(lambda_1*PA_5) + sigmoid(h_1 + PA_5*Tin_1_1 +
+                   PB_5*Tin_2_1 + PC_5*Tin_3_1 + LAMBDA_1_5*PA_1*Tout_1_1 +
+                   LAMBDA_2_5*PA_2*Tout_1_1 + LAMBDA_7_5*PA_7*Tout_1_1 +
+                   LAMBDA_1_5*PB_1*Tout_2_1 + LAMBDA_2_5*PB_2*Tout_2_1 +
+                   LAMBDA_7_5*PB_7*Tout_2_1 + LAMBDA_1_5*PC_1*Tout_3_1 +
+                   LAMBDA_2_5*PC_2*Tout_3_1 + LAMBDA_7_5*PC_7*Tout_3_1 +
+                   LAMBDA_1_5*PA_1*(PA_5*TOne_1_1*TTwo_1_1 +
+                   PB_5*TOne_2_1*TTwo_1_2 + PC_5*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_2_5*PA_2*(PA_5*TOne_1_1*TTwo_1_1 +
+                   PB_5*TOne_2_1*TTwo_1_2 + PC_5*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_7_5*PA_7*(PA_5*TOne_1_1*TTwo_1_1 +
+                   PB_5*TOne_2_1*TTwo_1_2 + PC_5*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_1_5*PB_1*(PA_5*TOne_1_2*TTwo_1_1 +
+                   PB_5*TOne_2_2*TTwo_1_2 + PC_5*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_2_5*PB_2*(PA_5*TOne_1_2*TTwo_1_1 +
+                   PB_5*TOne_2_2*TTwo_1_2 + PC_5*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_7_5*PB_7*(PA_5*TOne_1_2*TTwo_1_1 +
+                   PB_5*TOne_2_2*TTwo_1_2 + PC_5*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_1_5*PC_1*(PA_5*TOne_1_3*TTwo_1_1 +
+                   PB_5*TOne_2_3*TTwo_1_2 + PC_5*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_2_5*PC_2*(PA_5*TOne_1_3*TTwo_1_1 +
+                   PB_5*TOne_2_3*TTwo_1_2 + PC_5*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_7_5*PC_7*(PA_5*TOne_1_3*TTwo_1_1 +
+                   PB_5*TOne_2_3*TTwo_1_2 + PC_5*TOne_3_3*TTwo_1_3)))/tau_1"
+/&gt;
+      &lt;specieConcentrationRule specie="PA_6" type="rate"
+             formula="(-(lambda_1*PA_6) + sigmoid(h_1 + PA_6*Tin_1_1 +
+                   PB_6*Tin_2_1 + PC_6*Tin_3_1 + LAMBDA_1_6*PA_1*Tout_1_1 +
+                   LAMBDA_3_6*PA_3*Tout_1_1 + LAMBDA_7_6*PA_7*Tout_1_1 +
+                   LAMBDA_1_6*PB_1*Tout_2_1 + LAMBDA_3_6*PB_3*Tout_2_1 +
+                   LAMBDA_7_6*PB_7*Tout_2_1 + LAMBDA_1_6*PC_1*Tout_3_1 +
+                   LAMBDA_3_6*PC_3*Tout_3_1 + LAMBDA_7_6*PC_7*Tout_3_1 +
+                   LAMBDA_1_6*PA_1*(PA_6*TOne_1_1*TTwo_1_1 +
+                   PB_6*TOne_2_1*TTwo_1_2 + PC_6*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_3_6*PA_3*(PA_6*TOne_1_1*TTwo_1_1 +
+                   PB_6*TOne_2_1*TTwo_1_2 + PC_6*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_7_6*PA_7*(PA_6*TOne_1_1*TTwo_1_1 +
+                   PB_6*TOne_2_1*TTwo_1_2 + PC_6*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_1_6*PB_1*(PA_6*TOne_1_2*TTwo_1_1 +
+                   PB_6*TOne_2_2*TTwo_1_2 + PC_6*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_3_6*PB_3*(PA_6*TOne_1_2*TTwo_1_1 +
+                   PB_6*TOne_2_2*TTwo_1_2 + PC_6*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_7_6*PB_7*(PA_6*TOne_1_2*TTwo_1_1 +
+                   PB_6*TOne_2_2*TTwo_1_2 + PC_6*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_1_6*PC_1*(PA_6*TOne_1_3*TTwo_1_1 +
+                   PB_6*TOne_2_3*TTwo_1_2 + PC_6*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_3_6*PC_3*(PA_6*TOne_1_3*TTwo_1_1 +
+                   PB_6*TOne_2_3*TTwo_1_2 + PC_6*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_7_6*PC_7*(PA_6*TOne_1_3*TTwo_1_1 +
+                   PB_6*TOne_2_3*TTwo_1_2 + PC_6*TOne_3_3*TTwo_1_3)))/tau_1"
+/&gt;
+      &lt;specieConcentrationRule specie="PA_7" type="rate"
+             formula="(-(lambda_1*PA_7) + sigmoid(h_1 + PA_7*Tin_1_1 +
+                   PB_7*Tin_2_1 + PC_7*Tin_3_1 + LAMBDA_1_7*PA_1*Tout_1_1 +
+                   LAMBDA_2_7*PA_2*Tout_1_1 + LAMBDA_3_7*PA_3*Tout_1_1 +
+                   LAMBDA_4_7*PA_4*Tout_1_1 + LAMBDA_5_7*PA_5*Tout_1_1 +
+                   LAMBDA_6_7*PA_6*Tout_1_1 + LAMBDA_8_7*PA_8*Tout_1_1 +
+                   LAMBDA_9_7*PA_9*Tout_1_1 + LAMBDA_1_7*PB_1*Tout_2_1 +
+                   LAMBDA_2_7*PB_2*Tout_2_1 + LAMBDA_3_7*PB_3*Tout_2_1 +
+                   LAMBDA_4_7*PB_4*Tout_2_1 + LAMBDA_5_7*PB_5*Tout_2_1 +
+                   LAMBDA_6_7*PB_6*Tout_2_1 + LAMBDA_8_7*PB_8*Tout_2_1 +
+                   LAMBDA_9_7*PB_9*Tout_2_1 + LAMBDA_1_7*PC_1*Tout_3_1 +
+                   LAMBDA_2_7*PC_2*Tout_3_1 + LAMBDA_3_7*PC_3*Tout_3_1 +
+                   LAMBDA_4_7*PC_4*Tout_3_1 + LAMBDA_5_7*PC_5*Tout_3_1 +
+                   LAMBDA_6_7*PC_6*Tout_3_1 + LAMBDA_8_7*PC_8*Tout_3_1 +
+                   LAMBDA_9_7*PC_9*Tout_3_1 +
+                   LAMBDA_1_7*PA_1*(PA_7*TOne_1_1*TTwo_1_1 +
+                   PB_7*TOne_2_1*TTwo_1_2 + PC_7*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_2_7*PA_2*(PA_7*TOne_1_1*TTwo_1_1 +
+                   PB_7*TOne_2_1*TTwo_1_2 + PC_7*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_3_7*PA_3*(PA_7*TOne_1_1*TTwo_1_1 +
+                   PB_7*TOne_2_1*TTwo_1_2 + PC_7*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_4_7*PA_4*(PA_7*TOne_1_1*TTwo_1_1 +
+                   PB_7*TOne_2_1*TTwo_1_2 + PC_7*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_5_7*PA_5*(PA_7*TOne_1_1*TTwo_1_1 +
+                   PB_7*TOne_2_1*TTwo_1_2 + PC_7*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_6_7*PA_6*(PA_7*TOne_1_1*TTwo_1_1 +
+                   PB_7*TOne_2_1*TTwo_1_2 + PC_7*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_8_7*PA_8*(PA_7*TOne_1_1*TTwo_1_1 +
+                   PB_7*TOne_2_1*TTwo_1_2 + PC_7*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_9_7*PA_9*(PA_7*TOne_1_1*TTwo_1_1 +
+                   PB_7*TOne_2_1*TTwo_1_2 + PC_7*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_1_7*PB_1*(PA_7*TOne_1_2*TTwo_1_1 +
+                   PB_7*TOne_2_2*TTwo_1_2 + PC_7*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_2_7*PB_2*(PA_7*TOne_1_2*TTwo_1_1 +
+                   PB_7*TOne_2_2*TTwo_1_2 + PC_7*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_3_7*PB_3*(PA_7*TOne_1_2*TTwo_1_1 +
+                   PB_7*TOne_2_2*TTwo_1_2 + PC_7*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_4_7*PB_4*(PA_7*TOne_1_2*TTwo_1_1 +
+                   PB_7*TOne_2_2*TTwo_1_2 + PC_7*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_5_7*PB_5*(PA_7*TOne_1_2*TTwo_1_1 +
+                   PB_7*TOne_2_2*TTwo_1_2 + PC_7*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_6_7*PB_6*(PA_7*TOne_1_2*TTwo_1_1 +
+                   PB_7*TOne_2_2*TTwo_1_2 + PC_7*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_8_7*PB_8*(PA_7*TOne_1_2*TTwo_1_1 +
+                   PB_7*TOne_2_2*TTwo_1_2 + PC_7*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_9_7*PB_9*(PA_7*TOne_1_2*TTwo_1_1 +
+                   PB_7*TOne_2_2*TTwo_1_2 + PC_7*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_1_7*PC_1*(PA_7*TOne_1_3*TTwo_1_1 +
+                   PB_7*TOne_2_3*TTwo_1_2 + PC_7*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_2_7*PC_2*(PA_7*TOne_1_3*TTwo_1_1 +
+                   PB_7*TOne_2_3*TTwo_1_2 + PC_7*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_3_7*PC_3*(PA_7*TOne_1_3*TTwo_1_1 +
+                   PB_7*TOne_2_3*TTwo_1_2 + PC_7*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_4_7*PC_4*(PA_7*TOne_1_3*TTwo_1_1 +
+                   PB_7*TOne_2_3*TTwo_1_2 + PC_7*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_5_7*PC_5*(PA_7*TOne_1_3*TTwo_1_1 +
+                   PB_7*TOne_2_3*TTwo_1_2 + PC_7*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_6_7*PC_6*(PA_7*TOne_1_3*TTwo_1_1 +
+                   PB_7*TOne_2_3*TTwo_1_2 + PC_7*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_8_7*PC_8*(PA_7*TOne_1_3*TTwo_1_1 +
+                   PB_7*TOne_2_3*TTwo_1_2 + PC_7*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_9_7*PC_9*(PA_7*TOne_1_3*TTwo_1_1 +
+                   PB_7*TOne_2_3*TTwo_1_2 + PC_7*TOne_3_3*TTwo_1_3)))/tau_1"
+/&gt;
+      &lt;specieConcentrationRule specie="PA_8" type="rate"
+             formula="(-(lambda_1*PA_8) + sigmoid(h_1 + PA_8*Tin_1_1 +
+                   PB_8*Tin_2_1 + PC_8*Tin_3_1 + LAMBDA_2_8*PA_2*Tout_1_1 +
+                   LAMBDA_4_8*PA_4*Tout_1_1 + LAMBDA_7_8*PA_7*Tout_1_1 +
+                   LAMBDA_2_8*PB_2*Tout_2_1 + LAMBDA_4_8*PB_4*Tout_2_1 +
+                   LAMBDA_7_8*PB_7*Tout_2_1 + LAMBDA_2_8*PC_2*Tout_3_1 +
+                   LAMBDA_4_8*PC_4*Tout_3_1 + LAMBDA_7_8*PC_7*Tout_3_1 +
+                   LAMBDA_2_8*PA_2*(PA_8*TOne_1_1*TTwo_1_1 +
+                   PB_8*TOne_2_1*TTwo_1_2 + PC_8*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_4_8*PA_4*(PA_8*TOne_1_1*TTwo_1_1 +
+                   PB_8*TOne_2_1*TTwo_1_2 + PC_8*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_7_8*PA_7*(PA_8*TOne_1_1*TTwo_1_1 +
+                   PB_8*TOne_2_1*TTwo_1_2 + PC_8*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_2_8*PB_2*(PA_8*TOne_1_2*TTwo_1_1 +
+                   PB_8*TOne_2_2*TTwo_1_2 + PC_8*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_4_8*PB_4*(PA_8*TOne_1_2*TTwo_1_1 +
+                   PB_8*TOne_2_2*TTwo_1_2 + PC_8*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_7_8*PB_7*(PA_8*TOne_1_2*TTwo_1_1 +
+                   PB_8*TOne_2_2*TTwo_1_2 + PC_8*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_2_8*PC_2*(PA_8*TOne_1_3*TTwo_1_1 +
+                   PB_8*TOne_2_3*TTwo_1_2 + PC_8*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_4_8*PC_4*(PA_8*TOne_1_3*TTwo_1_1 +
+                   PB_8*TOne_2_3*TTwo_1_2 + PC_8*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_7_8*PC_7*(PA_8*TOne_1_3*TTwo_1_1 +
+                   PB_8*TOne_2_3*TTwo_1_2 + PC_8*TOne_3_3*TTwo_1_3)))/tau_1"
+/&gt;
+      &lt;specieConcentrationRule specie="PA_9" type="rate"
+             formula="(-(lambda_1*PA_9) + sigmoid(h_1 + PA_9*Tin_1_1 +
+                   PB_9*Tin_2_1 + PC_9*Tin_3_1 + LAMBDA_3_9*PA_3*Tout_1_1 +
+                   LAMBDA_4_9*PA_4*Tout_1_1 + LAMBDA_7_9*PA_7*Tout_1_1 +
+                   LAMBDA_3_9*PB_3*Tout_2_1 + LAMBDA_4_9*PB_4*Tout_2_1 +
+                   LAMBDA_7_9*PB_7*Tout_2_1 + LAMBDA_3_9*PC_3*Tout_3_1 +
+                   LAMBDA_4_9*PC_4*Tout_3_1 + LAMBDA_7_9*PC_7*Tout_3_1 +
+                   LAMBDA_3_9*PA_3*(PA_9*TOne_1_1*TTwo_1_1 +
+                   PB_9*TOne_2_1*TTwo_1_2 + PC_9*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_4_9*PA_4*(PA_9*TOne_1_1*TTwo_1_1 +
+                   PB_9*TOne_2_1*TTwo_1_2 + PC_9*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_7_9*PA_7*(PA_9*TOne_1_1*TTwo_1_1 +
+                   PB_9*TOne_2_1*TTwo_1_2 + PC_9*TOne_3_1*TTwo_1_3) +
+                   LAMBDA_3_9*PB_3*(PA_9*TOne_1_2*TTwo_1_1 +
+                   PB_9*TOne_2_2*TTwo_1_2 + PC_9*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_4_9*PB_4*(PA_9*TOne_1_2*TTwo_1_1 +
+                   PB_9*TOne_2_2*TTwo_1_2 + PC_9*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_7_9*PB_7*(PA_9*TOne_1_2*TTwo_1_1 +
+                   PB_9*TOne_2_2*TTwo_1_2 + PC_9*TOne_3_2*TTwo_1_3) +
+                   LAMBDA_3_9*PC_3*(PA_9*TOne_1_3*TTwo_1_1 +
+                   PB_9*TOne_2_3*TTwo_1_2 + PC_9*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_4_9*PC_4*(PA_9*TOne_1_3*TTwo_1_1 +
+                   PB_9*TOne_2_3*TTwo_1_2 + PC_9*TOne_3_3*TTwo_1_3) +
+                   LAMBDA_7_9*PC_7*(PA_9*TOne_1_3*TTwo_1_1 +
+                   PB_9*TOne_2_3*TTwo_1_2 + PC_9*TOne_3_3*TTwo_1_3)))/tau_1"
+/&gt;
+      &lt;specieConcentrationRule specie="PB_1" type="rate"
+             formula="(-(lambda_2*PB_1) + sigmoid(h_2 + PA_1*Tin_1_2 +
+                   PB_1*Tin_2_2 + PC_1*Tin_3_2 + LAMBDA_2_1*PA_2*Tout_1_2 +
+                   LAMBDA_3_1*PA_3*Tout_1_2 + LAMBDA_5_1*PA_5*Tout_1_2 +
+                   LAMBDA_6_1*PA_6*Tout_1_2 + LAMBDA_7_1*PA_7*Tout_1_2 +
+                   LAMBDA_2_1*PB_2*Tout_2_2 + LAMBDA_3_1*PB_3*Tout_2_2 +
+                   LAMBDA_5_1*PB_5*Tout_2_2 + LAMBDA_6_1*PB_6*Tout_2_2 +
+                   LAMBDA_7_1*PB_7*Tout_2_2 + LAMBDA_2_1*PC_2*Tout_3_2 +
+                   LAMBDA_3_1*PC_3*Tout_3_2 + LAMBDA_5_1*PC_5*Tout_3_2 +
+                   LAMBDA_6_1*PC_6*Tout_3_2 + LAMBDA_7_1*PC_7*Tout_3_2 +
+                   LAMBDA_2_1*PA_2*(PA_1*TOne_1_1*TTwo_2_1 +
+                   PB_1*TOne_2_1*TTwo_2_2 + PC_1*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_3_1*PA_3*(PA_1*TOne_1_1*TTwo_2_1 +
+                   PB_1*TOne_2_1*TTwo_2_2 + PC_1*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_5_1*PA_5*(PA_1*TOne_1_1*TTwo_2_1 +
+                   PB_1*TOne_2_1*TTwo_2_2 + PC_1*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_6_1*PA_6*(PA_1*TOne_1_1*TTwo_2_1 +
+                   PB_1*TOne_2_1*TTwo_2_2 + PC_1*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_7_1*PA_7*(PA_1*TOne_1_1*TTwo_2_1 +
+                   PB_1*TOne_2_1*TTwo_2_2 + PC_1*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_2_1*PB_2*(PA_1*TOne_1_2*TTwo_2_1 +
+                   PB_1*TOne_2_2*TTwo_2_2 + PC_1*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_3_1*PB_3*(PA_1*TOne_1_2*TTwo_2_1 +
+                   PB_1*TOne_2_2*TTwo_2_2 + PC_1*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_5_1*PB_5*(PA_1*TOne_1_2*TTwo_2_1 +
+                   PB_1*TOne_2_2*TTwo_2_2 + PC_1*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_6_1*PB_6*(PA_1*TOne_1_2*TTwo_2_1 +
+                   PB_1*TOne_2_2*TTwo_2_2 + PC_1*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_7_1*PB_7*(PA_1*TOne_1_2*TTwo_2_1 +
+                   PB_1*TOne_2_2*TTwo_2_2 + PC_1*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_2_1*PC_2*(PA_1*TOne_1_3*TTwo_2_1 +
+                   PB_1*TOne_2_3*TTwo_2_2 + PC_1*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_3_1*PC_3*(PA_1*TOne_1_3*TTwo_2_1 +
+                   PB_1*TOne_2_3*TTwo_2_2 + PC_1*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_5_1*PC_5*(PA_1*TOne_1_3*TTwo_2_1 +
+                   PB_1*TOne_2_3*TTwo_2_2 + PC_1*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_6_1*PC_6*(PA_1*TOne_1_3*TTwo_2_1 +
+                   PB_1*TOne_2_3*TTwo_2_2 + PC_1*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_7_1*PC_7*(PA_1*TOne_1_3*TTwo_2_1 +
+                   PB_1*TOne_2_3*TTwo_2_2 + PC_1*TOne_3_3*TTwo_2_3)))/tau_2"
+/&gt;
+      &lt;specieConcentrationRule specie="PB_2" type="rate"
+             formula="(-(lambda_2*PB_2) + sigmoid(h_2 + PA_2*Tin_1_2 +
+                   PB_2*Tin_2_2 + PC_2*Tin_3_2 + LAMBDA_1_2*PA_1*Tout_1_2 +
+                   LAMBDA_4_2*PA_4*Tout_1_2 + LAMBDA_5_2*PA_5*Tout_1_2 +
+                   LAMBDA_7_2*PA_7*Tout_1_2 + LAMBDA_8_2*PA_8*Tout_1_2 +
+                   LAMBDA_1_2*PB_1*Tout_2_2 + LAMBDA_4_2*PB_4*Tout_2_2 +
+                   LAMBDA_5_2*PB_5*Tout_2_2 + LAMBDA_7_2*PB_7*Tout_2_2 +
+                   LAMBDA_8_2*PB_8*Tout_2_2 + LAMBDA_1_2*PC_1*Tout_3_2 +
+                   LAMBDA_4_2*PC_4*Tout_3_2 + LAMBDA_5_2*PC_5*Tout_3_2 +
+                   LAMBDA_7_2*PC_7*Tout_3_2 + LAMBDA_8_2*PC_8*Tout_3_2 +
+                   LAMBDA_1_2*PA_1*(PA_2*TOne_1_1*TTwo_2_1 +
+                   PB_2*TOne_2_1*TTwo_2_2 + PC_2*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_4_2*PA_4*(PA_2*TOne_1_1*TTwo_2_1 +
+                   PB_2*TOne_2_1*TTwo_2_2 + PC_2*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_5_2*PA_5*(PA_2*TOne_1_1*TTwo_2_1 +
+                   PB_2*TOne_2_1*TTwo_2_2 + PC_2*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_7_2*PA_7*(PA_2*TOne_1_1*TTwo_2_1 +
+                   PB_2*TOne_2_1*TTwo_2_2 + PC_2*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_8_2*PA_8*(PA_2*TOne_1_1*TTwo_2_1 +
+                   PB_2*TOne_2_1*TTwo_2_2 + PC_2*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_1_2*PB_1*(PA_2*TOne_1_2*TTwo_2_1 +
+                   PB_2*TOne_2_2*TTwo_2_2 + PC_2*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_4_2*PB_4*(PA_2*TOne_1_2*TTwo_2_1 +
+                   PB_2*TOne_2_2*TTwo_2_2 + PC_2*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_5_2*PB_5*(PA_2*TOne_1_2*TTwo_2_1 +
+                   PB_2*TOne_2_2*TTwo_2_2 + PC_2*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_7_2*PB_7*(PA_2*TOne_1_2*TTwo_2_1 +
+                   PB_2*TOne_2_2*TTwo_2_2 + PC_2*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_8_2*PB_8*(PA_2*TOne_1_2*TTwo_2_1 +
+                   PB_2*TOne_2_2*TTwo_2_2 + PC_2*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_1_2*PC_1*(PA_2*TOne_1_3*TTwo_2_1 +
+                   PB_2*TOne_2_3*TTwo_2_2 + PC_2*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_4_2*PC_4*(PA_2*TOne_1_3*TTwo_2_1 +
+                   PB_2*TOne_2_3*TTwo_2_2 + PC_2*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_5_2*PC_5*(PA_2*TOne_1_3*TTwo_2_1 +
+                   PB_2*TOne_2_3*TTwo_2_2 + PC_2*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_7_2*PC_7*(PA_2*TOne_1_3*TTwo_2_1 +
+                   PB_2*TOne_2_3*TTwo_2_2 + PC_2*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_8_2*PC_8*(PA_2*TOne_1_3*TTwo_2_1 +
+                   PB_2*TOne_2_3*TTwo_2_2 + PC_2*TOne_3_3*TTwo_2_3)))/tau_2"
+/&gt;
+      &lt;specieConcentrationRule specie="PB_3" type="rate"
+             formula="(-(lambda_2*PB_3) + sigmoid(h_2 + PA_3*Tin_1_2 +
+                   PB_3*Tin_2_2 + PC_3*Tin_3_2 + LAMBDA_1_3*PA_1*Tout_1_2 +
+                   LAMBDA_4_3*PA_4*Tout_1_2 + LAMBDA_6_3*PA_6*Tout_1_2 +
+                   LAMBDA_7_3*PA_7*Tout_1_2 + LAMBDA_9_3*PA_9*Tout_1_2 +
+                   LAMBDA_1_3*PB_1*Tout_2_2 + LAMBDA_4_3*PB_4*Tout_2_2 +
+                   LAMBDA_6_3*PB_6*Tout_2_2 + LAMBDA_7_3*PB_7*Tout_2_2 +
+                   LAMBDA_9_3*PB_9*Tout_2_2 + LAMBDA_1_3*PC_1*Tout_3_2 +
+                   LAMBDA_4_3*PC_4*Tout_3_2 + LAMBDA_6_3*PC_6*Tout_3_2 +
+                   LAMBDA_7_3*PC_7*Tout_3_2 + LAMBDA_9_3*PC_9*Tout_3_2 +
+                   LAMBDA_1_3*PA_1*(PA_3*TOne_1_1*TTwo_2_1 +
+                   PB_3*TOne_2_1*TTwo_2_2 + PC_3*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_4_3*PA_4*(PA_3*TOne_1_1*TTwo_2_1 +
+                   PB_3*TOne_2_1*TTwo_2_2 + PC_3*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_6_3*PA_6*(PA_3*TOne_1_1*TTwo_2_1 +
+                   PB_3*TOne_2_1*TTwo_2_2 + PC_3*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_7_3*PA_7*(PA_3*TOne_1_1*TTwo_2_1 +
+                   PB_3*TOne_2_1*TTwo_2_2 + PC_3*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_9_3*PA_9*(PA_3*TOne_1_1*TTwo_2_1 +
+                   PB_3*TOne_2_1*TTwo_2_2 + PC_3*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_1_3*PB_1*(PA_3*TOne_1_2*TTwo_2_1 +
+                   PB_3*TOne_2_2*TTwo_2_2 + PC_3*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_4_3*PB_4*(PA_3*TOne_1_2*TTwo_2_1 +
+                   PB_3*TOne_2_2*TTwo_2_2 + PC_3*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_6_3*PB_6*(PA_3*TOne_1_2*TTwo_2_1 +
+                   PB_3*TOne_2_2*TTwo_2_2 + PC_3*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_7_3*PB_7*(PA_3*TOne_1_2*TTwo_2_1 +
+                   PB_3*TOne_2_2*TTwo_2_2 + PC_3*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_9_3*PB_9*(PA_3*TOne_1_2*TTwo_2_1 +
+                   PB_3*TOne_2_2*TTwo_2_2 + PC_3*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_1_3*PC_1*(PA_3*TOne_1_3*TTwo_2_1 +
+                   PB_3*TOne_2_3*TTwo_2_2 + PC_3*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_4_3*PC_4*(PA_3*TOne_1_3*TTwo_2_1 +
+                   PB_3*TOne_2_3*TTwo_2_2 + PC_3*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_6_3*PC_6*(PA_3*TOne_1_3*TTwo_2_1 +
+                   PB_3*TOne_2_3*TTwo_2_2 + PC_3*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_7_3*PC_7*(PA_3*TOne_1_3*TTwo_2_1 +
+                   PB_3*TOne_2_3*TTwo_2_2 + PC_3*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_9_3*PC_9*(PA_3*TOne_1_3*TTwo_2_1 +
+                   PB_3*TOne_2_3*TTwo_2_2 + PC_3*TOne_3_3*TTwo_2_3)))/tau_2"
+/&gt;
+      &lt;specieConcentrationRule specie="PB_4" type="rate"
+             formula="(-(lambda_2*PB_4) + sigmoid(h_2 + PA_4*Tin_1_2 +
+                   PB_4*Tin_2_2 + PC_4*Tin_3_2 + LAMBDA_2_4*PA_2*Tout_1_2 +
+                   LAMBDA_3_4*PA_3*Tout_1_2 + LAMBDA_7_4*PA_7*Tout_1_2 +
+                   LAMBDA_8_4*PA_8*Tout_1_2 + LAMBDA_9_4*PA_9*Tout_1_2 +
+                   LAMBDA_2_4*PB_2*Tout_2_2 + LAMBDA_3_4*PB_3*Tout_2_2 +
+                   LAMBDA_7_4*PB_7*Tout_2_2 + LAMBDA_8_4*PB_8*Tout_2_2 +
+                   LAMBDA_9_4*PB_9*Tout_2_2 + LAMBDA_2_4*PC_2*Tout_3_2 +
+                   LAMBDA_3_4*PC_3*Tout_3_2 + LAMBDA_7_4*PC_7*Tout_3_2 +
+                   LAMBDA_8_4*PC_8*Tout_3_2 + LAMBDA_9_4*PC_9*Tout_3_2 +
+                   LAMBDA_2_4*PA_2*(PA_4*TOne_1_1*TTwo_2_1 +
+                   PB_4*TOne_2_1*TTwo_2_2 + PC_4*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_3_4*PA_3*(PA_4*TOne_1_1*TTwo_2_1 +
+                   PB_4*TOne_2_1*TTwo_2_2 + PC_4*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_7_4*PA_7*(PA_4*TOne_1_1*TTwo_2_1 +
+                   PB_4*TOne_2_1*TTwo_2_2 + PC_4*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_8_4*PA_8*(PA_4*TOne_1_1*TTwo_2_1 +
+                   PB_4*TOne_2_1*TTwo_2_2 + PC_4*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_9_4*PA_9*(PA_4*TOne_1_1*TTwo_2_1 +
+                   PB_4*TOne_2_1*TTwo_2_2 + PC_4*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_2_4*PB_2*(PA_4*TOne_1_2*TTwo_2_1 +
+                   PB_4*TOne_2_2*TTwo_2_2 + PC_4*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_3_4*PB_3*(PA_4*TOne_1_2*TTwo_2_1 +
+                   PB_4*TOne_2_2*TTwo_2_2 + PC_4*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_7_4*PB_7*(PA_4*TOne_1_2*TTwo_2_1 +
+                   PB_4*TOne_2_2*TTwo_2_2 + PC_4*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_8_4*PB_8*(PA_4*TOne_1_2*TTwo_2_1 +
+                   PB_4*TOne_2_2*TTwo_2_2 + PC_4*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_9_4*PB_9*(PA_4*TOne_1_2*TTwo_2_1 +
+                   PB_4*TOne_2_2*TTwo_2_2 + PC_4*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_2_4*PC_2*(PA_4*TOne_1_3*TTwo_2_1 +
+                   PB_4*TOne_2_3*TTwo_2_2 + PC_4*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_3_4*PC_3*(PA_4*TOne_1_3*TTwo_2_1 +
+                   PB_4*TOne_2_3*TTwo_2_2 + PC_4*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_7_4*PC_7*(PA_4*TOne_1_3*TTwo_2_1 +
+                   PB_4*TOne_2_3*TTwo_2_2 + PC_4*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_8_4*PC_8*(PA_4*TOne_1_3*TTwo_2_1 +
+                   PB_4*TOne_2_3*TTwo_2_2 + PC_4*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_9_4*PC_9*(PA_4*TOne_1_3*TTwo_2_1 +
+                   PB_4*TOne_2_3*TTwo_2_2 + PC_4*TOne_3_3*TTwo_2_3)))/tau_2"
+/&gt;
+      &lt;specieConcentrationRule specie="PB_5" type="rate"
+             formula="(-(lambda_2*PB_5) + sigmoid(h_2 + PA_5*Tin_1_2 +
+                   PB_5*Tin_2_2 + PC_5*Tin_3_2 + LAMBDA_1_5*PA_1*Tout_1_2 +
+                   LAMBDA_2_5*PA_2*Tout_1_2 + LAMBDA_7_5*PA_7*Tout_1_2 +
+                   LAMBDA_1_5*PB_1*Tout_2_2 + LAMBDA_2_5*PB_2*Tout_2_2 +
+                   LAMBDA_7_5*PB_7*Tout_2_2 + LAMBDA_1_5*PC_1*Tout_3_2 +
+                   LAMBDA_2_5*PC_2*Tout_3_2 + LAMBDA_7_5*PC_7*Tout_3_2 +
+                   LAMBDA_1_5*PA_1*(PA_5*TOne_1_1*TTwo_2_1 +
+                   PB_5*TOne_2_1*TTwo_2_2 + PC_5*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_2_5*PA_2*(PA_5*TOne_1_1*TTwo_2_1 +
+                   PB_5*TOne_2_1*TTwo_2_2 + PC_5*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_7_5*PA_7*(PA_5*TOne_1_1*TTwo_2_1 +
+                   PB_5*TOne_2_1*TTwo_2_2 + PC_5*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_1_5*PB_1*(PA_5*TOne_1_2*TTwo_2_1 +
+                   PB_5*TOne_2_2*TTwo_2_2 + PC_5*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_2_5*PB_2*(PA_5*TOne_1_2*TTwo_2_1 +
+                   PB_5*TOne_2_2*TTwo_2_2 + PC_5*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_7_5*PB_7*(PA_5*TOne_1_2*TTwo_2_1 +
+                   PB_5*TOne_2_2*TTwo_2_2 + PC_5*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_1_5*PC_1*(PA_5*TOne_1_3*TTwo_2_1 +
+                   PB_5*TOne_2_3*TTwo_2_2 + PC_5*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_2_5*PC_2*(PA_5*TOne_1_3*TTwo_2_1 +
+                   PB_5*TOne_2_3*TTwo_2_2 + PC_5*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_7_5*PC_7*(PA_5*TOne_1_3*TTwo_2_1 +
+                   PB_5*TOne_2_3*TTwo_2_2 + PC_5*TOne_3_3*TTwo_2_3)))/tau_2"
+/&gt;
+      &lt;specieConcentrationRule specie="PB_6" type="rate"
+             formula="(-(lambda_2*PB_6) + sigmoid(h_2 + PA_6*Tin_1_2 +
+                   PB_6*Tin_2_2 + PC_6*Tin_3_2 + LAMBDA_1_6*PA_1*Tout_1_2 +
+                   LAMBDA_3_6*PA_3*Tout_1_2 + LAMBDA_7_6*PA_7*Tout_1_2 +
+                   LAMBDA_1_6*PB_1*Tout_2_2 + LAMBDA_3_6*PB_3*Tout_2_2 +
+                   LAMBDA_7_6*PB_7*Tout_2_2 + LAMBDA_1_6*PC_1*Tout_3_2 +
+                   LAMBDA_3_6*PC_3*Tout_3_2 + LAMBDA_7_6*PC_7*Tout_3_2 +
+                   LAMBDA_1_6*PA_1*(PA_6*TOne_1_1*TTwo_2_1 +
+                   PB_6*TOne_2_1*TTwo_2_2 + PC_6*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_3_6*PA_3*(PA_6*TOne_1_1*TTwo_2_1 +
+                   PB_6*TOne_2_1*TTwo_2_2 + PC_6*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_7_6*PA_7*(PA_6*TOne_1_1*TTwo_2_1 +
+                   PB_6*TOne_2_1*TTwo_2_2 + PC_6*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_1_6*PB_1*(PA_6*TOne_1_2*TTwo_2_1 +
+                   PB_6*TOne_2_2*TTwo_2_2 + PC_6*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_3_6*PB_3*(PA_6*TOne_1_2*TTwo_2_1 +
+                   PB_6*TOne_2_2*TTwo_2_2 + PC_6*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_7_6*PB_7*(PA_6*TOne_1_2*TTwo_2_1 +
+                   PB_6*TOne_2_2*TTwo_2_2 + PC_6*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_1_6*PC_1*(PA_6*TOne_1_3*TTwo_2_1 +
+                   PB_6*TOne_2_3*TTwo_2_2 + PC_6*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_3_6*PC_3*(PA_6*TOne_1_3*TTwo_2_1 +
+                   PB_6*TOne_2_3*TTwo_2_2 + PC_6*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_7_6*PC_7*(PA_6*TOne_1_3*TTwo_2_1 +
+                   PB_6*TOne_2_3*TTwo_2_2 + PC_6*TOne_3_3*TTwo_2_3)))/tau_2"
+/&gt;
+      &lt;specieConcentrationRule specie="PB_7" type="rate"
+             formula="(-(lambda_2*PB_7) + sigmoid(h_2 + PA_7*Tin_1_2 +
+                   PB_7*Tin_2_2 + PC_7*Tin_3_2 + LAMBDA_1_7*PA_1*Tout_1_2 +
+                   LAMBDA_2_7*PA_2*Tout_1_2 + LAMBDA_3_7*PA_3*Tout_1_2 +
+                   LAMBDA_4_7*PA_4*Tout_1_2 + LAMBDA_5_7*PA_5*Tout_1_2 +
+                   LAMBDA_6_7*PA_6*Tout_1_2 + LAMBDA_8_7*PA_8*Tout_1_2 +
+                   LAMBDA_9_7*PA_9*Tout_1_2 + LAMBDA_1_7*PB_1*Tout_2_2 +
+                   LAMBDA_2_7*PB_2*Tout_2_2 + LAMBDA_3_7*PB_3*Tout_2_2 +
+                   LAMBDA_4_7*PB_4*Tout_2_2 + LAMBDA_5_7*PB_5*Tout_2_2 +
+                   LAMBDA_6_7*PB_6*Tout_2_2 + LAMBDA_8_7*PB_8*Tout_2_2 +
+                   LAMBDA_9_7*PB_9*Tout_2_2 + LAMBDA_1_7*PC_1*Tout_3_2 +
+                   LAMBDA_2_7*PC_2*Tout_3_2 + LAMBDA_3_7*PC_3*Tout_3_2 +
+                   LAMBDA_4_7*PC_4*Tout_3_2 + LAMBDA_5_7*PC_5*Tout_3_2 +
+                   LAMBDA_6_7*PC_6*Tout_3_2 + LAMBDA_8_7*PC_8*Tout_3_2 +
+                   LAMBDA_9_7*PC_9*Tout_3_2 +
+                   LAMBDA_1_7*PA_1*(PA_7*TOne_1_1*TTwo_2_1 +
+                   PB_7*TOne_2_1*TTwo_2_2 + PC_7*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_2_7*PA_2*(PA_7*TOne_1_1*TTwo_2_1 +
+                   PB_7*TOne_2_1*TTwo_2_2 + PC_7*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_3_7*PA_3*(PA_7*TOne_1_1*TTwo_2_1 +
+                   PB_7*TOne_2_1*TTwo_2_2 + PC_7*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_4_7*PA_4*(PA_7*TOne_1_1*TTwo_2_1 +
+                   PB_7*TOne_2_1*TTwo_2_2 + PC_7*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_5_7*PA_5*(PA_7*TOne_1_1*TTwo_2_1 +
+                   PB_7*TOne_2_1*TTwo_2_2 + PC_7*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_6_7*PA_6*(PA_7*TOne_1_1*TTwo_2_1 +
+                   PB_7*TOne_2_1*TTwo_2_2 + PC_7*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_8_7*PA_8*(PA_7*TOne_1_1*TTwo_2_1 +
+                   PB_7*TOne_2_1*TTwo_2_2 + PC_7*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_9_7*PA_9*(PA_7*TOne_1_1*TTwo_2_1 +
+                   PB_7*TOne_2_1*TTwo_2_2 + PC_7*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_1_7*PB_1*(PA_7*TOne_1_2*TTwo_2_1 +
+                   PB_7*TOne_2_2*TTwo_2_2 + PC_7*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_2_7*PB_2*(PA_7*TOne_1_2*TTwo_2_1 +
+                   PB_7*TOne_2_2*TTwo_2_2 + PC_7*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_3_7*PB_3*(PA_7*TOne_1_2*TTwo_2_1 +
+                   PB_7*TOne_2_2*TTwo_2_2 + PC_7*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_4_7*PB_4*(PA_7*TOne_1_2*TTwo_2_1 +
+                   PB_7*TOne_2_2*TTwo_2_2 + PC_7*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_5_7*PB_5*(PA_7*TOne_1_2*TTwo_2_1 +
+                   PB_7*TOne_2_2*TTwo_2_2 + PC_7*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_6_7*PB_6*(PA_7*TOne_1_2*TTwo_2_1 +
+                   PB_7*TOne_2_2*TTwo_2_2 + PC_7*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_8_7*PB_8*(PA_7*TOne_1_2*TTwo_2_1 +
+                   PB_7*TOne_2_2*TTwo_2_2 + PC_7*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_9_7*PB_9*(PA_7*TOne_1_2*TTwo_2_1 +
+                   PB_7*TOne_2_2*TTwo_2_2 + PC_7*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_1_7*PC_1*(PA_7*TOne_1_3*TTwo_2_1 +
+                   PB_7*TOne_2_3*TTwo_2_2 + PC_7*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_2_7*PC_2*(PA_7*TOne_1_3*TTwo_2_1 +
+                   PB_7*TOne_2_3*TTwo_2_2 + PC_7*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_3_7*PC_3*(PA_7*TOne_1_3*TTwo_2_1 +
+                   PB_7*TOne_2_3*TTwo_2_2 + PC_7*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_4_7*PC_4*(PA_7*TOne_1_3*TTwo_2_1 +
+                   PB_7*TOne_2_3*TTwo_2_2 + PC_7*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_5_7*PC_5*(PA_7*TOne_1_3*TTwo_2_1 +
+                   PB_7*TOne_2_3*TTwo_2_2 + PC_7*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_6_7*PC_6*(PA_7*TOne_1_3*TTwo_2_1 +
+                   PB_7*TOne_2_3*TTwo_2_2 + PC_7*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_8_7*PC_8*(PA_7*TOne_1_3*TTwo_2_1 +
+                   PB_7*TOne_2_3*TTwo_2_2 + PC_7*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_9_7*PC_9*(PA_7*TOne_1_3*TTwo_2_1 +
+                   PB_7*TOne_2_3*TTwo_2_2 + PC_7*TOne_3_3*TTwo_2_3)))/tau_2"
+/&gt;
+      &lt;specieConcentrationRule specie="PB_8" type="rate"
+             formula="(-(lambda_2*PB_8) + sigmoid(h_2 + PA_8*Tin_1_2 +
+                   PB_8*Tin_2_2 + PC_8*Tin_3_2 + LAMBDA_2_8*PA_2*Tout_1_2 +
+                   LAMBDA_4_8*PA_4*Tout_1_2 + LAMBDA_7_8*PA_7*Tout_1_2 +
+                   LAMBDA_2_8*PB_2*Tout_2_2 + LAMBDA_4_8*PB_4*Tout_2_2 +
+                   LAMBDA_7_8*PB_7*Tout_2_2 + LAMBDA_2_8*PC_2*Tout_3_2 +
+                   LAMBDA_4_8*PC_4*Tout_3_2 + LAMBDA_7_8*PC_7*Tout_3_2 +
+                   LAMBDA_2_8*PA_2*(PA_8*TOne_1_1*TTwo_2_1 +
+                   PB_8*TOne_2_1*TTwo_2_2 + PC_8*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_4_8*PA_4*(PA_8*TOne_1_1*TTwo_2_1 +
+                   PB_8*TOne_2_1*TTwo_2_2 + PC_8*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_7_8*PA_7*(PA_8*TOne_1_1*TTwo_2_1 +
+                   PB_8*TOne_2_1*TTwo_2_2 + PC_8*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_2_8*PB_2*(PA_8*TOne_1_2*TTwo_2_1 +
+                   PB_8*TOne_2_2*TTwo_2_2 + PC_8*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_4_8*PB_4*(PA_8*TOne_1_2*TTwo_2_1 +
+                   PB_8*TOne_2_2*TTwo_2_2 + PC_8*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_7_8*PB_7*(PA_8*TOne_1_2*TTwo_2_1 +
+                   PB_8*TOne_2_2*TTwo_2_2 + PC_8*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_2_8*PC_2*(PA_8*TOne_1_3*TTwo_2_1 +
+                   PB_8*TOne_2_3*TTwo_2_2 + PC_8*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_4_8*PC_4*(PA_8*TOne_1_3*TTwo_2_1 +
+                   PB_8*TOne_2_3*TTwo_2_2 + PC_8*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_7_8*PC_7*(PA_8*TOne_1_3*TTwo_2_1 +
+                   PB_8*TOne_2_3*TTwo_2_2 + PC_8*TOne_3_3*TTwo_2_3)))/tau_2"
+/&gt;
+      &lt;specieConcentrationRule specie="PB_9" type="rate"
+             formula="(-(lambda_2*PB_9) + sigmoid(h_2 + PA_9*Tin_1_2 +
+                   PB_9*Tin_2_2 + PC_9*Tin_3_2 + LAMBDA_3_9*PA_3*Tout_1_2 +
+                   LAMBDA_4_9*PA_4*Tout_1_2 + LAMBDA_7_9*PA_7*Tout_1_2 +
+                   LAMBDA_3_9*PB_3*Tout_2_2 + LAMBDA_4_9*PB_4*Tout_2_2 +
+                   LAMBDA_7_9*PB_7*Tout_2_2 + LAMBDA_3_9*PC_3*Tout_3_2 +
+                   LAMBDA_4_9*PC_4*Tout_3_2 + LAMBDA_7_9*PC_7*Tout_3_2 +
+                   LAMBDA_3_9*PA_3*(PA_9*TOne_1_1*TTwo_2_1 +
+                   PB_9*TOne_2_1*TTwo_2_2 + PC_9*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_4_9*PA_4*(PA_9*TOne_1_1*TTwo_2_1 +
+                   PB_9*TOne_2_1*TTwo_2_2 + PC_9*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_7_9*PA_7*(PA_9*TOne_1_1*TTwo_2_1 +
+                   PB_9*TOne_2_1*TTwo_2_2 + PC_9*TOne_3_1*TTwo_2_3) +
+                   LAMBDA_3_9*PB_3*(PA_9*TOne_1_2*TTwo_2_1 +
+                   PB_9*TOne_2_2*TTwo_2_2 + PC_9*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_4_9*PB_4*(PA_9*TOne_1_2*TTwo_2_1 +
+                   PB_9*TOne_2_2*TTwo_2_2 + PC_9*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_7_9*PB_7*(PA_9*TOne_1_2*TTwo_2_1 +
+                   PB_9*TOne_2_2*TTwo_2_2 + PC_9*TOne_3_2*TTwo_2_3) +
+                   LAMBDA_3_9*PC_3*(PA_9*TOne_1_3*TTwo_2_1 +
+                   PB_9*TOne_2_3*TTwo_2_2 + PC_9*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_4_9*PC_4*(PA_9*TOne_1_3*TTwo_2_1 +
+                   PB_9*TOne_2_3*TTwo_2_2 + PC_9*TOne_3_3*TTwo_2_3) +
+                   LAMBDA_7_9*PC_7*(PA_9*TOne_1_3*TTwo_2_1 +
+                   PB_9*TOne_2_3*TTwo_2_2 + PC_9*TOne_3_3*TTwo_2_3)))/tau_2"
+/&gt;
+      &lt;specieConcentrationRule specie="PC_1" type="rate"
+             formula="(-(lambda_3*PC_1) + sigmoid(h_3 + PA_1*Tin_1_3 +
+                   PB_1*Tin_2_3 + PC_1*Tin_3_3 + LAMBDA_2_1*PA_2*Tout_1_3 +
+                   LAMBDA_3_1*PA_3*Tout_1_3 + LAMBDA_5_1*PA_5*Tout_1_3 +
+                   LAMBDA_6_1*PA_6*Tout_1_3 + LAMBDA_7_1*PA_7*Tout_1_3 +
+                   LAMBDA_2_1*PB_2*Tout_2_3 + LAMBDA_3_1*PB_3*Tout_2_3 +
+                   LAMBDA_5_1*PB_5*Tout_2_3 + LAMBDA_6_1*PB_6*Tout_2_3 +
+                   LAMBDA_7_1*PB_7*Tout_2_3 + LAMBDA_2_1*PC_2*Tout_3_3 +
+                   LAMBDA_3_1*PC_3*Tout_3_3 + LAMBDA_5_1*PC_5*Tout_3_3 +
+                   LAMBDA_6_1*PC_6*Tout_3_3 + LAMBDA_7_1*PC_7*Tout_3_3 +
+                   LAMBDA_2_1*PA_2*(PA_1*TOne_1_1*TTwo_3_1 +
+                   PB_1*TOne_2_1*TTwo_3_2 + PC_1*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_3_1*PA_3*(PA_1*TOne_1_1*TTwo_3_1 +
+                   PB_1*TOne_2_1*TTwo_3_2 + PC_1*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_5_1*PA_5*(PA_1*TOne_1_1*TTwo_3_1 +
+                   PB_1*TOne_2_1*TTwo_3_2 + PC_1*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_6_1*PA_6*(PA_1*TOne_1_1*TTwo_3_1 +
+                   PB_1*TOne_2_1*TTwo_3_2 + PC_1*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_7_1*PA_7*(PA_1*TOne_1_1*TTwo_3_1 +
+                   PB_1*TOne_2_1*TTwo_3_2 + PC_1*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_2_1*PB_2*(PA_1*TOne_1_2*TTwo_3_1 +
+                   PB_1*TOne_2_2*TTwo_3_2 + PC_1*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_3_1*PB_3*(PA_1*TOne_1_2*TTwo_3_1 +
+                   PB_1*TOne_2_2*TTwo_3_2 + PC_1*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_5_1*PB_5*(PA_1*TOne_1_2*TTwo_3_1 +
+                   PB_1*TOne_2_2*TTwo_3_2 + PC_1*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_6_1*PB_6*(PA_1*TOne_1_2*TTwo_3_1 +
+                   PB_1*TOne_2_2*TTwo_3_2 + PC_1*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_7_1*PB_7*(PA_1*TOne_1_2*TTwo_3_1 +
+                   PB_1*TOne_2_2*TTwo_3_2 + PC_1*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_2_1*PC_2*(PA_1*TOne_1_3*TTwo_3_1 +
+                   PB_1*TOne_2_3*TTwo_3_2 + PC_1*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_3_1*PC_3*(PA_1*TOne_1_3*TTwo_3_1 +
+                   PB_1*TOne_2_3*TTwo_3_2 + PC_1*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_5_1*PC_5*(PA_1*TOne_1_3*TTwo_3_1 +
+                   PB_1*TOne_2_3*TTwo_3_2 + PC_1*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_6_1*PC_6*(PA_1*TOne_1_3*TTwo_3_1 +
+                   PB_1*TOne_2_3*TTwo_3_2 + PC_1*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_7_1*PC_7*(PA_1*TOne_1_3*TTwo_3_1 +
+                   PB_1*TOne_2_3*TTwo_3_2 + PC_1*TOne_3_3*TTwo_3_3)))/tau_3"
+/&gt;
+      &lt;specieConcentrationRule specie="PC_2" type="rate"
+             formula="(-(lambda_3*PC_2) + sigmoid(h_3 + PA_2*Tin_1_3 +
+                   PB_2*Tin_2_3 + PC_2*Tin_3_3 + LAMBDA_1_2*PA_1*Tout_1_3 +
+                   LAMBDA_4_2*PA_4*Tout_1_3 + LAMBDA_5_2*PA_5*Tout_1_3 +
+                   LAMBDA_7_2*PA_7*Tout_1_3 + LAMBDA_8_2*PA_8*Tout_1_3 +
+                   LAMBDA_1_2*PB_1*Tout_2_3 + LAMBDA_4_2*PB_4*Tout_2_3 +
+                   LAMBDA_5_2*PB_5*Tout_2_3 + LAMBDA_7_2*PB_7*Tout_2_3 +
+                   LAMBDA_8_2*PB_8*Tout_2_3 + LAMBDA_1_2*PC_1*Tout_3_3 +
+                   LAMBDA_4_2*PC_4*Tout_3_3 + LAMBDA_5_2*PC_5*Tout_3_3 +
+                   LAMBDA_7_2*PC_7*Tout_3_3 + LAMBDA_8_2*PC_8*Tout_3_3 +
+                   LAMBDA_1_2*PA_1*(PA_2*TOne_1_1*TTwo_3_1 +
+                   PB_2*TOne_2_1*TTwo_3_2 + PC_2*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_4_2*PA_4*(PA_2*TOne_1_1*TTwo_3_1 +
+                   PB_2*TOne_2_1*TTwo_3_2 + PC_2*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_5_2*PA_5*(PA_2*TOne_1_1*TTwo_3_1 +
+                   PB_2*TOne_2_1*TTwo_3_2 + PC_2*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_7_2*PA_7*(PA_2*TOne_1_1*TTwo_3_1 +
+                   PB_2*TOne_2_1*TTwo_3_2 + PC_2*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_8_2*PA_8*(PA_2*TOne_1_1*TTwo_3_1 +
+                   PB_2*TOne_2_1*TTwo_3_2 + PC_2*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_1_2*PB_1*(PA_2*TOne_1_2*TTwo_3_1 +
+                   PB_2*TOne_2_2*TTwo_3_2 + PC_2*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_4_2*PB_4*(PA_2*TOne_1_2*TTwo_3_1 +
+                   PB_2*TOne_2_2*TTwo_3_2 + PC_2*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_5_2*PB_5*(PA_2*TOne_1_2*TTwo_3_1 +
+                   PB_2*TOne_2_2*TTwo_3_2 + PC_2*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_7_2*PB_7*(PA_2*TOne_1_2*TTwo_3_1 +
+                   PB_2*TOne_2_2*TTwo_3_2 + PC_2*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_8_2*PB_8*(PA_2*TOne_1_2*TTwo_3_1 +
+                   PB_2*TOne_2_2*TTwo_3_2 + PC_2*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_1_2*PC_1*(PA_2*TOne_1_3*TTwo_3_1 +
+                   PB_2*TOne_2_3*TTwo_3_2 + PC_2*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_4_2*PC_4*(PA_2*TOne_1_3*TTwo_3_1 +
+                   PB_2*TOne_2_3*TTwo_3_2 + PC_2*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_5_2*PC_5*(PA_2*TOne_1_3*TTwo_3_1 +
+                   PB_2*TOne_2_3*TTwo_3_2 + PC_2*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_7_2*PC_7*(PA_2*TOne_1_3*TTwo_3_1 +
+                   PB_2*TOne_2_3*TTwo_3_2 + PC_2*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_8_2*PC_8*(PA_2*TOne_1_3*TTwo_3_1 +
+                   PB_2*TOne_2_3*TTwo_3_2 + PC_2*TOne_3_3*TTwo_3_3)))/tau_3"
+/&gt;
+      &lt;specieConcentrationRule specie="PC_3" type="rate"
+             formula="(-(lambda_3*PC_3) + sigmoid(h_3 + PA_3*Tin_1_3 +
+                   PB_3*Tin_2_3 + PC_3*Tin_3_3 + LAMBDA_1_3*PA_1*Tout_1_3 +
+                   LAMBDA_4_3*PA_4*Tout_1_3 + LAMBDA_6_3*PA_6*Tout_1_3 +
+                   LAMBDA_7_3*PA_7*Tout_1_3 + LAMBDA_9_3*PA_9*Tout_1_3 +
+                   LAMBDA_1_3*PB_1*Tout_2_3 + LAMBDA_4_3*PB_4*Tout_2_3 +
+                   LAMBDA_6_3*PB_6*Tout_2_3 + LAMBDA_7_3*PB_7*Tout_2_3 +
+                   LAMBDA_9_3*PB_9*Tout_2_3 + LAMBDA_1_3*PC_1*Tout_3_3 +
+                   LAMBDA_4_3*PC_4*Tout_3_3 + LAMBDA_6_3*PC_6*Tout_3_3 +
+                   LAMBDA_7_3*PC_7*Tout_3_3 + LAMBDA_9_3*PC_9*Tout_3_3 +
+                   LAMBDA_1_3*PA_1*(PA_3*TOne_1_1*TTwo_3_1 +
+                   PB_3*TOne_2_1*TTwo_3_2 + PC_3*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_4_3*PA_4*(PA_3*TOne_1_1*TTwo_3_1 +
+                   PB_3*TOne_2_1*TTwo_3_2 + PC_3*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_6_3*PA_6*(PA_3*TOne_1_1*TTwo_3_1 +
+                   PB_3*TOne_2_1*TTwo_3_2 + PC_3*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_7_3*PA_7*(PA_3*TOne_1_1*TTwo_3_1 +
+                   PB_3*TOne_2_1*TTwo_3_2 + PC_3*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_9_3*PA_9*(PA_3*TOne_1_1*TTwo_3_1 +
+                   PB_3*TOne_2_1*TTwo_3_2 + PC_3*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_1_3*PB_1*(PA_3*TOne_1_2*TTwo_3_1 +
+                   PB_3*TOne_2_2*TTwo_3_2 + PC_3*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_4_3*PB_4*(PA_3*TOne_1_2*TTwo_3_1 +
+                   PB_3*TOne_2_2*TTwo_3_2 + PC_3*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_6_3*PB_6*(PA_3*TOne_1_2*TTwo_3_1 +
+                   PB_3*TOne_2_2*TTwo_3_2 + PC_3*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_7_3*PB_7*(PA_3*TOne_1_2*TTwo_3_1 +
+                   PB_3*TOne_2_2*TTwo_3_2 + PC_3*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_9_3*PB_9*(PA_3*TOne_1_2*TTwo_3_1 +
+                   PB_3*TOne_2_2*TTwo_3_2 + PC_3*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_1_3*PC_1*(PA_3*TOne_1_3*TTwo_3_1 +
+                   PB_3*TOne_2_3*TTwo_3_2 + PC_3*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_4_3*PC_4*(PA_3*TOne_1_3*TTwo_3_1 +
+                   PB_3*TOne_2_3*TTwo_3_2 + PC_3*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_6_3*PC_6*(PA_3*TOne_1_3*TTwo_3_1 +
+                   PB_3*TOne_2_3*TTwo_3_2 + PC_3*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_7_3*PC_7*(PA_3*TOne_1_3*TTwo_3_1 +
+                   PB_3*TOne_2_3*TTwo_3_2 + PC_3*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_9_3*PC_9*(PA_3*TOne_1_3*TTwo_3_1 +
+                   PB_3*TOne_2_3*TTwo_3_2 + PC_3*TOne_3_3*TTwo_3_3)))/tau_3"
+/&gt;
+      &lt;specieConcentrationRule specie="PC_4" type="rate"
+             formula="(-(lambda_3*PC_4) + sigmoid(h_3 + PA_4*Tin_1_3 +
+                   PB_4*Tin_2_3 + PC_4*Tin_3_3 + LAMBDA_2_4*PA_2*Tout_1_3 +
+                   LAMBDA_3_4*PA_3*Tout_1_3 + LAMBDA_7_4*PA_7*Tout_1_3 +
+                   LAMBDA_8_4*PA_8*Tout_1_3 + LAMBDA_9_4*PA_9*Tout_1_3 +
+                   LAMBDA_2_4*PB_2*Tout_2_3 + LAMBDA_3_4*PB_3*Tout_2_3 +
+                   LAMBDA_7_4*PB_7*Tout_2_3 + LAMBDA_8_4*PB_8*Tout_2_3 +
+                   LAMBDA_9_4*PB_9*Tout_2_3 + LAMBDA_2_4*PC_2*Tout_3_3 +
+                   LAMBDA_3_4*PC_3*Tout_3_3 + LAMBDA_7_4*PC_7*Tout_3_3 +
+                   LAMBDA_8_4*PC_8*Tout_3_3 + LAMBDA_9_4*PC_9*Tout_3_3 +
+                   LAMBDA_2_4*PA_2*(PA_4*TOne_1_1*TTwo_3_1 +
+                   PB_4*TOne_2_1*TTwo_3_2 + PC_4*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_3_4*PA_3*(PA_4*TOne_1_1*TTwo_3_1 +
+                   PB_4*TOne_2_1*TTwo_3_2 + PC_4*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_7_4*PA_7*(PA_4*TOne_1_1*TTwo_3_1 +
+                   PB_4*TOne_2_1*TTwo_3_2 + PC_4*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_8_4*PA_8*(PA_4*TOne_1_1*TTwo_3_1 +
+                   PB_4*TOne_2_1*TTwo_3_2 + PC_4*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_9_4*PA_9*(PA_4*TOne_1_1*TTwo_3_1 +
+                   PB_4*TOne_2_1*TTwo_3_2 + PC_4*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_2_4*PB_2*(PA_4*TOne_1_2*TTwo_3_1 +
+                   PB_4*TOne_2_2*TTwo_3_2 + PC_4*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_3_4*PB_3*(PA_4*TOne_1_2*TTwo_3_1 +
+                   PB_4*TOne_2_2*TTwo_3_2 + PC_4*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_7_4*PB_7*(PA_4*TOne_1_2*TTwo_3_1 +
+                   PB_4*TOne_2_2*TTwo_3_2 + PC_4*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_8_4*PB_8*(PA_4*TOne_1_2*TTwo_3_1 +
+                   PB_4*TOne_2_2*TTwo_3_2 + PC_4*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_9_4*PB_9*(PA_4*TOne_1_2*TTwo_3_1 +
+                   PB_4*TOne_2_2*TTwo_3_2 + PC_4*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_2_4*PC_2*(PA_4*TOne_1_3*TTwo_3_1 +
+                   PB_4*TOne_2_3*TTwo_3_2 + PC_4*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_3_4*PC_3*(PA_4*TOne_1_3*TTwo_3_1 +
+                   PB_4*TOne_2_3*TTwo_3_2 + PC_4*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_7_4*PC_7*(PA_4*TOne_1_3*TTwo_3_1 +
+                   PB_4*TOne_2_3*TTwo_3_2 + PC_4*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_8_4*PC_8*(PA_4*TOne_1_3*TTwo_3_1 +
+                   PB_4*TOne_2_3*TTwo_3_2 + PC_4*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_9_4*PC_9*(PA_4*TOne_1_3*TTwo_3_1 +
+                   PB_4*TOne_2_3*TTwo_3_2 + PC_4*TOne_3_3*TTwo_3_3)))/tau_3"
+/&gt;
+      &lt;specieConcentrationRule specie="PC_5" type="rate"
+             formula="(-(lambda_3*PC_5) + sigmoid(h_3 + PA_5*Tin_1_3 +
+                   PB_5*Tin_2_3 + PC_5*Tin_3_3 + LAMBDA_1_5*PA_1*Tout_1_3 +
+                   LAMBDA_2_5*PA_2*Tout_1_3 + LAMBDA_7_5*PA_7*Tout_1_3 +
+                   LAMBDA_1_5*PB_1*Tout_2_3 + LAMBDA_2_5*PB_2*Tout_2_3 +
+                   LAMBDA_7_5*PB_7*Tout_2_3 + LAMBDA_1_5*PC_1*Tout_3_3 +
+                   LAMBDA_2_5*PC_2*Tout_3_3 + LAMBDA_7_5*PC_7*Tout_3_3 +
+                   LAMBDA_1_5*PA_1*(PA_5*TOne_1_1*TTwo_3_1 +
+                   PB_5*TOne_2_1*TTwo_3_2 + PC_5*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_2_5*PA_2*(PA_5*TOne_1_1*TTwo_3_1 +
+                   PB_5*TOne_2_1*TTwo_3_2 + PC_5*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_7_5*PA_7*(PA_5*TOne_1_1*TTwo_3_1 +
+                   PB_5*TOne_2_1*TTwo_3_2 + PC_5*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_1_5*PB_1*(PA_5*TOne_1_2*TTwo_3_1 +
+                   PB_5*TOne_2_2*TTwo_3_2 + PC_5*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_2_5*PB_2*(PA_5*TOne_1_2*TTwo_3_1 +
+                   PB_5*TOne_2_2*TTwo_3_2 + PC_5*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_7_5*PB_7*(PA_5*TOne_1_2*TTwo_3_1 +
+                   PB_5*TOne_2_2*TTwo_3_2 + PC_5*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_1_5*PC_1*(PA_5*TOne_1_3*TTwo_3_1 +
+                   PB_5*TOne_2_3*TTwo_3_2 + PC_5*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_2_5*PC_2*(PA_5*TOne_1_3*TTwo_3_1 +
+                   PB_5*TOne_2_3*TTwo_3_2 + PC_5*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_7_5*PC_7*(PA_5*TOne_1_3*TTwo_3_1 +
+                   PB_5*TOne_2_3*TTwo_3_2 + PC_5*TOne_3_3*TTwo_3_3)))/tau_3"
+/&gt;
+      &lt;specieConcentrationRule specie="PC_6" type="rate"
+             formula="(-(lambda_3*PC_6) + sigmoid(h_3 + PA_6*Tin_1_3 +
+                   PB_6*Tin_2_3 + PC_6*Tin_3_3 + LAMBDA_1_6*PA_1*Tout_1_3 +
+                   LAMBDA_3_6*PA_3*Tout_1_3 + LAMBDA_7_6*PA_7*Tout_1_3 +
+                   LAMBDA_1_6*PB_1*Tout_2_3 + LAMBDA_3_6*PB_3*Tout_2_3 +
+                   LAMBDA_7_6*PB_7*Tout_2_3 + LAMBDA_1_6*PC_1*Tout_3_3 +
+                   LAMBDA_3_6*PC_3*Tout_3_3 + LAMBDA_7_6*PC_7*Tout_3_3 +
+                   LAMBDA_1_6*PA_1*(PA_6*TOne_1_1*TTwo_3_1 +
+                   PB_6*TOne_2_1*TTwo_3_2 + PC_6*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_3_6*PA_3*(PA_6*TOne_1_1*TTwo_3_1 +
+                   PB_6*TOne_2_1*TTwo_3_2 + PC_6*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_7_6*PA_7*(PA_6*TOne_1_1*TTwo_3_1 +
+                   PB_6*TOne_2_1*TTwo_3_2 + PC_6*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_1_6*PB_1*(PA_6*TOne_1_2*TTwo_3_1 +
+                   PB_6*TOne_2_2*TTwo_3_2 + PC_6*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_3_6*PB_3*(PA_6*TOne_1_2*TTwo_3_1 +
+                   PB_6*TOne_2_2*TTwo_3_2 + PC_6*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_7_6*PB_7*(PA_6*TOne_1_2*TTwo_3_1 +
+                   PB_6*TOne_2_2*TTwo_3_2 + PC_6*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_1_6*PC_1*(PA_6*TOne_1_3*TTwo_3_1 +
+                   PB_6*TOne_2_3*TTwo_3_2 + PC_6*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_3_6*PC_3*(PA_6*TOne_1_3*TTwo_3_1 +
+                   PB_6*TOne_2_3*TTwo_3_2 + PC_6*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_7_6*PC_7*(PA_6*TOne_1_3*TTwo_3_1 +
+                   PB_6*TOne_2_3*TTwo_3_2 + PC_6*TOne_3_3*TTwo_3_3)))/tau_3"
+/&gt;
+      &lt;specieConcentrationRule specie="PC_7" type="rate"
+             formula="(-(lambda_3*PC_7) + sigmoid(h_3 + PA_7*Tin_1_3 +
+                   PB_7*Tin_2_3 + PC_7*Tin_3_3 + LAMBDA_1_7*PA_1*Tout_1_3 +
+                   LAMBDA_2_7*PA_2*Tout_1_3 + LAMBDA_3_7*PA_3*Tout_1_3 +
+                   LAMBDA_4_7*PA_4*Tout_1_3 + LAMBDA_5_7*PA_5*Tout_1_3 +
+                   LAMBDA_6_7*PA_6*Tout_1_3 + LAMBDA_8_7*PA_8*Tout_1_3 +
+                   LAMBDA_9_7*PA_9*Tout_1_3 + LAMBDA_1_7*PB_1*Tout_2_3 +
+                   LAMBDA_2_7*PB_2*Tout_2_3 + LAMBDA_3_7*PB_3*Tout_2_3 +
+                   LAMBDA_4_7*PB_4*Tout_2_3 + LAMBDA_5_7*PB_5*Tout_2_3 +
+                   LAMBDA_6_7*PB_6*Tout_2_3 + LAMBDA_8_7*PB_8*Tout_2_3 +
+                   LAMBDA_9_7*PB_9*Tout_2_3 + LAMBDA_1_7*PC_1*Tout_3_3 +
+                   LAMBDA_2_7*PC_2*Tout_3_3 + LAMBDA_3_7*PC_3*Tout_3_3 +
+                   LAMBDA_4_7*PC_4*Tout_3_3 + LAMBDA_5_7*PC_5*Tout_3_3 +
+                   LAMBDA_6_7*PC_6*Tout_3_3 + LAMBDA_8_7*PC_8*Tout_3_3 +
+                   LAMBDA_9_7*PC_9*Tout_3_3 +
+                   LAMBDA_1_7*PA_1*(PA_7*TOne_1_1*TTwo_3_1 +
+                   PB_7*TOne_2_1*TTwo_3_2 + PC_7*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_2_7*PA_2*(PA_7*TOne_1_1*TTwo_3_1 +
+                   PB_7*TOne_2_1*TTwo_3_2 + PC_7*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_3_7*PA_3*(PA_7*TOne_1_1*TTwo_3_1 +
+                   PB_7*TOne_2_1*TTwo_3_2 + PC_7*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_4_7*PA_4*(PA_7*TOne_1_1*TTwo_3_1 +
+                   PB_7*TOne_2_1*TTwo_3_2 + PC_7*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_5_7*PA_5*(PA_7*TOne_1_1*TTwo_3_1 +
+                   PB_7*TOne_2_1*TTwo_3_2 + PC_7*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_6_7*PA_6*(PA_7*TOne_1_1*TTwo_3_1 +
+                   PB_7*TOne_2_1*TTwo_3_2 + PC_7*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_8_7*PA_8*(PA_7*TOne_1_1*TTwo_3_1 +
+                   PB_7*TOne_2_1*TTwo_3_2 + PC_7*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_9_7*PA_9*(PA_7*TOne_1_1*TTwo_3_1 +
+                   PB_7*TOne_2_1*TTwo_3_2 + PC_7*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_1_7*PB_1*(PA_7*TOne_1_2*TTwo_3_1 +
+                   PB_7*TOne_2_2*TTwo_3_2 + PC_7*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_2_7*PB_2*(PA_7*TOne_1_2*TTwo_3_1 +
+                   PB_7*TOne_2_2*TTwo_3_2 + PC_7*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_3_7*PB_3*(PA_7*TOne_1_2*TTwo_3_1 +
+                   PB_7*TOne_2_2*TTwo_3_2 + PC_7*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_4_7*PB_4*(PA_7*TOne_1_2*TTwo_3_1 +
+                   PB_7*TOne_2_2*TTwo_3_2 + PC_7*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_5_7*PB_5*(PA_7*TOne_1_2*TTwo_3_1 +
+                   PB_7*TOne_2_2*TTwo_3_2 + PC_7*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_6_7*PB_6*(PA_7*TOne_1_2*TTwo_3_1 +
+                   PB_7*TOne_2_2*TTwo_3_2 + PC_7*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_8_7*PB_8*(PA_7*TOne_1_2*TTwo_3_1 +
+                   PB_7*TOne_2_2*TTwo_3_2 + PC_7*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_9_7*PB_9*(PA_7*TOne_1_2*TTwo_3_1 +
+                   PB_7*TOne_2_2*TTwo_3_2 + PC_7*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_1_7*PC_1*(PA_7*TOne_1_3*TTwo_3_1 +
+                   PB_7*TOne_2_3*TTwo_3_2 + PC_7*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_2_7*PC_2*(PA_7*TOne_1_3*TTwo_3_1 +
+                   PB_7*TOne_2_3*TTwo_3_2 + PC_7*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_3_7*PC_3*(PA_7*TOne_1_3*TTwo_3_1 +
+                   PB_7*TOne_2_3*TTwo_3_2 + PC_7*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_4_7*PC_4*(PA_7*TOne_1_3*TTwo_3_1 +
+                   PB_7*TOne_2_3*TTwo_3_2 + PC_7*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_5_7*PC_5*(PA_7*TOne_1_3*TTwo_3_1 +
+                   PB_7*TOne_2_3*TTwo_3_2 + PC_7*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_6_7*PC_6*(PA_7*TOne_1_3*TTwo_3_1 +
+                   PB_7*TOne_2_3*TTwo_3_2 + PC_7*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_8_7*PC_8*(PA_7*TOne_1_3*TTwo_3_1 +
+                   PB_7*TOne_2_3*TTwo_3_2 + PC_7*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_9_7*PC_9*(PA_7*TOne_1_3*TTwo_3_1 +
+                   PB_7*TOne_2_3*TTwo_3_2 + PC_7*TOne_3_3*TTwo_3_3)))/tau_3"
+/&gt;
+      &lt;specieConcentrationRule specie="PC_8" type="rate"
+             formula="(-(lambda_3*PC_8) + sigmoid(h_3 + PA_8*Tin_1_3 +
+                   PB_8*Tin_2_3 + PC_8*Tin_3_3 + LAMBDA_2_8*PA_2*Tout_1_3 +
+                   LAMBDA_4_8*PA_4*Tout_1_3 + LAMBDA_7_8*PA_7*Tout_1_3 +
+                   LAMBDA_2_8*PB_2*Tout_2_3 + LAMBDA_4_8*PB_4*Tout_2_3 +
+                   LAMBDA_7_8*PB_7*Tout_2_3 + LAMBDA_2_8*PC_2*Tout_3_3 +
+                   LAMBDA_4_8*PC_4*Tout_3_3 + LAMBDA_7_8*PC_7*Tout_3_3 +
+                   LAMBDA_2_8*PA_2*(PA_8*TOne_1_1*TTwo_3_1 +
+                   PB_8*TOne_2_1*TTwo_3_2 + PC_8*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_4_8*PA_4*(PA_8*TOne_1_1*TTwo_3_1 +
+                   PB_8*TOne_2_1*TTwo_3_2 + PC_8*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_7_8*PA_7*(PA_8*TOne_1_1*TTwo_3_1 +
+                   PB_8*TOne_2_1*TTwo_3_2 + PC_8*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_2_8*PB_2*(PA_8*TOne_1_2*TTwo_3_1 +
+                   PB_8*TOne_2_2*TTwo_3_2 + PC_8*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_4_8*PB_4*(PA_8*TOne_1_2*TTwo_3_1 +
+                   PB_8*TOne_2_2*TTwo_3_2 + PC_8*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_7_8*PB_7*(PA_8*TOne_1_2*TTwo_3_1 +
+                   PB_8*TOne_2_2*TTwo_3_2 + PC_8*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_2_8*PC_2*(PA_8*TOne_1_3*TTwo_3_1 +
+                   PB_8*TOne_2_3*TTwo_3_2 + PC_8*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_4_8*PC_4*(PA_8*TOne_1_3*TTwo_3_1 +
+                   PB_8*TOne_2_3*TTwo_3_2 + PC_8*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_7_8*PC_7*(PA_8*TOne_1_3*TTwo_3_1 +
+                   PB_8*TOne_2_3*TTwo_3_2 + PC_8*TOne_3_3*TTwo_3_3)))/tau_3"
+/&gt;
+      &lt;specieConcentrationRule specie="PC_9" type="rate"
+             formula="(-(lambda_3*PC_9) + sigmoid(h_3 + PA_9*Tin_1_3 +
+                   PB_9*Tin_2_3 + PC_9*Tin_3_3 + LAMBDA_3_9*PA_3*Tout_1_3 +
+                   LAMBDA_4_9*PA_4*Tout_1_3 + LAMBDA_7_9*PA_7*Tout_1_3 +
+                   LAMBDA_3_9*PB_3*Tout_2_3 + LAMBDA_4_9*PB_4*Tout_2_3 +
+                   LAMBDA_7_9*PB_7*Tout_2_3 + LAMBDA_3_9*PC_3*Tout_3_3 +
+                   LAMBDA_4_9*PC_4*Tout_3_3 + LAMBDA_7_9*PC_7*Tout_3_3 +
+                   LAMBDA_3_9*PA_3*(PA_9*TOne_1_1*TTwo_3_1 +
+                   PB_9*TOne_2_1*TTwo_3_2 + PC_9*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_4_9*PA_4*(PA_9*TOne_1_1*TTwo_3_1 +
+                   PB_9*TOne_2_1*TTwo_3_2 + PC_9*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_7_9*PA_7*(PA_9*TOne_1_1*TTwo_3_1 +
+                   PB_9*TOne_2_1*TTwo_3_2 + PC_9*TOne_3_1*TTwo_3_3) +
+                   LAMBDA_3_9*PB_3*(PA_9*TOne_1_2*TTwo_3_1 +
+                   PB_9*TOne_2_2*TTwo_3_2 + PC_9*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_4_9*PB_4*(PA_9*TOne_1_2*TTwo_3_1 +
+                   PB_9*TOne_2_2*TTwo_3_2 + PC_9*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_7_9*PB_7*(PA_9*TOne_1_2*TTwo_3_1 +
+                   PB_9*TOne_2_2*TTwo_3_2 + PC_9*TOne_3_2*TTwo_3_3) +
+                   LAMBDA_3_9*PC_3*(PA_9*TOne_1_3*TTwo_3_1 +
+                   PB_9*TOne_2_3*TTwo_3_2 + PC_9*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_4_9*PC_4*(PA_9*TOne_1_3*TTwo_3_1 +
+                   PB_9*TOne_2_3*TTwo_3_2 + PC_9*TOne_3_3*TTwo_3_3) +
+                   LAMBDA_7_9*PC_7*(PA_9*TOne_1_3*TTwo_3_1 +
+                   PB_9*TOne_2_3*TTwo_3_2 + PC_9*TOne_3_3*TTwo_3_3)))/tau_3"
+/&gt;
+    &lt;/listOfRules&gt;
+  &lt;/model&gt;
+&lt;/sbml&gt;
+
+yours Andrew Finney
+
+Visiting Associate
+ERATO Kitano Systems Biology Workbench Development Group
+Control and Dynamical Systems, MC 107-81
+California Institute of Technology
+Pasadena
+CA 91125
+USA
+626 395 6911
+afinney@cds.caltech.edu <A  HREF="http://www.cds.caltech.edu/~afinney">http://www.cds.caltech.edu/~afinney</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00001.html">[sbml-arrays] initial exchange</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00003.html">[sbml-arrays] reply to victoria</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00001.html">[sbml-arrays] initial exchange</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00003.html">[sbml-arrays] reply to victoria</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00002"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00002"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,121 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] COMP &#45;&#45; Submodels and Modules -->
+<!--X-From-R13: znegva.tvaxryNrcbfg.qr -->
+<!--X-Date: Tue, 20 May 2003 12:41:21 &#45;0700 -->
+<!--X-Message-Id: XFMail.20030520213958.martin.ginkel@epost.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000601c31f05$d0bb28d0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] COMP -- Submodels and Modules</TITLE>
+<LINK REV="made" HREF="mailto:martin.ginkel@epost.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00169.html">Date Prev</A>][<A HREF="msg00171.html">Date Next</A>][<A HREF="msg00169.html">Thread Prev</A>][<A HREF="msg00172.html">Thread Next</A>][<A HREF="maillist.html#00170">Date Index</A>][<A HREF="threads.html#00170">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] COMP -- Submodels and Modules</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Andrew Finney &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] COMP -- Submodels and Modules</LI>
+<LI><em>From</em>: <A HREF="mailto:martin.ginkel@epost.de">martin.ginkel@epost.de</A></LI>
+<LI><em>Date</em>: Tue, 20 May 2003 21:39:58 +0200 (MEST)</LI>
+<LI>Cc: SBML-Discuss &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+On 20-May-2003 Andrew Finney wrote:
+&gt; Can you guys describe the modules concept in more
+&gt; detail for the uninitiated please?
+&gt; 
+&gt; Whats the difference between moduoles and submodels?
+
+OK, definition of terms:
+
+Submodel: separated part in an SBML model that contains an own namespace for 
+          it's elements but does not define an interface.
+          For connections to the parent model or other submodels you can
+          establish links to all inner parts of the submodel by (possibly
+          hierarchical) model references.
+
+Module:   also separated part (as the submodel). But defines an accessible
+          interface. The parts in the interface can be safely linked
+          to other modules.
+          Everything else is hidden and can be changed by the modeler
+          without notice. This allows for different implementations (detail)
+          or model improvements without breaking other 'applications' of the 
+          module.
+
+        Clear enougth?
+        Martin
+
+
+-- 
++-[Martin Ginkel]-------------------[<A  HREF="mailto:martin.ginkel">mailto:martin.ginkel</A>(at)epost.de]-+
+|                          Immermannstr. 9, D-39108 Magdeburg, Germany |
+| It's all ... pshycology. -- Esme W.                                  |
++-[tel: +49 391 7347360]-------------[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00172" HREF="msg00172.html">RE: [sbml-discuss] COMP -- Submodels and Modules</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00169" HREF="msg00169.html">RE: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00169.html">RE: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00171.html">FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00169.html">RE: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00172.html">RE: [sbml-discuss] COMP -- Submodels and Modules</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00170"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00170"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

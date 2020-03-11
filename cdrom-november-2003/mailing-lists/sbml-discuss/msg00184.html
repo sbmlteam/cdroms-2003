@@ -1,0 +1,117 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the way stoichiometries are expressed -->
+<!--X-From-R13: Qyvss Eunssre <funssreNfunssre.pf.ig.rqh> -->
+<!--X-Date: Wed, 21 May 2003 10:29:11 &#45;0700 -->
+<!--X-Message-Id: Pine.LNX.4.53.0305211416380.26779@shaffer.cs.vt.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 16075.44968.153544.539716@erato1.cds.caltech.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the way stoichiometries are expressed</TITLE>
+<LINK REV="made" HREF="mailto:shaffer@shaffer.cs.vt.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00183.html">Date Prev</A>][<A HREF="msg00185.html">Date Next</A>][<A HREF="msg00182.html">Thread Prev</A>][<A HREF="msg00187.html">Thread Next</A>][<A HREF="maillist.html#00184">Date Index</A>][<A HREF="threads.html#00184">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the way stoichiometries are expressed</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Michael Hucka &lt;<A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the way stoichiometries are expressed</LI>
+<LI><em>From</em>: Cliff Shaffer &lt;<A HREF="mailto:shaffer@shaffer.cs.vt.edu">shaffer@shaffer.cs.vt.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 21 May 2003 14:22:10 -0400 (EDT)</LI>
+<LI>Cc: SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+On Wed, 21 May 2003, Michael Hucka wrote:
+
+&gt; A second issue is the question of whether to allow
+&gt; stoichiometry values to be expressions rather than only
+&gt; numbers.  A simple example of the utility of doing this
+&gt; arises in models using non-integer stoichiometries: the
+&gt; stoichiometry value may be the same in two of the
+&gt; 'speciesReference' structures in a reaction, and it would be
+&gt; useful to be able to define a parameter for the value and
+&gt; using that parameter instead of repeating the same number
+&gt; (because the latter is more error-prone).
+
+I think there's another argument beyond the fact that having to put the
+same number in two places is error-prone. By making these two places be
+the same variable, you are expressing an intention that they in fact have
+some relationship. This is pretty much the same reason why we were adamant
+about permitting defined rate laws. Sure, we can get the necessary
+mathematics at some physical layer by repeating the same mathematical
+expressions in multiple places. But when you give a name to a concept, and
+then use that name in multiple places, you are making explicit the
+relationships in your model. That might let your software do more.
+          -- Cliff
+
+--
+Cliff Shaffer, Associate Professor          Phone: (540) 231-4354
+Department of Computer Science              Email: shaffer@cs.vt.edu
+Virginia Tech, Blacksburg, VA 24061-0106    WWW:   www.cs.vt.edu/~shaffer
+-------------------------------------------------------------------------
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00187" HREF="msg00187.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00182" HREF="msg00182.html">[sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00183.html">[sbml-discuss] Remaining issues for SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00185.html">Re: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00182.html">[sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00187.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00184"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00184"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,128 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Are we done with SBML Level 1 Version 2? -->
+<!--X-From-R13: [vpunry Vhpxn <zuhpxnNpnygrpu.rqh> -->
+<!--X-Date: Sat, 24 May 2003 14:58:54 &#45;0700 -->
+<!--X-Message-Id: 16079.60181.595756.7501@erato1.cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD37598@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</TITLE>
+<LINK REV="made" HREF="mailto:mhucka@caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00309.html">Date Prev</A>][<A HREF="msg00311.html">Date Next</A>][<A HREF="msg00305.html">Thread Prev</A>][<A HREF="msg00306.html">Thread Next</A>][<A HREF="maillist.html#00310">Date Index</A>][<A HREF="threads.html#00310">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;SBML Discussion List&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</LI>
+<LI><em>From</em>: Michael Hucka &lt;<A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 24 May 2003 14:58:45 -0700</LI>
+<LI>Reply-To: <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+  JWagner&gt; one thing that's always bothered
+  JWagner&gt; me--and even more so now that we've changed
+  JWagner&gt; "specie" to "species"--is the misnaming of
+  JWagner&gt; collection properties like the "parameter"
+  JWagner&gt; property in KineticLaw, and, now with L1V2, the
+  JWagner&gt; "product" and "reactant" properties in
+  JWagner&gt; Reaction. 
+
+You mean, why are they singular names rather than plural?
+
+Here is an explanation for why the current form makes sense.
+Consider some variable that has, as its value, an
+array/collection of some data.  To make this concrete,
+suppose that each data item is an integer and we're using
+Java, and the variable's root name is 'poster'.  There are
+two schools of thought in how you might name the variable.
+
+      int poster[5];
+or
+      int posters[5];
+
+If you choose the former, statements like the following
+make grammatical "sense":
+
+    for (int i = 0; poster[i] &lt; 0; i++) ...
+
+The notion is simply that whenever you refer to an
+individual in the array, you're speaking of "poster i",
+not "posters i".
+
+On the other hand, the plural form ("posters") makes more
+sense when you speak of the whole collection/array, in
+sentences like "here I'm going to assign the 'posters' ...."
+
+If you'd like, I can go find examples of software that uses
+one approach and other software that uses the other.
+
+Now, personally, I've gone back and forth myself, and can't
+seem to make up my mind, but lately I've been going with
+the plural form (i.e., the version you favor).
+
+Do we need to put this to a vote?  I don't personally care
+which form we use.
+
+MH
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00305" HREF="msg00305.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00309.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00311.html">[sbml-discuss]</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00305.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00306.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00310"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00310"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

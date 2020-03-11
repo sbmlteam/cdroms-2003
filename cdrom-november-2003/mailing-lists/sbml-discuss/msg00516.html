@@ -1,0 +1,420 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] RE: [Hybrid] Re: Hybrid Models Working Group &#45; summary of discussion so far -->
+<!--X-From-R13: "[nevn Epuvyfgen" <z.w.1.fpuvyfgenNuregf.np.hx> -->
+<!--X-Date: Wed, 25 Jun 2003 09:46:32 &#45;0700 -->
+<!--X-Message-Id: 001701c33b2d$7eb84b00$458cc593@herts.ac.uk -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD375C1@ITEVS.uchc.net -->
+<!--X-Derived: ps00002.ps -->
+<!--X-Derived: pdf00012.pdf -->
+<!--X-Derived: ps00003.ps -->
+<!--X-Derived: pdf00013.pdf -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] RE: [Hybrid] Re: Hybrid Models Working Group - summary of</TITLE>
+<LINK REV="made" HREF="mailto:m.j.1.schilstra@herts.ac.uk">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00515.html">Date Prev</A>][<A HREF="msg00517.html">Date Next</A>][<A HREF="msg00501.html">Thread Prev</A>][<A HREF="msg00507.html">Thread Next</A>][<A HREF="maillist.html#00516">Date Index</A>][<A HREF="threads.html#00516">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] RE: [Hybrid] Re: Hybrid Models Working Group - summary of discussion so far</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Wagner,John'&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;,  &quot;SBMLdiscuss&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] RE: [Hybrid] Re: Hybrid Models Working Group - summary of discussion so far</LI>
+<LI><em>From</em>: &quot;Maria Schilstra&quot; &lt;<A HREF="mailto:m.j.1.schilstra@herts.ac.uk">m.j.1.schilstra@herts.ac.uk</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 25 Jun 2003 16:21:48 +0100</LI>
+<LI>Importance: Normal</LI>
+<LI><em>Organization</em>: STRC, University of Hertfordshire</LI>
+<LI>Reply-To: &lt;<A HREF="mailto:m.j.1.schilstra@herts.ac.uk">m.j.1.schilstra@herts.ac.uk</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi John,
+
+A bit late, but here's my interpretation of the hybrid models discussion
+so far (fortunately not a lot has been added to the discussion since
+your email, which makes it a bit simpler).
+
+Before the 'official' discussion started, Ed and Vijay agreed that the
+Level 2 'hybrid stuff' (events and delays) "simply in isolation from the
+full hybrid problem" and "likely to be incompatible with or not
+extensible to a full hybrid system".
+
+Ed then listed the things that need to be done, and after some
+discussion we settled (well, I *think* it's settled) on the following
+tasks and deliverables for the Hybrid Models Working Group:
+
+1. List modelling formalisms.
+2. Enumerate 5 sample problems ("challenges") to be addressed by hybrid
+approaches.
+3. Determine what is needed from SBML to express these models.
+4. Determine what, if any, deliverable there is for the Level 3
+deadline.
+
+Deliverables:
+-  Refinement of terminology and concepts.
+-  proposal for SBML L3 extensions (this is not expected to be support
+of hybrid systems, but only support of limited capabilities like Events
+done with an eye toward future, fuller hybrid systems).
+-  challenge problems
+-  SBML requirements for Hybrid systems modeling.
+
+The main topic of discussion so far has been what we mean when we say
+"hybrid systems" or "hybrid models". Vijay gave a very clear summary of
+his view (in
+<A  HREF="http://www.sbw-sbml.org/sbml-discuss/archive/msg00464.html">http://www.sbw-sbml.org/sbml-discuss/archive/msg00464.html</A>), with
+several refs:
+
+H Matsuno, A Doi, M Nagasaki and S Miyano "Hybrid petri net 
+representations of gene regulatory networks", Pacfiic Symposium on 
+Biocomputing, 5:333-349, 2000.
+
+R Alur, C Belta, F Ivancic, V Kumar, M Mintz, G J Pappas, H Rubin and J 
+Schung "Hybrid modeling and simulation of biomolecual networks" In 
+Hyurid Systmes: Computation and Control, HSCC 2001, Rome Italy, pages 
+19-32, Springer Verlag LNCS 2034, 2001.
+
+A Bockmayr and A Courtois "Using hybrid concurrent constraint 
+programming to model dynamic biological systems", ICLP 2002. (attached:
+BockmayrCourtois.ps)
+
+and added in a later email: D Eveillard, D Ropers, H de Jong, C
+Branlant, A Bockmayr "A Multi-site constraint programming model of
+alternative splicing regulation", submitted for publication (attached:
+RappINRIA.ps).
+
+Vijay et al have formalized description of hybrid systems in a language
+called Hybrid Concurrent Constraints (HCC), which has been applied to
+several biological problems (e.g. by Alexander Bockmayr and coworkers).
+
+Several HMWG members are developing simulators that use continuous
+(various ODE) and discrete event (Gillespie/Gibson) algorithms. Kouichi
+&amp; Takeshi contributed takahashi03-1.pdf (attached), and Tom sent
+Hybrid.pdf (both attached).
+
+Koichi gave his view in
+<A  HREF="http://www.sbw-sbml.org/sbml-discuss/archive/msg00465.html">http://www.sbw-sbml.org/sbml-discuss/archive/msg00465.html</A> and he and
+Vijay discussed model-simulator dependency (does the simulator determine
+the model or should it be the other way round? Vijay says model -&gt;
+simulator, Kouichi argues for the opposite, if I have understood it
+correctly - it's clearly not trivial. This is an important discussion,
+because the shape of SBML Level X will depend on its outcome). See the
+rest of that thread for the actual discussion.
+
+In one of my emails
+(<A  HREF="http://www.sbw-sbml.org/sbml-discuss/archive/msg00477.html">http://www.sbw-sbml.org/sbml-discuss/archive/msg00477.html</A>), I
+mentioned the book "Theory of Modeling and Simulation" 2nd ed., by
+Zeigler, Praehofer &amp; Kim. Some, but not all, of the theory in this book
+(Discrete Event and Differential Equation System Specification,
+DEVS&amp;DESS) has been used for E-Cell by Kouichi (how he used it is in
+<A  HREF="http://www.sbw-sbml.org/sbml-discuss/archive/msg00485.html">http://www.sbw-sbml.org/sbml-discuss/archive/msg00485.html</A>). Vijay -
+from a 'rivaling' point of view, if I may express it like that - has
+commented on the book in
+<A  HREF="http://www.sbw-sbml.org/sbml-discuss/archive/msg00491.html">http://www.sbw-sbml.org/sbml-discuss/archive/msg00491.html</A>.
+
+That was it, I believe. Hope it helps.
+
+Cheers,
+
+Maria (now working through the above papers)
+
+
+&gt; -----Original Message-----
+&gt; From: Wagner,John [<A  HREF="mailto:JWagner@nso.uchc.edu">mailto:JWagner@nso.uchc.edu</A>] 
+&gt; Sent: 17 June 2003 20:56
+&gt; To: m.j.1.schilstra@herts.ac.uk; sbml-discuss@caltech.edu
+&gt; Subject: RE: [sbml-discuss] RE: [Hybrid] Re: Hybrid Models 
+&gt; Working Group
+&gt; 
+&gt; 
+&gt; I wonder if someone from this thread could collect
+&gt; together and summarize this rather long discussion?
+&gt; In particular, a summary of the various materials/
+&gt; papers/etc would be helpful for those of us who
+&gt; want to sort of follow this work/thread, but not
+&gt; as deeply as those who are "in the trenches".
+&gt; 
+&gt; John
+&gt; 
+&gt; &gt; -----Original Message-----
+&gt; &gt; From: Maria Schilstra [<A  HREF="mailto:m.j.1.schilstra@herts.ac.uk">mailto:m.j.1.schilstra@herts.ac.uk</A>]
+&gt; &gt; Sent: Tuesday, June 17, 2003 11:59 AM
+&gt; &gt; To: sbml-discuss@caltech.edu
+&gt; &gt; Subject: [sbml-discuss] RE: [Hybrid] Re: Hybrid Models Working Group
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; Thanks very much for your explanation, Vijay, Kouichi,
+&gt; &gt; Takeshi, Tom, and
+&gt; &gt; everybody else who has enlightened me (and others, I hope) 
+&gt; &gt; about hybrid
+&gt; &gt; simulation/systems.
+&gt; &gt; 
+&gt; &gt; I'm now going to read all the material that you've attached 
+&gt; over the 
+&gt; &gt; last weeks - particularly the HCC stuff, which sound very 
+&gt; promising, 
+&gt; &gt; since it's already a language.
+&gt; &gt; 
+&gt; &gt; Maria
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; &gt; -----Original Message-----
+&gt; &gt; &gt; From: Vijay Saraswat [<A  HREF="mailto:saraswat@cse.psu.edu">mailto:saraswat@cse.psu.edu</A>]
+&gt; &gt; &gt; Sent: 16 June 2003 22:20
+&gt; &gt; &gt; To: m.j.1.schilstra@herts.ac.uk
+&gt; &gt; &gt; Cc: 'Ed Frank'; 'Takeshi Sakurada'; 'Mike McCollum'; 'Greg 
+&gt; &gt; &gt; Peterson'; 'Stefan Hoops'; 'Tom Kiehl'; sbml-discuss@caltech.edu
+&gt; &gt; &gt; Subject: [Hybrid] Re: Hybrid Models Working Group
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Maria Schilstra wrote:
+&gt; &gt; &gt; 
+&gt; &gt; &gt; &gt;Hi Ed + others,
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;I have a book in front of me called "Theory of Modeling and
+&gt; &gt; &gt; Simulation"
+&gt; &gt; &gt; &gt;2nd ed., by Zeigler, Praehofer &amp; Kim. I remember listening
+&gt; &gt; &gt; to a talk on
+&gt; &gt; &gt; &gt;E-cell (can't remember whether it was given by Takeshi), in
+&gt; &gt; &gt; which this
+&gt; &gt; &gt; &gt;book was cited as the 'basis' for E-cell - is that so, 
+&gt; Takeshi? It
+&gt; &gt; &gt; &gt;seems to me that the theory presented in this book is just 
+&gt; &gt; &gt; what we need
+&gt; &gt; &gt; &gt;for our purposes, but since I'm by no means an expert in
+&gt; &gt; this area,
+&gt; &gt; &gt; &gt;there may be competing theories. Does Vijay have an
+&gt; &gt; opinion on this?
+&gt; &gt; &gt; &gt;For the
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; I have followed the book a little bit. This is certainly in the
+&gt; &gt; &gt; framework of "Hybrid Systems" that combine discrete and 
+&gt; continuous 
+&gt; &gt; &gt; system evolution. It should certainly be considered seriously.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; I do not have an overall assessment of the work yet; the
+&gt; &gt; parts that I
+&gt; &gt; &gt; have seen (e.g. the definition of DEVS in Chapter 4) do not
+&gt; &gt; seem very
+&gt; &gt; &gt; encouraging. I dont think there are structural problems with
+&gt; &gt; &gt; their work 
+&gt; &gt; &gt; -- its just that a lot of obvious material takes up a lot 
+&gt; of pages 
+&gt; &gt; &gt; (thats just a matter of opinion and taste). A number of 
+&gt; &gt; &gt; critical issues 
+&gt; &gt; &gt; have been glossed over (at least in Chapter 4) --- e.g. are 
+&gt; &gt; infinite
+&gt; &gt; &gt; sequences of instantaneous transitions allowed? (Ah, I see this is
+&gt; &gt; &gt; convered in Chapter 6.2.3, p 141). Why are DEVS not 
+&gt; required to be 
+&gt; &gt; &gt; effectively given ...e.g. the state transition function is 
+&gt; &gt; &gt; defined over 
+&gt; &gt; &gt; an uncountable set!?  What happens when an external event 
+&gt; &gt; &gt; occurs at the 
+&gt; &gt; &gt; very same time as an internal transition (ah -- I see.. on 
+&gt; &gt; &gt; page 90 they 
+&gt; &gt; &gt; introduce a "confluent" transition to handle this 
+&gt; problem..this is 
+&gt; &gt; &gt; messy!!)?  Why does the system output a value only when it 
+&gt; &gt; &gt; undergoes an 
+&gt; &gt; &gt; internal transition? Combined with the possibility that there 
+&gt; &gt; &gt; can be an 
+&gt; &gt; &gt; infinite sequence of instantaneous transitions, we have the 
+&gt; &gt; &gt; possibility 
+&gt; &gt; &gt; of infinite instantaneous output!?! Why are there no continuously 
+&gt; &gt; &gt; changing state variables -- e.g. as defined by differential 
+&gt; &gt; &gt; equations?(Ah, looking ahead I see this shows up in Chapter 
+&gt; &gt;  In fact
+&gt; &gt; &gt; this implies that there is no notion of transitions because
+&gt; &gt; of state
+&gt; &gt; &gt; variables reaching a threshold!  Why does the coupling
+&gt; &gt; version (P 86)
+&gt; &gt; &gt; not allow feedback loops? The coupled definition is just
+&gt; &gt; plain messy
+&gt; &gt; &gt; (and also sloppy! Where is X_p defined? is p a port? How is
+&gt; &gt; &gt; X_p related 
+&gt; &gt; &gt; to X_d?) Where is the semantics of the select function 
+&gt; defined? The 
+&gt; &gt; &gt; distinction between the parallel and non-parallel version 
+&gt; &gt; seems just
+&gt; &gt; &gt; plain messy.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; (The book does not appear to have been proof-read well.
+&gt; &gt; Chapter 6 is
+&gt; &gt; &gt; missing the bibliography ("Sources") even though it has citations.
+&gt; &gt; &gt; Another definite drawback of this book is a lack of realistic 
+&gt; &gt; &gt; examples. 
+&gt; &gt; &gt; Most examples are quite abstract and mathematical, 
+&gt; instead of being 
+&gt; &gt; &gt; drawn from concrete engineering experience, say, which would also 
+&gt; &gt; &gt; highlight the connection with real systems analysis and 
+&gt; &gt; modeling. The
+&gt; &gt; &gt; lack of a specific *language* for defining systems is a
+&gt; &gt; &gt; definite drawback.)
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Now it is quite possibly that some of these limitations are
+&gt; &gt; &gt; removed in 
+&gt; &gt; &gt; subsequent chapters (indeed, skipping ahead, it appears that they 
+&gt; &gt; &gt; are...). But this points to a problem with the spiral 
+&gt; &gt; &gt; pedagogical style 
+&gt; &gt; &gt; of this book (from a researcher's point of view, as opposed to a 
+&gt; &gt; &gt; student)... one has to go look at the whole book to get an 
+&gt; &gt; &gt; idea of their 
+&gt; &gt; &gt; overall system, as opposed to say, a chapter, where the system is 
+&gt; &gt; &gt; formally defined, its theoretical properties collected etc 
+&gt; &gt; &gt; etc. Anyway, 
+&gt; &gt; &gt; that is just to say that for me to understand their 
+&gt; &gt; &gt; theoretical model is 
+&gt; &gt; &gt; going to take some time. If anyone else has already 
+&gt; worked out the 
+&gt; &gt; &gt; answers to the questions above, I would be much obliged 
+&gt; if they can 
+&gt; &gt; &gt; enlighten me/us.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; To relate HCC to the terms introduced in this book, HCC is
+&gt; &gt; actually a
+&gt; &gt; &gt; *language* (built from a very few primitives) that can be used for
+&gt; &gt; &gt; modular "multicomponent differential equation systems 
+&gt; &gt; specifications"
+&gt; &gt; &gt; (Chapter 7.6, page 169). However, HCC is built on logic and
+&gt; &gt; &gt; constraints, 
+&gt; &gt; &gt; rather than on "systems theory", so the mappings are not that 
+&gt; &gt; &gt; clear (at 
+&gt; &gt; &gt; least at first shot). A lot of the distinctions introduced in 
+&gt; &gt; &gt; the book 
+&gt; &gt; &gt; do not seem to be relevant in the case of HCC -- for 
+&gt; &gt; instance,  input
+&gt; &gt; &gt; and output are symmetric in HCC (both correspond to imposition of
+&gt; &gt; &gt; constraints); there is no separation between internal and 
+&gt; external 
+&gt; &gt; &gt; transitions. HCC is already closed under parallel composition 
+&gt; &gt; &gt; (conjunction), so there is no need for a distinction between 
+&gt; &gt; &gt; "parallel 
+&gt; &gt; &gt; DEVS" and "classical DEVS".  Systems can be "multicomponent" and 
+&gt; &gt; &gt; "networked" -- this is just another way of saying that they 
+&gt; &gt; &gt; are closed 
+&gt; &gt; &gt; under parallel composition (that is, a parallel composition 
+&gt; &gt; &gt; of systems 
+&gt; &gt; &gt; is just another system, hence this operation can be iterated 
+&gt; &gt; &gt; repeatedly 
+&gt; &gt; &gt; to obtain a hierarchically defined system).
+&gt; &gt; &gt; 
+&gt; &gt; &gt; I would be quite interested in whether the theory of this book can
+&gt; &gt; &gt; usefully characterize the other sys biology systems currently 
+&gt; &gt; &gt; being built.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; For the relevance of hybrid systems to systems biology, I
+&gt; &gt; would still
+&gt; &gt; &gt; recommend the three papers I cited in an earlier message
+&gt; &gt; rather than
+&gt; &gt; &gt; this book.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; &gt;time being I'll assume that Zeigler et al. have done a good
+&gt; &gt; &gt; analysis of
+&gt; &gt; &gt; &gt;the process of modelling &amp; simulation, and use what I've
+&gt; &gt; &gt; learned from
+&gt; &gt; &gt; &gt;the book so far.
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt;To get back to your email, Ed, Zeigler et al. distinguish 3 types
+&gt; &gt; &gt; &gt;(formalisms) of dynamic model specification (as opposed to
+&gt; &gt; &gt; e.g. object
+&gt; &gt; &gt; &gt;modelling, in which there is no concept of time): the 
+&gt; Discrete Time
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt; This is a glaring bunder in the first five pages of this
+&gt; &gt; &gt; book, which can 
+&gt; &gt; &gt; do much harm to readers who may not know better. The 
+&gt; whole area of 
+&gt; &gt; &gt; synchronous programming is about computation with a built-in 
+&gt; &gt; &gt; notion of 
+&gt; &gt; &gt; time (discrete and continuous).
+&gt; &gt; &gt; 
+&gt; &gt; &gt; &gt;(DTSS), Differential Equation (DESS), and Discrete Event
+&gt; &gt; &gt; (DEVS) System
+&gt; &gt; &gt; &gt;Specifications. DESS includes ODE and PDE descriptions. DTSS
+&gt; &gt; &gt; includes
+&gt; &gt; &gt; &gt;things such as cellular automata (which are updated as a
+&gt; &gt; whole in a
+&gt; &gt; &gt; &gt;unit 'time' step). I think (but I'm not entirely sure) that DEVS
+&gt; &gt; &gt; &gt;includes stochastic models (in which possible state 
+&gt; &gt; transitions have
+&gt; &gt; &gt; &gt;certain probabilities), but also threshold models (in
+&gt; &gt; which a state
+&gt; &gt; &gt; &gt;transition occurs when a certain parameter crosses a given
+&gt; &gt; &gt; threshold).
+&gt; &gt; &gt; &gt;Have I understood this correctly?
+&gt; &gt; &gt; &gt;  
+&gt; &gt; &gt; &gt;
+&gt; &gt; &gt;  DEVS at least as in Chpater 4 do not appear to include stochastic
+&gt; &gt; &gt; models or "threshold" models.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; 
+</PRE>
+<P><A HREF="ps00002.ps" >BockmayrCourtois.ps</A></P>
+<P><A HREF="pdf00012.pdf" >takahashi03-1.pdf</A></P>
+<P><A HREF="ps00003.ps" >RappINRIA.ps</A></P>
+<P><A HREF="pdf00013.pdf" >Hybrid.pdf</A></P>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00501" HREF="msg00501.html">RE: [sbml-discuss] RE: [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00515.html">Re: [sbml-discuss] SPATIAL - Spatial Features Working Group</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00517.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00501.html">RE: [sbml-discuss] RE: [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00507.html">[sbml-discuss] SPATIAL - Re: Gillespie algorithm for reaction-diffusion problems.</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00516"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00516"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

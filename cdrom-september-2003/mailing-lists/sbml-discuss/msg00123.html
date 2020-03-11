@@ -1,0 +1,185 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Regarding MathML (was RE: [sbml&#45;discuss] Trying to close the defaultcompartments issue) -->
+<!--X-From-R13: Xbanguna Iroo <wjrooNooa.pbz> -->
+<!--X-Date: Tue, 6 May 2003 07:16:43 &#45;0700 -->
+<!--X-Message-Id: Pine.LNX.4.33.0305060944540.4854&#45;100000@dhcp33&#45;081&#45;013.bbn.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3FA493B792A6D311B51A009027D3B86101AC915C@mail.kgi.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Regarding MathML (was RE: [sbml-discuss] Trying to close the defaultcomp</TITLE>
+<LINK REV="made" HREF="mailto:jwebb@bbn.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00122.html">Date Prev</A>][<A HREF="msg00124.html">Date Next</A>][<A HREF="msg00122.html">Thread Prev</A>][<A HREF="msg00124.html">Thread Next</A>][<A HREF="maillist.html#00123">Date Index</A>][<A HREF="threads.html#00123">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Regarding MathML (was RE: [sbml-discuss] Trying to close the defaultcompartments issue)</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Regarding MathML (was RE: [sbml-discuss] Trying to close the defaultcompartments issue)</LI>
+<LI><em>From</em>: Jonathan Webb &lt;<A HREF="mailto:jwebb@bbn.com">jwebb@bbn.com</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 6 May 2003 09:55:20 -0400 (EDT)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I would contend there is some experience about using MathML "in the wild"
+from a development perspective.  It's about the same as any reasonably
+facile, prefix based syntax for expressions, namely significant, but
+much simpler than infix expressions with the same expressiveness.
+
+What would you propose using instead of MathML for expressions?
+Simple expression syntaxes have a way of evolving into not-so-simple,
+customized, expression syntaxes and these are always more difficult
+to maintain because they require a more specialized body of knowledge
+about the implementation.
+
+Marc Vass may also want to comment on his experience building a level
+2 compatible processor and the impact MathML has on its complexity.
+
+Jonathan Webb
+BBN Technologies
+617-873-3321
+jwebb@bbn.com
+
+On Mon, 5 May 2003, Herbert Sauro wrote:
+
+&gt;
+&gt; I may not agree with the explicit and mandatory specification of the unit
+&gt; volume compartment in all models (although I abide by the community
+&gt; decision) I do agree with Pedro's sentiments with respect to letting these
+&gt; standards live a life first in the real world before they get cast into
+&gt; stone. For example, let's see how the use of MathML in Level 2 turns out, it
+&gt; may or may not be the best route to take, we don't actually know how it will
+&gt; turn out since none of us have tried to use it in the wild (so to speak).
+&gt; Perhaps MathML might turn out too be expensive to support in terms of
+&gt; programming cost, both development and maintenance. I know Ben is writing a
+&gt; MathML reader/writer, but once he has gone who maintains it, it's not as if
+&gt; we have a vibrant open-source comp bio community which contributes code or
+&gt; modifies existing code, quite the opposite in fact.
+&gt;
+&gt; There are still issues in level 1 that haven't been resolved and at the
+&gt; moment we're managing to get models portable between tools because the
+&gt; authors of the tools have agreed to use Level 1 in a certain way which may
+&gt; or may not follow the strict guidelines in the level 1 document.
+&gt;
+&gt; I am aware however of the urgency in setting the standard, I know there are
+&gt; many pressures to get the standard out asap.
+&gt;
+&gt; Herbert
+&gt;
+&gt; -----Original Message-----
+&gt; From: Pedro Mendes [<A  HREF="mailto:mendes@vt.edu">mailto:mendes@vt.edu</A>]
+&gt; Sent: Monday, May 05, 2003 9:13 AM
+&gt; To: sbml-discuss@caltech.edu
+&gt; Subject: Re: [sbml-discuss] Trying to close the default compartments
+&gt; issue
+&gt;
+&gt;
+&gt; On 2 May 2003 at 18:42, Michael Hucka wrote:
+&gt;
+&gt; &gt; Thus, the conclusion appears to be that Level 1 version 2
+&gt; &gt; and Level 2 should make compartments mandatory.
+&gt;
+&gt; Mike &amp; Andrew,
+&gt;
+&gt; I support the analysis you made and therefore the conclusion.
+&gt;
+&gt; This discussion brings up an issue that has been dormant (but here!) since
+&gt; the
+&gt; freeze of level 1 version 1: the need for a longer period of time between
+&gt; deciding on features and actually freezing (publishing) the specification.
+&gt; When
+&gt; I and Herbert were working on making existing software import/export SBML
+&gt; level
+&gt; 1 we discovered a number of features that could have been decided in a
+&gt; better
+&gt; way, and others that were missing. While you made a very good analysis of
+&gt; the
+&gt; problem of default compartments, it is easy to miss out important
+&gt; consequences
+&gt; from such analyses. I propose that the next specs be accepted first as draft
+&gt;
+&gt; for a considerable period of time (say 1 year), and then adjusted according
+&gt; to
+&gt; feedback from those who have been implementing for the draft. It would also
+&gt; be
+&gt; important to publish reference software that demonstrates use of the
+&gt; standard.
+&gt; This procedure would ensure that we iron out problems with the standards.
+&gt; Given
+&gt; that we already have a standard for the most common features of models, we
+&gt; should be careful to get the standard right for the features that are only
+&gt; now
+&gt; being thought of (ie most simulators do not implement them yet, in some
+&gt; cases
+&gt; none)
+&gt;
+&gt; Pedro
+&gt;
+&gt;
+&gt;
+&gt; Pedro Mendes, Ph. D.
+&gt; Research Assistant Professor
+&gt; Virginia Bioinformatics Institute (0477), Virginia Tech
+&gt; 1880 Pratt Drive, Blacksburg, VA 24061 USA
+&gt; TEL: +1-540-231-7411     FAX: +1-540-231-2606
+&gt; <A  HREF="http://www.vbi.vt.edu/~mendes">http://www.vbi.vt.edu/~mendes</A>
+&gt;
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00122" HREF="msg00122.html">RE: [sbml-discuss] Trying to close the default compartments issue</A></STRONG>
+<UL><LI><EM>From:</EM> Herbert Sauro &lt;Herbert_Sauro@kgi.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00122.html">RE: [sbml-discuss] Trying to close the default compartments issue</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00124.html">RE: Regarding MathML (was RE: [sbml-discuss] Trying to close the default compartments issue)</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00122.html">RE: [sbml-discuss] Trying to close the default compartments issue</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00124.html">RE: Regarding MathML (was RE: [sbml-discuss] Trying to close the default compartments issue)</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00123"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00123"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

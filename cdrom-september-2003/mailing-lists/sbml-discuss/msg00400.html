@@ -1,0 +1,112 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG: multiple layouts -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Mon, 2 Jun 2003 09:06:44 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD375AE@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG: multiple layouts</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00399.html">Date Prev</A>][<A HREF="msg00401.html">Date Next</A>][<A HREF="msg00407.html">Thread Prev</A>][<A HREF="msg00401.html">Thread Next</A>][<A HREF="maillist.html#00400">Date Index</A>][<A HREF="threads.html#00400">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG: multiple layouts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG: multiple layouts</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 2 Jun 2003 12:05:27 -0400</LI>
+<LI>Thread-Index: AcMpIA9aKv8hGFOBR/q6otu+RU3PYgAADp1A</LI>
+<LI>Thread-Topic: [sbml-discuss] DWG: multiple layouts</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+&gt; Ralph Gauges said:-
+&gt; &gt;In sbml level 2, we have the SId on most elements. But what about 
+&gt; &gt;&lt;SpeciesReferences&gt;, they do not have an SId of their own, 
+&gt; so how would 
+&gt; &gt;they be referenced? So far we have not been able to come up with any 
+&gt; &gt;reasonable solution for that.
+&gt; 
+&gt;         How about using the SiD for the reaction, coupled 
+&gt; with the SiD of 
+&gt; the species? The combination should be unique unless a 
+&gt; reaction product or 
+&gt; substrate is a modifier of the reaction. Even in this case it 
+&gt; makes sense 
+&gt; to draw it as one object with reaction and feedback arrows.
+&gt; 
+&gt;         John's &lt;speciesGlyph species="Node0" x="48" y="117" /&gt; 
+&gt; &lt;speciesGlyph species="Node1" x="178" y="119" /&gt; 
+&gt; 
+&gt; would become &lt;speciesGlyph reaction="J0" species="Node0" 
+&gt; x="48" y="117" /&gt; 
+&gt; &lt;speciesGlyph reaction="J0" species="Node1" x="178" y="119" /&gt;
+That works too. (Though I would still generally argue that
+every object in the "database" should have a primary key,
+meaning, speciesReferences should have an SID.)
+
+&gt; Hugh Spence
+&gt; GSK Scientific Computing and Mathematical Modelling
+&gt; Medicines Research Centre
+&gt; Gunnels Wood Road
+&gt; Stevenage
+&gt; UK
+&gt; SG1 2NY
+John
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00399.html">RE: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00401.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00407.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00401.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00400"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00400"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

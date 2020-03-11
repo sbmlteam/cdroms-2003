@@ -1,0 +1,158 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Are we done with SBML Level 1 Version 2? -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Sat, 24 May 2003 08:33:12 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC920C@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00305.html">Date Prev</A>][<A HREF="msg00307.html">Date Next</A>][<A HREF="msg00310.html">Thread Prev</A>][<A HREF="msg00309.html">Thread Next</A>][<A HREF="maillist.html#00306">Date Index</A>][<A HREF="threads.html#00306">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'SBML Discussion List '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 24 May 2003 08:32:39 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+John
+
+I don't think the local name space thing is going to go away, at least it's
+not going to disappear from the spec. It's something that really should have
+been changed, I brought it up almost since the day it was put in. I have to
+admit that it was partly my fault it went in in the first place. However
+once it was in I immeidately realised it was going to cause problems and
+tried to get it removed but as with standards docs, once it's in it won't
+come out! If I'd known how thing would have turned out I would never have
+brought it up in the first place. 
+
+However, as far as I can tell, all sbml files I've looked at treat the local
+name space as a global name space. All parameters directly related to a rate
+law end up in the 'local namespace'. Anything else goes in the 'global
+parameter space'.
+
+Question to the community: Does any simulator use the local namespace in a
+truely local namespace fashion?
+
+Herbert Sauro
+
+-----Original Message-----
+From: Wagner,John
+To: SBML Discussion List
+Sent: 5/23/03 11:02 PM
+Subject: RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?
+
+You know (yeah, I'm still coding L1V2 import--I'm
+trying to figure out how to do the local namespace
+thing in my simulator with only global namespace)
+one thing that's always bothered me--and even more
+so now that we've changed "specie" to "species"--is
+the misnaming of collection properties like the
+"parameter" property in KineticLaw, and, now with
+L1V2, the "product" and "reactant" properties in
+Reaction. It's *only* in the spec, since these get
+turned into &lt;listOf*&gt; in markup. It just seems to
+me the document should say, for example,
+
+Reaction
+name: SName
+reactants: SpeciesReference[0..*]
+products: SpeciesReference[0..*]
+[yadda yadda yadda]
+
+Again, this doesn't change anyone's code, it
+ONLY changes the text in the spec, and it makes
+it a lot clearer that we're talking about lists
+or collections.
+
+John
+
+&gt; -----Original Message-----
+&gt; From: Michael Hucka [<A  HREF="mailto:mhucka@caltech.edu">mailto:mhucka@caltech.edu</A>]
+&gt; Sent: Friday, May 23, 2003 7:27 PM
+&gt; To: SBML Discussion List
+&gt; Subject: [sbml-discuss] Are we done with SBML Level 1 Version 2?
+&gt; 
+&gt; 
+&gt; People,
+&gt; 
+&gt; We haven't received any feedback *at all* about the last
+&gt; SBML Level 1 Version 2 draft specification.  Is this because
+&gt; no one has looked at it?  Or are people satisfied with it as
+&gt; it is?
+&gt; 
+&gt; You can pick up a copy off the web site at
+&gt; <A  HREF="http://www.sbw-sbml.org/sbml/docs/index.html">http://www.sbw-sbml.org/sbml/docs/index.html</A>
+&gt; 
+&gt; Mike
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00309" HREF="msg00309.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00322" HREF="msg00322.html">Re: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00323" HREF="msg00323.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00305.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00307.html">Re: [sbml-discuss] compliance with portions of SBML</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00310.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00309.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00306"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00306"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,348 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG: SBML extension for layout -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Mon, 26 May 2003 11:20:48 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC9213@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG: SBML extension for layout</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00345.html">Date Prev</A>][<A HREF="msg00347.html">Date Next</A>][<A HREF="msg00339.html">Thread Prev</A>][<A HREF="msg00347.html">Thread Next</A>][<A HREF="maillist.html#00346">Date Index</A>][<A HREF="threads.html#00346">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG: SBML extension for layout</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A> '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG: SBML extension for layout</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 26 May 2003 11:19:17 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+I vote for 1/72 pts per inch as the standard unit with the proviso (as I
+indicated in an earlier email) that there be allowed an optional resolution
+specifier in the header, eg perhaps someone (for what ever reason) wants to
+specify the base units as say 300dpi.
+
+As for the suggestion put forward by Eric Minch, this is a major
+undertaking, not something we could sort out in the short term.
+
+Herbert
+
+-----Original Message-----
+From: Ralph Gauges
+To: Wagner,John
+Cc: sbml-discuss@caltech.edu
+Sent: 5/26/03 7:57 AM
+Subject: Re: [sbml-discuss] DWG: SBML extension for layout
+
+OK, now I guess I understand. The problem is, we tried to limit the 
+layout information to the parts that are "absolutely" necessary which 
+obviously did not include units as was pointed out by Herbert Sauro and 
+John Wagner. I am not really sure, if we really have all the necessary 
+bits and I hope that we will continue to get feedback about it.
+Now some people start to miss bits that can be specified as 
+"convenient". So we have to decide wether this information should 
+really be put into the layout part, or if it would not better fit 
+somewhere else like in the render information (to be specified) or the 
+model itself.
+I guess if units were to be put somewhere it would rather be in the 
+layout part then in the render information, so if everybody could agree 
+that having optional units specified for the layout information, we 
+will put it there.
+I also had a look at the SVG specification and they seem to use pixel 
+as the standard unit if no other unit is specified. All measures in SVG 
+can be given in different units. In my opinion this would be an 
+overkill for SBML and I think it would be easiest to agree on the 
+suggestion made by John Wagner to use 1/72 inch as the standard unit.
+So what do others think? Should units be included or should we just 
+agree that all values are 1/72 of an inch and if programs don't like 
+that, they can do whatever they want? And if we want unit support, do 
+people really need to be able to specify units in pt, mm, inch etc.?
+As to the suggestion mad by Eric Minch on including information about 
+the role of certain compounds, I personally think this information does 
+not belong into the layout part. I think this should rather be put into 
+the model if necessary (e.g. a new attribute in reaction that specifies 
+wether this is a transport or an attribute in SpeciesReference that 
+determines the role of the modifier (if it is used as one).
+If this information is just used for rendering purposes, it should go 
+with the render information.
+Any thoughts on this?
+
+Ralph Gauges
+
+
+On Montag, Mai 26, 2003, at 04:16  Uhr, Wagner,John wrote:
+
+&gt; And the point we are trying to make is, if we specify
+&gt; units and you simply ignore them, then what you will
+&gt; have is coordinates and measures that are relative to
+&gt; each other.
+&gt;
+&gt; So you're happy having relative positioning, and we're
+&gt; happy because we don't have to make an an arbitrary
+&gt; decision about how big to make the initial diagram
+&gt; (which might be useful, for example, if you wanted  to
+&gt; make an unattended SBML printer).
+&gt;
+&gt; No. They aren't absolutely necessary. They are, however,
+&gt; very convenient.
+&gt;
+&gt; John
+&gt;
+&gt;
+&gt;
+&gt; 	-----Original Message-----
+&gt; 	From: Ralph Gauges [<A  HREF="mailto:ralph.gauges@eml.villa-bosch.de">mailto:ralph.gauges@eml.villa-bosch.de</A>]
+&gt; 	Sent: Mon 5/26/2003 3:33 AM
+&gt; 	To: Herbert Sauro
+&gt; 	Cc: 'sbml-discuss@caltech.edu '
+&gt; 	Subject: Re: [sbml-discuss] DWG: SBML extension for layout
+&gt; 	
+&gt; 	
+&gt;
+&gt; 	Maybe I am missing something here, but the point we are trying
+to make
+&gt; 	is that specifying units should not be necessary if all measures
+are
+&gt; 	given relative to each other. OK, I am going to try to explain
+it in a
+&gt; 	little more detail, maybe someone can tell me where I am wrong.
+&gt; 	Lets assume, we have an sbml file with layout information and
+the
+&gt; 	largest x and y values are 2000,1500 respectively. And we also
+have
+&gt; 	some species reference that has a bounding box of size 200x70.
+Now in
+&gt; 	the render information of this bounding box, a font is specified
+as
+&gt; 	being of size 36 (which is just a relative size, not an absolute
+one).
+&gt; 	Now I have a program that needs to render this on screen and I
+want
+&gt; 	this font to be a 12pt font on the screen.
+&gt; 	So the fontsize given as 36 would be equal to 12pt, this would
+mean
+&gt; 	that I just scale all the other values by 1/3, so on the screen
+my
+&gt; 	canvas would be 2000/3 x 1500/3 points and the bounding box of
+the
+&gt; 	species reference would be 200/3 x 70/3 point in size.
+&gt; 	Now if for any reason I would decide that 12pt is to small and I
+would
+&gt; 	rather have an 18pt font, I would not divide be 3, but by 2.
+&gt; 	The point is, I do not specify an absolute size for a font, but
+a size
+&gt; 	that is relative to the bounding box, so if I scale the whole
+diagram,
+&gt; 	the fonts scale (in theory) nicely as well. (Assuming, that you
+don't
+&gt; 	have to substitute fonts.)
+&gt; 	We actually don't have any problem with specifying some unit in
+the
+&gt; 	file, we just don't understand the necessity for it.
+&gt; 	I fear, that this explanation was not much better than the last
+one,
+&gt; 	but maybe someone can figure it out and tell me where I am
+wrong.
+&gt; 	
+&gt; 	Ralph
+&gt; 	
+&gt; 	
+&gt; 	On Freitag, Mai 23, 2003, at 06:54  Uhr, Herbert Sauro wrote:
+&gt; 	
+&gt; 	&gt;
+&gt; 	&gt; I don';t quite understand the argument in 1). Because the
+dimensions
+&gt; 	&gt; have no
+&gt; 	&gt; units we have no idea how big the 200*50 node actually is, the
+user
+&gt; 	&gt; might
+&gt; 	&gt; have drawn is as 200 meters by 50 meters (unlikely!). The 10pt
+font
+&gt; 	&gt; size
+&gt; 	&gt; however has a physical size. I'm not sure how scaling can help
+
+&gt; because
+&gt; 	&gt; we
+&gt; 	&gt; don't know by how much to scale unless you are implying that
+the
+&gt; 	&gt; dimensions
+&gt; 	&gt; do have some units? The problem is we're mixing dimensionless
+units
+&gt; 	&gt; with
+&gt; 	&gt; units with real units, I can't think at the moment of any way
+to
+&gt; 	&gt; relate them
+&gt; 	&gt; with out making some assumption about the dimensionless units.
+&gt; 	&gt;
+&gt; 	&gt; In your example I don't understand the scaling from 200*50 to
+100*25
+&gt; 	&gt; because
+&gt; 	&gt; the font is 20pt? It looks like you're dividing by 2 and
+multiplying
+&gt; 	&gt; by 10
+&gt; 	&gt; (in relation to the font size). The 20pt font is 20/72 inches
+high,
+&gt; 	&gt; however
+&gt; 	&gt; we have no idea how high a 200 unit node is?
+&gt; 	&gt; I'm missing something here I think, could you explain your
+approach 
+&gt; a
+&gt; 	&gt; bit
+&gt; 	&gt; more.
+&gt; 	&gt;
+&gt; 	&gt; Herbert
+&gt; 	&gt;
+&gt; 	&gt; -----Original Message-----
+&gt; 	&gt; From: ur@eml.org
+&gt; 	&gt; To: sbml-discuss@caltech.edu
+&gt; 	&gt; Sent: 5/23/03 2:32 AM
+&gt; 	&gt; Subject: [sbml-discuss] DWG: SBML extension for layout
+&gt; 	&gt;
+&gt; 	&gt; 1.) Units
+&gt; 	&gt;
+&gt; 	&gt; Maybe we miss some point but in our opinion it should not be 
+&gt; necessary
+&gt; 	&gt; to specify units for diagrams. If all size constraints are
+specified
+&gt; 	&gt; relative to each other the diagram (including fonts) can be
+scaled 
+&gt; to
+&gt; 	&gt; any resolution the user/application wants. Lets say we have a
+node 
+&gt; as
+&gt; 	&gt; a text label, then we could specify the size of the node as
+being 
+&gt; 200
+&gt; 	&gt; * 50 and the font being of size 20. Now, if we want to
+represent the
+&gt; 	&gt; text label with a 10pt font, this would mean that the node
+would 
+&gt; have
+&gt; 	&gt; to be rescaled to have the size 100 * 25. If the application
+doesn't
+&gt; 	&gt; want the font to scale with the rest of the diagram, the
+render
+&gt; 	&gt; information for the font could e.g. include an attribute
+called
+&gt; 	&gt; "fixed".
+&gt; 	&gt;
+&gt; 	&gt;
+&gt; 	&gt; 2.) SVG as layout format
+&gt; 	&gt;
+&gt; 	&gt; When we first discussed creating a layout extension for SBML,
+we 
+&gt; also
+&gt; 	&gt; looked at SVG in order to store the pathway diagram/graph
+(that was
+&gt; 	&gt; also a reason why we did not include a 3rd dimension in the
+first
+&gt; 	&gt; draft). Finally, we dropped this alternative mainly because of
+the
+&gt; 	&gt; following reason: SVG is a vector graphics format and not a
+graph
+&gt; 	&gt; format. SVG does not allow to specify relations between
+objects as
+&gt; 	&gt; would be needed e.g. by any (reaction) graph or network.
+&gt; 	&gt;
+&gt; 	&gt;
+&gt; 	&gt; 3.) Using SVG tags as render information
+&gt; 	&gt;
+&gt; 	&gt; Although the complete SVG would probably be an overkill, we
+agree 
+&gt; that
+&gt; 	&gt; part of the SVG specification could be used as rendering
+&gt; 	&gt; information(elements like e.g. circles, defs,...). One point
+that
+&gt; 	&gt; should be considered is whether the individual SVG elements
+can 
+&gt; easily
+&gt; 	&gt; be extended to port 3D information or if we want to limit
+ourselfs 
+&gt; to
+&gt; 	&gt; 2D rendering information.
+&gt; 	&gt;
+&gt; 	&gt; 4.) MathML rendering
+&gt; 	&gt;
+&gt; 	&gt; There was the question whether there are any libraries that
+deal 
+&gt; with
+&gt; 	&gt; rendering MathML. So far the only free widget that we found is
+a GTK
+&gt; 	&gt; widget(GtkMathView).
+&gt; 	&gt; The alternative would be to convert the MathML to LaTeX, run
+LaTex 
+&gt; and
+&gt; 	&gt; convert the resulting DVI file to a bitmap file. For this
+there are
+&gt; 	&gt; free tools, but no libraries.
+&gt; 	&gt; For further tools see:
+<A  HREF="http://www.w3.org/Math/implementations.html">http://www.w3.org/Math/implementations.html</A>
+&gt; 	&gt;
+&gt; 	&gt;
+&gt; 	&gt; Ralph Gauges, Ursula Rost
+&gt; 	&gt;
+&gt; 	&gt;
+&gt; 	
+&gt; 	
+&gt; 	
+&gt;
+&gt;
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00345.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00347.html">RE: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00339.html">Re: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00347.html">RE: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00346"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00346"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

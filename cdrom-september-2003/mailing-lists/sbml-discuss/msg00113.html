@@ -1,0 +1,132 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Agenda items for SBML Forum 11&#45;12th May -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Tue, 22 Apr 2003 10:21:31 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC90D0@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Agenda items for SBML Forum 11-12th May</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00112.html">Date Prev</A>][<A HREF="msg00114.html">Date Next</A>][<A HREF="msg00112.html">Thread Prev</A>][<A HREF="msg00114.html">Thread Next</A>][<A HREF="maillist.html#00113">Date Index</A>][<A HREF="threads.html#00113">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Agenda items for SBML Forum 11-12th May</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Sbml-Discuss (E-mail)&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Agenda items for SBML Forum 11-12th May</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 21 Apr 2003 10:18:37 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+It's tempting to let the user do anything but in this case I'm not sure.
+
+
+The trouble is we only currently have stochastic mass action laws, note that
+a stochastic rate law has to be dervied for each mechanism, and as far as I
+know we only currently have mass action law in stochastic form. I think
+Chris Rao has done some work in trying to derive stochastic Michaelis Menten
+laws but I don't know how successful he was. I have seen at least one
+accepted paper (it was rejected by three referees) which made an inexcusable
+error in a stochastic model, they tried to use a hill equation as a
+stochastic law with out any justification. I think it's safer to let the
+computer derive the rate laws otherwise users are likely to enter all sorts
+of laws which violate one or more laws of physics. If we want to allow users
+complete freedom in their choice of rate laws then the simulator must be
+able to identify any rough rate laws.
+
+Herbert
+
+-----Original Message-----
+From: Stefan Hoops [<A  HREF="mailto:shoops@vt.edu">mailto:shoops@vt.edu</A>]
+Sent: Monday, April 21, 2003 6:27 AM
+To: sbml-discuss@caltech.edu
+Subject: Re: [sbml-discuss] Agenda items for SBML Forum 11-12th May
+
+
+On Fri, 18 Apr 2003 14:45:11 -0700
+Herbert Sauro &lt;Herbert_Sauro@kgi.edu&gt; wrote:
+
+&gt; I think that the rate law itself for a
+&gt; stochastic reaction should be empty (the software should derive the
+equation
+&gt; - this is what I do), and the SBML need only supply the 'rate constant'.
+
+I strongly disagree here! Why force Mass Action for stochastic processes?
+
+Stefan
+
+
+-- 
+Stefan Hoops, Ph.D.
+Senior Research Associate
+Virginia Bioinformatics Institute
+1880 Pratt Dr.
+Blacksburg, VA 24061, USA
+
+Phone: (540) 231-1799
+Fax: (540) 231-2606
+Email: shoops@vt.edu
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00114" HREF="msg00114.html">[sbml-discuss] Stochastic simulation</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00117" HREF="msg00117.html">RE: [sbml-discuss] Agenda items for SBML Forum 11-12th May</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00112.html">Re: [sbml-discuss] Agenda items for SBML Forum 11-12th May</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00114.html">[sbml-discuss] Stochastic simulation</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00112.html">Re: [sbml-discuss] Agenda items for SBML Forum 11-12th May</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00114.html">[sbml-discuss] Stochastic simulation</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00113"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00113"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

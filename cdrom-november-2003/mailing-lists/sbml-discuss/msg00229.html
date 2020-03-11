@@ -1,0 +1,149 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the units of initial amounts -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Thu, 22 May 2003 08:27:10 &#45;0700 -->
+<!--X-Message-Id: 1053617157.23550.69.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: AFBFFA4A&#45;8C63&#45;11D7&#45;BDC2&#45;0003939CD6E8@jpl.nasa.gov -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the units of initial amounts</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00228.html">Date Prev</A>][<A HREF="msg00230.html">Date Next</A>][<A HREF="msg00228.html">Thread Prev</A>][<A HREF="msg00226.html">Thread Next</A>][<A HREF="maillist.html#00229">Date Index</A>][<A HREF="threads.html#00229">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the units of initial amounts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Bruce E. Shapiro&quot; &lt;<A HREF="mailto:bshapiro@jpl.nasa.gov">bshapiro@jpl.nasa.gov</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the units of initial amounts</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 23 May 2003 00:25:57 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>, <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+
+&gt; Consider the following: if a biologist knows exact numbers, he/she will 
+&gt; typically know both the amount and the volume.
+&gt; 
+&gt; When a biologist knows concentrations he/she very rarely knows volumes.
+
+Do you mean volume should be optional in SBML?
+
+Only concentrations are known is an exceptional case.   
+What is exceptional and what is usual is determined not by the number of existing practices,
+(I think Nicolas may agree with this...)  but by deducing from the design and structure of
+the object model of SBML.   Or, SBML would be caught by DesignByCommittee  or may be
+StovepipeSystem anti-pattern.   Another thing we can learn from software engineering :)
+(<A  HREF="http://c2.com/cgi/wiki?AntiPatternsCatalog">http://c2.com/cgi/wiki?AntiPatternsCatalog</A>)
+
+At the same time, SBML must support such cases where volume is unknown
+(as exception).   (being exception does not necessary mean it is not easy to use)
+
+Set the default for the volume be a unit volume, and you get amount == concentration.
+
+
+-Kouichi
+
+
+
+
+
+
+&gt; This suggests it is easy to convert from amount to concentration but 
+&gt; very difficult to convert from concentration to amount.
+&gt; 
+&gt; This would suggest that concentration is more natural.
+&gt; 
+&gt; It has been my experience that except in certain specialized fields, 
+&gt; such as some areas of pharmacology amounts and volumes are NOT known or 
+&gt; are very difficult to determine.
+&gt; 
+&gt; I would cast my vote for concentrations as the default measurement, or 
+&gt; at least having the option to switch defaults from substance to 
+&gt; concentrations.
+&gt; 
+&gt; ==================================================
+&gt; Bruce E. Shapiro, Ph. D.
+&gt; Senior Member Technical Staff
+&gt; Machine Learning Systems Group
+&gt; Jet Propulsion Laboratory, California Institute of Technology
+&gt; Mail Stop126-347 (Office 126-317)
+&gt; 4800 Oak Grove Drive
+&gt; Pasadena, CA 91109
+&gt; Telephone: 818-393-0980 /  Fax  818-393-5244 /
+&gt; 
+&gt; <A  HREF="mailto:bshapiro@its.caltech.edu">mailto:bshapiro@its.caltech.edu</A>
+&gt; Personal Web Page: <A  HREF="http://www.bruce-shapiro.com">http://www.bruce-shapiro.com</A>
+&gt; Cellerator Web Page: <A  HREF="http://www.cellerator.info">http://www.cellerator.info</A>
+&gt; 
+&gt; ==================================================
+&gt; The opinions expressed herein are purely my own and do not reflect the
+&gt; official position of either JPL or CalTech
+&gt; ==================================================
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00228" HREF="msg00228.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Bruce E. Shapiro&quot; &lt;bshapiro@jpl.nasa.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00228.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00230.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00228.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00226.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00229"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00229"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

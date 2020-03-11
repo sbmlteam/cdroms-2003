@@ -1,0 +1,132 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] COMP &#45;&#45; Model Composition SIG Announcement -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Wed, 21 May 2003 04:45:31 &#45;0700 -->
+<!--X-Message-Id: 1053517460.13544.266.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: XFMail.20030521095009.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00178.html">Date Prev</A>][<A HREF="msg00180.html">Date Next</A>][<A HREF="msg00178.html">Thread Prev</A>][<A HREF="msg00167.html">Thread Next</A>][<A HREF="maillist.html#00179">Date Index</A>][<A HREF="threads.html#00179">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 21 May 2003 20:44:20 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>, SBML-Discuss &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi Martin,
+
+&gt; &gt;&gt; If you attach a reaction (and therefore an ODE) to a species that is calculated
+&gt; &gt;&gt; by assignment or algebraic rule, 
+&gt; &gt; 
+&gt; &gt; Probably I couldn't get your point, but implicit solvers can handle such 
+&gt; &gt; an situation? And a species connected to only rules or assignments has a 
+&gt; &gt; limited ulitity?
+&gt; 
+&gt; For assigmentrules in pure ODE: No.
+&gt; (Either the integrator assigns the state depending on the derivative or the
+&gt; assignmentrule does it, not both)
+&gt; 
+&gt; For algebraic rules in DAE: It depends. If the resulting system has index&gt;1 or 
+&gt; becomes contradictory it will not work. 
+
+Thank you, now it's clear to me.
+
+&gt; My idea is, that the modeler of the 
+&gt; submodel will take care of these difficulties and will expose only `robust' 
+&gt; elements...
+
+My understanding is SBML contains only structure and semantics of the model, and
+does not specify what algorithm to be used to evolve the model.
+Simulators can always check if such fragile variables are accessed in a improper
+way according to their implemented algorithms.   SBML is a model exchange language.
+
+Another thing is there must be a nomenclature system of Species and Reactions to 
+make the submodels replaceable.    Then hiding such fragile Species, if needed,
+can be very simple; for example put '__' before ID (Python approach), or, set 'hide' 
+attribute to true.    In my opinion interface definition overkills here.
+
+
+&gt; &gt; It is not necessary a case for E-Cell 3, since it uses asynchronous 
+&gt; &gt; discrete event approach, but I understand the problem.  
+&gt; 
+&gt; Can you solve Index 2/3 DAE? 
+
+No, currently, in a simultaneous fashion, unless it is provided as a plug-in Stepper.
+Actually we are in process of writing plugins for it.   What we have so far are only
+Gillespie-Gibson, Fehlberg2(3), Dormand-Prince 4(5)7M, ESSYNS (S-System and GMA),
+and a Difference equation solver.   We will have a cellular automata module,  Tau-Leap,
+and some implicit Runge-Kutta variants (the multi-algorithm framework works best with
+one-step methods, so we won't have PC or BDF types of solvers).
+
+
+-Kouichi
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00178" HREF="msg00178.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00178.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00180.html">Re: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00178.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00167.html">[sbml-discuss] COMP -- Model Composition SIG Announcement 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00179"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00179"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

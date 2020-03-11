@@ -1,0 +1,14 @@
+       The original code contained here was initially developed by
+
+	Andrew Finney, Michael Hucka, Herbert Sauro, Hamid Bolouri
+			  with contributions from
+	Ben Kovitz, Akira Funahashi, Sarah Keating, Joanne Matthews
+
+	      The Systems Biology Workbench Development Group
+		JST ERATO Kitano Symbiotic Systems Project
+		 Control and Dynamical Systems, MC 107-81
+		    California Institute of Technology
+			 Pasadena, CA, 91125, USA
+
+			 http://www.sbw-sbml.org/
+		      mailto:sysbio-team@caltech.edu

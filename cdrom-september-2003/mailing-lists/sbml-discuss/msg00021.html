@@ -1,0 +1,192 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] Re: SBML Level 2 -->
+<!--X-From-R13: "Rnavry Erter'" <qfrterNtrargvpf.zrq.uneineq.rqh> -->
+<!--X-Date: Thu, 5 Dec 2002 08:53:22 &#45;0800 -->
+<!--X-Message-Id: Pine.OSF.3.96.1021205105422.10901A&#45;100000@genetics.med.harvard.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 002901c29b97$e44f1470$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] Re: SBML Level 2</TITLE>
+<LINK REV="made" HREF="mailto:dsegre@genetics.med.harvard.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00013.html">Date Prev</A>][<A HREF="msg00016.html">Date Next</A>][<A HREF="msg00020.html">Thread Prev</A>][<A HREF="msg00018.html">Thread Next</A>][<A HREF="maillist.html#00021">Date Index</A>][<A HREF="threads.html#00021">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] Re: SBML Level 2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Biospice Model Definition Language &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] Re: SBML Level 2</LI>
+<LI><em>From</em>: &quot;Daniel Segre'&quot; &lt;<A HREF="mailto:dsegre@genetics.med.harvard.edu">dsegre@genetics.med.harvard.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 5 Dec 2002 11:51:01 -0500 (EST)</LI>
+<LI>cc: SBML &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+<LI>Reply-To: &quot;Daniel Segre'&quot; &lt;<A HREF="mailto:dsegre@genetics.med.harvard.edu">dsegre@genetics.med.harvard.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+  I would like to say a few words about flux models, and optimization in
+general.
+  In a flux balance model, fluxes (i.e. rates of the reactions at steady
+state) become the variables of the model. No concentrations or kinetic
+constants are required. Solving a flux balance model typically involves
+the following steps:
+
+1) Define the reaction network. The key parameters are stoichiometric
+coefficients.
+
+2) Define lower/upper bounds for (some or all) fluxes 
+(e.g.: 0 &lt; (glucose uptake) &lt; 4)
+
+3) Optimize for a given objective function using LP/QP (e.g. find the set
+of fluxes in the network that minimize ATP consumption). These fluxes can
+be compared with steady state rates obtained with kinetic models.
+
+The option of defining bounds for variables is potentially quite general,
+as any optimization problem would involve this kind of constraint (for
+example, one may model 3D structures that satisfy a given set of distance
+constraints between points).
+Defining bounds for variables is different than defining values of 
+parameters, and it may be useful also in kinetic models. 
+
+  I don't know whether a special format should be present for defining an
+objective function, but I suggest to keep this in mind too.
+
+Thank you, 
+  Daniel
+
+  **************************************************
+    Daniel Segre'
+    Department of Genetics, Harvard Medical School
+    200 Longwood Avenue, Boston, MA 02115, USA
+    <A  HREF="http://genetics.med.harvard.edu/~dsegre/">http://genetics.med.harvard.edu/~dsegre/</A>
+    E-mail: dsegre@genetics.med.harvard.edu
+    Phone: 1-617-4320062    Fax: 1-617-4320065 
+  **************************************************
+
+On Wed, 4 Dec 2002, Andrew Finney wrote:
+
+&gt;   Systems Biology Markup Language Level 2
+&gt; 
+&gt;                 plans for the
+&gt; 
+&gt; Sixth Workshop on Software Platforms for Systems Biology
+&gt; --------------------------------------------------------
+&gt; 
+&gt; At this upcoming December 12 meeting in Stockholm (a workshop
+&gt; at ICSB 2002), we will hold discussions about the Systems Biology
+&gt; Markup Language Level 2 (SBML L2).  The goal of the discussions
+&gt; will be to answer the following question: what should be the final
+&gt; set of features to be incorporated into SBML L2?  Specifically,
+&gt; we would like decisions about the following topics:
+&gt; 
+&gt;  (a) Whether the features described in the appendix of the
+&gt;      current L2 draft should be part of the final L2, or
+&gt;      left to another SBML level.
+&gt; 
+&gt;  (b) Whether the following features, requested after the
+&gt;      publication of the L2 draft specification, should be
+&gt;      included in SBML L2:
+&gt; 
+&gt;      1. flux bounds (required for flux analysis)
+&gt;      2. optional initial species concentration/amount
+&gt; 
+&gt;  (c) Whether there are any other well-characterized features
+&gt;      that are &gt;clearly&lt; appropriate to introduce in Level 2.
+&gt; 
+&gt; We know that many of you will be unable to attend the forum
+&gt; on the 12th.  We therefore encourage you to send any
+&gt; comments you have on the features of Level 2 along the lines
+&gt; described above.  Please mail your comments to the discussion
+&gt; list at sbml-discuss@symbio.jst.go.jp.
+&gt; 
+&gt; The planned timetable for SBML L2 is as follows:
+&gt; 
+&gt;  - Dec. 12: final decision about features
+&gt;  - March: final draft of SBML L2 specification
+&gt;  - March-April: community discussions about final draft
+&gt;  - May: issuance of final SBML L2 specification
+&gt; 
+&gt; A copy of the draft specification of SBML L2 from August is
+&gt; located at
+&gt; <A  HREF="http://www.sbw-sbml.org/sbml/docs/sbml-development/level-2/">http://www.sbw-sbml.org/sbml/docs/sbml-development/level-2/</A>
+&gt; and an archive of past mailing list discussions on the topic
+&gt; can be found at
+&gt; <A  HREF="http://www.sbw-sbml.org/sbml-discuss/archive/maillist.html">http://www.sbw-sbml.org/sbml-discuss/archive/maillist.html</A>
+&gt; 
+&gt; Thank you, and we hope to see many of you in Stockholm.
+&gt; 
+&gt; yours
+&gt; Andrew Finney
+&gt; 
+&gt; on behalf of the Systems Biology Workbench Development Group
+&gt; <A  HREF="http://www.sbw-sbml.org/">http://www.sbw-sbml.org/</A>
+&gt; 
+&gt; +44 (0)1452 722487
+&gt; from US - 011 44 1452 722487
+&gt; Systems Biology Workbench Development Group
+&gt; California Institute of Technology / University of Hertfordshire 
+&gt; 
+&gt; 
+&gt; 
+
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00004" HREF="msg00004.html">[sbml-discuss] SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00013.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00016.html">RE: SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00020.html">[sbml-discuss] Re: SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00018.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00021"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00021"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

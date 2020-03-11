@@ -1,0 +1,132 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] SBML: Concentration vs. Quantity in SBML Leve -->
+<!--X-From-R13: [negva Uvaxry <tvaxryNzcv&#45;zntqrohet.zct.qr> -->
+<!--X-Date: by paradigm (mbox mhucka)(with Cubic Circle's cucipop (v1.31 1998/05/13) Fri Mar 28 12:17:58 2003) -->
+<!--X-Message-Id: XFMail.20030328121437.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3E841497.9030803@jweimar.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Leve</TITLE>
+<LINK REV="made" HREF="mailto:ginkel@mpi-magdeburg.mpg.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00088.html">Date Prev</A>][<A HREF="msg00085.html">Date Next</A>][<A HREF="msg00088.html">Thread Prev</A>][<A HREF="msg00094.html">Thread Next</A>][<A HREF="maillist.html#00089">Date Index</A>][<A HREF="threads.html#00089">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Leve</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Joerg Weimar &lt;<A HREF="mailto:J.Weimar@jweimar.de">J.Weimar@jweimar.de</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Leve</LI>
+<LI><em>From</em>: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 28 Mar 2003 12:14:37 +0100 (CET)</LI>
+<LI>Cc: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>, Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Hi,
+
+On 28-Mar-2003 Joerg Weimar wrote:
+&gt; Imagine two compartments with different volumes and a transport process 
+&gt; between the two. Transporting one molecule between the two compartments 
+&gt; has a different effect on the concentrations in the two volumes: in the 
+&gt; smaller volume the change in concentration is proportionally larger. So 
+&gt; where does this information go?
+&gt; Does the user have to include the conversion between molecule numbers 
+&gt; and concentrations in the kineticLaw formula?
+
+Why not? We have special reaction/transporter blocks in Promot that do exactly
+this: they transform from an intensive (concentration-change) to an extensive 
+flux at the compartment-borders using the volume and sometimes the molar weight.
+And there is a volume-change modeled for the whole cell (growth).
+With the function-definitions in SBML2 this could be implemented as a standard 
+function for some tool.
+
+As far as I understood Andrew, the intention behind the units was compatibility 
+checking. 
+
+&gt; I have appended an SBML example file, which does not include the 
+&gt; rescaling, but uses numbers of molecules for substance definitions. The 
+&gt; problematic point here is that the kinetic law should really be
+&gt; &lt;kineticLaw formula="(KcF * MEMBRANE_Enzyme  * compA_X)/( KmS + 
+&gt; (compA_X/compA.volume))"&gt;
+&gt; 
+&gt; instead of
+&gt; 
+&gt; &lt;kineticLaw formula="(KcF * MEMBRANE_Enzyme  * compA_X)/( KmS + compA_X)"&gt;
+&gt; 
+&gt; but how does one access the volume (here I used compA.volume, but such 
+&gt; usage is not defined anywhere)?
+
+It is defined: the use of the compA in a formulae works as accessing the volume.
+
+        HTH,
+        Martin
+
+
+
+-- 
++-[Martin Ginkel]--------------[<A  HREF="mailto:ginkel">mailto:ginkel</A>(at)mpi-magdeburg.mpg.de]-+
+| MPI Magdeburg, Zi S2.09    Sandtorstr. 1, D-39106 Magdeburg, Germany |
+| $&gt; man woman                                                         |
+| Segmentation fault (core dumped)                                     |
++-[tel/fax: +49 391 6110 482/529]----[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00087" HREF="msg00087.html">Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+<UL><LI><EM>From:</EM> Joerg Weimar &lt;J.Weimar@jweimar.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00088.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00085.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00088.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00094.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00089"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00089"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

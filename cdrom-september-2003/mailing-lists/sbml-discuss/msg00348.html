@@ -1,0 +1,124 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] General namespace inquiry -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Mon, 26 May 2003 11:45:10 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC9217@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] General namespace inquiry</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00347.html">Date Prev</A>][<A HREF="msg00349.html">Date Next</A>][<A HREF="msg00357.html">Thread Prev</A>][<A HREF="msg00366.html">Thread Next</A>][<A HREF="maillist.html#00348">Date Index</A>][<A HREF="threads.html#00348">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] General namespace inquiry</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A> '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] General namespace inquiry</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 26 May 2003 11:43:21 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+In the case of scripting tools, such as Jarnac or SCAMP, it is up to the
+user to realise the consequences of naming parameters. These tools are for
+experienced users and I thus expect them to understand how a scripting tool
+works. eg the two Kms in the following script are assumed to be identical:
+
+S1 -&gt; S2; Vm1*S1/(Km + S1);
+S2 -&gt; S3; Vm2*S2/(Km + S2);
+
+In the case of Jdesigner, things happen differently. If the user uses the
+predefined rate laws (which is probably most of the time) then they are
+completely insulated from setting parameter names. In the SBML, all
+parameters in rate laws are prefixed with the name of the reaction, eg J1_Km
+etc. It's still a global space because that's how the internal engine in
+Jarnac works. If a user wants the same parameter in different rate laws,
+then they use the free format option which allows them to do anything. In
+this case they need to know a bit more about what's happenning. But I've not
+heard anyone complain yet.
+
+Herbert
+
+-----Original Message-----
+From: Wagner,John
+To: sbml-discuss@caltech.edu
+Sent: 5/26/03 9:42 AM
+Subject: [sbml-discuss] General namespace inquiry
+
+Just to get some feedback...those of you who do *not* have
+(separate) namespaces, how do you mangle/convert the local
+parameters in KineticLaw? I guess one obvious approach is
+to blindly throw them into the global namespace and ignore
+the consequences, and another is to check to see if throwing
+them in the global namespace would result in a collision
+and tell the user "I'm sorry, Dave, I'm afraid I can't do that".
+A "better" way might be to mangle the name, converting
+Reaction R's kinetic parameter V to, say, R_V (appending
+a number or something until it is unique with respect to
+the global namespace), but then you'd have to substitute
+the new name back into the KineticLaw's expression
+(not to mention that the user might be a little distressed
+to suddenly see his/her parameter name changed).
+ 
+I'm not asking because I want to change the spec, I'm
+asking because I am trying to implement this, and it's
+still a problem. Currently, I'm throwing them blindly
+into the global namespace (ugh!).
+ 
+John
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00347.html">RE: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00349.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00357.html">Re: [sbml-discuss] General namespace inquiry</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00366.html">[sbml-discuss] DWG - clarification of stylesheet concept and example</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00348"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00348"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,127 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] stoichiometry in sbml level 2 version 1 -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 10 Jun 2003 13:45:23 &#45;0700 -->
+<!--X-Message-Id: 000801c32f91$2cc69100$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] stoichiometry in sbml level 2 version 1</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00430.html">Date Prev</A>][<A HREF="msg00432.html">Date Next</A>][<A HREF="msg00427.html">Thread Prev</A>][<A HREF="msg00442.html">Thread Next</A>][<A HREF="maillist.html#00431">Date Index</A>][<A HREF="threads.html#00431">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] stoichiometry in sbml level 2 version 1</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] stoichiometry in sbml level 2 version 1</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 10 Jun 2003 21:44:59 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Folks
+
+We admit that the results of the survey with respect to stoichiometry
+did not show a consensus view, in the sense of having a majority of
+people vote in favor of a particular alternative.  (For a review of the
+results, see
+
+  <A  HREF="http://www.surveymonkey.com/Report.asp?U=21467533723">http://www.surveymonkey.com/Report.asp?U=21467533723</A>
+
+We took the path of taking the choice that received the most votes
+(MathML) as the best way to store stoichiometry.  This seems reasonable
+since there was a clear majority in favour of replacing the L1 scheme
+with a mechanism for allowing stoichiometry to be parameterized (i.e.,
+taking choices c &amp; d together = 68.7%).
+
+In implementing this option in the final proof, we simply replaced the
+stoichiometry attribute with a MathML 'math' element as the
+speciesReference element content.  The use of a 'math' element is
+required in MathML.  The use of an extra level of nesting appeared
+unnecessary in this case. Unfortunately, this was apparently not very
+intuitive.
+
+We therefore plan to change this in the final document by enclosing the
+'math' element within a 'stoichiometry' element, so in the final
+version, a speciesReference element would look like this:
+
+&lt;speciesReference species="foo"&gt;
+    &lt;stoichiometry&gt;
+        &lt;math xmlns="<A  HREF="http://www.w3c.og/1998/Math/MathML">http://www.w3c.og/1998/Math/MathML</A>"&gt;
+            &lt;cn&gt; 2 &lt;/cn&gt;
+        &lt;/math&gt;
+    &lt;/stoichiometry&gt;
+&lt;/speciesReference&gt;
+
+Please let us know if you think that overall this is a reasonable
+interpretation of the wishes of the community.
+
+-- Andrew &amp; Mike
+
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00442" HREF="msg00442.html">Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+<UL><LI><EM>From:</EM> Wayne Rindone &lt;wrindone@arep.med.harvard.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00430.html">RE: [sbml-discuss] SBML Level 2 specification final draft available</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00432.html">[sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00427.html">Re: [sbml-discuss] Re: SBML Level 2 specification final draftavailable</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00442.html">Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00431"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00431"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

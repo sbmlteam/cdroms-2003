@@ -1,0 +1,194 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] DWG: multiple layouts -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Tue, 3 Jun 2003 05:22:41 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E7E@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] DWG: multiple layouts</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00408.html">Date Prev</A>][<A HREF="msg00410.html">Date Next</A>][<A HREF="msg00401.html">Thread Prev</A>][<A HREF="msg00410.html">Thread Next</A>][<A HREF="maillist.html#00409">Date Index</A>][<A HREF="threads.html#00409">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] DWG: multiple layouts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] DWG: multiple layouts</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 3 Jun 2003 08:22:23 -0400</LI>
+<LI>Thread-Index: AcMpysl5Z6t4BY+5SkeLdsKsSpS6LQ==</LI>
+<LI>Thread-Topic: Re: [sbml-discuss] DWG: multiple layouts</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Sven wrote:
+&gt; I understand the example above, I think it makes sense and our
+&gt; proposal would certainly look similar if we put the layout separate
+&gt; from the model. What I don´t understand is how this solves Ralphs
+&gt; problem. SBML allows several identical species references in a
+&gt; reaction. I think every species reference in the model should (at
+&gt; least potentially) be related to an arc (or arrow or however you
+&gt; like to name it) in the layout. So if the layout is put separate from
+&gt; the model there needs to be a way to unambiguously refer to a
+&gt; species reference.
+ 
+First of all, if we need a way to reference speciesReferences,
+then we add whatever we need to speciesReference. It's that
+simple.
+ 
+I propose to add SID to speciesReference. In fact, I propose
+to add it to Level 2, and not even wait for Level 3. In the
+language of databases, SID is the primary key, and in my
+view, everything should have a primary key, EVEN IF YOU
+CAN'T SEE AN IMMEDIATE USE FOR IT. The alternative
+argument is, we have now identified an immediate use for
+SID in speciesReference, so let's put it in there.
+ 
+And, the sooner the better. Let's put it into Level 2.
+ 
+I don't see why SID isn't put into SBase (the primary key
+argument would imply it belongs here). I say let's put it
+into SBase in Level 2.
+ 
+And *THAT* takes care of the referencing problem.
+ 
+Ralph wrote:
+&gt; I think you completely lost me there.
+&gt; Could you please try to explain this in more detail?
+&gt; I think putting the layout with the elements they belong to would rid 
+&gt; us of the referencing problem without any real disadvantages.
+
+As for keeping the view separate from the model, there
+is a long history of this as a general design principle, and
+one of the reasons for doing so is that it accomodates
+"multiple views" in a seamless and simple manner, as
+is the case here. Moreover, there is the argument that
+what something is and how something looks on-screen
+are two completely separate and different things, and
+thus do not conceptually belong together. Third is, it's
+much easier to specify the view if it is not constrained
+by the constraints associated with the model definition.
+ 
+For an example, if a reaction has the constraint that a
+species can only appear once in a reaction (as a reactant,
+modifier or product), then putting the view definition(s) into
+the reaction definition means that the view ALSO must have
+the constraint that species can appear only once in a reaction
+in the visual layout of that reaction. Now, this may or may
+not be how you want to constrain the layout of the reaction,
+but the point is, by putting the layout into the model you no
+longer have the choice of constraining the layout differently.
+For example, some of us may want to allow a species to
+visually appear on both the left and the right of a reaction.
+ 
+The OBVIOUS example is a catalyst, which some of us may
+want to visually lay out as E + S --&gt; E + P (where E appears
+as a reactant and a product visually, but when we write out
+the reaction definition, E would not appear as either, it would
+appear as a modifier). This would not be possible if the
+layout definition were stuck into the reaction definition.
+ 
+But again, this is just a generally accepted design principle
+that has been around for a very long time for very good reason,
+and it's so ubiquitous that it has a name (Model-View-Controller)
+and is almost always referred to as MVC. We tend to live by
+this rule (because we're tired of dying by ignoring it).
+ 
+Sven wrote:
+&gt; This is what I wanted to say. Basically that a reaction has a graphical
+&gt; representation and that the minimum set of information that needs to be
+&gt; defined is the place where the arcs meet.
+ 
+and
+
+&gt; The speciesreference is the object in the reaction that says which
+&gt; species take part in the reaction. The arrows in the diagram are the
+&gt; objects that connect a reaction center to a graphical representaiton
+&gt; of a species. In the same way as the graphical representation of a
+&gt; reaction is the sum of the center and the arrows, the reaction itself
+&gt; is the sum of the name, kinetic function and all the speciesreferences.
+&gt; That makes it natural to map the arrows (or arcs) to the species
+&gt; references. I do not see how an arrow would make sense that could
+&gt; not be attributed to exactly one speciesreference. And a species
+&gt; reference has a direction since it is in the list of reactants or in the
+&gt; list of products.
+ 
+We (The Virtual Cell group) couldn't agree more, because we happen
+to be one of those groups that uses a visual object to represent reactions
+(for hooking reactants, modifiers and products to). But, I hesitate to
+specify what the reaction piece looks like, because for many groups, it
+is not really a visually represented object. But as always, I'm perfectly
+happy allowing tools to specify what it looks like, then letting other
+tools ignore it (if, for example, they don't visually display such things).
+ 
+I don't want to get tied down to one group's particular representation,
+though, so it's important to do this part of it in such a way that it works
+for all and such that it can be converted (after reading the XML file)
+into whatever particular framework the importing tool contains.
+ 
+I think it's important to focus on the content--that is, what do we
+(ie. the tools) absolutely NEED in order to specify it.
+ 
+John
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00410" HREF="msg00410.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+<UL><LI><EM>From:</EM> Nicolas Le Novere &lt;lenov@pasteur.fr&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00418" HREF="msg00418.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00408.html">Re: [sbml-discuss] re: DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00410.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00401.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00410.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00409"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00409"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

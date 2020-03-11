@@ -1,0 +1,226 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] SBML Level 2 specification final draft available -->
+<!--X-From-R13: "Xbret D. Irvzne" <X.IrvzneNgh&#45;of.qr> -->
+<!--X-Date: Tue, 10 Jun 2003 05:04:18 &#45;0700 -->
+<!--X-Message-Id: 3EE5C91E.8070903@tu&#45;bs.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 16094.34551.384943.744995@erato1.cds.caltech.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] SBML Level 2 specification final draft available</TITLE>
+<LINK REV="made" HREF="mailto:J.Weimar@tu-bs.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00427.html">Date Prev</A>][<A HREF="msg00429.html">Date Next</A>][<A HREF="msg00430.html">Thread Prev</A>][<A HREF="msg00494.html">Thread Next</A>][<A HREF="maillist.html#00428">Date Index</A>][<A HREF="threads.html#00428">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] SBML Level 2 specification final draft available</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>,  &quot;Sbml-Discuss (E-mail)&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] SBML Level 2 specification final draft available</LI>
+<LI><em>From</em>: &quot;Joerg R. Weimar&quot; &lt;<A HREF="mailto:J.Weimar@tu-bs.de">J.Weimar@tu-bs.de</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 10 Jun 2003 14:03:42 +0200</LI>
+<LI><em>Organization</em>: TU Braunschweig</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Dear Andrew,
+
+here my comments on SBML L2 V1 Dfinal (up to page 29 so far):
+
+Page 12:
+
+Figure 4 still has too many ii's in version: positiiveInteger.
+
+I still suggest exchanging "version" and  "level" to "level" and 
+"version" in the second but last paragraph of section 4.1, and also 
+replacing "1" and "2" by "2" and "1", respectively.
+
+Page 15:
+
+Other examples for unit definitions might be "billions of molecules per 
+minute" (gmolekpermin):
+
+&lt;unitDefinition id="gmolekpermin"&gt;
+     &lt;listOfUnits&gt;
+         &lt;unit kind="item" scale="9"/&gt;
+         &lt;unit kind="second"
+		multiplier="0.01666666666666666666666" exponent="-1"/&gt;
+     &lt;/listOfUnits&gt;
+&lt;/unitDefinition&gt;
+
+Temperature in Fahrenheit:
+
+&lt;unitDefinition id="fahrenheit"&gt;
+     &lt;listOfUnits&gt;
+         &lt;unit kind="celsius" multiplier="1.8" offset="32"/&gt;
+     &lt;/listOfUnits&gt;
+&lt;/unitDefinition&gt;
+
+
+Page 15, last paragraph:
+
+Unit consistency should be preserved.
+
+Delete the comment about using only multiplier and scale.
+
+Comment: for redefinition of area, one needs an exponent 2 for a length 
+unit, for redefinition of volume, one could use metre^3 as a basis for 
+scaling instead of litre.
+
+
+Page 17:
+
+section 4.5.3
+Add:
+
+The fact that size does not have a default value means that a model 
+which contains rate laws must have a size value for the compartment of 
+each species that appears in a rate law.
+
+
+Section 4.5.5
+
+After "being the initial size of the compartment",
+add
+", which should be the same as the value specified by the rule at time 
+0". (Or leave it as is, see Section 4.8.4, where it is stated that 
+initialValues should be ignored).
+
+
+Page 19:
+
+Section 4.6.3: insert "set by a rule" to give
+
+" unkown, not required for analysis, set by a rule, or available from an 
+external data source."
+
+
+Section 4.6.4:
+
+I think that the units of a species should always refer to substance 
+units, not concentration units. The reason is that in the way it is 
+specified now, there is a crossdependence of the presence of one 
+attribute to the meaning of another attribute. Another problem appears 
+if neither initialAmount nor initialConcentration is given. This can 
+legally happen in a model where some species are set by rules.
+
+
+
+
+The description would change as follows:
+
+Delete everything from the start of the second paragraph
+"The value can be assigned.." to and including "Case of initialAmount 
+being used."
+
+Delete paragraph "Case of initialConcentration being used...".
+
+Add:
+
+The units field refers to the units of substance, so if initialAmount is 
+given, this number is in terms of the declared units. Concentratoins of 
+the species, as used in "initialConcnetration" or in any occurence of 
+the species ID in a rate law, are in terms of the declared units of the 
+species devided by the declared units of the enclosing compartment.
+
+
+
+The description of page 10 (starting with "- species identifier:"
+would also simplify.
+Page 23 also simplifies.
+
+
+
+Page 21, Section 4.7.3:
+Should parameters have default "dimensionless" units?
+
+The default units for parameters are "dimensionless".
+
+
+
+Page 21 Section 4.7.6
+
+Change units to "molar" or "moleperliter" or change the names to 
+something that does not start with "Km", since this is confusing.
+Example:
+
+&lt;parameter id="tau1" value="2.3" units="second"/&gt;
+&lt;parameter id="Km1" value="10.7" units="moleperliter"/&gt;
+
+
+
+Page 26 Section 4.9.1
+I strongly oppose the deletion of the attribute "stoichoimetry".
+
+
+
+
+-- 
+PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, TU-Braunschweig
+J.Weimar@tu-bs.de, <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+Tel. +49-531-391-3006  Mail: D-38092 Braunschweig
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00494" HREF="msg00494.html">RE: [sbml-discuss] SBML Level 2 specification final draft available</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00416" HREF="msg00416.html">[sbml-discuss] SBML Level 2 specification final draft available</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00427.html">Re: [sbml-discuss] Re: SBML Level 2 specification final draftavailable</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00429.html">Re: [sbml-discuss] SBML Level 2 specification final draft available</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00430.html">RE: [sbml-discuss] SBML Level 2 specification final draft available</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00494.html">RE: [sbml-discuss] SBML Level 2 specification final draft available</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00428"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00428"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

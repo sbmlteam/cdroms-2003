@@ -1,0 +1,201 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] RE: [Biospice&#45;sepdtf] clarification     onthegenerated SBML model -->
+<!--X-From-R13: zraqrfNiov.ig.rqh -->
+<!--X-Date: Tue, 14 Oct 2003 12:57:36 &#45;0700 -->
+<!--X-Message-Id: 1344.213.22.127.80.1066124511.squirrel@webmail.vbi.vt.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.44.0310130853080.21236&#45;100000@kincora.cds.caltech.edu -->
+<!--X-Reference: Pine.LNX.4.44.0310140718120.8963&#45;100000@mailsvr.ncbs.res.in -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerate</TITLE>
+<LINK REV="made" HREF="mailto:mendes@vbi.vt.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00690.html">Date Prev</A>][<A HREF="msg00692.html">Date Next</A>][<A HREF="msg00694.html">Thread Prev</A>][<A HREF="msg00692.html">Thread Next</A>][<A HREF="maillist.html#00691">Date Index</A>][<A HREF="threads.html#00691">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerated SBML model</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerated SBML model</LI>
+<LI><em>From</em>: <A HREF="mailto:mendes@vbi.vt.edu">mendes@vbi.vt.edu</A></LI>
+<LI><em>Date</em>: Tue, 14 Oct 2003 05:41:51 -0400 (EDT)</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I also agree that the definition must be unanbiguous. However, I think
+this discussion has been centering more on the molecular issues rather
+than the dynamics issues. If the spec intends to cover the molecular
+interactions then the only way to go would be by identifying and
+classifying binding sites (which is not unanbiguous). And as has been seen
+by the discussion, this is not so easy. For example enzymes often contain
+non-specific binding sites and it will be nearly impossible to capture
+what can bind there. Overall I think that going molecular is a mistake;
+leave that for CML and others who are much more likely to cover molecular
+interactions in much better ways. SBML has always been intended for
+dynamic models (even when these are disguised as structural, as in
+elementary flux modes which are actually defined by a dynamics criterion).
+In dynamics what matters is if a species affects a rate of reaction and
+how. In a model it is important to distinguish between those species that
+affect the rate directly versus the ones that affect it through the
+network. Note that this distinction is relative to the model. So if my
+model that has the PFK enzyme includes AMP but not ATP (strange but
+possible) I would indicate that AMP is a modifier of the PFK reaction; but
+if ATP is also included in the model, then it is ATP that is the modifier,
+not AMP (since AMP affects the rate by the ADK reaction with ATP and AMP).
+By the way, SBML is not a biochemistry textbook and so should allow for
+anyone to be able to define models that may not conform to what is
+commonly accepted biochemistry...
+
+Regarding the other issue of substrates (or products) that are also
+modifiers. This is indeed a more delicate problem. From my perspective I
+would label all modifiers as such, even if they are also substrates or
+products. And in Gepasi this is easy to do since the *species roles* are
+separated from the *species* in the rate laws (the more I see these
+discussions the more I like toi have made this choice!) This means that
+rate laws are defined with symbols that are not the species names. Then
+the species are assigned to those symbols that are substrates, products
+and modifiers. This lets me write a rate law such as: V*S/(K+S+M)  and
+then assign the same species to S and M. It is the symbols S and M that
+are labeled as substrate and modifier, not the species that is assigned to
+them (which in this case has both roles). This requires a level of
+abstraction from the part of the user, but that has not scared away a good
+number of users that are not mathematical modeling experts from Gepasi,
+so...
+
+I vote for enumerating all modifiers even when they are substrates.
+However given that SBML is already broken regarding this, I can easily
+accept the other option.
+
+(it is broken because in SBML the rate laws include names or IDs of
+species directly and thus this distinction becomes meaningless as you may
+understand from the example above).
+
+Pedro
+
+PS- I posted only to sbml-discuss given I don¥t take part in the biospice
+discussions, but feel free to forward this to that list (however I would
+really like to read the answers, unless this becomes a biospice only
+issue)
+
+&gt; I agree with Herbert's take on this: things should be unambiguous. Can we
+&gt; come up with some test cases and look at how the proposed specification
+&gt; would handle some potential problem situations involving modifiers doing
+&gt; other things ? Here is another:  on PDE5, cGMP is a substrate and it also
+&gt; binds to an allosteric site on PDE5 to modify the enzymatic rates.
+&gt;
+&gt; -- Upi
+&gt;
+&gt; On Mon, 13 Oct 2003, Herbert M. Sauro wrote:
+&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; I think we probably need a more sophisticated means of specifying
+&gt;&gt; modifiers. I'm not against some type of modifier list but it's
+&gt;&gt; application
+&gt;&gt; is limited at the moment (very limited!), I'm not sure if anyone uses it
+&gt;&gt; other than a lazy means to parsing the rate law (not an issue in Level 2
+&gt;&gt; I
+&gt;&gt; believe anyway). Could we make it optional if there is a rate law, but
+&gt;&gt; compulsory if there isn't a rate law?
+&gt;&gt;
+&gt;&gt; Herbert
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; On Sat, 11 Oct 2003, Andrew Finney wrote:
+&gt;&gt;
+&gt;&gt; &gt; Folks
+&gt;&gt; &gt;
+&gt;&gt; &gt; Rate laws are optional - in which case its not possible to determine
+&gt;&gt; the
+&gt;&gt; &gt; modifiers.
+&gt;&gt; &gt; And for better or worse the community decided even with rate laws the
+&gt;&gt; &gt; list of modifiers were
+&gt;&gt; &gt; required in Level 2.
+&gt;&gt; &gt;
+&gt;&gt; &gt; Andrew Finney
+&gt;&gt; &gt; +44 (0)1453 827833
+&gt;&gt; &gt; from US - 011 44 1453 827833
+&gt;&gt; &gt; University of Hertfordshire, UK
+&gt;&gt; &gt;
+&gt;
+&gt; --
+&gt; Upinder S. Bhalla       National Centre for Biological Sciences
+&gt; bhalla@ncbs.res.in      GKVK Campus
+&gt; (+91-80)363-6420/6421 X 3230    Bangalore 560065, INDIA
+&gt; Fax (+91-80) 363-6662       <A  HREF="http://www.ncbs.res.in/~faculty/upi.html">http://www.ncbs.res.in/~faculty/upi.html</A>
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00692" HREF="msg00692.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerated SBML model</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert M. Sauro&quot; &lt;hsauro@cds.caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00704" HREF="msg00704.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification    onthegenerated SBML model</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00681" HREF="msg00681.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert M. Sauro&quot; &lt;hsauro@cds.caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00684" HREF="msg00684.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</A></STRONG>
+<UL><LI><EM>From:</EM> Upinder Singh Bhalla &lt;bhalla@ncbs.res.in&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00690.html">RE: [sbml-discuss] Re: Internet Draft for sbml+xml media type</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00692.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00694.html">Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00692.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00691"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00691"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

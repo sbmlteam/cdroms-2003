@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level1" level="1" version="2">
+	<model name="EnzymeKinetics">
+		<notes>
+		<p>
+		The xml file should be displayed below the line at the bottom of this 
+		paragraph. If it is not displayed then your browser is interpreting
+		the xml file and ignoring any non-html tags.
+		</p>
+		<hr/>
+		</notes>
+		<listOfCompartments>
+			<compartment name="Cell" volume="1"/>
+		</listOfCompartments>
+		<listOfSpecies>
+			<species name="S" compartment="Cell" initialAmount="1" boundaryCondition="true"/>
+			<species name="E" compartment="Cell" initialAmount="1" boundaryCondition="false"/>
+			<species name="ES" compartment="Cell" initialAmount=".01" boundaryCondition="false"/>
+			<species name="P" compartment="Cell" initialAmount="0.01" boundaryCondition="true"/>
+		</listOfSpecies>
+		<listOfReactions>
+			<reaction name="Reaction1" reversible="true">
+				<listOfReactants>
+					<speciesReference species="S" stoichiometry="1"/>
+					<speciesReference species="E" stoichiometry="1"/>
+				</listOfReactants>
+				<listOfProducts>
+					<speciesReference species="ES" stoichiometry="1"/>
+				</listOfProducts>
+				<kineticLaw formula="k*S*E-r*ES">
+					<listOfParameters>
+						<parameter name="k" value="3"/>
+						<parameter name="r" value="6"/>
+					</listOfParameters>
+				</kineticLaw>
+			</reaction>
+			<reaction name="Reaction2" reversible="false">
+				<listOfReactants>
+					<speciesReference species="ES" stoichiometry="1"/>
+				</listOfReactants>
+				<listOfProducts>
+					<speciesReference species="E" stoichiometry="1"/>
+					<speciesReference species="P" stoichiometry="1"/>
+				</listOfProducts>
+				<kineticLaw formula="k*ES">
+					<listOfParameters>
+						<parameter name="k"/>
+					</listOfParameters>
+				</kineticLaw>
+			</reaction>
+		</listOfReactions>
+	</model>
+</sbml>

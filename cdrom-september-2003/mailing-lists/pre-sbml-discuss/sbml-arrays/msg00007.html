@@ -1,0 +1,160 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;arrays] -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 29 Jan 2002 09:19:06 &#45;0800 -->
+<!--X-Message-Id: OCEOLCAAEIFELNNEPMPLAEMGCIAA.afinney@cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200201290104.RAA07034@xoanon.jpl.nasa.gov -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-arrays]</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00006.html">Date Prev</A>][<A HREF="msg00000.html">Date Next</A>][<A HREF="msg00006.html">Thread Prev</A>][<A HREF="msg00000.html">Thread Next</A>][<A HREF="maillist.html#00007">Date Index</A>][<A HREF="threads.html#00007">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-arrays]</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Victoria Gor&quot; &lt;<A HREF="mailto:gor@aig.jpl.nasa.gov">gor@aig.jpl.nasa.gov</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-arrays] </LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 29 Jan 2002 09:21:33 -0800</LI>
+<LI>Cc: &quot;Hamid Bolouri&quot; &lt;<A HREF="mailto:hbolouri@caltech.edu">hbolouri@caltech.edu</A>&gt;,  &quot;Mike Hucka&quot; &lt;<A HREF="mailto:mhucka@cds.caltech.edu">mhucka@cds.caltech.edu</A>&gt;,  &quot;Herbert M Sauro&quot; &lt;<A HREF="mailto:hsauro@cds.caltech.edu">hsauro@cds.caltech.edu</A>&gt;</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Victoria
+
+I'd like to come to your meeting when I'd like
+discuss some of the issues you raised below.
+
+Please could you give directions to your room on the JPL site.
+I will be arriving by the 177 bus at approx 9:30am.
+
+Can I get onto the JPL site with my Caltech Id?
+
+yours Andrew
+
+-----Original Message-----
+From: owner-sbml-arrays@symbio.jst.go.jp
+[<A  HREF="mailto:owner-sbml-arrays@symbio.jst.go.jp]On">mailto:owner-sbml-arrays@symbio.jst.go.jp]On</A> Behalf Of Victoria Gor
+Sent: Monday, January 28, 2002 5:04 PM
+To: afinney@cds.caltech.edu; sbml-arrays@symbio.jst.go.jp
+Cc: Eric.D.Mjolsness@jpl.nasa.gov; bornstei@aig.jpl.nasa.gov;
+bshapiro@jpl.nasa.gov
+Subject: Re: [sbml-arrays] 
+
+
+Hello Andrew.
+
+Following are my thoughts on your comments.
+
+First about connections.
+You are right, the example I presented has every cell connected to it adjacent 
+neighbor and does not need explicit connection mechanism. But there are biological
+systems were explicit connections would need to be specified,
+that is why I have suggested before connections of three types:"explicit", 
+"function_based" or "complete". And even though neither "complete" nor 
+"function_based" connections need explicit list of connections, "explicit" 
+type would need all the connections listed. So, we must maintain some sort of
+&lt;listOfConnections&gt; element, where all types of connections can be specified.
+
+You proposed that connections are best thought of as sparse arrays. From the 
+viewpoint of SBML it does not matter, I suppose. But translator from SBML2 to 
+SBML1 will care, and it can be sparse matrix if you wish or linked list. 
+Now about your "elementOccurs" proposition, why keep renaming things? I thought 
+we have agreed already that &lt;listOfConnections&gt; can be defined within any 
+array element (or any element that can have a listOfDimensions element),
+so why rename it with "elementOccurs"? Do you think it is a more descriptive 
+name? Moreover, I still believe that formula is not an only method to define 
+where connection occurs. For example, in neuron interactions formula will not do, 
+we will need explicit connections. Or am I not understanding something?
+
+Now about functions. The type of the functions you introduced in the example do 
+not worry me too much. Those are easy functions: just a formula and an 
+arguments, they can be easily avoided by listing formulas in place. If such
+formula has to be repeated many times, then such short functions (in essence - 
+macros) can be useful. Nevertheless, in-place code is more readable if formula 
+appears only once. For our example, I think, functions like you proposed do not 
+simplify things, but they might for other examples. On the other hand, 
+functions that worry me a lot are functions like "sum" in our example. They are
+more complicated; while interpreted they require loops and tracing of various 
+data structures. Those are the functions, I would like to avoid expanding in 
+SBML. They require traditional programming and I think they are better to be
+expanded in interpreters. So what that there will be "profusion of standard 
+functions defined inside the language"? Many languages, especially high level
+specialized languages have such profusion of standard functions (matlab for 
+example). So, why can't we have "biolab" library which includes all these 
+functions. I am sure that biologist have a lot of structures and operations 
+that they all use repeatedly and would like to have some "short hand" for them.
+For example, SBML1 has an entire list of rate law functions already, so why 
+can't we have more functions of different types. For example, connection 
+functions can automate summing or product over the immediate neighbors, or 
+X-degree neighbors, or over explicit connections. Once one biologist needs such 
+function, the chances are that others also will need it.
+
+Any way, On Thursday, 10:00 am, I will discuss these issues with members of 
+my group. Let's see what they will say. Do you want to come to the meeting too?
+It will be at JPL.
+
+Victoria.
+ 
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00006" HREF="msg00006.html">Re: [sbml-arrays]</A></STRONG>
+<UL><LI><EM>From:</EM> Victoria Gor &lt;gor@aig.jpl.nasa.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00006.html">Re: [sbml-arrays]</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00000.html">[sbml-arrays] Initial message -- ignore this</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00006.html">Re: [sbml-arrays]</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00000.html">[sbml-arrays] Initial message -- ignore this</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00007"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00007"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

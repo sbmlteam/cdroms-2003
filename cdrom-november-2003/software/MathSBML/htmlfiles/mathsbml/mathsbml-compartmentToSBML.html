@@ -1,0 +1,134 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage"></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table></div>
+
+
+<h1>MathSBML Model Builder:<span class="function"> compartmentToSBML</span> </h1>
+
+<hr/>
+
+			
+<p><span class="function">compartmentToSBML[options]</span> returns 
+a <span class="function">&lt;compartment .../></span> definition.</p>
+
+<p><span class="function">compartmentToSBML[{{options},{options},...}]</span> returns a 
+<span class="function">&lt;listOfCompartments.../></span> where each option list corresponds to a 
+single <span class="function">&lt;compartment .../></span>
+definition.</p> 
+
+<p><span class="function">compartmentToSymbolicSBML[options]</span> returns Symbolic
+ SBML for a <span class="function">&lt;compartment .../></span> definition.</p>
+
+<span style="font-size:smaller;">New in version 2.1.5.</span>
+
+<hr />
+<h1>Options</h1>
+Options are identical to their SBML fields in the <span class="function">&lt;compartment.../&gt;</span> definition.
+<table bgcolor="#C0C0C0" border="1">
+	<tr>
+		<td>
+			<table border="0" cellpadding="5">
+				<thead style="font-weight:bold;">
+					<tr>
+						<td>Option</td>
+						<td>Default</td>
+						<td>Description</td>
+					</tr>
+				</thead>
+				<tbody>
+				
+						<tr>
+							<td valign="top"><span class="function">id</span></td>
+							<td valign="top"><span class="function"></span>generated*</td>
+							<td valign="top">Value of compartment <span class="function">id</span>. *If not specified, an id of the form <span class="function">compartment<i>n</i></span>, 
+							where <span class="function"><i>n</i></span> is an integer, is generated.</td>
+						</tr>												
+				
+						<tr>
+							<td valign="top"><span class="function">name</span></td>
+							<td valign="top">Value of <span class="function">id</span></td>
+							<td valign="top">Gives compartment <span class="function">name</span>.</td>
+						</tr>												
+
+						<tr>
+							<td valign="top"><span class="function">spatialDimensions</span></td>
+							<td valign="top"><span class="function">3</span></td>
+							<td valign="top">Gives compartment <span class="function">spatialDimension</span>. Must be 0, 1, 2, or 3.</td>
+						</tr>												
+						
+						<tr>
+							<td valign="top"><span class="function">size</span></td>
+							<td valign="top">No default</td>
+							<td valign="top">Gives compartment <span class="function">size</span>. Unless <span class="function">constant->false</span> then the size of the 
+							compartment is fixed.</td>
+						</tr>												
+						<tr>
+							<td valign="top"><span class="function">units</span></td>
+							<td valign="top">No default</td>
+							<td valign="top">Gives compartment <span class="function">units</span>.</td>
+						</tr>												
+						<tr>
+							<td valign="top"><span class="function">outside</span></td>
+							<td valign="top">No default</td>
+							<td valign="top">Gives compartment <span class="function">outside</span> of this compartment.</td>
+							
+						</tr>
+						<tr>
+							<td valign="top"><span class="function">constant</span></td>
+							<td valign="top"><span class="function">true</span></td>
+							<td valign="top">If <span class="function">true</span> then compartment size is fixed. If <span class="function">false</span> then compartment
+							size may vary as a variable. </td>
+						</tr>												
+												
+					</tbody>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<h1>Example 1: Single compartment definition:</h1>
+<pre class="function">
+compartmentToSBML[id-> c1,name->"boundary_layer", spatialDimension->2]
+</pre>
+
+returns the string
+<pre class="function">
+&lt;compartment id="c1" name="boundarylayer" spatialDimension="2"/&gt;
+</pre>
+
+<h1>Example 2: list of compartment definitions:</h1>
+The input string:
+
+<pre class="function">
+compartmentToSBML[{{id->"c1", size-> 5},
+                   {id->"c2", spatialDimension-> 2},
+                   {id->"c3",name-> "unsized_compartment_3"}}]</pre>
+
+returns
+
+<pre class="function">
+&lt;listOfCompartments&gt;
+ &lt;compartment id="c1" name="c1" size="5"/&gt;
+ &lt;compartment id="c2" name="c2" spatialDimension="2"/&gt;
+ &lt;compartment id="c3" name="unsized_compartment_3"/&gt;
+&lt;/listOfCompartments&gt;"
+</pre>
+	
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

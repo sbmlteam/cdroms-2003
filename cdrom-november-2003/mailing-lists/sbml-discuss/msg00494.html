@@ -1,0 +1,326 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] SBML Level 2 specification final draft available -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 17 Jun 2003 02:16:22 &#45;0700 -->
+<!--X-Message-Id: 000b01c334b0$8abb1230$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3EE5C91E.8070903@tu&#45;bs.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] SBML Level 2 specification final draft available</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00493.html">Date Prev</A>][<A HREF="msg00495.html">Date Next</A>][<A HREF="msg00428.html">Thread Prev</A>][<A HREF="msg00429.html">Thread Next</A>][<A HREF="maillist.html#00494">Date Index</A>][<A HREF="threads.html#00494">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] SBML Level 2 specification final draft available</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Joerg R. Weimar'&quot; &lt;<A HREF="mailto:J.Weimar@tu-bs.de">J.Weimar@tu-bs.de</A>&gt;,  &quot;'Sbml-Discuss (E-mail)'&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] SBML Level 2 specification final draft available</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 17 Jun 2003 10:12:07 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Joerg
+
+Many thanks for your comments.
+Sorry I have taken a while to comment on them.
+I'm now working through them incorporating them into
+the document.
+
+&gt; Page 17:
+&gt; 
+&gt; section 4.5.3
+&gt; Add:
+&gt; 
+&gt; The fact that size does not have a default value means that a model 
+&gt; which contains rate laws must have a size value for the 
+&gt; compartment of 
+&gt; each species that appears in a rate law.
+&gt; 
+
+We decided at the forum in December in Stockholm
+that all initial conditions can be left out from
+a model: they can be supplied from another data source
+seperate from the model eg parameter sets.  Also
+having missing data allows a modeller to define precisely
+what is and isn't know about a given model.
+
+&gt; Section 4.6.4:
+&gt; 
+&gt; I think that the units of a species should always refer to substance 
+&gt; units, not concentration units. The reason is that in the way it is 
+&gt; specified now, there is a crossdependence of the presence of one 
+&gt; attribute to the meaning of another attribute. Another 
+&gt; problem appears 
+&gt; if neither initialAmount nor initialConcentration is given. This can 
+&gt; legally happen in a model where some species are set by rules.
+
+I have adopted this change and made the required changes in the text.
+
+&gt; Page 21, Section 4.7.3:
+&gt; Should parameters have default "dimensionless" units?
+&gt; 
+&gt; The default units for parameters are "dimensionless".
+&gt; 
+
+These units are left unspecified when not given.  (Parameter units can
+be 
+determined manually from forumlae.)  In most cases
+they won't be dimensionless.  If the modeller doesn't
+supply the units we shouldn't infer anything: its a weakness
+in the model.  But the model can still be simulated.
+
+&gt; Page 26 Section 4.9.1
+&gt; I strongly oppose the deletion of the attribute "stoichoimetry".
+
+they are restored
+
+&gt; Page 33, Example 5.2
+&gt; 
+&gt; The units of parameter Km should be mml (millimole / litre) 
+&gt; with the obvious definition.
+&gt; 
+&gt; Compartment "cell" must have a size
+&gt; &lt;compartment id="cell" size="1"&gt;
+&gt; (or compartment size should have a default, as I suggested in 
+&gt; my earlier 
+&gt; mail).
+&gt; 
+&gt; Page 40 Example 5.7:
+&gt; 
+&gt; Compartment cell must have a size
+&gt; &lt;compartment id="cell" size="1"&gt;
+&gt; (see above).
+&gt; 
+&gt; Page 43 Example 5.9: idem
+&gt; 
+these chnages will be made to the examples.
+
+Thanks again.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: Joerg R. Weimar [<A  HREF="mailto:J.Weimar@tu-bs.de">mailto:J.Weimar@tu-bs.de</A>] 
+&gt; Sent: 10 June 2003 13:04
+&gt; To: afinney@cds.caltech.edu; Sbml-Discuss (E-mail)
+&gt; Subject: Re: [sbml-discuss] SBML Level 2 specification final 
+&gt; draft available
+&gt; 
+&gt; 
+&gt; Dear Andrew,
+&gt; 
+&gt; here my comments on SBML L2 V1 Dfinal (up to page 29 so far):
+&gt; 
+&gt; Page 12:
+&gt; 
+&gt; Figure 4 still has too many ii's in version: positiiveInteger.
+&gt; 
+&gt; I still suggest exchanging "version" and  "level" to "level" and 
+&gt; "version" in the second but last paragraph of section 4.1, and also 
+&gt; replacing "1" and "2" by "2" and "1", respectively.
+&gt; 
+&gt; Page 15:
+&gt; 
+&gt; Other examples for unit definitions might be "billions of 
+&gt; molecules per 
+&gt; minute" (gmolekpermin):
+&gt; 
+&gt; &lt;unitDefinition id="gmolekpermin"&gt;
+&gt;      &lt;listOfUnits&gt;
+&gt;          &lt;unit kind="item" scale="9"/&gt;
+&gt;          &lt;unit kind="second"
+&gt; 		multiplier="0.01666666666666666666666" exponent="-1"/&gt;
+&gt;      &lt;/listOfUnits&gt;
+&gt; &lt;/unitDefinition&gt;
+&gt; 
+&gt; Temperature in Fahrenheit:
+&gt; 
+&gt; &lt;unitDefinition id="fahrenheit"&gt;
+&gt;      &lt;listOfUnits&gt;
+&gt;          &lt;unit kind="celsius" multiplier="1.8" offset="32"/&gt;
+&gt;      &lt;/listOfUnits&gt;
+&gt; &lt;/unitDefinition&gt;
+&gt; 
+&gt; 
+&gt; Page 15, last paragraph:
+&gt; 
+&gt; Unit consistency should be preserved.
+&gt; 
+&gt; Delete the comment about using only multiplier and scale.
+&gt; 
+&gt; Comment: for redefinition of area, one needs an exponent 2 
+&gt; for a length 
+&gt; unit, for redefinition of volume, one could use metre^3 as a 
+&gt; basis for 
+&gt; scaling instead of litre.
+&gt; 
+&gt; 
+&gt; Page 17:
+&gt; 
+&gt; section 4.5.3
+&gt; Add:
+&gt; 
+&gt; The fact that size does not have a default value means that a model 
+&gt; which contains rate laws must have a size value for the 
+&gt; compartment of 
+&gt; each species that appears in a rate law.
+&gt; 
+&gt; 
+&gt; Section 4.5.5
+&gt; 
+&gt; After "being the initial size of the compartment",
+&gt; add
+&gt; ", which should be the same as the value specified by the 
+&gt; rule at time 
+&gt; 0". (Or leave it as is, see Section 4.8.4, where it is stated that 
+&gt; initialValues should be ignored).
+&gt; 
+&gt; 
+&gt; Page 19:
+&gt; 
+&gt; Section 4.6.3: insert "set by a rule" to give
+&gt; 
+&gt; " unkown, not required for analysis, set by a rule, or 
+&gt; available from an 
+&gt; external data source."
+&gt; 
+&gt; 
+&gt; Section 4.6.4:
+&gt; 
+&gt; I think that the units of a species should always refer to substance 
+&gt; units, not concentration units. The reason is that in the way it is 
+&gt; specified now, there is a crossdependence of the presence of one 
+&gt; attribute to the meaning of another attribute. Another 
+&gt; problem appears 
+&gt; if neither initialAmount nor initialConcentration is given. This can 
+&gt; legally happen in a model where some species are set by rules.
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; The description would change as follows:
+&gt; 
+&gt; Delete everything from the start of the second paragraph
+&gt; "The value can be assigned.." to and including "Case of initialAmount 
+&gt; being used."
+&gt; 
+&gt; Delete paragraph "Case of initialConcentration being used...".
+&gt; 
+&gt; Add:
+&gt; 
+&gt; The units field refers to the units of substance, so if 
+&gt; initialAmount is 
+&gt; given, this number is in terms of the declared units. 
+&gt; Concentratoins of 
+&gt; the species, as used in "initialConcnetration" or in any occurence of 
+&gt; the species ID in a rate law, are in terms of the declared 
+&gt; units of the 
+&gt; species devided by the declared units of the enclosing compartment.
+&gt; 
+&gt; 
+&gt; 
+&gt; The description of page 10 (starting with "- species 
+&gt; identifier:" would also simplify. Page 23 also simplifies.
+&gt; 
+&gt; 
+&gt; 
+&gt; Page 21, Section 4.7.3:
+&gt; Should parameters have default "dimensionless" units?
+&gt; 
+&gt; The default units for parameters are "dimensionless".
+&gt; 
+&gt; 
+&gt; 
+&gt; Page 21 Section 4.7.6
+&gt; 
+&gt; Change units to "molar" or "moleperliter" or change the names to 
+&gt; something that does not start with "Km", since this is confusing.
+&gt; Example:
+&gt; 
+&gt; &lt;parameter id="tau1" value="2.3" units="second"/&gt;
+&gt; &lt;parameter id="Km1" value="10.7" units="moleperliter"/&gt;
+&gt; 
+&gt; 
+&gt; 
+&gt; Page 26 Section 4.9.1
+&gt; I strongly oppose the deletion of the attribute "stoichoimetry".
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; -- 
+&gt; PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, 
+&gt; TU-Braunschweig J.Weimar@tu-bs.de, 
+&gt; <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+&gt; Tel. 
+&gt; +49-531-391-3006  Mail: D-38092 Braunschweig
+&gt; 
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00428" HREF="msg00428.html">Re: [sbml-discuss] SBML Level 2 specification final draft available</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00493.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00495.html">[sbml-discuss] RE: [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00428.html">Re: [sbml-discuss] SBML Level 2 specification final draft available</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00429.html">Re: [sbml-discuss] SBML Level 2 specification final draft available</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00494"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00494"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

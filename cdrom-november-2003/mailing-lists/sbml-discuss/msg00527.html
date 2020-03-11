@@ -1,0 +1,145 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: FW: [sbml&#45;discuss] Final Proof of SBML Level 2 specification -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Sat, 28 Jun 2003 02:11:37 &#45;0700 -->
+<!--X-Message-Id: 00cf01c33d55$33758480$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>FW: [sbml-discuss] Final Proof of SBML Level 2 specification</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00526.html">Date Prev</A>][<A HREF="msg00528.html">Date Next</A>][<A HREF="msg00526.html">Thread Prev</A>][<A HREF="msg00518.html">Thread Next</A>][<A HREF="maillist.html#00527">Date Index</A>][<A HREF="threads.html#00527">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>FW: [sbml-discuss] Final Proof of SBML Level 2 specification</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: FW: [sbml-discuss] Final Proof of SBML Level 2 specification</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 28 Jun 2003 10:10:57 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+FYI..
+
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+-----Original Message-----
+From: Eric Minch [<A  HREF="mailto:eric.minch@lionbioscience.com">mailto:eric.minch@lionbioscience.com</A>] 
+Sent: 26 June 2003 12:35
+To: hugh.d.spence@gsk.com
+Cc: Andrew Finney; Michael Hucka
+Subject: Re: [sbml-discuss] Final Proof of SBML Level 2 specification
+
+
+Hi Hugh--
+&gt; We ALREADY have the modifier tag, without qualifiers in level 2.
+&gt; 
+&gt; So we HAVE to examine the math (and hope the SBML has treated it 
+&gt; properly) to find out whether we are looking at an inhibitor, an 
+&gt; activator, or a catalyst.
+&gt; 
+&gt; 
+&gt; If the model includes transcription of the enzyme and degradation of 
+&gt; it over time, we have to take the concentration of the enzyme into 
+&gt; account in our equations.
+&gt; 
+&gt; Inhibitors and activators have no effect in the absence of the enzyme.
+&gt; 
+&gt; SBML level 2 allows kineticLaw to be optional. In the absence of a
+&gt; kineticLaw, knowing that a species is a modifier, without knowing
+whether it
+&gt; is essential to the reaction taking place or merely modifies it's
+rate, means
+&gt; that the tag is practically meaningless.
+&gt; 
+The modifierSpeciesReference is devoid of content beyond its ID, and
+devoid of 
+effect in the absence of its use in a kineticLaw. Thus it is true that
+the tag 
+is in this case meaningless, but this is not a failing of the SBML
+design; it is 
+a failing of the model as specified, hence of the modeller (or--if 
+machine-generated--the designer of the software which generated the
+model).
+
+In such degenerate cases, adding catalyst or inhibitor or cofactor or
+other tags 
+does not help. There is no principled distinction between a catalyst and
+an 
+activator; the effect of each is to modify the rate. That's why I tend
+to think 
+of these categories as rather arbitrary judgments whose focus is more
+aesthetic 
+than substantive, and why they appear to me to belong in the
+presentation rather 
+than the model.
+
+After all, in the nondegenerate cases which include both modifiers and 
+references to them in the kineticLaw, if I tag the modifier as
+"inhibitory" but 
+the math says it's increasing the rate, who are you gonna believe?
+-- 
+	Best--
+	--Eric
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00526.html">FW: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00528.html">[sbml-discuss] Final Version of SBML Level 2 Version 1</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00526.html">FW: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00518.html">[sbml-discuss] Release notes: BioUML workbench v.0.7.0</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00527"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00527"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

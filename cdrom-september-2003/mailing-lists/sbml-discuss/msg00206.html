@@ -1,0 +1,133 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the units of initial amounts -->
+<!--X-From-R13: [negva Uvaxry <tvaxryNzcv&#45;zntqrohet.zct.qr> -->
+<!--X-Date: Thu, 22 May 2003 02:05:44 &#45;0700 -->
+<!--X-Message-Id: XFMail.20030522110530.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1053593045.4573.30.camel@senin.e&#45;cell.org -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the units of initial amounts</TITLE>
+<LINK REV="made" HREF="mailto:ginkel@mpi-magdeburg.mpg.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00205.html">Date Prev</A>][<A HREF="msg00207.html">Date Next</A>][<A HREF="msg00205.html">Thread Prev</A>][<A HREF="msg00208.html">Thread Next</A>][<A HREF="maillist.html#00206">Date Index</A>][<A HREF="threads.html#00206">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the units of initial amounts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the units of initial amounts</LI>
+<LI><em>From</em>: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 11:05:30 +0200 (CEST)</LI>
+<LI>Cc: SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;, <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Hi Kouichi,
+
+On 22-May-2003 Kouichi Takahashi wrote:
+&gt; (1) In reality it is a natural number in the cell. It is exact, and is better to 
+&gt;     support 'exact' methods such as Gillespie. 
+&gt; (2) 'substance' is the primary representation, and concentration is secondary.
+&gt;     This can be understood by the fact that the simplest way to have support 
+&gt;     for changing volume is to store the value as 'substance', not 
+&gt;     'concentration'.
+&gt; 
+&gt; The input/output of the simulator can either be concentration or the exact number, 
+&gt; but the better internal representation by multi-compartment simulation is not
+&gt; concentration.    
+
+The argument was from a software engineering point of view:
+Species are defined in Items/Moles but whenever their id appears in some
+ratelaw/rule it is implicitly treated as concentration, which is not
+obvious and self-documenting. I consider this as the main point.
+
+On the other hand, for setting up a model according to measurements, the user
+will almost never know the moles but only concentrations. In the case that 
+you change a compartments size, you have to increase the initialAmount too
+(whereas this argument is rather a tools issue, noone should write SBML 
+ manually, and the tool can just accept conc. and calculate and write moles.)
+
+&gt; Considering SBML as a long-term standard, I believe it is going for exact 
+&gt; value from concentration, and it is better not to use concentration as the 
+&gt; default.
+
+I am not sure whether pretending to know the exact number of glucose-molecules
+in a model of a cell is really an advantage ...
+Don't trust the digits far right of the decimal point ;-)
+
+        Martin
+
+
+-- 
++-[Martin Ginkel]--------------[<A  HREF="mailto:ginkel">mailto:ginkel</A>(at)mpi-magdeburg.mpg.de]-+
+| MPI Magdeburg, Zi S2.09    Sandtorstr. 1, D-39106 Magdeburg, Germany |
+| The 3 virtues of a programmer: Laziness, Impatience and Hubris. L.W. |
+|                                                                      |
++-[tel/fax: +49 391 6110 482/529]----[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00208" HREF="msg00208.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00224" HREF="msg00224.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Nicolas Le Novere &lt;lenov@pasteur.fr&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00205" HREF="msg00205.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00205.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00207.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00205.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00208.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00206"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00206"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

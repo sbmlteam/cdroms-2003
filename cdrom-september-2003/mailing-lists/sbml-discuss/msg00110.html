@@ -1,0 +1,236 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Agenda items for SBML Forum 11&#45;12th May -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Fri, 18 Apr 2003 14:51:50 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC90C7@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Agenda items for SBML Forum 11-12th May</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00109.html">Date Prev</A>][<A HREF="msg00111.html">Date Next</A>][<A HREF="msg00106.html">Thread Prev</A>][<A HREF="msg00112.html">Thread Next</A>][<A HREF="maillist.html#00110">Date Index</A>][<A HREF="threads.html#00110">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Agenda items for SBML Forum 11-12th May</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Wayne Rindone'&quot; &lt;<A HREF="mailto:wrindone@arep.med.harvard.edu">wrindone@arep.med.harvard.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Agenda items for SBML Forum 11-12th May</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 18 Apr 2003 14:45:11 -0700</LI>
+<LI>Cc: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>,  &quot;'Biospice Model Definition Language'&quot; &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Specifying rate laws in SBML is not certainly not easy, the problem I've
+found is that one is not permitted to define 'local' parameters without a
+rate law. If we could then there wouldn't be any problem other than
+indicating somewhere in the SBML file that this is a stochastic model (One
+possibility is to put a tag on the reaction itself indicating what sort of
+reaction it is, this would be a better solution because one day when we get
+mixed mode simulators they will be able to easily partition the reactions up
+in to stochastic and continuous). I think that the rate law itself for a
+stochastic reaction should be empty (the software should derive the equation
+- this is what I do), and the SBML need only supply the 'rate constant'.
+
+Herbert
+
+-----Original Message-----
+From: Wayne Rindone [<A  HREF="mailto:wrindone@arep.med.harvard.edu">mailto:wrindone@arep.med.harvard.edu</A>]
+Sent: Friday, April 18, 2003 2:14 PM
+To: Andrew Finney
+Cc: sbml-discuss@caltech.edu; 'Biospice Model Definition Language'
+Subject: Re: [sbml-discuss] Agenda items for SBML Forum 11-12th May
+
+
+Hi Andrew and others,
+
+    Is there (should there be) a topic in the list of items in the Leval 3
+discussion where we can talk more about the specifics of representing a
+range of different types of models in SBML versions after 2? 
+
+    In today's MDL telecon there was a lot of discussion of the specifics
+of recognizing stochastic models represented in SBML.  I am already
+representing flux balance models in SBML without the benefit of a simple
+designation that this is not something susceptible to kinetic modeling.
+Still, flux balance is similar enough to what SBML was originally intended
+to handle that the only things I had to invent my own name space to
+represent were lower and upper flux limits.  Already in level 2 it will
+not be necessary to specify initialAmount values for every species, though
+at the moment I still have fictitious values of 0 for all, since these are
+not part of a flux balance model.
+
+    Of course there are no kinetic equations in these models.  As of this
+week's BioSketchPad SBML importing update I am able to read in my flux
+balance models and get diagrams of them, thanks to helpful tips from
+Jonathan Webb.  At the moment there are improvements needed to handle the
+80 or so fluxes and 100 or so species in my most important fluxes only
+model for E coli (never mind the full 600+ flux model), but a version with
+just 3 fluxes that share some reactants and products came up fine and
+could be readly manipulated.  To no one's surprise the modeling option in
+BioSketchPad complained about not finding the kinetic info it needed, but
+it is still a promising tool for making diagrams of our systems of fluxes. 
+
+     I expect from reading today's announcement of the new MathSBML
+version, that given it is built around the idea of producing systems of
+differential equations for Mathematica from the SBML, it will not get far
+when it finds no kinetic information provided.  My understanding of
+today's stochastic model discussion was that a tool like MathSBML could be
+a lot more dangerous reading a stochastic model in SBML, since it would
+think it was finding the kinetic information it needed and not interpret
+it correctly. I imagine stochastic models could be as readily diagrammed
+in BioSketchPad as flux balance models, but it might try harder to no
+great benefit to run its modeling features on them.
+
+     And then there are relevant models that have nothing to do with
+reactions in the first place, like the 4D chromosome model discussed in
+the previous telecons.  I was asked two weeks ago to try to provide more
+specific info about the data representation needs for this, beyond what is
+given in our Sandbox uploaded description, but the two people who know the
+most about this have been out of the office recently (one is in Italy, not
+sure where the other is).  The submission talks about sets of XYZ
+coordinates, not clear if this suggests a listOfAtoms structure or a
+listOfNucleotides or a listOfAminoAcids structure, or all of the above and
+more.  It also talks about a matrix of distances and special approaches
+for determining them, not obviously a part of what should end up in the
+SBML.  Then there are matrixes of lower bounds and upper bounds in terms
+of spatial constaints.  To the extent these depend on the distances, maybe
+all of the above need to be represented, not sure.  But there is
+definitely not a reaction in sight, so any SBML reading tool that is
+expecting to deal with reactions should give up long before making any
+misleading interpretations. 
+
+   It was previously suggested there be a high level model type
+designation so that any reader would know right away whether the
+model in question is one it can deal with.  At the moment only
+4 model types have been mentioned, kinetic, stochastic, flux balance,
+and spatial.  But there would well be more when all is said and
+done, and there could be features considered typical of two different
+sorts of models used in some sort of hybrid model, so it might make
+more sense to build on Cliff's suggestion for terms like
+
+&lt;feature compartments FALSE&gt;
+
+     In any event, I think it would be useful at this meeting to
+try to reach a consensus on how best to deal with a variety of
+model types.
+
+				Wayne
+
+
+
+
+On Fri, 18 Apr 2003, Andrew Finney wrote:
+
+&gt; Dear all,
+&gt; 
+&gt; Below is a draft agenda for the SBML Forum meeting May
+&gt; 11-12.  Please send us your priorities/comments/suggestions
+&gt; ASAP and we'll fix the timetable.  If you wish to give a
+&gt; short talk or announcement on some aspect of software for
+&gt; systems biology, please also let us know.
+&gt; 
+&gt; Outline of agenda (not necessarily in the final order):
+&gt; 
+&gt; * Organization of SBML standard development
+&gt; 
+&gt; * Standard submission to OMG LSR
+&gt; 
+&gt; * Relationship with I3C
+&gt; 
+&gt; * Tutorials on libSBML and MathSBML parser libraries
+&gt; 
+&gt; * Next workshop arrangements
+&gt; 
+&gt; * SBML L2 
+&gt;   	* agreement on final form
+&gt; 	* best practices
+&gt; 
+&gt; * Plans for publishing an article on SBML L2
+&gt; 
+&gt; * SBML L3
+&gt; 	model composition	
+&gt; 	arrays
+&gt; 	diagrams
+&gt; 	parameter sets
+&gt; 	feature sets
+&gt; 	complex species	
+&gt;  
+&gt; We think that the agenda will have all the L3 development on
+&gt; the 2nd day and all the other items on the first day.  Do
+&gt; you want the L3 discussion to occur in parallel sessions?
+&gt; Please let us know how we should prioritize the L3
+&gt; discussions.
+&gt; 
+&gt; Thanks,
+&gt; 
+&gt; Andrew Finney
+&gt; +44 (0)1452 722487
+&gt; from US - 011 44 1452 722487
+&gt; Systems Biology Workbench Development Group
+&gt; University of Hertfordshire, UK
+&gt; 
+&gt; 
+&gt; 
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00112" HREF="msg00112.html">Re: [sbml-discuss] Agenda items for SBML Forum 11-12th May</A></STRONG>
+<UL><LI><EM>From:</EM> Stefan Hoops &lt;shoops@vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00109.html">Re: [sbml-discuss] Agenda items for SBML Forum 11-12th May</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00111.html">Venue set for SBML Forum meeting</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00106.html">[sbml-discuss] Release notice: MathSBML 1.0.4</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00112.html">Re: [sbml-discuss] Agenda items for SBML Forum 11-12th May</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00110"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00110"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

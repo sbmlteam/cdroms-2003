@@ -1,0 +1,108 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] support for membranes -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Sat, 24 May 2003 17:18:43 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E40@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] support for membranes</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00312.html">Date Prev</A>][<A HREF="msg00314.html">Date Next</A>][<A HREF="msg00303.html">Thread Prev</A>][<A HREF="msg00316.html">Thread Next</A>][<A HREF="maillist.html#00313">Date Index</A>][<A HREF="threads.html#00313">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] support for membranes</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] support for membranes</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 24 May 2003 20:18:30 -0400</LI>
+<LI>Thread-Index: AcMiPJjBMBhM2QL0TqSOdHxIxa+sbwAFIWmQ</LI>
+<LI>Thread-Topic: [sbml-discuss] support for membranes</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+&gt; A membrane IS a compartment of the cell.
+BTW, this isn't necessarily true in SBML, and I tried to have
+this clarified in Florida. Beyond the obvious three-dimensional
+nature of the "volume" attribute, there is a question of the
+"units" attribute, in particular, the units of the units
+assigned to it. That is, is it legal to set "units" equal
+to a set of units that are not volumetric? Could I have:
+
+&lt;compartment name="PlasmaMembrane" volume="12" units="micronsSquared" /&gt;
+
+(assuming I had already defined "micronsSquared"), or even,
+
+&lt;compartment name="PlasmaMembrane" volume="12" units="becquerel" /&gt;
+
+or *must* they be some scaled version of litres?
+
+The proposed 1.2 spec is not clear on this, not only in the
+compartments discussion, but in other places as well; that is
+to say, no matter what the case is, it should be stated
+explicitly.
+
+John
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00316" HREF="msg00316.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+<UL><LI><EM>From:</EM> Nicolas Le Novere &lt;lenov@pasteur.fr&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00349" HREF="msg00349.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00312.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00314.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00303.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00316.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00313"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00313"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

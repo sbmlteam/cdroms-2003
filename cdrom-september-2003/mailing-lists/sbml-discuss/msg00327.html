@@ -1,0 +1,246 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] CAP capabilites controlled vocabulary SBML modularization -->
+<!--X-From-R13: "Xbret D. Irvzne" <X.IrvzneNgh&#45;of.qr> -->
+<!--X-Date: Mon, 26 May 2003 06:08:46 &#45;0700 -->
+<!--X-Message-Id: 3ED211BF.7070102@tu&#45;bs.de -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Reference: Pine.OSF.4.21.0305242302510.139912&#45;100000@electre.pasteur.fr -->
+<!--X-Reference: 3ED1FC24.9090203@tu&#45;bs.de -->
+<!--X-Derived: pdf00007.pdf -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] CAP capabilites controlled vocabulary SBML modulariza</TITLE>
+<LINK REV="made" HREF="mailto:J.Weimar@tu-bs.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00326.html">Date Prev</A>][<A HREF="msg00328.html">Date Next</A>][<A HREF="msg00326.html">Thread Prev</A>][<A HREF="msg00374.html">Thread Next</A>][<A HREF="maillist.html#00327">Date Index</A>][<A HREF="threads.html#00327">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] CAP capabilites controlled vocabulary SBML modularization</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] CAP capabilites controlled vocabulary SBML modularization</LI>
+<LI><em>From</em>: &quot;Joerg R. Weimar&quot; &lt;<A HREF="mailto:J.Weimar@tu-bs.de">J.Weimar@tu-bs.de</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 26 May 2003 15:08:15 +0200</LI>
+<LI><em>Organization</em>: TU Braunschweig</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Following the suggestion of Nicolas LE NOVÈRE, I have added the 
+modularization as another possibility to structure the capabilities
+of SBML models and tools:
+
+
+
+
+
+\subsection{Modularization}
+Some of the issues in this proposal could be resolved by a systematic
+modularization of SBML anolng the lines of XHMTL modularization
+(see <A  HREF="http://www.w3.org/TR/xhtml2/">http://www.w3.org/TR/xhtml2/</A> ).
+
+This modularization could first define a core module, and then add
+elements or attributes to the core to extend the functionality. It is not
+clear that all possible combinations of properties and features could be
+specified in this way, but I think most can.
+
+A separate issue is how a model would state which modules it uses, and
+similarly for a tool to state which modules it can handle.
+
+
+\subsection{Modularization of SBML}
+As an example, consider the following modularization of SBML level 1:
+
+
+SBML L1V2 Base module
+Models using only this base have the following properties:
+
+No compartments (1 compartment with unit volume)
+No units (all units in litre, mole, second, and combinations thereof or
+otherwise consistent)
+No parameters
+No rules
+No rate laws!
+Integer stoichiometry
+
+Models which only need the base module could be used by tools that do
+stoichiometric analyses, since they don't need any other information.
+
+Note that I would have liked to leave out the initialAmount, but then 
+the result is not SBML L1 conformant.
+
+
+\begin{verbatim}
+SBML Base module
+
+SBase
+---------------
+(no attributes)
+
+Model extends SBase
+-------------------
+name : SName {use="optional"}
+species: Species [0..*]
+reaction: Reaction [0..*]
+
+Species extends SBase
+---------------------
+name: SName
+initialAmount: double
+
+Reaction extends SBase
+----------------------
+name: SName
+reactant: SpecieReference [0..*]
+product: SpecieReference [0..*]
+
+SpeciesReference extends SBase
+-----------------------------
+species: SName
+stoichiometry: integer {use="default" value="1"}
+\end{verbatim}
+
+
+An extension to use compartments would add the following, which make
+the compartment not optional, but required in the species.
+
+\begin{verbatim}
+SBML Compartment module extends Base module
+
+Compartment extends SBase
+-------------------------
+
+Model extends SBase
+-------------------
+compartment: Compartment [1..*]
+
+Compartment extends SBase
+-------------------------
+name: SName
+volume: double {use=default value = "1"}
+outside: SName {use="optional"}
+
+Species extends SBase
+---------------------
+compartment: SName
+\end{verbatim}
+
+A separate extension could be specified to allow notes:
+
+\begin{verbatim}
+SBML Notes module extends Base module
+
+SBase
+---------------
+notes: (XHTML)
+\end{verbatim}
+
+Another extension is to allow kinetic rate laws (but no parameters yet).
+This is formulated here so that if the module is used, then all 
+reactions must have a kineticLaw. It is also possible that partial 
+models are useful (I know about work on hybrid static/dynamic models).
+
+\begin{verbatim}
+SBML RateLaw module extends Base module
+
+Reaction extends SBase
+----------------------
+kineticLaw: KineticLaw
+
+KineticLaw extends SBase
+------------------------
+formula: string
+\end{verbatim}
+
+
+\begin{verbatim}
+SBML GlobalParameters module extends Base module
+
+Model extends SBase
+------------------------
+parameter: Parameter [0..*]
+
+Parameter extends SBase
+-----------------------
+name : SName
+value: double {use="optional"}
+\end{verbatim}
+
+All modules would need more description about the semantics. Some 
+modules would consist entirely of secriptions, such as the module for 
+predefined mathematical functions, or the module for predefined rate law 
+functions.
+
+A module for units would add the units attribute at many elements, even
+ones that are not present on the other modules used. For example a model
+that needs units and rateLaws, but still assumes a standard compartment
+of volume 1 would need the Base module, the RateLaw module, and the 
+Units module, but not the Compartment module. Still, the Units module 
+would specify the units attribute for a compartment. One would have to 
+state that extensions to elements that do not exist are to be ignored.
+
+
+-- 
+PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, TU-Braunschweig
+J.Weimar@tu-bs.de, <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+Tel. +49-531-391-3006  Mail: D-38092 Braunschweig
+
+</PRE>
+<P><A HREF="pdf00007.pdf" >capabilities.pdf</A></P>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00307" HREF="msg00307.html">Re: [sbml-discuss] compliance with portions of SBML</A></STRONG>
+<UL><LI><EM>From:</EM> Nicolas Le Novere &lt;lenov@pasteur.fr&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00326" HREF="msg00326.html">Re: [sbml-discuss] CAP capabilites controlled vocabulary</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00326.html">Re: [sbml-discuss] CAP capabilites controlled vocabulary</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00328.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00326.html">Re: [sbml-discuss] CAP capabilites controlled vocabulary</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00374.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00327"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00327"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

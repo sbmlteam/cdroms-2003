@@ -1,0 +1,261 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] conclusions of 6th Workshop on Software Platforms for Systems Biology &#45; Stockholm December 2002 -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Fri, 20 Dec 2002 02:29:55 &#45;0800 -->
+<!--X-Message-Id: 000201c2a812$9554b730$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Derived: doc00000.doc -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] conclusions of 6th Workshop on Software Platforms for Sys</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00036.html">Date Prev</A>][<A HREF="msg00057.html">Date Next</A>][<A HREF="msg00036.html">Thread Prev</A>][<A HREF="msg00057.html">Thread Next</A>][<A HREF="maillist.html#00037">Date Index</A>][<A HREF="threads.html#00037">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] conclusions of 6th Workshop on Software Platforms for Systems Biology - Stockholm December 2002</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;,  &quot;'Biospice Model Definition Language'&quot; &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] conclusions of 6th Workshop on Software Platforms for Systems Biology - Stockholm December 2002</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 20 Dec 2002 10:28:33 -0000</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+		     Conclusions of the
+6th Workshop on Software Platforms for Systems Biology Meeting
+		12th December 2002 Stockholm
+
+We would like to begin by thanking everyone who attended the workshop
+in Stockholm.  It was an exciting and successful event.
+
+The rest of this message is a summary of the main
+conclusions we believe were reached during the meeting. Attached also
+are minutes of the meeting, typed up by Maria Schilstra.
+
+============================================================
+SBML Level 2
+============================================================
+
+Initial conditions
+------------------
+(This includes species initial concentration, compartment volume and
+parameter values)
+
+These will all be optional, with missing values implying
+that the value is undefined (rather than taking on some default).
+Therefore, these will not have default values assigned.
+
+
+Parameter Sets
+--------------
+
+Parameter sets will be defined as a separate standard.  In
+use, parameter set definitions will "point to" or reference models.
+This will allow a single model to be parameterized according to many
+parameter sets.
+
+We hereby seek proposals for parameter set representations.
+
+
+Use of annotation/notes (SBase derivation)
+------------------------------------------
+The 'annotation' and 'notes' elements will be made
+applicable to 'listOf*' and 'sbml' elements.  This will
+require a modification to the UML-&gt;XML Schema mapping; the exact
+form of the modification has not yet been determined.
+
+
+Features described in appendix of draft standard
+------------------------------------------------
+The attending members decided that the appendix in the draft
+specification document (i.e., events, delays and default compartment
+definition) should be adopted for SBML Level 2.
+
+
+Controlled vocabularies for classification of rules and functions
+-----------------------------------------------------------------
+There was no clear consensus on this issue. (See comments below.)
+
+
+Flux bounds
+-----------
+There was no clear consensus on this issue. (See comments below.)
+
+
+"Best Practices" Document
+-------------------------
+People requested the development of guidelines for how SBML
+is intended to be used.  Basically, the problem is that
+models can be encoded in a variety of ways, and even if two tools
+speak SBML, they still may not be able to use each other's models if
+their "style" of encoding models is sufficiently different from each
+other.  The guidelines would take the form of a document giving rules
+about how to encode different classes of models and generally
+describing best-practices recommendations for SBML's use.  Mike Hucka
+and Andrew Finney will write it initially.  It will be reviewed in the
+same way as the standard draft itself.
+
+
+============================================================
+SBML Level 3
+============================================================
+
+Model Composition
+-----------------
+The group decided to rename "modularity" to "composition",
+to make it more clear that this issue deals with composing models out
+of submodels, and also because "modularity" is a term used in XML
+standards to refer to modular representations (e.g., see the XHTML
+modularization page at
+<A  HREF="http://www.w3.org/TR/2002/WD-xhtml-m12n-schema-20021209/">http://www.w3.org/TR/2002/WD-xhtml-m12n-schema-20021209/</A>).
+
+Martin Ginkel will write a revised proposal for composition, hopefully
+in time for discussions before the next meeting.
+
+
+Encoding Stochastic Math for Reactions
+--------------------------------------
+A number of people need to work with stochastic models, and they have
+requested a mechanism for defining the effect of reactions in a
+stochastic form as opposed to the existing rate-law form used in SBML
+L1 and L2.
+
+We hereby seek proposals for how to do this.
+
+
+========================================
+Formalizing the SBML Development Process
+========================================
+
+Mike and Andrew proposed to make the SBML development
+process more formalized, transparent, and open, and engaging more
+members of the community.  As an initial step, we proposed incorporating
+elements of the W3C's "Working Groups" mechanisms.  We will send a more
+detailed proposal about this to the mailing lists soon.
+
+We also want to take a moment to clarify the motivations for the process
+standardization proposal, because comments at the meeting and in the
+days
+following it made it clear that people were left confused.
+
+Our motivation for formalizing the SBML development process
+is *not* that we intend to remove ourselves from SBML development.  We
+plan on remaining involved in the development of SBML for the
+foreseeable
+future.  Our motivation is instead to ensure that the process is
+transparent and is capable of producing standards that are useful to the
+community.  We specifically do not want people to perceive SBML as being
+'owned' by the SBW development group -- we want it to be a resource that
+the entire community feels it owns.
+
+We are in the process of applying for funding for our
+continued involvement in the SBML development process.  We anticipate
+(subject the community's approval) being founding members of any SBML
+development committee that results from the process formalization step,
+for an initial term, as well as providing organization, documentation
+and software services as an SBML 'team' analogous to the W3C team.
+
+=================================================
+Incorporation of Controlled Vocabularies into SBML
+=================================================
+
+Several people voiced a desire that controlled vocabularies
+be used to classify various types of objects in SBML; for example, for
+classifying a function as a rate law or rule as a mass conservation
+rule.
+However, there did not appear to be a clear consensus about how to go
+about doing this.
+
+We think the following issues motivate the cautious greeting that this
+proposal received:
+
+* The features would add very limited information to a model
+
+* Controlled vocabularies typically have the following features:
+  - They are not stable and require curation
+
+  - They require clear documentation for the classification
+    system to work
+
+  - They can become inconsistent in the large
+
+We suggest the following:
+
+a) Groups who wish to exchange models containing a
+   controlled vocabulary should use annotations to achieve
+   this.
+
+b) These groups should document in detail the annotations
+   for consideration for adoption into SBML or a related
+   standard.  This will probably require demonstration of
+   wide-spread need and a commitment to maintain the
+   vocabulary.
+
+c) In the longer term, we should consider creating linkages
+   between SBML and separate associated standards for these
+   controlled vocabularies.
+
+============================================================
+
+yours
+
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+Systems Biology Workbench Development Group
+California Institute of Technology / University of Hertfordshire 
+</PRE>
+<P><A HREF="doc00000.doc" >Notes revised.doc</A></P>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00036.html">RE: [sbml-discuss] Copyrights, Patents, and SBML</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00057.html">[sbml-discuss] Announcement: SBML model repository is up</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00036.html">RE: [sbml-discuss] Copyrights, Patents, and SBML</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00057.html">[sbml-discuss] Announcement: SBML model repository is up</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00037"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00037"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

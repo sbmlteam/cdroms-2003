@@ -1,0 +1,115 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] DWG: basic question -->
+<!--X-From-R13: Eira Enuyr <fnuyrNrzy.bet> -->
+<!--X-Date: Wed, 4 Jun 2003 05:17:16 &#45;0700 -->
+<!--X-Message-Id: 200306041455.55095.sahle@eml.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] DWG: basic question</TITLE>
+<LINK REV="made" HREF="mailto:sahle@eml.org">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00414.html">Date Prev</A>][<A HREF="msg00416.html">Date Next</A>][<A HREF="msg00414.html">Thread Prev</A>][<A HREF="msg00433.html">Thread Next</A>][<A HREF="maillist.html#00415">Date Index</A>][<A HREF="threads.html#00415">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] DWG: basic question</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] DWG: basic question</LI>
+<LI><em>From</em>: Sven Sahle &lt;<A HREF="mailto:sahle@eml.org">sahle@eml.org</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 4 Jun 2003 14:55:55 +0000</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I am still trying to understand what different people expect from the sbml 
+layout definition.
+
+In our suggestion we have graphical representations of the different  objects 
+in the model. In our case this was one representation for each reaction, 
+speciesreference, and compartment; and possibly several representations for 
+every species. 
+John said in a recent mail that he wanted several possible representations for 
+all objects in the model. That makes sense.
+So far this would still maintain that every graphical object refers to exactly 
+one object in the model.
+(if we allow multiple representations of species references this also solves 
+the problem that we might want to visualize A-&gt;B with catalyst M as A+M-&gt;B+M; 
+we still think that an arc in a reaction is the graphical representation of a 
+speciesreference)
+
+
+I guess some people would like to be more flexible and allow graphical objects 
+that do not refer to a specific object in the model. 
+
+The overall difference would be that in the first case we would define a 
+layout *for* a specific model. In the second case we would define a rather 
+general layout parts of which may have a relation to the model.
+(in the implementation that means that the field in the graphical objects that 
+contains the id of a model object ist mandatory in the first case and 
+optional in the second)
+
+So does someone have the need to store layout objects that do not 
+correspondent to any object in the model?
+
+Sven
+
+ps: I think we really should  give the species references an ID as soon as 
+possible
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00433" HREF="msg00433.html">Re: [sbml-discuss] DWG: basic question</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00414.html">Events</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00416.html">[sbml-discuss] SBML Level 2 specification final draft available</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00414.html">Events</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00433.html">Re: [sbml-discuss] DWG: basic question</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00415"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00415"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

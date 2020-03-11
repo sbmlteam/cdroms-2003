@@ -1,0 +1,334 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: FW: [sbml&#45;discuss] Arrays Working Group -->
+<!--X-From-R13: Bbhy @vryfra <c.avryfraNnhpxynaq.np.am> -->
+<!--X-Date: Thu, 22 May 2003 01:43:14 &#45;0700 -->
+<!--X-Message-Id: 60C86892&#45;8C31&#45;11D7&#45;8EBC&#45;00306575E512@auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000901c31f08$88ba5c60$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: FW: [sbml-discuss] Arrays Working Group</TITLE>
+<LINK REV="made" HREF="mailto:p.nielsen@auckland.ac.nz">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00203.html">Date Prev</A>][<A HREF="msg00205.html">Date Next</A>][<A HREF="msg00171.html">Thread Prev</A>][<A HREF="msg00209.html">Thread Next</A>][<A HREF="maillist.html#00204">Date Index</A>][<A HREF="threads.html#00204">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: FW: [sbml-discuss] Arrays Working Group</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: FW: [sbml-discuss] Arrays Working Group</LI>
+<LI><em>From</em>: Poul Nielsen &lt;<A HREF="mailto:p.nielsen@auckland.ac.nz">p.nielsen@auckland.ac.nz</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 20:42:53 +1200</LI>
+<LI>Cc: Poul Nielsen &lt;<A HREF="mailto:p.nielsen@auckland.ac.nz">p.nielsen@auckland.ac.nz</A>&gt;, &quot;SBML&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Dear all
+
+One of the things that we should keep in mind is how such concepts as 
+'arrays' or other collections mesh in with the rest of the language 
+components. Given that MathML is currently used to specify 
+relationships between SBML variables, and given that MathML already 
+defines a useful set of collections (vectors, matrices, sets, lists) 
+that are well integrated with the rest of the MathML language, I would 
+strongly suggest that careful consideration be given to using MathML 
+collections as the model for SBML collections. I believe that a 
+one-to-one correspondence between MathML and SBML collection constructs 
+would greatly ease the meshing of collections in SBML.
+
+As I mentioned in the Fort Lauderdale talk, these ideas may not be 
+sensible to discuss in isolation from the more general notion of 
+introducing typing or classing mechanisms into the language. But that 
+is an even bigger problem to tackle...
+
+Best wishes
+Poul
+
+On Wednesday, May 21, 2003, at 07:46 Pacific/Auckland, Andrew Finney 
+wrote:
+
+&gt; FYI...
+&gt;
+&gt; -----Original Message-----
+&gt; From: Steve Burbeck [<A  HREF="mailto:sburbeck@us.ibm.com">mailto:sburbeck@us.ibm.com</A>]
+&gt; Sent: 20 May 2003 20:12
+&gt; To: Andrew Finney
+&gt; Subject: Re: [sbml-discuss] Arrays Working Group
+&gt;
+&gt; Andrew,
+&gt;
+&gt; I'd like to participate in the "Arrays" working group, although I would
+&gt; prefer it be called the "Collections" working group so as not to
+&gt; prejudge the answer to your question about whether they should allow
+&gt; Sets, Bags, OrderedCollections, Sorted Collections, Dictionaries, etc.
+&gt;
+&gt; My own view, which is biased by my experience doing simulations in
+&gt; Smalltalk rather than C, is that Arrays improperly mix three separate
+&gt; concepts: collections, indexing and iteration.
+&gt;
+&gt; - The Collection concept provides the ability to refer to a bunch 
+&gt; (i.e.,
+&gt; collection) of elements as "one thing,"  typically when the program
+&gt; needs to pass the whole bunch at once, e.g., as an argument, to some
+&gt; function.
+&gt;
+&gt; - The indexing concept is about how to refer to a particular element.
+&gt; In many cases, especially when the collection contains elements that 
+&gt; are
+&gt; distributed evenly in space or time, naming the elements with an 
+&gt; integer
+&gt; is exactly what you want to do.  But when the natural organization of
+&gt; the elements is not isomorphic to a one-dimensional physical axis with
+&gt; evenly spaced elements, integers become cryptic and arbitrary names 
+&gt; that
+&gt; don't offer much modeling power.  So, for example, a Dictionary is a
+&gt; collection in which names (or keys) other than integers can be used.
+&gt; [note, the implementation of a dictionary is usually a relatively 
+&gt; sparse
+&gt; array in which the names are converted to indices by a hash function]
+&gt;
+&gt; - The iteration concept is about the order in which a program wishes to
+&gt; access, store, or modify the elements, usually with the implicit
+&gt; understanding that all elements are to be dealt with.  For example, in
+&gt; an OrderedCollection, iteration is intended to start at the first
+&gt; element and proceed successively to the end (or sometimes backwards 
+&gt; from
+&gt; last to first).  In a SortedCollection, the intent is to start with the
+&gt; smallest element (not smallest index) and proceed to the largest 
+&gt; (again,
+&gt; one may want to go backwards).  Other kinds of collection (e.g., Set or
+&gt; Bag) explicitly ignore order, i.e., they explicitly assert that the
+&gt; order of iteration is undefined or irrelevant.
+&gt;
+&gt; At the implementation level, when a simulation is running,  arrays are
+&gt; almost always the implementation of choice.  SBML, however, is a model
+&gt; description language quite separate from the simulation.  It seems to 
+&gt; me
+&gt; that modelers might like to be able to make richer or more nuanced
+&gt; statements about indexing and iteration than those allowed by Arrays.
+&gt; They may want to index elements by names rather than integers.  They 
+&gt; may
+&gt; want to indicate that the order in which the elements appear in the XML
+&gt; text is, or is not, important.  They may want to indicate that 
+&gt; iteration
+&gt; should proceed in a sort order, e.g., smallest to largest, however the
+&gt; elements appear in the list of XML.  And so forth.  Thus, if SBML
+&gt; allowed collection tags other than Array, the modeler could use them to
+&gt; indicate to the consumer of the model whether the order of elements in
+&gt; the list is important or not. If it allowed Dictionaries, one could use
+&gt; /key and /value tags to name elements rather than referring to them 
+&gt; with
+&gt; some arbitrary integer.
+&gt;
+&gt; Regards,
+&gt; Steve Burbeck, Ph.D.
+&gt; Senior Technical Staff Member
+&gt; IBM Life Sciences
+&gt; Member, IBM Academy of Technology
+&gt; T/L444-0732, (919)254-0732
+&gt;
+&gt; _______________  Multi-cellular Computing _______________
+&gt;
+&gt; In the 20th century we sought to create ever more capable computers. 
+&gt; Now
+&gt; we seek to create ever more elegant groups of collaborating computers.
+&gt; We recapitulate the biological evolution from single-cell to multi-cell
+&gt; organisms.
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;                       "Andrew Finney"
+&gt;
+&gt;                       &lt;afinney@cds.caltech.ed        To:
+&gt; &lt;sbml-discuss@caltech.edu&gt;
+&gt;
+&gt;                       u&gt;                             cc:
+&gt;
+&gt;                       Sent by:                       Subject:
+&gt; [sbml-discuss] Arrays Working Group
+&gt;
+&gt;                       owner-sbml-discuss@its.
+&gt;
+&gt;                       caltech.edu
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;                       05/20/2003 12:31 PM
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt; Charter of the SBML Arrays Working Group
+&gt; ----------------------------------------
+&gt;
+&gt; Background
+&gt;
+&gt; At the recent SBML forum meeting in Florida it was decided to setup
+&gt; working groups to develop proposals for incorporation into SBML.
+&gt; Several people at the meeting signed up to a working group to develop a
+&gt; proposal for arrays in SBML
+&gt;
+&gt; Mission Statement and Scope
+&gt;
+&gt; Definition of an extension to SBML to allow the construction
+&gt; of models from homogeneous collections of objects.  Attributes of these
+&gt; objects can vary systematically across these collections.
+&gt;
+&gt; Any viable proposal must:
+&gt;
+&gt; - support a mechanism for describing the connections between array
+&gt; elements
+&gt; - be compatible with other proposals in particular model composition 
+&gt; and
+&gt; dynamic structures
+&gt;
+&gt; Main issues to resolve:
+&gt;
+&gt; - What objects can occur in these collections?
+&gt; - What is the correct mechanism for defining collections?
+&gt;              for example should we consider sets, bags etc as
+&gt; alternatives
+&gt;              to arrays.
+&gt; - Do we need syntactic sugar to simplify the use of or compress the
+&gt; encoding of arrays?
+&gt; - Should a function for defining the sparseness of an array be dynamic
+&gt;              (vary during simulation)?
+&gt;
+&gt; Termination criterion:
+&gt;
+&gt;    Arrays is included into the SBML Level 3
+&gt;
+&gt;    or
+&gt;
+&gt;    The idea is considered as nonsense for Systems-Biology and dropped
+&gt;    from the SBML Agenda
+&gt;
+&gt;    Timeframe: I expect a working proposal and first reference
+&gt;    implementations for the next SBML Forum Meeting in
+&gt;    Nov 2003 S. Louis
+&gt;
+&gt; Deliverables:
+&gt;
+&gt;    - a Array proposal for incorporation into SBML L3
+&gt;    - a reference implementation that can read and write the proposed
+&gt; standard including L2 in a
+&gt;      useful software context
+&gt;    - at least one published model encoded in the proposal
+&gt;    - optional: a tool that can translate from the proposed standard
+&gt; including SBML L2 to
+&gt;      unextended SBML L2.
+&gt;
+&gt; Chair and Contact:
+&gt;
+&gt;   Andrew Finney
+&gt;   afinney@cds.caltech.edu
+&gt;   +44 (0)1452 722487
+&gt;   from US - 011 44 1452 722487
+&gt;   University of Hertfordshire, UK
+&gt;
+&gt;   Postal address:
+&gt;   Church Cottage
+&gt;   Church Lane
+&gt;   Moreton Valence
+&gt;   Gloucestershire
+&gt;   GL2 7NB
+&gt;   United Kingdom
+&gt;
+&gt;   Co-Chair open to volunteers.
+&gt;
+&gt; To Join please email the Chair.
+&gt;
+&gt; Current members:
+&gt;
+&gt; Martin Ginkel - Max Planck Institute - ginkel@mpi-magdeburg.mpg.de Mike
+&gt; McCollum - University of Tennessee - jmccoll2@utk.edu Greg Peterson -
+&gt; University of Tennessee - gdp@utk.edu Jonathan Webb - BBN -
+&gt; jwebb@bbn.com Vijay Saraswat - Penn State University -
+&gt; saraswat@cse.psu.edu Ben Bornstein - JPL - bornstein@aig.jpl.nasa.gov
+&gt; Poul Neilsen - University of Auckland - p.neilsen@auckland.ac.nz
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+
+Poul Nielsen
+Bioengineering Institute
+University of Auckland
+New Zealand
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00209" HREF="msg00209.html">RE: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00171" HREF="msg00171.html">FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00203.html">Re: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00205.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00171.html">FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00209.html">RE: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00204"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00204"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

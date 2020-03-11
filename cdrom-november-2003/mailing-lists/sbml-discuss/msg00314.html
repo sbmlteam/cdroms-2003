@@ -1,0 +1,124 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Changing the units of initial amounts -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Sat, 24 May 2003 17:44:13 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD3759B@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Changing the units of initial amounts</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00313.html">Date Prev</A>][<A HREF="msg00315.html">Date Next</A>][<A HREF="msg00211.html">Thread Prev</A>][<A HREF="msg00325.html">Thread Next</A>][<A HREF="maillist.html#00314">Date Index</A>][<A HREF="threads.html#00314">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Changing the units of initial amounts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Changing the units of initial amounts</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 24 May 2003 20:44:01 -0400</LI>
+<LI>Thread-Index: AcMhEx/uVvfvCFBFQmGh45596A5yuQBQZk8g</LI>
+<LI>Thread-Topic: [sbml-discuss] Changing the units of initial amounts</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+&gt;
+&gt; it is important to use concentrations as initial
+&gt; values, since otherwise all initial conditions need
+&gt; to change.
+&gt; ...
+&gt; formula="cell * (Vm * S0)/(Km + S0) "
+&gt;
+There is still a huge hole in the reaction rate
+thing if the rate law's net units are allowed to
+be substance/volume/time, because there is only
+one well-defined way to interpret the volume
+inherent in the rate, and that is in terms of
+"total volume of all compartments". Thus, changing
+any volumes at all would mean that rate constants
+have to be changed as well. That is to say, in
+your
+&gt; formula="cell * (Vm * S0)/(Km + S0) "
+the only way to allow such a formulation is if
+Vm is in terms of total volume (the sum of the
+volumes of all compartments), which is obviously
+why you had to multiply by "cell".
+
+And that is to say that, while in your approach
+you don't have to change initial conditions, you
+instead have to change reaction rates (like Vm
+in your example).
+
+&gt; I disagree with Nicholas who wants to remove the
+&gt; two different units used for the species id by
+&gt; making a species id in a rate law represent
+&gt; amout, not concentration.
+I'm with Nicolas on this one, unless someone can
+see a way around it. All I know is, it's far
+superior if the overall units of rate laws are
+substance/time, since that always works independent
+of which compartments species are in.
+
+John
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00325" HREF="msg00325.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00338" HREF="msg00338.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00313.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00315.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00211.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00325.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00314"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00314"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

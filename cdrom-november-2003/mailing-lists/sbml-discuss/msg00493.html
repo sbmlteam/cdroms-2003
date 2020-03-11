@@ -1,0 +1,214 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] [Hybrid] Re: Hybrid Models Working Group -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Mon, 16 Jun 2003 15:33:49 &#45;0700 -->
+<!--X-Message-Id: 1055802757.4051.288.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000201c32e73$d3b30f30$458cc593@herts.ac.uk -->
+<!--X-Reference: 3EEE346A.2010904@cse.psu.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00492.html">Date Prev</A>][<A HREF="msg00494.html">Date Next</A>][<A HREF="msg00491.html">Thread Prev</A>][<A HREF="msg00495.html">Thread Next</A>][<A HREF="maillist.html#00493">Date Index</A>][<A HREF="threads.html#00493">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Vijay Saraswat &lt;<A HREF="mailto:saraswat@cse.psu.edu">saraswat@cse.psu.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 17 Jun 2003 07:32:37 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>, <A HREF="mailto:m.j.1.schilstra@herts.ac.uk">m.j.1.schilstra@herts.ac.uk</A>,  &quot;'Ed Frank'&quot; &lt;<A HREF="mailto:efrank@mcs.anl.gov">efrank@mcs.anl.gov</A>&gt;,  &quot;'Takeshi Sakurada'&quot; &lt;<A HREF="mailto:sakurada@sfc.keio.ac.jp">sakurada@sfc.keio.ac.jp</A>&gt;,  &quot;'Mike McCollum'&quot; &lt;<A HREF="mailto:jmccoll2@utk.edu">jmccoll2@utk.edu</A>&gt;, &quot;'Greg Peterson'&quot; &lt;<A HREF="mailto:gdp@utk.edu">gdp@utk.edu</A>&gt;,  &quot;'Stefan Hoops'&quot; &lt;<A HREF="mailto:shoops@vt.edu">shoops@vt.edu</A>&gt;, &quot;'Tom Kiehl'&quot; &lt;<A HREF="mailto:kiehl@research.ge.com">kiehl@research.ge.com</A>&gt;,  <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi Vijay,
+
+
+&gt; I would be quite interested in whether the theory of this book can 
+&gt; usefully characterize the other sys biology systems currently being built.
+
+I don't have a clear answer to this, because I didn't explore the possibility of
+adopting his DEVS theory itself to cell biology simulation.    
+(A funny story actually is that I re-invented 'a sort of' discrete event simulation
+ scheme two years ago, without knowing there are efforts to extend it for
+ 'hybrid' simulation.   I happened to know that some months later..  :)
+ 
+But I think there are some works ongoing for systems biology.
+I remember I saw a poster that uses Zeigler's DEVS for T-cell response analysis
+in the previous ICSB.   I think it is still on the web.. maybe this one:
+<A  HREF="http://www.ki.se/icsb2002/pdf/ICSB_88-89.pdf">http://www.ki.se/icsb2002/pdf/ICSB_88-89.pdf</A>
+Seems like they treat discrete state transitions, but it is stochastic.
+
+
+You may better understand the whole picture than me on this sort of things.
+
+
+regards,
+-Kouichi
+
+
+&gt; I have followed the book a little bit. This is certainly in the 
+&gt; framework of "Hybrid Systems" that combine discrete and continuous 
+&gt; system evolution. It should certainly be considered seriously.
+&gt; 
+&gt; I do not have an overall assessment of the work yet; the parts that I 
+&gt; have seen (e.g. the definition of DEVS in Chapter 4) do not seem very 
+&gt; encouraging. I dont think there are structural problems with their work 
+&gt; -- its just that a lot of obvious material takes up a lot of pages 
+&gt; (thats just a matter of opinion and taste). A number of critical issues 
+&gt; have been glossed over (at least in Chapter 4) --- e.g. are infinite 
+&gt; sequences of instantaneous transitions allowed? (Ah, I see this is 
+&gt; convered in Chapter 6.2.3, p 141). Why are DEVS not required to be 
+&gt; effectively given ...e.g. the state transition function is defined over 
+&gt; an uncountable set!?  What happens when an external event occurs at the 
+&gt; very same time as an internal transition (ah -- I see.. on page 90 they 
+&gt; introduce a "confluent" transition to handle this problem..this is 
+&gt; messy!!)?  Why does the system output a value only when it undergoes an 
+&gt; internal transition? Combined with the possibility that there can be an 
+&gt; infinite sequence of instantaneous transitions, we have the possibility 
+&gt; of infinite instantaneous output!?! Why are there no continuously 
+&gt; changing state variables -- e.g. as defined by differential 
+&gt; equations?(Ah, looking ahead I see this shows up in Chapter  In fact 
+&gt; this implies that there is no notion of transitions because of state 
+&gt; variables reaching a threshold!  Why does the coupling version (P 86) 
+&gt; not allow feedback loops? The coupled definition is just plain messy 
+&gt; (and also sloppy! Where is X_p defined? is p a port? How is X_p related 
+&gt; to X_d?) Where is the semantics of the select function defined? The 
+&gt; distinction between the parallel and non-parallel version seems just 
+&gt; plain messy.
+&gt; 
+&gt; (The book does not appear to have been proof-read well. Chapter 6 is 
+&gt; missing the bibliography ("Sources") even though it has citations. 
+&gt; Another definite drawback of this book is a lack of realistic examples. 
+&gt; Most examples are quite abstract and mathematical, instead of being 
+&gt; drawn from concrete engineering experience, say, which would also 
+&gt; highlight the connection with real systems analysis and modeling. The 
+&gt; lack of a specific *language* for defining systems is a definite drawback.)
+&gt; 
+&gt; Now it is quite possibly that some of these limitations are removed in 
+&gt; subsequent chapters (indeed, skipping ahead, it appears that they 
+&gt; are...). But this points to a problem with the spiral pedagogical style 
+&gt; of this book (from a researcher's point of view, as opposed to a 
+&gt; student)... one has to go look at the whole book to get an idea of their 
+&gt; overall system, as opposed to say, a chapter, where the system is 
+&gt; formally defined, its theoretical properties collected etc etc. Anyway, 
+&gt; that is just to say that for me to understand their theoretical model is 
+&gt; going to take some time. If anyone else has already worked out the 
+&gt; answers to the questions above, I would be much obliged if they can 
+&gt; enlighten me/us.
+&gt; 
+&gt; To relate HCC to the terms introduced in this book, HCC is actually a 
+&gt; *language* (built from a very few primitives) that can be used for 
+&gt; modular "multicomponent differential equation systems specifications" 
+&gt; (Chapter 7.6, page 169). However, HCC is built on logic and constraints, 
+&gt; rather than on "systems theory", so the mappings are not that clear (at 
+&gt; least at first shot). A lot of the distinctions introduced in the book 
+&gt; do not seem to be relevant in the case of HCC -- for instance,  input 
+&gt; and output are symmetric in HCC (both correspond to imposition of 
+&gt; constraints); there is no separation between internal and external 
+&gt; transitions. HCC is already closed under parallel composition 
+&gt; (conjunction), so there is no need for a distinction between "parallel 
+&gt; DEVS" and "classical DEVS".  Systems can be "multicomponent" and 
+&gt; "networked" -- this is just another way of saying that they are closed 
+&gt; under parallel composition (that is, a parallel composition of systems 
+&gt; is just another system, hence this operation can be iterated repeatedly 
+&gt; to obtain a hierarchically defined system).
+&gt; 
+&gt; I would be quite interested in whether the theory of this book can 
+&gt; usefully characterize the other sys biology systems currently being built.
+&gt; 
+&gt; For the relevance of hybrid systems to systems biology, I would still 
+&gt; recommend the three papers I cited in an earlier message rather than 
+&gt; this book.
+&gt; 
+&gt; &gt;time being I'll assume that Zeigler et al. have done a good analysis of
+&gt; &gt;the process of modelling &amp; simulation, and use what I've learned from
+&gt; &gt;the book so far.
+&gt; &gt;
+&gt; &gt;To get back to your email, Ed, Zeigler et al. distinguish 3 types
+&gt; &gt;(formalisms) of dynamic model specification (as opposed to e.g. object
+&gt; &gt;modelling, in which there is no concept of time): the Discrete Time
+&gt; &gt;
+&gt; This is a glaring bunder in the first five pages of this book, which can 
+&gt; do much harm to readers who may not know better. The whole area of 
+&gt; synchronous programming is about computation with a built-in notion of 
+&gt; time (discrete and continuous).
+&gt; 
+&gt; &gt;(DTSS), Differential Equation (DESS), and Discrete Event (DEVS) System
+&gt; &gt;Specifications. DESS includes ODE and PDE descriptions. DTSS includes
+&gt; &gt;things such as cellular automata (which are updated as a whole in a unit
+&gt; &gt;'time' step). I think (but I'm not entirely sure) that DEVS includes
+&gt; &gt;stochastic models (in which possible state transitions have certain
+&gt; &gt;probabilities), but also threshold models (in which a state transition
+&gt; &gt;occurs when a certain parameter crosses a given threshold). Have I
+&gt; &gt;understood this correctly?
+&gt; &gt;  
+&gt; &gt;
+&gt;  DEVS at least as in Chpater 4 do not appear to include stochastic 
+&gt; models or "threshold" models.
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00491" HREF="msg00491.html">[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Vijay Saraswat &lt;saraswat@cse.psu.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00492.html">[sbml-discuss] [Hybrid] [Fwd: Re: Hybrid Models Working Group]</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00494.html">RE: [sbml-discuss] SBML Level 2 specification final draft available</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00491.html">[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00495.html">[sbml-discuss] RE: [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00493"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00493"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

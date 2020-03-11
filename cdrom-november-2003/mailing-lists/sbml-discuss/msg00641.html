@@ -1,0 +1,351 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG: Revised Proposal -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Mon, 22 Sep 2003 04:37:10 &#45;0700 -->
+<!--X-Message-Id: 000001c380fd$417bf5f0$7131353e@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: B1FA1F6B&#45;EA81&#45;11D7&#45;B9A3&#45;000A95776A76@eml&#45;r.villa&#45;bosch.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG: Revised Proposal</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00640.html">Date Prev</A>][<A HREF="msg00642.html">Date Next</A>][<A HREF="msg00636.html">Thread Prev</A>][<A HREF="msg00642.html">Thread Next</A>][<A HREF="maillist.html#00641">Date Index</A>][<A HREF="threads.html#00641">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG: Revised Proposal</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG: Revised Proposal</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 22 Sep 2003 12:32:42 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Ralph
+
+Thanks for your proposal.
+
+Comments:
+
+The separation of layout from rendering provide us
+with a mechanism for encoding a style sheet
+approach to rendering given that more than one SBML
+component, e.g. species, can refer to the same render group.
+
+I suggest that we consider having default render group identification
+mechanism so that its possible to plug-in a render section
+into a model without having to specify the render groups
+on the glyph structures.  This makes sense to me since
+most diagrams will have a consistent look.
+
+for example:
+
+&lt;species id="x"/&gt;
+...
+&lt;speciesGlyph species="x" x="20" y="10" w="50" h="50"&gt;
+...
+&lt;renderGroup defaultType="species"&gt;
+	&lt;shape shape="StandCircle"&gt;
+		&lt;transformation sx="50.0" sy="50.0"/&gt;
+	&lt;shape/&gt;
+&lt;/renderGroup&gt;
+
+Obviously this mechanism needs to relate to roles etc.
+In the longer term the render element could be in a different
+document from the glyph elements.  To make this work we probably
+do need flexible bounding boxes for text/nodes.
+
+Is there provision for a background color for the whole diagram?
+
+Is there any reason why the layout and rendering elements have
+to be in a separate namespace?  I don't have opinion on this
+but what are your reasons?
+
+I'm concerned that the role attribute is building a fixed
+controlled vocabulary (CV) that can't be easily extended modified.
+In addition this information has much wider use beyond just layout
+information (although I acknowledge that it may be first used for real
+in layout processing).  I think we need to think carefully about
+how we tackle the use of CVs in SBML considering existing work
+by groups such as BioPAX.  IMHO It'll be better if 'role'
+is integrated into SBML if the layout structures end up in a separate
+namespace.  There is a real danger that we could have overlapping CVs in
+SBML documents.
+
+I suggest that you, if there is time, draw the UML diagram(s) for your
+proposals,
+in our experience this make understanding XML standard proposals easier
+on the reader.
+
+Forgive my ignorance but what is an affine transformation?
+
+I tend to agree with Herbert that how you tackle text and font
+sizing is very important to the success of any layout proposal.
+Again I haven't picked up the following from your documents
+perhaps I have overlooked something or got confused.
+
+What text by default if any is displayed with compartments, reactions
+and species
+or are labels explicit?
+If labels are explicit where are they specified?
+By default what font and font size are used to render this text?
+If there is a default mechanism how are the defaults set?
+
+IMHO the render group mechanism needs to support implicit text labels
+taken from the SBML component's id or name.  The render group should
+specify the font and font size for these text labels. 
+The render group should be able to specify that the text is or isn't
+displayed at all.
+The glyph should specify whether the bounding box is flexible or not. 
+If we don't do something like this scheme then you have to have a render
+group
+(or something) for each sbml component displayed.
+
+Thanks for again for your efforts: its looking good.
+
+yours
+Andrew Finney
++44 (0)1453 827833
+from US - 011 44 1453 827833
+University of Hertfordshire, UK 
+
+
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Ralph Gauges
+&gt; Sent: 19 September 2003 10:15
+&gt; To: Herbert Sauro
+&gt; Cc: sbml-discuss@caltech.edu
+&gt; Subject: Re: [sbml-discuss] DWG: Revised Proposal
+&gt; 
+&gt; 
+&gt; 
+&gt; &gt; The layout information is simply that, positional 
+&gt; information for the
+&gt; &gt; varous parts of the diagram? The only information that is given are 
+&gt; &gt; positions of the nodes and the coordinates of the edges?
+&gt; &gt;
+&gt; 
+&gt; Yes that is correct. The only exception being the 
+&gt; speciesReferenceGlyphs that can specify a curve instead of just a 
+&gt; bounding box.
+&gt; 
+&gt; 
+&gt; &gt; Is there any information on objects other than modeling specific 
+&gt; &gt; objects, or is this information reserved for the rendering 
+&gt; info (see 
+&gt; &gt; Jonathon's proposal for example).
+&gt; 
+&gt; First of all, the reference to objects in the model is 
+&gt; optional for all 
+&gt; Glyph objects, so you can have a CompartmentGlyph in the layout that 
+&gt; does not reference a Compartment in the Model.
+&gt; For all other objects that have absolutely nothing to do with 
+&gt; reaction 
+&gt; networks, we have the listOfAdditionalGraphicalObjects. So if 
+&gt; you would 
+&gt; like to include a picture of your red ferrari in the layout, you add 
+&gt; some bounding box to this list and reference a bitmap of the 
+&gt; car in the 
+&gt; render parts listOfShapes.
+&gt; 
+&gt; &gt;
+&gt; &gt; In the proposal you mention the bounding box but don't give an 
+&gt; &gt; example. I can't easily read xml-schema, so I need to ask is the 
+&gt; &gt; bounding box optional? I also notice you have a role attribute, is 
+&gt; &gt; this optional?
+&gt; &gt;
+&gt; 
+&gt; The bounding box that is mentioned is a set of attributes on 
+&gt; the glyph 
+&gt; objects. If you take for example the SpeciesGlyph it has the 
+&gt; attributes 
+&gt; x,y,z and w,h,d where z and d are optional and default to 0.0. The 
+&gt; x,y,z attributes are used to set the position of the bounding box and 
+&gt; the w,h,d are the width, height and depth respectively. The 
+&gt; x,y,w and h 
+&gt; attributes are not optional, so no, the bounding box is not optional.
+&gt; The SpeciesReferenceGlyph is somewhat different since it can either 
+&gt; have a bounding box object which again has the above mentioned 
+&gt; attributes or it can have a curve that specifies the arrow 
+&gt; that is used 
+&gt; to represent the relation. Actually one of the two should be 
+&gt; given, so 
+&gt; there might be a mistake in the schema specification because there it 
+&gt; would be optional.
+&gt; The role attribute is indeed optional and it can be used to 
+&gt; specify the 
+&gt; role of the SpeciesReference in the reaction without having to figure 
+&gt; it out from the kinetics. So if your program draws inhibitors 
+&gt; differently from activators you could specify wether it is one or the 
+&gt; other. If you use the render part as well, this would be redundant 
+&gt; information since you would probably specify the complete render 
+&gt; information there anyway.
+&gt; 
+&gt; 
+&gt; &gt; The pseudo node coordinates I presume can coincide? I ask 
+&gt; this because 
+&gt; &gt; some of us don't use a straight line segment in the center of the 
+&gt; &gt; reaction arc.
+&gt; &gt;
+&gt; 
+&gt; Yes the two points of the reaction can coincide. Actually you can 
+&gt; either see those two points as two pseudo nodes or as a bounding box. 
+&gt; In the second case, you could specify some renderGroup (see render 
+&gt; part) to be drawn inside this bounding box. Maybe this is a little 
+&gt; ambiguous and should be changed.
+&gt; 
+&gt; &gt; Without rendering info, is there any recommandation for font sizes 
+&gt; &gt; since you have width and height infor for node sizes, if 
+&gt; the font size 
+&gt; &gt; isn't chosen appropriately then the font will over flow the box. I 
+&gt; &gt; think I would like to see something that indicates whether the node 
+&gt; &gt; bounding box should be elastic or fixed, if elastic then 
+&gt; the box will 
+&gt; &gt; resize according to the font used. This is what I do in 
+&gt; jdesigner and 
+&gt; &gt; it avoids any font sizing issues.
+&gt; 
+&gt; This assumes that everybody will be drawing the nodes as text labels 
+&gt; which might not be the case. Without render information it is 
+&gt; up to the 
+&gt; program what is drawn inside the bounding box.
+&gt; I have not given any thought to elastic bounding boxes yet. 
+&gt; Don't they 
+&gt; defy the purpose of a bounding box? If I have some layout, so I want 
+&gt; the program to be able to enlarge bounding boxes even though 
+&gt; this might 
+&gt; end up in a messy layout? If a text label would not fit into a given 
+&gt; bounding box, would it not make more sense to have the layout 
+&gt; recalculated?
+&gt; What do other people think about his?
+&gt; 
+&gt; 
+&gt; &gt; On first glance, I can't see anything which records the background 
+&gt; &gt; colour? Do you have one?
+&gt; &gt;
+&gt; Short answer: not yet.
+&gt; Longer answer: Since we did not specify concrete examples for shapes, 
+&gt; we did not bother with their details yet. All the document states so 
+&gt; far is that there will de an abstract class shape and that all shapes 
+&gt; that will eventually be defined are subclasses of Shape. We are not 
+&gt; sure yet if it would make sense to have an attribute for background 
+&gt; color in Shape directly rather than in the subclasses (where needed). 
+&gt; E.g. you might not need a background color for text label shapes or 
+&gt; bitmaps. Actually depending on how we handle this, a 
+&gt; background  color 
+&gt; may not be needed at all. You could for example just draw 
+&gt; some text on 
+&gt; a filled rectangle that has the color you want as the background.
+&gt; 
+&gt; 
+&gt; &gt; I was looking at the rendering document and noticed that 
+&gt; most of it is 
+&gt; &gt; in schema notation, probably I'm the only one but I find it 
+&gt; difficult 
+&gt; &gt; to read schema (it's like trying to read a C program that's 
+&gt; written in 
+&gt; &gt; assembler), would it be possible to put more real examples?
+&gt; &gt;
+&gt; 
+&gt; I don't think you would be the only one having difficulties 
+&gt; reading the 
+&gt; schema notation and as you can see from the mistakes that I made 
+&gt; writing it, I am not as comfortable with it as I would wish. Actually 
+&gt; we had hoped that the text would make the points clear we were trying 
+&gt; to make without having to rely on the schema. Obviously this 
+&gt; is not the 
+&gt; case and I apologize for that. As this is just a first draft and 
+&gt; doesn't have all the features that are needed, it is somehow 
+&gt; difficult 
+&gt; to give examples. I tried to make up a short example towards 
+&gt; the end to 
+&gt; demonstrate how layout and render information would play 
+&gt; together. For 
+&gt; this I already made up some Shapes like text labels and 
+&gt; circle, but as 
+&gt; I just said, I made this just up for this example, we haven't defined 
+&gt; any concrete shapes yet. We had hoped to get some feedback as to what 
+&gt; kind of shapes people would need first. So could you tell us 
+&gt; what kind 
+&gt; of basic shapes you would like to have and the properties 
+&gt; they need. As 
+&gt; stated in the document, we are probably going to borrow some of the 
+&gt; notation from SVG, we only need to know what is needed first.
+&gt; 
+&gt; 
+&gt; 
+&gt; I hope I could clarify some of the issues raised.
+&gt; Thanks a lot for the feedback and we hope to hear more along this line
+&gt; 
+&gt; Ralph
+&gt; 
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00642" HREF="msg00642.html">Re: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml-r.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00636" HREF="msg00636.html">Re: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml-r.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00640.html">2 Sbml-discuss admin request(s) waiting</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00642.html">Re: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00636.html">Re: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00642.html">Re: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00641"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00641"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

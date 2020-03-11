@@ -1,0 +1,128 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Rule change -->
+<!--X-From-R13: [negva Uvaxry <tvaxryNzcv&#45;zntqrohet.zct.qr> -->
+<!--X-Date: Thu, 22 May 2003 03:19:39 &#45;0700 -->
+<!--X-Message-Id: XFMail.20030522121920.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3ECC9FFA.1040705@tu&#45;bs.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Rule change</TITLE>
+<LINK REV="made" HREF="mailto:ginkel@mpi-magdeburg.mpg.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00214.html">Date Prev</A>][<A HREF="msg00216.html">Date Next</A>][<A HREF="msg00212.html">Thread Prev</A>][<A HREF="msg00217.html">Thread Next</A>][<A HREF="maillist.html#00215">Date Index</A>][<A HREF="threads.html#00215">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Rule change</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Joerg R. Weimar&quot; &lt;<A HREF="mailto:J.Weimar@tu-bs.de">J.Weimar@tu-bs.de</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Rule change</LI>
+<LI><em>From</em>: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 12:19:20 +0200 (CEST)</LI>
+<LI>Cc: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+On 22-May-2003 Joerg R. Weimar wrote:
+&gt; Actually, only the ScalarRule is really an Assignment, since it changes 
+&gt; the value by replacing the old value.
+&gt; 
+&gt; The RateRule specifies the rate of change and is well named in this 
+&gt; respect. There is not much more in common between (using Level 2 Draft 3 
+&gt; language):
+&gt;       &lt;AssignmentRule type="scalar"&gt; and &lt;AssigmentRule type="rate"&gt;
+
+You are right: AlgebraicRules and RateRules assign to the Vector of residuals
+or derivatives outside of the RHS of the model. (You can't use these values 
+anywhere else).
+
+&gt; The only thing in common is the Sid field, bewteen the two 
+&gt; AssignmentRules, but conceptually there is more difference than commonality.
+&gt; 
+&gt; Therefore I propose option c) to make the hierarchy flat:
+&gt; 
+&gt; There are 3 kinds of rules, all derived from &lt;Rule&gt;:
+&gt; &lt;AlgebraicRule variable: Sid&gt;
+                 ^^^^^^^^^^^^^^
+this does not make sense to me.
+
+&gt; &lt;AssigmentRule variable: Sid&gt;
+&gt; &lt;RateRule&gt;
+
+what you want is perhaps 
+&lt;RateRule variable: Sid&gt; 
+&lt;AlgebraicRule&gt;
+
+
+        Martin
+
+-- 
++-[Martin Ginkel]--------------[<A  HREF="mailto:ginkel">mailto:ginkel</A>(at)mpi-magdeburg.mpg.de]-+
+| MPI Magdeburg, Zi S2.09    Sandtorstr. 1, D-39106 Magdeburg, Germany |
+| May the source be with you.                                          |
+|                                                                      |
++-[tel/fax: +49 391 6110 482/529]----[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00217" HREF="msg00217.html">Re: [sbml-discuss] Rule change</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00212" HREF="msg00212.html">Re: [sbml-discuss] Rule change</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00214.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00216.html">Re: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00212.html">Re: [sbml-discuss] Rule change</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00217.html">Re: [sbml-discuss] Rule change</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00215"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00215"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

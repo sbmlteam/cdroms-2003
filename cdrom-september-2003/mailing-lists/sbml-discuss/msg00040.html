@@ -1,0 +1,356 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] RE: Some SBML 2.0 questions -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 29 Oct 2002 03:52:36 &#45;0800 -->
+<!--X-Message-Id: 001601c27f41$89d4c660$482994d9@ANDREWLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.OSF.3.94.1021028135221.13665B&#45;400000@arep.med.harvard.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] RE: Some SBML 2.0 questions</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00003.html">Date Prev</A>][<A HREF="msg00041.html">Date Next</A>][<A HREF="msg00003.html">Thread Prev</A>][<A HREF="msg00041.html">Thread Next</A>][<A HREF="maillist.html#00040">Date Index</A>][<A HREF="threads.html#00040">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] RE: Some SBML 2.0 questions</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Wayne Rindone'&quot; &lt;<A HREF="mailto:wrindone@arep.med.harvard.edu">wrindone@arep.med.harvard.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] RE: Some SBML 2.0 questions </LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 29 Oct 2002 11:51:26 -0000</LI>
+<LI>Cc: &quot;'George Church'&quot; &lt;<A HREF="mailto:church@arep.med.harvard.edu">church@arep.med.harvard.edu</A>&gt;,  &lt;<A HREF="mailto:dsegre@genetics.med.harvard.edu">dsegre@genetics.med.harvard.edu</A>&gt;,  &quot;'Cliff Shaffer'&quot; &lt;<A HREF="mailto:shaffer@shaffer.cs.vt.edu">shaffer@shaffer.cs.vt.edu</A>&gt;,  &quot;Biospice Model Definition Language&quot; &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;,  &quot;SBML&quot; &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+<LI>Importance: Normal</LI>
+<LI><em>Organization</em>: ERATO Kitano</LI>
+<LI>Reply-To: &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Wayne
+
+Here's a reply to your questions:
+
+&gt; 1. The E coli flux balance model associates one or more gene symbols,
+&gt; enzyme names, and EC numbers with each reaction.  Right now the gene
+&gt; symbols and enzyme name information is only in the annotations at the
+&gt; beginning of the model, and since the suggestion to include 
+&gt; the EC numbers
+&gt; was not made until after I made this sample, those are not 
+&gt; even in notes;
+&gt; is there a way of incorporating the gene symbols, enzyme names, and EC
+&gt; numbers into the model proper?  There are cases where more 
+&gt; than one gene
+&gt; is associated with a single reaction as well as cases where a 
+&gt; single gene
+&gt; is associated with several different reactions. 
+&gt; 
+
+SBML Level 2 uses the CellML metadata specification to define how
+to attach this kind of data to a model.
+
+<A  HREF="http://www.cellml.org/public/metadata/cellml_metadata_specification.html">http://www.cellml.org/public/metadata/cellml_metadata_specification.html</A>
+
+In particular please look at the section
+
+<A  HREF="http://www.cellml.org/public/metadata/general.html#sec_bio_entity">http://www.cellml.org/public/metadata/general.html#sec_bio_entity</A>
+
+This section shows how to associate a resource with, for example,
+a SWISS-PROT identifier.
+
+An example is given:
+<A  HREF="http://www.cellml.org/public/metadata/general.html#fig_bio_entity_exampl">http://www.cellml.org/public/metadata/general.html#fig_bio_entity_exampl</A>
+e
+
+That example could be incorporated into SBML Level 2 in the following
+way:
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;sbml xmlns="<A  HREF="http://www.sbml.org/sbml/level2">http://www.sbml.org/sbml/level2</A>"
+		level="2" version="1"&gt;
+  &lt;model name="simple"&gt;
+    &lt;listOfCompartments&gt;
+      &lt;compartment id="c1" /&gt;
+    &lt;/listOfCompartments&gt;
+    &lt;listOfSpecies&gt;
+      &lt;species metaid="id0" id="X0" compartment="c1"
+ 				   boundaryCondition="true"
+                        initialAmount="1"&gt;
+		&lt;rdf:RDF
+	
+xmlns:cmeta="<A  HREF="http://www.cellml.org/metadata/1.0#">http://www.cellml.org/metadata/1.0#</A>"
+	
+xmlns:dc="<A  HREF="http://purl.org/dc/elements/1.0/">http://purl.org/dc/elements/1.0/</A>"
+	
+xmlns:dcterms="<A  HREF="http://purl.org/dc/qualifiers/1.0/">http://purl.org/dc/qualifiers/1.0/</A>"
+	
+xmlns:rdf="<A  HREF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</A>
+	
+xmlns:rdfs="<A  HREF="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</A>&gt;
+			&lt;rdf:Description rdf:about="#id0"&gt;
+				&lt;cmeta:bio_entity&gt;
+					REST OF CELLML EXAMPLE GOES HERE
+				&lt;/cmeta:bio_entity&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/rdf:RDF&gt;
+      &lt;/species&gt;
+    &lt;/listOfSpecies&gt;
+REST OF MODEL GOES HERE
+
+I'd be interested if you think we should extend the set of identifier
+types
+defined in the CellML specification.
+
+&gt; 2.  The initialAmount value is not among those designated as Optional
+&gt; in the species data type, so I have specified it as 0 in all cases.
+&gt; The truth, however, is that initial Amounts are not in any 
+&gt; way associated
+&gt; with the flux balance model, and it would be more appropriate not to
+&gt; specify any value.  Is it OK not to specify initialAmount values that
+&gt; make no sense?
+&gt;
+
+SBML is designed to support a variety of network analyses and should
+continue be extended to support more types of analysis.  It
+is inevitable that there will data which essential for one type of
+analysis and not for another.
+
+An example of this is having kinetic laws optional: some connectivity
+analysis can be performed without these laws.
+
+Thus there is a strong argument that initialAmount should be also
+optional.
+This would be useful in that software can then decide if the model is
+appropriate to it.  At the moment software can't tell if the species
+amount is valid or not.
+ 
+In the meantime I think it is acceptable to have incorrect values for
+initial amounts although I would notify recipients that the model
+doesn't
+support certain analyses including conventional time based simulation.
+
+&gt; 3. Many of the fluxes have lower and upper bounds for their 
+&gt; values (which
+&gt; can be both positive and negative).  These are not kinetic 
+&gt; parameters but
+&gt; are related to rates.  Although these can be adjusted to 
+&gt; study the effects
+&gt; of mutations, the default values are included in the native form flux
+&gt; list. How do we represent these in SBML 2.0? 
+&gt; 
+
+There is no current mechanism for representing this in SBML Level 2.
+Perhaps we should consider this for inclusion in this or future levels
+of SBML.
+
+In the meantime you should use a the annotation mechanism that is
+described 
+in the SBML Level 2 document for this data.
+
+I hope this helps.  If you have any further questions please don't
+hesitate to contact me.
+
+Aside: In general I agree with Cliff Shafer's comments that variant
+initial conditions and
+parameters need to be stored separately from a model.  I think the model
+should retain default values, particularly for publishing the best
+estimates
+and/or measurements for wild type organisms and to enable analyses to
+operate
+on a single file, for example download from the web, by default.
+If we adopt a simple reference mechanism for parameters and initial
+conditions
+we can then have simple files that consist of sets of reference and
+alternative
+value pairs.
+
+yours Andrew Finney
+ 
+afinney@cds.caltech.edu
++44 1452 722 487
+UK: 01452 722 487 - US: 011 44 1452 722 487
+
+ERATO Kitano SBW Development Group
+<A  HREF="http://www.cds.caltech.edu/erato">http://www.cds.caltech.edu/erato</A> 
+
+California Institute of Technology / University of Hertfordshire 
+
+&gt; -----Original Message-----
+&gt; From: Wayne Rindone [<A  HREF="mailto:wrindone@arep.med.harvard.edu">mailto:wrindone@arep.med.harvard.edu</A>] 
+&gt; Sent: 28 October 2002 19:29
+&gt; To: Andrew Finney
+&gt; Cc: George Church; dsegre@genetics.med.harvard.edu; Wayne 
+&gt; Rindone; Cliff Shaffer
+&gt; Subject: Some SBML 2.0 questions 
+&gt; 
+&gt; 
+&gt; Hi Andrew,
+&gt; 
+&gt;      You seemed to be among those most conversant with the 
+&gt; details of SBML
+&gt; 2.0 at the recent MIT MDL working group meeting, so I am hopeful you
+&gt; might be able to help me figure out some details in representing our E
+&gt; coli flux balance model in SBML 2.0 for this Thursday's model example
+&gt; submission deadline.  I actually sent the same set of questions to 
+&gt; Cliff Shaffer, who is managing the model collection, last week, but I
+&gt; expect the lack of response from him is likely due to his not being as
+&gt; familiar with the workings of SBML 2.0 as you likely are.
+&gt; 
+&gt;     I have attached three files to illustrate the sort of information
+&gt; we wish to represent and provided a manually produced attempt 
+&gt; to represent
+&gt; the same piece of the model provided in SBML 2.0.
+&gt; 
+&gt;     The first attachment is a tab-delimited file that shows a 
+&gt; little piece
+&gt; of the flux list we will submit as the major piece of the 
+&gt; native form of
+&gt; our model.  It happens that all the fluxes in this piece of 
+&gt; the list are
+&gt; associated with particular genes and enzymes and the reaction each
+&gt; catalyzes, but there are also fluxes representing import and export of
+&gt; compounds to and from the cell that will be represented with 
+&gt; a different
+&gt; sort of "reaction" (eg GLC[in] --&gt; GLC[out]), as well as fluxes like
+&gt; "Growth" that end up being expressed in terms of Biomass.  I 
+&gt; think I have
+&gt; figured out how to represent each flux we will list in terms 
+&gt; of some kind
+&gt; of reaction.  
+&gt; 
+&gt;      The second attachment is a list of the abbreviations used in the
+&gt; reactions mentioned in the first attachment (it includes many 
+&gt; others as
+&gt; well, but does not yet contain things like GLC[in] and 
+&gt; GLC[out], but it
+&gt; will.
+&gt; 
+&gt;       There final piece of the native form of the model is an 
+&gt; objective
+&gt; function, which will simply be 1 * Growth (where Growth is a flux
+&gt; represented by a reaction involving biomass in the flux list we will
+&gt; submit).  I assume we will likely just say that in the written brief
+&gt; description of the model.  I do not know if there is a way of also
+&gt; representing that in the SBML 2.0 version of the model.  Is there?
+&gt; 
+&gt;      The third attachment is the same set of fluxes as listed 
+&gt; in the first
+&gt; attachment represented in SBML 2.0.  It was prepared before we decided
+&gt; everything that we would actually include in the submission, so it is
+&gt; missing some things as well as including some things we will 
+&gt; not attempt
+&gt; to include in either the native model or the SBML 2.0 form of 
+&gt; it.  Among
+&gt; the things in this example that will not be found in the 
+&gt; final submission
+&gt; are some fluxes not central to the model, the wild type flux values
+&gt; resulting from running the program on the model, and the 
+&gt; pathway name for
+&gt; this selection of fluxes, since that is not something 
+&gt; actually used in the
+&gt; model. Also, as I put this portion of the model into SBML manually, I
+&gt; added parenthetical remarks about other names used for the gene in
+&gt; question in the notes.  These will not appear in the automatically
+&gt; generated SBML. 
+&gt; 
+&gt;      We found some things we could not figure out how to 
+&gt; represent (other
+&gt; than in notes) in the SBML 2.0 example, and have some SBML questions. 
+&gt; 
+&gt;      Here are the questions:
+&gt; 
+&gt; 1. The E coli flux balance model associates one or more gene symbols,
+&gt; enzyme names, and EC numbers with each reaction.  Right now the gene
+&gt; symbols and enzyme name information is only in the annotations at the
+&gt; beginning of the model, and since the suggestion to include 
+&gt; the EC numbers
+&gt; was not made until after I made this sample, those are not 
+&gt; even in notes;
+&gt; is there a way of incorporating the gene symbols, enzyme names, and EC
+&gt; numbers into the model proper?  There are cases where more 
+&gt; than one gene
+&gt; is associated with a single reaction as well as cases where a 
+&gt; single gene
+&gt; is associated with several different reactions. 
+&gt; 
+&gt; 2.  The initialAmount value is not among those designated as Optional
+&gt; in the species data type, so I have specified it as 0 in all cases.
+&gt; The truth, however, is that initial Amounts are not in any 
+&gt; way associated
+&gt; with the flux balance model, and it would be more appropriate not to
+&gt; specify any value.  Is it OK not to specify initialAmount values that
+&gt; make no sense?
+&gt; 
+&gt; 3. Many of the fluxes have lower and upper bounds for their 
+&gt; values (which
+&gt; can be both positive and negative).  These are not kinetic 
+&gt; parameters but
+&gt; are related to rates.  Although these can be adjusted to 
+&gt; study the effects
+&gt; of mutations, the default values are included in the native form flux
+&gt; list. How do we represent these in SBML 2.0? 
+&gt; 
+&gt;     Thank you very much if you can help us answer these questions.
+&gt; 
+&gt; 					Wayne Rindone
+&gt; 					George Church Laboratory
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00041" HREF="msg00041.html">Re: [sbml-discuss] RE: Some SBML 2.0 questions</A></STRONG>
+<UL><LI><EM>From:</EM> Poul Nielsen &lt;p.nielsen@auckland.ac.nz&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00003.html">[sbml-discuss] SBW/SBML Forum - Dec 12th Stockholm</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00041.html">Re: [sbml-discuss] RE: Some SBML 2.0 questions</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00003.html">[sbml-discuss] SBW/SBML Forum - Dec 12th Stockholm</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00041.html">Re: [sbml-discuss] RE: Some SBML 2.0 questions</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00040"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00040"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

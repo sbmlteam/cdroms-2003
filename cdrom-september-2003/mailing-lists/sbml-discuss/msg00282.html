@@ -1,0 +1,210 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] DWG &#45; from a devil's advocate &#45; a plan and other suggestions -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Fri, 23 May 2003 04:37:42 &#45;0700 -->
+<!--X-Message-Id: 001d01c3211f$b33873f0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] DWG - from a devil's advocate - a plan and other suggesti</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00281.html">Date Prev</A>][<A HREF="msg00283.html">Date Next</A>][<A HREF="msg00347.html">Thread Prev</A>][<A HREF="msg00318.html">Thread Next</A>][<A HREF="maillist.html#00282">Date Index</A>][<A HREF="threads.html#00282">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 12:37:26 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Folks
+
+This message contains 2 suggestions:
+
+a) a possible plan for developing DWG work further
+
+b) a possible architecture for diagramming SBML
+
+Important: consider these independent
+
+a) The plan
+   --------
+
+Some people think that there is a very minimal set of information
+required
+for rendering a diagram of an SBML that could be defined as
+a DWG level A proposal.  (I use 'A' to avoid confusion
+with whole SBML Levels).  This minimal set would be along
+the lines described by the group at EML.  IMHO the group could
+make useful progress if it decided to define a Level A 
+over the summer.  For example an experimental annotation
+could be developed and implemented for the SBML interoperability
+hackafon 
+(or trial) in August and/or a proposal written for the 
+November SBML forum meeting in St Louis.
+
+I believe this would allow the DWG to see how much/how little
+mileage can be gained from a minimalist approach and would
+identify what further elements are really required for Level B
+and beyond. 
+
+Important: this plan doesn't assume that a minimal form
+would look anything like the form described in the next section.
+Nor does it make any assumptions about what levels B+ would be like.
+
+b) An Architecture for Diagramming
+   -------------------------------
+
+The basic idea is to
+
+i) encode very minimal graph information in SBML
+ii) encode information that might be used for rendering in a way that
+	makes that information useable by other tools that may not
+	be graphical
+iii) detailed rendering is controlled by a stylesheet which maps
+	classes of objects in sbml to specific renderings
+
+This architecture works with one or more views of the same model
+(each view can have a different style)
+
+In detail:
+
+(i) IMHO From a user perspective the minimal requirement for rendering a
+network transmitted in a format like SBML
+is to see the network laid out in a similar form as it was in the
+source application preserving the following details:
+
+	a) relative positions of nodes.
+	b) relative paths of arcs
+	c) content plus relative bounding box size and position of text 
+	d) relative size of icon/glyph/picture of nodes
+	e) node types
+
+One result and aim of this is that new line crossings, line node, line
+text crossing
+artifacts are not introduced.  On point (e): I don't believe that
+a user really cares how a given node type is rendered in detail
+just that node type information is preserved and that nodes
+of a given type are rendered consistently.
+
+(from a graph perspective nodes in SBML are reactions and species)
+
+One clear advantage of this approach is that it clearly defines
+what graphical components an application must support to successfully
+(minimally)
+render a diagram.
+
+Flexible rendering of text inside a node picture is problematic when the
+node picture could change with different stylesheets.
+
+(ii) encoding node type information in SBML rather than rendering
+information,
+for example node color, enables other tools to use type information
+captured
+in a graphical tool to be used in other tools and visa versa.  It also
+enables users to create queries on model databases in a meaningful way. 
+
+This presupposes that there is a controlled vocabulary (CV) of node
+types.
+We could either adopt existing CVs e.g. BioPAX, CellML,
+Daniel Cook (Uni. of Wash.) or create our own.  IMHO To be feasible the
+CV would
+have to be independent of SBML with a separate curation/development
+process.
+
+But we don't initially need to get hung up on this: a model could define
+its own CV as an alternative to some globally defined CV.
+This would at least enable a diagram's nodes to be re-rendered
+consistently.
+
+(iii) Given (i) its not difficult to see that you can create an
+independent
+format which describes systematically how elements of a minimal
+graphical
+form are rendered in detail.  For example a stylesheet can define that
+all proteins are rendered as blue circles with a yellow border.
+
+Stylesheets can be associated with a diagram in a number of ways:
+included inline with the diagram, referenced by the diagram in a
+separate
+file or by the user immediately before rendering.
+
+This architecture has been used successfully in Cytoscape and I believe
+that Poul Neilson is planning on adopting an approach roughly
+along the lines described here for tools that operate on CellML models.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+Systems Biology Workbench Development Group
+University of Hertfordshire, UK
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00318" HREF="msg00318.html">Re: [sbml-discuss] DWG - from a devil's advocate - a plan and othersuggestions</A></STRONG>
+<UL><LI><EM>From:</EM> Eric Minch &lt;eric.minch@lionbioscience.com&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00319" HREF="msg00319.html">Re: [sbml-discuss] DWG - from a devil's advocate - a plan and othersuggestions</A></STRONG>
+<UL><LI><EM>From:</EM> Eric Minch &lt;eric.minch@lionbioscience.com&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00351" HREF="msg00351.html">Re: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00281.html">Re: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00283.html">Re: [sbml-discuss] DWG Goals, Constraints, etc.</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00347.html">RE: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00318.html">Re: [sbml-discuss] DWG - from a devil's advocate - a plan and othersuggestions</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00282"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00282"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

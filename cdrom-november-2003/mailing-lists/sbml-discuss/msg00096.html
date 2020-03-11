@@ -1,0 +1,138 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] SBML: Concentration vs. Quantity in SBML Level 1 -->
+<!--X-From-R13: "Vreoreg [. Enheb" <ufnhebNpqf.pnygrpu.rqh> -->
+<!--X-Date: Wed, 2 Apr 2003 15:49:08 &#45;0800 -->
+<!--X-Message-Id: Pine.LNX.4.44.0304021128120.31997&#45;100000@glas.cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 16011.11942.585675.20980@erato1.cds.caltech.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</TITLE>
+<LINK REV="made" HREF="mailto:hsauro@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00094.html">Date Prev</A>][<A HREF="msg00097.html">Date Next</A>][<A HREF="msg00094.html">Thread Prev</A>][<A HREF="msg00085.html">Thread Next</A>][<A HREF="maillist.html#00096">Date Index</A>][<A HREF="threads.html#00096">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Michael Hucka &lt;<A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</LI>
+<LI><em>From</em>: &quot;Herbert M. Sauro&quot; &lt;<A HREF="mailto:hsauro@cds.caltech.edu">hsauro@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 2 Apr 2003 15:48:49 -0800 (PST)</LI>
+<LI>cc: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I was refering to biochemical network simulators, I don't know the details 
+for neuronal simulation tools, you're the expert there. Does Genesis 
+check unit compatibility, I've no idea, I know you were involved in that 
+project?
+
+It has generally been the case that people in the biochemical modeling 
+community pay personal attention to making sure that their units are 
+compatible rather than letting the software do it. I'm not completely sure 
+why this is (mainstream packages such as matlab etc don't do it), but 
+there has never really been the need to build this sort of 
+functionlity in to the software. One reason is that it's a complex 
+problem, there are so many different ways that modelers can express 
+their data, plus you can always give false information to the software and 
+it will happily claim that everything is ok when in fact it's not, so at 
+the end of the day I think a human touch is quite important in this 
+particular area. I know that as a computer scientist it's a perfectly 
+natural thing for you to suggest, i.e get the computer to do the work but
+in this case I'm not sure if the perceived benfits are so clear cut. It 
+could make matters worse by giving an inexperienced user a false sense 
+of security. Stuff like derving equations etc is a well defined problem
+so I don't think the issue arise there, but units, much more difficult.
+
+I still stay that anyone who can't deal with units is probably not fit to
+be a scientist, it is after all one of the most basic skills we all learn 
+in our teens, that's brutal I know and many will not agree with me as
+witnessed by some recent emails on the question of compartments.
+
+Perhaps there can be some compromise, some contribution for software plus 
+some human involvement but taking over the whole task is not an option. 
+Checking an SBML file for unit compatibility could be helpful. Note that 
+some models don't have any units, they'll have been normalised in some 
+way.
+
+H
+
+
+On Wed, 2 Apr 2003, Michael Hucka wrote:
+
+&gt;   Herbert_Sauro&gt; I (JDesigner author) assume that the author
+&gt;   Herbert_Sauro&gt; of a model has made sure that the units
+&gt;   Herbert_Sauro&gt; they are using are correct and compatible,
+&gt;   Herbert_Sauro&gt; I don't check if this is the case. As far
+&gt;   Herbert_Sauro&gt; as I am aware all modeling tools do
+&gt;   Herbert_Sauro&gt; this.
+&gt; 
+&gt; I'm aware of at least one tool that does check consistency
+&gt; of units: NEURON, a neuronal simulation tool written by
+&gt; Michael Hines and collaborators.
+&gt; 
+&gt; Despite that many (most?) tools don't do it, I think we can
+&gt; all agree that it would be a benefit if tools did.  It's the
+&gt; kind of thing that software should do.
+&gt; 
+&gt; MH
+&gt; 
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00094" HREF="msg00094.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00094.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00097.html">[sbml-discuss] Should compartments be optional?</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00094.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00085.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00096"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00096"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

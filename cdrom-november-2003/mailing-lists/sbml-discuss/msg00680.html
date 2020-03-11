@@ -1,0 +1,136 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [Biospice&#45;sepdtf] clarification on the generated SBML model -->
+<!--X-From-R13: "Vreoreg [. Enheb" <ufnhebNpqf.pnygrpu.rqh> -->
+<!--X-Date: Mon, 13 Oct 2003 08:50:23 &#45;0700 -->
+<!--X-Message-Id: Pine.LNX.4.44.0310130847290.21236&#45;100000@kincora.cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200310102311.h9ANBw704737@xenium.jpl.nasa.gov -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [Biospice-sepdtf] clarification on the generated SBML model</TITLE>
+<LINK REV="made" HREF="mailto:hsauro@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00679.html">Date Prev</A>][<A HREF="msg00681.html">Date Next</A>][<A HREF="msg00678.html">Thread Prev</A>][<A HREF="msg00682.html">Thread Next</A>][<A HREF="maillist.html#00680">Date Index</A>][<A HREF="threads.html#00680">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [Biospice-sepdtf] clarification on the generated SBML model</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+<LI><em>Subject</em>: Re: [Biospice-sepdtf] clarification on the generated SBML model </LI>
+<LI><em>From</em>: &quot;Herbert M. Sauro&quot; &lt;<A HREF="mailto:hsauro@cds.caltech.edu">hsauro@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 13 Oct 2003 08:48:05 -0700 (PDT)</LI>
+<LI>Cc: <A HREF="mailto:biospice-sepdtf@biospice.org">biospice-sepdtf@biospice.org</A>, &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI>Reply-To: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Ben, how do you distinguish between a modifier and a reactant?
+
+Herbert
+
+On Fri, 10 Oct 2003, Ben Bornstein wrote:
+
+&gt; hsauro&gt; Personally I think the list of modifiers should have been made
+&gt; hsauro&gt; optional I think it was a consession to those who couldn't be
+&gt; hsauro&gt; bothered to parse the rate laws and find out for themselves.
+&gt; 
+&gt; Hi All,
+&gt; 
+&gt;      I realize the discussion of SBML modifiers is taking place in the much
+&gt; larger context of their original motivation, exact meaning and appropriate
+&gt; use, but I wanted to remind anyone using libsbml about the following
+&gt; convenience function:
+&gt; 
+&gt;        #include "SBMLConvert.h"
+&gt; 
+&gt;        /**
+&gt;         * Adds modifiers (ModifierSpeciesReferences) to the given Reaction.
+&gt;         *
+&gt;         * A Model is needed for context to determine the set of allowable
+&gt;         * Species (see criterion 1 below).
+&gt;         *
+&gt;         * For each symbol in the Reaction's KineticLaw, that symbol is a
+&gt;         * modifier iff:
+&gt;         *
+&gt;         *   1. It is defined as a Species in the Model
+&gt;         *   2. It is not a Reactant or Product in this Reaction.
+&gt;         */
+&gt;        void SBML_addModifiersToReaction (Reaction_t *r, const Model_t *m)
+&gt; 
+&gt; 
+&gt;      This function works for any reaction with its reactants, products
+&gt; and KineticLaw (in either infix or MathML form) set and is called
+&gt; automatically by SBML_convertToL2() and SBML_convertReactionsInModelToL2().
+&gt; 
+&gt;      It's handy if you want ensure that you conform to L2 but don't use
+&gt; modifiers in your own simulators or other programs.
+&gt; 
+&gt; 
+&gt; Ben
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00682" HREF="msg00682.html">Re: [Biospice-sepdtf] clarification on the generated SBML model</A></STRONG>
+<UL><LI><EM>From:</EM> Ben Bornstein &lt;bornstei@aig.jpl.nasa.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00678" HREF="msg00678.html">Re: [Biospice-sepdtf] clarification on the generated SBML model</A></STRONG>
+<UL><LI><EM>From:</EM> Ben Bornstein &lt;bornstei@aig.jpl.nasa.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00679.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00681.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00678.html">Re: [Biospice-sepdtf] clarification on the generated SBML model</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00682.html">Re: [Biospice-sepdtf] clarification on the generated SBML model</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00680"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00680"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,114 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Are we done with SBML Level 1 Version 2? -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Sat, 24 May 2003 17:04:33 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E3F@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00311.html">Date Prev</A>][<A HREF="msg00313.html">Date Next</A>][<A HREF="msg00323.html">Thread Prev</A>][<A HREF="msg00315.html">Thread Next</A>][<A HREF="maillist.html#00312">Date Index</A>][<A HREF="threads.html#00312">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;SBML Discussion List&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 24 May 2003 20:04:16 -0400</LI>
+<LI>Thread-Index: AcMiQGrc2iFcYK7AQ4OqR1AAi04BCAADlNeA</LI>
+<LI>Thread-Topic: [sbml-discuss] Are we done with SBML Level 1 Version 2?</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+&gt;   JWagner&gt; one thing that's always bothered
+&gt;   JWagner&gt; me--and even more so now that we've changed
+&gt;   JWagner&gt; "specie" to "species"--is the misnaming of
+&gt;   JWagner&gt; collection properties like the "parameter"
+&gt;   JWagner&gt; property in KineticLaw, and, now with L1V2, the
+&gt;   JWagner&gt; "product" and "reactant" properties in
+&gt;   JWagner&gt; Reaction. 
+&gt; You mean, why are they singular names rather than plural? [...]
+Yes, that's what I meant, and yeah, I know there are two
+schools of thought on the naming of variables representing
+collections (and surely you can guess which way I lean on
+the issue :). After thinking about it some more (remember, I'm
+coding this stuff up for the first time, so this hadn't
+occurred to me before), I guess I would have used the "listOf"
+names instead, meaning:
+
+Model
+name: SName {use="optional"}
+listOfUnitDefinitions: UnitDefinition[0..*]
+listOfCompartments: Compartment[0..*]
+listOfSpecies: Species[0..*]
+listOfParameters: Parameter[0..*]
+listOfRules: Rule[0..*]
+listOfReactions: Reaction[0..*]
+
+and something similar for other collections. This is a
+fairly natural choice, since those are the elements
+they translate to.
+
+Just my $0.02 worth. And, if it affected anything other
+than the spec text, I'd have never even brought it up.
+
+Nah. I probably would have. ;)
+
+John
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00311.html">[sbml-discuss]</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00313.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00323.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00315.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00312"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00312"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,124 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: Eira Enuyr <fira.fnuyrNrzy.ivyyn&#45;obfpu.qr> -->
+<!--X-Date: Fri, 11 Jul 2003 05:46:30 &#45;0700 -->
+<!--X-Message-Id: 200307111444.46797.sven.sahle@eml.villa&#45;bosch.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 59D7F8A2&#45;B07E&#45;11D7&#45;A6EC&#45;000A95776A76@eml.villa&#45;bosch.de -->
+<!--X-Reference: 200307101335.33469.kdkeck@lbl.gov -->
+<!--X-Reference: 3F0E7C31.5020605@lionbioscience.com -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:sven.sahle@eml.villa-bosch.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00542.html">Date Prev</A>][<A HREF="msg00544.html">Date Next</A>][<A HREF="msg00542.html">Thread Prev</A>][<A HREF="msg00545.html">Thread Next</A>][<A HREF="maillist.html#00543">Date Index</A>][<A HREF="threads.html#00543">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: Sven Sahle &lt;<A HREF="mailto:sven.sahle@eml.villa-bosch.de">sven.sahle@eml.villa-bosch.de</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 11 Jul 2003 14:44:46 +0200</LI>
+<LI><em>Organization</em>: EML</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello,
+
+I did only a quick check of the file formats Eric mentioned. GML is not XML. 
+The other are indeed XML dialects to describe graphs. While I did not check 
+if they can do everything that we might need, I am certain they can do lots 
+of stuff with graphs.
+This leads us to a decision:
+
+-Do we want to create a language to describe layouts for SBML models?
+In this case we need a language that emphasizes the biochemical structure of 
+the graph (while maintaining the flexibility to also represent additional 
+graphical objects). This is what our proposal aims at.
+
+-Or do we want to have a general graph description language with the 
+additional feature to somehow refer to elements of an SBML model. In this 
+case we could evaluate whether GXL or  GraphXML with extensions that refer to 
+SBML model objects is what we want.
+
+I do prefer the first. I think the layout language should know about concepts 
+like "graphical representation of a species" or "graphical representation of 
+a reaction".
+
+Sven
+
+
+On Friday 11 July 2003 10:58, Eric Minch wrote:
+&gt; Is anyone using GML or GraphXML or GXL for biochemical network layout? Most
+&gt; of these layout problems seem to have been addressed in the development of
+&gt; these XML-based graph exchange language standards.
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00545" HREF="msg00545.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Rowan Christmas &lt;xmas@systemsbiology.org&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00530" HREF="msg00530.html">[sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml.villa-bosch.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00541" HREF="msg00541.html">[sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Kevin D. Keck&quot; &lt;kdkeck@lbl.gov&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00542" HREF="msg00542.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Eric Minch &lt;eric.minch@lionbioscience.com&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00542.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00544.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00542.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00545.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00543"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00543"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "Reading SBML files (requires libsbml)..."
+for file in `ls ../models/*.xml`; do
+	./readSBML ${file}
+done
+echo "done"
+
+echo "Validating SBML files (requires internet connection)..."
+for file in `ls ../models/*.xml`; do
+	./validateSBML ${file}
+done
+echo "done"
+
+echo "Printing SBML files..."
+for file in `ls ../models/*.xml`; do
+	./printSBML ${file}
+done
+echo "done"

@@ -1,0 +1,132 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: FW: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: Oxven Thanunfuv <shanNflzovb.wfg.tb.wc> -->
+<!--X-Date: Wed, 9 Jul 2003 21:32:24 &#45;0700 -->
+<!--X-Message-Id: qrrd6gjypcd.wl@daemon.symbio.jst.go.jp -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 601BBB4D9640CB4693A2384E4B37872E15B50F@dell2650&#45;0550.kgi.edu.96.173.134.in&#45;addr.arpa -->
+<!--X-Reference: 3F0C6426.2080804@systemsbiology.org -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: FW: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:funa@symbio.jst.go.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00539.html">Date Prev</A>][<A HREF="msg00541.html">Date Next</A>][<A HREF="msg00539.html">Thread Prev</A>][<A HREF="msg00544.html">Thread Next</A>][<A HREF="maillist.html#00540">Date Index</A>][<A HREF="threads.html#00540">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: FW: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: FW: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: Akira Funahashi &lt;<A HREF="mailto:funa@symbio.jst.go.jp">funa@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 10 Jul 2003 13:31:46 +0900</LI>
+<LI><em>Organization</em>: FUNA.ORG</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi,
+
+Current version of CellDesigner uses polylines to draw edges, and
+the selection of line-type depends on the design of application, so
+I completely agree with Herbert and Rowan that we will introduce
+a line-type.
+--
+Akira Funahashi, Ph.D. | Systems Biology Group, ERATO
+[funa@symbio.jst.go.jp]| Kitano Symbiotic Systems Project, JST
+
+At Wed, 09 Jul 2003 11:51:18 -0700,
+Rowan Christmas wrote:
+&gt; I have only implemented straight lines and bezier curves, so I would 
+&gt; like to see an option that does not require me to use splines ;) I think 
+&gt; that a line-type field is needed, and that should determine what the 
+&gt; list of points means ( i.e. straight lines, it is a list of points; 
+&gt; splines, it is a list of quads; etc. ).  Presumably people would 
+&gt; populate the list accordingly, and umimplemented types would just get 
+&gt; drawn in a default way that connects the two nodes.
+&gt; 
+&gt; --rowan
+&gt; 
+&gt; Herbert Sauro wrote:
+&gt; &gt;	As you probably know, I use bezier curves in jdesigner. For
+&gt; &gt;	uniuni reaction I use just one bezier, for other reactions as
+&gt; &gt;	use additional beziers, thus a unibi reaction uses one bzier
+&gt; &gt;	from the uni side and two beziers to the bi side. This means
+&gt; &gt;	that I acquire a centre point and to make things look nice the
+&gt; &gt;	slopes at the end of the intersecting beziers match. I've
+&gt; &gt;	thought about using other types of curve but never got round
+&gt; &gt;	to it. As for sbml strorage, I store all control points and
+&gt; &gt;	the centre point. Although one could compute the centre based
+&gt; &gt;	on the centroid between all the nodes, I allow the user to
+&gt; &gt;	move the center point, it make quite a bit of different to
+&gt; &gt;	what users can draw.
+&gt; &gt;	If there are going to be different ways to draw the edges then
+&gt; &gt;	we will proably need some information indicating what type of
+&gt; &gt;	edge drawing it is, eg splines, beziers, straight edges with
+&gt; &gt;	kinks etc.
+&gt; &gt;	 
+&gt; &gt;	Herbert Sauro
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00544" HREF="msg00544.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Sven Sahle &lt;sven.sahle@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00538" HREF="msg00538.html">FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert Sauro&quot; &lt;Herbert_Sauro@kgi.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00539" HREF="msg00539.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Rowan Christmas &lt;xmas@systemsbiology.org&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00539.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00541.html">[sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00539.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00544.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00540"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00540"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

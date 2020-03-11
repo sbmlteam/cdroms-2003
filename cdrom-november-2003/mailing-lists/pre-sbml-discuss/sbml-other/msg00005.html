@@ -1,0 +1,135 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;other] Minimal SBML Proposal comment -->
+<!--X-From-R13: Pehpr S Euncveb <ofuncvebNwcy.anfn.tbi> -->
+<!--X-Date: Sat, 29 Jun 2002 11:17:52 &#45;0700 -->
+<!--X-Message-Id: p05111700b943a50ef1d0@[192.168.0.3] -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-other] Minimal SBML Proposal comment</TITLE>
+<LINK REV="made" HREF="mailto:bshapiro@jpl.nasa.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00004.html">Date Prev</A>][<A HREF="msg00006.html">Date Next</A>][<A HREF="msg00004.html">Thread Prev</A>][<A HREF="msg00006.html">Thread Next</A>][<A HREF="maillist.html#00005">Date Index</A>][<A HREF="threads.html#00005">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-other] Minimal SBML Proposal comment</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-other@symbio.jst.go.jp">sbml-other@symbio.jst.go.jp</A></LI>
+<LI><em>Subject</em>: [sbml-other] Minimal SBML Proposal comment</LI>
+<LI><em>From</em>: Bruce E Shapiro &lt;<A HREF="mailto:bshapiro@jpl.nasa.gov">bshapiro@jpl.nasa.gov</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 29 Jun 2002 11:17:30 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<ADDRESS>Title: <STRONG>Minimal SBML Proposal comment</STRONG></ADDRESS>
+
+
+<div><font color="#000000">Regarding encoding arbitrary symbols in
+SName I would object to use the of the underscore character as a
+delimiter.&nbsp;</font></div>
+<div><font color="#000000"><br></font></div>
+<div><font color="#000000">(1) In particular, the statement
+&quot;<font face="Geneva" size="-1">If a program cannot display the
+character, it should</font></font></div>
+<div><font face="Geneva" size="-1" color="#000000">leave it
+as-is.</font><font color="#000000">&quot; is objectionable because
+some programs can not easily display the underscore character - in
+Mathematica, for example, the underscore is reserved for pattern
+matching and can not be embedding in a symbol. The only way to do this
+would be to convert the symbol to a string, which has a different
+meaning in Mathematica. I would suggest rewriting this sentence as
+&quot;<font face="Geneva" size="-1">If a program cannot display the
+character, it should be displayed in a program-compatible form as
+closely resembling the SBML syntax as possible.</font></font><font
+color="#000000">&quot;</font></div>
+<div><font color="#000000"><br></font></div>
+<div><font color="#000000">(2) In place of the underscore might it be
+better to retain the XML form &quot;&amp;#xxxx;&quot; and allow use of
+XML entity statement, e.g.,</font></div>
+<div><font color="#000000"><br></font></div>
+<div><font color="#000000">&lt;ENTITY kappa
+&quot;&amp;#03BA;&quot;&gt;</font></div>
+<div><font color="#000000"><br></font></div>
+<div><font color="#000000">and then the SBML would use
+&quot;I&amp;kappa;B&quot; for the example in the text.</font></div>
+<div><font color="#000000"><br></font></div>
+<div><font color="#000000">(This is also difficult in Mathematica but
+is more familiar)</font></div>
+<div><font color="#000000"><br></font></div>
+<div><br></div>
+<x-sigsep><pre>-- 
+</pre></x-sigsep>
+<div><br>
+==================================================<br>
+<br>
+Bruce E. Shapiro, Ph. D.<br>
+<br>
+Machine Learning Systems Group (http://www-aig.jpl.nasa.gov/mls)<br>
+Exploration Systems Autonomy Section<br>
+Jet Propulsion Laboratory<br>
+California Institute of Technology<br>
+M/S 126-347<br>
+4800 Oak Grove Drive<br>
+Pasadena, CA 91109<br>
+<x-tab>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</x-tab><x-tab>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </x-tab><br>
+Telephone 818-393-0980 /&nbsp; Fax&nbsp; 818-393-5244 /
+mailto:bshapiro@jpl.nasa.gov<br>
+<br>
+==================================================<br>
+The opinions expressed herein are purely my own and do not reflect
+the<br>
+official position of either JPL or CalTech<br>
+==================================================<br>
+</div>
+
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00004.html">[sbml-other] Proposal for a reduced SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00006.html">[sbml-other] Guidelines for Rules</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00004.html">[sbml-other] Proposal for a reduced SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00006.html">[sbml-other] Guidelines for Rules</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00005"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00005"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

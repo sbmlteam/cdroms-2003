@@ -1,0 +1,123 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [Biospice&#45;sepdtf] clarification on the generated SBML model -->
+<!--X-From-R13: Pra Pbeafgrva <obeafgrvNnvt.wcy.anfn.tbi> -->
+<!--X-Date: Fri, 10 Oct 2003 16:16:42 &#45;0700 -->
+<!--X-Message-Id: 200310102311.h9ANBw704737@xenium.jpl.nasa.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 601BBB4D9640CB4693A2384E4B37872E0DD75A@dell2650&#45;0550.kgi.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [Biospice-sepdtf] clarification on the generated SBML model</TITLE>
+<LINK REV="made" HREF="mailto:bornstei@aig.jpl.nasa.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00677.html">Date Prev</A>][<A HREF="msg00679.html">Date Next</A>][<A HREF="msg00690.html">Thread Prev</A>][<A HREF="msg00680.html">Thread Next</A>][<A HREF="maillist.html#00678">Date Index</A>][<A HREF="threads.html#00678">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [Biospice-sepdtf] clarification on the generated SBML model</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+<LI><em>Subject</em>: Re: [Biospice-sepdtf] clarification on the generated SBML model </LI>
+<LI><em>From</em>: Ben Bornstein &lt;<A HREF="mailto:bornstei@aig.jpl.nasa.gov">bornstei@aig.jpl.nasa.gov</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 10 Oct 2003 16:11:58 -0700</LI>
+<LI>Cc: <A HREF="mailto:biospice-sepdtf@biospice.org">biospice-sepdtf@biospice.org</A>, <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI>Reply-To: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+hsauro&gt; Personally I think the list of modifiers should have been made
+hsauro&gt; optional I think it was a consession to those who couldn't be
+hsauro&gt; bothered to parse the rate laws and find out for themselves.
+
+Hi All,
+
+     I realize the discussion of SBML modifiers is taking place in the much
+larger context of their original motivation, exact meaning and appropriate
+use, but I wanted to remind anyone using libsbml about the following
+convenience function:
+
+       #include "SBMLConvert.h"
+
+       /**
+        * Adds modifiers (ModifierSpeciesReferences) to the given Reaction.
+        *
+        * A Model is needed for context to determine the set of allowable
+        * Species (see criterion 1 below).
+        *
+        * For each symbol in the Reaction's KineticLaw, that symbol is a
+        * modifier iff:
+        *
+        *   1. It is defined as a Species in the Model
+        *   2. It is not a Reactant or Product in this Reaction.
+        */
+       void SBML_addModifiersToReaction (Reaction_t *r, const Model_t *m)
+
+
+     This function works for any reaction with its reactants, products
+and KineticLaw (in either infix or MathML form) set and is called
+automatically by SBML_convertToL2() and SBML_convertReactionsInModelToL2().
+
+     It's handy if you want ensure that you conform to L2 but don't use
+modifiers in your own simulators or other programs.
+
+
+Ben
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00680" HREF="msg00680.html">Re: [Biospice-sepdtf] clarification on the generated SBML model</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert M. Sauro&quot; &lt;hsauro@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00677.html">[sbml-discuss] Internet Draft for sbml+xml media type</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00679.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00690.html">RE: [sbml-discuss] Re: Internet Draft for sbml+xml media type</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00680.html">Re: [Biospice-sepdtf] clarification on the generated SBML model</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00678"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00678"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

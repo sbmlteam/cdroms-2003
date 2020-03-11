@@ -1,0 +1,239 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] 2D &#38; 3D layouts -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Mon, 14 Jul 2003 02:18:53 &#45;0700 -->
+<!--X-Message-Id: 000b01c349e8$be546c70$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000401c3488f$f267fbd0$0100a8c0@CERNUNNOS -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] 2D &amp; 3D layouts</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00557.html">Date Prev</A>][<A HREF="msg00559.html">Date Next</A>][<A HREF="msg00556.html">Thread Prev</A>][<A HREF="msg00569.html">Thread Next</A>][<A HREF="maillist.html#00558">Date Index</A>][<A HREF="threads.html#00558">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] 2D &amp; 3D layouts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] 2D &amp; 3D layouts</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 14 Jul 2003 10:17:20 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Folks
+
+We have not designed SBML around what can be validated by 
+XML schema parsing and I don't believe that it is a
+good idea to start.  (I think it is a good idea to
+use XML schema and we'll continue to produce schemas
+as we go.)  
+
+John has identified several good reasons for this thinking.
+Given a choice between a simple approach that gets the job done
+and supporting strict schema validation I think we should
+pursue the simple option.  At the end of the day some software
+has to interpret the XML structure in some form and any additional
+complexity can lead to misinterpretation.
+
+Note that some tools will chose not to use XML schema
+perhaps using an alternative or implementing its own
+valiadation, for performance reasons or other implementation
+constraints.
+Note also that the role XML schema is not just for validation,
+it can also be used to generate code or schemas in other
+forms.  I think a design based around strict validation 
+probably would not lend itself to good code generation.
+
+The form of SBML should mimic the forms already 
+being used within software where possible.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of John Wagner
+&gt; Sent: 12 July 2003 17:09
+&gt; To: sbml-discuss@its.caltech.edu
+&gt; Subject: RE: [sbml-discuss] 2D &amp; 3D layouts
+&gt; 
+&gt; 
+&gt; Then why stop there? Let's define point2D and point3D,
+&gt; line2D and line3D, rectangle2D and rectangle3D. I know,
+&gt; why don't we define model0D, model1D, model2D and model3D?
+&gt; And function1, function2, function3, etc, depending upon
+&gt; how many arguments a function takes?
+&gt; 
+&gt; Where it makes sense, we should use the schema to
+&gt; constrain the attribute set. But we're not just
+&gt; talking about modifying the schema, we're also
+&gt; talking about modifying the spec, and that is
+&gt; very worrisome to me.
+&gt; 
+&gt; I would also point out that when given the chance
+&gt; to do something very similar with respect to
+&gt; membranes, we chose not to do so, even though it
+&gt; made a lot of sense to do so--even more sense than
+&gt; the layout issue. Instead, we chose to use a
+&gt; single element (compartment) and add a
+&gt; spatialDimensions attribute. As a consequence,
+&gt; if/when we add membrane potential, we will not
+&gt; be able to constrain compartments/membranes
+&gt; with respect to membrane potential in the
+&gt; schema. This was a very conscious choice.
+&gt; 
+&gt; Finally, keep in mind that most of the enforcement
+&gt; of the spec is not really possible to do in the
+&gt; schema. Does the schema ensure that all reactants,
+&gt; products and modifiers used in a reaction are
+&gt; species? Does the schema ensure that we have no
+&gt; cycles in the compartment hierarchy? Does the
+&gt; schema enforce the constraint that referenced
+&gt; user-defined functions must exist in the list of
+&gt; functions? Did we design units in such a way that
+&gt; all the yucky details underlying units could be
+&gt; implemented in the schema? Nope.
+&gt; 
+&gt; John
+&gt; 
+&gt; -----Original Message-----
+&gt; From: Fabien Campagne [<A  HREF="mailto:fac2003@med.cornell.edu">mailto:fac2003@med.cornell.edu</A>]
+&gt; Sent: Saturday, July 12, 2003 10:05 AM
+&gt; To: Kevin D. Keck
+&gt; Cc: Wagner,John; Ralph Gauges; sbml-discuss@its.caltech.edu
+&gt; Subject: Re: [sbml-discuss] 2D &amp; 3D layouts
+&gt; 
+&gt; 
+&gt; I strongly support Kevin's point. The XML schema can, and 
+&gt; should be used to put constraints on the attribute set of elements.
+&gt; 
+&gt; To get back to the subject, having layout2d and layout3d 
+&gt; makes it possible to define attributes (or sub-elements) in 
+&gt; layout3d that are optional in a 3D layout and have nothing to 
+&gt; do in layout2D (these attributes and elements can be absent 
+&gt; from layout2D altogether).
+&gt; 
+&gt; In my opinion, this is a better solution that what John 
+&gt; suggests, because if we put attributes x,y, and z in layout 
+&gt; to represent both 2D and 3D layout the z attribute must be 
+&gt; defined both for 2D AND 3D layouts. This is just a simple 
+&gt; example, but consider that other attributes and elements may 
+&gt; be needed in the future in a 3D layout element).
+&gt; 
+&gt; There is an intelligent way to use XML schemas to make the 
+&gt; choice apparent to both humans and software. We can use this 
+&gt; method and benefit from validation schema support. My 
+&gt; experinece is that it will come handy when maintaining the 
+&gt; exchange format, if/when people think it is time to have 
+&gt; backward compatible changes to the spec), or we can just 
+&gt; continue relying on a bunch of assumptions that developers 
+&gt; may or may not remember and implement in their code 
+&gt; (especially if they do not read the spec, as John suggested).
+&gt; 
+&gt; Fabien
+&gt; 
+&gt; 
+&gt; Kevin D. Keck wrote:
+&gt; 
+&gt; On Friday 11 July 2003 15:34, Wagner,John wrote:
+&gt; [...]
+&gt; 
+&gt; However, if you would be happy with just having "layout" 
+&gt; elements but with a "dimensions=" attribute (similar to what 
+&gt; we do with
+&gt; compartments) I could go with that. This would deal with the 
+&gt; important issues you have raised. Also, in this approach, the 
+&gt; "unexpected" z, d, etc values would not be unexpected, and 
+&gt; besides, don't take a single line of code or a moment's time 
+&gt; to ignore.
+&gt; 
+&gt; John
+&gt; 
+&gt; 
+&gt; Actually, that was my first thought. Unfortunately, unless 
+&gt; I'm reading the specs incorrectly, XML Schema doesn't seem to 
+&gt; like this. I mean, you could define the attribute, and even 
+&gt; require it, but it would appear impossible to define 
+&gt; different attribute constraints on the descendent elements 
+&gt; based solely on that attribute value. I'm basing this 
+&gt; conclusion as much on some bboard discussions and on this 
+&gt; guideline I found
+&gt; (<A  HREF="http://www.xfront.com/VariableContentContainers.html">http://www.xfront.com/VariableContentContainers.html</A>) as on 
+&gt; the spec itself, which is pretty tough to read.
+&gt; 
+&gt; And as I thought about it, I decided this is in fact a 
+&gt; feature, as it gives that tiny extra nudge to lazy 
+&gt; implementors (not that there's anything wrong with that) to 
+&gt; not ignore it, and I think on balance that's a good thing. 
+&gt; And I'm guessing I can easily make it more trouble to 
+&gt; continue arguing with me about it than it would be to just 
+&gt; deal with it... ; )
+&gt; 
+&gt; 
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00556" HREF="msg00556.html">RE: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;John Wagner&quot; &lt;jwagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00557.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00559.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00556.html">RE: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00569.html">[sbml-discuss] how to do stochastic calculation?</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00558"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00558"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

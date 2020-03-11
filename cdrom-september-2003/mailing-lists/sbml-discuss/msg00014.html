@@ -1,0 +1,259 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: SBML Level 2 -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Thu, 5 Dec 2002 01:59:47 &#45;0800 -->
+<!--X-Message-Id: 000301c29c44$cd5f4fc0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.33.0212041251430.12757&#45;100000@shaffer.cs.vt.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: SBML Level 2</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00005.html">Date Prev</A>][<A HREF="msg00017.html">Date Next</A>][<A HREF="msg00005.html">Thread Prev</A>][<A HREF="msg00017.html">Thread Next</A>][<A HREF="maillist.html#00014">Date Index</A>][<A HREF="threads.html#00014">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: SBML Level 2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;</LI>
+<LI><em>Subject</em>: RE: SBML Level 2</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 5 Dec 2002 09:57:56 -0000</LI>
+<LI>Cc: &quot;'SBML'&quot; &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+<LI>Importance: Normal</LI>
+<LI>Reply-To: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Cliff
+
+Many thanks for your comments.
+We'll discuss your requirements at Stockholm and
+hopefully on this mailing list too.
+
+On optional parameters
+
+I guess we're going down this route already as 
+groups doing flux analysis don't require
+initialAmount on specie. Then its not a major step to
+make parameters optional.
+
+The only problem is that we're taking the model
+further away from what can be simulated which is
+unfortunate.  This makes establishing a regime of
+publishing models that simulate more problematic.
+I guess we can farily easily create an additionl
+stricter namespace and XML schema derived from the
+main standard which forces parameter values and 
+initial values to be present.
+
+It may not be worth getting stressed by this, 
+as lets face it, just having a parameter value
+(and thus a simulation) doesn't tell you anything
+about the correctness of the parameter value.
+A missing value is just a real bad value!
+A publishing regime would probably need to 
+have a verification step where simulation
+results are compared to experimental data.
+
+On the parameter sets concept.
+
+I can imagine sets of parameters being applied
+to models in much the same way as stylesheets
+to xml or html data.
+
+There are some issues with this:
+
+a) should we allow incomplete parameter sets?
+	IMHO yes - it becomes a useful way to support
+	models of mutations.  We may want to allow
+	'stacks' of parameter sets to form a simulation
+	input.
+
+b) does the model refer to the parameter set or visa-versa?
+	certainly from a language development
+	point of view it would be convient if 
+	the parameter sets refer to the model.
+	That also appears to make sense from
+	your requirements: a model has more than 
+	one parameter set and a parameter set is
+	not meaningful without a model.  But a model
+	could be considered useful without a parameter set.
+
+c) I'm not keen to bring parameter sets into the publishing
+	senario at least not initially (you may disagree).  When a model
+	is published IMHO the parameters should be transferred into a
+single
+	model document.  (I guess this may break down in the mutation
+	case.)  This will greatly simplify the curation process.
+
+I think we could potentially move forward by creating a
+separate related standard for parameter sets that is almost
+entirely independent of the model standard.  Will this work?
+
+On functions specifically for rate laws
+
+We should discuss this further with more people.
+IMHO this is an issue of presentation in your
+tool (but it may be common to many others)
+I suggest that, for the moment at least,
+you solve this by using a simple annotation.
+Do you need to communicate this specific information
+to other independantly coded tools?
+
+On functions with variable numbers of arguments
+(Mass Action)
+	
+I think, probably needs further research,
+that you're right at the edge of what MathML
+supports right now.  If we want to fix this
+it will take some work putting this into
+the standard.  I say 'if' because a flexible
+scheme for this will introduce much complexity
+into the standard for perhaps little(?) pay off.
+I'm not unsymphaetic to your needs its just
+a question of where the big payoffs are.
+Feel free to make concrete suggestions of
+how the standard should be extended to tackle
+this issue.
+ 
+Again you should examine if the use of
+annotations could reduce the uglyness
+of the current setup.
+
+Please comment.
+
+yours Andrew
+
+&gt; -----Original Message-----
+&gt; From: owner-biospice-mdl@billygraham.bbn.com
+&gt; [<A  HREF="mailto:owner-biospice-mdl@billygraham.bbn.com">mailto:owner-biospice-mdl@billygraham.bbn.com</A>] On Behalf Of 
+&gt; Cliff Shaffer
+&gt; Sent: 04 December 2002 18:07
+&gt; To: Biospice Model Definition Language
+&gt; Cc: SBML
+&gt; Subject: Re: SBML Level 2
+&gt; 
+&gt; 
+&gt; 
+&gt; Andrew -- Good to hear from you! Unfortunately, I will be
+&gt; unable to attend the SBML meeting. Here are a few comments.
+&gt; 
+&gt; I'll mention that we are finally getting up to speed with
+&gt; true use of SBML Level 2.0. Marc Vass is completing his 
+&gt; translator software from the JigCell Model Builder to SBML 
+&gt; Level 2.0. This means we are getting true hands-on experience 
+&gt; with converting our models to SBML 2.0. So its not a 
+&gt; theoretical discussion for us so much as it used to be. Note 
+&gt; that by SBML 2.0, we mean support for what is in that 
+&gt; appendix... we are assuming that this will be included.
+&gt; 
+&gt; Beyond that, this issue of initial conditions and parameter
+&gt; values has certainly come up before. It will need to be 
+&gt; addressed in some way. It becomes increasingly clear to us 
+&gt; that the IC/Param values need to be separated from the rest 
+&gt; of the model, since these vary on a more rapid development 
+&gt; schedule. That is, a modeler is likely to set his equations 
+&gt; and leave them, while tweaking parameter sets frequently. 
+&gt; Thus, the "model" part needs to be stable while the "values" 
+&gt; part changes frequently. Ideally these would be in separate 
+&gt; files. The notion of include files would help a great deal 
+&gt; here. It might be premature to deal with that. But as a 
+&gt; stopgap, making paramter/IC values optional is good step. 
+&gt; From our point of view, the idea that parameter values are a 
+&gt; required part of the model is totally wrong. What happens in 
+&gt; practice is that default value of (for example) zero gets 
+&gt; stuck in... with the horrible result currently that one 
+&gt; cannot distinguish a default placeholder (put there only 
+&gt; because SBML requires it) from a value that has been 
+&gt; deliberately set to zero.
+&gt; 
+&gt; It would be helpful to us if the named functions had some
+&gt; sort of optional tag that let us distinguish rate laws from 
+&gt; other types of functions. The reason is that we wish to 
+&gt; display to the user of our model builder software a list of 
+&gt; available ratelaws, without including other functions that 
+&gt; are not meant to be used as ratelaws.
+&gt; 
+&gt; Finally, we do have need of variable parameter lists. The
+&gt; canonical example is the mass action law, with variable 
+&gt; numbers of parameters to be multiplied together. We can live 
+&gt; without this for now (we have Mass Action 1, Mass Action 2, 
+&gt; etc... ugly but tolerable), but it would be beneficial to get 
+&gt; this supported.
+&gt;            -- Cliff
+&gt; 
+&gt; -- Cliff Shaffer, Associate Professor Phone: (540) 231-4354
+&gt; Department of Computer Science Email: shaffer@cs.vt.edu 
+&gt; Virginia Tech, Blacksburg, VA 24061-0106 WWW:  www.cs.vt.edu/~shaffer
+&gt; --------------------------------------------------------------
+&gt; -----------
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00017" HREF="msg00017.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00015" HREF="msg00015.html">Re: [sbml-discuss] RE: SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00016" HREF="msg00016.html">RE: SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> Cliff Shaffer &lt;shaffer@shaffer.cs.vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00005" HREF="msg00005.html">[sbml-discuss] Re: SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> Cliff Shaffer &lt;shaffer@shaffer.cs.vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00005.html">[sbml-discuss] Re: SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00017.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00005.html">[sbml-discuss] Re: SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00017.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00014"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00014"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

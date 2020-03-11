@@ -1,0 +1,258 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the units of initial amounts -->
+<!--X-From-R13: uhtu.q.fcraprNtfx.pbz -->
+<!--X-Date: Thu, 22 May 2003 02:55:17 &#45;0700 -->
+<!--X-Message-Id: OF581621B9.A97374C5&#45;ON80256D2E.00348813@sb.com -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the units of initial amounts</TITLE>
+<LINK REV="made" HREF="mailto:hugh.d.spence@gsk.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00210.html">Date Prev</A>][<A HREF="msg00212.html">Date Next</A>][<A HREF="msg00222.html">Thread Prev</A>][<A HREF="msg00314.html">Thread Next</A>][<A HREF="maillist.html#00211">Date Index</A>][<A HREF="threads.html#00211">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the units of initial amounts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the units of initial amounts</LI>
+<LI><em>From</em>: <A HREF="mailto:hugh.d.spence@gsk.com">hugh.d.spence@gsk.com</A></LI>
+<LI><em>Date</em>: Thu, 22 May 2003 10:50:54 +0100</LI>
+<LI>Cc: <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A>, <A HREF="mailto:owner-sbml-discuss@its.caltech.edu">owner-sbml-discuss@its.caltech.edu</A>,  &quot;SBML Discussion List&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;, <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+
+<br><font size=2 face="Arial">&nbsp; &nbsp; &nbsp; &nbsp; I agree with Kouichi that exact numbers are more correct and we should not be using concentrations. The problem that most of the published models seem to be wrong makes this likely to be an unpopular choice.</font>
+<br><font size=2 face="Arial">&nbsp; &nbsp; &nbsp; &nbsp; How this meshes with fractional stochiometries is problematical (we are talking about 0.3 of a molecule or atom reacting but leaving the remainder unchanged!), but John and I lost that battle in Florida. <br>
+<br>
+<br>
+<br>
+Hugh Spence<br>
+GSK Scientific Computing and Mathematical Modelling<br>
+Medicines Research Centre<br>
+Gunnels Wood Road<br>
+Stevenage<br>
+UK<br>
+SG1 2NY<br>
+<br>
+<br>
+</font>
+<br>
+<br>
+<br>
+<br>
+<table width=100%>
+<tr valign=top>
+<td>
+<td><font size=1 face="sans-serif"><b>&quot;Kouichi Takahashi&quot; &lt;shafi@sfc.keio.ac.jp&gt;</b></font>
+<br>
+<br><font size=1 face="sans-serif">Sent by: owner-sbml-discuss@its.caltech.edu</font>
+<p><font size=1 face="sans-serif">22-May-2003 09:44</font>
+<br>
+<td><font size=1 face="Arial">&nbsp; &nbsp; &nbsp; &nbsp; </font>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </font>
+<br>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; To: &nbsp; &nbsp; &nbsp; &nbsp;mhucka</font>
+<br>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; cc: &nbsp; &nbsp; &nbsp; &nbsp;shafi, &quot;SBML Discussion List&quot;</font>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; Subject: &nbsp; &nbsp; &nbsp; &nbsp;Re: [sbml-discuss] Changing the units of initial amounts</font></table>
+<br>
+<br><font size=2 face="Courier New"><br>
+<br>
+&gt; The general sense from the meeting is that people agreed<br>
+&gt; that the default units used for the 'initialAmount' on<br>
+&gt; species does not reflect the actual use of the field in<br>
+&gt; practice. &nbsp;SBML defines the units on 'initialAmount' as<br>
+&gt; being the built-in 'substance' unit, but instead, most<br>
+&gt; models today appear to have been written with the assumption<br>
+&gt; that the units are actually 'substance'/'volume'.<br>
+<br>
+&gt; Several possible solutions to the problem present<br>
+&gt; themselves:<br>
+&gt; <br>
+&gt; a) Keep the default units of 'initialAmount' as 'substance'<br>
+&gt; &nbsp; &nbsp;as it is defined currently. &nbsp;Most software and models<br>
+&gt; &nbsp; &nbsp;would need to change to comply with the standard as it is<br>
+&gt; &nbsp; &nbsp;written.<br>
+<br>
+The default should be the number of molecules (substance), and should also <br>
+be able to be set as a concentration.<br>
+<br>
+(1) In reality it is a natural number in the cell. &nbsp; &nbsp; It is exact, and is better to <br>
+ &nbsp; &nbsp; &nbsp;support 'exact' methods such as Gillespie. <br>
+(2) 'substance' is the primary representation, and concentration is secondary.<br>
+ &nbsp; &nbsp; &nbsp;This can be understood by the fact that the simplest way to have support for changing<br>
+ &nbsp; &nbsp; &nbsp;volume is to store the value as 'substance', not 'concentration'.<br>
+<br>
+The input/output of the simulator can either be concentration or the exact number, <br>
+but the better internal representation by multi-compartment simulation is not<br>
+concentration. &nbsp; &nbsp;<br>
+<br>
+Considering SBML as a long-term standard, I believe it is going for exact value from<br>
+concentration, and it is better not to use concentration as the default.<br>
+<br>
+Kouichi<br>
+<br>
+<br>
+<br>
+<br>
+&gt; b) Introduce a new field, 'initialConcentration', with units<br>
+&gt; &nbsp; &nbsp;of 'substance'/'volume', and make 'initialAmount' and<br>
+&gt; &nbsp; &nbsp;'initialConcentration' be mutually exclusive.<br>
+&gt; <br>
+&gt; c) Change the default units of 'initialAmount' to be<br>
+&gt; &nbsp; &nbsp;'substance/volume'. &nbsp;This would reflect the most common<br>
+&gt; &nbsp; &nbsp;usage today.<br>
+&gt; <br>
+&gt; The text of Joerg's message is appended below; he provides<br>
+&gt; some additional analyses of the implications of the<br>
+&gt; different options.<br>
+&gt; <br>
+&gt; Please reflect on and discuss these issues on the list. &nbsp;The<br>
+&gt; voting system will be enabled beginning this Friday and we<br>
+&gt; will post further information at that time.<br>
+&gt; <br>
+&gt; If you have questions about this topic or the reason for the<br>
+&gt; vote, please feel free to call Mike or Andrew directly.<br>
+&gt; <br>
+&gt; -- Mike &amp; Andrew<br>
+&gt; <br>
+&gt; &gt; From: &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;<br>
+&gt; &gt; To: sbml-discuss@caltech.edu<br>
+&gt; &gt; Subject: [sbml-discuss] Initial conditions<br>
+&gt; &gt; Date: Fri, 16 May 2003 13:00:39 +0200<br>
+&gt; &gt; <br>
+&gt; &gt; Issue with SBML L2: definition of initial values.<br>
+&gt; &gt; <br>
+&gt; &gt; Currently the standard defines initial conditions for species in terms<br>
+&gt; &gt; of units of substance. Units of substance can be &quot;mole&quot; or &quot;item&quot;. This<br>
+&gt; &gt; is different from concentrations. On the other hand, the species symbol<br>
+&gt; &gt; as used in rate laws refers to concentrations. Therefore the initial<br>
+&gt; &gt; assignment uses different units (and necessarily different numbers,<br>
+&gt; &gt; unless the compartment volume is 1) from the use of the symbol. Under<br>
+&gt; &gt; the current definition, if the volume of a compartment is changed, all<br>
+&gt; &gt; initial values must be changed, if the intention is to keep the same<br>
+&gt; &gt; concentrations. Currently not all tools abide by the standard, some<br>
+&gt; &gt; tools assume that &quot;initialAmount&quot; is actually a concentration.<br>
+&gt; &gt; <br>
+&gt; &gt; Possible solutions:<br>
+&gt; &gt; <br>
+&gt; &gt; 1. Enforce the current standard and live with the disadvantages.<br>
+&gt; &gt; <br>
+&gt; &gt; Advantages:<br>
+&gt; &gt; * The standard is not changed.<br>
+&gt; &gt; Disadvantages:<br>
+&gt; &gt; * If the volume of a compartment is changed, all initial values must<br>
+&gt; &gt; change.<br>
+&gt; &gt; * The value used for initial assignment is different in value and units<br>
+&gt; &gt; from the value returned for this symbol when used in formulas.<br>
+&gt; &gt; <br>
+&gt; &gt; <br>
+&gt; &gt; <br>
+&gt; &gt; 2. Introduce a second possibility for initialization using<br>
+&gt; &gt; concentrations. One way would be to have for Species two attributes<br>
+&gt; &gt; <br>
+&gt; &gt; initialAmount : double {use=&quot;optional&quot;}<br>
+&gt; &gt; initialConcentration: double {use=&quot;optional&quot;}<br>
+&gt; &gt; <br>
+&gt; &gt; with the specification that &quot;initialAmount&quot; and &quot;initialConcentration&quot;<br>
+&gt; &gt; are mutually exclusive. The units would still refer to the units of<br>
+&gt; &gt; substance, for which there are the options &quot;mole&quot;, &quot;item&quot;, and units<br>
+&gt; &gt; derived from these, such as &quot;10^-3 mole&quot;.<br>
+&gt; &gt; <br>
+&gt; &gt; Advantages:<br>
+&gt; &gt; * Each tool could use the initialization method it prefers. Tools that<br>
+&gt; &gt; currently assume concentrations only have two small changes: write<br>
+&gt; &gt; &quot;initialConcentration&quot;, when reading check which attribuute is present<br>
+&gt; &gt; and scale if &quot;initialAmount is present&quot;.<br>
+&gt; &gt; * Existing models that abide by the standard are still valid.<br>
+&gt; &gt; * Existing models that assumed concentrations can be fixed with a simple<br>
+&gt; &gt; text replacement operation.<br>
+&gt; &gt; <br>
+&gt; &gt; Disadvantage:<br>
+&gt; &gt; * Tools have to check for presence of two attributes for setting the<br>
+&gt; &gt; initial values.<br>
+&gt; &gt; <br>
+&gt; &gt; <br>
+&gt; &gt; <br>
+&gt; &gt; 3. Interpret the units to figure out whether they are of type substance<br>
+&gt; &gt; or of type substance/volume and rescale accordingly when reading in a<br>
+&gt; &gt; model. The default units are defined in the standard and imply that<br>
+&gt; &gt; without specification, units of substance are used, which are &quot;mole&quot; and<br>
+&gt; &gt; not &quot;mole/liter&quot;.<br>
+&gt; &gt; <br>
+&gt; &gt; Advantages:<br>
+&gt; &gt; * No changes to attributes.<br>
+&gt; &gt; * Existing models that are correct (use units correctly or write numbers<br>
+&gt; &gt; which have the correct units as specified for the default units) remain<br>
+&gt; &gt; correct.<br>
+&gt; &gt; * extensions to membranes (with area instead of volume) can also use this<br>
+&gt; &gt; mechanism.<br>
+&gt; &gt; <br>
+&gt; &gt; Disadvantages:<br>
+&gt; &gt; * Currently no tool parses and analyses units.<br>
+&gt; &gt; * the name initialAmount would be misleading if it can also refer to</font>
+<br><font size=2 face="Courier New">&gt; &gt; concentrations.<br>
+&gt; &gt; <br>
+&gt; &gt; -- <br>
+&gt; &gt; PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, TU-Braunschweig<br>
+&gt; &gt; J.Weimar@tu-bs.de, http://www.tu-bs.de/institute/WiR/weimar<br>
+&gt; &gt; Tel. +49-531-391-3006 &nbsp;Mail: D-38092 Braunschweig<br>
+&gt; <br>
+&gt; <br>
+<br>
+<br>
+<br>
+</font>
+<br>
+<br>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00210.html">RE: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00212.html">Re: [sbml-discuss] Rule change</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00222.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00314.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00211"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00211"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

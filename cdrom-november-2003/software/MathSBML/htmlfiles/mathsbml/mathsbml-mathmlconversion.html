@@ -1,0 +1,112 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage" ></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table>
+</div>
+
+<h1>
+    The	MathSBML Model Builder: 
+    <span class="function" style="font-weight:normal;">MathMLtoInfix</span>, 
+    <span class="function" style="font-weight:normal;">InfixtoMathML</span>
+    </h1>
+<hr/>
+
+<p>
+
+</p>
+
+<p>These functions convert between Content-MathML and Infix Expressions
+</p>
+
+<p>The argument to <span class="function">MathMLtoInfix</span> is a string containing MathML.</p>
+<p>The argument to <span class="function">InfixtoMathML</span> is any Mathematica Expression.</p>
+<p>Note: These functions will produce content MathML. There is not guarantee that the MathML will
+be restricted to the subset of MathML allowed in SBML.</p>
+
+<span style="font-size:smaller;">New in version 2.1.4.</span>
+<hr />
+<h1>Examples</h1>		
+
+The expression:
+
+<pre style="font-size:larger; color:blue;">
+	InfixToMathML[(a+Sin(x)b)/c-5]
+</pre>
+returns the string
+<pre style="font-size:larger;color:blue;">
+	&lt;math xmlns='http://www.w3.org/1998/Math/MathML'&gt;
+	 &lt;apply&gt;
+	  &lt;plus/&gt;
+	  &lt;apply&gt;
+	   &lt;times/&gt;
+	   &lt;apply&gt;
+	    &lt;plus/&gt;
+	    &lt;ci&gt;a&lt;/ci&gt;
+	    &lt;apply&gt;
+	     &lt;times/&gt;
+	     &lt;ci&gt;b&lt;/ci&gt;
+	     &lt;sin/&gt;
+	     &lt;ci&gt;x&lt;/ci&gt;
+	    &lt;/apply&gt;
+	   &lt;/apply&gt;
+	   &lt;apply&gt;
+	    &lt;power/&gt;
+	    &lt;ci&gt;c&lt;/ci&gt;
+	    &lt;cn type='integer'&gt;-1&lt;/cn&gt;
+	   &lt;/apply&gt;
+	  &lt;/apply&gt;
+	  &lt;cn type='integer'&gt;-5&lt;/cn&gt;
+	 &lt;/apply&gt;
+	&lt;/math&gt;
+</pre>
+
+The expression
+<pre style="font-size:larger;color:blue;">
+     MathMLtoInfix[
+     "&lt;math xmlns='http://www.w3.org/1998/Math/MathML'&gt;
+      &lt;apply&gt;
+        &lt;plus/&gt;
+        &lt;ci&gt;a&lt;/ci&gt;
+        &lt;apply&gt;
+           &lt;times/&gt;
+           &lt;ci&gt;b&lt;/ci&gt;
+           &lt;apply&gt;
+             &lt;power/&gt;
+             &lt;ci&gt;c&lt;/ci&gt;
+             &lt;cn &gt;-1&lt;/cn&gt;
+           &lt;/apply&gt;
+       &lt;/apply&gt;
+     &lt;/apply&gt;
+     &lt;/math&gt;\"]
+</pre>
+will return the expression
+<pre style="font-size:larger;color:blue;">
+	a+b/c
+</pre>
+Alternatively, one can read the MathML expression from a text file into a string <span class="function">s</span>, e.g., as
+<pre style="font-size:larger;color:blue;">
+	s = Import["foo.doc","text"]; 
+	MathMLtoInfix[s]
+</pre>
+ to obtain the infix expressions. Any file name or file type can be used, so long as the second argument to 
+ <span class="function">Import</span> is <span class="function">"text"</span>. 
+<br /><br />
+
+<br /><br />
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

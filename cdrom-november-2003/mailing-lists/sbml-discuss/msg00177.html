@@ -1,0 +1,150 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] COMP &#45;&#45; Model Composition SIG Announcement -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Wed, 21 May 2003 00:15:58 &#45;0700 -->
+<!--X-Message-Id: 1053501189.13537.30.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: XFMail.20030520204723.martin.ginkel@epost.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00176.html">Date Prev</A>][<A HREF="msg00178.html">Date Next</A>][<A HREF="msg00172.html">Thread Prev</A>][<A HREF="msg00178.html">Thread Next</A>][<A HREF="maillist.html#00177">Date Index</A>][<A HREF="threads.html#00177">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:martin.ginkel@epost.de">martin.ginkel@epost.de</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 21 May 2003 16:14:30 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>, SBML-Discuss &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+&gt; &gt;&gt; - 'Submodels and Modules' or the story about defined Interfaces.
+&gt; &gt; Perhaps we could get something by firmly assuming the structure of the system
+&gt; &gt; if the system is physical, or maybe biochemical, but it is definitely not the
+&gt; &gt; case for cell biology.
+&gt; 
+&gt; Agreed, but software models reality with structures, often just to be able to
+&gt; handle the complexity of the model inside the software. 
+
+Yes, but well designed object model inside software is almost always a reflection of
+a real-world structure of the target problem domain.
+
+
+&gt; &gt; (1) Species (and Reactions) are already working as interfaces.   
+&gt; 
+&gt; Reactions? How's that. They refer to substrates, products and modifiers on the
+&gt; same level and can't be connected to something out of scope.
+
+I was confused because E-Cell can do this.   E-Cell's Process can expose arbitrary property.
+But in general, for example, first order derivative (dx/dt) often appears in transition functions 
+if the model gets detailed or it treats physical phenomena, and in some cases modelers
+may want to use current dx/dt (that is typically current reaction rate).
+Species actually can be viewed as a zeroth order derivative of a variable.   
+
+
+
+&gt; &gt;       As far as I can imagine, sound practices of SBML can use elements
+&gt; &gt; inside Reaction
+&gt; &gt;       or Rule if there are something that should be hidden.  
+&gt; &gt;        (this might invoke flaming.. but I want to hear your opinions..)
+&gt; &gt;       If the reaction scheme has some assumptions that hinder changing values
+&gt; &gt; of intermediate
+&gt; &gt;       variables (species), then it can be encapsulated in the proposed
+&gt; &gt; 'reaction mechanism' 
+&gt; &gt;       element.   (although I don't know the current status of the proposal)
+&gt; 
+&gt; Tell me more about this proposal!
+
+I really don't know because I couldn't attend the Florida meeting...
+
+&gt; I see problems e.g. with submodels using rapid equilibrium through rules.
+&gt; If you attach a reaction (and therefore an ODE) to a species that is calculated
+&gt; by assignment or algebraic rule, 
+
+Probably I couldn't get your point, but implicit solvers can handle such an situation?
+And a species connected to only rules or assignments has a limited ulitity?
+
+
+&gt; you will get a problem with the simulation.
+
+It is not necessary a case for E-Cell 3, since it uses asynchronous discrete event approach,  
+but I understand the problem.  We are not talking about E-Cell.
+
+&gt; Anyways: Since I already knew your opinion I want to include both submodels and
+&gt; modules into the proposal.
+
+Yes, that was the agreement.  Thank you Martin. :)
+
+
+-Kouichi
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00178" HREF="msg00178.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00168" HREF="msg00168.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+<UL><LI><EM>From:</EM> martin.ginkel@epost.de</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00176.html">RE: [sbml-discuss] Contacting Bioinformatics?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00178.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00172.html">RE: [sbml-discuss] COMP -- Submodels and Modules</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00178.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00177"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00177"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

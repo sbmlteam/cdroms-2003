@@ -1,0 +1,387 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage"></a>
+<div align="center">
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table></div>
+
+
+<h1>MathSBML Model Builder: Model Construction</h1>
+<div align="left">
+<table  border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="#add">add_</a></td>
+  <td class="button"><a href="#remove">remove_</a></td>
+  <td class="button"><a href="#other">other functions</a></td>
+  <td class="button"><a href="#example">example</a></td>
+  </tr>
+</table>
+</div>
+<hr/>
+
+<p>The Model Builder maintains an internal database consisting of a single model that can
+be manipulated by the user.</p>
+
+<p>The functions <span class="function">add_</span>, 
+<span class="function">remove_</span>, and
+<span class="function">modify_</span>
+where 
+"<span class="function">_</span>" 
+can be replaced by any of the following 
+<span class="function">Compartment</span>,
+<span class="function">Event</span>,
+<span class="function">Function</span>,
+<span class="function">Parameter</span>,
+<span class="function">Reaction</span>,
+<span class="function">Rule</span>,
+<span class="function">Species</span>,
+<span class="function">Unit</span> allow one to add, remove, or modify contents of the
+database.</p>	
+
+<p>The <span class="function">add_</span> and
+<span class="function">remove_</span> functions are new in MathSBML version 2.1.5.</p>
+<p>The 
+<span class="function">modify_</span> functions are developmental and have not yet
+been released.</p>
+
+<a name="add"></a>
+<h1>Format of the <span class="function">add_</span> functions</h1>
+<p>In the following table, <span class="function">options</span> is an option list; <span class="function">id</span> is a valid id for the given <span class="function">SBML</span> field (<span class="function">metaid</span> for rules); and 
+<span class="function">SSBML</span> is a symbolic SBML version of the entity (i.e., <span class="function">XMLElement["entity name",...]</span>)</p>
+<table bgcolor="#FFFFFF" border="1">
+<tr>
+<td>
+
+<table border="0" cellpadding="5">
+<thead style="background:#D0D0D0;">
+<tr>
+<td><b><span class="function">add_</span> Function</b></td>
+<td><b>Options</b></td>
+<td><b>Description</b></td>
+</tr>
+</thead>
+<tbody>
+
+<tr><td><span  class="function">addCompartment[options]</span></td><td rowspan="2">Any valid options for <a href="mathsbml-compartmentToSBML.html">compartmentToSBML</a></td><td rowspan="3">Adds a compartment to the model</td></tr>
+<tr><td><span  class="function">addCompartment[id,options]</span></td></tr>
+<tr><td><span  class="function">addCompartment[SSBML]</span></td><td>no options</td></tr>
+
+<tr style="background:#D0D0D0;"><td><span  class="function">addEvent[options]</span></td><td rowspan="2">Any valid options for <a href="mathsbml-eventToSBML.html">eventToSBML</a></td><td rowspan="3">Adds an event to the model</td></tr>
+<tr style="background:#D0D0D0;"><td><span  class="function">addEvent[id,options]</span></td></tr>
+<tr style="background:#D0D0D0;"><td><span  class="function">addEvent[SSBML]</span></td><td>no options</td></tr>
+
+<tr><td><span  class="function">addFunction[options]</span></td><td rowspan="2">Any valid options for <a href="mathsbml-functionToSBML.html">functionToSBML</a></td><td rowspan="3">Adds a function to the model</td></tr>
+<tr><td><span  class="function">addFunction[id,options]</span></td></tr>
+<tr><td><span  class="function">addFunction[SSBML]</span></td><td>no options</td></tr>
+
+<tr style="background:#D0D0D0;"><td><span  class="function">addParameter[options]</span></td><td rowspan="2">Any valid options for <a href="mathsbml-parameterToSBML.html">parameterToSBML</a></td><td rowspan="3">Adds a parameter to the model</td></tr>
+<tr style="background:#D0D0D0;"><td><span  class="function">addParameter[id,options]</span></td></tr>
+<tr style="background:#D0D0D0;"><td><span  class="function">addParameter[SSBML]</span></td><td>no options</td></tr>
+
+<tr><td><span  class="function">addReaction[options]</span></td><td rowspan="2">Any valid options for <a href="mathsbml-reactionToSBML.html">reactionToSBML</a></td><td rowspan="3">Adds a reaction to the model</td></tr>
+<tr><td><span  class="function">addReaction[reaction,options]</span></td></tr>
+<tr><td><span  class="function">addReaction[SSBML]</span></td><td>no options</td></tr>
+
+<tr style="background:#D0D0D0;"><td><span  class="function">addRule[options]</span></td><td rowspan="2">Any valid options for <a href="mathsbml-ruleToSBML.html">ruleToSBML</a></td><td rowspan="3">Adds a rule to the model</td></tr>
+<tr style="background:#D0D0D0;"><td><span  class="function">addRule[metaid,options]</span></td></tr>
+<tr style="background:#D0D0D0;"><td><span  class="function">addRule[SSBML]</span></td><td>no options</td></tr>
+
+<tr><td><span  class="function">addSpecies[options]</span></td><td rowspan="2">Any valid options for <a href="mathsbml-speciesToSBML.html">speciesToSBML</a></td><td rowspan="3">Adds a species to the model</td></tr>
+<tr><td><span  class="function">addSpecies[id,options]</span></td></tr>
+<tr><td><span  class="function">addSpecies[SSBML]</span></td><td>no options</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+</table>
+<a name="remove"></a>
+<h1>Format of the <span class="function">remove_</span> functions</h1>
+<table bgcolor="#FFFFFF" border="1">
+<tr>
+<td>
+
+<table border="0" cellpadding="5">
+<thead style="background:#D0D0D0;">
+<tr>
+<td><b><span class="function">remove_</span> Function</b></td>
+<td><b>Description</b></td>
+</tr>
+</thead>
+<tbody>
+
+<tr><td><span  class="function">removeCompartment[id]</span></td><td>Removes the specified compartment from the model.</td></tr>
+
+<tr style="background:#D0D0D0;"><td><span  class="function">removeEvent[id]</span></td><td>Removes the specified event from the model.</td></tr>
+
+<tr><td><span  class="function">removeFunction[id]</span></td><td>Removes the specified function from the model.</td></tr>
+
+<tr style="background:#D0D0D0;"><td><span  class="function">removeParameter[id]</span></td><td>Removes the specified parameter from the model.</td></tr>
+
+<tr><td><span  class="function">removeReaction[id]</span></td><td>Removes the specified reaction from the model.</td></tr>
+
+<tr style="background:#D0D0D0;"><td><span  class="function">removeRule[metaid]</span></td><td>Removes the specified rule from the model.</td></tr>
+
+<tr><td><span  class="function">removeSpecies[id]</span></td><td>Removes the specified species from the model.</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+</table>
+
+
+<a name="other"></a>
+<h1>Additional Functions</h1>
+
+<table bgcolor="#FFFFFF" border="1">
+	<tr>
+		<td>
+
+			<table border="0" cellpadding="5">
+				<thead style="background:#D0D0D0;">
+					<tr>
+						<td><b>Function Name</b></td>
+						<td><b>Description</b></td>
+					</tr>
+				</thead>
+				<tbody>
+
+
+					<tr>
+						<td><span class="function">newModel[options]</span></td>
+						<td>Reinitializes the database and removes its currentcontents.  Options are <span class="function">id</span> and <span class="function">name</span>. (in MathSBML 2.1.4) </td>
+					</tr>
+					<tr style="background:#D0D0D0;">
+						<td><span class="function">createModel[]</span></td>
+						<td>Generates text SBML (Level 2) based on the current contents of the model. (in MathSBML 2.1.5)</td>
+					</tr>
+					<tr>
+						<td><span class="function">createModel[filename]</span></td>
+						<td>Writes a text SBML file (Level 2) based on the current contents of the model. (in MathSBML 2.1.5)</td>
+					</tr>
+					<tr style="background:#D0D0D0;">
+						<td><span class="function">createSymbolicModel[]</span></td>
+						<td>Generates a Symbolic XML version of theLevel 2 SBML corresponding to the current model. (in MathSBML 2.1.5)</td></tr>
+					<tr>
+						<td><span class="function">showModel[]</span></td>
+						<td>Generates a verbose listing like the one generated by SBMLRead. (in MathSBML 2.1.5) </td>
+					</tr>
+					<tr style="background:#D0D0D0;">
+						<td><span class="function">loadSimulator[]</span></td>
+						<td>Takes the current model and returns it in a format readable by the simulator functions such as SBMLNDSolve (in MathSBML 2.1.5) </td></tr>
+					<tr>
+						<td><span class="function">loadModelBuilder[file,options]</span></td>
+						<td>Equivalent to <span class="function">SBMLRead[file, loadModelBuilder->True, EchoLoad->True]</span> in that it will read an SBML file into the model builder. Any valid option for <span class="function">SBMLRead</span> may be used as well. (in MathSBML 2.1.5) </td>
+					</tr>
+					<tr style="background:#D0D0D0;">
+						<td><a href="mathsbml-sbmlread.html"><span class="function">SBMLRead</span></a></td>
+						<td>Will automatically load the file it reads into the model builder, replacing any model that was previously there.This action can be overridden by setting the option <span class="function">LoadModelBuilder->False</span> in <span class="function">SBMLRead</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+</table>
+
+
+<a name="example"></a>
+
+<h1>Example </h1>
+<p>Both the input needed to build a simple model with a single enzymatic reaction, as well as the output 
+produced by Mathematica, are shown in the following dialog.</p>
+<pre style="font-size:larger;color:black;">
+
+<span style="color:red;">Input:   </span>newModel["EnzymaticReaction"];
+
+<span style="color:red;">Input:   </span>addSpecies[S, compartment -> "Cell", initialConcentration -> 1];
+<span style="color:red;">Output:  </span><span style="color:green">Compartment</span>&nbsp;<span style="color:blue;">Cell&nbsp; </span><span style="color:green">added.
+         Species </span><span style="color:blue;">S</span><span style="color:green"> added to compartment</span>&nbsp;<span style="color:blue;">Cell</span>
+
+<span style="color:red;">Input:   </span>addSpecies[P, compartment -> "Cell", initialConcentration -> 0];
+<span style="color:red;">Output:  </span><span style="color:green">Species </span><span style="color:blue;">P</span><span style="color:green"> added to compartment</span>&nbsp;<span style="color:blue;">Cell</span>
+
+<span style="color:red;">Input:   </span>addSpecies[Enz, compartment -> "Cell", initialConcentration -> .1];
+<span style="color:red;">Output:  </span><span style="color:green">Species </span><span style="color:blue;">Enz</span><span style="color:green"> added to compartment</span>&nbsp;<span style="color:blue;">Cell</span>
+
+<span style="color:red;">Input:   </span>addSpecies[X, compartment -> "Cell", initialConcentration -> 0];
+<span style="color:red;">Output:  </span><span style="color:green">Species </span><span style="color:blue;">X</span><span style="color:green"> added to compartment</span>&nbsp;<span style="color:blue;">Cell</span>
+
+<span style="color:red;">Input:   </span>addReaction[S + Enz -> X, id -> r1, kineticLaw -> k1*S*Enz, parameters -> { k1 -> 0.5}];
+<span style="color:red;">Output:  </span><span style="color:green">Reaction</span> <span style="color:blue;">r1</span><span style="color:green"> added.</span>
+
+<span style="color:red;">Input:   </span>addReaction[X -> S + Enz, id -> r2, kineticLaw -> k2*X, parameters -> {k2 -> 0.01}];
+<span style="color:red;">Output:  </span><span style="color:green">Reaction</span> <span style="color:blue;">r2</span><span style="color:green"> added.</span>
+
+<span style="color:red;">Input:   </span>addReaction[X -> P + Enz, id -> r3, kineticLaw -> k3*X, parameters -> {k3 -> 0.5}];
+<span style="color:red;">Output:  </span><span style="color:green">Reaction</span> <span style="color:blue;">r3</span><span style="color:green"> added.</span>
+
+
+<span style="color:red;">Input:   </span>createModel[];
+
+<span style="color:red;">Output:  </span>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+         &lt;!-- Generated 23-September-2003 10:28:11.369320 --&gt;
+         &lt;!-- Generated by MathSBML 2.1.5b10 (23 Sept 2003) --&gt;
+         &lt;sbml xmlns="http://www.sbml.org/sbml/level2"
+             level="2"
+             version="1"&gt;
+          &lt;model id="enzymaticReaction"
+              name="enzymaticReaction"&gt;
+           &lt;listOfFunctionDefinitions/&gt;
+           &lt;listOfUnitDefinitions/&gt;
+           &lt;listOfCompartments&gt;
+            &lt;compartment id="Cell"
+                name="Cell"/&gt;
+           &lt;/listOfCompartments&gt;
+           &lt;listOfSpecies&gt;
+            &lt;species id="S"
+                name="S"
+                compartment="Cell"
+                boundaryCondition="false"
+                constant="false"
+                initialConcentration="1"/&gt;
+            &lt;species id="P"
+                name="P"
+                compartment="Cell"
+                boundaryCondition="false"
+                constant="false"
+                initialConcentration="0"/&gt;
+            &lt;species id="Enz"
+                name="Enz"
+                compartment="Cell"
+                boundaryCondition="false"
+                constant="false"
+                initialConcentration="0.1"/&gt;
+            &lt;species id="X"
+                name="X"
+                compartment="Cell"
+                boundaryCondition="false"
+                constant="false"
+                initialConcentration="0"/&gt;
+           &lt;/listOfSpecies&gt;
+           &lt;listOfParameters/&gt;
+           &lt;listOfRules/&gt;
+           &lt;listOfReactions&gt;
+            &lt;reaction id="r1"
+                name="r1"
+                reversible="true"
+                fast="false"&gt;
+             &lt;listOfReactants&gt;
+              &lt;speciesReference species="Enz"/&gt;
+              &lt;speciesReference species="S"/&gt;
+             &lt;/listOfReactants&gt;
+             &lt;listOfProducts&gt;
+              &lt;speciesReference species="X"/&gt;
+             &lt;/listOfProducts&gt;
+             &lt;listOfModifiers/&gt;
+             &lt;kineticLaw timeUnits="time"
+                 substanceUnits="substance"&gt;
+              &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+               &lt;apply&gt;
+                &lt;times/&gt;
+                &lt;ci&gt;Enz&lt;/ci&gt;
+                &lt;ci&gt;k1&lt;/ci&gt;
+                &lt;ci&gt;S&lt;/ci&gt;
+               &lt;/apply&gt;
+              &lt;/math&gt;
+              &lt;listOfParameters&gt;
+               &lt;parameter id="k1"
+                   value="0.5"/&gt;
+              &lt;/listOfParameters&gt;
+             &lt;/kineticLaw&gt;
+            &lt;/reaction&gt;
+            &lt;reaction id="r2"
+                name="r2"
+                reversible="true"
+                fast="false"&gt;
+             &lt;listOfReactants&gt;
+              &lt;speciesReference species="X"/&gt;
+             &lt;/listOfReactants&gt;
+             &lt;listOfProducts&gt;
+              &lt;speciesReference species="Enz"/&gt;
+              &lt;speciesReference species="S"/&gt;
+             &lt;/listOfProducts&gt;
+             &lt;listOfModifiers/&gt;
+             &lt;kineticLaw timeUnits="time"
+                 substanceUnits="substance"&gt;
+              &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+               &lt;apply&gt;
+                &lt;times/&gt;
+                &lt;ci&gt;k2&lt;/ci&gt;
+                &lt;ci&gt;X&lt;/ci&gt;
+               &lt;/apply&gt;
+              &lt;/math&gt;
+              &lt;listOfParameters&gt;
+               &lt;parameter id="k2"
+                   value="0.01"/&gt;
+              &lt;/listOfParameters&gt;
+             &lt;/kineticLaw&gt;
+            &lt;/reaction&gt;
+            &lt;reaction id="r3"
+                name="r3"
+                reversible="true"
+                fast="false"&gt;
+             &lt;listOfReactants&gt;
+              &lt;speciesReference species="X"/&gt;
+             &lt;/listOfReactants&gt;
+             &lt;listOfProducts&gt;
+              &lt;speciesReference species="Enz"/&gt;
+              &lt;speciesReference species="P"/&gt;
+             &lt;/listOfProducts&gt;
+             &lt;listOfModifiers/&gt;
+             &lt;kineticLaw timeUnits="time"
+                 substanceUnits="substance"&gt;
+              &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+               &lt;apply&gt;
+                &lt;times/&gt;
+                &lt;ci&gt;k3&lt;/ci&gt;
+                &lt;ci&gt;X&lt;/ci&gt;
+               &lt;/apply&gt;
+              &lt;/math&gt;
+              &lt;listOfParameters&gt;
+               &lt;parameter id="k3"
+                   value="0.5"/&gt;
+              &lt;/listOfParameters&gt;
+             &lt;/kineticLaw&gt;
+            &lt;/reaction&gt;
+           &lt;/listOfReactions&gt;
+           &lt;listOfEvents/&gt;
+          &lt;/model&gt;
+         &lt;/sbml&gt;
+
+<span style="color:red;">Input:   </span>m = loadSimulator[];
+
+
+<span style="color:red;">Input:   </span>n = SBMLNDSolve[m, 5]
+<span style="color:red;">Output:  </span>{{enzymaticReaction`S[t] -> InterpolatingFunction[{{0., 5.}}, &lt;&gt;][t], 
+           enzymaticReaction`P[t] ->InterpolatingFunction[{{0., 5.}}, &lt;&gt;][t], 
+           enzymaticReaction`Enz[t]->InterpolatingFunction[{{0., 5.}}, &lt;&gt;][t], 
+           enzymaticReaction`X[t]->InterpolatingFunction[{{0., 5.}}, &lt;&gt;][t]}}
+
+
+<span style="color:red;">Input:   </span>SBMLGridPlot[n, PlotRange -> All];
+<span style="color:red;">Output:  </span>
+        <img src="mathsbml-images/modelbuilderplot.jpg" />
+<span style="color:red;">Input:   </span>SBMLPlot[n];
+<span style="color:red;">Output:  </span>
+        <img src="mathsbml-images/modelbuilderplot2.jpg" />
+</pre>
+
+returns the string
+<pre style="font-size:larger;color:blue;">
+</pre>
+
+
+	
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

@@ -1,0 +1,173 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: Eira Enuyr <fira.fnuyrNrzy.ivyyn&#45;obfpu.qr> -->
+<!--X-Date: Tue, 15 Jul 2003 01:32:32 &#45;0700 -->
+<!--X-Message-Id: 200307151030.49747.sven.sahle@eml.villa&#45;bosch.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD36EB5@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:sven.sahle@eml.villa-bosch.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00566.html">Date Prev</A>][<A HREF="msg00568.html">Date Next</A>][<A HREF="msg00564.html">Thread Prev</A>][<A HREF="msg00549.html">Thread Next</A>][<A HREF="maillist.html#00567">Date Index</A>][<A HREF="threads.html#00567">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: Sven Sahle &lt;<A HREF="mailto:sven.sahle@eml.villa-bosch.de">sven.sahle@eml.villa-bosch.de</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 15 Jul 2003 10:30:49 +0200</LI>
+<LI><em>Organization</em>: EML</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+On Monday 14 July 2003 22:28, Wagner,John wrote:
+&gt; Not to make a complicated situation worse... ;)
+&gt;
+&gt; We actually have three connection points, with
+&gt; the third being where the catalysts/modifiers
+&gt; hook in. Of course, for us, it's no problem to
+&gt; compute where that is: it's midway between the
+&gt; reactants and products points.
+
+That´s what we also had in mind for the modifiers. 
+
+&gt;
+&gt; But, I wonder if we're overthinking this a bit,
+&gt; and think it's worth confirming what it is we
+&gt; are after. You see, no matter what representation(s)
+&gt; we come up with in the SBML, after we read the
+&gt; model into the Virtual Cell, we are going to ONLY
+&gt; be able to render it in our renderer, so there will
+&gt; obviously be *some* conversion. Now, those of you
+&gt; who have seen the Virtual Cell may remember that we
+&gt; represent reactions as a "barbell" shaped glyph
+&gt; (which Jim has since modified a bit). Thus, while
+&gt; the EML group is thinking of a reaction glyph being
+&gt; a short line segment between two points, after
+&gt; reading their models into the Virtual Cell, their
+&gt; reactions will look like a "barbell" NO MATTER WHAT.
+&gt;
+&gt; And that was a best-case scenario, since EML's rep
+&gt; and the Virtual Cell's rep are almost identical.
+&gt; Now, consider the case where Herbert imports one
+&gt; of their models, with his rep being quite distinct.
+&gt;
+&gt; And this leads me to my point: are we trying to
+&gt; specify *EXACTLY* what a reaction should look like,
+&gt; and then expecting that EXACT look to be reproduced?
+&gt;
+&gt; The answer is obviously NO.
+
+This is why we chose to differentiate between layout information and render 
+information in our proposal (by just ignoring the render part so far). 
+For species it is easy. The layout information is the position of the glyph 
+(we also added the size). We do not say whether it is a circle or a square, 
+which color, ...
+For the reactions it is not so easy. We compromised on what we think is a 
+quite abstract representation of a reaction glyph: The points where the 
+substrate arcs meet and the point where the product arcs meet. Alternatively 
+you can read this as one point where all the arcs meet and the tangent 
+direction. 
+When we first wrote our proposal we were not shure if additional information 
+about the curves really belongs to the layout information, so this 
+information is not yet in there (I now believe it should be in).  
+
+This is also why we think a species reference glyph should have a role 
+attribute. A renderer that decides not to bother reading detailed curve 
+information from the file should have some clue how to render. And since 
+glyphs that don´t refer to a specific model object are allowed (at least in 
+our proposal) the information can not be retrieved from the model.
+
+Sven
+
+&gt;
+&gt; And this leads me to the next question, which was
+&gt; brought up before but was not answered to my satisfaction
+&gt; (which was OK, I thought it might be good to make some
+&gt; progress before revisiting it): just how far do we
+&gt; want to go in specifying the EXACT DETAILS of what
+&gt; the layout looked like in each particular tool?
+&gt;
+&gt; Perhaps this would be a good time to think about
+&gt; this question again, before we embark on trying
+&gt; to spec out two different approaches to reactions,
+&gt; or generalizing them into one that works both ways.
+&gt;
+&gt; John
+&gt;
+&gt; &gt; From: Sven Sahle [<A  HREF="mailto:sven.sahle@eml.villa-bosch.de">mailto:sven.sahle@eml.villa-bosch.de</A>]
+&gt; &gt; it seems that, again, we will have to make some general decision:
+&gt; &gt; Do we want to have several ways to represent reactions in our
+&gt; &gt; layout (to
+&gt; &gt; reflect the different way existing programs deal with
+&gt; &gt; reactions) or do we
+&gt; &gt; want to find one way to represent reactions.
+&gt; &gt; The one way would need to be fairly general to allow most
+&gt; &gt; other cases to be
+&gt; &gt; translated. It would therefore be unnecessarily complex for
+&gt; &gt; some simple
+&gt; &gt; cases.
+&gt; &gt;
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00564" HREF="msg00564.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00566.html">Re: [sbml-discuss] Layout Extension Update + controlled vocabularies</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00568.html">RE: [sbml-discuss] Layout Extension Update + controlled vocabularies</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00564.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00549.html">RE: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00567"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00567"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

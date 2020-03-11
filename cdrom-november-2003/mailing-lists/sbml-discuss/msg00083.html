@@ -1,0 +1,180 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] SBML: Concentration vs. Quantity in SBML Level1 -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: by alcove (mbox mhucka)(with Cubic Circle's cucipop (v1.31 1998/05/13) Mon Mar 24 09:14:38 2003) -->
+<!--X-Message-Id: 002701c2f206$3c843ca0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200303241258.00122.j.weimar@jweimar.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00082.html">Date Prev</A>][<A HREF="msg00084.html">Date Next</A>][<A HREF="msg00082.html">Thread Prev</A>][<A HREF="msg00084.html">Thread Next</A>][<A HREF="maillist.html#00083">Date Index</A>][<A HREF="threads.html#00083">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:J.Weimar@jweimar.de">J.Weimar@jweimar.de</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 24 Mar 2003 13:06:45 -0000</LI>
+<LI>Cc: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Joerg
+
+OK I think you've run into a typo in the SBML Level 1 document
+
+the text that's been corrected in the level 2 document for species is:
+---
+The units of the substance quantity may be explicitly set using the
+optional field units. The value assigned to units must be chosen from
+one of the following possibilities: one
+of base unit names from Table 2 on page 13, the name "substance", or a
+new unit name defined by a unit
+definition in the enclosing model. If absent, the units default to the
+value set by the built-in "substance"
+---
+
+&gt; One problem is that I am not sure 
+&gt; which software 
+&gt; actually supports the use of units, and of converting between 
+&gt; quantity and 
+&gt; concentration, taking into account the volume. 
+
+I'm not aware that any do at this stage.
+
+What the Level 2 standard says, at the moment, is that the default units
+for species attribute initialAmount
+are 'substance' which is moles by default.  That's the intention of the
+Level 1 document as well.
+
+We could potentially change this default to concentration
+'substance/volume' which is mole/litre
+by default.  I think I'd like to know what other people think about
+this.
+The original idea was to enable a switch between numbers of molecules
+('item') and moles for all
+species simply by changing the definition of the 'substance' units.
+
+yours Andrew
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Joerg Weimar
+&gt; Sent: 24 March 2003 03:58
+&gt; To: sbml-discuss@caltech.edu
+&gt; Subject: [sbml-discuss] SBML: Concentration vs. Quantity in 
+&gt; SBML Level1
+&gt; 
+&gt; 
+&gt; I am working on a tool to handle SBML files in a piece of 
+&gt; software related to E-cell 1. In this process I am running 
+&gt; into the problem that SBML level 1 
+&gt; seems to use only molecule quantities, not concentrations:
+&gt; 
+&gt; Standard units for substance are mole (I assume this means 
+&gt; 6.02 E23 * item, the document is not clear on this), possible 
+&gt; other definitions are item (molecule count) and mol/liter (the M used 
+&gt; in chemistry and biology). One problem is that I am not sure 
+&gt; which software 
+&gt; actually supports the use of units, and of converting between 
+&gt; quantity and 
+&gt; concentration, taking into account the volume. I saw one comment in 
+&gt; JDesigner, which stated that all units are assumed to be 
+&gt; compatible, this 
+&gt; implies that volume is not changing and only molecule counts 
+&gt; are used.  When 
+&gt; both Michealis-menten type laws and mass action laws are 
+&gt; used, careful 
+&gt; attention need to be paid to the question of which units are 
+&gt; used for the 
+&gt; parameters.
+&gt; 
+&gt; Also, it is not clear to me what a use of "volume" as the unit in 
+&gt; &lt;specie initialamout="0.1" unit="volume"&gt; 
+&gt; would mean (see section 4.4 of sbml-level-1.pdf).
+&gt; 
+&gt; Maybe this issue has been resolved in level2, but from the 
+&gt; documents is seems 
+&gt; that level 2 is supposed to be an extension, not correction.
+&gt; 
+&gt; Thanks for any help on this, Jörg Weimar.
+&gt; 
+&gt; -- 
+&gt; PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, 
+&gt; TU-Braunschweig J.Weimar@tu-bs.de, 
+&gt; <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+&gt; Tel. 
+&gt; +49-531-391-3006  Mail: D-38092 Braunschweig
+&gt; 
+
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00084" HREF="msg00084.html">Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+<UL><LI><EM>From:</EM> Stefan Hoops &lt;shoops@vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00082" HREF="msg00082.html">[sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+<UL><LI><EM>From:</EM> Joerg Weimar &lt;j.weimar@jweimar.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00082.html">[sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00084.html">Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00082.html">[sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00084.html">Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00083"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00083"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

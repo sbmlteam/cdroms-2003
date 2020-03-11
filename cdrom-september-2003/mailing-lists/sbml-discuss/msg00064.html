@@ -1,0 +1,283 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] RE: A proposal for model composition -->
+<!--X-From-R13: Xbanguna Iroo <wjrooNooa.pbz> -->
+<!--X-Date: by alcove (mbox mhucka)(with Cubic Circle's cucipop (v1.31 1998/05/13) Wed Mar  5 13:27:07 2003) -->
+<!--X-Message-Id: Pine.LNX.4.33.0303051316520.8283&#45;100000@dhcp33&#45;081&#45;013.bbn.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 001e01c2e33f$befc3640$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] RE: A proposal for model composition</TITLE>
+<LINK REV="made" HREF="mailto:jwebb@bbn.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00063.html">Date Prev</A>][<A HREF="msg00065.html">Date Next</A>][<A HREF="msg00063.html">Thread Prev</A>][<A HREF="msg00065.html">Thread Next</A>][<A HREF="maillist.html#00064">Date Index</A>][<A HREF="threads.html#00064">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] RE: A proposal for model composition</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;, &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] RE: A proposal for model composition</LI>
+<LI><em>From</em>: Jonathan Webb &lt;<A HREF="mailto:jwebb@bbn.com">jwebb@bbn.com</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 5 Mar 2003 16:26:42 -0500 (EST)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+On Wed, 5 Mar 2003, Andrew Finney wrote:
+
+&gt; I'm unclear about the way your example works.....
+&gt; you gave the following:
+&gt;
+&gt; &lt;listOfComponentInstances&gt;
+&gt;   &lt;elementReference xlink:label="ref1" xlink:href="...somewhere in A" /&gt;
+&gt;   &lt;elementReference xlink:label="ref2" xlink:href="...somewhere in B" /&gt;
+&gt;   &lt;elementReference xlink:label="ref3" xlink:href="...somehwere in C" /&gt;
+&gt;
+&gt;   &lt;componentInstance xlink:href="componentA.sbml"&gt;
+&gt;     &lt;link xlink:from="ref2" xlink:to="ref1" /&gt;
+&gt; ... other links potentially ...
+&gt;   &lt;/componentInstance&gt;
+&gt;
+&gt;   &lt;componentInstance xlink:href="componentA.sbml"&gt;
+&gt;     &lt;link xlink:from="ref3" xlink:to="ref1" /&gt;
+&gt; ... other links potentially ...
+&gt;   &lt;/componentInstance&gt;
+&gt; &lt;/listOfComponentInstances&gt;
+&gt;
+&gt; (...)
+
+I think the short answer is you're right, I have to work on 3rd party
+links some more.  I'll add pieces to the web page and report back
+when it's updated.
+
+&gt; An alternative would be to recast this in the following way:
+&gt;
+&gt; &lt;listOfComponentInstances&gt;
+&gt;   &lt;elementReference xlink:label="top" xlink:href=" somewhere at the top
+&gt; level only"/&gt;
+&gt;
+&gt;   &lt;componentInstance xlink:href="componentB.sbml"&gt;
+&gt;   	&lt;elementReference xlink:label="ref1" xlink:href="...somewhere in
+&gt; B" /&gt;
+&gt;   &lt;/componentInstance&gt;
+&gt;
+&gt;   &lt;componentInstance xlink:href="componentB.sbml"/&gt;
+&gt;   	&lt;elementReference xlink:label="ref2" xlink:href="...somewhere in
+&gt; B" /&gt;
+&gt;   &lt;/componentInstance&gt;
+&gt;
+&gt;   &lt;componentInstance xlink:href="componentA.sbml"&gt;
+&gt;   	&lt;elementReference xlink:label="ref3" xlink:href="...somewhere in
+&gt; A" /&gt;
+&gt;   &lt;/componentInstance&gt;
+&gt;
+&gt;   &lt;componentInstance xlink:href="componentA.sbml"&gt;
+&gt;   	&lt;elementReference xlink:label="ref4" xlink:href="...somewhere in
+&gt; A" /&gt;
+&gt;   &lt;/componentInstance&gt;
+&gt;
+&gt;   &lt;link xlink:from="ref1" xlink:to="ref3" /&gt;
+&gt;   &lt;link xlink:from="ref2" xlink:to="ref4" /&gt;
+&gt;   &lt;link xlink:from="ref2" xlink:to="top" /&gt;
+&gt;
+&gt; &lt;/listOfComponentInstances&gt;
+&gt;
+&gt; Is this any better or worse?
+
+I think it's better but I don't understand what "somewhere at the
+top level only" means in your first elementReference element.
+Something in the containing XML data stream?
+
+
+&gt; you wrote:
+&gt;
+&gt; &gt; &gt; a) XPATH can only refer to concrete XML structures.
+&gt; &gt; Structures that
+&gt; &gt; &gt; are inferred by SBML - in the future - such as the inside of a
+&gt; &gt; &gt; specific model instance can't be referred
+&gt; &gt; &gt; to (if you allow any number of instances of the same sub-model).  I
+&gt; &gt; &gt; guess it can be done by
+&gt; &gt; &gt; a pair of XPATHs one to the instance and the other to inside the
+&gt; &gt; &gt; sub-model.
+&gt; &gt;
+&gt; &gt; I don't think I understand what you mean with this.  Could
+&gt; &gt; you give me an example?
+&gt; &gt;
+&gt;
+&gt; OK, using the scheme I outlined above...
+&gt;
+&gt; consider the inside of B:
+&gt; ...
+&gt; &lt;listOfComponentInstances&gt;
+&gt;   &lt;componentInstance xlink:href="componentC.sbml"&gt;
+&gt;   	&lt;elementReference xlink:label="ref1" xlink:href="...somewhere in
+&gt; C" /&gt;
+&gt;   &lt;/componentInstance&gt;
+&gt;
+&gt;   &lt;componentInstance xlink:href="componentC.sbml"/&gt;
+&gt;   	&lt;elementReference xlink:label="ref2" xlink:href="...somewhere in
+&gt; C" /&gt;
+&gt;   &lt;/componentInstance&gt;
+&gt;
+&gt;   &lt;link xlink:from="ref1" xlink:to="ref2" /&gt;
+&gt; &lt;/listOfComponentInstances&gt;
+&gt; ...
+&gt;
+&gt; now the top level:
+&gt;
+&gt; &lt;listOfComponentInstances&gt;
+&gt;   &lt;componentInstance xlink:href="componentB.sbml"&gt;
+&gt;   	&lt;elementReference xlink:label="ref1" xlink:href="...somewhere
+&gt; inside the first C inside B" /&gt;
+&gt;  	&lt;elementReference xlink:label="ref2" xlink:href="...somewhere
+&gt; inside the 2nd C inside B" /&gt;
+&gt;   &lt;/componentInstance&gt;
+&gt;
+&gt;   &lt;componentInstance xlink:href="componentA.sbml"&gt;
+&gt;   	&lt;elementReference xlink:label="ref3" xlink:href="...somewhere in
+&gt; A" /&gt;
+&gt;   &lt;/componentInstance&gt;
+&gt;
+&gt;   &lt;link xlink:from="ref1" xlink:to="ref3" /&gt;
+&gt;   &lt;link xlink:from="ref2" xlink:to="ref3" /&gt;
+&gt;
+&gt; &lt;/listOfComponentInstances&gt;
+&gt;
+&gt; Now I don't see how you write the XPATH to do
+&gt; xlink:href="...somewhere inside the first C inside B"
+&gt;
+&gt; I believe you can do this in a single XPATH reference:
+&gt; you have to have one XPATH which refers to the instance and then
+&gt; an XPATH that refers to the element inside the instance.
+&gt;
+&gt; This is not a showstopper.
+&gt; The real question is: Do we care?
+
+I think this is something else I need to work on some more.  The
+short description is the XPath expression is to the relevant element
+in C.  There is also a sequence of (XLink attributes?  XPath
+expressions?) for identifying which instance of C is being referenced.
+
+As for whether or not we care, can anyone come up with a ~real
+example where this type of reference pattern would be useful?
+
+&gt; Is your motivation of using XLINK to use generic XLINK savvy programs to
+&gt; read SBML directly?
+&gt; If yes what are the benefits?
+
+I want to store model definitions in databases.  I think XML content
+in databases is migrating toward using the emerging XQuery standard
+for reference and retrieval.  XQuery is closely related to XPath 2.0.
+I expect XLink and XPointer will evolve along a parallel course with
+the emerging XQuery and XPath standards.  I think all of these
+capabilities will become available in mainstream databases over time.
+Oracle has much of this already (9iR2 has XQuery 1.0; not sure about
+XLink) and I expect Postgres and MySQL will have them soon if they
+don't already.  If my component references are through XLink, I
+expect the database will help me manage them (ie dependency analysis
+through things like WebDAV).
+
+Over time, software components will become available for processing
+XPath, XLink, XPointer, ... much as there is now with various parsers
+for XML, XSLT processors, and various tools for schema design and
+management.  I hope there will be enough capability in the generally
+available tools to relieve some of the implementation burden for
+SBML processors.  We'll only get those benefits if we use the
+community standards wherever possible.  In some sense, this is
+an exercise to determine if it can be done this way with a satisfactory
+end product.
+
+I also think models, documents, and web content should intersect.
+The more pieces I use from a common substrate, ie W3C recommendations,
+the more likely these disparate views will work together.  This is
+part of the rationale behind the whole Model-As-Document view in the
+proposal.  In the work we've been doing with our model building
+environment, users pretty consistently want to be able to integrate
+model definitions with various types of media: browsable content
+(e.g. web sites), publication ready presentation material, working
+documents, as well as what might be considered more conventional
+uses like simulation or model analysis.  One thing I've learned
+about content management over the years is as soon as you have 2
+sources for a piece of information, at least one of them is out
+of date.  If I'm writing a paper and I want to include some or
+all of the text of the model I'm writing about, I need to be
+able to find the references to the model components.  My document
+prep application will (someday) understand XLink/decendent; it
+probably won't understand a customized solution for SBML.
+
+In short, composition can be thought of as a cross reference between
+model definitions and XLink/XPointer/XPath is the cross reference
+mechanism defined by W3C.  We've decided to use an XML based
+representation for SBML so I think we should use XML based
+technologies.
+
+Jonathan Webb
+BBN Technologies
+617-873-3321
+jwebb@bbn.com
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00065" HREF="msg00065.html">RE: A proposal for model composition</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00063" HREF="msg00063.html">[sbml-discuss] RE: A proposal for model composition</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00063.html">[sbml-discuss] RE: A proposal for model composition</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00065.html">RE: A proposal for model composition</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00063.html">[sbml-discuss] RE: A proposal for model composition</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00065.html">RE: A proposal for model composition</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00064"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00064"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

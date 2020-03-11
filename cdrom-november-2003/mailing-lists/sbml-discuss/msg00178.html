@@ -1,0 +1,127 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] COMP &#45;&#45; Model Composition SIG Announcement -->
+<!--X-From-R13: [negva Uvaxry <tvaxryNzcv&#45;zntqrohet.zct.qr> -->
+<!--X-Date: Wed, 21 May 2003 00:53:22 &#45;0700 -->
+<!--X-Message-Id: XFMail.20030521095009.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1053501189.13537.30.camel@senin.e&#45;cell.org -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</TITLE>
+<LINK REV="made" HREF="mailto:ginkel@mpi-magdeburg.mpg.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00177.html">Date Prev</A>][<A HREF="msg00179.html">Date Next</A>][<A HREF="msg00177.html">Thread Prev</A>][<A HREF="msg00179.html">Thread Next</A>][<A HREF="maillist.html#00178">Date Index</A>][<A HREF="threads.html#00178">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</LI>
+<LI><em>From</em>: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 21 May 2003 09:50:09 +0200 (CEST)</LI>
+<LI>Cc: SBML-Discuss &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Hi Kouichi,
+
+On 21-May-2003 Kouichi Takahashi wrote:
+&gt;&gt; If you attach a reaction (and therefore an ODE) to a species that is calculated
+&gt;&gt; by assignment or algebraic rule, 
+&gt; 
+&gt; Probably I couldn't get your point, but implicit solvers can handle such 
+&gt; an situation? And a species connected to only rules or assignments has a 
+&gt; limited ulitity?
+
+For assigmentrules in pure ODE: No.
+(Either the integrator assigns the state depending on the derivative or the
+assignmentrule does it, not both)
+
+For algebraic rules in DAE: It depends. If the resulting system has index&gt;1 or 
+becomes contradictory it will not work. My idea is, that the modeler of the 
+submodel will take care of these difficulties and will expose only `robust' 
+elements...
+
+&gt; It is not necessary a case for E-Cell 3, since it uses asynchronous 
+&gt; discrete event approach, but I understand the problem.  
+
+Can you solve Index 2/3 DAE? I know this may work with some integrators but
+I don't know good stepsize adoption for these beasts. (We didn't find a robust
+solution yet).
+I should have a look into the details of the new ECell, especially for 
+the asynchronous coupling of different algorithms.
+        
+
+
+        CU,
+        Martin
+-- 
++-[Martin Ginkel]--------------[<A  HREF="mailto:ginkel">mailto:ginkel</A>(at)mpi-magdeburg.mpg.de]-+
+| MPI Magdeburg, Zi S2.09    Sandtorstr. 1, D-39106 Magdeburg, Germany |
+| Philosophy is to life as Masturbation is to sex  -- Karl M.          |
+|                                                                      |
++-[tel/fax: +49 391 6110 482/529]----[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00179" HREF="msg00179.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00177" HREF="msg00177.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00177.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00179.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00177.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00179.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00178"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00178"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

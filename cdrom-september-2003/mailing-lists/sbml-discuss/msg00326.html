@@ -1,0 +1,279 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] CAP capabilites controlled vocabulary -->
+<!--X-From-R13: "Xbret D. Irvzne" <X.IrvzneNgh&#45;of.qr> -->
+<!--X-Date: Mon, 26 May 2003 04:36:29 &#45;0700 -->
+<!--X-Message-Id: 3ED1FC24.9090203@tu&#45;bs.de -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Reference: Pine.OSF.4.21.0305242302510.139912&#45;100000@electre.pasteur.fr -->
+<!--X-Derived: pdf00006.pdf -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] CAP capabilites controlled vocabulary</TITLE>
+<LINK REV="made" HREF="mailto:J.Weimar@tu-bs.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00325.html">Date Prev</A>][<A HREF="msg00327.html">Date Next</A>][<A HREF="msg00307.html">Thread Prev</A>][<A HREF="msg00327.html">Thread Next</A>][<A HREF="maillist.html#00326">Date Index</A>][<A HREF="threads.html#00326">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] CAP capabilites controlled vocabulary</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] CAP capabilites controlled vocabulary</LI>
+<LI><em>From</em>: &quot;Joerg R. Weimar&quot; &lt;<A HREF="mailto:J.Weimar@tu-bs.de">J.Weimar@tu-bs.de</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 26 May 2003 13:36:04 +0200</LI>
+<LI><em>Organization</em>: TU Braunschweig</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Since discussions have come several times to the points that different 
+model use different parts of SBML, I would like to present the start of 
+a discussion about specifying which parts and which assumptions are 
+used. below please find my first start of a document which is also 
+attached as PDF. This discussion should be handled in the "Controlled 
+vocabularies" subgroup that was planned at the florida meeting, and for 
+which Mike wanted to initiate discussion (probably he wants to start 
+when other things have wuieted down a bit, which I can understand). I 
+post this now to make others aware of the discussion we had in Florida, 
+where Cliff Shaffer and I myself ageed on the strong need for such a 
+specification.
+
+Jörg.
+
+
+
+
+        Properties of SBML documents and tools - capabilities
+
+                             Joerg R. Weimar
+
+                     Institute of Scientific Computing
+                    Technical University Braunschweig
+                     D-38092 Braunschweig, Germany
+                         j.weimar@jweimar.de
+
+                               May 26, 2003
+
+1   Introduction
+
+This is a proposal for a recommendation on the usage of a controlled
+vocabulary for the desctiption of tools and models using the systems
+biology markup language (SBML).
+
+    Different tools for handling SBML files have different capabilities 
+of which constructs in SBML they support. A controlled way of specifying 
+these capabilities is needed to find out if a tool can handle a certain 
+model or class of models. Conversely, models could specify which 
+capabilities they need. Apart from capabilities, specifications on the 
+assumptions that a tool makes are also necessary.
+
+    A set of filters could be developed to overcome some limitations of
+certain tools. Such a filter would need to know the capabilities of the
+target tool. An automatic tool could be written to find out which SBML
+features are used in a model.  This tool could also try to make some
+inferences about the assumptions, but cannot necessarily resolve all
+assumptions.
+
+2   List of features
+
+A preliminary list of features of SBML that tools might or might not
+support follows:
+
+2.1   SBML level 1
+
+    o Level 1 Version 1
+    o Level 1 Version 2
+    o Level 1 Version 3
+    o rules
+    o scalar AssigmentRules
+    o rate AssigmentRules
+    o AlgebraicRule
+    o KineticRateLaw
+    o Formulas
+    o only Mass Action
+    o predefined math functions
+    o predefined rate law functions
+    o local Parameters
+    o global Parameters
+    o Units
+    o Compartment volume not 1
+
+
+2.2   SBML level 2
+
+Additional features in SBML level 2:
+
+    o Level 2
+    o Level 2 Version 1
+    o Level 2 Version 2
+    o Level 2 Version 3
+    o Level 2 minus MathML
+    o logical operators in MathML
+    o function definition
+    o ModifierSpeciesReference
+    o Delays
+    o Events
+    o Names (in addition to IDs)
+    o initial concentration
+
+2.3   SBML level 3
+
+Additional features in SBML level 3:
+
+    o submodels
+    o Instances
+    o Arrays
+    o Sparse arrays
+    o dynamic arrays
+    o Parameter sets
+    o initialAssigmentRule
+    o Ports
+    o Links to Ports only
+
+2.4   Notes and annotations
+
+    o XHTML notes
+    o Graph layout annotation
+    o ....
+
+    The above list of features is necessarily incomplete. Some features
+could be structured hierarchically, some are mutually exclusive, and
+especially regarding notes and annotations, extension to other features
+will be necessary.
+
+3   Properties of tools regarding the features
+
+
+Looking at the list of features, we can try to find how those words 
+could be used in describing a tool or a model.
+
+
+3.1   Models
+
+For models, one could state that
+
+                         This model uses &lt;feature&gt;.
+or
+                      This model does not use &lt;feature&gt;.
+and
+               This model is created with assumption &lt;feature&gt;.
+
+
+3.2   Tools
+
+
+The most important properties for tools are whether a tool can read SBML
+files and whether the models written by the tool contain (or can contain) a
+feature. Example sentences would be
+
+
+      This tool can correctly read and process models that use &lt;feature&gt;.
+
+               This tool cannot read models that use &lt;feature&gt;.
+
+             This tool creates models that may contain &lt;feature&gt;.
+
+           The models that this tool creates never contain &lt;feature&gt;.
+
+      This tool can optionally create all models without using &lt;feature&gt;.
+
+This tool can convert models with &lt;feature&gt; into models without &lt;feature&gt;.
+
+
+4   Formalizing
+
+
+It is desirable to create a vocabulary in which features and properties 
+are orthogonal, in that each feature can be combined with each property 
+and the statement would make sense.
+    An example list of properties would be: "Never" "Read only",
+"Read and Write", "Used", "Not used".
+    A capability of a tool is then a pair of feature and property.  This
+could be formalized as am xml schema, such that the capabilities of a 
+model could be described by the following XML fragment inside an 
+annotation node of the SBML file:
+
+&lt;annotation xmlns:cap="<A  HREF="http://www.sbml.org/2002/ns/capabilities/">http://www.sbml.org/2002/ns/capabilities/</A>&gt;
+   &lt;/cap:capability cap:feature="Delays" cap:property="Not used"&gt;
+   &lt;/cap:capability cap:feature="Events" cap:property="Used"&gt;
+&lt;/annotation&gt;
+
+
+4.1   RDF
+
+
+The information about models is a typical example of metadata.  Therefore
+one should investigate whether the Resource Description Format (RDF) can
+approriately be used for formalizing the capabilities.
+
+
+    TO BE CONTINUED
+
+
+
+-- 
+PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, TU-Braunschweig
+J.Weimar@tu-bs.de, <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+Tel. +49-531-391-3006  Mail: D-38092 Braunschweig
+
+</PRE>
+<P><A HREF="pdf00006.pdf" >capabilities.pdf</A></P>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00327" HREF="msg00327.html">Re: [sbml-discuss] CAP capabilites controlled vocabulary SBML modularization</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00307" HREF="msg00307.html">Re: [sbml-discuss] compliance with portions of SBML</A></STRONG>
+<UL><LI><EM>From:</EM> Nicolas Le Novere &lt;lenov@pasteur.fr&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00325.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00327.html">Re: [sbml-discuss] CAP capabilites controlled vocabulary SBML modularization</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00307.html">Re: [sbml-discuss] compliance with portions of SBML</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00327.html">Re: [sbml-discuss] CAP capabilites controlled vocabulary SBML modularization</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00326"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00326"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

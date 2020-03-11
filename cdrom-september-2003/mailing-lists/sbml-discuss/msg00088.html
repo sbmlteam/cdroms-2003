@@ -1,0 +1,337 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] SBML: Concentration vs. Quantity in SBML Level 1 -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: by paradigm (mbox mhucka)(with Cubic Circle's cucipop (v1.31 1998/05/13) Fri Mar 28 12:17:58 2003) -->
+<!--X-Message-Id: 002301c2f520$cd8e9f70$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3E841497.9030803@jweimar.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00091.html">Date Prev</A>][<A HREF="msg00089.html">Date Next</A>][<A HREF="msg00087.html">Thread Prev</A>][<A HREF="msg00089.html">Thread Next</A>][<A HREF="maillist.html#00088">Date Index</A>][<A HREF="threads.html#00088">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Joerg Weimar'&quot; &lt;<A HREF="mailto:J.Weimar@jweimar.de">J.Weimar@jweimar.de</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 28 Mar 2003 11:54:28 -0000</LI>
+<LI>Cc: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Joerg
+
+Thanks for your enquiry I will try to answer your questions
+
+My reply may raise a number if issues that people may wish to discuss
+with respect to the standard
+
+I think you have run into a possible confusion with the standard
+which is I think understandable.
+
+a) although the initialAmount attribute for a species is in substance
+units
+(either moles or number of molecules - default moles).  The identifier
+for
+the species in the kinetic rate law (and other expressions) represents
+the
+concentration of the species (substance/volume units)
+
+- Why isn't initialAmount concentration (substance/volume)?
+	People often need to able to specify species amount in number of
+molecules.
+	Number of molecules isn't translatable into concentration but
+into units of substance
+
+(SBML allows the units for substance and volume to be globally
+redefined.)
+
+b) A kinetic law in SBML returns the rate of change of substance
+and not concentration.  see rationale below
+
+c) The identifier for a compartment e.g. compA can be used in an
+expression
+to represent the volume of the compartment i.e. you don't need
+the .volume qualifier.
+
+Folks if you don't like any of this let us know!
+Feel free to comment on how this may or may not conflict with how
+you import or export SBML.
+
+yours Andrew
+
+------------------------------------------------------------------------
+-------
+
+Explanation of item (b)  
+
+( below a symbol
+	e.g. A represents the substance of a species and
+		[A] represents the concentration of a species)
+
+In both L1 and L2 the formula used to 
+define the rate of a given reaction is defined
+to be amount/time (moles/second by default).
+This is reasonable since reactions change
+species amount directly and only species 
+concentration indirectly.  
+ 
+We are aware that many modelers use 
+concentration/time or amount/volume/time
+(moles/liter/second by default) when 
+defining rate of change formulae
+for species.  Thus we defined
+speciesConcentration rules that have these
+units.
+
+So at first this may seem to be inconsistent both
+within SBML and perhaps with the approach of the
+modeling community.
+
+However there is a reason for this:
+
+a) Kinetic laws on reactions don't define the
+rate of change of a single species. In fact
+the rate of change of species is composed 
+from the rate laws of all reactions in which
+the species is either a reactant or product.
+The result is a formula that defines a rate of
+change of amount for the species.
+
+b) A reaction can have a transport component
+i.e. move species from one compartment to another
+where each compartment can have a different volume.
+
+Consider the situation where there are 3 species A, B and
+C all in separate compartments with volumes Va, Vb, and Vc
+respectively.  We define a transporting reaction A -&gt; B + C
+with a rate law k[A]  
+
+the rates of change of amount are 
+
+A' = -k[A]
+B' = k[A]
+C' = k[A]
+
+and thus the rates of change of concentration are:
+
+[A]' = -k[A]/Va
+[B]' = k[A]/Vb
+[C]' = k[A]/Vc
+
+One immediate observation of this is if you
+don't care about volume and compartments:
+you just locate everything inside a single unit 
+compartment and then [A] = A thus returning the
+math to the conventional representation.
+
+Lets consider a definition of rate laws that
+might seem rational: the rate law defines the rate of 
+change of concentration of the species in the reaction.
+Thus we have
+
+[A]' = -k[A]
+[B]' = k[A]
+[C]' = k[A]
+
+therefore the rates of change of amount are
+
+A' = -k[A]Va
+B' = k[A]Vb
+C' = k[A]Vc
+
+Hopefully you'd agree that this is incorrect:
+this suggests that you can increase the rate of increate
+of amount of C simply by increasing the volume of C's compartment.
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Joerg Weimar
+&gt; Sent: 28 March 2003 09:24
+&gt; To: Herbert Sauro; sbml-discuss@caltech.edu
+&gt; Subject: Re: [sbml-discuss] SBML: Concentration vs. Quantity 
+&gt; in SBML Level 1
+&gt; 
+&gt; 
+&gt; SBML provides the posibility of defining compartments and specify 
+&gt; volumes. Species provisions are made for rules that change 
+&gt; the volumes. 
+&gt; If a model uses volumes that change in time and second order 
+&gt; reactions 
+&gt; appear in the model, it is not possible to ensure that your units are 
+&gt; compatible, no matter whether you have a PhD or not. You need 
+&gt; the volume 
+&gt; to convert between quantities of molecules and concentrations, or you 
+&gt; need a modelling tool that is able to do this for you.
+&gt; 
+&gt; I read somewhere (this might be out of date), that Jarnac assumes a 
+&gt; single compartment with unit volume (constant in time), so 
+&gt; for this tool 
+&gt; the issue does not appear. Changing volumes can still be modeled, but 
+&gt; then the volume would be a separate variable that would 
+&gt; probably appear 
+&gt; in SBML as a substance.
+&gt; 
+&gt; JDesigner does allow the creation of compartments, and 
+&gt; specification of 
+&gt; their volume, though how they are used is unclear to me ( I 
+&gt; am working 
+&gt; on linux and have not installed JDesigner).
+&gt; 
+&gt; An example of the complications that appear even with fixed 
+&gt; volumes is 
+&gt; the following:
+&gt; 
+&gt; Imagine two compartments with different volumes and a 
+&gt; transport process 
+&gt; between the two. Transporting one molecule between the two 
+&gt; compartments 
+&gt; has a different effect on the concentrations in the two 
+&gt; volumes: in the 
+&gt; smaller volume the change in concentration is proportionally 
+&gt; larger. So 
+&gt; where does this information go?
+&gt; Does the user have to include the conversion between molecule numbers 
+&gt; and concentrations in the kineticLaw formula?
+&gt; 
+&gt; I have appended an SBML example file, which does not include the 
+&gt; rescaling, but uses numbers of molecules for substance 
+&gt; definitions. The 
+&gt; problematic point here is that the kinetic law should really 
+&gt; be &lt;kineticLaw formula="(KcF * MEMBRANE_Enzyme  * compA_X)/( KmS + 
+&gt; (compA_X/compA.volume))"&gt;
+&gt; 
+&gt; instead of
+&gt; 
+&gt; &lt;kineticLaw formula="(KcF * MEMBRANE_Enzyme  * compA_X)/( KmS 
+&gt; + compA_X)"&gt;
+&gt; 
+&gt; but how does one access the volume (here I used compA.volume, 
+&gt; but such 
+&gt; usage is not defined anywhere)?
+&gt; 
+&gt; Note also that
+&gt; &lt;kineticLaw formula="uui(compA_X, KcF * MEMBRANE_Enzyme, 
+&gt; KmS)"&gt; would be incorrect,  while &lt;kineticLaw 
+&gt; formula="compA.volume * uui(compA_X/compA.volume, KcF * 
+&gt; MEMBRANE_Enzyme, KmS)"&gt;
+&gt; would be correct.
+&gt; 
+&gt; 
+&gt; Jörg Weimar
+&gt; 
+&gt; Herbert Sauro wrote:
+&gt; 
+&gt; &gt;I (JDesigner author) assume that the author of a model has made sure 
+&gt; &gt;that the units they are using are correct and compatible, I 
+&gt; don't check 
+&gt; &gt;if this is the case. As far as I am aware all modeling tools 
+&gt; do this. 
+&gt; &gt;Even tools such as Matlab make no attempt to check your 
+&gt; units, it's up 
+&gt; &gt;to the model builder to do this. Since I don't check on 
+&gt; units it means 
+&gt; &gt;that users are not restricted to what they can use, they can use mM, 
+&gt; &gt;microM etc, what ever is suitable, but they must make sure that the 
+&gt; &gt;parameter units correspond. In SBML if you don't specify 
+&gt; units then the 
+&gt; &gt;numbers can mean what ever the modeller intended.
+&gt; &gt;
+&gt; The SBML specification says that the default unit for substances is 
+&gt; "mole", not whatever the modeller intends!
+&gt; 
+&gt; &gt;For real models one should of course indicate somewhere
+&gt; &gt;in the SBML what the basic units are.
+&gt; &gt;
+&gt; &gt;I don't think this is an unreasonable requirement for the 
+&gt; user to do, I 
+&gt; &gt;presume that our users are scientists (i.e they have PhDs 
+&gt; etc) and will 
+&gt; &gt;understand the importance of compatible units!
+&gt; &gt;  
+&gt; &gt;
+&gt; Most scientists are well aware of this, that is why there is 
+&gt; a separate 
+&gt; notation for concentrations
+&gt; and molecule numbers: [X] is the concentration of species X. 
+&gt; It is only 
+&gt; for convenience that the [] is often left out.
+&gt; 
+&gt; 
+&gt; -- 
+&gt; PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, 
+&gt; TU-Braunschweig J.Weimar@tu-bs.de, 
+&gt; <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+&gt; Tel. 
+&gt; +49-531-391-3006  Mail: D-38092 Braunschweig
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00087" HREF="msg00087.html">Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+<UL><LI><EM>From:</EM> Joerg Weimar &lt;J.Weimar@jweimar.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00091.html">[Fwd: Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBMLLevel 1]</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00089.html">Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Leve</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00087.html">Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00089.html">Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Leve</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00088"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00088"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

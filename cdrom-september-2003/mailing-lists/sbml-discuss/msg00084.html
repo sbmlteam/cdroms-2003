@@ -1,0 +1,202 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] SBML: Concentration vs. Quantity in SBML Level1 -->
+<!--X-From-R13: Egrsna Vbbcf <fubbcfNig.rqh> -->
+<!--X-Date: by anteroom (mbox mhucka)(with Cubic Circle's cucipop (v1.31 1998/05/13) Fri Mar 28 02:48:09 2003) -->
+<!--X-Message-Id: 20030327092923.24ad042f.shoops@vt.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200303241258.00122.j.weimar@jweimar.de -->
+<!--X-Reference: 002701c2f206$3c843ca0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</TITLE>
+<LINK REV="made" HREF="mailto:shoops@vt.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00083.html">Date Prev</A>][<A HREF="msg00086.html">Date Next</A>][<A HREF="msg00083.html">Thread Prev</A>][<A HREF="msg00086.html">Thread Next</A>][<A HREF="maillist.html#00084">Date Index</A>][<A HREF="threads.html#00084">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</LI>
+<LI><em>From</em>: Stefan Hoops &lt;<A HREF="mailto:shoops@vt.edu">shoops@vt.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 27 Mar 2003 09:29:23 -0500</LI>
+<LI><em>Organization</em>: Virginia Bioinformatics Institute</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello,
+
+Just as a remark. COPASI, just presented in alpha state at CCB2, deals with particle numbers and concentrations. This is absolutely necessary to allow transport reactions between compartments with different volumes. In addition conversion is also needed to allow the choice between stochastic and deterministic integration.
+
+Stefan
+
+
+On Mon, 24 Mar 2003 13:06:45 +0000
+Andrew Finney &lt;afinney@cds.caltech.edu&gt; wrote:
+
+&gt; Joerg
+&gt; 
+&gt; OK I think you've run into a typo in the SBML Level 1 document
+&gt; 
+&gt; the text that's been corrected in the level 2 document for species is:
+&gt; ---
+&gt; The units of the substance quantity may be explicitly set using the
+&gt; optional field units. The value assigned to units must be chosen from
+&gt; one of the following possibilities: one
+&gt; of base unit names from Table 2 on page 13, the name "substance", or a
+&gt; new unit name defined by a unit
+&gt; definition in the enclosing model. If absent, the units default to the
+&gt; value set by the built-in "substance"
+&gt; ---
+&gt; 
+&gt; &gt; One problem is that I am not sure 
+&gt; &gt; which software 
+&gt; &gt; actually supports the use of units, and of converting between 
+&gt; &gt; quantity and 
+&gt; &gt; concentration, taking into account the volume. 
+&gt; 
+&gt; I'm not aware that any do at this stage.
+&gt; 
+&gt; What the Level 2 standard says, at the moment, is that the default units
+&gt; for species attribute initialAmount
+&gt; are 'substance' which is moles by default.  That's the intention of the
+&gt; Level 1 document as well.
+&gt; 
+&gt; We could potentially change this default to concentration
+&gt; 'substance/volume' which is mole/litre
+&gt; by default.  I think I'd like to know what other people think about
+&gt; this.
+&gt; The original idea was to enable a switch between numbers of molecules
+&gt; ('item') and moles for all
+&gt; species simply by changing the definition of the 'substance' units.
+&gt; 
+&gt; yours Andrew
+&gt; 
+&gt; &gt; -----Original Message-----
+&gt; &gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; &gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Joerg Weimar
+&gt; &gt; Sent: 24 March 2003 03:58
+&gt; &gt; To: sbml-discuss@caltech.edu
+&gt; &gt; Subject: [sbml-discuss] SBML: Concentration vs. Quantity in 
+&gt; &gt; SBML Level1
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; I am working on a tool to handle SBML files in a piece of 
+&gt; &gt; software related to E-cell 1. In this process I am running 
+&gt; &gt; into the problem that SBML level 1 
+&gt; &gt; seems to use only molecule quantities, not concentrations:
+&gt; &gt; 
+&gt; &gt; Standard units for substance are mole (I assume this means 
+&gt; &gt; 6.02 E23 * item, the document is not clear on this), possible 
+&gt; &gt; other definitions are item (molecule count) and mol/liter (the M used 
+&gt; &gt; in chemistry and biology). One problem is that I am not sure 
+&gt; &gt; which software 
+&gt; &gt; actually supports the use of units, and of converting between 
+&gt; &gt; quantity and 
+&gt; &gt; concentration, taking into account the volume. I saw one comment in 
+&gt; &gt; JDesigner, which stated that all units are assumed to be 
+&gt; &gt; compatible, this 
+&gt; &gt; implies that volume is not changing and only molecule counts 
+&gt; &gt; are used.  When 
+&gt; &gt; both Michealis-menten type laws and mass action laws are 
+&gt; &gt; used, careful 
+&gt; &gt; attention need to be paid to the question of which units are 
+&gt; &gt; used for the 
+&gt; &gt; parameters.
+&gt; &gt; 
+&gt; &gt; Also, it is not clear to me what a use of "volume" as the unit in 
+&gt; &gt; &lt;specie initialamout="0.1" unit="volume"&gt; 
+&gt; &gt; would mean (see section 4.4 of sbml-level-1.pdf).
+&gt; &gt; 
+&gt; &gt; Maybe this issue has been resolved in level2, but from the 
+&gt; &gt; documents is seems 
+&gt; &gt; that level 2 is supposed to be an extension, not correction.
+&gt; &gt; 
+&gt; &gt; Thanks for any help on this, Jörg Weimar.
+&gt; &gt; 
+&gt; &gt; -- 
+&gt; &gt; PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, 
+&gt; &gt; TU-Braunschweig J.Weimar@tu-bs.de, 
+&gt; &gt; <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+&gt; &gt; Tel. 
+&gt; &gt; +49-531-391-3006  Mail: D-38092 Braunschweig
+&gt; &gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+
+-- 
+Stefan Hoops, Ph.D.
+Senior Research Associate
+Virginia Bioinformatics Institute
+1880 Pratt Dr.
+Blacksburg, VA 24061, USA
+
+Phone: (540) 231-1799
+Fax: (540) 231-2606
+Email: shoops@vt.edu
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00082" HREF="msg00082.html">[sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+<UL><LI><EM>From:</EM> Joerg Weimar &lt;j.weimar@jweimar.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00083" HREF="msg00083.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00083.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00086.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00083.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00086.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00084"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00084"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

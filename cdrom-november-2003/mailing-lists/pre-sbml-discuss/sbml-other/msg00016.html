@@ -1,0 +1,167 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;other] Proposed features for SBML Level 2 &#45; not discussed at workshop -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Mon, 29 Jul 2002 03:47:38 &#45;0700 -->
+<!--X-Message-Id: 000a01c236ed$705dcde0$612a94d9@ANDREWLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-other] Proposed features for SBML Level 2 - not discussed at works</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00015.html">Date Prev</A>][<A HREF="msg00017.html">Date Next</A>][<A HREF="msg00015.html">Thread Prev</A>][<A HREF="msg00017.html">Thread Next</A>][<A HREF="maillist.html#00016">Date Index</A>][<A HREF="threads.html#00016">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-other] Proposed features for SBML Level 2 - not discussed at workshop</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;SBML OTHER&quot; &lt;<A HREF="mailto:sbml-other@symbio.jst.go.jp">sbml-other@symbio.jst.go.jp</A>&gt;,  &quot;Herbert M Sauro&quot; &lt;<A HREF="mailto:hsauro@cds.caltech.edu">hsauro@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-other] Proposed features for SBML Level 2 - not discussed at workshop</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 29 Jul 2002 11:48:06 +0100</LI>
+<LI>Importance: Normal</LI>
+<LI><em>Organization</em>: ERATO Kitano</LI>
+<LI>Reply-To: &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+A minor proposal: boundaryCondition attribute shouldn't determine
+variable is constant
+========================================================================
+==============
+
+The species element has an boolean attribute boundaryCondition which is
+false by default.  In Level 1 a truth value indicated that the species
+concentration was fixed for the duration of the simulation.
+
+Herbert Sauro has proposed that in level 2, and I agree, that the truth
+value should indicate that the species is not effected by reaction
+elements.
+The species is thus 'on the boundary of' the system of reactions defined
+by the set of reaction elements.  
+
+In the absence of rules referring to the species, the species will be
+constant.
+
+A Wider problem: determining when a variable is constant or not
+===============================================================
+
+This leads us to a bigger issue: when can a variable (species amount,
+compartment volume, parameter value) vary during a simulation.
+In the absence of algebraic rules this is straight forward to
+determine: the variable is constant unless there is a rule
+(must be assignment type) that determines how the variable
+varies.  
+
+Background: assignment type is x = f(P) or dx/dt = f(P)
+algebraic type is  0 = f(P) (P is the set of variables (with some
+restrictions)).
+
+A reaction is roughly equivalent to a dx/dt rule for each product and
+reactant.
+
+If we introduce algebraic type rules we have a problem:
+the model may intend some variables be determined by the
+rule and some variables to be constant for the duration
+of the simulation. 
+
+for example given 
+k = 0.02;
+x = 0;
+y = 1;
+
+dy/dt = f();
+
+0 = (k * x + y) - 1
+
+In SBML there is no way to specify that k is constant and that x can
+vary
+during the simulation.
+
+A Proposal: solution to above problem
+======================================
+
+Add a 'constant' boolean attribute to the 'species', 'compartment' and
+'parameter' elements.  In the case of species this attribute defaults to
+false.  In the case compartment and parameter this attribute defaults to
+true.
+
+It is invalid to set 'constant' to false on local 'parameter' elements
+(since no rules can affect the parameter variable).
+It is invalid to create assignment rules for variables that are
+constant.  It is invalid have a model in which a species
+concentration can vary through reactions and to define it
+constant i.e. the species is not a boundary condition and occurs
+as a product or reactant.
+
+Comments
+========
+
+Please comment on the above - feel free to rubbish it!
+Ideally I'd like to settle this issue soon so that I can 
+complete the SBML Level 2 proposal document by the end of
+the month.  The document will then be posted for review.
+
+yours Andrew Finney
+
+afinney@cds.caltech.edu
++44 1452 722 487
+UK: 01452 722 487 - US: 011 44 1452 722 487
+
+ERATO Kitano SBW Development Group
+<A  HREF="http://www.cds.caltech.edu/erato">http://www.cds.caltech.edu/erato</A> 
+
+California Institute of Technology / University of Herfordshire 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00015.html">[sbml-other] RE: clarification on interaction of algebraic rules and variable</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00017.html">[sbml-other] SBML &lt;-&gt; Cellerator Exchange</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00015.html">[sbml-other] RE: clarification on interaction of algebraic rules and variable</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00017.html">[sbml-other] SBML &lt;-&gt; Cellerator Exchange</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00016"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00016"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,280 @@
+                              src/INSTALL.txt
+
+	     S y s t e m s   B i o l o g y   W o r k b e n c h
+
+        Michael Hucka, Andrew Finney, Herbert Sauro, Hamid Bolouri
+	Ben Kovitz, Akira Funahashi, Sarah Keating, Joanne Matthews
+
+              The Systems Biology Workbench Development Group
+		JST ERATO Kitano Symbiotic Systems Project
+                 Control and Dynamical Systems, MC 107-81
+                    California Institute of Technology
+                         Pasadena, CA, 91125, USA
+
+			  http://www.sbw-sbml.org
+                      mailto:sysbio-team@caltech.edu
+
+
+=================
+SUPPORTED SYSTEMS
+=================
+
+SBW has been tested under the following operating systems.  Other systems
+are unsupported at this time.
+
+   Microsoft Windows: 98SE, 2000, XP
+   Linux:             Red Hat 7.3, Red Hat 8.x, Red Hat 9.0
+   FreeBSD:           FreeBSD 4.8-RELEASE
+   Virtual PC (Mac):  Virtual PC 5 running Windows XP on MacOS 10.1.5 & 10.2
+
+
+=================================
+INSTALLATION INSTRUCTIONS FOR SBW
+=================================
+
+SYNOPSIS:
+
+1. Download and install Java if you do not already have it
+2. (Optional for Windows) Download and install Cygwin
+3. (Optional) Download and install Python and Perl
+4. (Optional) Download and install SWIG
+5. Download the SBW distribution from one of the download sites
+6. Install SBW
+
+DETAILS:
+
+1. Download and install Java version 1.3.x or later
+
+   A prerequisite for SBW is that your system has Java version 1.3.x or
+   later (either the run-time environment or the SDK, http://java.sun.com)
+   installed before you attempt to install or build SBW.  If you do not
+   already have this, you *MUST* install it before attempting to install
+   SBW.  (You will need the SDK if you plan on compiling the source code or
+   the tutorial examples.)  We recommend Java 1.4.2 because of its much
+   improved GUI elements.
+
+2. (Optional for Windows) Download and install Cygwin
+
+   If you plan on building SBW from sources under Windows, you will also
+   need to the Cygwin environment (http://www.cygwin.org).  This is not
+   required for simply running the binary distribution of SBW.
+
+3. (Optional) Download and install Python and Perl
+
+   If you plan on using the Python library and/or the Perl library, you
+   must download and install them *before* installing or building SBW.
+
+   For Python: you will need Python version 2.1.1 or later installed on
+   your system along with the Python "Numeric" package version 20 or later.
+   The "configure" script (discussed below) has options for telling it
+   where to find Python.  Important: under Windows, you should install the
+   *Windows* version of Python; SBW is *not* currently set up to use the
+   Cygwin version of Python under Windows.
+
+   For Perl: If you plan on using the Perl interface, you will need Perl
+   version 5.6 or later installed on your system.  You will also need SWIG
+   version 1.3.10 or later (see below).  The "configure" script (discussed
+   below) has options for telling it where to find Perl and SWIG on your
+   system.  Important: under Windows, you should install the *Windows*
+   version of Perl (such as from the ActivePerl distribution) and use the
+   Windows binary of SWIG.  SWIG under the Cygwin environment does not work
+   because of issues with the linker.
+
+4. (Optional) Download and install SWIG
+
+   As mentioned above, if you plan on building the Perl library from
+   sources, you will also need the SWIG package (http://www.swig.org/).
+   See note #3 above.
+
+5. Download the SBW distribution from one of the download sites
+
+   You have the choice of downloading either precompiled binaries in
+   an installer package, or a zip file containing source code only.
+   If you do not plan on compiling software or developing your own modules,
+   you can get by with just the minimal installer, without source code.
+
+6. Install SBW
+
+   6.1  If you downloaded an installer:
+
+   The installer is an executable program.  Simply run the program and
+   follow the instructions presented in the dialog boxes.
+
+   6.2  If you downloaded the source distribution:
+
+   The source distribution comes in the form of a zip archive.  Unzip the
+   archive in the directory where you want to put the SBW sources, then
+   follow the instructions below for compiling and installing SBW.
+
+
+=============================
+CONFIGURING AND COMPILING SBW
+=============================
+
+Linux
+-----
+
+If you are using GCC under Linux, you will need at least version 2.95.2 of
+GCC.  GCC 2.91 is known to fail to properly compile some parts of SBW.
+Whether the versions between 2.91 and 2.95.2 would work is unknown, but to
+be safe, it's best to go with at least 2.95.2.
+
+The Linux installation uses a configuration script generated from GNU
+`configure'.  Initially, there are no Makefiles present; they are created
+by running the configure script at the top level of the SBW src tree.
+
+Ideally, to build and install SBW using the default destination directory
+(which is "$(HOME)/SBW"), it should be enough to do the following:
+
+   ./configure
+   make
+   make install
+
+Unfortunately, since Java and Python are often installed in different
+locations on different computers, it is likely that you will need to tell
+the configure script explicitly where to find Java and Python on your
+system.  You can specify a particular Java installation using the following
+option:
+
+  --with-java=PATH	       Path to Java executable
+
+For example, 
+
+   ./configure --with-java=/usr/local/jdk1.3.1_01/bin/java
+
+The configure script by default builds the Python interface.  It will try
+to locate Python on your system by itself.  You may use the following
+options to disable and enable building the Python interface, and to tell it
+directly where to find Python components:
+
+  --enable-python=ARG          Build the Python interface (default ARG: yes)
+  --with-python=PATH	       Path to Python executable (default: python2)
+  --with-python-includedir=DIR Directory of extra Python include files
+  --with-python-libdir=DIR     Directory of extra Python libraries
+
+If your Python and/or Python Numeric is/are installed in a location outside
+of where GCC looks for include files and library files, you will need to
+use the last three options listed above to configure SBW to be able to
+build properly.  Here is an example of using these arguments when the
+Python Numeric package is installed in a nonstandard location:
+
+  ./configure --with-python-includedir=/opt/include/python2.2 \
+	      --with-python-libdir=/opt/lib/python2.2/site-packages/Numeric
+
+The configure script by default also builds the Perl interface.  It will
+try to locate Perl on your system by itself.  You may use the following
+options to disable and enable building the Perl interface, and to tell it
+directly where to install the Perl library:
+
+  --enable-perl                Build the Perl interface (default: on)
+  --with-perl=PATH             Path to Perl executable
+  --with-perl-libprefix=PATH   Path to root of where to install Perl library
+  --with-swig=PATH             Path to the SWIG executable
+
+Finally, to configure SBW to use a directory other than the default, use
+the configure --prefix option, as in the following example:
+
+   ./configure --prefix=/some/other/path
+
+Note that because of the way that .jar files are constructed for the SBW
+modules, if the SBW Java library is updated or changed, you need to rebuild
+the Java modules and tutorial examples.  The SBW .jar files are constructed
+in a fashion that is analogous to statically linked executables; this is
+why changes in the SBW library require rebuilding the .jar files.
+
+
+Windows using Cygwin
+--------------------
+
+You will need MS Visual C++ 6.0 to build the SBW C++ libraries.
+
+Under Windows, SBW is built using a Cygwin shell to drive the configure
+script and makefiles.  The SBW installation built in this way does not use
+Cygwin at run-time; it is only needed at compile-time.  It builds regular
+Windows .exe and .dll binaries -- the Cygwin environment is only used to
+drive the scripts and makefiles that build the system.  The procedure is
+essentially the same as described above for Linux.
+
+First, start a Cygwin shell on your Windows computer, and cd to the
+directory where you copied the SBW sources.  (E.g., this might be
+"C:/ERATO/src".)  Ideally, to build and install SBW using the default
+destination directory (which is "$(HOME)/SBW"), it should be enough to do
+the following:
+
+   ./configure
+   make
+   make install
+
+Unfortunately, since Java and Python are often installed in different
+locations on different computers, it is likely that you will need to tell
+the configure script explicitly where to find Java and Python on your
+system.  You can specify a particular Java installation using the following
+option:
+
+  --with-java=PATH	       Path to Java executable
+
+For example, 
+
+   ./configure --with-java=C:/jdk1.3.1_01/bin/java
+
+The configure script by default builds the Python interface.  It will try
+to locate Python on your system by itself.  You may use the following
+options to disable and enable building the Python interface, and to tell it
+directly where to find Python components:
+
+  --enable-python=ARG          Build the Python interface (default ARG: yes)
+  --with-python=PATH	       Path to Python executable (default: python2)
+  --with-python-includedir=DIR Directory of extra Python include files
+  --with-python-libdir=DIR     Directory of extra Python libraries
+
+If your Python and/or Python Numeric is/are installed in a location outside
+of where GCC looks for include files and library files, you will need to
+use the last three options listed above to configure SBW to be able to
+build properly.  Here is an example of using these arguments when the
+Python Numeric package is installed in a nonstandard location:
+
+  ./configure --with-python-includedir="C:/Python22/include" \
+	      --with-python-libdir="C:/Python22/libs"
+
+The configure script by default also builds the Perl interface.  It will
+try to locate Perl on your system by itself.  You may use the following
+options to disable and enable building the Perl interface, and to tell it
+directly where to install the Perl library:
+
+  --enable-perl                Build the Perl interface (default: on)
+  --with-perl=PATH             Path to Perl executable
+  --with-perl-libprefix=PATH   Path to root of where to install Perl library
+  --with-swig=PATH             Path to the SWIG executable
+
+Finally, to configure SBW to use a directory other than the default, use
+the configure --prefix option, as in the following example:
+
+   ./configure --prefix=/some/other/path
+
+The configure step creates not just Makefiles but other files as well.  The
+GNU configure utility works by substituting certain variables in files that
+end with the extension ".in" to generate the final file.  Thus, there are
+Makefile.in files throughout the src directory and these are processed by
+configure to create Makefile.  The configure step is also used to generate
+shell scripts and .bat files.  Under Windows, some Makefiles have to be
+treated differently.  These have names of the form "Makefile-cygwin.in".
+The configure script at the top level is set up so that it takes these
+Makefile-cygwin files and creates regular Makefile files.
+
+All of these files are linked at the top level, so that doing a "make" from
+the top src directory will run make recursively and build the whole system.
+
+Note that because of the way that .jar files are constructed for the SBW
+modules, if the SBW Java library is updated or changed, you need to rebuild
+the Java modules and tutorial examples.  The SBW .jar files are constructed
+in a fashion that is analogous to statically linked executables; this is
+why changes in the SBW library require rebuilding the .jar files.
+
+
+
+=============================================================================
+File authors: M. Hucka, A. Finney
+Last updated: $Date: 2003/08/12 20:49:20 $
+CVS information: $Id: INSTALL.txt,v 1.17 2003/08/12 20:49:20 mhucka Exp $
+$Source: /cvsroot/sbw/sbw/src/INSTALL.txt,v $
+=============================================================================

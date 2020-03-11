@@ -1,0 +1,198 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] [Hybrid] Re: Hybrid Models Working Group -->
+<!--X-From-R13: Hvwnl Enenfjng <fnenfjngNpfr.cfh.rqh> -->
+<!--X-Date: Mon, 16 Jun 2003 14:20:39 &#45;0700 -->
+<!--X-Message-Id: 3EEE346A.2010904@cse.psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000201c32e73$d3b30f30$458cc593@herts.ac.uk -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</TITLE>
+<LINK REV="made" HREF="mailto:saraswat@cse.psu.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00490.html">Date Prev</A>][<A HREF="msg00492.html">Date Next</A>][<A HREF="msg00506.html">Thread Prev</A>][<A HREF="msg00493.html">Thread Next</A>][<A HREF="maillist.html#00491">Date Index</A>][<A HREF="threads.html#00491">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:m.j.1.schilstra@herts.ac.uk">m.j.1.schilstra@herts.ac.uk</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</LI>
+<LI><em>From</em>: Vijay Saraswat &lt;<A HREF="mailto:saraswat@cse.psu.edu">saraswat@cse.psu.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 16 Jun 2003 17:19:38 -0400</LI>
+<LI>Cc: &quot;'Ed Frank'&quot; &lt;<A HREF="mailto:efrank@mcs.anl.gov">efrank@mcs.anl.gov</A>&gt;,  &quot;'Takeshi Sakurada'&quot; &lt;<A HREF="mailto:sakurada@sfc.keio.ac.jp">sakurada@sfc.keio.ac.jp</A>&gt;,  &quot;'Mike McCollum'&quot; &lt;<A HREF="mailto:jmccoll2@utk.edu">jmccoll2@utk.edu</A>&gt;, &quot;'Greg Peterson'&quot; &lt;<A HREF="mailto:gdp@utk.edu">gdp@utk.edu</A>&gt;,  &quot;'Stefan Hoops'&quot; &lt;<A HREF="mailto:shoops@vt.edu">shoops@vt.edu</A>&gt;, &quot;'Tom Kiehl'&quot; &lt;<A HREF="mailto:kiehl@research.ge.com">kiehl@research.ge.com</A>&gt;,  <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Maria Schilstra wrote:
+
+&gt;Hi Ed + others,
+&gt;
+&gt;I have a book in front of me called "Theory of Modeling and Simulation"
+&gt;2nd ed., by Zeigler, Praehofer &amp; Kim. I remember listening to a talk on
+&gt;E-cell (can't remember whether it was given by Takeshi), in which this
+&gt;book was cited as the 'basis' for E-cell - is that so, Takeshi? It seems
+&gt;to me that the theory presented in this book is just what we need for
+&gt;our purposes, but since I'm by no means an expert in this area, there
+&gt;may be competing theories. Does Vijay have an opinion on this? For the
+&gt;
+I have followed the book a little bit. This is certainly in the 
+framework of "Hybrid Systems" that combine discrete and continuous 
+system evolution. It should certainly be considered seriously.
+
+I do not have an overall assessment of the work yet; the parts that I 
+have seen (e.g. the definition of DEVS in Chapter 4) do not seem very 
+encouraging. I dont think there are structural problems with their work 
+-- its just that a lot of obvious material takes up a lot of pages 
+(thats just a matter of opinion and taste). A number of critical issues 
+have been glossed over (at least in Chapter 4) --- e.g. are infinite 
+sequences of instantaneous transitions allowed? (Ah, I see this is 
+convered in Chapter 6.2.3, p 141). Why are DEVS not required to be 
+effectively given ...e.g. the state transition function is defined over 
+an uncountable set!?  What happens when an external event occurs at the 
+very same time as an internal transition (ah -- I see.. on page 90 they 
+introduce a "confluent" transition to handle this problem..this is 
+messy!!)?  Why does the system output a value only when it undergoes an 
+internal transition? Combined with the possibility that there can be an 
+infinite sequence of instantaneous transitions, we have the possibility 
+of infinite instantaneous output!?! Why are there no continuously 
+changing state variables -- e.g. as defined by differential 
+equations?(Ah, looking ahead I see this shows up in Chapter  In fact 
+this implies that there is no notion of transitions because of state 
+variables reaching a threshold!  Why does the coupling version (P 86) 
+not allow feedback loops? The coupled definition is just plain messy 
+(and also sloppy! Where is X_p defined? is p a port? How is X_p related 
+to X_d?) Where is the semantics of the select function defined? The 
+distinction between the parallel and non-parallel version seems just 
+plain messy.
+
+(The book does not appear to have been proof-read well. Chapter 6 is 
+missing the bibliography ("Sources") even though it has citations. 
+Another definite drawback of this book is a lack of realistic examples. 
+Most examples are quite abstract and mathematical, instead of being 
+drawn from concrete engineering experience, say, which would also 
+highlight the connection with real systems analysis and modeling. The 
+lack of a specific *language* for defining systems is a definite drawback.)
+
+Now it is quite possibly that some of these limitations are removed in 
+subsequent chapters (indeed, skipping ahead, it appears that they 
+are...). But this points to a problem with the spiral pedagogical style 
+of this book (from a researcher's point of view, as opposed to a 
+student)... one has to go look at the whole book to get an idea of their 
+overall system, as opposed to say, a chapter, where the system is 
+formally defined, its theoretical properties collected etc etc. Anyway, 
+that is just to say that for me to understand their theoretical model is 
+going to take some time. If anyone else has already worked out the 
+answers to the questions above, I would be much obliged if they can 
+enlighten me/us.
+
+To relate HCC to the terms introduced in this book, HCC is actually a 
+*language* (built from a very few primitives) that can be used for 
+modular "multicomponent differential equation systems specifications" 
+(Chapter 7.6, page 169). However, HCC is built on logic and constraints, 
+rather than on "systems theory", so the mappings are not that clear (at 
+least at first shot). A lot of the distinctions introduced in the book 
+do not seem to be relevant in the case of HCC -- for instance,  input 
+and output are symmetric in HCC (both correspond to imposition of 
+constraints); there is no separation between internal and external 
+transitions. HCC is already closed under parallel composition 
+(conjunction), so there is no need for a distinction between "parallel 
+DEVS" and "classical DEVS".  Systems can be "multicomponent" and 
+"networked" -- this is just another way of saying that they are closed 
+under parallel composition (that is, a parallel composition of systems 
+is just another system, hence this operation can be iterated repeatedly 
+to obtain a hierarchically defined system).
+
+I would be quite interested in whether the theory of this book can 
+usefully characterize the other sys biology systems currently being built.
+
+For the relevance of hybrid systems to systems biology, I would still 
+recommend the three papers I cited in an earlier message rather than 
+this book.
+
+&gt;time being I'll assume that Zeigler et al. have done a good analysis of
+&gt;the process of modelling &amp; simulation, and use what I've learned from
+&gt;the book so far.
+&gt;
+&gt;To get back to your email, Ed, Zeigler et al. distinguish 3 types
+&gt;(formalisms) of dynamic model specification (as opposed to e.g. object
+&gt;modelling, in which there is no concept of time): the Discrete Time
+&gt;
+This is a glaring bunder in the first five pages of this book, which can 
+do much harm to readers who may not know better. The whole area of 
+synchronous programming is about computation with a built-in notion of 
+time (discrete and continuous).
+
+&gt;(DTSS), Differential Equation (DESS), and Discrete Event (DEVS) System
+&gt;Specifications. DESS includes ODE and PDE descriptions. DTSS includes
+&gt;things such as cellular automata (which are updated as a whole in a unit
+&gt;'time' step). I think (but I'm not entirely sure) that DEVS includes
+&gt;stochastic models (in which possible state transitions have certain
+&gt;probabilities), but also threshold models (in which a state transition
+&gt;occurs when a certain parameter crosses a given threshold). Have I
+&gt;understood this correctly?
+&gt;  
+&gt;
+ DEVS at least as in Chpater 4 do not appear to include stochastic 
+models or "threshold" models.
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00493" HREF="msg00493.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00495" HREF="msg00495.html">[sbml-discuss] RE: [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Maria Schilstra&quot; &lt;m.j.1.schilstra@herts.ac.uk&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00490.html">Re: [sbml-discuss] Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00492.html">[sbml-discuss] [Hybrid] [Fwd: Re: Hybrid Models Working Group]</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00506.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00493.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00491"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00491"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

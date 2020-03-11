@@ -1,0 +1,166 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] DWG &#45; from a devil's advocate &#45; a plan and other suggestions -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Mon, 26 May 2003 17:53:22 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E58@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] DWG - from a devil's advocate - a plan and other sugg</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00353.html">Date Prev</A>][<A HREF="msg00355.html">Date Next</A>][<A HREF="msg00291.html">Thread Prev</A>][<A HREF="msg00358.html">Thread Next</A>][<A HREF="maillist.html#00354">Date Index</A>][<A HREF="threads.html#00354">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 26 May 2003 20:48:58 -0400</LI>
+<LI>Thread-Index: AcMj6cIAAz/9WGQVS/ORc1BVvf73Cg==</LI>
+<LI>Thread-Topic: Re: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Mike,
+We never dismiss your opinions as uninformed and meaningless.
+Well, we do, but only behind your back. ;)
+ 
+Seriously, though, Andrew's suggestion was worth thinking
+about in detail, as you say. I guess I am having difficulty
+seeing what the physical and logical parts are; it seems to
+me the only logical part is the "graph layout", that is, the
+nodes and edges. What the nodes look like, the colors and
+fonts and borders and everything else, would be the
+physical part, and the suggestion would be to handle all
+that via stylesheets?
+ 
+Also, with that approach, a tool would output an SBML file,
+and an SBML-file-specific stylesheet as well. Right?
+ 
+Also, when processing the SBML file, the importing tool
+would still have to process the stylesheet-induced display
+markup, yes?
+ 
+If the answer to these two questions is "yes", then how is
+that different than just sticking the physical description
+inside the SBML file? I mean, we'd all still have to
+agree on the allowed stylesheet markup, right?
+ 
+John
+ 
+ 
+
+	-----Original Message----- 
+	From: Michael Hucka [<A  HREF="mailto:mhucka@caltech.edu">mailto:mhucka@caltech.edu</A>] 
+	Sent: Mon 5/26/2003 8:06 PM 
+	To: sbml-discuss@caltech.edu 
+	Cc: 
+	Subject: Re: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions
+	
+	
+
+	People,
+	
+	My $0.02 worth on the diagram support.
+	
+	I think Eric Minch focused on a critical point, also echoed
+	by Andrew Finney and others, about the importance of
+	separating "logical" from "physical" representations of
+	diagram layouts.
+	
+	While admittedly I have not implemented a diagramming tool
+	myself and thus some of you will dismiss my opinion as
+	uninformed and meaningless, I think that given the goal of
+	providing transportable diagram representations in SBML, the
+	best approach is separating the logical structure of the
+	diagram from physical rendering characteristics such as
+	shapes, fonts, colors, etc.
+	
+	As Eric pointed out, this distinction has been addressed
+	before.  I think it would be wise to pay attention to the
+	lessons learned by others who have attempted to reach out
+	beyond their specific software tools &amp; implementations and
+	connect to other systems.  For example, the notion of
+	stylesheets, coming most recently from HTML, makes eminent
+	sense here.  It is a scalable and proven concept.  I think
+	Andrew had an excellent idea, which is to push off the
+	descriptions of physical characteristics to stylesheets.
+	
+	There is an obvious downside to this approach for those who
+	have already implemented tools which use a physical
+	representation approach.  This is regretful.  On the other
+	hand, it is likely that no matter what approach is chosen
+	for SBML, every tool will need to be modified to some
+	extent, so perhaps the burden of change will not fall solely
+	on one group of developers.
+	
+	As far as developing a logical representation for SBML, one
+	approach might be to survey a subset of existing systems and
+	find an intersection of common themes.  Herbert has written
+	up JDesigner's diagram annotations, and there are probably
+	descriptions of other systems, or at least their developers
+	(the members of the DWG) could probably write brief
+	summaries fairly easily.  By following Andrew's proposed
+	procedure and using this survey as a starting point for
+	defining the minimal graph information, it seems to me the
+	DWG could make fairly rapid progress.
+	
+	MH
+	
+	
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00353.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00355.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00291.html">RE: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00358.html">RE: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00354"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00354"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

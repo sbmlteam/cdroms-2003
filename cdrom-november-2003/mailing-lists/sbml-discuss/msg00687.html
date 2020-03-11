@@ -1,0 +1,304 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] RE: [Biospice&#45;sepdtf] clarification on  thegeneratedSBML model -->
+<!--X-From-R13: "Vreoreg [. Enheb" <ufnhebNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 14 Oct 2003 08:53:15 &#45;0700 -->
+<!--X-Message-Id: Pine.LNX.4.44.0310140847380.31030&#45;100000@kincora.cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 005f01c3922d$227d81a0$0300000a@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedS</TITLE>
+<LINK REV="made" HREF="mailto:hsauro@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00686.html">Date Prev</A>][<A HREF="msg00688.html">Date Next</A>][<A HREF="msg00685.html">Thread Prev</A>][<A HREF="msg00696.html">Thread Next</A>][<A HREF="maillist.html#00687">Date Index</A>][<A HREF="threads.html#00687">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</LI>
+<LI><em>From</em>: &quot;Herbert M. Sauro&quot; &lt;<A HREF="mailto:hsauro@cds.caltech.edu">hsauro@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 14 Oct 2003 08:51:44 -0700 (PDT)</LI>
+<LI>Cc: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI>Reply-To: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+
+On Tue, 14 Oct 2003, Andrew Finney wrote:
+
+&gt; Herbert
+&gt; 
+&gt; I don't believe its possible to parse a rate law to determine
+&gt; if something is a modifier in the broad sense.
+&gt; (Obviously if a species is in the rate law and isn't a reactant or
+&gt; product then its a modifier.)
+&gt; 
+
+This was exactly my point, it is not at all easy to work out what a 
+modifier is from from the rate law. As a result we have to rely on 
+human intervention. 
+
+I think it would be interesting to know how many people use the modifier 
+list and what they use it for?
+
+Herbert
+
+
+&gt; If we widen the definition of modifier so that modifiers can be
+&gt; products or reactants then only humans can reliablely
+&gt; classify species as modifiers or not.  However by incorporating this
+&gt; wide definition SBML can capture information about all the
+&gt; types of reactions that you and others have raised.  If
+&gt; we use the narrow definition then we can't represent
+&gt; all cases that exist.  
+&gt; 
+&gt; What does this mean in practice?:
+&gt; 
+&gt; It means that if some draws a diagram using the wide
+&gt; definition of modifier then we can transmit that information
+&gt; using the less restricted form of SBML.  If we have the
+&gt; restricted form of SBML this can't transmitted:
+&gt; the complete set of modifiers won't be present in the 
+&gt; modifier lists.  We cannot expect a parsing diagram viewer
+&gt; to decode the rate laws to reconstruct the complete
+&gt; list of modifiers.
+&gt; 
+&gt; Thus I believe we need to have the list of modifiers.
+&gt; 
+&gt; yours
+&gt; Andrew Finney
+&gt; +44 (0)1453 827833
+&gt; from US - 011 44 1453 827833
+&gt; University of Hertfordshire, UK 
+&gt; 
+&gt; 
+&gt; 
+&gt; &gt; -----Original Message-----
+&gt; &gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; &gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of 
+&gt; &gt; Herbert M. Sauro
+&gt; &gt; Sent: 13 October 2003 16:57
+&gt; &gt; To: biospice-mdl@bbn.com
+&gt; &gt; Cc: sbml-discuss@its.caltech.edu
+&gt; &gt; Subject: RE: [sbml-discuss] RE: [Biospice-sepdtf] 
+&gt; &gt; clarification on thegenerated SBML model
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; There is still a problem Andrew, if I give you a rate law and 
+&gt; &gt; you need to 
+&gt; &gt; check if some species X is a modifier (i.e affects the 
+&gt; &gt; reaction other than being a 
+&gt; &gt; reactant) how would you identify it? ATP on PFK is a good example.
+&gt; &gt; 
+&gt; &gt; Herbert
+&gt; &gt; 
+&gt; &gt; On Sat, 11 Oct 2003, Andrew Finney wrote:
+&gt; &gt; 
+&gt; &gt; &gt; &gt; But this still begs the question, what are we going to do
+&gt; &gt; &gt; &gt; when the modifier is also a reactant?
+&gt; &gt; &gt; 
+&gt; &gt; &gt; As I wrote, its not beyond reason to relax the language 
+&gt; &gt; specification 
+&gt; &gt; &gt; and allow modifiers to occur in the list of products or reactants.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Can we discuss the merits of this?
+&gt; &gt; &gt; 
+&gt; &gt; &gt; yours
+&gt; &gt; &gt; Andrew Finney
+&gt; &gt; &gt; +44 (0)1453 827833
+&gt; &gt; &gt; from US - 011 44 1453 827833
+&gt; &gt; &gt; University of Hertfordshire, UK
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; -----Original Message-----
+&gt; &gt; &gt; &gt; From: biospice-sepdtf-admin@biospice.org
+&gt; &gt; &gt; &gt; [<A  HREF="mailto:biospice-sepdtf-admin@biospice.org">mailto:biospice-sepdtf-admin@biospice.org</A>] On Behalf Of 
+&gt; &gt; Herbert Sauro
+&gt; &gt; &gt; &gt; Sent: 11 October 2003 00:46
+&gt; &gt; &gt; &gt; To: sbml-discuss@its.caltech.edu; biospice-mdl@bbn.com; 
+&gt; &gt; &gt; &gt; biospice-sepdtf@biospice.org
+&gt; &gt; &gt; &gt; Subject: RE: [sbml-discuss] RE: [Biospice-sepdtf] 
+&gt; &gt; &gt; &gt; clarification on thegenerated SBML model
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; But this still begs the question, what are we going to do
+&gt; &gt; &gt; &gt; when the modifier is also a reactant?
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; As for parsing the rate laws, I presume anyone who reads SBML
+&gt; &gt; &gt; &gt; will also be able to parse the rate laws, in any case, under 
+&gt; &gt; &gt; &gt; level 2 the equations are not in infix but MathML so they are 
+&gt; &gt; &gt; &gt; already 'parsed' for you, even simpler.
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; Herbert
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; -----Original Message-----
+&gt; &gt; &gt; &gt; From: mendes@vbi.vt.edu [<A  HREF="mailto:mendes@vbi.vt.edu">mailto:mendes@vbi.vt.edu</A>]
+&gt; &gt; &gt; &gt; Sent: Friday, October 10, 2003 3:41 PM
+&gt; &gt; &gt; &gt; To: sbml-discuss@its.caltech.edu
+&gt; &gt; &gt; &gt; Subject: Re: [sbml-discuss] RE: [Biospice-sepdtf]
+&gt; &gt; &gt; &gt; clarification on thegenerated SBML model
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; A modifier should be a substance whose concentration affects
+&gt; &gt; &gt; &gt; the rate of reaction but not is not itself transformed after 
+&gt; &gt; &gt; &gt; a full reaction turnover. This should be defined in terms of 
+&gt; &gt; &gt; &gt; the rate law, not what it binds or not physically. In fact 
+&gt; &gt; &gt; &gt; the term modifier always relates to a rate law, not to the 
+&gt; &gt; &gt; &gt; reaction. In that sense if the reaction is represented at the 
+&gt; &gt; &gt; &gt; level of elementaryt steps then there is no modifier, as all 
+&gt; &gt; &gt; &gt; the rate laws would be of mass action type (thought a 
+&gt; &gt; &gt; &gt; modifier of the enzymatic rate law would be a susbtrate and 
+&gt; &gt; &gt; &gt; product of at least two of these elementary steps).
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; I hope that SBML will not go against the well-defined use of the 
+&gt; &gt; &gt; &gt; term.
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; Also, relating to Herbert¬•s comment about the fact that non
+&gt; &gt; &gt; &gt; lazy programs can discover modifiers in the rate laws. Indeed 
+&gt; &gt; &gt; &gt; this is the case, but why force so much computation and 
+&gt; &gt; &gt; &gt; programming when it is simple to *write* out the list of 
+&gt; &gt; &gt; &gt; modifiers versus *reading* it in in that cumbursome way? 
+&gt; &gt; &gt; &gt; Having an explicit list will also allow algorithms that have 
+&gt; &gt; &gt; &gt; no knowledge about rate laws to use that information (and I 
+&gt; &gt; &gt; &gt; do not know what these would be! but doing this keeps 
+&gt; &gt; &gt; &gt; flexibility in the spec allowing for future uses of SBML)
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; Pedro
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; &gt; On Fri, Oct 10, 2003 at 08:04:09PM +0100, Andrew Finney wrote: 
+&gt; &gt; &gt; &gt; &gt; [...]
+&gt; &gt; &gt; &gt; &gt;&gt; &gt; [<A  HREF="mailto:owner-biospice-mdl@billygraham.bbn.com">mailto:owner-biospice-mdl@billygraham.bbn.com</A>] On Behalf Of
+&gt; &gt; &gt; &gt; &gt;&gt; &gt; Herbert Sauro
+&gt; &gt; &gt; &gt; &gt; [...]
+&gt; &gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt; &gt;&gt; &gt; Not sure about point two either, case in point 
+&gt; &gt; (PFK): ATP + F6P 
+&gt; &gt; &gt; &gt; &gt;&gt; &gt; -&gt; ADP + F16BP where ATP is also a modifier. In this 
+&gt; &gt; case ATP 
+&gt; &gt; &gt; &gt; &gt;&gt; &gt; is
+&gt; &gt; &gt; &gt; modified by the
+&gt; &gt; &gt; &gt; &gt;&gt; &gt; reaction but also appears as a modifier.
+&gt; &gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt; &gt; As I understand it, the reaction shown is catalyzed by
+&gt; &gt; &gt; &gt; &gt; phosphofruktokinase (pfk).  PFK is regulated by ATP (and the 
+&gt; &gt; &gt; &gt; &gt; bisphosphate too, I believe...have to look it up.)
+&gt; &gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt; &gt; So, in fact, ATP modifies the modifier, not the reaction.
+&gt; &gt; &gt; &gt; You can say
+&gt; &gt; &gt; &gt; &gt; it modifies the reaction, but you then lose the additional
+&gt; &gt; &gt; &gt; info that
+&gt; &gt; &gt; &gt; &gt; it regulates PFK.
+&gt; &gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt; &gt; My point is just to give context for a question: what is
+&gt; &gt; &gt; &gt; the _meaning_
+&gt; &gt; &gt; &gt; &gt; of "modifier" in SBML?  I somehow only thought of it as 
+&gt; &gt; "directly
+&gt; &gt; &gt; &gt; &gt; modifies" i.e., catalyzes, and not indirectly as here.
+&gt; &gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt; &gt; Which was intended?  To be honest, I need to reread but thought 
+&gt; &gt; &gt; &gt; &gt; I'd
+&gt; &gt; &gt; &gt; &gt; ask.
+&gt; &gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt; &gt;     -Ed
+&gt; &gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt; &gt; --
+&gt; &gt; &gt; &gt; &gt; Ed Frank                                            
+&gt; &gt; Office:  (630)
+&gt; &gt; &gt; &gt; &gt; 252-4548
+&gt; &gt; &gt; &gt; &gt; <A  HREF="http://hep.uchicago.edu/~efrank">http://hep.uchicago.edu/~efrank</A>                     Fax 
+&gt; &gt;   :  (630)
+&gt; &gt; &gt; &gt; &gt; 252-5986
+&gt; &gt; &gt; &gt; &gt; Division of Math &amp; Computer Science                 
+&gt; &gt; Argonne National
+&gt; &gt; &gt; &gt; &gt; Laboratory
+&gt; &gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt; &gt;
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; &gt; _______________________________________________
+&gt; &gt; &gt; &gt; Biospice-sepdtf mailing list
+&gt; &gt; &gt; &gt; Biospice-sepdtf@biospice.org
+&gt; &gt; &gt; &gt; <A  HREF="https://community.biospice.org/mailman/listinf">https://community.biospice.org/mailman/listinf</A>&gt; o/biospice-sepdtf
+&gt; &gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00696" HREF="msg00696.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00685" HREF="msg00685.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00686.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00688.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00685.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00696.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00687"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00687"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

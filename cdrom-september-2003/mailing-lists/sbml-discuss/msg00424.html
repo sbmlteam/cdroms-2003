@@ -1,0 +1,145 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] Release Notice: libsbml 1.1.2 -->
+<!--X-From-R13: Pra Pbeafgrva <obeafgrvNnvt.wcy.anfn.tbi> -->
+<!--X-Date: Fri, 6 Jun 2003 19:25:17 &#45;0700 -->
+<!--X-Message-Id: 200306070224.h572Of705008@xenium.jpl.nasa.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] Release Notice: libsbml 1.1.2</TITLE>
+<LINK REV="made" HREF="mailto:bornstei@aig.jpl.nasa.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00423.html">Date Prev</A>][<A HREF="msg00425.html">Date Next</A>][<A HREF="msg00422.html">Thread Prev</A>][<A HREF="msg00426.html">Thread Next</A>][<A HREF="maillist.html#00424">Date Index</A>][<A HREF="threads.html#00424">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] Release Notice: libsbml 1.1.2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] Release Notice: libsbml 1.1.2</LI>
+<LI><em>From</em>: Ben Bornstein &lt;<A HREF="mailto:bornstei@aig.jpl.nasa.gov">bornstei@aig.jpl.nasa.gov</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 06 Jun 2003 19:24:41 -0700</LI>
+<LI>Cc: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi All,
+
+     libsbml 1.1.2 is now available on SourceForge:
+
+       <A  HREF="http://www.sourceforget.net/projects/sbml">http://www.sourceforget.net/projects/sbml</A>
+
+     This is maintenance release that fixes build problems under Cygwin
+and the handling of NaN, +Inf, -Inf and -0 under both native Windows and
+Cygwin.  A few other miscellaneous fixes are included.  The NEWS.txt
+file is at the end of this message.
+
+     The next release of libsbml, supporting Level 2 version 1, will be
+out shortly.
+
+     Thank you.
+
+
+--
+Benjamin J. Bornstein
+
+
+           libsbml NEWS -- History of user-visible changes
+
+
+=== Version 1.1.2 ===
+
+* A new subdirectory, examples, contains a few small programs that
+  demonstrate how libsbml may be used.
+
+* IEEE-754 NaN, +Inf, -Inf and -0.0 are handled correctly and
+  consistently on all supported platforms.  In previous versions, these
+  values were not represented, read or written correctly on native
+  Windows and under Cygwin.
+
+  When writing these values to XML, libsbml now strictly adheres to the
+  XML Schema specification for doubles, namely exactly: "NaN", "INF",
+  "-INF" and "-0".
+
+* The build platform was upgraded to Libtool 1.5.  This means dynamic
+  libraries will build correctly on all platforms: Linux (.so),
+  Solaris (.so), Cygwin (.DLL) and MacOS X (.dylib).
+
+* SBMLWriter now defaults to an output encoding of UTF-8.
+
+* SBML_parseFormula() now returns NULL if the formula contains an
+  error.  The next version of libsbml will return the position of the
+  syntax error.
+
+* Added method: SBMLDocument_setModel().
+
+* To build and run the libsbml test suite now requires an explicit
+  configure option:
+
+    ./configure  --enable-check
+
+  In addition, 'check' needs to be installed (<A  HREF="http://check.sf.net/">http://check.sf.net/</A>).
+  Under Cygwin ONLY, due to a limitation of Libtool, if libsbml is
+  built with --check-enabled, a DLL cannot be built.  So, after
+  testing, re-run configure without enabling check then 'make' and
+  'make install' as usual.
+
+  Running the test suite on any platform is completely optional.
+  Libsbml is tested on all supported platforms before it is released.
+
+
+* Released June 6, 2003
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00423.html">[sbml-discuss] PS: Parameter Sets Working Group</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00425.html">RE: [sbml-discuss] SBML Level 2 specification final draft available</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00422.html">Re: [sbml-discuss] DWG: multiple layouts (should be IDs)</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00426.html">[sbml-discuss] Re: SBML Level 2 specification final draft available</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00424"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00424"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

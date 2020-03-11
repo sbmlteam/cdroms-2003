@@ -1,0 +1,1332 @@
+\batchmode
+\documentclass[10pt,twocolumntoc]{cekarticle}
+\RequirePackage{ifthen}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+
+%
+\providecommand{\vref}[1]{\ref{#1}}
+\makeatletter
+\makeatother
+
+\defcitealias{bipm:1998}{BIPM, 1998}
+\defcitealias{bipm:2000}{BIPM, 2000}
+
+%
+\providecommand{\D}{\displaystyle}%
+\providecommand{\tm}{\textsuperscript{\tiny{\texttrademark}}}
+%
+\providecommand{\quantity}[1]{\emph{#1}}%
+\providecommand{\unit}[1]{\texttt{#1}}
+
+
+\usepackage[dvips]{color}
+
+
+\pagecolor[gray]{.7}
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{349pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+\providecommand{\Beta}{\textrm{B}}
+\providecommand{\Mu}{\textrm{M}}
+\providecommand{\Kappa}{\textrm{K}}
+\providecommand{\Rho}{\textrm{R}}
+\providecommand{\Epsilon}{\textrm{E}}
+\providecommand{\Chi}{\textrm{X}}
+\providecommand{\Iota}{\textrm{J}}
+\providecommand{\omicron}{\textrm{o}}
+\providecommand{\Zeta}{\textrm{Z}}
+\providecommand{\Eta}{\textrm{H}}
+\providecommand{\Omicron}{\textrm{O}}
+\providecommand{\Nu}{\textrm{N}}
+\providecommand{\Tau}{\textrm{T}}
+\providecommand{\Alpha}{\textrm{A}}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8187}%
+\begin{displaymath}\begin{array}{@{}ccl@{}}     S_1 & \underrightarrow{k_1 [S_1] / ([S_1] + k_2)} & S_2 \\\\[-5pt]     S_2 & \underrightarrow{k_3 [S_2]} & S_3 + S_4   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8191}%
+$ ^{2+}$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8197}%
+\includegraphics[scale = 0.7]{sbase}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8205}%
+\includegraphics[scale = 0.7]{top-level}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlfigureA{example215}%
+\begin{example}
+...
+<annotation xmlns:mysim="http://www.mysim.org/ns">
+    <mysim:nodecolors mysim:bgcolor="green" mysim:fgcolor="white"/>
+    <mysim:timestamp>2000-12-18 18:31 PST</mysim:timestamp>
+</annotation>
+...
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8255}%
+$ delay(x, d)$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8257}%
+$ x$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8259}%
+$ d$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8263}%
+$ x + t$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8265}%
+$ t$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{example529}%
+\begin{example}
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+    <apply>
+        <plus/>
+        <ci> x </ci>
+        <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time">
+            t
+        </csymbol>
+    </apply>
+</math>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8267}%
+$ k + delay(x, 0.1)$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8269}%
+$ k_t + x_{t - 0.1}$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{example532}%
+\begin{example}
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+    <apply>
+        <plus/>
+        <ci> k </ci>
+        <apply>
+            <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/delay">
+                delay
+            </csymbol>
+            <ci> x </ci>
+            <cn> 0.1 </cn>
+        </apply>
+    </apply>
+</math>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8275}%
+\includegraphics[scale = 0.68]{sbml}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{example562}%
+\begin{example}
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2" level="2" version="1">
+  ...
+</sbml>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8280}%
+\includegraphics[scale = 0.68]{model}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{example600}%
+\begin{example}
+<model id="My_Model">
+    <listOfFunctionDefinitions>
+        ...
+    </listOfFunctionDefintions>
+    <listOfUnitDefinitions>
+        ...
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+        ...
+    </listOfCompartments>
+    <listOfSpecies>
+        ...
+    </listOfSpecies>
+    <listOfParameters>
+        ...
+    </listOfParameters>
+    <listOfRules>
+        ...
+    </listOfRules>
+    <listOfReactions>
+        ...
+    </listOfReactions>
+    <listOfEvents>
+        ...
+    </listOfEvents>
+</model>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8285}%
+\includegraphics[scale = 0.68]{mathdefinition}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8289}%
+$ pow3(x)$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8291}%
+$ x^{3}$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{example661}%
+\begin{example}
+<model>
+    ...
+    <functionDefinition id="pow3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <lambda>
+                <bvar><ci> x </ci></bvar>
+                <apply>
+                    <power/>
+                    <ci> x </ci>
+                    <cn> 3 </cn>
+                </apply>
+            </lambda>
+        </math>
+    </functionDefinition>
+    ...
+</model>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8296}%
+\includegraphics[scale = 0.68]{unitdefinition}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8299}%
+$ meter\  second^{\,-2}$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8301}%
+$ meter$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8303}%
+$ second^{\,-2}$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8351}%
+$ u$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8353}%
+$ u_\emph{new}$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay8355}%
+$\displaystyle u_\emph{new} = (\emph{multiplier} \times 10^\emph{scale}    \times u^\emph{exponent}) + \emph{offset}$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8359}%
+$ 10^{-3} * gram$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8361}%
+$ 10^0 = 1$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8363}%
+$ n$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay8365}%
+$\displaystyle u_\emph{new} = m_1 \times \ldots \times m_n   \times 10^{s_1} \times \ldots \times 10^{s_n}    \times u^{e_1} \times \ldots \times u^{e_n}$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8367}%
+$ mmol\  l^{-1}\  s^{-1}$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{example768}%
+\begin{example}
+<listOfUnitDefinitions>
+    <unitDefinition id="mmls">
+        <listOfUnits>
+            <unit kind="mole"   scale="-3"/>
+            <unit kind="litre"  exponent="-1"/>
+            <unit kind="second" exponent="-1"/>
+        </listOfUnits>
+    </unitDefinition>
+</listOfUnitDefinitions>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{example770}%
+\begin{example}
+<unitDefinition id="Fahrenheit">
+     <listOfUnits>
+         <unit kind="Celsius" multiplier="1.8" offset="32"/>
+     </listOfUnits>
+</unitDefinition>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+
+\setlength{\tabcolsep}{4.5pt}%
+
+\setlength{\tabcolsep}{4.5pt}
+{\newpage\clearpage
+\lthtmlfigureA{example817}%
+\begin{example}
+<model>
+    ...
+    <listOfUnitDefinitions>
+        <unitDefinition id="volume">
+            <listOfUnits>
+                <unit kind="liters" scale="-3"/>
+            </listOfUnits>
+        </unitDefinition>
+    </listOfUnitDefinitions>
+    ...
+</model>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8411}%
+\includegraphics[scale = 0.68]{compartment}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmlfigureA{example929}%
+\begin{example}
+<model>
+    ...
+    <listOfCompartments>
+        <compartment id="cytosol" size="2.5"/>
+        <compartment id="mitochondria" size="0.3"/>
+    </listOfCompartments>
+    ...
+</model>
+\par\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{example932}%
+\begin{example}
+<model>
+    ...
+    <listOfCompartments>
+        <compartment id="A"/>
+        <compartment id="M" spatialDimensions="2" outside="A"/>
+        <compartment id="B" outside="M"/>
+    </listOfCompartments>
+    ...
+</model>
+\par\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8423}%
+\includegraphics[scale = 0.68]{specie}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmlfigureA{example1098}%
+\begin{example}
+<model>
+    ...
+    <listOfSpecies>
+        <species id="Glucose" compartment="cell" initialConcentration="4"/>
+        <species id="Glucose_6_P" compartment="cell" initialConcentration="0.75"/>
+    </listOfSpecies>
+    ...
+</model>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8480}%
+\includegraphics[scale = 0.68]{parameter}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmlfigureA{example1157}%
+\begin{example}
+<model>
+    ...
+    <listOfParameters>
+        <parameter id="tau1" value="2.3" units="second"/>
+        <parameter id="Km1" value="10.7" units="moleperliter"/>
+    </listOfParameters>
+    ...
+</model>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8491}%
+$ f$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8493}%
+$ V$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8497}%
+$ W$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8501}%
+$ 0 = f(W)$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8503}%
+$ x = f(V)$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8505}%
+$ dx/dt = f(W)$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8522}%
+\includegraphics[scale = 0.68]{rule}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8528}%
+\begin{displaymath}\begin{array}{lll}     x = x + 1, & y = z + 200, & z = y + 100   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8534}%
+$ y$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8536}%
+$ z$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8541}%
+\begin{displaymath}\begin{array}{lll}     k = \displaystyle \frac{k_3}{k_2}, & s_2 = \displaystyle \frac{k \, x}{1 + k_2}, & A = 0.10 \, x   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{example1334}%
+\begin{example}
+<model>
+    ...
+    <listOfRules>
+        <assignmentRule variable="k">
+            <notes>
+                <xhtml:p>
+                    k = k3/k2
+                </xhtml:p>
+            </notes>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <divide/>
+                    <ci> k3 </ci>
+                    <ci> k2 </ci>
+                </apply>
+            </math>
+        </assignmentRule>
+        <assignmentRule variable="s2">
+            <notes>
+                <xhtml:p>
+                    s2 = (k * x)/(1 + k2)
+                </xhtml:p>
+            </notes>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <divide/>
+                    <apply>
+                        <times/>
+                        <ci> k </ci>
+                        <ci> x </ci>
+                    </apply>
+                    <apply>
+                        <plus/>
+                        <cn> 1 </cn>
+                        <ci> k2 </ci>
+                    </apply>
+                </apply>
+            </math>
+        </assignmentRule>
+        <assignmentRule variable="A">
+            <notes>
+                <xhtml:p>
+                    A = 0.10 * x
+                </xhtml:p>
+            </notes>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <times/>
+                    <cn> 0.10 </cn>
+                    <ci> x </ci>
+                </apply>
+            </math>
+        </assignmentRule>
+    </listOfRules>
+    ...
+</model>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8546}%
+\includegraphics[scale=0.67]{reaction}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmlfigureA{example1413}%
+\begin{example}
+<model>
+    ...
+    <listOfReactions>
+        <reaction id="J1">
+            <listOfReactants>
+                <speciesReference species="X0" stoichiometry="2">
+            </listOfReactants>
+            ...
+        </reaction>
+        ...
+    </listOfReactions>
+    ...
+</model>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{example1424}%
+\begin{example}
+<reaction id="x">
+    <listOfReactants>
+        <speciesReference species="a"/>
+        <speciesReference species="a"/>
+        <speciesReference species="b"/>
+    </listOfReactants>
+    <listOfProducts>
+        <speciesReference species="c"/>
+        <speciesReference species="b"/>
+    </listProducts>
+</reaction>
+<reaction id="y">
+    <listOfReactants>
+        <speciesReference species="a" stoichiometry="2"/>
+    </listOfReactants>
+    <listOfProducts>
+        <speciesReference species="c"/>
+    </listProducts>
+</reaction>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8555}%
+$ S$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8557}%
+$ P$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8559}%
+$ S \rightarrow P$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8563}%
+$ A$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8565}%
+$ V_A$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8569}%
+$ B$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8571}%
+$ V_B$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8573}%
+$ R$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8577}%
+$ d[S]_A/dt
+= -R/V_A$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8581}%
+$ d[P]_B/dt
+= R/V_B$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8583}%
+$ J_1$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8585}%
+$ X_0 \rightarrow S_1$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8587}%
+$ k X_0 S_2$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8589}%
+$ S_2$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8591}%
+$ k$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{example1491}%
+\begin{example}
+\par <model>
+    ...
+    <listOfUnitDefinitions>
+        <unitDefinition id="vol_per_concent_per_time">
+            <listOfUnits>
+                <unit kind="litre"  exponent="2"/>
+                <unit kind="mole"   exponent="-1"/>
+                <unit kind="second" exponent="-1"/>
+            </listOfUnits>
+        </unitDefinition>
+    </listOfUnitDefinitions>
+    ...
+    <listOfSpecies>
+        <species id="S1" compartment="c1" initialConcentration="2.0"/>
+        <species id="S2" compartment="c1" initialConcentration="0.5"/>
+        <species id="X0" compartment="c1" initialConcentration="1.0"/>
+    </listOfSpecies>
+        ...
+    <listOfReactions>
+        <reaction id="J1">
+            <listOfReactants>
+                <speciesReference species="X0"/>
+            </listOfReactants>
+            <listOfProducts>
+                <speciesReference species="S1"/>
+            </listOfProducts>
+            <listOfModifiers>
+                <modifierSpeciesReference species="S2"/>
+            </listOfModifiers>
+            <kineticLaw>
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <apply>
+                        <times/>
+                        <ci> k </ci>
+                        <ci> S2 </ci>
+                        <ci> X0 </ci>
+                    </apply>
+                </math>
+                <listOfParameters>
+                    <parameter id="k" value="0.1" units="vol_per_concent_per_time"/>
+                </listOfParameters>
+            </kineticLaw>
+        </reaction>
+    </listOfReactions>
+    ...
+</model>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8598}%
+\includegraphics[scale = 0.68]{event}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8606}%
+$ k_2 = 0$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8608}%
+$ P_1 \leq t$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{example1597}%
+\begin{example}
+<event>
+    <trigger>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <leq/>
+                <ci> P1 </ci>
+                <ci> t </ci>
+            </apply>
+        </math>
+    </trigger>
+    <listOfEventAssignments>
+        <eventAssignment variable="k2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <cn> 0 </cn>
+            </math>
+        </eventAssignment>
+    <listOfEventAssignments>
+</event>
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsubsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8611}%
+$ X$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8613}%
+$ Y$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8634}%
+\includegraphics[scale = 0.9]{example-network}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8638}%
+\begin{displaymath}\begin{array}{@{}ccc@{}}     X_0 & \underrightarrow{k_1 X_0} & S_1 \\\\[-4pt]     S_1 & \underrightarrow{k_f S_1 - k_r S_2} & S_2 \\\\[-4pt]     S_2 & \underrightarrow{k_2 S_2} & X_1\\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay8640}%
+$\displaystyle k_1 = 0.1, \quad k_2 = 0.15, \quad k_f = K_{eq} 10000, \quad k_r = 10000, \quad K_{eq} = 2.5.$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8642}%
+\begin{displaymath}\begin{array}{@{}ccc@{}}     X_0 & \underrightarrow{k_1 X_0} & T \\\\[-4pt]     T & \underrightarrow{k_2 S_2} & X_1\\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8644}%
+\begin{displaymath}\begin{array}{ll}     S_1 = \displaystyle \frac{T}{1 + K_{eq}}, & S_2 = K_{eq} S_1\\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8647}%
+\begin{displaymath}\begin{array}{@{}ccc@{}}     X_0 & \underrightarrow{k_1 X_0} & T \\\\[-4pt]     T & \underrightarrow{k_2 S_1} & X_1\\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8649}%
+\begin{displaymath}\begin{array}{ll}     S_2 = K_{eq} S_1\\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8651}%
+\begin{displaymath}\begin{array}{ll}     S_1 + S_2 - T = 0\\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8654}%
+\begin{displaymath}\begin{array}{@{}ccc@{}}     S_1 + S_2 & \underrightarrow{k_1 S_1 S_2 S_3} & S_4 \\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8656}%
+$ S_3$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8658}%
+$ S_1$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8662}%
+$ S_4$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8674}%
+\begin{displaymath}\begin{array}{l}     \displaystyle \frac{d S_1}{d t} = k_2 \\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8676}%
+\begin{displaymath}\begin{array}{l}     S_2 = 1 \\\\S_3 = 2 \\\\k_1 = 0.5 \\\\k_2 = 0.1 \\\\\end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8678}%
+\begin{displaymath}\begin{array}{l}     S_1 = 0 \\\\S_4 = 0 \\\\\end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlpictureA{tex2html_wrap8695}%
+\includegraphics[scale=0.67]{multicomp}%
+\lthtmlpictureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8697}%
+$ X_0$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8699}%
+$ X_4$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8701}%
+$ V_1$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8705}%
+\begin{displaymath}\begin{array}{l}     X_4 = 0 \\\\[-4pt]     V_0 = 10 \\\\[-4pt]     K_0 = 0.1\\\\[-4pt]     K_1 = 0.5\\\\[-4pt]     K_2 = 0.1\\\\[-4pt]     K_3 = 0.5\\\\[-4pt]     K_{in} = 0.1\\\\[-4pt]     K_v = 0.5\\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8707}%
+\begin{displaymath}\begin{array}{l}     V_1 = 1 \\\\[-4pt]     X_0 = S_1 = S_2 = S_3 = 0   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8709}%
+\begin{displaymath}\begin{array}{ll}     \displaystyle \frac{d V_1}{d t} = K_v & \mbox{rule} \\\\[-4pt]     \displaystyle \frac{d X_0}{d t} = K_{in} & \mbox{rule} \\\\[-4pt]     \displaystyle \frac{d S_1}{d t} = \displaystyle \frac{K_0 X_0 - K_1 S_1}{V_0} & \mbox{reactions 1 and 2} \\\\[-4pt]     \displaystyle \frac{d S_2}{d t} = \displaystyle \frac{K_1 S_1 - K_2 S_2}{V_0} & \mbox{reactions 2 and 3} \\\\[-4pt]     \displaystyle \frac{d S_3}{d t} = \displaystyle \frac{K_2 S_2 - K_3 S_3}{V_1} & \mbox{reactions 3 and 4} \\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8712}%
+\begin{displaymath}\begin{array}{@{}ccc@{}}     S_1 & \underrightarrow{f(S_1)} & S_2 \\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8714}%
+\begin{displaymath}\begin{array}{l}     f(x) = x * 2 \\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8717}%
+$ delay$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay8719}%
+$\displaystyle \frac{d P}{d t} = \displaystyle \frac{ \displaystyle \frac{1}{1 + m (P_{delayed})^q} - P }{ \tau }$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8721}%
+\begin{displaymath}\begin{array}{rl} P_{delayed} & \mbox{is } delay(P, \Delta_t) \mbox{ or P at } t - \Delta_t\\P & \mbox{is protein concentration}\\\tau & \mbox{is the response time}\\m & \mbox{is a multiplier or equilibrium constant}\\q & \mbox{is the Hill coefficient}\\\end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8724}%
+$ k_1$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8726}%
+$ k_2$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8732}%
+$ P_1$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8734}%
+$ P_2$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay8741}%
+$\displaystyle \displaystyle \frac{d P_1}{d t}$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay8743}%
+$\displaystyle =$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay8745}%
+$\displaystyle k_1 - P_1$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay8747}%
+$\displaystyle \displaystyle \frac{d P_2}{d t}$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay8751}%
+$\displaystyle k_2 - P_2$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay8753}%
+$\displaystyle k_2$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8757}%
+\begin{displaymath}\begin{cases}
+0 & \text{when $P_1 \leq \tau$},\\
+1 & \text{when $P_1 > \tau$}.
+\end{cases}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8759}%
+\begin{displaymath}\begin{array}{lllll}     k_1 = 1 & k_2 = 0 & \tau = 0.25 & P_1 = 0 & P_2 = 0\\\\[-4pt]   \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay8764}%
+$\displaystyle \frac{d s}{d t} = \left\{ \begin{array}{ll}      0 & \mbox{if $s>0$}\\y & \mbox{otherwise} \end{array} \right.$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath8766}%
+\begin{displaymath}\begin{array}{ll} \mbox{if $s>0$} & \displaystyle \frac{d s}{d t} = y  \end{array}\end{displaymath}%
+\lthtmldisplayZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8768}%
+$ s$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8770}%
+$ s \leq 0$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+\setcounter{secnumdepth}{-1}
+\stepcounter{section}
+\stepcounter{section}
+\setcounter{secnumdepth}{2}
+\appendix
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlfigureA{example1932}%
+\begin{example}
+  field1 : float
+  field2 : integer[0..*]
+  field3 : float \{use = "optional" default = "0.0"\}
+  math   : Math \{namespace="http://www.w3.org/1998/Math/MathML"\}
+  field4 : (math : Math \{namespace="http://www.w3.org/1998/Math/MathML"\})
+\end{example}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline8776}%
+$ 0.0$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+
+\end{document}

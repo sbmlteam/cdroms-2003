@@ -1,0 +1,150 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] RE: SBML Level 2 -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Thu, 5 Dec 2002 05:34:30 &#45;0800 -->
+<!--X-Message-Id: 1039095182.4833.71.camel@fennel.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000301c29c44$cd5f4fc0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] RE: SBML Level 2</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00017.html">Date Prev</A>][<A HREF="msg00018.html">Date Next</A>][<A HREF="msg00017.html">Thread Prev</A>][<A HREF="msg00016.html">Thread Next</A>][<A HREF="maillist.html#00015">Date Index</A>][<A HREF="threads.html#00015">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] RE: SBML Level 2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Andrew Finney &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] RE: SBML Level 2</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 05 Dec 2002 22:32:58 +0900</LI>
+<LI>Cc: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>, &quot;'SBML'&quot; &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi Andrew,
+
+
+&gt; On optional parameters
+
+My opinion is practically the same as Martin's.
+
+SBML specification should allow model writers to choose between 
+complete description where all the parameters and initial values
+required to conduct the simulation is filled in, and the incomplete one
+in which one or more numbers are missing.   A routine to check it may be
+provided in SBML software libraries such as PySBML.
+
+I think it should explicitly be marked undefined by using something such
+as XML entity.
+
+&gt; On the parameter sets concept.
+
+Generally I agree with the idea of the parameter set as a different
+document type (or just a different document, if we could merge these two
+schema allowing coexistence of the model and the parameter set in a
+single document).
+
+
+&gt; There are some issues with this:
+
+&gt; a) should we allow incomplete parameter sets?
+&gt; 	IMHO yes - it becomes a useful way to support
+&gt; 	models of mutations.  We may want to allow
+&gt; 	'stacks' of parameter sets to form a simulation
+&gt; 	input.
+
+Yes, definitely.
+
+&gt; b) does the model refer to the parameter set or visa-versa?
+&gt; 	certainly from a language development
+&gt; 	point of view it would be convient if 
+&gt; 	the parameter sets refer to the model.
+&gt; 	That also appears to make sense from
+&gt; 	your requirements: a model has more than 
+&gt; 	one parameter set and a parameter set is
+&gt; 	not meaningful without a model.  But a model
+&gt; 	could be considered useful without a parameter set.
+
+No.  If we decide to have the parameter set in addition to the model
+itself, we need to have one more document class to define how a
+simulation session is conducted;   
+i.e. it may be a sort of recipes in which it says: (1) use model A, (2)
+apply parameter set B1, (3) then apply parameter set B2, (and may be (4)
+run 1000 seconds, though this isn't a part of the model)...
+
+&gt;From the modularity view point, such model 'patching' should be done
+without changing original model and parameter set documents.
+To this end it should be only the session definition document (or the
+recipe) which is modified.
+
+Imagine a situation where research groups had published some parameter
+sets of yeast enzyme parameters, and we have quite a few metabolic
+pathway models.  If we have a reasonably good naming convention we will
+be able to pick a parameter set and a model from model repository for a
+simulation session.
+
+
+regards,
+- Kouichi
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00014" HREF="msg00014.html">RE: SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00017.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00018.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00017.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00016.html">RE: SBML Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00015"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00015"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

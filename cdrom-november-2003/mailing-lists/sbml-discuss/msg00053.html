@@ -1,0 +1,306 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Draft SBML Level 1 version 2 => Level 2 -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Sat, 7 Dec 2002 02:00:11 &#45;0800 -->
+<!--X-Message-Id: 000901c29dd7$3b3d5580$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1039249584.4718.356.camel@fennel.e&#45;cell.org -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Draft SBML Level 1 version 2 =&gt; Level 2</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00052.html">Date Prev</A>][<A HREF="msg00046.html">Date Next</A>][<A HREF="msg00052.html">Thread Prev</A>][<A HREF="msg00054.html">Thread Next</A>][<A HREF="maillist.html#00053">Date Index</A>][<A HREF="threads.html#00053">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Draft SBML Level 1 version 2 =&gt; Level 2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Kouichi Takahashi'&quot; &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Draft SBML Level 1 version 2 =&gt; Level 2</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 7 Dec 2002 09:58:38 -0000</LI>
+<LI>Cc: &quot;'SBML Discussion List'&quot; &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;,  &quot;'Biospice ModelDefinition Language'&quot; &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;</LI>
+<LI>Importance: Normal</LI>
+<LI>Reply-To: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Kouchi
+
+you wrote:
+
+&gt; In section 4.6 of the  doc:
+&gt; 
+&gt;     Parameters defined at the top level are global to the
+&gt;     whole model; parameters that are defined within a reaction are
+&gt;     local    to the particular reaction and (within
+&gt;     that reaction) override any global parameters having the 
+&gt; same names.
+&gt; 
+&gt; I assume the global parameters are meant for model parameters 
+&gt; such as Temp and pH, 
+&gt; because they can change reaction rates globally, thus can 
+&gt; appear in many rate 
+&gt; equations.
+&gt; 
+
+This is correct.
+
+&gt; If namespace contamination matters, I think one way is to 
+&gt; allow compartment to 
+&gt; have a parameter list and let them appear in rate equations, 
+&gt; though I'm not sure this is possible without breaking 
+&gt; backward compatibility (if not please just ignore this 
+&gt; suggestion at least for L2, because probably ProMoT people's 
+&gt; modularity proposal might did this job elegantly.). Actually 
+&gt; Temp and pH 
+&gt; are properties of compartments. E-Cell (especially the 
+&gt; version 3), and I think ProMoT too, has similar idea although 
+&gt; the compartments can be 
+&gt; logical as well as physical.  
+&gt; I think the global model parameters are still useful for modelers.
+&gt; 
+
+I hope we can make more progress in developing
+the modularity proposal at Stockholm.
+
+yours Andrew
+
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@symbio.jst.go.jp 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@symbio.jst.go.jp">mailto:owner-sbml-discuss@symbio.jst.go.jp</A>] On Behalf Of 
+&gt; Kouichi Takahashi
+&gt; Sent: 07 December 2002 08:24
+&gt; To: Andrew Finney
+&gt; Cc: 'SBML Discussion List'; Biospice ModelDefinition Language
+&gt; Subject: RE: [sbml-discuss] Draft SBML Level 1 version 2 =&gt; Level 2
+&gt; 
+&gt; 
+&gt; 
+&gt; I haven't read the L2 doc very carefully, and I'm a bit 
+&gt; confused. Please point it out if I'm misunderstanding something.
+&gt; 
+&gt; In section 4.6 of the  doc:
+&gt; 
+&gt;     Parameters defined at the top level are global to the
+&gt;     whole model; parameters that are defined within a reaction are
+&gt;     local    to the particular reaction and (within
+&gt;     that reaction) override any global parameters having the 
+&gt; same names.
+&gt; 
+&gt; I assume the global parameters are meant for model parameters 
+&gt; such as Temp and pH, 
+&gt; because they can change reaction rates globally, thus can 
+&gt; appear in many rate 
+&gt; equations.
+&gt; 
+&gt; If namespace contamination matters, I think one way is to 
+&gt; allow compartment to 
+&gt; have a parameter list and let them appear in rate equations, 
+&gt; though I'm not sure this is possible without breaking 
+&gt; backward compatibility (if not please just ignore this 
+&gt; suggestion at least for L2, because probably ProMoT people's 
+&gt; modularity proposal might did this job elegantly.). Actually 
+&gt; Temp and pH 
+&gt; are properties of compartments. E-Cell (especially the 
+&gt; version 3), and I think ProMoT too, has similar idea although 
+&gt; the compartments can be 
+&gt; logical as well as physical.  
+&gt; I think the global model parameters are still useful for modelers.
+&gt; 
+&gt; 
+&gt; Herbert:
+&gt; &gt; &gt; but kinetic
+&gt; &gt; &gt; parameters are naturally associated with the reaction they 
+&gt; &gt; &gt; belong to and map well with the internal class structures in 
+&gt; &gt; &gt; my software, if the parameters are in the official global 
+&gt; &gt; &gt; list one has to parse the rate laws looking for which rate 
+&gt; &gt; &gt; law each parameter is associated with, not difficult but 
+&gt; &gt; &gt; unnecessary.
+&gt; 
+&gt; For each reaction it is easy; just look up the global 
+&gt; parameter list.  
+&gt; &gt;From parameter list, yes, it can be tedious to look for all the rate 
+&gt; &gt;laws
+&gt; which are using a particular global parameter, but as a 
+&gt; simulator developer 
+&gt; I can't think of need for such operation.  Probably you have the need.
+&gt; 
+&gt; 
+&gt; regards,
+&gt; -Kouichi
+&gt; 
+&gt; 
+&gt; 
+&gt; &gt; IMHO The issue raised by Herbert is perhaps significant for 
+&gt; SBML Level 
+&gt; &gt; 2 (L2).
+&gt; &gt; 
+&gt; &gt; Recap: It is suggested that in SBML Level 1 version 2 (L1v2) 
+&gt; &gt; parameters declared in reactions are present in the global 
+&gt; namespace:
+&gt; &gt; a parameter declared in a reaction can't have the same
+&gt; &gt; identifier as a parameter declared anywhere else.
+&gt; &gt; (this is my interpretation)
+&gt; &gt; 
+&gt; &gt; [See 3rd paragraph of section 4.8.3 page 22
+&gt; &gt; and 2nd bullet of section 3.5 page 8 of L2 draft]
+&gt; &gt; 
+&gt; &gt; I assume that the scope is still restricted:
+&gt; &gt; a parameter declared in a reaction can't be used
+&gt; &gt; anywhere else. (otherwise the association
+&gt; &gt; with the reaction is redundant)
+&gt; &gt; 
+&gt; &gt; IMHO This is significant for Level 2 because
+&gt; &gt; 
+&gt; &gt; a) what was a bad idea for L1 is maybe a
+&gt; &gt; bad idea for L2
+&gt; &gt; 
+&gt; &gt; b) its not good to have L1v2 as a fork
+&gt; &gt; in SBML development.  I think L2 should
+&gt; &gt; be a clearly a progression from L1v2.
+&gt; &gt; This isn't a implementation issue
+&gt; &gt; as L2 is backwards compatible with
+&gt; &gt; L1 (mainly because of MathML).
+&gt; &gt; However it could be confusing
+&gt; &gt; if L2 was compatible/similar
+&gt; &gt; to different parts of L1v1 and L1v2.
+&gt; &gt; 
+&gt; &gt; But do L2 users care???
+&gt; &gt; 
+&gt; &gt; What do you think?
+&gt; &gt; Should this change be considered for L2?
+&gt; &gt; 
+&gt; &gt; yours Andrew
+&gt; &gt; 
+&gt; &gt; &gt; -----Original Message-----
+&gt; &gt; &gt; From: owner-sbml-discuss@symbio.jst.go.jp
+&gt; &gt; &gt; [<A  HREF="mailto:owner-sbml-discuss@symbio.jst.go.jp">mailto:owner-sbml-discuss@symbio.jst.go.jp</A>] On Behalf Of 
+&gt; &gt; &gt; Michael Hucka
+&gt; &gt; &gt; Sent: 06 December 2002 20:33
+&gt; &gt; &gt; To: SBML Discussion List
+&gt; &gt; &gt; Subject: Re: [sbml-discuss] Draft SBML Level 1 version 2
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Herbert sent back an important comment about the 
+&gt; interpretation of 
+&gt; &gt; &gt; parameters in SBML L1.  With his permission, the message 
+&gt; is appended 
+&gt; &gt; &gt; below.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; We would be very grateful if others could comment on this 
+&gt; issue as 
+&gt; &gt; &gt; well.  Basically, we have to reach a consensus (which is 
+&gt; to say, the 
+&gt; &gt; &gt; most satisfactory and least controversial specification) 
+&gt; about the 
+&gt; &gt; &gt; definition of parameters in SBML L1.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Mike
+&gt; &gt; &gt; 
+&gt; &gt; &gt; ------- start of forwarded message (RFC 934 encapsulation) -------
+&gt; &gt; &gt; From: Herbert Sauro &lt;Herbert_Sauro@kgi.edu&gt;
+&gt; &gt; &gt; Subject: Level 2
+&gt; &gt; &gt; Date: Fri, 6 Dec 2002 09:41:30 -0800
+&gt; &gt; &gt; 	
+&gt; &gt; &gt; Mike, you might be aware of this but Gepasi, my software and
+&gt; &gt; &gt; netbuilder and probably others (eg DBSolve and Luigi's 
+&gt; &gt; &gt; simulator) use a slightly different interpretation for the 
+&gt; &gt; &gt; parameters associated with rate laws than is given in the 
+&gt; &gt; &gt; Level 1 docs. In the official docs it says these are local 
+&gt; &gt; &gt; but the way the rest of us them is in a global sense, it just 
+&gt; &gt; &gt; didn't turn out to be convenient to use them as indicated in 
+&gt; &gt; &gt; the docs. The reasons why I do it this way (don't know why 
+&gt; &gt; &gt; the others do it, you'll have to ask them), but kinetic 
+&gt; &gt; &gt; parameters are naturally associated with the reaction they 
+&gt; &gt; &gt; belong to and map well with the internal class structures in 
+&gt; &gt; &gt; my software, if the parameters are in the official global 
+&gt; &gt; &gt; list one has to parse the rate laws looking for which rate 
+&gt; &gt; &gt; law each parameter is associated with, not difficult but 
+&gt; &gt; &gt; unnecessary. I imagine that since Level 1 will go the way of 
+&gt; &gt; &gt; the dinosaur with Level 2 almost there, it shouldn't be too 
+&gt; &gt; &gt; much of an issue, I won't be using level 2 for a long time 
+&gt; &gt; &gt; since I don't have a simulator that is compatible with it. 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Herbert
+&gt; &gt; &gt; 
+&gt; &gt; &gt; - ----------------------------------------------------------
+&gt; &gt; &gt; There are only three kinds of people in this world; those
+&gt; &gt; &gt; that can count, and those that can't
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Dr Herbert M Sauro
+&gt; &gt; &gt; Keck Graduate Institute
+&gt; &gt; &gt; 535 Watson Drive
+&gt; &gt; &gt; Claremont
+&gt; &gt; &gt; CA, 91711
+&gt; &gt; &gt; Tel: USA 1-909-607-0377
+&gt; &gt; &gt; Email : hsauro@kgi.edu &lt;<A  HREF="mailto:hsauro@kgi.edu">mailto:hsauro@kgi.edu</A>&gt;
+&gt; &gt; &gt; Web: www.sys-bio.org &lt;<A  HREF="http://www.sys-bio.org">http://www.sys-bio.org</A>&gt;
+&gt; &gt; &gt; 
+&gt; &gt; &gt; ------- end -------
+&gt; &gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00052" HREF="msg00052.html">RE: [sbml-discuss] Draft SBML Level 1 version 2 =&gt; Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00052.html">RE: [sbml-discuss] Draft SBML Level 1 version 2 =&gt; Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00046.html">Re: [sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00052.html">RE: [sbml-discuss] Draft SBML Level 1 version 2 =&gt; Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00054.html">RE: [sbml-discuss] Draft SBML Level 1 version 2 =&gt; Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00053"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00053"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

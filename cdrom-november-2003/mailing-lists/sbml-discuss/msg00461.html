@@ -1,0 +1,246 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] DWG: Suggestion for layout extension -->
+<!--X-From-R13: Eira Enuyr <fnuyrNrzy.bet> -->
+<!--X-Date: Fri, 13 Jun 2003 08:51:45 &#45;0700 -->
+<!--X-Message-Id: 200306131822.44077.sahle@eml.org -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Derived: png00000.png -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] DWG: Suggestion for layout extension</TITLE>
+<LINK REV="made" HREF="mailto:sahle@eml.org">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00460.html">Date Prev</A>][<A HREF="msg00462.html">Date Next</A>][<A HREF="msg00460.html">Thread Prev</A>][<A HREF="msg00463.html">Thread Next</A>][<A HREF="maillist.html#00461">Date Index</A>][<A HREF="threads.html#00461">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] DWG: Suggestion for layout extension</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] DWG: Suggestion for layout extension</LI>
+<LI><em>From</em>: Sven Sahle &lt;<A HREF="mailto:sahle@eml.org">sahle@eml.org</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 13 Jun 2003 18:22:44 +0000</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello all,
+
+we would like to present another suggestion for the sbml layout extension.
+
+For that we took the basic idea that information about the position and 
+relations between the graphical objects should be separated from render 
+information like  line thicknesses, colors, shapes. We only deal here with 
+the first. 
+We took from the discussion in this forum what we think are the important 
+requirements (that our first suggestion did not meet).
+
+The requirements we considered are:
+
+1. several layouts for one model in one file.
+
+2. layout separate from the model in the file.
+
+3. one model object (compartment, species, reaction, species reference) can be 
+represented by several graphical objects.
+
+4. graphical objects that do not refer to model objects are possible (Of 
+course graphical objects can refer to a part of the model and usually do).
+
+We provide a sample sbml file and a png file with the rendered layout. These 
+files were generated manually and the sbml code is based on a hypothetical 
+sbml level 2 that would have id´s for species references.
+
+
+Some additional notes:
+
+-the basic structure of this suggestion is similar to John Wagner´s draft 
+(that reflects requirements 1 and 2), while our first try was similar to 
+Herbert Sauro´s suggestion.
+
+- the ...GR in the tag names stands for graphical representation (but the 
+actual names of the tags don´ t really matter that muchin this phase of the 
+discussion)
+
+-all the graphical objects have an id. This id is used only in the case of the 
+speciesGR (it is needed in the reactionGR). But we think that every object in 
+sbml should have an id.
+
+- the "ref" attribute in the graphical objects is optional and refers to the 
+id of a model object.
+
+- there are two kinds of graphical objects that don´t refer to a model object: 
+first the ones that _could_ refer to a model object but don´t (since the 
+"ref" attribute is optional). This means you can have species and reaction, 
+... in the layout that are not in the model; second the objects that are in 
+the "listOfAdditionalGraphicalObjects". In our example we have put only a 
+text label object in this list, other types of objects would be possible.
+
+-  since a species reference in the model connects the reaction with the 
+species, and the arrows (or arcs) in the diagram  connect the reactionGR with 
+the speciesGR, we think the arcs (or arrows) should refer to the species 
+references. To reflect that we have called them speciesReferenceGR
+
+- the possibility to have several speciesReferenceGR objects that refer to one 
+species reference in the model solves the following problem that was 
+mentioned in the discussion on the list: The user might want to render the 
+reaction A-&gt;B with encyme E as a reaction A+E-&gt;B+E. So we have 3 species 
+references in the model (one substrate, product, modifier each) but 4 arcs 
+(two substrate, two product). So two speciesReferenceGRs (one substrate, one 
+product) refer to one species reference (modifier) in the model. This is the 
+reason why we put the "role" attribute in the speciesReferenceGR tag. It 
+should be optional. If it is not there the role is taken from the species 
+reference. 
+
+-Right now the speciesReferenceGR specifies only startpoint and endpoint of 
+the arc. It might make sense to include coordinates for an arbitrary number 
+of points in the speciesReferenceGRs to describe the  the arc. 
+
+We hope that our suggestion can be the base of some discussion. Did we miss 
+anything important? Please comment.
+
+Ursula Rost, Sven Sahle, Katja Wegner
+(European Media Laboratory, Heidelberg, Germany)
+
+
+</PRE>
+<PRE>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;sbml xmlns="<A  HREF="http://www.sbml.org/sbml/level2">http://www.sbml.org/sbml/level2</A>" level="2" version="1" 
+      xmlns:xsi="<A  HREF="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</A>"&gt;
+
+
+   &lt;model name="Untitled"&gt;
+      &lt;listOfCompartments&gt;
+         &lt;compartment id="compartment" volume="1"/&gt;
+      &lt;/listOfCompartments&gt;
+      &lt;listOfSpecies&gt;
+         &lt;specie id="ATP" compartment="compartment" initialAmount="0"/&gt;
+         &lt;specie id="P_i" compartment="compartment" initialAmount="0"/&gt;
+         &lt;specie id="Glucose" compartment="compartment" initialAmount="0"/&gt;
+         &lt;specie id="ADP" compartment="compartment" initialAmount="0"/&gt;
+         &lt;specie id="H2O" compartment="compartment" initialAmount="0"/&gt;
+         &lt;specie id="G6P" compartment="compartment" initialAmount="0"/&gt;
+      &lt;/listOfSpecies&gt;
+      &lt;listOfReactions&gt;
+         &lt;reaction id="reaction_0" reversible="false"&gt;
+            &lt;listOfReactants&gt;
+               &lt;specieReference id="SP1" specie="P_i" stoichiometry="1"/&gt;
+               &lt;specieReference id="SP2" specie="Glucose" stoichiometry="1"/&gt;
+            &lt;/listOfReactants&gt;
+            &lt;listOfProducts&gt;
+               &lt;specieReference id="SP3" specie="H2O" stoichiometry="1"/&gt;
+               &lt;specieReference id="SP4" specie="G6P" stoichiometry="1"/&gt;
+            &lt;/listOfProducts&gt;
+         &lt;/reaction&gt;
+         &lt;reaction id="reaction_1" reversible="false"&gt;
+            &lt;listOfReactants&gt;
+               &lt;specieReference id="SP5" specie="ATP" stoichiometry="1"/&gt;
+               &lt;specieReference id="SP6" specie="Glucose" stoichiometry="1"/&gt;
+            &lt;/listOfReactants&gt;
+            &lt;listOfProducts&gt;
+               &lt;specieReference id="SP7" specie="ADP" stoichiometry="1"/&gt;
+               &lt;specieReference id="SP8" specie="G6P" stoichiometry="1"/&gt;
+            &lt;/listOfProducts&gt;
+         &lt;/reaction&gt;
+      &lt;/listOfReactions&gt;
+   &lt;/model&gt;
+
+
+
+   &lt;listOfLayouts&gt;
+	&lt;layout id="layout1" &gt;
+		&lt;listOfCompartmentGRs&gt;
+			&lt;compartmentGR id="compGR" ref="compartment" x="10.0" y="10.0" w="60" h="50"/&gt;
+		&lt;/listOfCompartmentGRs&gt;
+		
+		&lt;listOfSpeciesGRs&gt;
+			&lt;speciesGR id="ATP_GR" ref="ATP" x="295.0" y="123.0" w="16.0" h="16.0"/&gt;
+			&lt;speciesGR id="P_iGR" ref="P_i" x="63.0" y="124.0" w="16.0" h="16.0"/&gt;
+			&lt;speciesGR id="Glucose_GR1" ref="Glucose" x="146.0" y="106.0" w="16.0" h="16.0"/&gt;
+			&lt;speciesGR id="Glucose_GR2" ref="Glucose" x="209.0" y="107.0" w="16.0" h="16.0"/&gt;
+			&lt;speciesGR id="ADP_GR" ref="ADP" x="298.0" y="214.0" w="16.0" h="16.0"/&gt;
+			&lt;speciesGR id="H2O_GR" ref="H2O" x="67.0" y="224.0" w="16.0" h="16.0"/&gt;
+			&lt;speciesGR id="G6P_GR" ref="G6P" x="180.0" y="241.0" w="15.0" h="16.0"/&gt;
+		&lt;/listOfSpeciesGRs&gt;
+			
+		&lt;listOfReactionGRs&gt;
+			&lt;reactionGR id="reaction_0_GR" ref="reaction_0" x1="119.0" y1="166.0" x2="120.0" y2="183.0"/&gt;
+				&lt;listOfSpeciesReferenceGRs&gt;
+					&lt;speciesReferenceGR id="SP1_GR" ref="SP1" refSpeciesGR="P_iGR" role="reactant" /&gt;
+					&lt;speciesReferenceGR id="SP2_GR" ref="SP2" refSpeciesGR="Glucose_GR1" role="reactant" /&gt;
+					&lt;speciesReferenceGR id="SP3_GR" ref="SP3" refSpeciesGR="H2O_GR" role="product"/&gt;
+					&lt;speciesReferenceGR id="SP4_GR" ref="SP4" refSpeciesGR="G6P_GR" role="product"/&gt;
+				&lt;/listOfSpeciesReferenceGRs&gt;
+			&lt;/reactionGR&gt;
+			&lt;reactionGR id="reaction_1_GR" ref="reaction_1" x1="256.0" y1="166.0" x2="257.0" y2="183.0"/&gt;
+				&lt;listOfSpeciesReferenceGRs&gt;
+					&lt;speciesReferenceGR id="SP5_GR" ref="SP5" refSpeciesGR="ATP_GR" role="reactant" /&gt;
+					&lt;speciesReferenceGR id="SP6_GR" ref="SP6" refSpeciesGR="Glucose_GR2" role="reactant" /&gt;
+					&lt;speciesReferenceGR id="SP7_GR" ref="SP7" refSpeciesGR="ADP_GR" role="product" /&gt;
+					&lt;speciesReferenceGR id="SP8_GR" ref="SP8" refSpeciesGR="G6P_GR" role="product" /&gt;
+				&lt;/listOfSpeciesReferenceGRs&gt;
+			&lt;/reactionGR&gt;
+		&lt;/listOfReactionGRs&gt;
+
+		&lt;listOfAdditionalGraphicalObjects&gt;
+			&lt;textLabel id="label1" x="100.0" y="85.0" w="180.0" h="25.0"&gt;
+			        Reaction Layout
+			&lt;/textlabel&gt;
+		&lt;/listOfAdditionalGraphicalObjects&gt;
+
+	&lt;/layout&gt;
+    &lt;/listOfLayouts&gt;      
+ 
+&lt;/sbml&gt;
+</PRE>
+<P><A HREF="png00000.png" >bsp.png</A></P>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00460.html">[sbml-discuss] SBML Level 2 - attributes of MathML  elements</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00462.html">Re: [sbml-discuss] ALTREPS - example representations</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00460.html">[sbml-discuss] SBML Level 2 - attributes of MathML  elements</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00463.html">RE: [sbml-discuss] DWG: Suggestion for layout extension</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00461"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00461"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

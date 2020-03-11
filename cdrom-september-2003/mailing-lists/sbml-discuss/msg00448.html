@@ -1,0 +1,117 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] stoichiometry in sbml level 2 version 1 -->
+<!--X-From-R13: Pra Pbeafgrva <obeafgrvNnvt.wcy.anfn.tbi> -->
+<!--X-Date: Wed, 11 Jun 2003 11:26:17 &#45;0700 -->
+<!--X-Message-Id: 200306111824.h5BIOk206171@xenium.jpl.nasa.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 16103.27588.993498.578964@erato1.cds.caltech.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</TITLE>
+<LINK REV="made" HREF="mailto:bornstei@aig.jpl.nasa.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00447.html">Date Prev</A>][<A HREF="msg00449.html">Date Next</A>][<A HREF="msg00446.html">Thread Prev</A>][<A HREF="msg00450.html">Thread Next</A>][<A HREF="maillist.html#00448">Date Index</A>][<A HREF="threads.html#00448">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>, <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] stoichiometry in sbml level 2 version 1 </LI>
+<LI><em>From</em>: Ben Bornstein &lt;<A HREF="mailto:bornstei@aig.jpl.nasa.gov">bornstei@aig.jpl.nasa.gov</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 11 Jun 2003 11:24:46 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+  mhucka&gt; One thing to note about this: I don't think we can use the
+  mhucka&gt; same tag ('stochiometry') for both an attribute an an
+  mhucka&gt; element on the same parent element in XML.
+  mhucka&gt; So one of them would need to be named something else.
+
+Hi Mike,
+
+     Why?  Is this a SHUCS limitation or is it impossible to specify
+XML Schema constraints if an attribute and subelement share the same
+name?
+
+     I know Ant (a Java build system that uses XML as its file format)
+allows for this sort of "overloading".  In fact, it's used quite
+(I think too) frequently.
+
+     From both a SAX and DOM API perspective, there is no conflict
+because XML attributes and elements exist in separate "namespaces".
+SAX defines a notification mechanism for elements and a class that
+holds attribute name / value pairs.  In DOM, elements and attributes
+are represented by two separate classes (e.g., DOMNode and DOMAttr).
+
+     If it really is a problem, then I would suggest:
+
+       &lt;stoichiometryMath&gt; &lt;math&gt; ... &lt;/math&gt; &lt;/stoichiometryMath&gt;
+
+
+Ben
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00450" HREF="msg00450.html">Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00446" HREF="msg00446.html">RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00447.html">RE: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00449.html">RE: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00446.html">RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00450.html">Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00448"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00448"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

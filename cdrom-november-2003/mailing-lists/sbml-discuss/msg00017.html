@@ -1,0 +1,155 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] SBML Level 2 -->
+<!--X-From-R13: [negva Uvaxry <tvaxryNzcv&#45;zntqrohet.zct.qr> -->
+<!--X-Date: Thu, 5 Dec 2002 02:51:54 &#45;0800 -->
+<!--X-Message-Id: XFMail.20021205115102.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000301c29c44$cd5f4fc0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] SBML Level 2</TITLE>
+<LINK REV="made" HREF="mailto:ginkel@mpi-magdeburg.mpg.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00014.html">Date Prev</A>][<A HREF="msg00015.html">Date Next</A>][<A HREF="msg00014.html">Thread Prev</A>][<A HREF="msg00015.html">Thread Next</A>][<A HREF="maillist.html#00017">Date Index</A>][<A HREF="threads.html#00017">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] SBML Level 2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: SBML &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] SBML Level 2</LI>
+<LI><em>From</em>: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 05 Dec 2002 11:51:02 +0100 (CET)</LI>
+<LI>Cc: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi Andrew,
+
+On 05-Dec-2002 Andrew Finney wrote:
+&gt; The only problem is that we're taking the model
+&gt; further away from what can be simulated which is
+&gt; unfortunate.  This makes establishing a regime of
+&gt; publishing models that simulate more problematic.
+
+IMHO it is more problematic, if a model contains senseless
+default parameters in the case, that the writing tool
+used only the network for flux analysis.
+A dynamic simulator simply has to check, if all params and 
+species have values or initial values respectively.
+Otherwise the user has to augment the original model anyways 
+to get it running. This is still better than not to
+know, which parameters make sense and which are nonsense 
+defaults.
+
+&gt; A missing value is just a real bad value!
+
+No, it is a missing value. And the user knows instantly that it 
+is missing and he has to edit this.
+
+
+&gt; I can imagine sets of parameters being applied
+&gt; to models in much the same way as stylesheets
+&gt; to xml or html data.
+&gt; 
+&gt; There are some issues with this:
+&gt; 
+&gt; a) should we allow incomplete parameter sets?
+&gt;       IMHO yes - it becomes a useful way to support
+&gt;       models of mutations.  We may want to allow
+&gt;       'stacks' of parameter sets to form a simulation
+&gt;       input.
+
+Yes: param sets only override the defaults in the model if necessary.
+
+&gt; b) does the model refer to the parameter set or visa-versa?
+&gt;       certainly from a language development
+&gt;       point of view it would be convient if 
+&gt;       the parameter sets refer to the model.
+&gt;       That also appears to make sense from
+&gt;       your requirements: a model has more than 
+&gt;       one parameter set and a parameter set is
+&gt;       not meaningful without a model.  But a model
+&gt;       could be considered useful without a parameter set.
+
+The param set is bound to a model that it makes sense with.
+But it may be worthwhile to apply the same parameterset to a 
+different model-variant (eg. extended model that contains the 
+same params with the same semantics, and some additional).
+The last point may be declared as a tools issue?
+
+&gt; c) I'm not keen to bring parameter sets into the publishing
+&gt;       senario at least not initially (you may disagree).  When a model
+&gt;       is published IMHO the parameters should be transferred into a
+&gt; single
+&gt;       model document.  (I guess this may break down in the mutation
+&gt;       case.)  This will greatly simplify the curation process.
+
+IMHO rather `not yet'
+
+
+        Martin
+
+-- 
++-[Martin Ginkel]--------------[<A  HREF="mailto:ginkel">mailto:ginkel</A>(at)mpi-magdeburg.mpg.de]-+
+| MPI Magdeburg, Zi S2.09    Sandtorstr. 1, D-39106 Magdeburg, Germany |
+| C++ is history repeated as tragedy. Java is history repeated as      |
+| farce.                                                               |
++-[tel/fax: +49 391 6110 482/529]----[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00014" HREF="msg00014.html">RE: SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00014.html">RE: SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00015.html">Re: [sbml-discuss] RE: SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00014.html">RE: SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00015.html">Re: [sbml-discuss] RE: SBML Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00017"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00017"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

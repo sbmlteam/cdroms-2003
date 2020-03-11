@@ -1,0 +1,191 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] Events -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 27 May 2003 06:43:10 &#45;0700 -->
+<!--X-Message-Id: 000101c32455$e2eed970$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] Events</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00366.html">Date Prev</A>][<A HREF="msg00368.html">Date Next</A>][<A HREF="msg00366.html">Thread Prev</A>][<A HREF="msg00368.html">Thread Next</A>][<A HREF="maillist.html#00367">Date Index</A>][<A HREF="threads.html#00367">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] Events</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;SBML&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] Events</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 27 May 2003 14:42:52 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+At the 7th SBML Forum meeting it was agreed that some important aspects
+of the Events
+feature in SBML were undefined or ambiguous.  In particular the
+semantics of events
+occurring (firing) at the same time is not defined i.e. there is no
+tie-breaking
+mechanism specified.  This means that simulators may exhibit different
+behaviors
+from the same model without us being able to decide which simulator is
+correct.
+
+In this context we have the following options for Level 2:
+
+a) do nothing
+
+b) state explicitly that the standard is ambiguous and that results from
+	different simulators will differ
+
+	This allows simulators with fixed tie-breaking algorithms to
+interpret
+	all models.  Model behavior remains ambiguous.
+
+c) allow a model to specify which tie-breaking algorithm to use
+
+	suggested CV for algorithms:
+
+		error
+
+			indicates that if any events are simultaneous
+any subsequent
+			model behavior is incorrect.  The best practice
+is for a simulator
+			to stop with an exception at this point.
+
+		deterministic
+
+			indicates that events are fired in the order
+given in the event list			
+
+		non-deterministic
+
+			indicates that a random choice to determine the
+next simultaneous event to fire.
+
+	suggested default algorithm is "error"
+
+	Under this option we'd put an attribute "eventTieBreaking" on
+the "model" element.
+	This attribute would take one value from this CV.
+
+d) arbitrarily define one behavior for simultaneous events from the list
+in (c)
+
+	This ensures that all models are interpreted in a
+straightforward and unambiguous manner.
+	Some simulators will not be able to interpret SBML event
+structures even when 
+	they can support events under different tie-breaking algorithms.
+	I don't think 'error' is an option!
+
+My preferred option is (c)
+
+Other areas of events that need to better defined but I hope are not
+controversial or
+necessarily difficult to implement:
+
+a) Events whose trigger is true at the start of a simulation do not fire
+at the start
+	i.e. events trigger strictly when the trigger &gt;becomes&lt; true
+(transitions from
+	false to true)
+
+b) Events can trigger other events - i.e. an event assignment can cause
+another event to
+	trigger.  
+
+c) when an event X triggers another event Y and event Y has zero delay
+then event Y is
+added to the existing set of unfired simultaneous events for
+tie-breaking. Events like
+Y do not have a special priority or ordering within the tie-breaking
+algorithm.  
+Events X and Y form a cascade of events at the same point in simulation
+time.
+
+d) All events in a model are open to being in a cascade.  The position
+of an event in
+the event list doesn't affect whether it can be in the cascade: Y can be
+triggered
+whether its before or after X in the list of events.
+
+e) A cascade of events can be infinite.  When this occurs a simulator
+should indicate
+this has occurred.
+	E.g. it is incorrect for the simulator to arbitrarily break the
+cascade and
+	continue the simulation without at least indicating the infinite
+cascade occurred.
+
+f) Given that a variable can change more than once when processing
+simultaneous events
+at simulation time t then the model behavior for that variable at time t
+is the value
+of the variable at the end of processing all the simultaneous events at
+time t.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+Systems Biology Workbench Development Group
+University of Hertfordshire, UK
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00366.html">[sbml-discuss] DWG - clarification of stylesheet concept and example</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00368.html">Re: [sbml-discuss] DWG - clarification of stylesheet conceptand example</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00366.html">[sbml-discuss] DWG - clarification of stylesheet concept and example</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00368.html">Re: [sbml-discuss] DWG - clarification of stylesheet conceptand example</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00367"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00367"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

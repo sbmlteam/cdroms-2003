@@ -1,0 +1,193 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG preliminary issues -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Thu, 22 May 2003 22:07:53 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E34@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG preliminary issues</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00260.html">Date Prev</A>][<A HREF="msg00262.html">Date Next</A>][<A HREF="msg00258.html">Thread Prev</A>][<A HREF="msg00239.html">Thread Next</A>][<A HREF="maillist.html#00261">Date Index</A>][<A HREF="threads.html#00261">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG preliminary issues</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG preliminary issues</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 01:06:18 -0400</LI>
+<LI>Thread-Index: AcMg33GIqW9PP+hNRZSi8fOkU1qaVwACCE+w</LI>
+<LI>Thread-Topic: [sbml-discuss] DWG preliminary issues</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Fabien,
+I don't think anyone is talking about diagrams as
+an SBML equivalent to a rendered PDB entry.
+
+What we are talking about is the layout of the network,
+which in and of itself has biological and modeling
+significance. For example, you could consider a
+tool that does network analysis, for which the "diagram"
+would be the result of its computation. So in a very
+real sense, the "diagram" is one element or aspect of
+a model.
+
+Moreover, we are attempting to preserve the visual
+layout of a network when it is exported from one
+tool and imported into another, as a functional
+matter. If a user spends an hour laying out his
+diagram in the Virtual Cell, then decides to use
+JDesigner to do some kind of analysis on the
+model, only to find that upon importing it into
+JDesigner the diagram is all messed up, they are
+going to be less than pleased. We've had complaints
+from users about this very issue, even on "small"
+(ca. 20-30 species) models; can you imagine someone
+with 500 species? They'd be pissed.
+
+Of course, there are many extremes, from the simplest
+recording of relative location (x,y) pairs, all the
+way through to specifying the minutest details. How
+much, or how little, should be kept--that is, how
+much, or how little, could have biological or modeling
+value--is up to all of us to decide; but my feeling,
+and the feeling of a number of others at the Florida
+meeting, was that the more possible detail one can
+specify, the better--up to a limit of course. As an
+example, one group uses visual cues to distinguish
+between monomers, dimers, trimers, etc. So they
+have a strong argument for a fairly descriptive
+level of detail.
+
+But again, we're not trying to design something that
+could substitute as the rendering format for an
+analogue of RasMol; we're trying to design something
+that allows users to maintain the look of their
+network as they move between applications.
+
+John
+
+PS As an aside, I'd like the language to be detailed
+enough that someone could design a printing tool/
+utility that took an SBML file from any of the
+current tools, and print a page such that even my
+first grader could identify as being a printed version
+of what they see displayed on-screen in the tool.
+That is, not necessarily IDENTICAL, but close enough
+that you don't look at the printed page and go, "Huh?"
+
+&gt; -----Original Message-----
+&gt; From: Fabien Campagne [<A  HREF="mailto:campagne@physbio.mssm.edu">mailto:campagne@physbio.mssm.edu</A>]
+&gt; Sent: Thursday, May 22, 2003 11:57 PM
+&gt; To: Herbert Sauro
+&gt; Cc: Wagner,John; 'sbml-discuss@caltech.edu '
+&gt; Subject: RE: [sbml-discuss] DWG preliminary issues
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; On Thu, 22 May 2003, Herbert Sauro wrote:
+&gt; 
+&gt; &gt;
+&gt; &gt; Subject: RE: [sbml-discuss] DWG preliminary issues
+&gt; &gt;
+&gt; &gt; &gt;&gt; I'm only half heartedly supporting SVG because there seemed
+&gt; &gt; &gt;&gt; to be some consensus among others that it would be a good idea.
+&gt; &gt; &gt;&gt; I'd rather something of our own but if the vote is to go for
+&gt; &gt; &gt;&gt; SVG then I would of course follow the majority.
+&gt; &gt; &gt;Well, it looks like whatever the consensus is for it, you,
+&gt; &gt; &gt;Fabien and I aren't hot for it, preferring to do it ourselves.
+&gt; 
+&gt; I am afraid that I am more radical: I want to suggest an alternative
+&gt; to using a subset of SVG or building anything custom to render full
+&gt; details about the diagram (e.g., shapes, color, fonts) in an attempt
+&gt; to design the third layer that Sven Sahle defined.
+&gt; 
+&gt; The alternative can be: not to embbed the rendering in SBML, but
+&gt; instead to link to fully rendered diagrams (such as described in
+&gt; my previous post:
+&gt; <A  HREF="http://www.sbw-sbml.org/sbml-discuss/archive/msg00245.html">http://www.sbw-sbml.org/sbml-discuss/archive/msg00245.html</A>).
+&gt; 
+&gt; I believe that uses for high-quality, fully rendered diagrams
+&gt; are not the same as for diagrams that let visualize the reactions
+&gt; in a model, and interact with the species to decide what concentration
+&gt; should be plotted.
+&gt; 
+&gt; In my opinion, these two use scenario do not overlap enough to
+&gt; justify mixing these two aspects in SBML.
+&gt; 
+&gt; If you think differently pit would help if you could describe
+&gt; use scenarios for fully rendered diagrams in the  context of
+&gt; simulation/modeling.
+&gt; 
+&gt; Fabien
+&gt; 
+&gt; 
+&gt; &gt; &gt;I'd rather focus on our specific wants and needs than sit
+&gt; &gt; &gt;around arguing about what subset of SVG we can all live
+&gt; &gt; &gt;with.
+&gt; &gt;
+&gt; &gt; Agreed.
+&gt; &gt;
+&gt; &gt; Herbert
+&gt; &gt;
+&gt; &gt;
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00260.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00262.html">Re: [sbml-discuss] DWG preliminary issues - shapes</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00258.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00239.html">[sbml-discuss] DWG Goals, Constraints, etc.</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00261"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00261"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

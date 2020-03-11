@@ -1,0 +1,171 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] RE: [Biospice&#45;sepdtf] clarification onthegenerated SBML model -->
+<!--X-From-R13: Egrsna Vbbcf <fubbcfNig.rqh> -->
+<!--X-Date: Tue, 14 Oct 2003 12:50:05 &#45;0700 -->
+<!--X-Message-Id: 20031014092605.2e03534a.shoops@vt.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.44.0310130853080.21236&#45;100000@kincora.cds.caltech.edu -->
+<!--X-Reference: Pine.LNX.4.44.0310140718120.8963&#45;100000@mailsvr.ncbs.res.in -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification onthegenerated SB</TITLE>
+<LINK REV="made" HREF="mailto:shoops@vt.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00688.html">Date Prev</A>][<A HREF="msg00690.html">Date Next</A>][<A HREF="msg00695.html">Thread Prev</A>][<A HREF="msg00693.html">Thread Next</A>][<A HREF="maillist.html#00689">Date Index</A>][<A HREF="threads.html#00689">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification onthegenerated SBML model</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification onthegenerated SBML model</LI>
+<LI><em>From</em>: Stefan Hoops &lt;<A HREF="mailto:shoops@vt.edu">shoops@vt.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 14 Oct 2003 09:26:05 -0400</LI>
+<LI><em>Organization</em>: Virginia Bioinformatics Institute</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello All,
+
+I am watching the thread for a while and can't withstand to put my two cents in :).
+
+The list of modifiers and the rate law describe two different things. The list of modifiers is a conceptual thing whereas the rate law is describing a very specific implementation of a kinetic law compliant with the concept described though substrates, products, modifiers, and if you want parameters.
+
+We can have different kinetics for the same concept and as such neither the list of modifiers nor the rate law is redundant. 
+
+I do not see how it is possible to get the list of modifiers from the kinetics in the case described below by Upi. We need it! 
+
+I agree that it is possible to assign a rate law which does not comply with the concept described by substrate, product and modifiers. Whether SBML should allow or forbid this should be the point of discussion but not whether we need a list of modifiers or make it optional. 
+
+SBML shall facilitate the exchange of models especially reaction based. Let me give an example how I think SBML can be used. We have a set of reactions. The described reactions may have observed modifiers but no known rate laws, so it would make perfect sense to me to write a list of modifiers and skip the rate law. Other people can take the model and add compliant rate laws to the reactions and play with it. This process is what SBML should enable. 
+
+Thanks!
+Stefan
+
+On Tue, 14 Oct 2003 07:24:30 +0530 (IST)
+Upinder Singh Bhalla &lt;bhalla@ncbs.res.in&gt; wrote:
+
+&gt; I agree with Herbert's take on this: things should be unambiguous. Can we
+&gt; come up with some test cases and look at how the proposed specification
+&gt; would handle some potential problem situations involving modifiers doing
+&gt; other things ? Here is another:  on PDE5, cGMP is a substrate and it also
+&gt; binds to an allosteric site on PDE5 to modify the enzymatic rates.
+&gt; 
+&gt; -- Upi
+&gt; 
+&gt; On Mon, 13 Oct 2003, Herbert M. Sauro wrote:
+&gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; I think we probably need a more sophisticated means of specifying 
+&gt; &gt; modifiers. I'm not against some type of modifier list but it's application
+&gt; &gt; is limited at the moment (very limited!), I'm not sure if anyone uses it 
+&gt; &gt; other than a lazy means to parsing the rate law (not an issue in Level 2 I 
+&gt; &gt; believe anyway). Could we make it optional if there is a rate law, but 
+&gt; &gt; compulsory if there isn't a rate law?
+&gt; &gt; 
+&gt; &gt; Herbert
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; On Sat, 11 Oct 2003, Andrew Finney wrote:
+&gt; &gt; 
+&gt; &gt; &gt; Folks
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Rate laws are optional - in which case its not possible to determine the
+&gt; &gt; &gt; modifiers.
+&gt; &gt; &gt; And for better or worse the community decided even with rate laws the
+&gt; &gt; &gt; list of modifiers were
+&gt; &gt; &gt; required in Level 2.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Andrew Finney
+&gt; &gt; &gt; +44 (0)1453 827833
+&gt; &gt; &gt; from US - 011 44 1453 827833
+&gt; &gt; &gt; University of Hertfordshire, UK 
+&gt; &gt; &gt; 
+&gt; 
+&gt; -- 
+&gt; Upinder S. Bhalla       National Centre for Biological Sciences
+&gt; bhalla@ncbs.res.in      GKVK Campus
+&gt; (+91-80)363-6420/6421 X 3230    Bangalore 560065, INDIA
+&gt; Fax (+91-80) 363-6662       <A  HREF="http://www.ncbs.res.in/~faculty/upi.html">http://www.ncbs.res.in/~faculty/upi.html</A>
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+
+-- 
+Stefan Hoops, Ph.D.
+Senior Research Associate
+Virginia Bioinformatics Institute
+1880 Pratt Dr.
+Blacksburg, VA 24061, USA
+
+Phone: (540) 231-1799
+Fax: (540) 231-2606
+Email: shoops@vt.edu
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00693" HREF="msg00693.html">Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification on thegeneratedSBML model</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert M. Sauro&quot; &lt;hsauro@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00681" HREF="msg00681.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert M. Sauro&quot; &lt;hsauro@cds.caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00684" HREF="msg00684.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</A></STRONG>
+<UL><LI><EM>From:</EM> Upinder Singh Bhalla &lt;bhalla@ncbs.res.in&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00688.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00690.html">RE: [sbml-discuss] Re: Internet Draft for sbml+xml media type</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00695.html">Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00693.html">Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification on thegeneratedSBML model</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00689"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00689"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

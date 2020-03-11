@@ -1,0 +1,180 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] thoughts on models and and model parameters -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Mon, 9 Dec 2002 02:25:09 &#45;0800 -->
+<!--X-Message-Id: 001801c29f6d$28481720$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1156.213.22.6.166.1039301003.squirrel@webmail.vbi.vt.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] thoughts on models and and model parameters</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00054.html">Date Prev</A>][<A HREF="msg00048.html">Date Next</A>][<A HREF="msg00050.html">Thread Prev</A>][<A HREF="msg00048.html">Thread Next</A>][<A HREF="maillist.html#00047">Date Index</A>][<A HREF="threads.html#00047">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] thoughts on models and and model parameters</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] thoughts on models and and model parameters</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 9 Dec 2002 10:24:27 -0000</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+on Pedros comments:
+
+I agree that:
+
+&gt;parameter sets only 
+&gt;exist in the context of a model.
+
+however this doesn't mean that more than one set of
+parameters is meaningful for the same model.  In fact
+this becomes a very meaningful way to represent mutants.
+
+An additional application (which might be close to Pedro's heart)
+is using parameter sets to store the results of different
+parameter optimisation/fitting runs on the same model.
+
+[Whilst I can see that a modeller can use a database of
+experimental results directly (across several models) my
+impression is that
+a significant part of the modeling community is not doing
+this i.e. there is a significant amount of massaging,
+optimisation and guessing going on that seperates
+the raw experimental results from the parameters
+used in models.  However I don't know this from
+direct experience. I'm interested in knowing more about
+other peoples experiences.]
+
+I think we can make parameter sets a seperate standard
+that references sbml models.  At worst parameter sets
+would be in a rdf element(?) in a seperate XML namespace 
+in the same stream/file as the model.  At best the
+parameter set would be in a seperate file.
+
+I think we should not encourage the use of parameter sets
+in publishing contexts at least until the dust settles on this
+issue with wide adoption in software.
+
+I guess that all we need in SBML L2 is parameter value
+and species initialAmount to be optional.
+
+It is clear that different tools are going to have to
+do there own validation of some aspects of SBML.
+eg presence of parameter values.
+However I would hope that parser libraries could
+have a function like checkHasValues which raises
+errors if parameter values and species initialAmounts are left out.
+
+Later paraser libraries could do parameter value resolution from
+a 'stack' of parameter sets that are applied to a given model.
+
+yours Andrew
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@symbio.jst.go.jp 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@symbio.jst.go.jp">mailto:owner-sbml-discuss@symbio.jst.go.jp</A>] On Behalf Of Pedro Mendes
+&gt; Sent: 07 December 2002 22:43
+&gt; To: sbml-discuss@symbio.jst.go.jp
+&gt; Subject: Re: [sbml-discuss] thoughts on models and and model 
+&gt; parameters
+&gt; 
+&gt; 
+&gt; &gt; So, for me at least, I don't see the model and its 
+&gt; parameter values as 
+&gt; &gt; being separable at all.  It may be a long term issue though (i.e., 
+&gt; &gt; return to in 2010) and something that will be more relevant 
+&gt; to protein 
+&gt; &gt; interaction-based networks versus metabolic networks et cetera.
+&gt; 
+&gt; Actually I also agree that parameters and models are not 
+&gt; independent. This is as true in metabolic networks as it is 
+&gt; in protein binding networks. It turns out that enzymatic 
+&gt; activity depends upon substrate binding to enzymes and this 
+&gt; is also a spectrum of values (i.e. most dehydrogenases can 
+&gt; use NADPH and NADH with different affinities, though some are 
+&gt; small enough that we don´t usually consider the alternate 
+&gt; substrate, but even this may be relevant at times)
+&gt; 
+&gt; Although models may be incomplete as some parameter values 
+&gt; are not known (or uncertain), isolated parameter sets are 
+&gt; completely meaningless. This is because parameter sets only 
+&gt; exist in the context of a model. So even if one could have 
+&gt; models with several parameter sets, there will never be a 
+&gt; parameter set that applies to two models. This means, from a 
+&gt; computational point of view, that making parameter sets 
+&gt; independent from models is not useful. So, we have arguments 
+&gt; from both the biochemical and computational sides to refuse 
+&gt; this idea of separating parameter values from models.
+&gt; 
+&gt; Pedro,
+&gt; looking forward to a lively workshop!
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00048" HREF="msg00048.html">RE: [sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00046" HREF="msg00046.html">Re: [sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+<UL><LI><EM>From:</EM> Pedro Mendes &lt;mendes@vbi.vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00054.html">RE: [sbml-discuss] Draft SBML Level 1 version 2 =&gt; Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00048.html">RE: [sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00050.html">Re: [sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00048.html">RE: [sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00047"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00047"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

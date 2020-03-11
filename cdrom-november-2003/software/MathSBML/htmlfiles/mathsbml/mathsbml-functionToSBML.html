@@ -1,0 +1,184 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage"></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table>
+</div>
+
+
+<h1>MathSBML Model Builder:<span class="function"> functionToSBML</span> </h1>
+
+<hr/>
+
+			
+<p><span class="function">functionToSBML[options]</span> returns a single SBML <span class="function">&lt;functionDefinition.../&gt;;</span></p>
+<p><span class="function">functionToSBML[{{options},{options},...}]</span> returns 
+ an SBML <span class="function">&lt;listOfFunctionDefinitions.../&gt;;</span></p>
+<p><span class="function">functionToSymbolicSBML[arguments]</span> returns Symbolic
+SBML for a single <span class="function">&lt;functionDefinition.../&gt;;</span></p>
+
+
+<span style="font-size:smaller;">New in version 2.1.4.</span>
+
+<hr />
+<h1>Options</h1>
+<table bgcolor="#C0C0C0" border="1">
+	<tr>
+		<td>
+			<table border="0" cellpadding="5">
+				<thead style="font-weight:bold;">
+					<tr>
+						<td>Option</td>
+						<td>Default</td>
+						<td>Description</td>
+					</tr>
+				</thead>
+				<tbody>
+
+						<tr>
+							<td valign="top"><span class="function">arguments</span></td>
+							<td valign="top"><span class="function"></span>generated*</td>
+							<td valign="top">Single argument or list of arguments, as in <span class="function">arguments->x</span> or <span class="function">arguments->{x, y, z}</span>. If not specified, a dummy variable is generated.</td>
+						</tr>												
+				
+						<tr>
+							<td valign="top"><span class="function">id</span></td>
+							<td valign="top"><span class="function"></span>generated*</td>
+							<td valign="top">Value of SBML <span class="function">id</span>. *If not specified, an id of the form <span class="function">function<i>n</i></span>, where <span class="function"><i>n</i></span> is an integer, is generated.</td>
+						</tr>												
+
+						<tr>
+							<td valign="top"><span class="function">math</span></td>
+							<td valign="top"><span class="function"></span>1</td>
+							<td valign="top">Expression giving function value in terms of the arguments.</td>
+						</tr>												
+
+				
+						<tr>
+							<td valign="top"><span class="function">name</span></td>
+							<td valign="top">Uses <span class="function">id</span>*</td>
+							<td valign="top">Value of SBML <span class="function">name</span>. *If not specified, the value of the <span class="function">id</span> is used. </td>
+						</tr>												
+						
+					</tbody>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<hr />
+
+<h1>Example 1: Single function, <span class="function" style="font-weight:normal;">&lt;function .. /&gt;</span> definition</h1>
+<p>The following input expression (optional line-feeds added to emphasize syntactical nesting):</p>
+
+<pre style="font-size:larger;color:blue;">
+	functionToSBML[id->alfafa,
+	               arguments->{horse, grass},
+	               math->(1/(horse*grass))]
+</pre>
+
+<p>will produce the following output:</p>
+
+<pre style="font-size:larger;color:blue;">
+	&lt;functionDefinition id="alfafa"
+	    name="alfafa"&gt;
+	 &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+	  &lt;lambda&gt;
+	   &lt;bvar&gt;
+	    &lt;ci&gt;horse&lt;/ci&gt;
+	   &lt;/bvar&gt;
+	   &lt;bvar&gt;
+	    &lt;ci&gt;grass&lt;/ci&gt;
+	   &lt;/bvar&gt;
+	   &lt;apply&gt;
+	    &lt;times/&gt;
+	    &lt;cn type="integer"&gt;1&lt;/cn&gt;
+	    &lt;apply&gt;
+	     &lt;power/&gt;
+	     &lt;apply&gt;
+	      &lt;times/&gt;
+	      &lt;ci&gt;grass&lt;/ci&gt;
+	      &lt;ci&gt;horse&lt;/ci&gt;
+	     &lt;/apply&gt;
+	     &lt;cn type="integer"&gt;-1&lt;/cn&gt;
+	    &lt;/apply&gt;
+	   &lt;/apply&gt;
+	  &lt;/lambda&gt;
+	 &lt;/math&gt;
+	&lt;/functionDefinition&gt;
+</pre>
+
+<h1>Example 2: Multiple functions, <span class="function" style="font-weight:normal;">&lt;listOfFunctionDefinitions .. /&gt;</span> definition</h1>
+<p>The following input expression (optional line-feeds added to emphasize syntactical nesting):</p>
+
+<pre style="font-size:larger;color:blue;">
+	functionToSBML[
+	  { {id->QRT, arguments->{x}, math->x^(1/4)},
+	    {id->sinc, arguments->{x}, math->Sin[x]/x}
+	  }]
+</pre>
+
+<p>will produce the following output:</p>
+
+<pre style="font-size:larger;color:blue;">
+
+	&lt;listOfFunctionDefinitions&gt;
+	 &lt;functionDefinition id=\"QRT\"
+	     name=\"QRT\"&gt;
+	  &lt;math xmlns=\"http://www.w3.org/1998/Math/MathML\"&gt;
+	   &lt;lambda&gt;
+	    &lt;bvar&gt;
+	     &lt;ci&gt;x&lt;/ci&gt;
+	    &lt;/bvar&gt;
+	    &lt;apply&gt;
+	     &lt;power/&gt;
+	     &lt;ci&gt;x&lt;/ci&gt;
+	     &lt;cn type=\"rational\"&gt;1&lt;sep/&gt;4&lt;/cn&gt;
+	    &lt;/apply&gt;
+	   &lt;/lambda&gt;
+	  &lt;/math&gt;
+	 &lt;/functionDefinition&gt;
+	 &lt;functionDefinition id=\"sinc\"
+	     name=\"sinc\"&gt;
+	  &lt;math xmlns=\"http://www.w3.org/1998/Math/MathML\"&gt;
+	   &lt;lambda&gt;
+	    &lt;bvar&gt;
+	     &lt;ci&gt;x&lt;/ci&gt;
+	    &lt;/bvar&gt;
+	    &lt;apply&gt;
+	     &lt;times/&gt;
+	     &lt;apply&gt;
+	      &lt;sin/&gt;
+	      &lt;ci&gt;x&lt;/ci&gt;
+	     &lt;/apply&gt;
+	     &lt;apply&gt;
+	      &lt;power/&gt;
+	      &lt;ci&gt;x&lt;/ci&gt;
+	      &lt;cn type=\"integer\"&gt;-1&lt;/cn&gt;
+	     &lt;/apply&gt;
+	    &lt;/apply&gt;
+	   &lt;/lambda&gt;
+	  &lt;/math&gt;
+	 &lt;/functionDefinition&gt;
+	&lt;/listOfFunctionDefinitions&gt;
+</pre>
+<br />
+
+
+	
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

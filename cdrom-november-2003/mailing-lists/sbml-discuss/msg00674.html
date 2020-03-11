@@ -1,0 +1,948 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] SBML Sets Concept -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 30 Sep 2003 19:41:53 &#45;0700 -->
+<!--X-Message-Id: 00f201c38740$cd428010$4931353e@AFINNEYLAPTOP -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Derived: pdf00017.pdf -->
+<!--X-Derived: pdf00018.pdf -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] SBML Sets Concept</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00673.html">Date Prev</A>][<A HREF="msg00675.html">Date Next</A>][<A HREF="msg00673.html">Thread Prev</A>][<A HREF="msg00675.html">Thread Next</A>][<A HREF="maillist.html#00674">Date Index</A>][<A HREF="threads.html#00674">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] SBML Sets Concept</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] SBML Sets Concept</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 30 Sep 2003 11:51:21 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<ADDRESS>Title: <STRONG>Message</STRONG></ADDRESS>
+
+
+
+<DIV><SPAN class=024381814-19092003><FONT face=Arial size=2>This email outlines 
+a proposal for a sets or collections in SBML.</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT face=Arial size=2>I have attached 
+previous proposals for arrays and model composition</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT face=Arial size=2>as they are used as 
+a basis for this outline proposal.</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT face=Arial 
+size=2></FONT></SPAN>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>Aim</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>-----</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>To enable the use of 
+collections of SBML components where the components in a 
+collection</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>do not form a 
+sequence and where the components of a set are created and destroyed during 
+simulation.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Use case 
+model</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>-----------------------</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>This proposal is 
+aimed at supporting models containing a dynamic collection of subsystems, e.g. a 
+growing tissue, where</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>a) the subsystems 
+(e.g. cells) themselves are complex</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>b) the subsystems 
+are created and destroyed dynamically.&nbsp; This is distinct from the creation 
+and destruction of individual</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>chemical entities 
+(molecules).</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>c) dynamic global 
+constraints on subsystems are limited or non existent</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i.e.local 
+interaction is always </SPAN></FONT><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>more significant</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003></SPAN></FONT><FONT 
+face=Arial size=2><SPAN class=024381814-19092003>d) although locality is 
+typically going to be distance based: what constitutes locality is 
+arbitrary</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>e) the internals of 
+subsystems are implicitly local to each subsystem - the model assumes 
+that</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+the internals of subsystems are held together .</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Although these 
+models are complex the detailed geometric behavior is not modeled if at all e.g. 
+the precise shape of cell</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>membranes are not 
+modeled: for example a cell is simply a collection of pools of species located 
+at a given point in space.&nbsp; This</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>simplification 
+enables the simulation of a relatively&nbsp;large number of </SPAN></FONT><FONT 
+face=Arial size=2><SPAN class=024381814-19092003>subsystems. 
+</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>I believe that this 
+reflects a large class of potential biological models.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003></SPAN></FONT><FONT 
+face=Arial size=2><SPAN class=024381814-19092003><SPAN class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>In the rest of this 
+document the term object refers to a dynamically created component that can be a 
+member of a set.&nbsp; </SPAN></FONT><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></DIV></SPAN></FONT></SPAN></SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Object Orientation - 
+Justification of Approach</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>--------------------------------------------------------------------</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>The approach taken 
+by this proposal is object oriented - sets 'only' contain instances of submodels 
+(see model composition proposal)</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Set members are 
+referenced by the state of their properties.&nbsp; The rest of this section 
+justifies</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>this 
+approach.</SPAN></FONT></DIV></SPAN></FONT>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>The unique identity 
+of objects is&nbsp;only supplied by the simulation environment in a form that 
+enables the evaluation&nbsp;of equality of object identity</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>i.e. conceptually 
+similar to built-in object identity&nbsp;in OO programming 
+environments.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Why? Given that the 
+collections are not ordered it is not obvious what identity an object can 
+have</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>that is meaningful 
+across a range of model types.&nbsp; The most robust candidate approach might be 
+based on object</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>linage but that 
+assumes that dynamically created object always have a mother and are not 
+</SPAN></FONT><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>spontaneously created.&nbsp;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Maintaining complex 
+object identity may place an overhead on the simulation environment that is not 
+required in most modeling</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>scenarios.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Within a model we 
+only need to refer to objects when we wish to create links between those objects 
+or destroy those</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>objects.&nbsp; In 
+most scenarios t</SPAN></FONT><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>he links between between objects and object 
+lifetimes&nbsp;depend on dynamically varying</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>properties not on 
+their identities e.g. the distance between objects and </SPAN></FONT><FONT 
+face=Arial size=2><SPAN class=024381814-19092003>p53 concentration internal to 
+an object</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>respectively.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Objects are best 
+represented as instances of submodels </SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>a) objects are 
+referenced by the state of their properties - SBML components like species 
+have</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+only a limited set of properties whereas a modeler can create any number of 
+components</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+within an instance each of which can be considered a 
+property</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>b) instances provide 
+a tidy way to represent the implicit localization of 
+subsystems.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Objects must be 
+inserted into a set on creation (otherwise you don't have a 
+handle</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>on the 
+object).&nbsp; Perhaps there may be a default set.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Set 
+Membership</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>-----------------------</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>There are 
+potentially a number of different approaches to organizing object set 
+membership.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>The following are 
+some possible schemes:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>a) there is only one 
+set per submodel type e.g. if we have a Mitochondria 
+submodel</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+then there is only one set for all Mitochondria instances.&nbsp; Objects can't 
+change</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+set membership</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>b) an object can 
+only be a member of one set (an object can only be inserted 
+into</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; a 
+set on creation).&nbsp; </SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003></SPAN></FONT><FONT 
+face=Arial size=2><SPAN class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>c) an object can be 
+a member of more than one set and can be removed or inserted</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+into a set independently of creation and destruction</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>In all cases 
+destruction removes the object from the set(s).</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT></SPAN></FONT><FONT face=Arial 
+size=2><SPAN class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>In the rest of this 
+proposal we assume (b) since its not obvious that (c) is 
+required</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Set 
+Declaration</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>----------------------</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>A set declaration in 
+its simplest form just declares an empty set containing objects of a given 
+type</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>(instances of the 
+same submodel).</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>for 
+example:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&lt;listOfSets&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;set id="foo" submodel="cell.xml"/&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&lt;/listOfSets&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>The submodel 
+attribute will use the same mechanism for referencing 
+submodels</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>as instance 
+declarations (see model composition proposal).</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>More complex 
+declarations allow the definition of an initial membership in a 
+form</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>similar 
+to&nbsp;array declarations.&nbsp; For example:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&lt;listOfSets&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;set id="foo" submodel="cell.xml"&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;listOfDimensions&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;dimension id="x"&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;lowerLimit&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;m:math&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;cn&gt;0&lt;/cn&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/m:math&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/lowerLimit&gt; 
+
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;upperLimit&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;m:math&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;cn&gt;0&lt;/cn&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/m:math&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/upperLimit&gt;</SPAN></FONT></DIV></SPAN></FONT></DIV></SPAN></FONT><FONT 
+face=Arial size=2><SPAN class=024381814-19092003></SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/dimension&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/listOfDimensions&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;/set&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&lt;/listOfSets&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>The dimension 
+symbols are only in scope within following dimension elements within 
+the</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>same set element and 
+</SPAN></FONT><FONT face=Arial size=2><SPAN class=024381814-19092003>within 
+InitialAssignmentRules (see array proposal) that refer to 
+the</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>given set.&nbsp; In 
+the case of the initialAssignmentRule the set behaves identically to an 
+array</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>however in all other 
+contexts behaves as a set i.e..e. its not possible to refer to specific 
+</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>members of a set by 
+their indices because the indices&nbsp;don't exist at simulation 
+time.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>A ListOfSets element 
+is a top-level subelement of model.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Limited Object 
+Identity</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>--------------------------------</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>An object can occur 
+in a math &lt;ci&gt; element outside a csymbol element.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>The resulting value 
+simply reflects the identity of the object.&nbsp; No 
+assumptions</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>as to the relative 
+values of these values should be made.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Referencing Objects 
+</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>-----------------------------</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>How do we refer to 
+objects? We do this performing a kind of query on the simulation 
+state.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>This is achieved by 
+the "forall" element.&nbsp; In its simplest case&nbsp; this declares a symbol 
+which ranges</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>over the contents of 
+a set and declares events, rules and reactions that occur for each symbol.&nbsp; 
+The symbol is</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>only in scope within 
+the 'forall' element.&nbsp; </SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>for 
+example</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&lt;listOfForAlls&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;forall&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;listOfMembers&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;member id="x" set="foo"/&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;listOfMembers&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;listOfReactions&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;reaction id="r"&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;listOfReactants&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;speciesReference&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;speciesLink object="x"&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;objectRef="s"/&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/speciesLink&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/speciesReference&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;listOfProducts&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;speciesReference id="s1"/&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/listOfProducts&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/reaction&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/listOfReactions&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;/forall&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&lt;listOfForAlls&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>where 's' is a 
+species within the 'cell.xml' submodel and</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>'s1' is a species at 
+the top level of the model.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>this fragment 
+means:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>for all members x of 
+foo there exists a reaction&nbsp;x.s -&gt; s1&nbsp;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>We can restrict the 
+set of objects that the events, reaction and rules (the body) apply 
+to</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>through the use of a 
+'where' element which&nbsp;contains a Boolean expression.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>The body applies 
+only for those members for which the where element returns a 
+true</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>result.&nbsp; For 
+example:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT size=2><SPAN class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;forall&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;listOfMembers&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;member id="x" set="foo"/&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;listOfMembers&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;where&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:math&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:apply&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:gt/&gt;</SPAN></FONT></DIV>
+<DIV><FONT size=2><SPAN class=024381814-19092003></SPAN></FONT><FONT 
+size=2><SPAN class=024381814-19092003><FONT size=1><FONT face=Arial 
+size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:apply&gt;</FONT></FONT></SPAN></FONT></DIV>
+<DIV><FONT size=2><SPAN class=024381814-19092003><FONT size=1><FONT 
+face=Arial><FONT 
+size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;csymbol </FONT><FONT size=2>encoding="SBML" </FONT><FONT 
+size=2>definitionURL="http://www.sbml.org/symbols/instanceselector"&gt;</FONT><FONT 
+size=2>.</FONT></FONT></FONT></SPAN></FONT></DIV>
+<DIV><FONT size=2><SPAN class=024381814-19092003><FONT size=1><FONT face=Arial 
+size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/csymbol&gt;</FONT></FONT></SPAN></FONT></DIV>
+<DIV><FONT size=2><SPAN class=024381814-19092003><FONT size=1><FONT face=Arial 
+size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;ci&gt;x&lt;/ci&gt;</FONT></FONT></SPAN></FONT></DIV>
+<DIV><FONT size=2><SPAN class=024381814-19092003><FONT size=1><FONT face=Arial 
+size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;ci&gt;s/ci&gt;</FONT></FONT></SPAN></FONT></DIV>
+<DIV><FONT size=2><SPAN class=024381814-19092003><FONT size=1><FONT face=Arial 
+size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/m.apply&gt;</FONT></FONT></SPAN></FONT></DIV>
+<DIV><FONT size=2><SPAN class=024381814-19092003><FONT size=1><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT 
+size=2>&lt;m:cn&gt; 10 &lt;/m:cn&gt;&nbsp;</FONT></FONT></DIV>
+<DIV></FONT></SPAN></FONT><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/m:apply&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/m:math&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/where&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;listOfReactions&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;reaction id="r"&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;listOfReactants&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;speciesReference&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;speciesLink object="x"&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;objectRef="s"/&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/speciesLink&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/speciesReference&gt;</FONT></SPAN></DIV>
+<DIV><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<FONT face=Arial>&lt;/listOfReactants&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;listOfProducts&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;speciesReference id="s1"/&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/listOfProducts&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/reaction&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT 
+face=Arial>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/listOfReactions&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003><FONT face=Arial>&nbsp;&nbsp;&nbsp; 
+&lt;/forall&gt;</FONT></SPAN></DIV></SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>this fragment 
+means:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>for all members x of 
+foo there exists a reaction&nbsp;x.s -&gt; s1&nbsp;when x.s &gt; 
+10</SPAN></FONT></DIV></SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>The forall element 
+is designed to be used for defining the relationship between</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>objects and their 
+external environment.&nbsp; Ideally reactions etc that are 
+internal</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>to a model are 
+defined within a submodel definition and not a forall 
+element.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>To facilitate the 
+definition of reactions between objects</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>we can declare more 
+than one member symbols in a forall element. </SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>E.g.:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>
+<DIV><FONT size=2><SPAN class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;forall&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;listOfMembers&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;member id="x" set="foo"/&gt; 
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;member id="y" 
+set="foo2"/&gt;</SPAN></FONT></DIV></SPAN></FONT></DIV></SPAN></FONT><FONT 
+face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;listOfMembers&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+....</SPAN></FONT></DIV>
+<DIV><SPAN class=024381814-19092003><FONT face=Arial>&nbsp;&nbsp;&nbsp; 
+&lt;/forall&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=024381814-19092003></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=024381814-19092003>The rest of the forall element applies to 
+all combinations of the members listed</SPAN></DIV>
+<DIV><SPAN class=024381814-19092003>in the listOfMembers.&nbsp; So in the 
+previous example if foo contains two objects</SPAN></DIV>
+<DIV><SPAN class=024381814-19092003>and foo2 contains 3 objects then the forall 
+element applies to the 6 different pairs</SPAN></DIV>
+<DIV><SPAN class=024381814-19092003>of members from the 2&nbsp;sets foo and 
+foo2.</SPAN></DIV>
+<DIV><SPAN class=024381814-19092003></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=024381814-19092003>We can apply the forall element to all pairs 
+of members of the same set e.g:</SPAN></DIV>
+<DIV><SPAN 
+class=024381814-19092003></SPAN>&nbsp;</DIV></SPAN></FONT></DIV></SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003><SPAN 
+class=024381814-19092003>&nbsp; 
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;forall&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;listOfMembers&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;member id="x" set="foo"/&gt; 
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;member id="y" 
+set="foo"/&gt;</SPAN></FONT></DIV></SPAN></FONT></DIV></SPAN></FONT><FONT 
+face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;listOfMembers&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+....</SPAN></FONT></DIV>
+<DIV><SPAN class=024381814-19092003><FONT face=Arial>&nbsp;&nbsp;&nbsp; 
+&lt;/forall&gt;</FONT></SPAN></DIV></SPAN></SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>In&nbsp;this&nbsp;simple form one combination of x and 
+y values will</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>refer to the same 
+object.&nbsp; We can avoid this simply by comparing x and y</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>(specifically 
+comparing the identities of x and y):</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;forall&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;listOfMembers&gt;</SPAN></FONT></DIV><FONT 
+face=Arial size=2><SPAN class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;member id="x" set="foo"/&gt; 
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;member id="y" set="foo"/&gt;</SPAN></FONT></DIV></SPAN></FONT></DIV>
+<DIV></SPAN></FONT><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;listOfMembers&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;where&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:math&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:apply&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:neq/&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:ci&gt;x&lt;/m:ci&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:ci&gt;y&lt;/m:ci&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/m:apply&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/m:math&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/where&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+....</SPAN></FONT></DIV>
+<DIV><SPAN class=024381814-19092003><FONT face=Arial>&nbsp;&nbsp;&nbsp; 
+&lt;/forall&gt;</FONT></SPAN></DIV></SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Hopefully you can 
+see that forall elements can be used define relationships</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>between 
+objects.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>Object&nbsp;Construction/Destruction on 
+Event</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>------------------------------------------------------------</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>The event structure 
+is extended to include two new subelements:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>'listOfBirths' and 
+'listOfDeaths' containing 'birth' and 'death' elements</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>(need better names: 
+Constructions and Destructions??).&nbsp; These </SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>indicate that an 
+object is created and destroyed when the event is executed.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>In the simplest 
+case, by default, the death element refers to</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>instances of the 
+immediate enclosing submodel ('this' in OO terms)</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>for 
+example:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&lt;event&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;trigger&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:math&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:apply&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:gt&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:ci&gt;p53&lt;/m:ci&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:cn&gt;100&lt;/m:cn&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/m:apply&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/m:math&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;/trigger&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;listOfDeaths&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;death/&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;/listOfDeaths&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&lt;/event&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>The death element 
+can also be used to destroy objects that are in scope using</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>the "object" 
+attribute, for example:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&lt;death 
+object="x"/&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>In the simplest case 
+the birth element creates a new object in the same</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>set as the 
+containing instance ('this' in OO terms) for example:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&lt;event&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;trigger&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:math&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:apply&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:gt&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:ci&gt;size&lt;/m:ci&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;m:cn&gt;1000&lt;/m:cn&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/m:apply&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/m:math&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;/trigger&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;listOfBirths&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;birth/&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&nbsp;&nbsp;&nbsp; 
+&lt;/listOfBirths&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>&lt;/event&gt;</SPAN></FONT></DIV></SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>The birth element 
+</SPAN></FONT><FONT face=Arial size=2><SPAN class=024381814-19092003>optionally 
+assigns a symbol to the new object using the id</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>attribute for 
+example:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&lt;birth 
+id="x"/&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>This symbol is only 
+in scope in the following event assignment list.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>For&nbsp;the general 
+case the&nbsp;birth element has a 'set' attribute which specifies the 
+set</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>that the new object 
+is inserted into, for example:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>&lt;birth id="x" 
+set="foo"/&gt;</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Linking or 
+Overloading sets</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>---------------------------------------</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>The link mechanism 
+described in the model composition proposal</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>can be applied to 
+sets so that a set in a submodel can become</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>the same as set in 
+another submodel.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>Possible 
+Enhancement: Inheritance and Heterogeneous Sets</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>--------------------------------------------------------------------------------------</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>One of the possible 
+limitations of the above approach is that sets can't be 
+heterogeneous.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>One approach to 
+might be to enhance the model composition proposal to include 
+</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=024381814-19092003>support for type 
+inheritance and then allow set members to be anything derived from a base 
+type.</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=024381814-19092003>yours</SPAN></FONT></SPAN></FONT></DIV></DIV>
+<P align=left><FONT size=2>Andrew Finney<BR>+44 (0)1453 827833<BR>from US - 011 
+44 1453 827833<BR>University of Hertfordshire, UK</FONT> </P>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<P><A HREF="pdf00017.pdf" >arrays.pdf</A></P>
+<P><A HREF="pdf00018.pdf" >model-composition.pdf</A></P>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00673.html">No Subject</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00675.html">[sbml-discuss] Announcement: sbml.org</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00673.html">No Subject</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00675.html">[sbml-discuss] Announcement: sbml.org</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00674"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00674"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

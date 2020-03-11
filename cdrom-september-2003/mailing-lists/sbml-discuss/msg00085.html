@@ -1,0 +1,160 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] SBML: Concentration vs. Quantity in SBML Level1 -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: by alcove (mbox mhucka)(with Cubic Circle's cucipop (v1.31 1998/05/13) Fri Mar 28 13:44:51 2003) -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36D9D@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00089.html">Date Prev</A>][<A HREF="msg00090.html">Date Next</A>][<A HREF="msg00096.html">Thread Prev</A>][<A HREF="msg00091.html">Thread Next</A>][<A HREF="maillist.html#00085">Date Index</A>][<A HREF="threads.html#00085">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;, &lt;<A HREF="mailto:J.Weimar@jweimar.de">J.Weimar@jweimar.de</A>&gt;,  &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 28 Mar 2003 09:01:42 -0500</LI>
+<LI>Thread-Index: AcL1GBzUdNo6kBo5SOSp5ZDoi32FNQAGnCUu</LI>
+<LI>Thread-Topic: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+In the Virtual Cell, we more or less require one specific set of
+units (micromolar, seconds, etc). Obviously, though, any consistent
+set of units works. OTOH, we have discussed implementing units
+formally, possibly going so far as to allow the user to enter any
+quantity in any set of units they desire (with the Virtual Cell
+converting them to a standard set of units behind the scenes).
+ 
+John
+
+	-----Original Message----- 
+	From: Herbert Sauro [<A  HREF="mailto:Herbert_Sauro@kgi.edu">mailto:Herbert_Sauro@kgi.edu</A>] 
+	Sent: Thu 3/27/2003 11:23 PM 
+	To: 'J.Weimar@jweimar.de'; sbml-discuss@caltech.edu 
+	Cc: 
+	Subject: RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1
+	
+	
+
+
+	I (JDesigner author) assume that the author of a model has made sure that
+	the units they are using are correct and compatible, I don't check if this
+	is the case. As far as I am aware all modeling tools do this. Even tools
+	such as Matlab make no attempt to check your units, it's up to the model
+	builder to do this. Since I don't check on units it means that users are not
+	restricted to what they can use, they can use mM, microM etc, what ever is
+	suitable, but they must make sure that the parameter units correspond. In
+	SBML if you don't specify units then the numbers can mean what ever the
+	modeller intended. For real models one should of course indicate somewhere
+	in the SBML what the basic units are.
+	
+	I don't think this is an unreasonable requirement for the user to do, I
+	presume that our users are scientists (i.e they have PhDs etc) and will
+	understand the importance of compatible units!
+	
+	Herbert Sauro
+	
+	-----Original Message-----
+	From: Joerg Weimar [<A  HREF="mailto:j.weimar@jweimar.de">mailto:j.weimar@jweimar.de</A>]
+	Sent: Sunday, March 23, 2003 7:58 PM
+	To: sbml-discuss@caltech.edu
+	Subject: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1
+	
+	
+	I am working on a tool to handle SBML files in a piece of software related
+	to
+	E-cell 1. In this process I am running into the problem that SBML level 1
+	seems to use only molecule quantities, not concentrations:
+	
+	Standard units for substance are mole (I assume this means 6.02 E23 * item,
+	the document is not clear on this),
+	possible other definitions are item (molecule count) and mol/liter (the M
+	used
+	in chemistry and biology). One problem is that I am not sure which software
+	actually supports the use of units, and of converting between quantity and
+	concentration, taking into account the volume. I saw one comment in
+	JDesigner, which stated that all units are assumed to be compatible, this
+	implies that volume is not changing and only molecule counts are used.  When
+	
+	both Michealis-menten type laws and mass action laws are used, careful
+	attention need to be paid to the question of which units are used for the
+	parameters.
+	
+	Also, it is not clear to me what a use of "volume" as the unit in
+	&lt;specie initialamout="0.1" unit="volume"&gt;
+	would mean (see section 4.4 of sbml-level-1.pdf).
+	
+	Maybe this issue has been resolved in level2, but from the documents is
+	seems
+	that level 2 is supposed to be an extension, not correction.
+	
+	Thanks for any help on this, Jörg Weimar.
+	
+	--
+	PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, TU-Braunschweig
+	J.Weimar@tu-bs.de, <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+	Tel. +49-531-391-3006  Mail: D-38092 Braunschweig
+	
+	
+	
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00089.html">Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Leve</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00090.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00096.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00091.html">[Fwd: Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBMLLevel 1]</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00085"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00085"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

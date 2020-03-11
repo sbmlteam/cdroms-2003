@@ -1,0 +1,192 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] SBML Level 2 -->
+<!--X-From-R13: tqc <tqcNfreire.rpr.hgx.rqh> -->
+<!--X-Date: Thu, 5 Dec 2002 06:01:10 &#45;0800 -->
+<!--X-Message-Id: 3DF1F735@webmail.utk.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] SBML Level 2</TITLE>
+<LINK REV="made" HREF="mailto:gdp@server.ece.utk.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00015.html">Date Prev</A>][<A HREF="msg00006.html">Date Next</A>][<A HREF="msg00021.html">Thread Prev</A>][<A HREF="msg00019.html">Thread Next</A>][<A HREF="maillist.html#00018">Date Index</A>][<A HREF="threads.html#00018">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] SBML Level 2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: SBML &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] SBML Level 2</LI>
+<LI><em>From</em>: gdp &lt;<A HREF="mailto:gdp@server.ece.utk.edu">gdp@server.ece.utk.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 5 Dec 2002 09:00:25 -0500</LI>
+<LI>Cc: biospice-mdl &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi Andrew and Martin,
+
+I'll join the fray by agreeing with both of you.  If we
+have models with lots of parameters, it would be nice to
+make some or all of them have default parameters.  Why not
+simply allow users to assign default initial values to a
+user-selected set of parameters?  The user can then ignore
+them as convenient (perhaps we wish to assume room temperature
+most of the time but don't want to always list it), but give
+values when appropriate.  For parameters that should always
+be given, don't assign a default and the user will be forced
+to supply one.  We may wish to make users always supply initial
+values for species.
+
+This is really a question of language design philosophy and
+usage models.  For machine generated models it won't matter.
+For user written models, there is a tradeoff between adding
+the convenience of default values thus not requiring every
+parameter to be listed every time as opposed to defaults
+that are occasionally forgotten.
+
+I will say voice the opinion that results for a model experiment/simulation
+are useless without the input parameters as well.  We can
+debate if it makes more sense to associated the input values with
+the model or with the experiment results.  IMHO this would probably
+best be managed as a tool issue, although a standard format for a
+configuration file would be nice to make models portable.
+
+Greg
+
+
+&gt;===== Original Message From Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt; =====
+&gt;Hi Andrew,
+&gt;
+&gt;On 05-Dec-2002 Andrew Finney wrote:
+&gt;&gt; The only problem is that we're taking the model
+&gt;&gt; further away from what can be simulated which is
+&gt;&gt; unfortunate.  This makes establishing a regime of
+&gt;&gt; publishing models that simulate more problematic.
+&gt;
+&gt;IMHO it is more problematic, if a model contains senseless
+&gt;default parameters in the case, that the writing tool
+&gt;used only the network for flux analysis.
+&gt;A dynamic simulator simply has to check, if all params and
+&gt;species have values or initial values respectively.
+&gt;Otherwise the user has to augment the original model anyways
+&gt;to get it running. This is still better than not to
+&gt;know, which parameters make sense and which are nonsense
+&gt;defaults.
+&gt;
+&gt;&gt; A missing value is just a real bad value!
+&gt;
+&gt;No, it is a missing value. And the user knows instantly that it
+&gt;is missing and he has to edit this.
+&gt;
+&gt;
+&gt;&gt; I can imagine sets of parameters being applied
+&gt;&gt; to models in much the same way as stylesheets
+&gt;&gt; to xml or html data.
+&gt;&gt;
+&gt;&gt; There are some issues with this:
+&gt;&gt;
+&gt;&gt; a) should we allow incomplete parameter sets?
+&gt;&gt;       IMHO yes - it becomes a useful way to support
+&gt;&gt;       models of mutations.  We may want to allow
+&gt;&gt;       'stacks' of parameter sets to form a simulation
+&gt;&gt;       input.
+&gt;
+&gt;Yes: param sets only override the defaults in the model if necessary.
+&gt;
+&gt;&gt; b) does the model refer to the parameter set or visa-versa?
+&gt;&gt;       certainly from a language development
+&gt;&gt;       point of view it would be convient if
+&gt;&gt;       the parameter sets refer to the model.
+&gt;&gt;       That also appears to make sense from
+&gt;&gt;       your requirements: a model has more than
+&gt;&gt;       one parameter set and a parameter set is
+&gt;&gt;       not meaningful without a model.  But a model
+&gt;&gt;       could be considered useful without a parameter set.
+&gt;
+&gt;The param set is bound to a model that it makes sense with.
+&gt;But it may be worthwhile to apply the same parameterset to a
+&gt;different model-variant (eg. extended model that contains the
+&gt;same params with the same semantics, and some additional).
+&gt;The last point may be declared as a tools issue?
+&gt;
+&gt;&gt; c) I'm not keen to bring parameter sets into the publishing
+&gt;&gt;       senario at least not initially (you may disagree).  When a model
+&gt;&gt;       is published IMHO the parameters should be transferred into a
+&gt;&gt; single
+&gt;&gt;       model document.  (I guess this may break down in the mutation
+&gt;&gt;       case.)  This will greatly simplify the curation process.
+&gt;
+&gt;IMHO rather `not yet'
+&gt;
+&gt;
+&gt;        Martin
+&gt;
+&gt;--
+&gt;+-[Martin Ginkel]--------------[<A  HREF="mailto:ginkel">mailto:ginkel</A>(at)mpi-magdeburg.mpg.de]-+
+&gt;| MPI Magdeburg, Zi S2.09    Sandtorstr. 1, D-39106 Magdeburg, Germany |
+&gt;| C++ is history repeated as tragedy. Java is history repeated as      |
+&gt;| farce.                                                               |
+&gt;+-[tel/fax: +49 391 6110 482/529]----[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+Dr. Gregory D. Peterson
+John W. Fisher Professor
+Electrical and Computer Engineering
+The University of Tennessee
+411 Ferris Hall	
+Knoxville, TN 37996-2100 
+gdp@utk.edu
+<A  HREF="http://www.ece.utk.edu/">http://www.ece.utk.edu/</A>
+Voice: (865)-974-6352
+Fax: (865)-974-5483
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00015.html">Re: [sbml-discuss] RE: SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00006.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00021.html">[sbml-discuss] Re: SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00019.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00018"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00018"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

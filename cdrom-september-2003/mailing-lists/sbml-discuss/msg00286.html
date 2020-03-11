@@ -1,0 +1,147 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the way stoichiometries are expresse -->
+<!--X-From-R13: Hvwnl Enenfjng <fnenfjngNpfr.cfh.rqh> -->
+<!--X-Date: Fri, 23 May 2003 06:01:06 &#45;0700 -->
+<!--X-Message-Id: 3ECE1B84.7070103@cse.psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1053594857.4577.49.camel@senin.e&#45;cell.org -->
+<!--X-Reference: XFMail.20030522120313.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Reference: 20030523124022.GA1038@mcs.anl.gov -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the way stoichiometries are expresse</TITLE>
+<LINK REV="made" HREF="mailto:saraswat@cse.psu.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00285.html">Date Prev</A>][<A HREF="msg00287.html">Date Next</A>][<A HREF="msg00285.html">Thread Prev</A>][<A HREF="msg00290.html">Thread Next</A>][<A HREF="maillist.html#00286">Date Index</A>][<A HREF="threads.html#00286">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the way stoichiometries are expresse</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Ed Frank &lt;<A HREF="mailto:efrank@mcs.anl.gov">efrank@mcs.anl.gov</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the way stoichiometries are expresse</LI>
+<LI><em>From</em>: Vijay Saraswat &lt;<A HREF="mailto:saraswat@cse.psu.edu">saraswat@cse.psu.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 09:00:52 -0400</LI>
+<LI>Cc: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;,  Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;,  SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;, <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+
+Ed Frank wrote:
+
+&gt;what is intended by sniffing at whether the given stoichiometric
+&gt;factor is integer or not integer seems ill advised.  It may seem a
+&gt;simple deduction now, but in fact I think we are talking about trying
+&gt;to deduce the overall intention of a model by poking at its local
+&gt;features.  Not only do I worry that this is not possible, but just
+&gt;as troublesome, is the observation that this would be a terrible
+&gt;violation of encapsulation.  You can be sure that the N different
+&gt;simulators will sniff and deduce in different manners, leading to
+&gt;different interpretation of the model.
+&gt;
+&gt;Instead, I think the intention of the model needs to somehow be stated
+&gt;up front.  A simulator can look at that and decide whether there is a
+&gt;match.  Alternatively, using dependency inversion, the *model* can
+&gt;state what it needs from a simulator, and the simulator can use that
+&gt;to decide if there is a match.
+&gt;
+Completely agree. We need to focus on what kinds of models we want to 
+represent, and information about these models. This should be determined 
+by the underlying mathematical and computational foundations of the 
+subject area. And this information should be represented directly using 
+XML structure, as extra attributes or tags --- *not* encoded in float vs 
+int!!!
+
+Trying to reuse very similar syntax for very dissimilar semantic ideas 
+is very dangerous.
+
+&gt;Once the intention of the model is stated, we can argue about whether
+&gt;it would make sense to extend SBML to have new tags like 
+&gt;"FluxFactor" in addition to  "Stoichiometry" vs. using the stated
+&gt;intention of the model to affect the interpretation of a shared
+&gt;tag, etc. etc.
+&gt;
+&gt;I don't think this discussion is _really_ about float vs. int.
+&gt;
+&gt;	-Ed
+&gt;  
+&gt;
+
+-- 
+Prof Vijay Saraswat
+Department of Computer Science and Engineering
+Pond Laboratory
+University Park, Pa 16802
+
+calendar: <A  HREF="http://calendar.yahoo.com/vjsaraswat">http://calendar.yahoo.com/vjsaraswat</A>
+homepage: <A  HREF="http://www.cse.psu.edu/~saraswat">http://www.cse.psu.edu/~saraswat</A>
+phone: +1.814.863.3599
+eFax: +1.973.529.0392
+mail: saraswat @ cse.psu.edu
+AIM, Yahoo IM, AT&amp;T IM: vjSaraswat
+MSN im: vijay@saraswat.org
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00207" HREF="msg00207.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00213" HREF="msg00213.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00285" HREF="msg00285.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> Ed Frank &lt;efrank@mcs.anl.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00285.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00287.html">Re: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00285.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00290.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00286"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00286"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

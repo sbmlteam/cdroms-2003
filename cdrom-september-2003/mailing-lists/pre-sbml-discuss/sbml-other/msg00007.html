@@ -1,0 +1,143 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;other] RE: [sysbio] id attribute and elements -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 23 Jul 2002 04:23:44 &#45;0700 -->
+<!--X-Message-Id: 000a01c2323b$79e86d90$cb2a94d9@ANDREWLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.OSF.4.21.0207231255070.191503&#45;100000@electre.pasteur.fr -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-other] RE: [sysbio] id attribute and elements</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00006.html">Date Prev</A>][<A HREF="msg00008.html">Date Next</A>][<A HREF="msg00006.html">Thread Prev</A>][<A HREF="msg00008.html">Thread Next</A>][<A HREF="maillist.html#00007">Date Index</A>][<A HREF="threads.html#00007">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-other] RE: [sysbio] id attribute and elements</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Nicolas  Le Novere'&quot; &lt;<A HREF="mailto:lenov@pasteur.fr">lenov@pasteur.fr</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-other] RE: [sysbio] id attribute and elements </LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 23 Jul 2002 12:24:07 +0100</LI>
+<LI>Cc: &quot;SBML OTHER&quot; &lt;<A HREF="mailto:sbml-other@symbio.jst.go.jp">sbml-other@symbio.jst.go.jp</A>&gt;</LI>
+<LI>Importance: Normal</LI>
+<LI><em>Organization</em>: ERATO Kitano</LI>
+<LI>Reply-To: &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Nicolas 
+
+IMHO SBML Level 2 doesn't need to identify species references.
+so I don't see the need to add id or name attributes to
+specieReference elements 
+
+As Martin has already pointed out using ID and IDREF for 
+ids is going to cause problems for modularity so
+IMHO they should not be in Level 2.
+
+IMHO we should keep discussion at this level of SBML off the sysbio list
+and use this list instead.
+
+Hopefully that's not to many HOs for one email :-)
+
+yours Andrew
+
+&gt; -----Original Message-----
+&gt; From: owner-sysbio@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sysbio@its.caltech.edu">mailto:owner-sysbio@its.caltech.edu</A>] On Behalf Of Nicolas Le Novere
+&gt; Sent: 23 July 2002 12:09
+&gt; To: sysbio@caltech.edu
+&gt; Subject: [sysbio] id attribute and elements 
+&gt; 
+&gt; 
+&gt; [Sorry I don't put here the previous thread, cause I delete the last
+&gt; message by mistake. Anyway, Michael just wrote that the id 
+&gt; attribute was to
+&gt; be reserved for the element which currently have a name attribute.]
+&gt; 
+&gt; That is a maybe a good idea (although it is again a step away from the
+&gt; XMLish way of life. For instance "id" is implied for every 
+&gt; single element
+&gt; of an XHTML document). However some problems emerge. For example the
+&gt; "specieReference" element has no "name" attribute, but rather 
+&gt; a "specie"
+&gt; one. However, this "specie" attribute correspond to an IDREF 
+&gt; type, and not
+&gt; an ID. But a "specieReference" need to be identified. So it need an id
+&gt; attribute. And while we're here, if you let's incorporate one of the
+&gt; modifications I proposed in the  multistate extension: Add a "name"
+&gt; attribute to the specieReference. Therefore different instances of a
+&gt; species will be identifiable and some extensions will be 
+&gt; smoother. I know
+&gt; that not everybody agree, but with a bit of digging, I'm 
+&gt; convinced that
+&gt; SBEdit aliases and our instances proceed from the same idea: to
+&gt; differentiate molecules belonging  to the same species.
+&gt; 
+&gt; --
+&gt; Nicolas LE NOVÈRE                                 
+&gt; Récepteurs et Cognition,   Institut Pasteur,    75724 Paris 
+&gt; cedex,   FRANCE
+&gt; e-mail : lenov@pasteur.fr                  
+&gt; <A  HREF="http://www-alt.pasteur.fr/~lenov">http://www-alt.pasteur.fr/~lenov</A>
+&gt; tel : 33-(0)1-45-68-88-44    
+&gt;                      fax : 33-(0)1-45-68-88-36
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00006.html">[sbml-other] Guidelines for Rules</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00008.html">[sbml-other] Forcing functions</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00006.html">[sbml-other] Guidelines for Rules</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00008.html">[sbml-other] Forcing functions</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00007"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00007"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

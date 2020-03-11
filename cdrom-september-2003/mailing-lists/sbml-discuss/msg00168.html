@@ -1,0 +1,148 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] COMP &#45;&#45; Model Composition SIG Announcement -->
+<!--X-From-R13: znegva.tvaxryNrcbfg.qr -->
+<!--X-Date: Tue, 20 May 2003 11:47:42 &#45;0700 -->
+<!--X-Message-Id: XFMail.20030520204723.martin.ginkel@epost.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1053437032.7161.495.camel@senin.e&#45;cell.org -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</TITLE>
+<LINK REV="made" HREF="mailto:martin.ginkel@epost.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00167.html">Date Prev</A>][<A HREF="msg00169.html">Date Next</A>][<A HREF="msg00163.html">Thread Prev</A>][<A HREF="msg00169.html">Thread Next</A>][<A HREF="maillist.html#00168">Date Index</A>][<A HREF="threads.html#00168">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</LI>
+<LI><em>From</em>: <A HREF="mailto:martin.ginkel@epost.de">martin.ginkel@epost.de</A></LI>
+<LI><em>Date</em>: Tue, 20 May 2003 20:47:23 +0200 (MEST)</LI>
+<LI>Cc: SBML-Discuss &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+On 20-May-2003 Kouichi Takahashi wrote:
+&gt; I am definitely interested in participating in the COMP SIG.
+
+Fine!
+
+ 
+&gt;&gt; - 'Submodels and Modules' or the story about defined Interfaces.
+&gt; Perhaps we could get something by firmly assuming the structure of the system
+&gt; if the system is physical, or maybe biochemical, but it is definitely not the
+&gt; case for cell biology.
+
+Agreed, but software models reality with structures, often just to be able to
+handle the complexity of the model inside the software. 
+
+
+&gt; (1) Species (and Reactions) are already working as interfaces.   
+
+Reactions? How's that. They refer to substrates, products and modifiers on the
+same level and can't be connected to something out of scope.
+
+&gt;       As far as I can imagine, sound practices of SBML can use elements
+&gt; inside Reaction
+&gt;       or Rule if there are something that should be hidden.  
+&gt;        (this might invoke flaming.. but I want to hear your opinions..)
+&gt;       If the reaction scheme has some assumptions that hinder changing values
+&gt; of intermediate
+&gt;       variables (species), then it can be encapsulated in the proposed
+&gt; 'reaction mechanism' 
+&gt;       element.   (although I don't know the current status of the proposal)
+
+Tell me more about this proposal!
+I see problems e.g. with submodels using rapid equilibrium through rules.
+If you attach a reaction (and therefore an ODE) to a species that is calculated
+by assignment or algebraic rule, you will get a problem with the simulation.
+Either the submodel user understands the whole interior or he can use an
+interface for the submodel that works robustly.
+Not everything is possible to do with this submodel, but the intended use is
+reliable enougth.
+
+
+Anyways: Since I already knew your opinion I want to include both submodels and
+modules into the proposal.
+
+
+&gt; here is a brief overview of the structure of the current version of E-Cell
+&gt; (E-Cell 3).   
+
+Thanks a lot for this insight.
+
+
+        Martin
+
+-- 
++-[Martin Ginkel]-------------------[<A  HREF="mailto:martin.ginkel">mailto:martin.ginkel</A>(at)epost.de]-+
+|                          Immermannstr. 9, D-39108 Magdeburg, Germany |
+| Out of coffee error. User suspended. 'make espresso' to continue     |
++-[tel: +49 391 7347360]-------------[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00169" HREF="msg00169.html">RE: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00177" HREF="msg00177.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00163" HREF="msg00163.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00167.html">[sbml-discuss] COMP -- Model Composition SIG Announcement 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00169.html">RE: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00163.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00169.html">RE: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00168"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00168"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

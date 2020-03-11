@@ -1,0 +1,123 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: FW: [sbml&#45;discuss] Arrays Working Group -->
+<!--X-From-R13: Bbhy @vryfra <c.avryfraNnhpxynaq.np.am> -->
+<!--X-Date: Thu, 22 May 2003 03:22:42 &#45;0700 -->
+<!--X-Message-Id: 4C04E022&#45;8C3F&#45;11D7&#45;8EBC&#45;00306575E512@auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 002401c32045$6ea3d9d0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: FW: [sbml-discuss] Arrays Working Group</TITLE>
+<LINK REV="made" HREF="mailto:p.nielsen@auckland.ac.nz">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00215.html">Date Prev</A>][<A HREF="msg00217.html">Date Next</A>][<A HREF="msg00209.html">Thread Prev</A>][<A HREF="msg00173.html">Thread Next</A>][<A HREF="maillist.html#00216">Date Index</A>][<A HREF="threads.html#00216">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: FW: [sbml-discuss] Arrays Working Group</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: FW: [sbml-discuss] Arrays Working Group</LI>
+<LI><em>From</em>: Poul Nielsen &lt;<A HREF="mailto:p.nielsen@auckland.ac.nz">p.nielsen@auckland.ac.nz</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 22:22:31 +1200</LI>
+<LI>Cc: Poul Nielsen &lt;<A HREF="mailto:p.nielsen@auckland.ac.nz">p.nielsen@auckland.ac.nz</A>&gt;,  &quot;'SBML'&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Dear Andrew
+
+On Thursday, May 22, 2003, at 21:35 Pacific/Auckland, Andrew Finney  
+wrote:
+
+&gt; One problem is that its not clear whether MathML really supports
+&gt; vectors of vectors.  What do you think?
+&gt; see
+&gt;
+&gt; <A  HREF="http://www.w3.org/TR/2003/WD-MathML2-20030411/">http://www.w3.org/TR/2003/WD-MathML2-20030411/</A> 
+&gt; chapter4.html#contm.vector
+&gt; <A  HREF="http://www.w3.org/TR/2003/WD-MathML2-20030411/">http://www.w3.org/TR/2003/WD-MathML2-20030411/</A> 
+&gt; chapter4.html#contm.constr
+&gt; uctor
+
+Yes, the examples given in the specification certainly don't explicitly  
+state this possibility. On the other hand they don't explicitly  
+discount it either. The elements of a vector can be either numbers  
+(&lt;cn&gt;) or identifiers (&lt;ci&gt;). e.g. the vector 'a' components can be  
+associated with the identifiers, 'a1' 'a2' and 'a3':
+&lt;declare&gt;
+   &lt;ci&gt; a &lt;/ci&gt;
+   &lt;vector&gt;
+     &lt;ci&gt; a1 &lt;/ci&gt;
+     &lt;ci&gt; a2 &lt;/ci&gt;
+     &lt;ci&gt; a3 &lt;/ci&gt;
+   &lt;/vector&gt;
+&lt;/declare&gt;
+There seems to be no rule saying why we can't define these components  
+as vectors too. e.g.
+&lt;declare type="vector"&gt;
+    &lt;ci&gt; a1 &lt;/ci&gt;
+&lt;/declare&gt;
+I hope that I am not taking a too liberal view of this.
+
+Poul Nielsen
+Bioengineering Institute
+University of Auckland
+New Zealand
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00209" HREF="msg00209.html">RE: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00215.html">Re: [sbml-discuss] Rule change</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00217.html">Re: [sbml-discuss] Rule change</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00209.html">RE: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00173.html">[sbml-discuss] Contacting Bioinformatics?</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00216"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00216"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

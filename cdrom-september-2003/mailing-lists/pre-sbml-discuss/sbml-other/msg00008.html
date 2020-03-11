@@ -1,0 +1,137 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;other] Forcing functions -->
+<!--X-From-R13: "Vreoreg [ Enheb" <ufnhebNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 23 Jul 2002 12:19:29 &#45;0700 -->
+<!--X-Message-Id: NEBBILGLEMIIGIKFIEOLKEMLCNAA.hsauro@cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.OSF.4.21.0207232102260.384559&#45;100000@electre.pasteur.fr -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-other] Forcing functions</TITLE>
+<LINK REV="made" HREF="mailto:hsauro@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00007.html">Date Prev</A>][<A HREF="msg00009.html">Date Next</A>][<A HREF="msg00007.html">Thread Prev</A>][<A HREF="msg00009.html">Thread Next</A>][<A HREF="maillist.html#00008">Date Index</A>][<A HREF="threads.html#00008">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-other] Forcing functions</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-other@symbio.jst.go.jp">sbml-other@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-other] Forcing functions</LI>
+<LI><em>From</em>: &quot;Herbert M Sauro&quot; &lt;<A HREF="mailto:hsauro@cds.caltech.edu">hsauro@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 23 Jul 2002 12:23:16 -0700</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Ok, see your point! No you're not being an idiot, I didn't read your email properly!
+As you suggested, the answer to your question is to use rules. That's another reason why rules were introduced to
+enable a user to specify forcing functions on the system's boundaries,
+these could be functions attached to boundary species, non-state variable compartments
+or kinetic etc parameters.
+
+Actually your example was another senario I missed out in the examples.
+
+Hope that answers your question.
+
+Herbert
+
+-----Original Message-----
+From: owner-sbml-other@symbio.jst.go.jp
+[<A  HREF="mailto:owner-sbml-other@symbio.jst.go.jp]On">mailto:owner-sbml-other@symbio.jst.go.jp]On</A> Behalf Of Nicolas Le Novere
+Sent: Tuesday, July 23, 2002 12:04 PM
+To: sbml-other@symbio.jst.go.jp
+Subject: RE: [sbml-other] Guidelines for Rules
+
+
+On Tue, 23 Jul 2002, Herbert M Sauro wrote:
+
+&gt; Nicolas, constant species are dealt with by setting the species attribute
+&gt; to boundary condition, this is meant to tell simulators not to construct an
+&gt; ODE for this species.
+
+Well, yes. I said that in my previous mail, and this is the way I export
+constant complexes in StochSim. But what if you want a defined flux, but
+not constant, like a sinusoidal flux? I don't think it is worth
+constructing a complete molecular oscillator, if we do only care about one
+specie. a SpecieConcentrationRule with formula=asinx + b could be a way,
+isn't it?
+
+Am I a complete idiot here or not?
+
+&gt; I am not sure if I correctly understand the problem, so my comments are
+&gt; maybe completely irrelevant. However, we sometimes need a species to be
+&gt; constant, for instance to simulate a constant flux. In StochSim I simulate
+&gt; the protein translation with reactions like:
+&gt;
+&gt; a + c -&gt; ca + c
+&gt;
+&gt; where c is a chaperone, ca is a folded protein, and a is the translated
+&gt; peptide. c and ca are variable (but of course the value of c is
+&gt; constant. Stochsim just does't accept two constant complexes per reaction),
+&gt; while a is kept constant. In SBML I now express the fact that a is constant
+&gt; with the attribute boundaryCondition set as true. But at the beginning I
+&gt; didn't read the SBML1 spec properly, and used a  SpeciesConcentrationRule
+&gt; with formula = 0. Now if we want an oscillating system (see for instance
+&gt; the one of Elowitz and Leibler (2000) Nature 403: 335-338)  without
+&gt; explicitely model it, we could use some kind of trigonometric right side.
+
+--
+Nicolas LE NOVÈRE
+Récepteurs et Cognition,   Institut Pasteur,    75724 Paris cedex,   FRANCE
+e-mail : lenov@pasteur.fr                  <A  HREF="http://www-alt.pasteur.fr/~lenov">http://www-alt.pasteur.fr/~lenov</A>
+tel : 33-(0)1-45-68-88-44                         fax : 33-(0)1-45-68-88-36
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00007.html">[sbml-other] RE: [sysbio] id attribute and elements</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00009.html">[sbml-other] sbml-other-unsubscribe@symbio.jst.go.jp</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00007.html">[sbml-other] RE: [sysbio] id attribute and elements</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00009.html">[sbml-other] sbml-other-unsubscribe@symbio.jst.go.jp</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00008"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00008"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

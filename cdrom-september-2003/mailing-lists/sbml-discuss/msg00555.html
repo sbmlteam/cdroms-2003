@@ -1,0 +1,157 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] 2D &#38; 3D layouts -->
+<!--X-From-R13: Tnovra Qnzcntar <snp2003Nzrq.pbearyy.rqh> -->
+<!--X-Date: Sat, 12 Jul 2003 07:05:24 &#45;0700 -->
+<!--X-Message-Id: 3F101585.1010407@med.cornell.edu -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD36EB0@ITEVS.uchc.net -->
+<!--X-Reference: 200307111608.43262.kdkeck@lbl.gov -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] 2D &amp; 3D layouts</TITLE>
+<LINK REV="made" HREF="mailto:fac2003@med.cornell.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00554.html">Date Prev</A>][<A HREF="msg00556.html">Date Next</A>][<A HREF="msg00553.html">Thread Prev</A>][<A HREF="msg00556.html">Thread Next</A>][<A HREF="maillist.html#00555">Date Index</A>][<A HREF="threads.html#00555">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] 2D &amp; 3D layouts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Kevin D. Keck&quot; &lt;<A HREF="mailto:kdkeck@lbl.gov">kdkeck@lbl.gov</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] 2D &amp; 3D layouts</LI>
+<LI><em>From</em>: Fabien Campagne &lt;<A HREF="mailto:fac2003@med.cornell.edu">fac2003@med.cornell.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 12 Jul 2003 10:04:53 -0400</LI>
+<LI>Cc: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;,  Ralph Gauges &lt;<A HREF="mailto:ralph.gauges@eml.villa-bosch.de">ralph.gauges@eml.villa-bosch.de</A>&gt;,  <A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<ADDRESS>Title: <STRONG></STRONG></ADDRESS>
+
+
+
+
+I strongly support Kevin's point. The XML schema can, <i>and should</i><br>
+be used to put constraints on the attribute set of elements. <br>
+<br>
+To get back to the subject, having layout2d and layout3d makes it <br>
+possible to define attributes (or sub-elements) in layout3d that are <br>
+optional in a 3D layout and have nothing to do in layout2D (these<br>
+attributes and elements can be absent from layout2D altogether).<br>
+<br>
+In my opinion, this is a better solution that what John suggests,<br>
+because if we put attributes x,y, <i>and z</i> in layout to represent <br>
+both 2D and 3D layout the z attribute must be defined both <br>
+for 2D AND 3D layouts. This is just a simple example, but <br>
+consider that other attributes and elements may be needed in <br>
+the future in a 3D layout element).<br>
+<br>
+There is an intelligent way to use XML schemas to make the<br>
+choice apparent to both humans and software. We can use this<br>
+method and benefit from validation schema support. My <br>
+experinece is that it will come handy when maintaining the <br>
+exchange format, if/when people think it is time to have backward <br>
+compatible changes to the spec), or we can just continue relying <br>
+on a bunch of assumptions that developers may or may not <br>
+remember and implement in their code (especially if they do <br>
+not read the spec, as John suggested). <br>
+<br>
+Fabien<br>
+<br>
+<br>
+Kevin D. Keck wrote:<br>
+<blockquote type="cite" cite="mid200307111608.43262.kdkeck@lbl.gov">
+  <pre wrap="">On Friday 11 July 2003 15:34, Wagner,John wrote:
+[...]
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">However, if you would be happy with just having "layout" elements
+but with a "dimensions=" attribute (similar to what we do with
+compartments) I could go with that. This would deal with the
+important issues you have raised. Also, in this approach, the
+"unexpected" z, d, etc values would not be unexpected, and besides,
+don't take a single line of code or a moment's time to ignore.
+
+John
+    </pre>
+  </blockquote>
+  <pre wrap="">
+Actually, that was my first thought. Unfortunately, unless I'm reading the 
+specs incorrectly, XML Schema doesn't seem to like this. I mean, you could 
+define the attribute, and even require it, but it would appear impossible to 
+define different attribute constraints on the descendent elements based 
+solely on that attribute value. I'm basing this conclusion as much on some 
+bboard discussions and on this guideline I found 
+(<a class="moz-txt-link-freetext" href="http://www.xfront.com/VariableContentContainers.html">http://www.xfront.com/VariableContentContainers.html</a>) as on the spec itself, 
+which is pretty tough to read.
+
+And as I thought about it, I decided this is in fact a feature, as it gives 
+that tiny extra nudge to lazy implementors (not that there's anything wrong 
+with that) to not ignore it, and I think on balance that's a good thing. And 
+I'm guessing I can easily make it more trouble to continue arguing with me 
+about it than it would be to just deal with it... ; )
+  </pre>
+</blockquote>
+<br>
+
+
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00556" HREF="msg00556.html">RE: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;John Wagner&quot; &lt;jwagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00551" HREF="msg00551.html">RE: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00552" HREF="msg00552.html">Re: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Kevin D. Keck&quot; &lt;kdkeck@lbl.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00554.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00556.html">RE: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00553.html">RE: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00556.html">RE: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00555"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00555"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

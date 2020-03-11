@@ -1,0 +1,165 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] 2D &#38; 3D layouts -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Fri, 11 Jul 2003 15:35:34 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36EB0@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] 2D &amp; 3D layouts</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00550.html">Date Prev</A>][<A HREF="msg00552.html">Date Next</A>][<A HREF="msg00550.html">Thread Prev</A>][<A HREF="msg00552.html">Thread Next</A>][<A HREF="maillist.html#00551">Date Index</A>][<A HREF="threads.html#00551">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] 2D &amp; 3D layouts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Kevin D. Keck&quot; &lt;<A HREF="mailto:kdkeck@lbl.gov">kdkeck@lbl.gov</A>&gt;,  &quot;Ralph Gauges&quot; &lt;<A HREF="mailto:ralph.gauges@eml.villa-bosch.de">ralph.gauges@eml.villa-bosch.de</A>&gt;,  &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] 2D &amp; 3D layouts</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 11 Jul 2003 18:34:47 -0400</LI>
+<LI>Thread-Index: AcNH9urQDHzs4lqeR/WZZdGljmQ3fAAAPk0g</LI>
+<LI>Thread-Topic: [sbml-discuss] 2D &amp; 3D layouts</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+&gt; From: Kevin D. Keck [<A  HREF="mailto:kdkeck@lbl.gov">mailto:kdkeck@lbl.gov</A>]
+&gt; Sent: Friday, July 11, 2003 5:54 PM
+&gt; To: Wagner,John; Ralph Gauges; sbml-discuss@its.caltech.edu
+&gt; Subject: Re: [sbml-discuss] 2D &amp; 3D layouts
+
+&gt; Ah, but suppose the listOfLayouts contains two layouts, one 
+&gt; layout2d and one layout3d. Then a tool which is only capable
+&gt; of displaying 2D layouts could know to use the 2D layout
+&gt; instead of the 3D one.
+Okay. I'm giving you that one. :)
+As I said, that was my *initial* reaction.
+
+&gt; And even if one did want to go ahead and try to display the 
+&gt; 3D layout in 2D, at least the app could give the user a
+&gt; message or warning informing them that it may not appear
+&gt; as intended because it was meant to be displayed in 3D.
+This would be obvious from the presence/absence of Z values.
+But see my last paragraph.
+
+&gt; If we wish to encourage such behavior, then it makes sense to 
+&gt; _prompt_ it by having a distinct tag, rather than expecting
+&gt; all implementors to take the time and effort to check for
+&gt; unexpected z,d/z1,z2 attributes, no matter how trivial that
+&gt; might actually be to do.
+Well, I don't know about this, either. We have all sorts of
+stuff that implementors have to take the time and effort to
+check for. We simply ignore them.
+
+Not to be too cheeky, but isn't that what everyone is already
+doing anywhere they see a units tag? ;)
+
+Also, ignoring attributes doesn't take any time; dealing with
+them is the only thing that requires thought or code. In my
+Level 1 reader, I'm ignoring crap all over the place without
+even knowing it, much less thinking about it.
+
+&gt; I'm sure everyone is well aware that not all implementors
+&gt; take the time to really read the spec, so making the
+&gt; divergence very explicit in the XML Schema (which they are 
+&gt; somewhat more likely to study) and in example files (which
+&gt; they are most likely to study, in my experience) would be
+&gt; well advised.
+Yeah, well, a lot of us used to try to write book reports in
+grade school on books that we hadn't actually read; anyone
+care to take a poll to see what kind of grades we used to get? :)
+
+I suspect a lot of us tried to implement without reading the
+spec carefully with Level 1, and the results became obvious
+in Ft. Lauderdale. Doctor, doctor, it hurts when I do this...
+
+&gt; Finally, being explicit in the Schema makes it easier for 
+&gt; Schema-driven tools to do the right thing. The Schema is
+&gt; meant to be machine-processable, in addition to readable
+&gt; by developers, but Schemas which fail to be completely 
+&gt; explicit defeat this.
+Agreed. However, I don't want to fall into the trap of
+introducing new element names for every little variation,
+and it should be clear by now that the layout markup is
+going to offer us the chance to *REALLY* abuse this, as
+it has ALL sorts of possible variations.
+
+And, the best way to make sure developers do the right thing
+is to make the language as simple as possible.
+
+And nowhere is this more true than with layout, not only due
+to the potential complexity, but due to the optionality: if
+it's optional and complex, developers are going to opt to
+ignore it.
+
+However, if you would be happy with just having "layout" elements
+but with a "dimensions=" attribute (similar to what we do with
+compartments) I could go with that. This would deal with the
+important issues you have raised. Also, in this approach, the
+"unexpected" z, d, etc values would not be unexpected, and besides,
+don't take a single line of code or a moment's time to ignore.
+
+&gt; -- 
+&gt; Kevin D. Keck
+&gt; <A  HREF="http://vimss.lbl.gov/~kdkeck/">http://vimss.lbl.gov/~kdkeck/</A>
+&gt; 510-486-4856
+John
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00552" HREF="msg00552.html">Re: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Kevin D. Keck&quot; &lt;kdkeck@lbl.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00550.html">Re: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00552.html">Re: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00550.html">Re: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00552.html">Re: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00551"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00551"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,143 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the way stoichiometries are expresse -->
+<!--X-From-R13: "Xbret D. Irvzne" <X.IrvzneNgh&#45;of.qr> -->
+<!--X-Date: Fri, 23 May 2003 03:08:34 &#45;0700 -->
+<!--X-Message-Id: 3ECDF316.3010908@tu&#45;bs.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3FA493B792A6D311B51A009027D3B86101AC91E7@mail.kgi.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the way stoichiometries are expresse</TITLE>
+<LINK REV="made" HREF="mailto:J.Weimar@tu-bs.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00277.html">Date Prev</A>][<A HREF="msg00279.html">Date Next</A>][<A HREF="msg00231.html">Thread Prev</A>][<A HREF="msg00284.html">Thread Next</A>][<A HREF="maillist.html#00278">Date Index</A>][<A HREF="threads.html#00278">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the way stoichiometries are expresse</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'SBML Discussion List '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the way stoichiometries are expresse</LI>
+<LI><em>From</em>: &quot;Joerg R. Weimar&quot; &lt;<A HREF="mailto:J.Weimar@tu-bs.de">J.Weimar@tu-bs.de</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 12:08:22 +0200</LI>
+<LI><em>Organization</em>: TU Braunschweig</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Mathematica has a function Rationalize, which (quoting from the help text)
+
+Rationalize[x] takes Real numbers in x that are close to rationals, and 
+converts them to exact Rational numbers.
+
+Rationalize[x, dx] performs the conversion whenever the error made is 
+smaller in magnitude than dx.
+
+Example: Rationalize[3.78] -&gt; 189/50
+
+A rational number p/q is considered "sufficiently close" to a Real x if
+
+|p/q - x| &lt; c/q^2 , where c is chosen to be 10^-4.
+
+Rationalize[x, 0] converts any x to rational form.
+
+
+End quote
+
+
+I imagine any software package doing rational arithmetic could perform 
+this operation when reading in stoichiometries that are floats. All the 
+other (actually most) programs/developers either support only integers 
+anyway or use flotaing point. For them, life would get easier, since 
+they are not concerned with rational arithmetic, and they do not need to 
+program this function just to create valid SBML.
+
+Jörg Weimar.
+
+
+
+Herbert Sauro wrote:
+&gt;  
+&gt; There is a whole class of analyses based on stoichiometry alone. The
+&gt; operations involve a lot of matrix manipulation, particularly elementary row
+&gt; operations. For large systems &gt;100+, it's far better to use rational
+&gt; arithmetic in the math rather than floating point numbers because of the
+&gt; propagation of rounding error. For large systems it is therefore not
+&gt; possible to be 100% sure that the conservation vectors for example are
+&gt; actually the correct set without doing so post analysis checking which I'm
+&gt; sure most simulator tools don't do. These vectors need to be computed for
+&gt; people doing dynamic analysis as well so the problem is not just confined to
+&gt; stoichiometry analysis.
+&gt; 
+&gt; I think Mike'd idea for alowing either float or rational sounds like a good
+&gt; idea, keeps everyone happy. 
+&gt; 
+
+-- 
+PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, TU-Braunschweig
+J.Weimar@tu-bs.de, <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+Tel. +49-531-391-3006  Mail: D-38092 Braunschweig
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00284" HREF="msg00284.html">RE: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00231" HREF="msg00231.html">RE: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> Herbert Sauro &lt;Herbert_Sauro@kgi.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00277.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00279.html">Re: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00231.html">RE: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00284.html">RE: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00278"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00278"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

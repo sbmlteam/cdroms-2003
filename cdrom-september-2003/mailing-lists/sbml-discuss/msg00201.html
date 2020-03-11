@@ -1,0 +1,132 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] support for membranes -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Thu, 22 May 2003 00:49:53 &#45;0700 -->
+<!--X-Message-Id: 001d01c32036$b4f40680$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] support for membranes</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00200.html">Date Prev</A>][<A HREF="msg00202.html">Date Next</A>][<A HREF="msg00198.html">Thread Prev</A>][<A HREF="msg00203.html">Thread Next</A>][<A HREF="maillist.html#00201">Date Index</A>][<A HREF="threads.html#00201">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] support for membranes</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] support for membranes</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 08:49:36 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Here is another question regarding finalizing the definition
+of SBML Level 2.  
+
+The Florida meeting felt that SBML should incorporate a concept for
+differentiating between compartments and membranes.  To help this
+process do you agree that SBML L2 V1 should:
+
+a) make no changes in this respect to SBML
+
+b) add a new positive integer "spatialDimension" attribute to
+"compartment"
+      and replace the "volume" attribute by "size" on "compartment".
+      "spatialDimension" will default to 3 and can never be less than 1.
+
+ 
+c) create a super class "spaces" subclassing "compartment" and
+"membrane"
+      from it. "Compartment" would have a "volume" attribute and
+"Membrane"
+      would have an "area" attribute.
+
+Options (b) and (c) will require some modification to the default units
+scheme
+for membrane area and for the amount of species placed on membranes.
+Assuming
+that (b) or (c) above are accepted the options are:
+
+a) have no default units for membrane area or for species amount for
+species
+      placed on a membrane.  This implies that valid SBML would have to
+include
+      unit definitions for these cases.
+
+b) create a new built-in unit "area" and use this to create default
+units for
+      membrane area and for species amount for species placed on a
+membrane.
+
+Please reflect on and discuss this issue on the list.  The voting system
+will be
+enabled beginning this Friday and we will post voting information at
+that time.
+
+If you have questions about this topic or the reason for the vote,
+please feel
+free to call Mike or Andrew directly.
+
+-- Mike &amp; Andrew
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00203" HREF="msg00203.html">Re: [sbml-discuss] support for membranes</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00200.html">RE: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00202.html">[sbml-discuss] Rule change</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00198.html">[sbml-discuss] Should Events have 'id' and 'name' attributes?</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00203.html">Re: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00201"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00201"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

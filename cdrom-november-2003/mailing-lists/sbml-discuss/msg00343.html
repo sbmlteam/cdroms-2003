@@ -1,0 +1,104 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] General namespace inquiry -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Mon, 26 May 2003 09:43:13 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E53@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] General namespace inquiry</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00342.html">Date Prev</A>][<A HREF="msg00344.html">Date Next</A>][<A HREF="msg00340.html">Thread Prev</A>][<A HREF="msg00357.html">Thread Next</A>][<A HREF="maillist.html#00343">Date Index</A>][<A HREF="threads.html#00343">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] General namespace inquiry</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] General namespace inquiry</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 26 May 2003 12:42:56 -0400</LI>
+<LI>Thread-Index: AcMjpdwSHi6rXhllTwer6/ENTwZalA==</LI>
+<LI>Thread-Topic: General namespace inquiry</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Just to get some feedback...those of you who do *not* have
+(separate) namespaces, how do you mangle/convert the local
+parameters in KineticLaw? I guess one obvious approach is
+to blindly throw them into the global namespace and ignore
+the consequences, and another is to check to see if throwing
+them in the global namespace would result in a collision
+and tell the user "I'm sorry, Dave, I'm afraid I can't do that".
+A "better" way might be to mangle the name, converting
+Reaction R's kinetic parameter V to, say, R_V (appending
+a number or something until it is unique with respect to
+the global namespace), but then you'd have to substitute
+the new name back into the KineticLaw's expression
+(not to mention that the user might be a little distressed
+to suddenly see his/her parameter name changed).
+ 
+I'm not asking because I want to change the spec, I'm
+asking because I am trying to implement this, and it's
+still a problem. Currently, I'm throwing them blindly
+into the global namespace (ugh!).
+ 
+John
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00357" HREF="msg00357.html">Re: [sbml-discuss] General namespace inquiry</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00342.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00344.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00340.html">RE: [sbml-discuss] DWG: point</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00357.html">Re: [sbml-discuss] General namespace inquiry</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00343"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00343"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

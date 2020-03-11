@@ -1,0 +1,179 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] support for membranes -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Fri, 23 May 2003 02:51:59 &#45;0700 -->
+<!--X-Message-Id: 001c01c32110$e9fc1130$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.OSF.4.21.0305230949370.287385&#45;100000@electre.pasteur.fr -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] support for membranes</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00274.html">Date Prev</A>][<A HREF="msg00276.html">Date Next</A>][<A HREF="msg00271.html">Thread Prev</A>][<A HREF="msg00295.html">Thread Next</A>][<A HREF="maillist.html#00275">Date Index</A>][<A HREF="threads.html#00275">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] support for membranes</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] support for membranes</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 10:51:36 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+FYI SBML L2 includes CellML metadata which
+supports the annotation of elements with
+GO ids.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+Systems Biology Workbench Development Group
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of 
+&gt; Nicolas Le Novere
+&gt; Sent: 23 May 2003 09:26
+&gt; To: sbml-discuss@caltech.edu
+&gt; Subject: RE: [sbml-discuss] support for membranes
+&gt; 
+&gt; 
+&gt; On Thu, 22 May 2003, Wagner,John wrote:
+&gt; 
+&gt; &gt; First, we HAVE TO HAVE membranes.
+&gt; 
+&gt; &gt; What we really want is a completely separate
+&gt; &gt; element, called membrane; this element will
+&gt; &gt; then serve as a container for all of the
+&gt; &gt; *other* membrane pieces we want/need
+&gt; 
+&gt; I strongly disagree with that statement. We HAVE TO HAVE 
+&gt; compartments of various dimensionality. The example you give 
+&gt; just require a 2-D compartment, sandwiched between 
+&gt; 3D-compartments. If we begin to create SBML elements 
+&gt; representing biological components, we'll end up having a 
+&gt; mapping between SBML and the component vocabulary of Gene Ontology.
+&gt; 
+&gt; In the 1D, you'll have &lt;microfilament&gt;, &lt;microtubule&gt;, then 
+&gt; in addition to the &lt;membrane&gt;, you'll need things like 
+&gt; &lt;lipid_rafts&gt; etc.
+&gt; 
+&gt; &lt;digression&gt;
+&gt; There is something to dig here. It would be potentially very 
+&gt; useful to have an attribute "goid" attached to compartments 
+&gt; and species. &lt;digression&gt;
+&gt; 
+&gt; And we're just talking about the cell. But Systems Biology is 
+&gt; about global study of biological systems, whatever the 
+&gt; organizational level. Let's think to the Noble/Hunter 
+&gt; simulations of whole organs and individuals ... 
+&gt; 
+&gt; &gt; &lt;listOfCompartments&gt;
+&gt; &gt; 	&lt;compartment name="Extracellular" volume="1" ...&gt;
+&gt; &gt; 	&lt;membrane name="PlasmaMembrane"  area="17" 
+&gt; outside="Extracellular" ...&gt;
+&gt; &gt; 	&lt;compartment name="Cytosol"  volume="1" 
+&gt; outside="PlasmaMembrane" ...&gt; 
+&gt; &gt; &lt;/listOfCompartments&gt;
+&gt; 
+&gt; Why not really expand the compartment element to describe it? 
+&gt; For instance (it is not a proposal, do not comment the 
+&gt; specific elements)
+&gt; 
+&gt; &lt;listOfCompartments&gt;
+&gt; 	 &lt;compartment name="Cytosol" dimension="3" volume="4e-12" /&gt;
+&gt; 	 &lt;compartment name="DendriteMembrane" dimension="2.5" 
+&gt; length1="10" units="µm" /&gt;
+&gt; 	 &lt;compartment name="RaftSurface" dimension="2" 
+&gt; length1="50" length2="200" units="nm" /&gt;
+&gt; 	 &lt;compartment name="VesicleMembrane" dimension="2" 
+&gt; surface="1e-14" units="sqnm" /&gt;
+&gt; 	 &lt;compartment name="Convoluted_compartment"&gt;
+&gt; 		      &lt;geometry&gt;
+&gt; 				&lt;math 
+&gt; xmlns="<A  HREF="http://www.w3.org/1998/Math/MathML">http://www.w3.org/1998/Math/MathML</A>"&gt;
+&gt;                                 ...
+&gt; 				&lt;/math&gt;
+&gt; 		      &lt;/geometry&gt;	      
+&gt;          &lt;compartment&gt;
+&gt; &lt;/listOfCompartments
+&gt; 
+&gt; -- 
+&gt; Nicolas LE NOVÈRE
+&gt; Récepteurs et Cognition,   Institut Pasteur,   75724 Paris 
+&gt; cedex,    FRANCE
+&gt; e-mail : lenov@pasteur.fr                  
+&gt; <A  HREF="http://www-alt.pasteur.fr/~lenov">http://www-alt.pasteur.fr/~lenov</A>
+&gt; tel : 33-(0)1-45-68-88-44    
+&gt;                      fax : 33-(0)1-45-68-88-36
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00271" HREF="msg00271.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+<UL><LI><EM>From:</EM> Nicolas Le Novere &lt;lenov@pasteur.fr&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00274.html">[sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00276.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00271.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00295.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00275"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00275"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

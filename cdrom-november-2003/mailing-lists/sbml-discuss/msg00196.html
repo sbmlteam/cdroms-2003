@@ -1,0 +1,115 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Changing the way stoichiometries are expressed -->
+<!--X-From-R13: [vpunry Vhpxn <zuhpxnNpnygrpu.rqh> -->
+<!--X-Date: Wed, 21 May 2003 23:05:44 &#45;0700 -->
+<!--X-Message-Id: 16076.26799.256750.5042@erato1.cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD36E1F@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Changing the way stoichiometries are expressed</TITLE>
+<LINK REV="made" HREF="mailto:mhucka@caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00195.html">Date Prev</A>][<A HREF="msg00197.html">Date Next</A>][<A HREF="msg00189.html">Thread Prev</A>][<A HREF="msg00192.html">Thread Next</A>][<A HREF="maillist.html#00196">Date Index</A>][<A HREF="threads.html#00196">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Changing the way stoichiometries are expressed</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Changing the way stoichiometries are expressed</LI>
+<LI><em>From</em>: Michael Hucka &lt;<A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 21 May 2003 23:05:35 -0700</LI>
+<LI>Cc: &quot;SBML Discussion List&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI>Reply-To: <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+  JWagner&gt; I was under the impression that we'd be getting
+  JWagner&gt; rid of the denominator field altogether. What's
+  JWagner&gt; the utility in expressing a stoichiometric
+  JWagner&gt; coefficient as 2.36435/12345? (That's not a
+  JWagner&gt; sarcastic remark, I'm wondering if there might be
+  JWagner&gt; some kind of use for it among, say, the
+  JWagner&gt; stochastic folks, etc, that I'm not seeing).
+ 
+Ah, sorry; I should have explained that better.
+
+It's not so much being able to express 2.335/123, but
+rather, the idea of being able to express a stoichiometry
+either as 
+
+- a (single) floating-point number
+- a fraction (integer/integer)
+
+If you take out denominator, you can't express fractions,
+which was the whole reason that stoichiometry ended up
+having the form integer/integer rather than a single
+floating-point number in SBML Level 1.
+
+It's true that having a floating-point 'stoichiometry' field
+and an integer 'denominator' field leaves open the
+possibility of someone using both simultaneously, leading to
+bizarre 1.23/567 numbers.  I guess we'd have to specify that
+this shouldn't be done.  (And yes, having do that wouldn't
+be very elegant.)
+
+MH
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00189" HREF="msg00189.html">RE: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00195.html">RE: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00197.html">[sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00189.html">RE: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00192.html">RE: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00196"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00196"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,200 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] RE: [Biospice&#45;sepdtf] clarification     onthegenerated SBML model -->
+<!--X-From-R13: "Vreoreg [. Enheb" <ufnhebNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 14 Oct 2003 13:53:16 &#45;0700 -->
+<!--X-Message-Id: Pine.LNX.4.44.0310141340210.2306&#45;100000@kincora.cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1344.213.22.127.80.1066124511.squirrel@webmail.vbi.vt.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerate</TITLE>
+<LINK REV="made" HREF="mailto:hsauro@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00691.html">Date Prev</A>][<A HREF="msg00693.html">Date Next</A>][<A HREF="msg00691.html">Thread Prev</A>][<A HREF="msg00697.html">Thread Next</A>][<A HREF="maillist.html#00692">Date Index</A>][<A HREF="threads.html#00692">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerated SBML model</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:mendes@vbi.vt.edu">mendes@vbi.vt.edu</A></LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerated SBML model</LI>
+<LI><em>From</em>: &quot;Herbert M. Sauro&quot; &lt;<A HREF="mailto:hsauro@cds.caltech.edu">hsauro@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 14 Oct 2003 13:46:33 -0700 (PDT)</LI>
+<LI>Cc: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+
+On Tue, 14 Oct 2003 mendes@vbi.vt.edu wrote:
+
+&gt; Regarding the other issue of substrates (or products) that are also
+&gt; modifiers. This is indeed a more delicate problem. From my perspective I
+&gt; would label all modifiers as such, even if they are also substrates or
+&gt; products. And in Gepasi this is easy to do since the *species roles* are
+&gt; separated from the *species* in the rate laws (the more I see these
+&gt; discussions the more I like toi have made this choice!) This means that
+&gt; rate laws are defined with symbols that are not the species names. Then
+&gt; the species are assigned to those symbols that are substrates, products
+&gt; and modifiers. This lets me write a rate law such as: V*S/(K+S+M)  and
+&gt; then assign the same species to S and M. It is the symbols S and M that
+&gt; are labeled as substrate and modifier, not the species that is assigned to
+&gt; them (which in this case has both roles). This requires a level of
+&gt; abstraction from the part of the user, but that has not scared away a good
+&gt; number of users that are not mathematical modeling experts from Gepasi,
+&gt; so...
+
+I see, you use different names for the same species to indicate that 
+functionally they act differently. I guess that's one way round it, 
+but unfortunately we don't all use that approach. I think it is a subtle 
+thing to do and I don't think most causal users would appreciate the 
+distinction - in Gepasi's case you have a rich enough set of builtins so 
+that users don't have to use this trick. If users had to do this for every 
+rate law, I think you'd get a few emails asking for guidance.
+
+As for SBML being broken, this is the first time you've brought it up, 
+why didn't you say something 3 years ago?
+
+When it comes to validating SBML Level 2 is there any check going to be 
+made that the list of modifiers is consitent with the rate law?
+
+Herbert
+
+&gt; 
+&gt; I vote for enumerating all modifiers even when they are substrates.
+&gt; However given that SBML is already broken regarding this, I can easily
+&gt; accept the other option.
+&gt; 
+
+What was the other option?
+
+
+&gt; (it is broken because in SBML the rate laws include names or IDs of
+&gt; species directly and thus this distinction becomes meaningless as you may
+&gt; understand from the example above).
+&gt; 
+&gt; Pedro
+&gt; 
+&gt; PS- I posted only to sbml-discuss given I don¬•t take part in the biospice
+&gt; discussions, but feel free to forward this to that list (however I would
+&gt; really like to read the answers, unless this becomes a biospice only
+&gt; issue)
+&gt; 
+&gt; &gt; I agree with Herbert's take on this: things should be unambiguous. Can we
+&gt; &gt; come up with some test cases and look at how the proposed specification
+&gt; &gt; would handle some potential problem situations involving modifiers doing
+&gt; &gt; other things ? Here is another:  on PDE5, cGMP is a substrate and it also
+&gt; &gt; binds to an allosteric site on PDE5 to modify the enzymatic rates.
+&gt; &gt;
+&gt; &gt; -- Upi
+&gt; &gt;
+&gt; &gt; On Mon, 13 Oct 2003, Herbert M. Sauro wrote:
+&gt; &gt;
+&gt; &gt;&gt;
+&gt; &gt;&gt;
+&gt; &gt;&gt; I think we probably need a more sophisticated means of specifying
+&gt; &gt;&gt; modifiers. I'm not against some type of modifier list but it's
+&gt; &gt;&gt; application
+&gt; &gt;&gt; is limited at the moment (very limited!), I'm not sure if anyone uses it
+&gt; &gt;&gt; other than a lazy means to parsing the rate law (not an issue in Level 2
+&gt; &gt;&gt; I
+&gt; &gt;&gt; believe anyway). Could we make it optional if there is a rate law, but
+&gt; &gt;&gt; compulsory if there isn't a rate law?
+&gt; &gt;&gt;
+&gt; &gt;&gt; Herbert
+&gt; &gt;&gt;
+&gt; &gt;&gt;
+&gt; &gt;&gt; On Sat, 11 Oct 2003, Andrew Finney wrote:
+&gt; &gt;&gt;
+&gt; &gt;&gt; &gt; Folks
+&gt; &gt;&gt; &gt;
+&gt; &gt;&gt; &gt; Rate laws are optional - in which case its not possible to determine
+&gt; &gt;&gt; the
+&gt; &gt;&gt; &gt; modifiers.
+&gt; &gt;&gt; &gt; And for better or worse the community decided even with rate laws the
+&gt; &gt;&gt; &gt; list of modifiers were
+&gt; &gt;&gt; &gt; required in Level 2.
+&gt; &gt;&gt; &gt;
+&gt; &gt;&gt; &gt; Andrew Finney
+&gt; &gt;&gt; &gt; +44 (0)1453 827833
+&gt; &gt;&gt; &gt; from US - 011 44 1453 827833
+&gt; &gt;&gt; &gt; University of Hertfordshire, UK
+&gt; &gt;&gt; &gt;
+&gt; &gt;
+&gt; &gt; --
+&gt; &gt; Upinder S. Bhalla       National Centre for Biological Sciences
+&gt; &gt; bhalla@ncbs.res.in      GKVK Campus
+&gt; &gt; (+91-80)363-6420/6421 X 3230    Bangalore 560065, INDIA
+&gt; &gt; Fax (+91-80) 363-6662       <A  HREF="http://www.ncbs.res.in/~faculty/upi.html">http://www.ncbs.res.in/~faculty/upi.html</A>
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; 
+&gt; 
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00697" HREF="msg00697.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification      onthegenerated SBML model</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00691" HREF="msg00691.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerated SBML model</A></STRONG>
+<UL><LI><EM>From:</EM> mendes@vbi.vt.edu</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00691.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00693.html">Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification on thegeneratedSBML model</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00691.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00697.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification      onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00692"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00692"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

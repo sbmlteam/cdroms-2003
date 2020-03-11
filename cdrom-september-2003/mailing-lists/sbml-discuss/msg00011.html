@@ -1,0 +1,153 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] SBML Level 2 -->
+<!--X-From-R13: Rneera X Ivyxvafba <qneerawjvyxvafbaNogvagrearg.pbz> -->
+<!--X-Date: Thu, 5 Dec 2002 13:01:10 &#45;0800 -->
+<!--X-Message-Id: 3DEFBE3D.23C085E4@btinternet.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.33.0212051042200.22916&#45;100000@dhcp33&#45;081&#45;013.bbn.com -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] SBML Level 2</TITLE>
+<LINK REV="made" HREF="mailto:darrenjwilkinson@btinternet.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00019.html">Date Prev</A>][<A HREF="msg00043.html">Date Next</A>][<A HREF="msg00010.html">Thread Prev</A>][<A HREF="msg00042.html">Thread Next</A>][<A HREF="maillist.html#00011">Date Index</A>][<A HREF="threads.html#00011">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] SBML Level 2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Jonathan Webb &lt;<A HREF="mailto:jwebb@bbn.com">jwebb@bbn.com</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] SBML Level 2</LI>
+<LI><em>From</em>: Darren J Wilkinson &lt;<A HREF="mailto:darrenjwilkinson@btinternet.com">darrenjwilkinson@btinternet.com</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 05 Dec 2002 20:59:41 +0000</LI>
+<LI>CC: <A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I'm afraid I can't resist joining the argument regarding models and
+parameters...
+
+I'm a bit worried about the "downgrading" of the status of parameters. One of
+the things I like about SBML (as it stands) is that it encapsulates everything
+one needs in order to simulate from a model, and that it says nothing about
+the simulation strategy (deterministic, stochastic, etc.). 
+
+There seems to be a suggestion in the current discussion that parameters are
+"less objective" than model structure, and so can be "relegated" from the main
+model description. I hate to disillusion anyone, but I can assure you that
+your models suck just as much as your parameter values! ;-) Of course, that
+doesn't mean that the models aren't useful, but the same applies equally to
+parameters - even if you are uncertain about some parameter values, your "best
+guess" is a vital part of the model. You don't think twice about bunging down
+your "best guess" at model structure - why are you so worried about putting
+down your "best guess" at a parameter value? 
+
+Of course, as someone has already mentioned, parameter values are often
+uncertain, but that doesn't mean one shouldn't try to encapsulate the current
+state of knowledge regarding that parameter in the model. In one of my current
+research projects, I use a cut-down version of SBML level 1, with some slight
+tweaks. One tweak I use is for the parameter tag. As well as having a "value"
+attribute (which is compulsory!!!), there is also an optional "sd" attribute,
+representing a standard deviation to be associated with the mean "value" (or
+"best guess"). If the sd attr is missing, the parameter is assumed to be
+known. If it is present, there is assumed to be a gamma probability
+distribution associated with the parameter, whose mean and standard deviation
+are given by "value" and "sd" (there are deep theoretical reasons for adopting
+gamma distributions for parameters in stochastic kinetic models). 
+
+This "sd" attr has a number of advantages. Simulation software can ignore the
+sd attr, and carry out a simulation on the basis of the "best guess". On the
+other hand, if one is interested in parameter sensitivity, one can sample a
+representitive set of parameters from the probability distributions associated
+with the parameter values, and then run multiple simulations based on
+different parameter samples. Even if one requires something crude such as a
+"range" of parameter values, this can be constructed either as a mean
+plus/minus x standard deviations, or (better), as a y% equitailed gamma
+probability interval. Finally, if one is interested in making inferences for
+the parameters on the basis of time-course experimental data, one can use the
+distributions to represent "prior knowledge" regarding the parameters before
+observing the experimental data, which can then be refined to give improved
+parameter estimates using a suitable statistical inference framework.
+
+People have said that they would like parameter sets in separate files, so
+that they can run alternate sets with the same model. I would suggest that
+there is just as much uncertainty about models, so what people really want is
+a collection of alternate sub-models in separate files (complete with
+associated parameter specifications!). 
+
+
+Jonathan Webb wrote:
+&gt;  - Model definitions exist without reference to specific _numeric_
+&gt;    values for at least some of their parameters.
+
+But I would argue that this is barely better than a "schema" that a
+non-numerate biologist would produce. Models have to be quantified to be
+predictive, and they have to be predictive to be really useful.
+
+Just my two pence worth...   ;-)
+
+-- 
+Darren Wilkinson   Email:  darrenjwilkinson@btinternet.com
+                     WWW:  www.darrenjwilkinson.btinternet.co.uk
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00042" HREF="msg00042.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> Pedro Mendes &lt;mendes@vbi.vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00010" HREF="msg00010.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> Jonathan Webb &lt;jwebb@bbn.com&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00019.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00043.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00010.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00042.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00011"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00011"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

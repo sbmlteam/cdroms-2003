@@ -1,0 +1,175 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;arrays] FW: Initialization of large data arrays in SBML -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Mon, 6 May 2002 09:54:09 &#45;0700 -->
+<!--X-Message-Id: OCEOLCAAEIFELNNEPMPLIEADCLAA.afinney@cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-arrays] FW: Initialization of large data arrays in SBML</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00008.html">Date Prev</A>][<A HREF="msg00010.html">Date Next</A>][<A HREF="msg00008.html">Thread Prev</A>][<A HREF="msg00010.html">Thread Next</A>][<A HREF="maillist.html#00009">Date Index</A>][<A HREF="threads.html#00009">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-arrays] FW: Initialization of large data arrays in SBML</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;SBML Arrays&quot; &lt;<A HREF="mailto:sbml-arrays@symbio.jst.go.jp">sbml-arrays@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-arrays] FW: Initialization of large data arrays in SBML</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 6 May 2002 09:57:16 -0700</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Some comments from Bruce on Array initialization...
+
+[Bruce I hope you don't mind...]
+
+My Comments:
+I'm happy to incorporate this.  But probably needs more discussion.
+
+yours Andrew
+
+-----Original Message-----
+From: Bruce E Shapiro [<A  HREF="mailto:bshapiro@jpl.nasa.gov">mailto:bshapiro@jpl.nasa.gov</A>]
+Sent: Monday, May 06, 2002 9:20 AM
+To: Andrew Finney
+Cc: Benjamin J Bornstein at JPL; Victoria Gor at JPL; Eric Mjolsness at
+JPL
+Subject: Initialization of large data arrays in SBML
+
+
+Andrew -
+
+Sorry to be bothersome about this but I was thinking again about 
+array (including parameter array) initializations.
+
+Using a switch will work for one dimensional arrays, but for higher 
+dimensional arrays does this mean we need to have nested switches?
+
+What bothers me in particular is if we have a large, say rectangular 
+data structure, such as an image data set (say a 640 x 480 array of 
+32 bit numbers for example) do we really want a switch statement with 
+640 cases, each of which has a switch statement with 480 cases? 
+Couldn't there be some easier way of doing things, like some sort of 
+bracket notation such as "[x11,x12,...,x1n,x21,x22,....,xmn]" for an 
+n by m array? or even a simple function like "arrayData(...)" or even 
+"data(...)".
+
+At the very least we should have an implied switch of some sort 
+rather than just writing out the numbers 1 to 640 every time.
+
+If there is not currently an easy way to spit out a large data stream 
+like this I would welcome your suggestions about how to  best do 
+this.  I think it would be worthwhile to consider for level 2 (even 
+though the proposal is already out there, I expect you will be 
+getting lots of comments on it and have to revise it at some point).
+
+Thanks,
+
+Bruce
+
+My personal vote would be for the single "data(...)" below but I am 
+open to suggestions.
+
+Example:
+
+To define a matrix x = {{10, 20}, {30, 40}} (e.g., a matrix with 10 
+and 20 on the first row and 30 and 40 on the second row) now requires:
+
+&lt;parameter name="x[I][J]" 
+value="switch(I,1,switch(J,1,10,2,30,0),2,switch(J,1,20,2,40,0),0)" /&gt;
+
+possible proposals:
+
+&lt;parameter name="x[I][J]" value="data(10,20,30,40)"/&gt;
+&lt;parameter name="x[I][J]" value="[10,20,30,40]"/&gt;
+&lt;parameter name="x[I][J]"
+ 
+value="impliedSwitch(I,impliedSwitch(J,10,20,0),impliedSwitch(J,30,40,0),)" 
+/&gt;
+
+The following might allow arbitrary nesting of different row sizes, 
+but I don't think they are really necessary - the main idea is to 
+easily allow full rectangular arrays of data
+
+&lt;parameter name="x[I][J]" value="data(data(10,20),data(30,40))"/&gt;
+&lt;parameter name="x[I][J]" value="[[10,20],[30,40]"/&gt;
+
+
+-- 
+
+==================================================
+
+Bruce E. Shapiro, Ph. D.
+Senior Member Technical Staff
+
+Machine Learning Systems Group 
+(<A  HREF="http://www-aig.jpl.nasa.gov/public/mls/cellerator">http://www-aig.jpl.nasa.gov/public/mls/cellerator</A>)
+Exploration Systems Autonomy Section
+Jet Propulsion Laboratory
+California Institute of Technology
+M/S 126-347
+4800 Oak Grove Drive
+Pasadena, CA 91109
+
+Telephone 818-393-0980 /  Fax  818-393-5244 / <A  HREF="mailto:bshapiro@jpl.nasa.gov">mailto:bshapiro@jpl.nasa.gov</A>
+
+==================================================
+The opinions expressed herein are purely my own and do not reflect the
+official position of either JPL or CalTech
+==================================================
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00008.html">[sbml-arrays] Proposal by SBW and JPL groups</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00010.html">[sbml-arrays] domain and symbols</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00008.html">[sbml-arrays] Proposal by SBW and JPL groups</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00010.html">[sbml-arrays] domain and symbols</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00009"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00009"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

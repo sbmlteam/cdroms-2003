@@ -1,0 +1,573 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;arrays] initial exchange -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Fri, 21 Dec 2001 10:43:07 &#45;0800 -->
+<!--X-Message-Id: OCEOLCAAEIFELNNEPMPLCEDCCIAA.afinney@cds.caltech.edu -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Derived: pdf00000.pdf -->
+<!--X-Derived: sit00000.sit -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-arrays] initial exchange</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[Date Prev][<A HREF="msg00002.html">Date Next</A>][Thread Prev][<A HREF="msg00002.html">Thread Next</A>][<A HREF="maillist.html#00001">Date Index</A>][<A HREF="threads.html#00001">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-arrays] initial exchange</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-arrays@symbio.jst.go.jp">sbml-arrays@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-arrays] initial exchange</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 21 Dec 2001 10:43:30 -0800</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+FYI...
+Victoria Gor and I had the following email exchange concerning arrays:
+(I have attached documents mentioned in these messages)
+------------------------------------------------------------------------
+&gt;From Victoria
+
+Following are my comments on "Possible extensions to the Systems
+Biology Markup Language". Please, let me know what you think about them.
+If some of them are valid, you or me can formulate Sbml structures that will
+support them.
+
+First few words about Model Expansion. I am a bit confused here, since from
+the
+moment we introduced model expansion and instances to SBML we turned
+modeling
+language (the language that explicitly enumerates biological model) to the
+programming language (language that represents operations on data in concise
+manner). So, SBML is not like XML any more. I suppose it is OK for SBML to
+be
+programming language, but then nobody should want to look at expanded form
+of SBML
+(just imagine expansion for 1000 compartments which are fully
+connected ).Also, I
+would not want my programs to have to read expanded forms of SBML. Such
+would be
+too verbose of the description even for computer program. I think it is the
+job of
+SBML parsers (or programs that read or use SBML models) to expand them. And
+since
+we are moving away from XML constraints, such parsers would have to be
+custom-made.
+
+1) The array representation described by you seems quite adequate to me.
+We would want to add new component: "connection" that can occur in arrays
+(it is
+explained in 3)). In addition, since we need to implement a model where
+compartments can crawl all over the three dimensional grid and have some
+changing
+geometric shape, each compartment must have x,y,z coordinate attributes and
+some
+shape descriptor (radius of a cylinder or sphere?).
+
+3) The concepts of patterns, mappings, connectionDimensions and
+Connection Groups describing neighborhoods seems to me a bit specific for a
+biological programming language.  I would prefer to reformulate these
+concepts a
+bit. We DO need to represent neighborhoods of compartments or connections,
+but it
+seems that they need to be a bit more flexible for wider range of biological
+problems (for example, neurons can be connected to other very far-situated
+neurons
+by synapses or some compartments can be connected to other compartments if
+they are
+within some distance measure from each other and not necessary the directly
+adjacent neighbors).  We would need to have different groups of connections
+representing different forms of neighborhoods. Presently, I can think of
+three
+different groups of connections: geometric, explicit and complete.
+
+Geometric connections are the ones we specifically need for meristem model.
+They are connections between two compartments. These connections do not need
+to be
+explicitly enumerated, geometric connections can simply have the formula (or
+function)
+attribute which acts on compartment coordinates: f(Xc, Yc, Zc, Xn, Yn, Zn),
+where Xc,
+Yc, Zc are coordinates of one compartment (let's say center compartment),
+Xn, Yn, Zn
+are coordinates of candidate neighbor compartment. The formula (or function)
+itself
+determines if two compartments are neighbors. For example, formula can be
+Euclidean
+distance with threshold. If two compartments are within threshold distance
+from each
+other, they are neighbors. Formula also can be different for different
+ranges of
+parameters Xc, Yc, Zc, Xn, Yn, Zn. This will take care of "simple_hexagon"
+model
+described by you. So, for geometric connections all we need to specify in
+SBML is
+the formulas for different parameter ranges (if there are different ranges).
+This
+sounds like Connection Groups defined by you, but your Connection Groups
+represent
+different concept (the concept of neighbors connected with different
+patterns), which
+we would not need any more, since we will define geometric connectivity with
+formulas for
+geometric parameter ranges. Such geometric connections should make the job
+of SBML model
+creators easier .
+
+Complete connections are also easy to specify. These are connections which
+are
+present between EVERY two compartments (full connectivity) of specific type
+or between all sub-compartments within same compartment or within
+some sub-model. For complete connections all we have to specify is the
+sub-model
+and/or type of compartments and/or inclosing compartment that uses them.
+
+Explicit connections are harder. They have to be actually enumerated by
+modeler.
+I suggest SBML should enumerate them similarly to Bruce Shapiro's cellerator
+inputs.
+This means that we have to specify each connection in the list. For example,
+we would
+have to say that compartment_I is connected to compartment_J with specific
+attributes
+(if such exist). Therefore, we would have to produce a list of pairs of
+connected
+compartments (explicit connections) with a list of attributes for each pair.
+Such
+attributes can be a number or a formula. I suppose this representation of
+connections
+will be useful for smaller, but more detailed sub-models.
+
+In general, I have only described the proposed concise (not-expanded)
+representations
+for different groups of connections for use in SBML. How these connections
+are
+actually represented in memory is a decision to be made by parsers or other
+programs
+that read SBML.
+
+
+4) We also propose different TYPES of connections for different interaction
+formulas
+and parameters. The idea is that every connection TYPE can be described
+concisely
+with formula and parameters. And type might be set in two ways: concisely ,
+that is
+once for entire group (neighborhood) of compartments or once for some
+sub-model with
+compartments or once for all sub-compartments within some compartment; and
+explicitly
+that is by individually naming the type of each connection. Once again, the
+latter is
+especially useful for smaller and more detailed sub-models.
+----------------------------------------------------------------------------
+----------
+My Reply:
+
+points 1-4 I agree with.  The connection scheme I described is simply too
+kludgy to use in practice: the form you describe "fixes" this.  We should
+work out how to
+represent the structures you describe.
+
+I have attached a proposed form for describing geometry in level 2
+developed by the VCell group.
+I propose we work out a very minimal subset of this geometry proposal that
+we need for
+geometric connections.  This will minimize our dependency on the
+geometric part of level 2 - IMHO this is advantageous.
+
+Do we really need shape information?  If we just use compartment
+co-ordinates and a threshold function then don't we have an implied
+tessellation of cells?  Isn't that enough for the definition of connections?
+Probably not in the long term!  But lets start simple.
+
+I'd like to propose a scheme for organizing connections types and
+attributes:
+
+We simply group connections into sets.  Each set is defined by one or more
+connection
+definitions.  A connection definition is either explicit, function based or
+complete
+as you described.
+
+A specific array of reactions is defined using a specific connection set
+which specifies where
+the reaction occurs.
+
+I don't think its necessary to attach attributes to connection sets.  Arrays
+of all classes of
+objects need to be defined on connections.  For example if a connection
+defines a membrane then
+we need to be able define a either a sub model for it or minimally a single
+reaction.
+
+Expansion
+---------
+
+All XML parsers are custom made at some level: there is always some
+component
+that takes the outputs of an xml parser (events or objects) and generates
+events or objects
+that are appropriate for the application domain.  Expansion is just an
+additional step
+that may or may not be required depending on the capabilities of the
+software using the
+parser.
+
+Expansion can be viewed as an internal transformation of parsed objects from
+one form to another.
+This expansion would occur entirely with a software component.  The
+important point is
+to ensure that the expanded form is always encodable in level 1. This
+ensures that
+systems that can only deal with level 1 objects can still process the result
+of
+the expansion process.
+
+In practice I imagine that the SBW group will produce a software component
+that will do expansion.  This component in normal use will not encode the
+expanded form in xml.  Software that can only interpret level 1 objects
+can then use this component to parse level 2 xml.
+
+The description I sent you uses the expansion process as a way
+to define the semantics of the array objects.  A parser of level 2 can map
+the level 2 input to any structure it likes as long as that parser
+combined with the rest of the system that includes it preserves the
+semantics.  Perhaps we should find a better way to define the array
+semantics?
+
+There is no reason why the expanded form of level 2 can't be encoded in XML.
+I agree this form will be verbose.
+----------------------------------------------------------------------------
+----------------------
+Victoria's response:
+
+"Do we really need shape information?  If we just use compartment
+co-ordinates and a threshold function then don't we have an implied
+tessellation of cells?  Isn't that enough for the definition of connections?
+Probably not in the long term!  But lets start simple."
+
+I think we need shape information, at least radius or, may be, heights. In
+meristem problem cells can
+and will overlap, they will also grow, and areas
+of overlap are ESSENTIAL.
+
+
+"points 1-4 I agree with.  The connection scheme I described is simply too
+kludgey to use in practice: the form you describe "fixes" this.  We should
+work out how to represent the structures you describe."
+
+In accordance with proposed by you scheme, we would define connection sets
+either inside &lt;listOfModels&gt; or inside &lt;listOfCompartments&gt; or inside
+&lt;listOfSpecies&gt; or inside &lt;listOfInstances&gt;. The closest inclosing list
+will be DOMAIN on which given connections will operate. Connection set will
+then look like this:
+
+    ------------------------------------------------------------------------
+   | CONNECTION_SET
+   |------------------------------------------------------------------------
+   | name: SName
+   | type: TypeKind
+   | mapping: BooleanFunction { used only when type = "function_based" }
+   | connection: Connection[0..*]
+   | reaction: Reaction[1..*]
+   | rule: Rule[0..*]
+   | model[0..*]: Model
+   | domain: Reference[0..*] (??? used only if domain is NOT an
+   |                          outside list of objects)
+    ------------------------------------------------------------------------
+
+
+
+where:
+  name - string which is a name of the connection set.
+  type - the kind of the connections inside the set;
+         possible values: "explicit", "function_based" or "complete".
+
+      ***"Complete" connections will indicate that there is a connection
+         between each pair of objects in the DOMAIN.
+
+      ***"Function_based" connections will indicate that there is a
+connection
+         between two objects in the domain iff mapping is true. That means
+that
+         mapping function f(X,Y,Z,Xc,Yc,Zc) must be specified and must be
+         boolean and it also means that coordinates X,Y,Z of objects in
+         inclosing list must be specified. It follows that  &lt;listOfModels&gt;,
+         &lt;listOfCompartments&gt;,&lt;listOfSpecies&gt;, &lt;listOfInstances&gt; must have
+an
+         option to define coordinates within them. For example Compartment
+         definition will look like this:
+          ----------------------------------------------------------
+         | COMPARTMENT
+         |----------------------------------------------------------
+         | name: SName
+         | volume: double {use ="default" value = "1"}
+         | radius: double {use = "optional"}
+         | units: SName {use = "optional"}
+         | outside: SName {use = "optional"}
+         | x: double {use = "optional"}
+         | y: double {use = "optional"}
+         | z: double {use = "optional"}
+          ----------------------------------------------------------
+
+         Incorporating Bruce Shapiro's definition of functions,
+         f(X,Y,Z,Xc,Yc,Zc) can look like following:
+
+         &lt;listOfFunctions&gt;
+              &lt;function name="f" condition="(X-Xc&lt;2) &amp;&amp; (Y-Yc&lt;2) &amp;&amp;
+(Z-Zc&lt;2)"
+                   &lt;listOfVariables&gt;
+                        &lt;variable name="X" type="double"/&gt;
+                        &lt;variable name="Y" type="double"/&gt;
+                        &lt;variable name="Z" type="double"/&gt;
+                        &lt;variable name="Xc" type="double"/&gt;
+                        &lt;variable name="Yc" type="double"/&gt;
+                        &lt;variable name="Zc" type="double"/&gt;
+                   &lt;/listOfVariables&gt;
+             &lt;/function&gt;
+         &lt;/listOfFunctions&gt;
+
+         This is an example of boolean function. It has only condition in
+it.
+         Later, I will give example where function is not boolean and
+         represents reaction.
+
+         Of course, this is an "unexpanded" definition of connections. The
+         interpreting program would have to come up with explicit definition
+of
+         every connection (as will be shown next). To do that it would have
+         to scan every pair of objects in inclosing list and if the function
+on
+         those objects is true, build explicit connection.
+
+      ***"Explicit" connections are most important since they will be the
+only
+         one remained in expanded form. If the type of connections is
+         "Explicit", connection elements in Connection_Set must be
+specified.
+         The type "Connection" will consist of two integers, one is the
+index
+         of the object from which connection is drawn, another one the index
+         of the object to which connection is drawn. (Indexing is implicit.
+It
+         is kept by dimension of array, but we can make it explicit if
+needed.)
+
+  mapping - a boolean function that gets expanded into specific connections
+(as
+          was described for "Function-based type".
+
+  connection - an explicit list of connections
+          -----------------------
+         |CONNECTION
+         |-----------------------
+         |from: integer
+         |to : integer
+          -----------------------
+
+  reaction -,
+  rule -,
+  model - are the entities that are applied to elements of connected
+objects.
+  According to proposed by you scheme these entities must be defined inside
+  connection_set block and operate only on connections in outside
+  connection_set. At least one of these three entities must be specified for
+  each connection_set. Also consider the possibility of putting
+connection_sets
+  any place in the SBML file. This is also possible. To do that all we would
+  have to do is include DOMAIN as connection_set element (it is last in the
+  first diagram). The Domain will specify to which list (array) of objects
+  connections apply, and it is of type Reference (could be
+CompartmentReference
+  or SpecieReference and is a string that is a name of corresponding
+  compartments or species). We can also assume that if the domain element is
+  specified, reference is explicit, and if it is not specified, the domain
+is
+  a list of elements inside which connection_set is defined.
+
+  And finally, all of this has one problem. In the reactions and other
+  applications of formula, we might want to define different formulas for
+  different parameter (or reactants) ranges. One easy way around this
+problem
+  is to add possibility for using function everywhere where formula is
+currently
+  used (in reactions or other applications). For example, the function
+  representing reaction can look like following (this is derived from Bruces
+  definition of functions):
+
+  &lt;listOfFunctions&gt;
+     &lt;function name="f" condition="(x&lt;0)"  formula="0.5*pow(-z+x/(x^2 + 9),
+y)"
+                        condition="(x&gt;=0)" formula="0.5*pow(-z+(x^2 + 9)/x,
+y)"
+                        condition="(z=0)"  formula="0.0" &gt;
+        &lt;listOfVariables&gt;
+            &lt;variable name="x" default="1" type="integer" /&gt;
+            &lt;variable name="y" default=None type="real"/&gt;
+            &lt;variable name="z" default="-1.5" type="real" /&gt;
+        &lt;/listOfVariables&gt;
+    &lt;/function&gt;
+  &lt;/listOfFunctions&gt;
+
+
+
+  If you agree with these constructs, I will generate an example
+  (non-expanded) of SBML file that uses these constructs and will send it
+  to you when you get back from Europe. (By the way, when would that be,
+  got to set my deadlines.)
+----------------------------------------------------------------------------
+----
+Victoria's Response:
+
+"I think it would be useful if you could provide an example model
+using your proposed scheme.  As it would help to clarify how it works.
+(I'm back on 10th January)."
+
+-I will have an example model by January 10th.
+
+"I'm confused as why you need to have the reaction, rule and model
+attributes
+on the connection set element."
+
+Consider the case where the reaction is occurring between the elements of
+two separate
+compartments. How would you represent it? Or what if same reaction is
+occurring between
+all pairs of 100 compartments. One reaction is then associated with 9900
+connections, or
+one concise CONNECTION_SET with one reaction. (Of course, I would not want
+to look at
+expanded version of it). Now, I suspect where reaction can occur, a rule can
+occur
+and even sub-model too. I might be wrong, but we are dealing with arrays
+now, and it
+is good generalization that the elements of everything that is an array can
+be linked by
+connection and any sort of action (reaction, rule_application or sub_model
+generation)
+that can happen between two or more simple objects can also happen between
+two objects of
+an array. How else would you represent developmental processes in a tissue
+(meristem, for
+example)? If you have any other ideas, please tell me.
+----------------------------------------------------------------------------
+---
+My Response:
+
+I was thinking along the following lines when
+I made the original definition.
+I'm going to use a non xml notation to make things concise:
+
+first to demo the notation here's a model that doesn't use arrays:
+
+compartments: unit;
+species:
+s1 in unit;
+s2 in unit;
+reactions:
+r1 : s1 -&gt; s2 : k1*s1;
+
+////////////////////////////////////////////////////
+
+now in a different model introduce arrays using a C style notation.
+
+compartments:
+a[0..9];
+
+species:
+s[i:0...9] in a[i];
+
+connectiondefinitions:
+f(i,j) { j == i + 1 }
+
+reactions:
+r[i:0...9][j:0...9 where f(i,j)] : s[i] -&gt; s[j] : k1 * s[i]
+
+///////////////////////////////////////////////////
+explaination: a connection is used to create a sparse dimension to an array.
+Since you can have an array of anything you can have connections of
+anything.
+This means that connections are part of array definitions and don't
+have to specifically reference objects on the connection.
+This example creates a chain of species with a reaction connecting each
+species in the chain.
+
+In fact it means that you can have an array of entities on a connection.
+eg
+species:
+ss[i:0...9][j:0..9 where f(i,j)][k:0...9];
+----------------------------------------------------------------------------
+-------
+Victoria's response:
+
+I will make the model using your C style notation if
+it is OK with you.
+----------------------------------------------------------------------------
+-------
+My Response:
+
+Fine by me.
+----------------------------------------------------------------------------
+-------
+yours Andrew Finney
+
+Visiting Associate
+ERATO Kitano Systems Biology Workbench Development Group
+Control and Dynamical Systems, MC 107-81
+California Institute of Technology
+Pasadena
+CA 91125
+USA
+626 395 6911
+afinney@cds.caltech.edu <A  HREF="http://www.cds.caltech.edu/~afinney">http://www.cds.caltech.edu/~afinney</A>
+</PRE>
+<P><A HREF="pdf00000.pdf" >sbmlext.pdf</A></P>
+<P><A HREF="sit00000.sit" >pasadena.zip</A></P>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Next by Date:
+<STRONG><A HREF="msg00002.html">[sbml-arrays] more from Victoria</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00002.html">[sbml-arrays] more from Victoria</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00001"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00001"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

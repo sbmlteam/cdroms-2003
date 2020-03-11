@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+		<meta name="generator" content="Adobe GoLive 6">
+		<title>SBML Collection CD, Release 1</title>
+	</head>
+
+	<body background="../../graphics/bg0.gif" bgcolor="#ffffff" link="#003399" vlink="#6600ff" alink="#ff6600"  leftmargin="14" topmargin="10" marginwidth="14" marginheight="10">
+		<table width="720" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+				<td>
+					<div align="center">
+						<h2><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">MathSBML<a name="TopOfPage"></a></font></h2>
+						<address>Bruce E. Shapiro<br>
+							JST ERATO Kitano Symbiotic Systems Project</address>
+						<address>California Institute of Technology MC 108-71<br>
+						</address>
+						<div align="center">
+							Pasadena, CA, 91125, USA<br>
+							<br>
+							<a title="SBML.org, the SBML project website" href="http://www.sbml.org">http://www.sbml.org/<br>
+							</a><a href="mailto:sbml-team@caltech.edu">sbml-team@caltech.edu</a></div>
+					</div>
+					<p>MathSBML is an open-source package for working with SBML models in <a title="Mathematica by Wolfram, Inc." href="http://www.wolfram.com/products/mathematica/index.html">Mathematica</a>. It provides facilities for reading SBML models, converting them to systems of ordinary differential equations for simulation and plotting in Mathematica, and translating the models to other formats. It supports both Level&nbsp;1 and Level&nbsp;2 of SBML.</p>
+					<p>This CD-ROM includes MathSBML version 2.1.3. To install MathSBML on your system, run the <a href="MathSBML-2.1.3.zip">installer for MathSBML</a> from this CD-ROM. When it prompts you for where to unzip the distribution, choose a directory on your computer.</p>
+					<h3><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Summary of Features Provided by MathSBML</font></h3>
+					<ol>
+						<li><font color="#003399">SBMLRead</font> is the primary function provided by MathSBML. It can, at the user's option:
+						<ul>
+							<li>Read an SBML model into Mathematica;
+							<li>Translate rules and reactions in the model into differential and algebraic equations;
+							<li>Optionally generate an interpretive, human-readable listing of the model;
+							<li>Optionally call <font color="#003399">SBMLNDSolve</font> (see below);
+							<li>Optionally call <font color="#003399">SBMLPlot</font> (see below) immediately after returning from <font color="#003399">SBMLNDSolve</font>;
+							<li>Return a Mathematica data structure, encoding the model, that is compatible with standard Mathematica functions such as <font color="#003399">NDSolve</font>.<br>
+						</ul>
+						<p>
+							
+						</p>
+						<li><font color="#003399">SBMLNDSolve</font> provides an wrapper for <font color="#003399">NDSolve</font>. It can:
+						<ul>
+							<li>Solve the system of differential equations encapsulated in the data structure reutrned by <font color="#003399">SBMLRead</font>;
+							<li>Solve a system of differential/algebraic equations encapsulated in the data structure returned by <font color="#003399">SBMLRead</font>, if the user has Mathematica version 5;
+							<li>Optionally call <font color="#003399">SBMLPlot</font> to plot the solution as a function of time;
+							<li>Return a list of Mathematica-Standard Interpolating Functions of the same form as those returned by <font color="#003399">NDSolve</font>.
+							<li>An experienced Mathematica user can also solve the model returned by <font color="#003399">SBMLRead</font> directly using <font color="#003399">NDSolve</font> or any other Mathematica function.
+						</ul>
+						<p>
+							
+						</p>
+						<li><font color="#003399">SBMLPlot</font> can be used to plot the solution. It
+						<ul>
+							<li>Provides a simple interface to <font color="#003399">Plot</font> for graphing the output of <font color="#003399">SBMLNDSolve</font>.
+							<li>Displays graphs of solution variables as a function of time;
+							<li>Plots on linear and logarithmic scales.
+							<li>An experienced Mathematica user can also graph the output of <font color="#003399">SBMLNDSolve</font> using <font color="#003399">Plot</font> directly.
+						</ul>
+						<p>
+							
+						</p>
+						<li><font color="#003399">SBMLWrite</font> will translate an SBML model into a different format. The following formats are currently supported:
+						<ul>
+							<li>Fortran - writes a Fortran77 file containing subroutines compatible with <a href="http://www.netlib.org/alliant/ode/prog/lsodi.f">LSODI</a>;
+							<li>HTML - generates a web page with an interpretive listing of the file, similar to the verbose listing of <font color="#003399">SBMLRead</font>;
+							<li>XPP - generates the differential equations from the model in a form that can be read by <a href="http://www.math.pitt.edu/~bard/xpp/xpp.html">XPP or XPPAUT</a>.
+						</ul>
+						<p>
+							
+						</p>
+						<li><font color="#003399">SBMLCopy</font> is intended to make a machine-generated SBML file more human-readable. It can:
+						<ul>
+							<li>Read an SBML file;
+							<li>Write the original model to a new file;
+							<li>Format the output using Mathematica's XML-indentation capability.
+						</ul>
+					</ol>
+					<a href="#TopOfPage">Go to the top of this page.</a>
+					<h3><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Documentation</font></h3>
+					<p>MathSBML comes with a detailed user manual featuring tutorials and an API reference.  The manual is included in the MathSBML distribution; the <a href="README.pdf">PDF version of the manual</a> is also included separately on this CD-ROM for your convenience.  </p>
+					<p><a href="#TopOfPage">Go to the top of this page.</a></p>
+					<h3><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Features to look for in future releases</font></a></h3>
+					<p>In no particular order:</p>
+					<ul>
+						<li>Full simulation capability, including processing of events in SBMLNDSolve.
+						<li>An SBML Model Builder, that will allow one to generate all or part of an SBML model via a Notebook interface.
+						<li>An infix to MathML converter, and vice-versa.
+						<li>Reaction translation using a Mathematica arrow-based notation.
+						<li>C/C++ and Java support in SBMLWrite.
+						<li>Support of higher levels and versions of SBML as they become defined.
+						<li>Jlink interface.
+					</ul>
+					<a href="#TopOfPage">Go to the top of this page.</a>
+					<p></p>
+					<h3><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">We encourage feedback</font><font color="#003399"></a></font></h3>
+					<p>Our purpose is to support the biological community in general and SBML users in particular. If there is a feature you would like to see added to or modified in MathSBML, or to provide us with any suggestions or user feedback at all, please contact us. We look forward to hearing from you.</p>
+					<a href="#TopOfPage">Go to the top of this page.</a></td>
+				</div></td></tr></table>
+	</body>
+
+</html>

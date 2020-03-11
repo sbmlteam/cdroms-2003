@@ -1,0 +1,238 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] support for membranes -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Thu, 22 May 2003 19:24:45 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E30@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] support for membranes</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00247.html">Date Prev</A>][<A HREF="msg00249.html">Date Next</A>][<A HREF="msg00289.html">Thread Prev</A>][<A HREF="msg00271.html">Thread Next</A>][<A HREF="maillist.html#00248">Date Index</A>][<A HREF="threads.html#00248">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] support for membranes</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] support for membranes</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 22:24:36 -0400</LI>
+<LI>Thread-Index: AcMgOJwLrgNCaM8bSV+ExL2Hbwvc3gAlBy3w</LI>
+<LI>Thread-Topic: [sbml-discuss] support for membranes</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I brought up the issue of membranes, on behalf
+of the Virtual Cell group, in Florida, so I
+thought I should say something about this here.
+
+First, we HAVE TO HAVE membranes. It's an
+absolute show-stopper for us. We've been
+asking for them for about two years now,
+and we can't properly build a Virtual Cell
+model from SBML without them.
+
+So we've put out two general approaches, as
+Andrew listed. The first is a quickie fix with
+no impact on existing tools: add an optional
+spatialDimension attribute to the compartment
+element, with a default of 3. So long as the
+units on reactions continues to be substance
+per time (not concentration per time, as most
+tools currently assume), this should work.
+
+It isn't, however, what we *really* want.
+What we really want is a completely separate
+element, called membrane; this element will
+then serve as a container for all of the
+*other* membrane pieces we want/need, in
+particular, all the crap that goes along
+with membrane potentials. To this end, we
+want a membrane element that is on par with
+the current compartment element. Imagine:
+&lt;listOfCompartments&gt;
+	&lt;compartment name="Extracellular" volume="1" ...&gt;
+	&lt;membrane name="PlasmaMembrane"  area="17" outside="Extracellular" ...&gt;
+	&lt;compartment name="Cytosol"  volume="1" outside="PlasmaMembrane" ...&gt;
+&lt;/listOfCompartments&gt;
+where obviously the &lt;membrane&gt; element's area would
+have units of area (that is, something like a user-defined
+units="squareMicrons").
+
+The obvious approach is, as Andrew said,
+to create a common parent class for both
+membrane and compartment elements (he called
+it a "space"--good name for it, Andrew!).
+Thus, we'd end up with something like:
+
+	Class: Space extends SBase
+	name: SName
+	outside: Space
+	units: SName
+
+	Class: Membrane extends Space
+	area: double
+
+	Class: Compartment extends Space
+	volume: double
+
+We would also suggest changing "listOfCompartments"
+to "listOfSpaces", and of course, the "compartment"
+attribute in the Species element would be renamed
+"space". 
+
+Also, Joerg's "initialAmount" discussion
+would have to get settled keeping in mind
+that some species live in membranes, not
+compartments; we would simply suggest keeping the
+units as "substance" (and for reaction rates,
+keeping substance/time), since that would
+work regardless of whether you were talking
+membranes or compartments.
+
+Our original thought was to go with the first
+(simpler) approach for Level 2, and wait until
+Level 3 for the more complicated (but flexible
+and "pure") solution, but it was suggested that
+maybe people might just want to jump in and do
+it now. (That is, why put off until tomorrow
+what you know you can endure today?) Also,
+doing it now, in the context of getting units
+"correct" makes a bit of sense as well, as
+someone else pointed out.
+
+Obviously, we'd very definitely prefer the
+second solution in Level 2.
+
+We'd like to hash this out and come to a
+consensus in time for settling Level 2,
+and point out that we do NOT consider Andrew's
+"Plan A: make no changes in this respect
+to SBML" to be an option.
+
+Hope this clarifies the discussion some,
+John
+
+&gt; -----Original Message-----
+&gt; From: Andrew Finney [<A  HREF="mailto:afinney@cds.caltech.edu">mailto:afinney@cds.caltech.edu</A>]
+&gt; Sent: Thursday, May 22, 2003 3:50 AM
+&gt; To: sbml-discuss@caltech.edu
+&gt; Subject: [sbml-discuss] support for membranes
+&gt; 
+&gt; 
+&gt; Here is another question regarding finalizing the definition
+&gt; of SBML Level 2.  
+&gt; 
+&gt; The Florida meeting felt that SBML should incorporate a concept for
+&gt; differentiating between compartments and membranes.  To help this
+&gt; process do you agree that SBML L2 V1 should:
+&gt; 
+&gt; a) make no changes in this respect to SBML
+&gt; 
+&gt; b) add a new positive integer "spatialDimension" attribute to
+&gt; "compartment"
+&gt;       and replace the "volume" attribute by "size" on "compartment".
+&gt;       "spatialDimension" will default to 3 and can never be 
+&gt; less than 1.
+&gt; 
+&gt;  
+&gt; c) create a super class "spaces" subclassing "compartment" and
+&gt; "membrane"
+&gt;       from it. "Compartment" would have a "volume" attribute and
+&gt; "Membrane"
+&gt;       would have an "area" attribute.
+&gt; 
+&gt; Options (b) and (c) will require some modification to the 
+&gt; default units
+&gt; scheme
+&gt; for membrane area and for the amount of species placed on membranes.
+&gt; Assuming
+&gt; that (b) or (c) above are accepted the options are:
+&gt; 
+&gt; a) have no default units for membrane area or for species amount for
+&gt; species
+&gt;       placed on a membrane.  This implies that valid SBML 
+&gt; would have to
+&gt; include
+&gt;       unit definitions for these cases.
+&gt; 
+&gt; b) create a new built-in unit "area" and use this to create default
+&gt; units for
+&gt;       membrane area and for species amount for species placed on a
+&gt; membrane.
+&gt; 
+&gt; Please reflect on and discuss this issue on the list.  The 
+&gt; voting system
+&gt; will be
+&gt; enabled beginning this Friday and we will post voting information at
+&gt; that time.
+&gt; 
+&gt; If you have questions about this topic or the reason for the vote,
+&gt; please feel
+&gt; free to call Mike or Andrew directly.
+&gt; 
+&gt; -- Mike &amp; Andrew
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00271" HREF="msg00271.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+<UL><LI><EM>From:</EM> Nicolas Le Novere &lt;lenov@pasteur.fr&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00247.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00249.html">RE: [sbml-discuss] First real proposal</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00289.html">Re: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00271.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00248"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00248"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

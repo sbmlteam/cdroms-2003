@@ -1,0 +1,236 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Complex Species -->
+<!--X-From-R13: mhpxre <mhpxreNerfrnepu.qspv.uneineq.rqh> -->
+<!--X-Date: Thu, 17 Jul 2003 13:31:22 &#45;0700 -->
+<!--X-Message-Id: 3F1706F9.7010607@research.dfci.harvard.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 601BBB4D9640CB4693A2384E4B37872E15B536@dell2650&#45;0550.kgi.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Complex Species</TITLE>
+<LINK REV="made" HREF="mailto:zucker@research.dfci.harvard.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00573.html">Date Prev</A>][<A HREF="msg00575.html">Date Next</A>][<A HREF="msg00573.html">Thread Prev</A>][<A HREF="msg00578.html">Thread Next</A>][<A HREF="maillist.html#00574">Date Index</A>][<A HREF="threads.html#00574">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Complex Species</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Complex Species</LI>
+<LI><em>From</em>: zucker &lt;<A HREF="mailto:zucker@research.dfci.harvard.edu">zucker@research.dfci.harvard.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 17 Jul 2003 16:28:41 -0400</LI>
+<LI>Cc: <A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A></LI>
+<LI><em>Organization</em>: Dana Farber Cancer Institute</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello Herbert,
+
+   For the models I am creating, the number of reactions runs into the 
+hundreds, and each reaction may be catalyzed by one or more enzymes, 
+each of which can be composed of one or more gene products.
+ The problem comes from trying to distinguish between 2 genes whose 
+products form a complex, and 2 genes whose products  are isoenzymes of a 
+reaction.
+In the first case, you knock out one gene, you knock out the reaction. 
+ In the second case, you must knock out both genes to knock out the 
+reaction.  I do not believe the current implementation of modifier species
+allows you to distinguish between these cases.  
+To illustrate what I am talking about, for the reaction I am interested 
+in (EC# 6.4.2.1), there are two enzyme which catalyze it:
+
+&lt;reaction id="ACETYL-COA-CARBOXYLTRANSFER-RXN" name="EC# 6.4.1.2" 
+reversible="true" &gt;
+
+&lt;listOfModifiers&gt;
+
+&lt;modifierSpeciesReference species="ACETYL-COA-CARBOXYLTRANSFER-CPLX"/&gt;
+
+&lt;modifierSpeciesReference species="ACETYL-COA-CARBOXYMULTI-CPLX"/&gt;
+
+&lt;/listOfModifiers&gt;
+&lt;/reaction&gt;
+
+In this case, acetyl-coa-carboxyltransfer-cplx and 
+acetyl-coa-carboxymulti-cplx are isoenzymes of the reaction.
+
+However, each enzyme has several genes associated with it:
+
+
+&lt;listOfSpecies&gt;
+  &lt;species id="ACETYL-COA-CARBOXYLMULTI-CPLX" name="acetyl CoA 
+carboxylase" compartment="cytoplasm" boundaryCondition"false"&gt;
+     &lt;annotation xmlns:fbml="<A  HREF="http://arep.med.harvard.edu/fbml">http://arep.med.harvard.edu/fbml</A>"&gt;
+         &lt;fbml:gene id="EG10217" name="accD"/&gt;
+         &lt;fbml:gene id="EG11647" name="accA"/&gt;
+         &lt;fbml:gene id="EG10276" name="accC"/&gt;
+         &lt;fbml:gene id="EG10275" name="accB"/&gt;
+      &lt;/annotation&gt;
+   &lt;/species&gt;
+   &lt;species id="="ACETYL-COA-CARBOXYLTRANSFER-CPLX" name="acetyl-CoA 
+carboxyltransferase" compartment="cytoplasm" boundaryCondition="false"&gt;
+       &lt;annotation xmlns:fbml="<A  HREF="http://arep.med.harvard.edu/fbml">http://arep.med.harvard.edu/fbml</A>"&gt;
+          &lt;fbml:gene id="EG11647" name="accA"/&gt;
+          &lt;fbml:gene id="EG10217" name="accD"/&gt;
+       &lt;/annotation&gt;
+    &lt;/species&gt;
+&lt;/listOfSpecies&gt;
+
+In order to knock out this reaction, it is sufficient to knock out 
+either accA or accD, since their gene products are common to both enzymes.  
+Without the representation of genes as annotations  of enzymes, I do not 
+believe it would be very easy to do this kind of analysis.
+Please let me know if there is a better way of doing this.
+
+Sincerely,
+
+
+Jeremy
+
+
+
+
+Herbert Sauro wrote:
+
+&gt; 
+&gt;I think the first question is how many complexes will you have in any one model? Hundreds? Tens? If they just run into tens, then it might be better to just list them out as distinct species and reactions in the normal way.
+&gt; 
+&gt;Herbert Sauro
+&gt;
+&gt;	-----Original Message----- 
+&gt;	From: zucker [<A  HREF="mailto:zucker@research.dfci.harvard.edu">mailto:zucker@research.dfci.harvard.edu</A>] 
+&gt;	Sent: Thu 7/17/2003 12:37 PM 
+&gt;	To: sbml-discuss@its.caltech.edu 
+&gt;	Cc: 
+&gt;	Subject: [sbml-discuss] Complex Species
+&gt;	
+&gt;	
+&gt;
+&gt;	Hello all, 
+&gt;
+&gt;	   I am rather new to this discussion list, but I had a question about 
+&gt;	representing complex species in SBML.   I am currently involved in a 
+&gt;	project in George Church's lab to build metabolic flux models from 
+&gt;	Biocyc, and I need to represent the relationship between genes and the 
+&gt;	enzyme complexes that catalyze reactions in SBML. Accordig the the SBML 
+&gt;	level 2 final draft, it appears that a full implementation of Complex 
+&gt;	species is being held off until Level 3..  Instead, it seems that the 
+&gt;	recommended way to represent the relationship between genes and enzymes 
+&gt;	is by using annotations: 
+&gt;
+&gt;	&lt;species id="="ACETYL-COA-CARBOXYLTRANSFER-CPLX" name="acetyl-CoA 
+&gt;	carboxyltransferase" compartment="cytoplasm" boundaryCondition="false"&gt; 
+&gt;
+&gt;	&lt;annotation xmlns:fbml="<A  HREF="http://arep.med.harvard.edu/fbml">http://arep.med.harvard.edu/fbml</A>"&gt; 
+&gt;
+&gt;	&lt;fbml:gene id="EG11647" name="accA"/&gt; 
+&gt;
+&gt;	&lt;fbml:gene id="EG10217" name="accD"/&gt; 
+&gt;
+&gt;	&lt;/annotation&gt; 
+&gt;
+&gt;	&lt;/species&gt; 
+&gt;
+&gt;	(FBML is my own faux namespace that I created just to get the job done). 
+&gt;	 My question is this: 
+&gt;
+&gt;	1. Is this the "approved" way to solve this problem until complex 
+&gt;	species have been worked out? 
+&gt;	2. Should I include the genes as an additional species in the ListOfSpecies? 
+&gt;	2. Is there a Complex Species working group that I can sign onto in 
+&gt;	order to get involved in future developments for Level 3? 
+&gt;
+&gt;
+&gt;	Sincerely, 
+&gt;
+&gt;	Jeremy Zucker 
+&gt;
+&gt;	-- 
+&gt;	============================================================= 
+&gt;	 Jeremy Zucker &lt;Jeremy_Zucker@dfci.harvard.edu&gt; 
+&gt;	 Bioinformatics Specialist, Research Computing 
+&gt;	 Dana-Farber Cancer Institute 
+&gt;	 44 Binney Street, JF 314 
+&gt;	 Boston, MA 02115 
+&gt;	 Tel: 617/632-6852 
+&gt;	 Cel: 781/820-1903 
+&gt;	 Fax: 617/632-4012 
+&gt;	 <A  HREF="http://research.dfci.harvard.edu">http://research.dfci.harvard.edu</A> 
+&gt;
+&gt;
+&gt;  
+&gt;
+
+-- 
+=============================================================
+ Jeremy Zucker
+ Bioinformatics Specialist,
+ Research Computing
+ Dana-Farber Cancer Institute        
+ 44 Binney Street, JF 314 
+ Boston, MA 02115
+ Tel: 617/632-6852
+ Cel: 781/820-1903
+ Fax: 617/632-4012
+ zucker@research.dfci.harvard.edu
+ <A  HREF="http://research.dfci.harvard.edu">http://research.dfci.harvard.edu</A>
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00573" HREF="msg00573.html">RE: [sbml-discuss] Complex Species</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert Sauro&quot; &lt;Herbert_Sauro@kgi.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00573.html">RE: [sbml-discuss] Complex Species</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00575.html">RE: [sbml-discuss] Complex Species</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00573.html">RE: [sbml-discuss] Complex Species</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00578.html">Re: [sbml-discuss] Complex Species</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00574"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00574"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,207 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;other] from a Tyson model a requirement for delta&#45;function discontinuities -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Sat, 27 Jul 2002 09:25:26 &#45;0700 -->
+<!--X-Message-Id: 000301c2358a$406d7770$d72a94d9@ANDREWLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-other] from a Tyson model a requirement for delta-function discont</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00012.html">Date Prev</A>][<A HREF="msg00014.html">Date Next</A>][<A HREF="msg00012.html">Thread Prev</A>][<A HREF="msg00014.html">Thread Next</A>][<A HREF="maillist.html#00013">Date Index</A>][<A HREF="threads.html#00013">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-other] from a Tyson model a requirement for delta-function discontinuities</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;SBML OTHER&quot; &lt;<A HREF="mailto:sbml-other@symbio.jst.go.jp">sbml-other@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-other] from a Tyson model a requirement for delta-function discontinuities</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 27 Jul 2002 17:25:39 +0100</LI>
+<LI>Importance: Normal</LI>
+<LI><em>Organization</em>: ERATO Kitano</LI>
+<LI>Reply-To: &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Folks
+
+It appears that Tyson etal have been using an interesting 
+form of discontinuity in their models, using a feature of XPP
+
+I have taken most of the following from
+<A  HREF="http://www.math.pitt.edu/~bard/bardware/xpp/help/xpphelp.html">http://www.math.pitt.edu/~bard/bardware/xpp/help/xpphelp.html</A>
+
+quote:
+
+Delta functions and all that 
+----------------------------
+
+XPP has a way of dealing with delta-function discontinuities. XPP uses
+global flags which check for events and act on variables accordingly.
+Here is an equation due to John Tyson for the cell cycle: 
+
+u' = k4 (v-u)(a + u2) - k6 
+v' = k1 -k6 u 
+m' = b m 
+
+with the condition that when u falls below 0.2 the mass is halved. We
+tell XPP to look for crossings of u and to cut the mass in half. Here is
+the ODE file 
+
+# tyson.ode
+init u=.0075,v=.48,m=1
+p k1=.015,k4=200,k6=2,a=.0001,b=.005
+u'=  k4*(v-u)*(a+u^2) - k6*u
+v'= k1*m - k6*u
+m'= b*m
+global 1 {0.2-u} {m=.5*m}
+@ total=1000,nout=10
+@ yp=m,xhi=1000,ylo=0,yhi=2 
+done
+
+----------------------------------
+
+end of quote
+
+note that there is a bigger example in 
+Novak, B., Pataki, Zs., Ciliberto A. and Tyson, J. J. (2001):
+Mathematical
+model of the cell division cycle of fission yeast. Chaos, 11, 277-286
+
+The XPP documentation defines global as follows:
+
+quote:
+
+global &lt;sign&gt; &lt;condition&gt; {&lt;name1&gt;=&lt;form1&gt;;...}
+
+defines a global flag allowing XPP to implement delta functions. If
+sign=1 and condition changes from negative to positive or if sign=-1 and
+condition changes from positive to negative, or if sign=0 and condition
+vanishes identically, then each of the variables, name is immediately
+changed to the value of formula. For example: 
+global 1 x-1 {x=0;y=y+a*sin(y)}
+
+end of quote
+
+I have a number of questions in no particular order:
+
+What does "sign=0 and condition vanishes identically" mean?
+Guess: condition becomes zero exactly
+
+Is this a useful construct?
+
+Are there better ways to represent this using existing
+SBML structures?
+
+How do you model this in CellML, if at all?
+
+Given that we're introducing discontinuities into
+level 2 is this functionality difficult to implement?
+
+In your honest opinion which level should this be included in?
+
+A possible representation of this in SBML maybe:
+
+model
+	...
+	event : Event[0..n]
+	...
+
+Event
+	math:math : MathML
+	trigger : { "toPositive", "toNegative", "toZero" }
+	assignment : Assignment[1..n]
+
+Assignment
+	variable : identifier
+	math:math : MathML
+
+identifier can refer to any variable math entity in
+SBML: species, compartment, parameter
+
+e.g.
+global 1 {0.2-u} {m=.5*m}
+
+maps to
+
+&lt;listOfEvents&gt;
+	&lt;event trigger="toPositive"&gt;
+		&lt;math:math&gt;
+			&lt;math:apply&gt;
+				&lt;math:minus/&gt;
+				&lt;math:cn&gt; 0.2 &lt;/math:cn&gt;
+				&lt;math:ci&gt; u &lt;/math:ci&gt;
+			&lt;/math:apply&gt;
+		&lt;/math:math&gt;
+		&lt;listOfAssignments&gt;
+			&lt;assignment variable="m"&gt;
+				&lt;math:math&gt;
+					&lt;math:apply&gt;
+						&lt;math:times/&gt;
+						&lt;math:cn&gt; 0.5 &lt;/math:cn&gt;
+						&lt;math:ci&gt; m &lt;/math:ci&gt;
+					&lt;/math:apply&gt;
+				&lt;/math:math&gt;			
+			&lt;/assignment&gt; 
+		&lt;/listOfAssignments&gt;
+	&lt;/event&gt;
+&lt;/listOfEvents&gt;
+
+any comments?
+
+yours Andrew
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00012.html">[sbml-other] boundary conditions and rules</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00014.html">[sbml-other] clarification on interaction of algebraic rules and variable assignments</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00012.html">[sbml-other] boundary conditions and rules</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00014.html">[sbml-other] clarification on interaction of algebraic rules and variable assignments</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00013"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00013"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

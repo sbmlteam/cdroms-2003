@@ -1,0 +1,199 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] SBML Level 2 &#45; attributes of MathML  elements -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Thu, 12 Jun 2003 15:56:11 &#45;0700 -->
+<!--X-Message-Id: 002101c33135$aa36c650$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] SBML Level 2 - attributes of MathML  elements</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00459.html">Date Prev</A>][<A HREF="msg00461.html">Date Next</A>][<A HREF="msg00459.html">Thread Prev</A>][<A HREF="msg00461.html">Thread Next</A>][<A HREF="maillist.html#00460">Date Index</A>][<A HREF="threads.html#00460">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] SBML Level 2 - attributes of MathML  elements</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] SBML Level 2 - attributes of MathML  elements</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 12 Jun 2003 23:55:03 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Folks
+
+The current SBML Level 2 specification document doesn't
+define the valid set of attributes and attribute values for
+MathML elements.
+
+I believe this is significant - its an oversight.
+
+The following are suggested restrictions on the attributes
+of MathML attributes.  The aim is to restrict semantics
+to only those defined in SBML and MathML specifications;
+and limit number types to those that will be actually used
+in SBML models and SBML supporting simulators.
+
+Please comment on this before
+Wednesday 9am BST (UK Time).
+
+Generic MathML attributes
+-------------------------
+
+attribute - definitionURL 
+-------------------------
+see
+<A  HREF="http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#id.4.3.2.3">http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#id.4.3.2.3</A>
+
+URL or URI pointing to an alternative definition.
+
+I suggest we ban this attribute on all elements apart from
+csymbol.  This limits the semantics of MathML
+element to those defined in the MathML and SBML specifications only
+On csymbol this attribute can only take those values listed in the
+SBML specification
+
+attribute - encoding 
+--------------------
+see
+<A  HREF="http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#id.4.3.2.4">http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#id.4.3.2.4</A>
+
+Syntax of the alternative definition.
+
+I suggest we ban this attribute on all elements apart from
+csymbol.  This limits the semantics of MathML
+element to those defined in the MathML and SBML specifications only
+On csymbol this attribute can only take the value "text"
+
+attributes - class, style, id and other
+---------------------------------------
+
+All content elements support [these] general attributes that can be used
+to modify the rendering of the markup
+
+these are allowed by can be ignored by a parser
+
+Attributes of cn elements
+=========================
+
+see <A  HREF="http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#contm.cn">http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#contm.cn</A>
+
+This is significant as it defines the forms/types
+that can be used to define numbers in MathML expressions
+
+attribute - type 
+----------------
+see
+<A  HREF="http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#contm.typeat">http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#contm.typeat</A>
+trib
+
+Allowed values are "e-notation", "real", "integer", "rational",
+"complex-cartesian", "complex-polar", "constant" 
+
+The default value is "real"
+
+I think we should restrict the valid types to "e-notation", "real",
+"integer", "rational"
+
+"constant" is effectively deprecated in the MathML V2 standard
+we should use the constant elements instead.
+The complex types don't seem useful in the current form of SBML L2.
+
+To support "e-notation" and "rational" we need to introduce the 'sep'
+element to the list of valid MathML element in SBML.
+(rational is useful for supporting stoichiometry)
+
+valid SBML examples:
+
+&lt;cn type="real"&gt; 12345.7 &lt;/cn&gt;
+&lt;cn&gt; 12345.7 &lt;/cn&gt;
+&lt;cn type="integer"&gt; 12345 &lt;/cn&gt;
+&lt;cn type="rational"&gt; 12342 &lt;sep/&gt; 2342342 &lt;/cn&gt;
+&lt;cn type="e-notation"&gt; 12.3 &lt;sep/&gt; 5 &lt;/cn&gt; 
+
+note that the following is not valid in MathML:
+
+&lt;cn type="real"&gt; 12345.7e4 &lt;/cn&gt;
+
+attribute - base 
+----------------
+see
+<A  HREF="http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#id.4.3.2.1">http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#id.4.3.2.1</A>
+
+Number (CDATA for XML DTD) between 2 and 36. 
+
+I suggest we ban this attribute - sticking with the default of 10
+
+Attributes of ci elements
+=========================
+
+see <A  HREF="http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#contm.ci">http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#contm.ci</A>
+
+in short I believe we should ban all attributes of ci elements:
+Symbol type should always be inferred from the symbol's SBML definition.
+
+Thanks to Ben Bornstein for spotting the issues raised in this email.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00459.html">[sbml-discuss] SBML Hackathon Announcement</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00461.html">[sbml-discuss] DWG: Suggestion for layout extension</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00459.html">[sbml-discuss] SBML Hackathon Announcement</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00461.html">[sbml-discuss] DWG: Suggestion for layout extension</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00460"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00460"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,173 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: ` -->
+<!--X-From-R13: [vxr Vhpxn <zuhpxnNpnygrpu.rqh> -->
+<!--X-Date: Wed, 15 Oct 2003 11:00:04 &#45;0700 -->
+<!--X-Message-Id: R02000200&#45;1026&#45;634ADFFEFF3911D7A83D0003936C4D62@[131.215.42.226] -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>`</TITLE>
+<LINK REV="made" HREF="mailto:mhucka@caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00698.html">Date Prev</A>][<A HREF="msg00700.html">Date Next</A>][<A HREF="msg00703.html">Thread Prev</A>][<A HREF="msg00701.html">Thread Next</A>][<A HREF="maillist.html#00699">Date Index</A>][<A HREF="threads.html#00699">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>`</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: `</LI>
+<LI><em>From</em>: Mike Hucka &lt;<A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 15 Oct 2003 10:59:56 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Approved: zorozoro
+Received: from water-ox.its.caltech.edu (steelemr-loadb-nat-49 [131.215.49.69])
+    by chamber.cco.caltech.edu (8.12.10/8.12.10) with ESMTP id h9FD3xB4001989
+    for &lt;sbml-discuss@legacy-spool-smtp.its.caltech.edu&gt;; Wed, 15 Oct 2003 06:03:59 -0700 (PDT)
+Received: by water-ox.its.caltech.edu (Postfix)
+    id 0E48626AC53; Wed, 15 Oct 2003 06:03:59 -0700 (PDT)
+Delivered-To: sbml-discuss@caltech.edu
+Received: from fire-dog (fire-dog [192.168.1.4])
+    by water-ox-postvirus (Postfix) with ESMTP id DA3E726AC40
+    for &lt;sbml-discuss@caltech.edu&gt;; Wed, 15 Oct 2003 06:03:58 -0700 (PDT)
+Received: from water-ox ([192.168.1.10])
+    by fire-dog (MailMonitor for SMTP v1.2.2 ) ;
+    Wed, 15 Oct 2003 06:03:57 -0700 (PDT)
+Received: from almaren.bioinformatics.vt.edu (almaren.bioinformatics.vt.edu [128.173.97.24])
+    by water-ox.its.caltech.edu (Postfix) with ESMTP id 5D4DB26AC40
+    for &lt;sbml-discuss@caltech.edu&gt;; Wed, 15 Oct 2003 06:03:57 -0700 (PDT)
+Received: from gandalf (gandalf.bioinformatics.vt.edu [128.173.98.51])
+    by almaren.bioinformatics.vt.edu (8.12.10/8.12.8) with SMTP id h9FD3skR000987;
+    Wed, 15 Oct 2003 09:03:54 -0400
+Date: Wed, 15 Oct 2003 09:03:54 -0400
+From: Stefan Hoops &lt;shoops@vt.edu&gt;
+To: sbml-discuss@caltech.edu
+Subject: Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification on
+ thegenerated SBML model
+Message-Id: &lt;<A HREF="msg00700.html">20031015090354.57a15184.shoops@vt.edu</A>&gt;
+In-Reply-To: &lt;601BBB4D9640CB4693A2384E4B37872E0DD770@dell2650-0550.kgi.edu&gt;
+References: &lt;601BBB4D9640CB4693A2384E4B37872E0DD770@dell2650-0550.kgi.edu&gt;
+Organization: Virginia Bioinformatics Institute
+X-Mailer: Sylpheed version 0.9.6claws7 (GTK+ 1.2.10; sparc-sun-solaris2.8)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-VBI-MailScanner-Information: Please contact the ISP for more information
+X-VBI-MailScanner: Found to be clean
+X-Spam-Status: No, hits=-2.5 tagged_above=-100000.0 required=5.0
+ tests=EMAIL_ATTRIBUTION, IN_REP_TO, QUOTED_EMAIL_TEXT, REFERENCES,
+ REPLY_WITH_QUOTES
+X-Spam-Level: 
+
+Hello Herbert,
+
+I think you do not have to change your software to much. Doesn't JDesigner use the notion of 'Modifiers' in the graphical presentation?
+If so just write out that knowledge. You surely have means to do so and the layout portion of SBML will have similar requirements.
+
+I agree that we have to look at existing software and the reel users of SBML :) before we make a decision. But as the discussion showed a 'List of Modifiers' is meaningful. I am quite sure that Gepasi can implement it, but if it will is an other question (time and effort versus need). I still would consider Gepasi and tools like JDesigner and Jarnac part of the core drivers of SBML even if they not fully support all new enhancements.
+
+We have to realize that the exchange of models through SBML between different tools is a lossy process. But it is still worth the effort. The human element can not be removed from the modeling process at least for now). As a tool builder I try to achieve a nearly lossless round trip read - write - read - write with SBML in COPASI. 
+
+Stefan
+On Tue, 14 Oct 2003 14:44:42 -0700
+Herbert Sauro &lt;Herbert_Sauro@kgi.edu&gt; wrote:
+
+&gt; 
+&gt; I assume you understand the problems that we've got, not all software currently has the ability to support the list of modifiers, I certaintly don't and I'm not sure how many do, Copasi might be one of the few and probably only by chance. I don't have time now to change the software and actually feel there are more interesting software issues to takle.
+&gt; 
+&gt; Herbert
+&gt; 
+&gt; 
+&gt; -----Original Message-----
+&gt; From: Stefan Hoops [<A  HREF="mailto:shoops@vt.edu">mailto:shoops@vt.edu</A>]
+&gt; Sent: Tuesday, October 14, 2003 2:12 PM
+&gt; To: sbml-discuss@caltech.edu
+&gt; Subject: Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification on
+&gt; thegenerated SBML model
+&gt; 
+&gt; 
+&gt; Hello Herbert,
+&gt; 
+&gt; &gt; software, this also includes Ben's C library. Presumably Copasi is set up 
+&gt; &gt; to  support the list of modifiers?
+&gt; &gt; 
+&gt; 
+&gt; Yes :)
+&gt; 
+&gt; -- 
+&gt; Stefan Hoops, Ph.D.
+&gt; Senior Research Associate
+&gt; Virginia Bioinformatics Institute
+&gt; 1880 Pratt Dr.
+&gt; Blacksburg, VA 24061, USA
+&gt; 
+&gt; Phone: (540) 231-1799
+&gt; Fax: (540) 231-2606
+&gt; Email: shoops@vt.edu
+
+
+-- 
+Stefan Hoops, Ph.D.
+Senior Research Associate
+Virginia Bioinformatics Institute
+1880 Pratt Dr.
+Blacksburg, VA 24061, USA
+
+Phone: (540) 231-1799
+Fax: (540) 231-2606
+Email: shoops@vt.edu
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00698.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00700.html">Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00703.html">Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00701.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on thegenerated SBML model</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00699"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00699"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

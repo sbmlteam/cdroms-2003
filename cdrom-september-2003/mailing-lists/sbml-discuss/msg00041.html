@@ -1,0 +1,145 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] RE: Some SBML 2.0 questions -->
+<!--X-From-R13: Bbhy @vryfra <c.avryfraNnhpxynaq.np.am> -->
+<!--X-Date: Tue, 29 Oct 2002 13:27:18 &#45;0800 -->
+<!--X-Message-Id: CDEEDC9A&#45;EB84&#45;11D6&#45;AD5B&#45;00306575E512@auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 001601c27f41$89d4c660$482994d9@ANDREWLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] RE: Some SBML 2.0 questions</TITLE>
+<LINK REV="made" HREF="mailto:p.nielsen@auckland.ac.nz">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00040.html">Date Prev</A>][<A HREF="msg00004.html">Date Next</A>][<A HREF="msg00040.html">Thread Prev</A>][<A HREF="msg00004.html">Thread Next</A>][<A HREF="maillist.html#00041">Date Index</A>][<A HREF="threads.html#00041">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] RE: Some SBML 2.0 questions</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] RE: Some SBML 2.0 questions </LI>
+<LI><em>From</em>: Poul Nielsen &lt;<A HREF="mailto:p.nielsen@auckland.ac.nz">p.nielsen@auckland.ac.nz</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 30 Oct 2002 10:24:27 +1300</LI>
+<LI>Cc: Poul Nielsen &lt;<A HREF="mailto:p.nielsen@auckland.ac.nz">p.nielsen@auckland.ac.nz</A>&gt;,  &quot;'Wayne Rindone'&quot; &lt;<A HREF="mailto:wrindone@arep.med.harvard.edu">wrindone@arep.med.harvard.edu</A>&gt;,  &quot;'George Church'&quot; &lt;<A HREF="mailto:church@arep.med.harvard.edu">church@arep.med.harvard.edu</A>&gt;,  &lt;<A HREF="mailto:dsegre@genetics.med.harvard.edu">dsegre@genetics.med.harvard.edu</A>&gt;,  &quot;'Cliff Shaffer'&quot; &lt;<A HREF="mailto:shaffer@shaffer.cs.vt.edu">shaffer@shaffer.cs.vt.edu</A>&gt;,  &quot;Biospice Model Definition Language&quot; &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;,  &quot;SBML&quot; &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+On Wednesday, Oct 30, 2002, at 00:51 Pacific/Auckland, Andrew Finney 
+wrote:
+&gt;
+&gt; SBML is designed to support a variety of network analyses and should
+&gt; continue be extended to support more types of analysis.  It
+&gt; is inevitable that there will data which essential for one type of
+&gt; analysis and not for another.
+&gt;
+&gt; An example of this is having kinetic laws optional: some connectivity
+&gt; analysis can be performed without these laws.
+&gt;
+&gt; Thus there is a strong argument that initialAmount should be also
+&gt; optional.
+&gt; This would be useful in that software can then decide if the model is
+&gt; appropriate to it.  At the moment software can't tell if the species
+&gt; amount is valid or not.
+&gt;
+&gt; In the meantime I think it is acceptable to have incorrect values for
+&gt; initial amounts although I would notify recipients that the model
+&gt; doesn't
+&gt; support certain analyses including conventional time based simulation.
+While the current specification for SBML forces one to include 
+initialAmount values, in support of Andrew I would strongly argue for 
+this to be made optional. Firstly, the initialAmount is a 
+simulation-specific, not a model-specific, attribute. Ideally, such 
+simulation-specific information should be kept in a separate file to 
+provide a clear separation of model (topology and mathematics) from 
+data (initial/boundary conditions) and combined with the model at 
+simulation time. Secondly, it is dangerous practice to include 
+information in a model that is not well supported by experiment, 
+especially if such information has been 'plucked out of the air'. While 
+your simulation may not depend on such values, other simulations using 
+the SBML representation of your model might well make use of the 
+values, unaware of their dubious heritage, yielding incorrect 
+simulation results. Should we consider this more closely at Stockholm?
+&gt;
+&gt;&gt; 3. Many of the fluxes have lower and upper bounds for their
+&gt;&gt; values (which
+&gt;&gt; can be both positive and negative).  These are not kinetic
+&gt;&gt; parameters but
+&gt;&gt; are related to rates.  Although these can be adjusted to
+&gt;&gt; study the effects
+&gt;&gt; of mutations, the default values are included in the native form flux
+&gt;&gt; list. How do we represent these in SBML 2.0?
+&gt;&gt;
+&gt;
+&gt; There is no current mechanism for representing this in SBML Level 2.
+&gt; Perhaps we should consider this for inclusion in this or future levels
+&gt; of SBML.
+...or allow a more general use of MathML so that such constraints can 
+be included explicitly. MathML's 'piecewise' function is able to 
+represent such mappings.
+&gt;
+&gt; In the meantime you should use a the annotation mechanism that is
+&gt; described
+&gt; in the SBML Level 2 document for this data.
+
+Poul Nielsen
+Bioengineering Institute
+University of Auckland
+New Zealand
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00040" HREF="msg00040.html">[sbml-discuss] RE: Some SBML 2.0 questions</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00040.html">[sbml-discuss] RE: Some SBML 2.0 questions</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00004.html">[sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00040.html">[sbml-discuss] RE: Some SBML 2.0 questions</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00004.html">[sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00041"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00041"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,318 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;arrays] reply to victoria -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Fri, 11 Jan 2002 15:33:20 &#45;0800 -->
+<!--X-Message-Id: OCEOLCAAEIFELNNEPMPLKEFCCIAA.afinney@cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-arrays] reply to victoria</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00002.html">Date Prev</A>][<A HREF="msg00004.html">Date Next</A>][<A HREF="msg00002.html">Thread Prev</A>][<A HREF="msg00004.html">Thread Next</A>][<A HREF="maillist.html#00003">Date Index</A>][<A HREF="threads.html#00003">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-arrays] reply to victoria</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-arrays@symbio.jst.go.jp">sbml-arrays@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-arrays] reply to victoria</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 11 Jan 2002 15:34:35 -0800</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Victoria
+
+I have comments below.  where I don't make comments assume I'm happy with
+the
+structures you used in your example.  Many thanks for your example.
+I'm impressed that you appear to have written a transformation to level 1
+for this representation.
+
+All the comments below are my initial opinions and may reflect
+a misunderstanding of your model.  Most of what I'm saying
+are gut feelings rather than facts.
+
+Interesting point: whilst I can see the point of using arrays for this
+example
+this example would probably be simplified if the connection formula
+was just a simple function which is used directly in the specie
+concentration rule.
+For reactions and rules this could be the way to go however if we want to
+create
+membrane compartments between adjacent cells in a grid then we need
+connections.
+I think your model is assuming symbols on connection are zero where the
+connection
+is not present: this kind of shows that a function
+would be more explicit.
+
+This is an important point: can we get away with just simple functions
+used inside formula's and discard the concept of connections?
+
+name attributes
+
+I don't like the use of [] in the 'name' attributes of elements.
+(I know I used it in my simple notaion but that wasn't SBML)
+It's redundant.  I think that the [] (without an indicies) should
+not be used.
+
+dimension
+
+These elements need to have an optional attribute 'symbol' which declares
+an integer symbol which runs over the range. see why below.
+(By default the range name becomes the symbol, you only need a symbol
+when the range is used more than once)
+
+connectionParameterRule
+
+I don't like the use of explict tags relating connections I'd prefer to add
+a mechanism like &lt;listOfDimensions&gt; to most elements in SBML level 1.
+
+specie
+
+I also don't like the use of s inheriting the array of the containing
+compartment
+I prefer the following explicit scheme:
+
+&lt;specie name="s" initialAmount="0" compartment="cell[ii]"&gt;
+	&lt;listOfDimensions&gt;
+		&lt;dimension symbol="ii", rangeReference="i"/&gt;
+		&lt;dimension rangeReference="i"/&gt;
+	&lt;/listOfDimensions&gt;
+&lt;specie/&gt;
+
+then you simply refer to an element of s as s[K][i]
+
+This means is possible to define species that occur in a subset of an
+array of compartments etc. And this mechanism can be used arbitarily across
+SBML
+for reactions for example.
+
+listOfInstances
+
+I think perhaps we need to do 2 things here:
+a) we need to use geometric attributes that are part of the geometric
+	package of features in level 2
+b) we need to have generic attributes for instances defined
+	using a defined xml attribute
+	ie so that parsers know what xml attributes to expect but can cope with
+	aribtory instance attributes
+
+so I suggest the following replace the listOfInstances block with:
+
+&lt;listOfAttributeAssignments&gt;
+	&lt;attributeAssignment id="1" attribute="x" value="3"/&gt;
+	&lt;attributeAssignment id="1" attribute="y" value="2"/&gt;
+	&lt;attributeAssignment id="2" attribute="x" value="2"/&gt;
+	&lt;attributeAssignment id="2" attribute="y" value="1"/&gt;
+	etc
+&lt;/listOfAttributeAssingments&gt;
+
+the values of the 'attribute' attribute can be arbitory but sbml level will
+define
+a set of predefined values with defined semantics for example geometric
+attributes.
+
+We may also need some rule based approach instead of explicit assignment.
+The above won't work for array's of hundreds of compartments.  In fact
+I would prefer this so that we have
+
+&lt;listOfAttributeAssignments&gt;
+	&lt;attributeAssignment attribute="x" value="K div 3 + 1"/&gt;
+	&lt;attributeAssignment attribute="y" value="K mod 3 + 1"/&gt;
+&lt;/listOfAttributeAssingments&gt;
+
+where div and mod are integer division and modulus respectively.
+
+specieConcentrationRule
+
+I think that the way you have written it this rule is an array so it ought
+to be
+written as:
+
+&lt;specieConcentrationRule specie="s[K][i]" type="rate"
+	formula=" etc "&gt;
+	&lt;listOfDimensions&gt;
+		&lt;dimension rangeReference = "K" /&gt;
+		&lt;dimension rangeReference = "i" /&gt;
+	&lt;/listOfDimensions&gt;
+&lt;/specieConcentrationRule&gt;
+
+To summarize I will produce the equilvent of your model using
+my proposals in a form without connections just using
+a formula:
+
+&lt;sbml level="2" version="0"&gt;
+  &lt;model name="GRN_Equations_20011220T111052"&gt;
+    &lt;listOfFunctions&gt;
+	&lt;function name="LAMBDA" formula ="( (abs(cell[I].x - cell[J].x) &lt;= 1) &amp;&amp;
+(abs(cell[I].y - cell[J].y) &lt;= 1) &amp;&amp; (I!=J))"&gt;
+		&lt;listOfFunctionArguments&gt;
+			&lt;argument name="cell"&gt;
+			&lt;argument name="I"&gt;
+			&lt;argument name="J"&gt;
+		&lt;listOfFunctionArguments&gt;
+	&lt;/function&gt;
+    &lt;/listOfFunctions&gt;
+    &lt;listOfRanges&gt;
+              &lt;range name="K" start="1" finish="9"/&gt;
+              &lt;range name="I" start="1" finish="9"/&gt;
+              &lt;range name="J" start="1" finish="9"/&gt;
+              &lt;range name="i" start="1" finish="3"/&gt;
+    &lt;/listOfRanges&gt;
+
+    &lt;listOfCompartments&gt;
+      &lt;compartment name="cell"&gt;
+	    &lt;listOfAttributeAssignments&gt;
+	       &lt;attributeAssignment attribute="x" value="K div 3 + 1"/&gt;
+		 &lt;attributeAssignment attribute="y" value="K mod 3 + 1"/&gt;
+	    &lt;/listOfAttributeAssingments&gt;
+          &lt;listOfDimensions&gt;
+              &lt;dimension rangeReference ="K" /&gt;
+          &lt;/listOfDimensions&gt;
+      &lt;/compartment&gt;
+    &lt;/listOfCompartments&gt;
+
+    &lt;listOfSpecies&gt;
+      &lt;specie name="s" initialAmount="0" compartmentReference="cell[ii]"&gt;
+        &lt;listOfDimensions&gt;
+           &lt;dimension symbol="ii" rangeReference ="i" /&gt;
+           &lt;dimension rangeReference ="i" /&gt;					  &lt;/listOfDimensions&gt;
+      &lt;/specie&gt;
+    &lt;/listOfSpecies&gt;
+
+    &lt;listOfParameters&gt;
+        &lt;parameter name="h" value="1"&gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="lambda" value="1"&gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="tau" value="1" &gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="Tin" value="1" &gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="TOne" value="1" &gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="Tout" value="1" &gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="TTwo" value="1"&gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+    &lt;/listOfParameters&gt;
+
+    &lt;listOfRules&gt;
+       &lt;specieConcentrationRule specie="s[K][i]" type="rate"
+            formula = "(
+                      (-lambda[i]*s[K][i])+
+                      sigmoid(  h[i]+s[K][:]*Tin[i][:]+
+                      sum{"j", "J",
+                         "LAMBDA(cell, K, j)*s[j][:]*Tout[i][:]"} +
+                      sum{"j", "J",
+                         "LAMBDA(cell, K,
+j)*s[j][:]*s[K][:]*Tone[:][i]*Ttwo[i][:]"})
+                      )/tau[i]"&gt;
+		&lt;listOfDimensions&gt;
+			&lt;dimension rangeReference="K"/&gt;
+			&lt;dimension rangeReference="i"/&gt;
+		&lt;/listOfDimensions&gt;
+	&lt;/specieConcentrationRule&gt;
+    &lt;/listOfRules&gt;
+
+  &lt;/model&gt;
+&lt;/sbml&gt;
+
+I have introduced a function element which I hope is self explainatory.
+The sum construct is simply consists of three parts:
+- variable which runs over a range
+- the range reference
+- the formula to be summed
+
+yours Andrew Finney
+
+Visiting Associate
+ERATO Kitano Systems Biology Workbench Development Group
+Control and Dynamical Systems, MC 107-81
+California Institute of Technology
+Pasadena
+CA 91125
+USA
+626 395 6911
+afinney@cds.caltech.edu <A  HREF="http://www.cds.caltech.edu/~afinney">http://www.cds.caltech.edu/~afinney</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00002.html">[sbml-arrays] more from Victoria</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00004.html">FW: [sbml-arrays] reply to victoria</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00002.html">[sbml-arrays] more from Victoria</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00004.html">FW: [sbml-arrays] reply to victoria</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00003"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00003"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,171 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] SBML Level 2 survey results -->
+<!--X-From-R13: Inlar Dvaqbar <jevaqbarNnerc.zrq.uneineq.rqh> -->
+<!--X-Date: Thu, 29 May 2003 13:16:16 &#45;0700 -->
+<!--X-Message-Id: Pine.OSF.3.94.1030529160010.26441A&#45;100000@arep.med.harvard.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.53.0305291533550.10860@shaffer.cs.vt.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] SBML Level 2 survey results</TITLE>
+<LINK REV="made" HREF="mailto:wrindone@arep.med.harvard.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00387.html">Date Prev</A>][<A HREF="msg00389.html">Date Next</A>][<A HREF="msg00387.html">Thread Prev</A>][<A HREF="msg00417.html">Thread Next</A>][<A HREF="maillist.html#00388">Date Index</A>][<A HREF="threads.html#00388">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] SBML Level 2 survey results</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Cliff Shaffer &lt;<A HREF="mailto:shaffer@shaffer.cs.vt.edu">shaffer@shaffer.cs.vt.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] SBML Level 2 survey results</LI>
+<LI><em>From</em>: Wayne Rindone &lt;<A HREF="mailto:wrindone@arep.med.harvard.edu">wrindone@arep.med.harvard.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 29 May 2003 16:20:09 -0400 (EDT)</LI>
+<LI>Cc: SBML &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi Cliff,
+
+      I mostly agree with your suggestion (with a minor hypothetical
+quibble).  It does not seem necessary to immediately invalidate previously
+valid SBMl level 2 models (like the current incarnation of the E coli flux
+balance model) where the denominator field was used.  And I gather from
+some of the discussion on this issue that stochastic modelers might wish
+for separate numerator and denominator values with a meaning not related
+to trying to represent a non-integer stoichimetry that is not amenable to
+exact representation in a single number (like 2/3).
+
+      For every flux reaction stoichiometry that I have seen a simple
+float number is perfectly adequate (and more natural than the denominators
+I had to use), but I can imagine having a fractional stoichiometry like
+2/3 where for that stoichimetry and no others one might wish to use the
+precise fraction.  So I do not think it necessary to limit all
+stoichiometries in a given model to provide denominators in all cases or
+in no cases.
+
+      But we all understand that in the future we need to have a way to
+designate what sort of model a given SBML document represents.  I expect
+the way for doing this will come from the work of the Controlled
+Vocabulary working group (anyone else notice that was left out of the list
+in the meeting minutes, although it showed up with Mike Hucka in charge in
+a separate listing of all the working groups that was posted?).  Perhaps
+the reaction type working group will also think about this, but in terms
+of the flux balance model, I can imagine classifying reactions as either
+metabolic or transport, it is the type of the model (rather than the
+reaction type) that indicates reactions contain flux limits rather than
+rate equations and/or amounts or concentrations. 
+
+						Wayne
+
+On Thu, 29 May 2003, Cliff Shaffer wrote:
+
+&gt; 
+&gt; Given that we need a quick resolution to these issues, and given that
+&gt; there was not a clear consensus on stoichiometries, let me lay out what I
+&gt; think we need to do and why.
+&gt; 
+&gt; If I understand things correctly, we have different modelers with
+&gt; different needs, as follows:
+&gt; 
+&gt; a) integer stoichiometries (integer in numerator)
+&gt; b) rational stoichiometries (integers in numerator and denominator)
+&gt; c) real stoichiometries (floating point in numerator)
+&gt; d) a variable name for the stoichiometry, whose value is defined
+&gt;    elsewhere, whose result could be any of the above
+&gt; e) an expression for the stoichiometry, whose result could be any of the
+&gt;    above
+&gt; 
+&gt; Did I miss anything?
+&gt; 
+&gt; Now the point is that different modelers need different things. To express
+&gt; these different things, at the physical level it looks like a hodge-podge
+&gt; of fields. But the fact is that, for example, nobody needs a floating
+&gt; point numerator AND an integer denominator (for example). Am I right?
+&gt; 
+&gt; For the immediate decision, I think its clear that we need to permit the
+&gt; full flexibility necessary at a physical level to support the various
+&gt; logical expressions represented by a-c. That means we definately need
+&gt; floating point numerators and (optional) integer denominators. The only
+&gt; interesting debate I see is whether we go further and permit IDs or even
+&gt; expressions. For the immediate future (i.e., deciding by June 1), I don't
+&gt; care all that much whether we permit IDs and expressions, though I think
+&gt; an ID would be nice. For the longer term (meaning for a FUTURE release),
+&gt; its clear to me that many of the problems will resolve themselves once we
+&gt; have the ability to declare model types or features. In the future, models
+&gt; should be declared such that its clear whether they have rational
+&gt; stoichiometries OR floating point stoichiometries, and that it WILL be an
+&gt; either/or situation for any given model.
+&gt;              -- Cliff
+&gt; 
+&gt; --
+&gt; Cliff Shaffer, Associate Professor          Phone: (540) 231-4354
+&gt; Department of Computer Science              Email: shaffer@cs.vt.edu
+&gt; Virginia Tech, Blacksburg, VA 24061-0106    WWW:   www.cs.vt.edu/~shaffer
+&gt; -------------------------------------------------------------------------
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00417" HREF="msg00417.html">Re: [sbml-discuss] SBML Level 2 survey results</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00387" HREF="msg00387.html">Re: [sbml-discuss] SBML Level 2 survey results</A></STRONG>
+<UL><LI><EM>From:</EM> Cliff Shaffer &lt;shaffer@shaffer.cs.vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00387.html">Re: [sbml-discuss] SBML Level 2 survey results</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00389.html">Re: [sbml-discuss] survey results - membrabe</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00387.html">Re: [sbml-discuss] SBML Level 2 survey results</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00417.html">Re: [sbml-discuss] SBML Level 2 survey results</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00388"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00388"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

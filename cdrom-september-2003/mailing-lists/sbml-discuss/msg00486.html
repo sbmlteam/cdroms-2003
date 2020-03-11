@@ -1,0 +1,258 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] [Hybrid] Re: Hybrid Models Working Group (fwd) -->
+<!--X-From-R13: Sq Tenax <rsenaxNzpf.nay.tbi> -->
+<!--X-Date: Mon, 16 Jun 2003 05:37:52 &#45;0700 -->
+<!--X-Message-Id: 20030616123544.GW456@mcs.anl.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group (fwd)</TITLE>
+<LINK REV="made" HREF="mailto:efrank@mcs.anl.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00489.html">Date Prev</A>][<A HREF="msg00487.html">Date Next</A>][<A HREF="msg00480.html">Thread Prev</A>][<A HREF="msg00487.html">Thread Next</A>][<A HREF="maillist.html#00486">Date Index</A>][<A HREF="threads.html#00486">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group (fwd)</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group (fwd)</LI>
+<LI><em>From</em>: Ed Frank &lt;<A HREF="mailto:efrank@mcs.anl.gov">efrank@mcs.anl.gov</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 16 Jun 2003 07:35:44 -0500</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+----- Forwarded message from Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt; -----
+
+Subject: Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group
+From: Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;
+To: Vijay Saraswat &lt;saraswat@cse.psu.edu&gt;
+Cc: shafi@sfc.keio.ac.jp, Thomas Kiehl &lt;kiehl@research.ge.com&gt;,
+   m.j.1.schilstra@herts.ac.uk, "'Takeshi Sakurada'" &lt;sakurada@sfc.keio.ac.jp&gt;,
+   "'Ed Frank'" &lt;efrank@mcs.anl.gov&gt;, "'Mike McCollum'" &lt;jmccoll2@utk.edu&gt;,
+   "'Greg Peterson'" &lt;gdp@utk.edu&gt;, "'Stefan Hoops'" &lt;shoops@vt.edu&gt;,
+   sbml-discuss@caltech.edu
+Date: 16 Jun 2003 03:47:04 +0900
+
+Hi Vijay,
+
+
+Thank you for your excellent overview of the hybrid systems in computer science.
+In computer science 'hybrid' usually means mixing continuous/discrete components.
+This is undoubtedly the most important 'hybrid' among many possible 'hybrids' I suggested
+in the previous messages.
+
+One serious cultural dissociation between 'computer science' and 'computational sciences'
+has been that in computer science simulation usually means running discrete-event or
+discrete-time (such as conventional cellular automata) systems or logic programming,
+while in computational science it almost always means numerically 
+solving differential equations.
+
+My impression is (though I'm not an expert) that CS people tend to prefer induction
+to dynamic simulation.   For example, some people are using temporal logic and
+collapsed automata to verify propositions on dynamic models.   (Of course some
+like simulation, and some computational scientists prefer analytical solutions to
+brute force computation. )
+
+As maria gave a good summary, Zeigler's discrete event simulation theory was
+extended to include continuous phenomena into the discrete-event world view
+in late 90's.   (Actually it was published in 2000.) A virtue of his framework, as
+maria pointed out, is that he makes a clear distinction between model and simulator.
+
+Another possible view, however, is to see simulation algorithms as indivisible
+parts of the models.    Every simulation model reflects its modeler's understanding
+of certain real phenomenon, and it can be thought that some part of the 'understanding'
+is implicitly coded in the computational procedure, or the simulation algorithm.
+The same model can produce completely different results when driven by different
+algorithms, and as we better understand the nature of the phenomenon, we becomes
+to be able to create more suitable algorithms, or just to choose more appropriate algorithms
+correctly.
+
+I don't think these two views conflict.   These are just parallel understanding of the
+same thing.
+
+Recent versions E-Cell deeply reflects the latter view. Also, that is why I distinguished
+'hybrid' and 'multi-algorithm' simulation frameworks in my previous message.   
+By 'multi-algorithm' I mean to be able to have multiple components (sub-models) that
+are sometimes specially designed for specific types of algorithms, and driven by 
+these algorithms.   
+
+I believe this is one of the most important abilities of cell biology simulators, and that is
+not necessarily required for biochemical simulators.
+For example, a model of gene expression in form of S-System or GMA canonical
+differential equations, which is often solved by the special ESSYNS algorithm,
+cannot be run with Gillespie algorithm.   Or, a fluid dynamics model of 
+protoplasmic streaming  (which often involves solid-fluid interaction) described as a set of
+navie-stokes equations cannot be simply ported to ODE solvers in an efficient form.
+Models include algorithms.
+
+Importance of the 'continuous/discrete hybrid' of course does not decreases
+here.  Rather the multi-algorithm framework is-a hybrid (I mean it is a subclass),
+and it is indispensable to elegantly design and implement it.
+
+
+regards,
+-sha
+
+
+&gt; Folks -- I think this discussion does belong to the main mailing list. I 
+&gt; am cc'ing my response to the main list.
+&gt; 
+&gt; There are of course many notions of Hybrid. The issue of what is the 
+&gt; mainline definition and what is not usually gets quite politicized. Let 
+&gt; me say that there is a community of folks in Computer Science and 
+&gt; Control Theory who have been around for about ten years and who call 
+&gt; themselves the "Hybrid Systems" people.  The sixth workshop, for 
+&gt; instance, was held this year in Europe.  See e.g. 
+&gt; <A  HREF="http://www.stanford.edu/group/hscc2002/">http://www.stanford.edu/group/hscc2002/</A>
+&gt; 
+&gt; The notion of hybrid here is this. A core divide at the heart of 
+&gt; computer science is continuous vs discrete. Traditionally, computer 
+&gt; science has been about discrete phenomena --- Turing machines, graphs, 
+&gt; lambda calculus, objects, discrete automata what have you. Think of them 
+&gt; as discrete, countable data-structures with a notion of discrete change. 
+&gt; The new state of the system obtained in "one step" is the same as the 
+&gt; previous state with a finite number of "cells" modified. Traditonally 
+&gt; logic (as in classical logic, intuitionistic logic, linear logic...) 
+&gt; deals with such phenomena as well.
+&gt; 
+&gt; Whereas classical mathematics, as developed over centuries and applied 
+&gt; to engineering and the analysis of physical phenomena is about 
+&gt; continuous systems -- functions ove the reals (famously not countable!), 
+&gt; with notions of "smooth change", e.g. epsilon-delta. Differential 
+&gt; equations of various kinds -- algebraic, partial, ordinary, stochastic 
+&gt; are the favored means of modeling.
+&gt; 
+&gt; Hybrid systems seek to combine this fundamental tension at the heart of 
+&gt; computer science and logic. This area seeks to develop algorithms and 
+&gt; techniques for representing and reasoning about systems that are best 
+&gt; described as combining discrete and continuous change. Consider, for 
+&gt; instance, systems that exist in a countable number of "phases", and are 
+&gt; subject to continuous evolution in these phases. Transitions between 
+&gt; these phases are instantaneous and discrete -- typically they are 
+&gt; triggered when some continuous variables cross thresholds. Such systems 
+&gt; arise very naturally in practice when you have "controlled" continuous 
+&gt; phenomena -- otherwise continuously varying phenomena that is subject to 
+&gt; discrete control laws that when triggered can fundamentally change the 
+&gt; dynamics of the system (and hence the way this is modeled).
+&gt; 
+&gt; The relevance of hybrid systems to biology has been pointed out in a 
+&gt; number of papers. The first was:
+&gt; 
+&gt; H Matsuno, A Doi, M Nagasaki and S Miyano "Hybrid petri net 
+&gt; representations of gene regulatory networks", Pacfiic Symposium on 
+&gt; Biocomputing, 5:333-349, 2000.
+&gt; 
+&gt; R Alur, C Belta, F Ivancic, V Kumar, M Mintz, G J Pappas, H Rubin and J 
+&gt; Schung "Hybrid modeling and simulation of biomolecual networks" In 
+&gt; Hyurid Systmes: Computation and Control, HSCC 2001, Rome Italy, pages 
+&gt; 19-32, Springer Verlag LNCS 2034, 2001.
+&gt; 
+&gt; A typical example is gene expression. Expression of a gene A may 
+&gt; activate expression of another gene, whereas above a threshold it may 
+&gt; suppress the gene.
+&gt; 
+&gt; A lucid account is given in the attached paper:
+&gt; 
+&gt; A Bockmayr and A Courtois "Using hybrid concurrent constraint 
+&gt; programming to model dynamic biological systems", ICLP 2002.
+&gt; 
+&gt; This shows how various biological phenomena may be modeling as hybrid 
+&gt; systems in HCC, the framework my colleagues and I have been developing 
+&gt; for about seven years.
+&gt; 
+&gt; Best,
+&gt; Vijay
+&gt; 
+&gt; 
+&gt; 
+&gt; Thomas Kiehl wrote:
+&gt; 
+&gt; &gt; Thanks again Kouichi for your insight.  It is very useful to define 
+&gt; &gt; what it is that we mean by "hybrid" and whether or not that should 
+&gt; &gt; effect the definition of a model.
+&gt; &gt;
+&gt; &gt; We have a system which we call "hybrid" as well.  I'm not sure by the 
+&gt; &gt; definitions you give whether it falls into the mixed-mode or 
+&gt; &gt; multi-algorithm category.
+&gt; &gt;
+&gt; &gt; We assign the reactions in the model to be simulated using either a 
+&gt; &gt; continuous method (ode's) or to be handled stochastically by a 
+&gt; &gt; gillespie/gibson approach.   These methods run simultaneously and are 
+&gt; &gt; synchronized by some scheme.  We also handle what could be called 
+&gt; &gt; events and even delay differential equations.  Issues involved here 
+&gt; &gt; include synchronization of time steps as well as state variables.
+&gt; &gt;
+&gt; &gt; This assignment of reactions to "reaction engines" (that is the 
+&gt; &gt; solution method) is done outside of sbml in our simulator's 
+&gt; &gt; configuration file.  Thus the model remains portable.  Also this 
+&gt; &gt; allows us to run various experiments by changing the set of reactions 
+&gt; &gt; assigned to each method.
+&gt; &gt;
+&gt; &gt; Attached find a relatively recent version of a paper which we have 
+&gt; &gt; submitted and revised for the journal Bioinformatics.
+&gt; &gt;
+&gt; &gt; peace,
+&gt; &gt; Tom
+&gt; &gt;
+
+----- End forwarded message -----
+
+-- 
+Ed Frank                                            Office:  (630) 252-4548
+<A  HREF="http://hep.uchicago.edu/~efrank">http://hep.uchicago.edu/~efrank</A>                     Fax   :  (630) 252-5986
+Division of Math &amp; Computer Science                 Argonne National Laboratory
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00489.html">[sbml-discuss] RE: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00487.html">[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00480.html">[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00487.html">[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00486"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00486"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

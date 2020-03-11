@@ -1,0 +1,246 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;arrays] reply to victoria -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Thu, 24 Jan 2002 17:05:29 &#45;0800 -->
+<!--X-Message-Id: OCEOLCAAEIFELNNEPMPLIEJICIAA.afinney@cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-arrays] reply to victoria</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00004.html">Date Prev</A>][<A HREF="msg00006.html">Date Next</A>][<A HREF="msg00004.html">Thread Prev</A>][<A HREF="msg00006.html">Thread Next</A>][<A HREF="maillist.html#00005">Date Index</A>][<A HREF="threads.html#00005">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-arrays] reply to victoria</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;SBML Arrays&quot; &lt;<A HREF="mailto:sbml-arrays@symbio.jst.go.jp">sbml-arrays@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-arrays] reply to victoria</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 24 Jan 2002 17:06:49 -0800</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Victoria
+
+Please use the sbml-arrays email address above for this discussion.
+
+To answer your various points, in this I'm refering to the example model I proposed:
+
+1)
+
+a) the dimension elements have a optional symbol attribute which declares the symbol that
+runs over the range.  This is ONLY needed if the range is used twice in the
+same listOfDimensions.
+
+b) I agree that the '.' notation defining inside and outside relationships is
+intuitive.  We hope to define a whole set of features that allow those relationships
+to be defined.  Those features will be discussed on the sbml-modularity mailing list.
+Those features allow a submodel to be defined and then reused.
+I would prefer for the moment to keep things simple for this discussion and not use that
+feature until we get a better handle on how that will work.
+
+2) Fine By me
+
+3) Fine By me
+
+4) A point of clarification your example when recast didn't need to use any explicit connection mechanism just a function that's
+included inside a rule.
+
+I propose that connections are best thought of as sparse arrays.
+I propose that any element that can have a listOfDimensions element can have an elementOccurs
+element which has a formula which defines when the array element is present in the array.
+
+This scheme can then be applied to all types of objects without restriction.
+
+This is important because for example we might want a simple model where reactions
+occur at connections and in a complex model a whole compartment may occur on connections between
+other compartments.
+
+5) I think we need to have definable functions mainly so we don't end up with a profusion of
+standard functions defined inside the language.  I think the implementation cost will
+be negligable compared with the effort of implementing some of the other features proposed
+for SBML level 2.
+
+I think it will turn out to offer good abstraction possibilities which will avoid
+the need for other more limited features.
+
+Last point
+
+Upon reflection I think it may be possible to replace the use of attributeAssignments
+with functions.  Especially if we introduce a case statement syntax into functions.
+I prefer this solution.
+
+For example we can recast the example model as
+
+&lt;sbml level="2" version="0"&gt;
+  &lt;model name="GRN_Equations_20011220T111052"&gt;
+    &lt;listOfFunctions&gt;
+	&lt;function name="x" formula="K div 3 + 1"/&gt;
+		&lt;listOfFunctionArguments&gt;
+			&lt;argument name="K"&gt;
+		&lt;listOfFunctionArguments&gt;
+	&lt;/function&gt;
+	&lt;function name="y" formula="K mod 3 + 1"/&gt;
+		&lt;listOfFunctionArguments&gt;
+			&lt;argument name="K"&gt;
+		&lt;listOfFunctionArguments&gt;
+	&lt;/function&gt;
+	&lt;function name="LAMBDA" formula ="( (abs(x(I) - x(J)) &lt;= 1) &amp;&amp; (abs(y(I) - y(J) &lt;= 1) &amp;&amp; (I!=J))"&gt;
+		&lt;listOfFunctionArguments&gt;
+			&lt;argument name="I"&gt;
+			&lt;argument name="J"&gt;
+		&lt;listOfFunctionArguments&gt;
+	&lt;/function&gt;
+    &lt;/listOfFunctions&gt;
+    &lt;listOfRanges&gt;
+              &lt;range name="K" start="1" finish="9"/&gt;
+              &lt;range name="I" start="1" finish="9"/&gt;
+              &lt;range name="J" start="1" finish="9"/&gt;
+              &lt;range name="i" start="1" finish="3"/&gt;
+    &lt;/listOfRanges&gt;
+
+    &lt;listOfCompartments&gt;
+      &lt;compartment name="cell"&gt;
+          &lt;listOfDimensions&gt;
+              &lt;dimension rangeReference ="K" /&gt;
+          &lt;/listOfDimensions&gt;
+      &lt;/compartment&gt;
+    &lt;/listOfCompartments&gt;
+
+    &lt;listOfSpecies&gt;
+      &lt;specie name="s" initialAmount="0" compartmentReference="cell[ii]"&gt;
+        &lt;listOfDimensions&gt;
+           &lt;dimension symbol="ii" rangeReference ="i" /&gt;
+           &lt;dimension rangeReference ="i" /
+	  &lt;/listOfDimensions&gt;
+      &lt;/specie&gt;
+    &lt;/listOfSpecies&gt;
+
+    &lt;listOfParameters&gt;
+        &lt;parameter name="h" value="1"&gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="lambda" value="1"&gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="tau" value="1" &gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="Tin" value="1" &gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="TOne" value="1" &gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="Tout" value="1" &gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+        &lt;parameter name="TTwo" value="1"&gt;
+          &lt;listOfDimensions&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+             &lt;dimension rangeReference ="i"/&gt;
+          &lt;/listOfDimensions&gt;
+        &lt;/parameter&gt;
+    &lt;/listOfParameters&gt;
+
+    &lt;listOfRules&gt;
+       &lt;specieConcentrationRule specie="s[K][i]" type="rate"
+            formula = "(
+                      (-lambda[i]*s[K][i])+
+                      sigmoid(  h[i]+s[K][:]*Tin[i][:]+
+                      sum{"j", "J",
+                         "LAMBDA(K, j)*s[j][:]*Tout[i][:]"} +
+                      sum{"j", "J",
+                         "LAMBDA(K, j)*s[j][:]*s[K][:]*Tone[:][i]*Ttwo[i][:]"})
+                      )/tau[i]"&gt;
+		&lt;listOfDimensions&gt;
+			&lt;dimension rangeReference="K"/&gt;
+			&lt;dimension rangeReference="i"/&gt;
+		&lt;/listOfDimensions&gt;
+	&lt;/specieConcentrationRule&gt;
+    &lt;/listOfRules&gt;
+
+  &lt;/model&gt;
+&lt;/sbml&gt;
+
+yours Andrew Finney
+
+Visiting Associate
+ERATO Kitano Systems Biology Workbench Development Group
+Control and Dynamical Systems, MC 107-81
+California Institute of Technology
+Pasadena
+CA 91125
+USA
+626 395 6911
+afinney@cds.caltech.edu <A  HREF="http://www.cds.caltech.edu/~afinney">http://www.cds.caltech.edu/~afinney</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00004.html">FW: [sbml-arrays] reply to victoria</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00006.html">Re: [sbml-arrays]</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00004.html">FW: [sbml-arrays] reply to victoria</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00006.html">Re: [sbml-arrays]</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00005"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00005"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

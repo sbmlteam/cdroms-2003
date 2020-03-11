@@ -1,0 +1,145 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Someone please set me straight on this -->
+<!--X-From-R13: "Xbret D. Irvzne" <X.IrvzneNgh&#45;of.qr> -->
+<!--X-Date: Wed, 11 Jun 2003 05:13:37 &#45;0700 -->
+<!--X-Message-Id: 3EE71CE4.6010601@tu&#45;bs.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 16102.31398.951919.574548@erato1.cds.caltech.edu -->
+<!--X-Reference: 3EE6F85F.10107@tu&#45;bs.de -->
+<!--X-Reference: 16103.557.115989.696091@erato1.cds.caltech.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Someone please set me straight on this</TITLE>
+<LINK REV="made" HREF="mailto:J.Weimar@tu-bs.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00440.html">Date Prev</A>][<A HREF="msg00442.html">Date Next</A>][<A HREF="msg00436.html">Thread Prev</A>][<A HREF="msg00437.html">Thread Next</A>][<A HREF="maillist.html#00441">Date Index</A>][<A HREF="threads.html#00441">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Someone please set me straight on this</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Someone please set me straight on this</LI>
+<LI><em>From</em>: &quot;Joerg R. Weimar&quot; &lt;<A HREF="mailto:J.Weimar@tu-bs.de">J.Weimar@tu-bs.de</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 11 Jun 2003 14:13:24 +0200</LI>
+<LI>Cc: SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Organization</em>: TU Braunschweig</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Dear Mike,
+
+The rate of a reaction occurs several times in the formulas I showed. It 
+is only specified once in the SBML &lt;kineticLaw&gt;. Therefore the way it is 
+specified must be such that the same formula can be used in all places 
+where it is needed (i.e., in all differential equations). Therefore it 
+must either be the same formula in all of them, or it must be a common 
+part which is extended by the tool. In the examples, in all cases the 
+common part for R1 is
+k1 A  = k1 [A] Va
+which in the cases (CC) and (CA) must be complemented by different 
+factors 1/Va and 1/Vb for the equations for dA/dt and dB/dt.
+A common rate for an equation can therefore only be interpreted as being 
+case (Ax).
+
+The fact that k1 A appars and not k1 [A] would seem to argue for case 
+(xA), but (xC) is preferred for other reasons (Michaelis-Menten and 
+second order rate laws).
+
+To conclude: (Ax) is necessary for correct interpretation of "rate of a 
+reaction", (xC) is preferred due to Michaelis-menten and higher order 
+rate laws. Therefore (AC) is used.
+
+Jörg.
+
+Michael Hucka wrote:
+&gt; Joerg,
+&gt; 
+&gt; Thank you for such a lucid and careful explanation!  I have
+&gt; one question.  I know I'm missing something obvious and I'm
+&gt; being very dense ("thick" as the Brits would say), but the
+&gt; reason for the following eludes me:
+&gt; 
+&gt;   JRW&gt; .... Therefore only those choices are
+&gt;   JRW&gt; candidates, for which a reaction always appears with
+&gt;   JRW&gt; the same term in the rate laws. 
+&gt; 
+&gt; I understand the part about the fact that SBML specifies
+&gt; rates of reactions and not rate laws, and I see the scaling
+&gt; that occurs in your cases CC and CA, but the reason for the
+&gt; above is eluding me.
+&gt; 
+&gt; To my naive eyes, option CA seems reasonable.
+&gt; 
+&gt; MH
+&gt; 
+
+
+-- 
+PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, TU-Braunschweig
+J.Weimar@tu-bs.de, <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+Tel. +49-531-391-3006  Mail: D-38092 Braunschweig
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00432" HREF="msg00432.html">[sbml-discuss] Someone please set me straight on this</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00435" HREF="msg00435.html">Re: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00436" HREF="msg00436.html">Re: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00440.html">Re: [sbml-discuss] DWG: basic question</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00442.html">Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00436.html">Re: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00437.html">Re: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00441"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00441"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

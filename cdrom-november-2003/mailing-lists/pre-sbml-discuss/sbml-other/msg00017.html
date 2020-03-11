@@ -1,0 +1,120 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;other] SBML <&#45;> Cellerator Exchange -->
+<!--X-From-R13: Pra Pbeafgrva <obeafgrvNnvt.wcy.anfn.tbi> -->
+<!--X-Date: Tue, 20 Aug 2002 17:09:16 &#45;0700 -->
+<!--X-Message-Id: 200208210010.g7L09tu12525@xenium.jpl.nasa.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-other] SBML &lt;-&gt; Cellerator Exchange</TITLE>
+<LINK REV="made" HREF="mailto:bornstei@aig.jpl.nasa.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00016.html">Date Prev</A>][<A HREF="msg00018.html">Date Next</A>][<A HREF="msg00016.html">Thread Prev</A>][<A HREF="msg00018.html">Thread Next</A>][<A HREF="maillist.html#00017">Date Index</A>][<A HREF="threads.html#00017">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-other] SBML &lt;-&gt; Cellerator Exchange</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-other@symbio.jst.go.jp">sbml-other@symbio.jst.go.jp</A></LI>
+<LI><em>Subject</em>: [sbml-other] SBML &lt;-&gt; Cellerator Exchange</LI>
+<LI><em>From</em>: Ben Bornstein &lt;<A HREF="mailto:bornstei@aig.jpl.nasa.gov">bornstei@aig.jpl.nasa.gov</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 20 Aug 2002 17:09:55 -0700</LI>
+<LI>cc: <A HREF="mailto:Bruce.Shapiro@jpl.nasa.gov">Bruce.Shapiro@jpl.nasa.gov</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi All,
+
+     Cellerator allows you to define Reactions with a shorthand arrow
+notation which are then expanded to appropriate DiffyQs (see
+<A  HREF="http://www-aig.jpl.nasa.gov/public/mls/cellerator">http://www-aig.jpl.nasa.gov/public/mls/cellerator</A>).
+
+     When we read in our own Reactions, we would like to map from the
+Reactions with its Reactants, Products, KineticLaw, and Parameters
+back to the shorthand arrow notation.
+
+     As far as I can tell, there are two ways to do this:
+
+       1.  Annotate each reaction with a type, something like:
+
+             &lt;annotation&gt;
+               &lt;cellerator:reaction type="Conversion"/&gt;
+             &lt;/annotation&gt;
+
+           and similarly for each Parameter.
+
+       2.  Employ a graph matching algorithm to do the same in the absence
+           of such annotations.  This is an (NP) hard problem and a unique
+           solution is not guaranteed.
+
+     Obviously (1) is easier, but (2) is preferable since it may allow us
+to better read and understand models from other simulators and my group
+(Machine Learning) has significant experience with such algorithms.
+
+     Why would we want to read our own models?  We are completing a first
+round-trip from Cellerator to and from our internal pathway modeling
+database.  This trip can involve SBML, but is currently lossy.
+
+     We will probably pursue (1) for the time being, but I wanted to
+run this by the group / community to see if anyone had suggestions or
+comments.  Are we missing something obvious?  Are we insane?
+
+     Thanks.
+
+
+-- 
+Benjamin J. Bornstein
+<A  HREF="http://www-aig.jpl.nasa.gov/mls/home/bornstei">http://www-aig.jpl.nasa.gov/mls/home/bornstei</A>
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00016.html">[sbml-other] Proposed features for SBML Level 2 - not discussed at workshop</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00018.html">[sbml-other] Systems Biology Markup Language Level 2 (SBML L2) Working Draft Revision 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00016.html">[sbml-other] Proposed features for SBML Level 2 - not discussed at workshop</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00018.html">[sbml-other] Systems Biology Markup Language Level 2 (SBML L2) Working Draft Revision 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00017"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00017"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

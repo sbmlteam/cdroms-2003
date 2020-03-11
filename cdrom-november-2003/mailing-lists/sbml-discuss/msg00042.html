@@ -1,0 +1,123 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] SBML Level 2 -->
+<!--X-From-R13: Brqeb [raqrf <zraqrfNiov.ig.rqh> -->
+<!--X-Date: Sun, 8 Dec 2002 17:22:44 &#45;0800 -->
+<!--X-Message-Id: 1537.213.22.6.166.1039396900.squirrel@webmail.vbi.vt.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.33.0212051042200.22916&#45;100000@dhcp33&#45;081&#45;013.bbn.com -->
+<!--X-Reference: 3DEFBE3D.23C085E4@btinternet.com -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] SBML Level 2</TITLE>
+<LINK REV="made" HREF="mailto:mendes@vbi.vt.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00050.html">Date Prev</A>][<A HREF="msg00044.html">Date Next</A>][<A HREF="msg00011.html">Thread Prev</A>][<A HREF="msg00013.html">Thread Next</A>][<A HREF="maillist.html#00042">Date Index</A>][<A HREF="threads.html#00042">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] SBML Level 2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] SBML Level 2</LI>
+<LI><em>From</em>: Pedro Mendes &lt;<A HREF="mailto:mendes@vbi.vt.edu">mendes@vbi.vt.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sun, 8 Dec 2002 20:21:40 -0500 (EST)</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I agree with the follwowing position:
+
+&gt; There seems to be a suggestion in the current discussion that parameters
+&gt; are "less objective" than model structure, and so can be "relegated"
+&gt; from the main model description. I hate to disillusion anyone, but I can
+&gt; assure you that your models suck just as much as your parameter values!
+&gt; ;-) Of course, that doesn't mean that the models aren't useful, but the
+&gt; same applies equally to parameters - even if you are uncertain about
+&gt; some parameter values, your "best guess" is a vital part of the model.
+&gt; You don't think twice about bunging down your "best guess" at model
+&gt; structure - why are you so worried about putting down your "best guess"
+&gt; at a parameter value?
+
+I am for keeping parameter values together with the rest of the model. If
+you have two models that only differ in the values of the parameters, why
+not represent this with two SBML files? I do not see why there is a need
+for separating parameter values from the chemistry and the kinetics.
+
+I agree that we could extend the parameter tag to include a property that
+indicates a parameter value is missing (unknown). This seems to work for
+what Cliff wanted. I have to note that models that have unknown parameter
+values are only useful for stoichiometric analyses, but this is a
+legitimate use.  The property would help the rest of us who want to do
+kinetic analyses, in which case these models need to be handled in a
+special way (e.g. asking the user for "guess values" for these
+parameters).
+
+Finally, I would caution against extending SBML to cater for everybody´s
+(all program´s) needs. If we do this we run the risk that SBML could allow
+definitin of disjoint model structures, which means that some files could
+be of no use to some programs and other files of no use to the other
+programs. If this is to be an exchange format we must keep it withing what
+is exchangeable!
+
+Pedro Mendes
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00010" HREF="msg00010.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> Jonathan Webb &lt;jwebb@bbn.com&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00011" HREF="msg00011.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> Darren J Wilkinson &lt;darrenjwilkinson@btinternet.com&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00050.html">Re: [sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00044.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00011.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00013.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00042"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00042"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

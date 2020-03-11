@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="GEPASI, software for biochemical kinetics, modelling and simulation">
+<meta name="keywords" content="gepasi, kinetics, systems biology, fitting, metabolic simulation, metabolic control analysis, MCA, SBML, enzyme kinetics, computer simulation, gepasi, biochemical pathways, chemical kinetics, steady state, time course,  compartments, elementary modes, multi-dimensional parameter space, simulation sotware, optimisation, optimization, fitting, genetic algorithms, gepasi">
+<meta name="author" content="Pedro Mendes"><title>Gepasi 3 - Biochemical Kinetics Simulator</title>
+
+<link rev="made" href="mailto:mendes@vt.edu"></head>
+
+<body bgcolor="#ffffff" text="#000000" link="#000090" vlink="#c06000" alink="#0000ff">
+
+<table border="0" align="center" width="80%">
+  <tbody><tr>
+    <td align="right"><a href="http://www.gepasi.org"><img src="index_files/gepasi.png" alt="Gepasi" border="0"></a></td>
+    <td width="10%"> </td>
+    <td align="left">
+      <h1>Biochemical <br> Simulation</h1>
+    </td>
+  </tr>
+</tbody></table>
+
+<table border="0" width="100%" cellspacing="8">
+<tbody><tr><td width="20%" valign="top" bgcolor="#f0f0ff">
+<p><font size="-1">
+<b>Current version: 3.30</b></font>
+<br><font size="-2">released September 4, 2002</font>
+
+<hr>
+<p>
+</p><ul>
+<li><a href="gep3dwld.html"><font size="-1">Installation</font></a>
+</li><li><a href="gep3news.html"><font size="-1">News</font></a>
+</li><li><a href="gep3prev.html"><font size="-1">Screen shots</font></a>
+</li><li><a href="gep3res.html"><font size="-1">Gepasi in research</font></a>
+</li><li><a href="gep3ed.html"><font size="-1">Gepasi in education</font></a>
+</li><li><a href="gep3sbml.html"><font size="-1">Gepasi and SBML</font></a>
+</li><li><a href="gep3tuts.html"><font size="-1">Tutorials</font></a>
+</li><li><a href="gep3faq.html"><font size="-1">F.A.Q.</font></a>
+</li><li><a href="gep3bugs.html"><font size="-1">Known bugs</font></a>
+</li><li><a href="meg.html"><font size="-1">MEG</font></a>
+</li><li><a href="gep3futr.html"><font size="-1">Future developments</font></a>
+</li><li><a href="gep3links.html"><font size="-1">Links</font></a>
+</li><li><a href="gep3linking.html"><font size="-1">Link to these pages!</font></a>
+</li></ul>
+
+</p>
+</td>
+<td width="80%">
+
+<p><h2 align="center"><a href="installer/SETUP.EXE">Click to install Gepasi version 3.30 under Windows</a></h2>
+
+<p align="center"> [ <a href="http://www.gepasi.org/">Home page (USA)</a> ]
+    [ <a href="http://gepasi.dbs.aber.ac.uk/softw/gepasi.html">UK mirror</a> ]</p>
+
+<h3><a name="Summary">What is Gepasi?</a></h3>
+
+<p>Gepasi is a software package for modeling biochemical systems. It simulates the
+kinetics of systems of biochemical reactions and provides a number of tools to
+fit models to data, optimize any function of the model, perform metabolic control
+analysis and linear stability analysis.</p>
+
+<p>Gepasi simplifies the task of model building by assisting the user in translating
+the language of chemistry (reactions) to mathematics (matrices and differential
+equations) in a transparent way. This is combined with a set of sophisticated
+numerical algorithms that assure the results are obtained fast and accurate.</p>
+
+<p>Gepasi is <a href="http://www.gepasi.org/gep3res.html">intended primarily for research</a> purposes
+ but because of its user-friendly interface it is
+ <a href="http://www.gepasi.org/gep3ed.html">equally good for education</a>.</p>
+
+
+<hr>
+
+<h3>Features</h3>
+
+<ul>
+    <li><b>Gepasi</b> is free software (<a href="installer/license.txt">user license</a>) </li>
+    <li><b>Gepasi</b> runs under  Microsoft Windows (95 and above).</li>
+    <li>Models in <b>Gepasi</b> v. 3 can be composed of many
+        compartments with different volumes </li>
+    <li>The number of reactions and metabolites in each model is
+        only limited by available memory.</li>
+    <li>Simulations can be followed interactively (including
+        adding perturbations to a time course) </li>
+    <li><b>Gepasi</b> characterises steady states using <a href="http://gepasi.dbs.aber.ac.uk/metab/mca_home.htm">Metabolic Control Analysis</a>
+        and linear stability analysis.</li>
+    <li><b>Gepasi</b>'s <i>scan</i> utility  provides a way for
+        advanced exploration of a model's behaviour in multi-dimensional
+        parameter space </li>
+    <li><b>Gepasi</b> is capable of doing data fitting (parameter
+        estimation) with experimental data.</li>
+    <li><b>Gepasi</b> is capable of finding maxima or minima of
+        any model variables with any number of adjustable model
+        parameters.</li>
+    <li>The results of simulations can be plotted in 2D and 3D
+        directly from the program (<b>Gepasi</b> uses the
+        excellent <a href="http://www.gnuplot.info/"><b>Gnuplot</b></a>
+        package).</li>
+	<li><b>Gepasi</b> supports SBML level 1 for model interchange
+	    with other systems biology modeling software.</li>
+</ul>
+
+<hr>
+
+<h3>Bibliography</h3>
+
+<p>A description of the program was published in the journal <i>Cabios</i>: <br>
+<a href="http://www4.ncbi.nlm.nih.gov/htbin-post/Entrez/query?uid=8293329&amp;form=6&amp;db=m&amp;Dopt=r">Mendes,
+P. (1993) GEPASI: A software package for modelling the dynamics,
+steady states and control of biochemical and other systems. <i>Comput.
+Applic. Biosci. </i><b>9</b>, 563-571.</a> </p>
+
+<p>and more recently in <a href="http://www.elsevier.nl/inca/publications/store/4/0/5/9/1/6/"><i>Trends
+in Biochemical Sciences</i></a> (Sept 1997): <br>
+<a href="http://www.ncbi.nlm.nih.gov/htbin-post/Entrez/query?uid=9301339&amp;form=6&amp;db=m&amp;Dopt=r">Mendes,
+P. (1997) Biochemistry by numbers: simulation of biochemical
+pathways with Gepasi 3. <i>Trends Biochem. Sci. </i><b>22</b>,
+361-363.</a> </p>
+
+<p>A paper in <a href="http://bioinformatics.oupjournals.org/"><i>Bioinformatics
+</i></a>describes the application of optimisation methods in
+bio/chemical modelling with examples carried out in Gepasi: <br>
+<a href="http://www4.ncbi.nlm.nih.gov/htbin-post/Entrez/query?uid=9927716&amp;form=6&amp;db=m&amp;Dopt=b">Mendes,
+P. &amp; Kell, D.B. (1998) Non-linear optimization of biochemical
+pathways: applications to metabolic engineering and parameter
+estimation. <i>Bioinformatics </i><b>14</b>, 869-883.</a> </p>
+
+<hr>
+
+<h3>Who's talking about Gepasi?</h3>
+
+<ul>
+    <li><a href="http://biomednet.com/hmsbeagle/1997/10/booksoft/salert.htm">HMS
+        Beagle's Software Alert</a> </li>
+    <li>Rated 4 star product by <a href="http://www.hotfiles.com/?000IBO">ZDNet's Software
+        Library</a> </li>
+    <li><a href="http://www.liv.ac.uk/ctichem/s17gepas.html">Reviewed by
+        the CTI centre for Chemistry</a></li>
+</ul>
+
+</td>
+</tr>
+</tbody></table>
+
+<hr>
+
+<table width="100%" border="0">
+  <tbody><tr>
+    <td align="center"><a href="http://www.vt.edu/"><img src="index_files/VTlogo-small.png" alt="Virginia Tech" border="0"></a></td>
+    <td align="center"><a href="http://www.vbi.vt.edu/"><img src="index_files/vbi-logo-grad.png" alt="VBI" border="0"></a></td>
+    <td align="center"><a href="http://gepasi.dbs.aber.ac.uk/">Aberystwyth Quantitative Biology
+<br>and Analytical Biotechnology Group</a></td>
+  </tr>
+</tbody></table>
+
+<p>
+
+<table width="100%" border="0" cellspacing="0">
+ <tbody><tr>
+  <td align="left"></td>
+  <td> </td>
+  <td align="right">Copyright © 1996-2003
+    <a href="http://www.vbi.vt.edu/%7Emendes/">Pedro Mendes</a></td>
+ </tr>
+ <tr>
+  <td height="60" align="center" valign="bottom" colspan="3"></td>
+ </tr>
+</tbody></table>
+</p></body></html>

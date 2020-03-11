@@ -1,0 +1,149 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the way stoichiometries are expresse -->
+<!--X-From-R13: Inlar Dvaqbar <jevaqbarNnerc.zrq.uneineq.rqh> -->
+<!--X-Date: Tue, 27 May 2003 13:57:06 &#45;0700 -->
+<!--X-Message-Id: Pine.OSF.3.94.1030527155556.11363A&#45;100000@arep.med.harvard.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.53.0305231231210.3566@shaffer.cs.vt.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the way stoichiometries are expresse</TITLE>
+<LINK REV="made" HREF="mailto:wrindone@arep.med.harvard.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00373.html">Date Prev</A>][<A HREF="msg00375.html">Date Next</A>][<A HREF="msg00327.html">Thread Prev</A>][<A HREF="msg00186.html">Thread Next</A>][<A HREF="maillist.html#00374">Date Index</A>][<A HREF="threads.html#00374">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the way stoichiometries are expresse</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Cliff Shaffer &lt;<A HREF="mailto:shaffer@shaffer.cs.vt.edu">shaffer@shaffer.cs.vt.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the way stoichiometries are expresse</LI>
+<LI><em>From</em>: Wayne Rindone &lt;<A HREF="mailto:wrindone@arep.med.harvard.edu">wrindone@arep.med.harvard.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 27 May 2003 16:27:30 -0400 (EDT)</LI>
+<LI>Cc: Ed Frank &lt;<A HREF="mailto:efrank@mcs.anl.gov">efrank@mcs.anl.gov</A>&gt;, Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;,  Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;,  SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;, <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+      Aplogies for not contributing to any of these discussions sooner,
+but I have been at other meetings or on trips since the end of the DARPA
+PI meeting.
+
+On Fri, 23 May 2003, Cliff Shaffer wrote:
+
+&gt; &gt; Instead, I think the intention of the model needs to somehow be stated
+&gt; &gt; up front.  A simulator can look at that and decide whether there is a
+&gt; &gt; match.  Alternatively, using dependency inversion, the *model* can
+&gt; &gt; state what it needs from a simulator, and the simulator can use that
+&gt; &gt; to decide if there is a match.
+&gt; 
+&gt; YES!!! This is what I've been arguing for all along. What we want is a
+&gt; flexible way for modelers to express their model information. But we ALSO
+&gt; need to let the modelers explicitly express what the model "type" is,
+&gt; with the consequence that inapropriate simulators will bail out
+&gt; immediately. This also helps to resolve some of the issues that come up,
+&gt; such as the peculiarity of a floating numerator and integer denominator.
+&gt; If you look at as undiferentiated model types with a "one size fits all"
+&gt; syntax, you probably see this as bizarre and redundanat. But if you look
+&gt; at it as available fields where the model type further constrains
+&gt; available usage, its not so bad. Because one "type" of model could require
+&gt; the numerator and denominator to be integer, and another "type" of model
+&gt; could require the numerator be integer or float and ignore the denominator.
+&gt;          -- Cliff
+&gt; --
+&gt; Cliff Shaffer, Associate Professor          Phone: (540) 231-4354
+&gt; Department of Computer Science              Email: shaffer@cs.vt.edu
+&gt; Virginia Tech, Blacksburg, VA 24061-0106    WWW:   www.cs.vt.edu/~shaffer
+&gt; -------------------------------------------------------------------------
+
+      Yes, I completely agree with the notion that a particular model
+should be able to declare its type (with sufficient flexibility that
+anticipated and unanticipated classes of hybrid models can be
+accommodated).  It makes little sense for a kinetic simulator to try to do
+anything with a a pure flux balance model like ours where flux limits are
+supplied but there is no sign of substance amounts or rate equations. 
+
+       However, we do not perceive the stoichiometries as differing in any
+significant way from stoichiometries found in chemical reactions in other
+types of models.  Even in a kinetic model, I could imagine someone trying
+to represent a biomass production reaction with empirically determined
+noninteger stoichiometries.  Many, most even, of the fluxes in our model
+are the same metabolic reactions with the same stoichiometries as found in
+kinetic models of the same metabolic system.  The difference is we supply
+flux limits and do not specify rate equations or substance concentrations. 
+But the stoichimetries are unchanged, so calling them something else in
+the flux balance model is completely missing the point. 
+
+       For the stoichimetry question in the survey I was all for allowing
+the originally specified noninteger stoichimetries in the few flux
+representations where these are found.  At the same time I would just as
+soon not lose the denominator option now that I went to the trouble of
+adapting my SBML2 generator to produce denominators instead of noninteger
+stoichiometries.  Also, it is easy to imagine wishing to represent a
+stoichiometry like 2/3 precisely rather than approximating it with a
+decimal representation.  I gather that a stochastic modelling application
+might interpret the numerator/denominator representation very differently
+from the approximate decimal notation, but this will not be a problem if
+it can tell this is a flux balance model not likely well suited to a
+stochastic modelling application in the first place from the model type
+declared at the outset. 
+
+						Wayne
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00290" HREF="msg00290.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> Cliff Shaffer &lt;shaffer@shaffer.cs.vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00373.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00375.html">Re: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00327.html">Re: [sbml-discuss] CAP capabilites controlled vocabulary SBML modularization</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00186.html">RE: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00374"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00374"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

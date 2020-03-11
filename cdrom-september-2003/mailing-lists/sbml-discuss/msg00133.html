@@ -1,0 +1,125 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Re: Regarding MathML -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Wed, 7 May 2003 14:39:49 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC917F@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Re: Regarding MathML</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00132.html">Date Prev</A>][<A HREF="msg00134.html">Date Next</A>][<A HREF="msg00132.html">Thread Prev</A>][<A HREF="msg00134.html">Thread Next</A>][<A HREF="maillist.html#00133">Date Index</A>][<A HREF="threads.html#00133">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Re: Regarding MathML</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Ben Bornstein'&quot; &lt;<A HREF="mailto:bornstei@aig.jpl.nasa.gov">bornstei@aig.jpl.nasa.gov</A>&gt;, <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Re: Regarding MathML</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 7 May 2003 14:39:18 -0700 </LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+
+  hsauro&gt; I'm a little bit suspicious I guess because I'm unfamiliar
+  hsauro&gt; with programming to it. Parsing infix is very easy, it's a
+  hsauro&gt; first year undergrad problem.
+
+&gt;     Actually, if I remember correctly, it's about a third or fourth
+&gt;year undergrad problem.  :)  
+
+In the UK when I was an undergrad it was the first years that did it. In
+fact in that year they build an entire compiler, with lexical analyser,
+paser and code genertor (no yacc either). That's where I picked it up. Hand
+written pasers for infix expressions are pretty easy to build, the lexical
+side is of course even simpler. With SBML L1 the library writer does't have
+to do any parsing of the rate laws, the simulator will do that since they
+already have the capability, Jarnac has two for example, one for the
+scripting langauge and one for the model runtime, one reason for the
+separation is that the model runtime is much simpler and therefore can be
+heavily optimized since it is this runtime that takes takes up most of the
+strain during a simulation. Other simulators wil have simuilar capabilities.
+With L2 you personally are having to write a parser as well as the simulator
+developers. To avoid the simulator people rewriting parts of their code it
+would be very convenient to hand them an infix version of the expression,
+and I think that's what you're going to do? Eventually maybe the simulators
+will take the MathML directly but in the short term that is not feasable,
+plus they still have to have an infix parser anyway because that's what
+users enter when they want to specify a rate law - even if you have a
+predefined list of rate laws, there will always be someone who wants a rate
+law that's not in the predefined list. 
+
+  hsuaro&gt; One issue with the conversion to infix is bracketing
+
+&gt;     In an inorder traversal of an AST a sub-expression should be
+&gt;bracketed if it has a parent of higher precedence.  This is what
+&gt;led to the construction of that particular tree in the first place.
+
+We talked about this before and I know your're on to it.
+
+Anyway, we've got MathML now and I'm happy that you're helping us simulator
+developers deal with parsing and writing MathML, personally I don't want to
+write this code, it is another layer to deal with, more maintenance, more
+potential bugs etc, and I've run out of spare time! A distributed effort to
+write code makes life much easier for all of us! I'm grateful for your
+efforts here.
+
+Herbert
+
+Herbert
+ 
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00132.html">[sbml-discuss] Re: Regarding MathML</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00134.html">RE: [sbml-discuss] Re: Regarding MathML</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00132.html">[sbml-discuss] Re: Regarding MathML</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00134.html">RE: [sbml-discuss] Re: Regarding MathML</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00133"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00133"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

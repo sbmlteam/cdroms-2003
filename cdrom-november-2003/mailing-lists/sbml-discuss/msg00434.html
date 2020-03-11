@@ -1,0 +1,208 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Someone please set me straight on this -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Wed, 11 Jun 2003 01:44:07 &#45;0700 -->
+<!--X-Message-Id: 001601c32ff5$91dd7a90$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 16102.31398.951919.574548@erato1.cds.caltech.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Someone please set me straight on this</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00433.html">Date Prev</A>][<A HREF="msg00435.html">Date Next</A>][<A HREF="msg00432.html">Thread Prev</A>][<A HREF="msg00438.html">Thread Next</A>][<A HREF="maillist.html#00434">Date Index</A>][<A HREF="threads.html#00434">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Someone please set me straight on this</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'SBML Discussion List'&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Someone please set me straight on this</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 11 Jun 2003 09:43:39 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Folks
+
+IMHO I think we interpreted the intention of the community
+correctly.  L1 and all the L2 drafts have used concentration
+as the units for species in expressions.  I don't recall
+any mention of any concensus for change to this either on
+sbml-discuss or at the meeting at Florida.
+
+This seems reasonable as must rate lwas are specified in 
+terms of concentration variables.
+
+Further clarification:
+
+The way the specification is written at the moment is
+as Mike has written.  Please don't try to interpret
+this until you have read and commented on Mike's email first.
+
+The following are additional details:
+
+- species initial value can be specified
+	as substance or concentration (by using the initialAmont
+	or initialConcentration attributes respectively)
+
+	However species symbols in forumlae ALWAYS
+	have concentration units unless the spatial
+	dimensions of the containing compartment
+	is 0 in which case the species symbol
+	has substance units.
+
+	The initialConcentration attribute can't be used
+	if the spatial dimensions of the species' compartment is 0.
+
+- the specific units of species symbols in formulae depend on
+	the units specified on the species structure,
+	the spatial dimensions of the compartment and
+	the units of the compartment.
+
+	The units specified for a species symbol are those
+	specified on the species structure if the initial
+	value was specified using initialConcentration (or if
+	the spatial dimensions of the compartment is 0)
+
+	The units specified for a species symbol are those
+	specified on the species structure combined with those
+	specified on the compartment structure if the inital value
+	was specified using initialAmount and the spatial dimensions
+	of the compartment is not 0.
+
+	The units used on species must be appropriate to the
+	to initial value attribute used and to the spatial dimensions
+	of the compartment.
+
+Please comment on the above.
+
+Specifically do you think having spatial dimensions of 0 is
+appropriate/useful?
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Michael Hucka
+&gt; Sent: 11 June 2003 01:41
+&gt; To: SBML Discussion List
+&gt; Subject: [sbml-discuss] Someone please set me straight on this
+&gt; 
+&gt; 
+&gt; People,
+&gt; 
+&gt; I confess I've become confused over what people want to see
+&gt; as far as species units.  After rereading the many messages 
+&gt; about this on sbml-discuss, and comparing this to what we 
+&gt; just wrote in the L2 final draft spec, it's no longer clear 
+&gt; to me how people want to interpret the appearance of a 
+&gt; species symbol in a math expression.  Should it be a number 
+&gt; in units of substance, or in units of concentration?
+&gt; 
+&gt; Note that this is separate from the question of what the 
+&gt; initial value for a species should be (people want the option 
+&gt; of using either concentration or substance) and also the 
+&gt; question of what the reaction rate expression should be 
+&gt; (people want substance/time, not concentration/time).  I 
+&gt; think those questions are settled at this point.
+&gt; 
+&gt; In the spec as written, we wrote that species identifiers in 
+&gt; math expressions stand for the quantity of that species in 
+&gt; terms of CONCENTRATION units.  However, Joerg Weimar's recent 
+&gt; feedback, and a number of past messages on sbml-discuss, make 
+&gt; it seem that perhaps it should be in SUBSTANCE units.
+&gt; 
+&gt; Using substance units would appear to be more consistent
+&gt; with having reaction rates be in terms of substance/time.
+&gt; One could generate concentrations by dividing species by the 
+&gt; compartments in which they're located.  So if one has two 
+&gt; reactions, A -&gt; B + C and B -&gt; D, with the former having a 
+&gt; rate of "k1*A" and the latter "k2*B" (where "A" and "B" 
+&gt; represent substance amounts), and each species is located in 
+&gt; separate compartments with volumes Va, Vb, Vc, and Vd, then 
+&gt; the rate of change in amount of B would be
+&gt; 
+&gt;    dB/dt = k1*A - k2*B
+&gt; 
+&gt; and the rate of change of concentration in B would be
+&gt; 
+&gt;    d[B]/dt = k1*A/Va - k2*B/Vb
+&gt; 
+&gt; Is that right?  Does that work for more complicated cases?
+&gt; 
+&gt; I'm sorry to bring this up.  I hope this is a simple
+&gt; question and people can just tell me it's obvious that we're 
+&gt; going one way or the other.
+&gt; 
+&gt; MH
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00438" HREF="msg00438.html">RE: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Maria Schilstra&quot; &lt;m.j.1.schilstra@herts.ac.uk&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00432" HREF="msg00432.html">[sbml-discuss] Someone please set me straight on this</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00433.html">Re: [sbml-discuss] DWG: basic question</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00435.html">Re: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00432.html">[sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00438.html">RE: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00434"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00434"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

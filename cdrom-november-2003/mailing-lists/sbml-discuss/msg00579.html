@@ -1,0 +1,353 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Complex Species -->
+<!--X-From-R13: "Vreoreg Enheb" <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Fri, 18 Jul 2003 14:43:33 &#45;0700 -->
+<!--X-Message-Id: 601BBB4D9640CB4693A2384E4B37872E0DD65D@dell2650&#45;0550.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Complex Species</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00578.html">Date Prev</A>][<A HREF="msg00580.html">Date Next</A>][<A HREF="msg00577.html">Thread Prev</A>][<A HREF="msg00581.html">Thread Next</A>][<A HREF="maillist.html#00579">Date Index</A>][<A HREF="threads.html#00579">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Complex Species</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Complex Species</LI>
+<LI><em>From</em>: &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 18 Jul 2003 14:38:22 -0700</LI>
+<LI>Thread-Index: AcNNdDyalhFMfmqoTHe/g8DoqUSK5gAAHx7g</LI>
+<LI>Thread-Topic: [sbml-discuss] Complex Species</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Sounds like do don't have to do anything, your analysis software can work out the effect of deletion. Perhaps you don't need to exlicitly distinguish between the iosenzymes and the complex? What do you think?
+
+Herbert
+
+-----Original Message-----
+From: Jeremy Zucker [<A  HREF="mailto:zucker@research.dfci.harvard.edu">mailto:zucker@research.dfci.harvard.edu</A>]
+Sent: Friday, July 18, 2003 2:19 PM
+To: Fabien Campagne; sbml-discuss@its.caltech.edu
+Subject: Re: [sbml-discuss] Complex Species
+
+
+  Hello Fabien,
+
+&gt;  Hello Jeremy,
+&gt;
+&gt; I agree with Herbert, but I see two distinct issues in what you describe:
+&gt; 1. You want to associate accession codes (and names,  etc. we call 
+&gt; this background information) to the species involved in the model.
+&gt;
+&gt; 2. You want to represent how species are produced by genes.
+&gt;
+&gt; I think that there are advantages in keeping the two issues separate.
+
+
+  Thank you for your thoughtful reply.  I think you are correct that my 
+problem really represents two issues.   It took a look at the Sigpath 
+work, and I think it is interesting you use the same ontology as Ecocyc. 
+ I think that the first issue boils down to "How do I find an 
+appropriate mapping between the Biocyc ontology and SBML?"   I will 
+comment more on this in a separate email.
+
+&gt; If you do not have kinetic parameters
+&gt; for the various transitions, but still want to predict what reactions 
+&gt; are affected when you
+&gt; knock out a gene, you need another approach for "knowledge 
+&gt; representation".
+&gt; If would suggest looking into Prolog (see 
+&gt; <A  HREF="http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/intro.html">http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/intro.html</A> for 
+&gt; an introduction)
+&gt; because this would let you express easily that a reaction cannot occur 
+&gt; if any of its substrate
+&gt; has been knocked out, or is the product of a KO gene.
+
+
+To address the second issue, we are more interested in steady-state flux 
+balance models of metabolism, which is still quantitative in the sense 
+that we
+use the matrix of stoichiometric coefficients to solve for a feasible 
+space of allowable fluxes, but qualitative in the sense that we model 
+the effect of a gene
+knockout on a reaction with boolean predicates.  I have already 
+implemented a boolean predicate parser in python, but  I am very 
+interested in the Prolog link you sent me, and have started hacking the 
+example code in the tutorial.
+I think this might be very helpful in representing the 
+"gene-reaction-predicates" that we have defined for the purpose of 
+determining the effect of a
+gene knockout on a reaction.
+
+
+Sincerely,
+
+Jeremy
+
+Fabien Campagne wrote:
+
+&gt;  Hello Jeremy,
+&gt;
+&gt; I agree with Herbert, but I see two distinct issues in what you describe:
+&gt; 1. You want to associate accession codes (and names,  etc. we call 
+&gt; this background information) to the species involved in the model.
+&gt;
+&gt; 2. You want to represent how species are produced by genes.
+&gt;
+&gt; I think that there are advantages in keeping the two issues separate.
+&gt;
+&gt; If you could represent how enzymes are assembled from gene products, 
+&gt; in a quantitative model, you could alter the rate of expression of a 
+&gt; particular gene (in the model), and simulate the effect of a knock-out.
+&gt;
+&gt; For instance, if gene A and gene B are needed to produce the active 
+&gt; enzyme, you may need:
+&gt;
+&gt; Gene-A -&gt; transcript-A -&gt; Protein-A (or skip middle step if the model 
+&gt; has no way to alter the
+&gt; amount of transcript-A)
+&gt; GeneB -&gt; transcript-B -&gt;Protein-B
+&gt;
+&gt; (Don't forget degradation: )
+&gt; Protein-A &gt; X
+&gt; Protein-B &gt; X
+&gt;
+&gt; Protein-A+Protein-B &lt;-&gt; A-B-enzyme
+&gt;
+&gt; S &lt;A-B-enzyme&gt; P
+&gt;
+&gt; This is similar to what Herbert Sauro suggested. If you do not have 
+&gt; kinetic parameters
+&gt; for the various transitions, but still want to predict what reactions 
+&gt; are affected when you
+&gt; knock out a gene, you need another approach for "knowledge 
+&gt; representation".
+&gt; If would suggest looking into Prolog (see 
+&gt; <A  HREF="http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/intro.html">http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/intro.html</A> for 
+&gt; an introduction)
+&gt; because this would let you express easily that a reaction cannot occur 
+&gt; if any of its substrate
+&gt; has been knocked out, or is the product of a KO gene.
+&gt;
+&gt; The first problem is related to issues that we have started to address 
+&gt; with the development
+&gt; of SigPath (<A  HREF="http://www.sigpath.org">http://www.sigpath.org</A>). Perhaps you could find the system 
+&gt; useful if one of your
+&gt; goals is to annotate pathways with links to proteins and genes. 
+&gt; (SigPath can export
+&gt; quantitative models to SBML, at the moment qualitative pathways cannot 
+&gt; be exported,
+&gt; but this could be done if it was useful for specific applications, 
+&gt; such as yours perhaps).
+&gt;
+&gt; Best,
+&gt;
+&gt; Fabien
+&gt;
+&gt; Fabien Campagne, PhD -- <A  HREF="http://icb.med.cornell.edu">http://icb.med.cornell.edu</A>
+&gt; Bioinformatics Officer, Institute for Computational Biomedicine
+&gt; Assistant Professor,    Weill Medical College of Cornell University
+&gt; phone: (212)-327-8341   c/o Rockefeller University, Smith Hall 410
+&gt; fax:   (212)-327-7344   Box 270; 1230 York Avenue
+&gt; ----------------------- New York, NY 10021 --------------------------
+&gt;
+&gt; zucker wrote:
+&gt;
+&gt;&gt; Hello Herbert,
+&gt;&gt;
+&gt;&gt;   For the models I am creating, the number of reactions runs into the 
+&gt;&gt; hundreds, and each reaction may be catalyzed by one or more enzymes, 
+&gt;&gt; each of which can be composed of one or more gene products.
+&gt;&gt; The problem comes from trying to distinguish between 2 genes whose 
+&gt;&gt; products form a complex, and 2 genes whose products  are isoenzymes 
+&gt;&gt; of a reaction.
+&gt;&gt; In the first case, you knock out one gene, you knock out the 
+&gt;&gt; reaction. In the second case, you must knock out both genes to knock 
+&gt;&gt; out the reaction.  I do not believe the current implementation of 
+&gt;&gt; modifier species
+&gt;&gt; allows you to distinguish between these cases.  To illustrate what I 
+&gt;&gt; am talking about, for the reaction I am interested in (EC# 6.4.2.1), 
+&gt;&gt; there are two enzyme which catalyze it:
+&gt;&gt;
+&gt;&gt; &lt;reaction id="ACETYL-COA-CARBOXYLTRANSFER-RXN" name="EC# 6.4.1.2" 
+&gt;&gt; reversible="true" &gt;
+&gt;&gt;
+&gt;&gt; &lt;listOfModifiers&gt;
+&gt;&gt;
+&gt;&gt; &lt;modifierSpeciesReference species="ACETYL-COA-CARBOXYLTRANSFER-CPLX"/&gt;
+&gt;&gt;
+&gt;&gt; &lt;modifierSpeciesReference species="ACETYL-COA-CARBOXYMULTI-CPLX"/&gt;
+&gt;&gt;
+&gt;&gt; &lt;/listOfModifiers&gt;
+&gt;&gt; &lt;/reaction&gt;
+&gt;&gt;
+&gt;&gt; In this case, acetyl-coa-carboxyltransfer-cplx and 
+&gt;&gt; acetyl-coa-carboxymulti-cplx are isoenzymes of the reaction.
+&gt;&gt;
+&gt;&gt; However, each enzyme has several genes associated with it:
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; &lt;listOfSpecies&gt;
+&gt;&gt;  &lt;species id="ACETYL-COA-CARBOXYLMULTI-CPLX" name="acetyl CoA 
+&gt;&gt; carboxylase" compartment="cytoplasm" boundaryCondition"false"&gt;
+&gt;&gt;     &lt;annotation xmlns:fbml="<A  HREF="http://arep.med.harvard.edu/fbml">http://arep.med.harvard.edu/fbml</A>"&gt;
+&gt;&gt;         &lt;fbml:gene id="EG10217" name="accD"/&gt;
+&gt;&gt;         &lt;fbml:gene id="EG11647" name="accA"/&gt;
+&gt;&gt;         &lt;fbml:gene id="EG10276" name="accC"/&gt;
+&gt;&gt;         &lt;fbml:gene id="EG10275" name="accB"/&gt;
+&gt;&gt;      &lt;/annotation&gt;
+&gt;&gt;   &lt;/species&gt;
+&gt;&gt;   &lt;species id="="ACETYL-COA-CARBOXYLTRANSFER-CPLX" name="acetyl-CoA 
+&gt;&gt; carboxyltransferase" compartment="cytoplasm" boundaryCondition="false"&gt;
+&gt;&gt;       &lt;annotation xmlns:fbml="<A  HREF="http://arep.med.harvard.edu/fbml">http://arep.med.harvard.edu/fbml</A>"&gt;
+&gt;&gt;          &lt;fbml:gene id="EG11647" name="accA"/&gt;
+&gt;&gt;          &lt;fbml:gene id="EG10217" name="accD"/&gt;
+&gt;&gt;       &lt;/annotation&gt;
+&gt;&gt;    &lt;/species&gt;
+&gt;&gt; &lt;/listOfSpecies&gt;
+&gt;&gt;
+&gt;&gt; In order to knock out this reaction, it is sufficient to knock out 
+&gt;&gt; either accA or accD, since their gene products are common to both 
+&gt;&gt; enzymes.  Without the representation of genes as annotations  of 
+&gt;&gt; enzymes, I do not believe it would be very easy to do this kind of 
+&gt;&gt; analysis.
+&gt;&gt; Please let me know if there is a better way of doing this.
+&gt;&gt;
+&gt;&gt; Sincerely,
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; Jeremy
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; Herbert Sauro wrote:
+&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; I think the first question is how many complexes will you have in 
+&gt;&gt;&gt; any one model? Hundreds? Tens? If they just run into tens, then it 
+&gt;&gt;&gt; might be better to just list them out as distinct species and 
+&gt;&gt;&gt; reactions in the normal way.
+&gt;&gt;&gt;
+&gt;&gt;&gt; Herbert Sauro
+&gt;&gt;&gt;
+&gt;&gt;&gt;     -----Original Message-----     From: zucker 
+&gt;&gt;&gt; [<A  HREF="mailto:zucker@research.dfci.harvard.edu">mailto:zucker@research.dfci.harvard.edu</A>]     Sent: Thu 7/17/2003 
+&gt;&gt;&gt; 12:37 PM     To: sbml-discuss@its.caltech.edu     Cc:     Subject: 
+&gt;&gt;&gt; [sbml-discuss] Complex Species
+&gt;&gt;&gt;        
+&gt;&gt;&gt;     Hello all,
+&gt;&gt;&gt;        I am rather new to this discussion list, but I had a question 
+&gt;&gt;&gt; about     representing complex species in SBML.   I am currently 
+&gt;&gt;&gt; involved in a     project in George Church's lab to build metabolic 
+&gt;&gt;&gt; flux models from     Biocyc, and I need to represent the 
+&gt;&gt;&gt; relationship between genes and the     enzyme complexes that 
+&gt;&gt;&gt; catalyze reactions in SBML. Accordig the the SBML     level 2 final 
+&gt;&gt;&gt; draft, it appears that a full implementation of Complex     species 
+&gt;&gt;&gt; is being held off until Level 3..  Instead, it seems that the     
+&gt;&gt;&gt; recommended way to represent the relationship between genes and 
+&gt;&gt;&gt; enzymes     is by using annotations:
+&gt;&gt;&gt;     &lt;species id="="ACETYL-COA-CARBOXYLTRANSFER-CPLX" 
+&gt;&gt;&gt; name="acetyl-CoA     carboxyltransferase" compartment="cytoplasm" 
+&gt;&gt;&gt; boundaryCondition="false"&gt;
+&gt;&gt;&gt;     &lt;annotation xmlns:fbml="<A  HREF="http://arep.med.harvard.edu/fbml">http://arep.med.harvard.edu/fbml</A>"&gt;
+&gt;&gt;&gt;     &lt;fbml:gene id="EG11647" name="accA"/&gt;
+&gt;&gt;&gt;     &lt;fbml:gene id="EG10217" name="accD"/&gt;
+&gt;&gt;&gt;     &lt;/annotation&gt;
+&gt;&gt;&gt;     &lt;/species&gt;
+&gt;&gt;&gt;     (FBML is my own faux namespace that I created just to get the 
+&gt;&gt;&gt; job done).      My question is this:
+&gt;&gt;&gt;     1. Is this the "approved" way to solve this problem until 
+&gt;&gt;&gt; complex     species have been worked out?     2. Should I include 
+&gt;&gt;&gt; the genes as an additional species in the ListOfSpecies?     2. Is 
+&gt;&gt;&gt; there a Complex Species working group that I can sign onto in     
+&gt;&gt;&gt; order to get involved in future developments for Level 3?
+&gt;&gt;&gt;
+&gt;&gt;&gt;     Sincerely,
+&gt;&gt;&gt;     Jeremy Zucker
+&gt;&gt;&gt;     --     
+&gt;&gt;&gt; =============================================================      
+&gt;&gt;&gt; Jeremy Zucker &lt;Jeremy_Zucker@dfci.harvard.edu&gt;      Bioinformatics 
+&gt;&gt;&gt; Specialist, Research Computing      Dana-Farber Cancer 
+&gt;&gt;&gt; Institute      44 Binney Street, JF 314      Boston, MA 02115      
+&gt;&gt;&gt; Tel: 617/632-6852      Cel: 781/820-1903      Fax: 617/632-4012      
+&gt;&gt;&gt; <A  HREF="http://research.dfci.harvard.edu">http://research.dfci.harvard.edu</A>
+&gt;&gt;&gt;
+&gt;&gt;&gt;  
+&gt;&gt;&gt;
+&gt;&gt;
+&gt;
+&gt;
+
+
+-- 
+=============================================================
+ Jeremy Zucker &lt;Jeremy_Zucker@dfci.harvard.edu&gt;
+ Bioinformatics Specialist, Research Computing
+ Dana-Farber Cancer Institute
+ 44 Binney Street, JF 314
+ Boston, MA 02115
+ Tel: 617/632-6852
+ Cel: 781/820-1903
+ Fax: 617/632-4012
+ <A  HREF="http://research.dfci.harvard.edu">http://research.dfci.harvard.edu</A>
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00578.html">Re: [sbml-discuss] Complex Species</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00580.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00577.html">Re: [sbml-discuss] Complex Species</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00581.html">[sbml-discuss] Reminder: let us know if next SBML Forum dates are ok</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00579"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00579"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

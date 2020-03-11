@@ -1,0 +1,168 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] DWG: Revised Proposal -->
+<!--X-From-R13: Dnycu Unhtrf <enycu.tnhtrfNrzy.ivyyn&#45;obfpu.qr> -->
+<!--X-Date: Fri, 5 Sep 2003 08:59:56 &#45;0700 -->
+<!--X-Message-Id: 40CAB53A&#45;DFB2&#45;11D7&#45;B276&#45;000A95776A76@eml.villa&#45;bosch.de -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Derived: pdf00015.pdf -->
+<!--X-Derived: bin00001.bin -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] DWG: Revised Proposal</TITLE>
+<LINK REV="made" HREF="mailto:ralph.gauges@eml.villa-bosch.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00608.html">Date Prev</A>][<A HREF="msg00610.html">Date Next</A>][<A HREF="msg00603.html">Thread Prev</A>][<A HREF="msg00611.html">Thread Next</A>][<A HREF="maillist.html#00609">Date Index</A>][<A HREF="threads.html#00609">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] DWG: Revised Proposal</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A> '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] DWG: Revised Proposal</LI>
+<LI><em>From</em>: Ralph Gauges &lt;<A HREF="mailto:ralph.gauges@eml.villa-bosch.de">ralph.gauges@eml.villa-bosch.de</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 5 Sep 2003 17:04:31 +0200</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Sorry for the delay, but with everybody on vacation, this has been
+lying around for some time.
+In case anybody is wondering. This is the next version of a proposal
+for a layout extension to SBML2.
+
+This version includes some important new features like the possibility
+to group several layout objects and the possibility to specify edges to
+denote relations.
+We also incorporated the suggestions we got from the discussion. E.g.
+the syntax is now more SBML like as references attributes are called
+after the thing that is being referenced. So the reference attribute to
+the SBML compartment id in the compartmentGlyph is now called
+compartment. We also got rid of all the ...GR(s), they are now called
+...Glyph(s).
+There are some smaller changes (See "List of Changes" in the document).
+
+We tried to come up with layout problems that can not be solved with
+this proposal and so far we have not been able to come up with any. So
+if you know of some layout that can not be specified in terms of this
+proposal, please let us know.
+
+There has been a new proposal for a layout extension by Jonathan Webb a
+few days ago. We would have preferred for Jonathan to give us some
+feedback as to what he didn't like about the proposal that was already
+there and so help to speed things up, because this is what a discussion
+list is for and this is the reason why we made the proposal to the
+discussion list in the first place.
+Looking at his proposal we think that it is missing some things
+that our proposal already has and that we think are important.
+
+1) Jonathan himself stated in his document that it was not a full 3D
+specification, but rather 2.5D. But with the inclusion of geometry
+information on compartments in upcoming versions of SBML, we think that
+the proposal should include the possibility to render objects in 3D.
+
+2) Jonathan's proposal takes color specifications from HTML and limits
+colors to RGB instead of RGBA. Partly transparent objects might really
+be useful when working with 2.5D or 3D layouts, so colors should really
+have an alpha channel.
+
+3) As has been noted in earlier discussions on this list, there was an
+agreement that metaids should not be used to reference objects. Jonathan
+does this in his edge.
+
+4) In the edge object of his proposal, Jonathan references the species
+reference of the model for the edge, but since a species can be
+represented by several graphical objects in a layout, there is no easy 
+way to
+find out which of possibly several species glyphs should
+be connected to a given reaction. He tries to circumvent this problem
+by identifying the species glyphs by coordinates which will fail if to
+species glyphs share the same coordinates.
+
+
+   We are aware of the fact that so far our proposal only includes layout
+information since we wanted to separate the layout information from the
+render information. So in order to get an agreement on the layout part,
+we did not do much work on the render part yet. As we took from the
+discussion, there was some agreement as to that it was a good idea to
+separate render and layout information. As stated above, we tried to
+find layout examples that could not be implemented with this proposal
+and so far we found none. If someone finds such an example we would be
+glad to hear of it so we could make the necessary changes. We also
+would very much like more feedback on what else people are missing from
+the proposal since this is the only way we can reach an agreement.
+Mails that only state that something is missing without ever
+elaborating on this are therefore not very helpful and won't help in
+reaching an agreement.
+We feel that this proposal has come a long way and we thank all the
+people that participated in the discussion. We don't know, if this new
+proposal has everything that people expect of it, but as far as we are
+concerned, we would be ready to move on to getting the specification
+for the render information written down. Now if the majority of people
+on this list feel that they would rather go with Jonathan's proposal
+and work from there, we would appreciate it if you let us know as soon
+as possible.
+
+Ralph
+</PRE>
+<P><A HREF="pdf00015.pdf" >SBMLLayoutExtension.pdf</A></P>
+<P><A HREF="bin00001.bin" >layout2.xsd</A></P>
+<PRE>
+
+
+P.S. Attached you find the PDF Version of the proposal and the schema. 
+The HTML Version will be on the website shortly.
+(<A  HREF="http://projects.eml.org/bcb/sbml/level1/">http://projects.eml.org/bcb/sbml/level1/</A>)</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00611" HREF="msg00611.html">Re: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert M. Sauro&quot; &lt;hsauro@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00608.html">Re: [sbml-discuss] FW: Proposal for a layout extension for SBML L2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00610.html">[sbml-discuss] example for AST APIs</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00603.html">RE: [sbml-discuss] FW: Proposal for a layout extension for SBML L2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00611.html">Re: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00609"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00609"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

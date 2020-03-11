@@ -1,0 +1,82 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage"></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table></div>
+
+
+<h1>MathSBML Installation Instructions </h1>
+
+<hr/>
+
+			
+<ol>
+	<li><h2>Unpack the MathSBML archive by</h2>
+		<ol>
+			<li><a href="../../MathSBML-2.2.0.zip">Click here</a> to open the ZIP archive included on this CD-ROM.</li>
+			<li>Unpack the archive and save it on your computer's hard disk.</li>
+		</ol>
+		<br /><br />
+	</li>
+	
+	<li><h2>Install MathSBML</h2>
+	<ol>
+		<li>Locate the file <span class="function">mathsbml.m</span> in the unpacked archive.</li>
+		<li>Copy <span class="function">mathsbml.m</span> to one of the following locations:
+			<ul>
+				<li>Your home directory. In most multi-user systems this will be the directory you are in when you first log onto 
+			    the system. The location varies in earlier versions of Windows or Mac OS. To determine this directory, open Mathematica and enter  <span class="function">$HomeDirectory</span> (Mathematica 4.x, <a href="http://documents.wolfram.com/v4/RefGuide/$HomeDirectory.html">Details</a>) 
+			    or  <span class="function">$BaseDirectory</span> (Mathematica 5.x, <a href="http://documents.wolfram.com/v5/Built-inFunctions/SystemInterface/FileSystem/$BaseDirectory.html">Details</a>) </li>
+				<li>The Mathematica Add-Ons Application subdirectory. A typical location for this directory is <span class="function">~/Library/Mathematica/Applications</span>. To find out where Add-Ons directory is located, open Mathematica and
+					enter  <span class="function">$AddOnsDirectory</span> (if you want the file to be visible to all users on your system) or  <span class="function">$UserAddOnsDirectory</span> (if you want
+					the file to only be visible to you). There should already be an Applications sub-directory within this directory.</li>
+				<li>The Mathematica Add-Ons AutoLoad directory. A typical location for this directory is <span class="function">~/Library/Mathematica/AutoLoad</span>. This is the AutoLoad subdirectory of the <span class="function">$AddOnsDirectory</span>. <a href="http://documents.wolfram.com/v5/Add-onsLinks/StandardPackages/AppendixHowMathematicaPackagesAreSetUp/6.16.3.html">Click here for details on AutoLoading packages</a>.</li>
+				<li>Any directory listed when you enter  <span class="function">$Path</span> during a Mathematica Session (<a href="http://documents.wolfram.com/v5/Built-inFunctions/SystemInterface/FileSystem/$Path.html">Details</a>)</li>
+				<li>Any other directory you prefer to keep it in. 
+				</li>
+			</ul>
+		</li>
+		<li>If Mathematica is currently open, quit Mathematica.</li>
+		<li>Restart Mathematica</li>
+		<li>If you installed <span class="function">mathsbml.m</span> in
+			<ul>
+				<li>The AutoLoad directory - MathSBML will  automatically load when you launch Mathematica.</li>
+				<li>Your Home Directory, the Add-Ons Application Directory, or any of the directories listed by the Mathematica $Path variable, load MathSBML by entering
+				<pre  class="function">&gt;&gt;mathsbml.m</pre>
+				</li>	
+				<li>Any other directory, load MathSBML by entering
+				<pre  class="function">&gt;&gt;"path/mathsbml.m"</pre>
+				where <span class="function">path</span> is the full path name of the directory where <span class="function">mathsbml.m</span> is located.</li>	
+			</ul> 
+		</li>
+		<li><a href="http://documents.wolfram.com/v5/Add-onsLinks/StandardPackages/AppendixHowMathematicaPackagesAreSetUp/6.16.2.html">Click here fore detailed information on loading packages</a>.
+		</li>
+	</ol><br /><br />
+	</li>
+	<li><h2>Additional details on Mathematica can be found in the following locations:</h2>
+		<ul>
+			<li><a href="http://documents.wolfram.com/v5/">Version 5</a></li>
+			<li><a href="http://documents.wolfram.com/v4/">Version 4</a></li>
+			<li><a href="http://documents.wolfram.com/legacy.html">Earlier Versions</a> (Note: MathSBML will not work with versions of Mathematica prior to version 4).</li>
+		</ul>
+	</li>
+		
+</ol>
+<br /><br /><br />
+	
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

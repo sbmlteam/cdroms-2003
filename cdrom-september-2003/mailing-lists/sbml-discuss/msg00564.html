@@ -1,0 +1,222 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Mon, 14 Jul 2003 13:28:56 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36EB5@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00563.html">Date Prev</A>][<A HREF="msg00565.html">Date Next</A>][<A HREF="msg00565.html">Thread Prev</A>][<A HREF="msg00567.html">Thread Next</A>][<A HREF="maillist.html#00564">Date Index</A>][<A HREF="threads.html#00564">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Sven Sahle&quot; &lt;<A HREF="mailto:sven.sahle@eml.villa-bosch.de">sven.sahle@eml.villa-bosch.de</A>&gt;,  &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;, &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 14 Jul 2003 16:28:16 -0400</LI>
+<LI>Thread-Index: AcNJ9u49gBP8UC+ASIeF25c88nSTtwATaKNw</LI>
+<LI>Thread-Topic: [sbml-discuss] Layout Extension Update</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Not to make a complicated situation worse... ;)
+
+We actually have three connection points, with
+the third being where the catalysts/modifiers
+hook in. Of course, for us, it's no problem to
+compute where that is: it's midway between the
+reactants and products points.
+
+But, I wonder if we're overthinking this a bit,
+and think it's worth confirming what it is we
+are after. You see, no matter what representation(s)
+we come up with in the SBML, after we read the
+model into the Virtual Cell, we are going to ONLY
+be able to render it in our renderer, so there will
+obviously be *some* conversion. Now, those of you
+who have seen the Virtual Cell may remember that we
+represent reactions as a "barbell" shaped glyph
+(which Jim has since modified a bit). Thus, while
+the EML group is thinking of a reaction glyph being
+a short line segment between two points, after
+reading their models into the Virtual Cell, their
+reactions will look like a "barbell" NO MATTER WHAT.
+
+And that was a best-case scenario, since EML's rep
+and the Virtual Cell's rep are almost identical.
+Now, consider the case where Herbert imports one
+of their models, with his rep being quite distinct.
+
+And this leads me to my point: are we trying to
+specify *EXACTLY* what a reaction should look like,
+and then expecting that EXACT look to be reproduced?
+
+The answer is obviously NO.
+
+And this leads me to the next question, which was
+brought up before but was not answered to my satisfaction
+(which was OK, I thought it might be good to make some
+progress before revisiting it): just how far do we
+want to go in specifying the EXACT DETAILS of what
+the layout looked like in each particular tool?
+
+Perhaps this would be a good time to think about
+this question again, before we embark on trying
+to spec out two different approaches to reactions,
+or generalizing them into one that works both ways.
+
+John
+
+&gt; -----Original Message-----
+&gt; From: Sven Sahle [<A  HREF="mailto:sven.sahle@eml.villa-bosch.de">mailto:sven.sahle@eml.villa-bosch.de</A>]
+&gt; Sent: Monday, July 14, 2003 6:04 AM
+&gt; To: Herbert Sauro; sbml-discuss@its.caltech.edu
+&gt; Subject: Re: [sbml-discuss] Layout Extension Update
+&gt; 
+&gt; 
+&gt; Hello,
+&gt; 
+&gt; it seems that, again, we will have to make some general decision: 
+&gt; Do we want to have several ways to represent reactions in our 
+&gt; layout (to 
+&gt; reflect the different way existing programs deal with 
+&gt; reactions) or do we 
+&gt; want to find one way to represent reactions.
+&gt; The one way would need to be fairly general to allow most 
+&gt; other cases to be 
+&gt; translated. It would therefore be unnecessarily complex for 
+&gt; some simple 
+&gt; cases. 
+&gt; 
+&gt; In our proposal we tried to find a compromise between generality and 
+&gt; simplicity: 
+&gt; A graphical representation of a reaction in our proposal 
+&gt; consists of the 
+&gt; coordinates of exactly two nodes. One node is where the 
+&gt; substrate arcs meet, 
+&gt; the other is where the product arcs meet. Optionally 
+&gt; information about the 
+&gt; curve connecting the nodes could be given (not yet in our 
+&gt; proposal). Also the 
+&gt; graphical representation of the reaction contains a list of graphical 
+&gt; representations of species references. These contain 
+&gt; information on which 
+&gt; species glyphs connect to which node of the graphical 
+&gt; representation of the 
+&gt; reaction. Optionally also information on the form of the curve. 
+&gt; (In the attached figure the red squares are the nodes of the 
+&gt; graphical 
+&gt; representaion of the reaction. The green curves are the graphical 
+&gt; representations of the species references. The blue circles 
+&gt; are the graphical 
+&gt; representations of species. So the red and green objects 
+&gt; together form the 
+&gt; graphical repsresentation of the reaction)
+&gt; 
+&gt; Of course more general graphical representations of reactions 
+&gt; could be thought 
+&gt; of (like an arbitrary number of nodes in the reaction). 
+&gt; 
+&gt; If a program internally deals with only one node (center of 
+&gt; reaction) it could 
+&gt; either give the two nodes the same coordinates or regard them 
+&gt; as one point 
+&gt; plus a tangent.
+&gt; 
+&gt; So what do you think? Do we need a more general definition? 
+&gt; Do we need several 
+&gt; cases for simple reactions and complicated reactions? Or 
+&gt; could there be a 
+&gt; compromise similar to our proposal?
+&gt; 
+&gt; Sven 
+&gt; 
+&gt; On Saturday 12 July 2003 21:22, Herbert Sauro wrote:
+&gt; &gt; You're correct, Jdesigner does have an explict reaction 
+&gt; section, instead
+&gt; &gt; the whole line from reactants to products represents the 
+&gt; reaction, thus
+&gt; &gt; clicking anywhere on the line will bring up the reaction 
+&gt; property box. No
+&gt; &gt; harm though in allowing people to have special symbols or 
+&gt; sections of the
+&gt; &gt; line that represent the reaction.
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; 	Herbert
+&gt; &gt;
+&gt; &gt; 	&gt;I also agree with Herbert et al about line placement, but we
+&gt; &gt; 	&gt;need to think pretty hard about it so that everyone is happy.
+&gt; &gt; 	&gt;For example, JDesigner (as I recall) doesn't have a
+&gt; &gt; 	&gt;graphical representation for the reaction; instead, the
+&gt; &gt; 	&gt;reaction is represented by the collection of lines in
+&gt; &gt; 	&gt;an implicit manner. On the other hand, the Virtual Cell
+&gt; &gt; 	&gt;group takes an approach similar to the EML approach, with
+&gt; &gt; 	&gt;two (x, y) points representing the reaction (one point
+&gt; &gt; 	&gt;where reactants hook in, one where products hook in).
+&gt; &gt; 	&gt;I think we need to treat both approaches.
+&gt; &gt; 	&gt;
+&gt; &gt; 	&gt;John
+&gt; 
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00567" HREF="msg00567.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Sven Sahle &lt;sven.sahle@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00563.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00565.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00565.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00567.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00564"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00564"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

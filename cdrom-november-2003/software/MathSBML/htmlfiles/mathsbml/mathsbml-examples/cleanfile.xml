@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<sbml xmlns='http://www.sbml.org/sbml/level2'
+    level='2'
+    version='1'>
+ <model id='Example'>
+  <notes>
+   <p>The xml file should be displayed below the line at the bottom of this paragraph. If it is not displayed then your browser is interpreting the xml file and ignoring any non-html tags.</p>
+   <hr/>
+  </notes>
+  <listOfFunctionDefinitions>
+   <functionDefinition id='doubler'>
+    <math xmlns='http://www.w3.org/1998/Math/MathML'>
+     <lambda>
+      <bvar>
+       <ci>x</ci>
+      </bvar>
+      <apply>
+       <times/>
+       <ci>x</ci>
+       <cn>2</cn>
+      </apply>
+     </lambda>
+    </math>
+   </functionDefinition>
+   <functionDefinition id='square'>
+    <math xmlns='http://www.w3.org/1998/Math/MathML'>
+     <lambda>
+      <bvar>
+       <ci>x</ci>
+      </bvar>
+      <apply>
+       <times/>
+       <ci>x</ci>
+       <cn>x</cn>
+      </apply>
+     </lambda>
+    </math>
+   </functionDefinition>
+   <functionDefinition id='foo'>
+    <math xmlns='http://www.w3.org/1998/Math/MathML'>
+     <lambda>
+      <bvar>
+       <ci>x</ci>
+      </bvar>
+      <apply>
+       <times/>
+       <cn>1</cn>
+       <apply>
+        <power/>
+        <apply>
+         <plus/>
+         <apply>
+          <power/>
+          <ci>x</ci>
+          <cn>2</cn>
+         </apply>
+         <cn>1</cn>
+        </apply>
+        <cn>-1</cn>
+       </apply>
+      </apply>
+     </lambda>
+    </math>
+   </functionDefinition>
+  </listOfFunctionDefinitions>
+  <listOfCompartments>
+   <compartment id='compartmentOne'
+       size='1'/>
+  </listOfCompartments>
+  <listOfSpecies>
+   <species id='S1'
+       initialConcentration='5'
+       compartment='compartmentOne'/>
+   <species id='S2'
+       compartment='compartmentOne'/>
+   <species id='S3'
+       initialConcentration='2.3'
+       compartment='compartmentOne'/>
+  </listOfSpecies>
+  <listOfReactions>
+   <reaction id='reaction_1'
+       reversible='false'>
+    <listOfReactants>
+     <speciesReference species='S1'/>
+    </listOfReactants>
+    <listOfProducts>
+     <speciesReference species='S2'/>
+    </listOfProducts>
+    <kineticLaw>
+     <math xmlns='http://www.w3.org/1998/Math/MathML'>
+      <apply>
+       <ci>doubler</ci>
+       <ci>S1</ci>
+      </apply>
+     </math>
+    </kineticLaw>
+   </reaction>
+  </listOfReactions>
+ </model>
+</sbml>

@@ -1,0 +1,180 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: FW: Proposal for a layout extension for SBML L2 -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Sat, 30 Aug 2003 04:07:25 &#45;0700 -->
+<!--X-Message-Id: 003d01c36ee6$09aecd10$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>FW: Proposal for a layout extension for SBML L2</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00599.html">Date Prev</A>][<A HREF="msg00601.html">Date Next</A>][<A HREF="msg00599.html">Thread Prev</A>][<A HREF="msg00601.html">Thread Next</A>][<A HREF="maillist.html#00600">Date Index</A>][<A HREF="threads.html#00600">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>FW: Proposal for a layout extension for SBML L2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;, &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;</LI>
+<LI><em>Subject</em>: FW: Proposal for a layout extension for SBML L2</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 30 Aug 2003 12:01:11 +0100</LI>
+<LI>Importance: Normal</LI>
+<LI>Reply-To: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Folks
+
+Jonathan Webb of BBN technologies has written a proposal for a layout
+extension
+for SBML.  (The original posting is enclosed email below.)
+
+"A text description of the schema is available at the URL:
+
+  <A  HREF="http://bio.bbn.com/biospice/mdl/design/layout.html">http://bio.bbn.com/biospice/mdl/design/layout.html</A>
+
+The schema itself is available at the URL:
+
+  <A  HREF="http://bio.bbn.com/xmlns/bsp/bsplayout">http://bio.bbn.com/xmlns/bsp/bsplayout</A>
+"
+
+Please comment on its incorporation into SBML.
+
+organizational comments:
+
+strictly IMHO - Mike Hucka will probably have comments
+
+If there is consensus I don't see why we can't incorporate this
+into SBML before the November meeting.  For example I can take
+Jonathan's
+description and extend the SBML specification as a proposed Level 2
+Version 2.
+We could then vote on this using Survey Monkey and/or have an SBML forum
+conference call to discuss this.  I think this is a viable idea
+since Jonathan's proposal is close enough to what people are actually
+doing with their implementations.  Similar proposals have been 
+described at SBML forums previously with reasonable consensus.  
+
+Folks what do you think?
+
+Alternatively people may want to see more reference implementations
+first.  Perhaps this may be in place before November so we can 
+start the incorporation process then.   I would argue
+that the existing tools have implementations that are close enough
+to Jonathan's proposal that they are effectively reference
+implementations
+Again I'd be interested in peoples opinions on this.
+
+Another alternative, similar to the development of level 2, is to
+develop a provisional Level 2 version 2 in the next 1 or 2 months
+which will be formally frozen say mid 2004.
+
+The aim here is to avoid incompatible formats and have some
+obvious place to keep the format definition.  We don't
+necessarily need to incorporate this proposal into
+SBML.  It could remain an annotation for example.
+
+technical comments:
+
+when this incorporated into SBML the
+IDREF 'component' attribute should be changed to 
+an Sid attribute with an id attribute introduced on
+SpeciesReference.  This is to support future
+model composition.
+
+There probably needs to a mechanism for adding extra text
+to a diagram which is not taken from name/id fields.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+-----Original Message-----
+From: owner-biospice-mdl@billygraham.bbn.com
+[<A  HREF="mailto:owner-biospice-mdl@billygraham.bbn.com">mailto:owner-biospice-mdl@billygraham.bbn.com</A>] On Behalf Of Jonathan
+Webb
+Sent: 28 August 2003 13:18
+To: biospice-mdl@bbn.com
+Subject: Proposal for a layout extension for SBML L2
+
+
+All:
+
+I've developed a proposal for representing the visual layout of model
+diagrams for SBML Level 2.  A text description of the schema is
+available at the URL:
+
+  <A  HREF="http://bio.bbn.com/biospice/mdl/design/layout.html">http://bio.bbn.com/biospice/mdl/design/layout.html</A>
+
+The schema itself is available at the URL:
+
+  <A  HREF="http://bio.bbn.com/xmlns/bsp/bsplayout">http://bio.bbn.com/xmlns/bsp/bsplayout</A>
+
+Jonathan Webb
+BBN Technologies
+617-873-3321
+jwebb@bbn.com
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00601" HREF="msg00601.html">Re: [sbml-discuss] FW: Proposal for a layout extension for SBML L2</A></STRONG>
+<UL><LI><EM>From:</EM> Jonathan Webb &lt;jwebb@bbn.com&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00602" HREF="msg00602.html">Re: [sbml-discuss] FW: Proposal for a layout extension for SBML L2</A></STRONG>
+<UL><LI><EM>From:</EM> Sven Sahle &lt;sven.sahle@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00599.html">[sbml-discuss] Question about SBW services</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00601.html">Re: [sbml-discuss] FW: Proposal for a layout extension for SBML L2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00599.html">[sbml-discuss] Question about SBW services</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00601.html">Re: [sbml-discuss] FW: Proposal for a layout extension for SBML L2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00600"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00600"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

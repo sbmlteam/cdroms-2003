@@ -1,0 +1,114 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;other] Guidelines for Rules -->
+<!--X-From-R13: [negva Uvaxry <tvaxryNzcv&#45;zntqrohet.zct.qr> -->
+<!--X-Date: Fri, 12 Jul 2002 04:38:33 &#45;0700 -->
+<!--X-Message-Id: XFMail.20020712133822.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-other] Guidelines for Rules</TITLE>
+<LINK REV="made" HREF="mailto:ginkel@mpi-magdeburg.mpg.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00005.html">Date Prev</A>][<A HREF="msg00007.html">Date Next</A>][<A HREF="msg00005.html">Thread Prev</A>][<A HREF="msg00007.html">Thread Next</A>][<A HREF="maillist.html#00006">Date Index</A>][<A HREF="threads.html#00006">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-other] Guidelines for Rules</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-other@symbio.jst.go.jp">sbml-other@symbio.jst.go.jp</A></LI>
+<LI><em>Subject</em>: [sbml-other] Guidelines for Rules</LI>
+<LI><em>From</em>: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 12 Jul 2002 13:38:22 +0200 (CEST)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Hi all,
+
+out of the discussions regarding clarifications of rule-semantics, 
+I made the following notes. This can appear in the section
+4.6.5 of the current SBML Spec.
+One thing is still unclear: is it really intended to allow 
+parameters being dynamic states (RuleType "rate")? 
+The current spec makes this possible.
+
+I would suggest to change the name `parameter' in this case 
+(to quantity), since in most modelling applications parameters are 
+usually constants or perhaps calculated intermediates but never 
+dynamics.
+
+* Assignmentrules are evaluated in order of appearance
+* Assignmentrules must be ordered by the writing tool
+  according to their dependencies and must not contain 
+  _algebraic_ loops (like rule1: "a:= f(b,c)"
+                          rule2: "c:= g(a)")
+  Dependencies on dynamic (specie-|compartment-) values are allowed.
+* AlgebraicRules allow to describe implicit algebraic constraints,
+  but the whole system should stick to index 1 DAE (or is there 
+  anyone working with automatic index reduction)
+* If a SpecieConcentrationRule calculates a specie, this specie must 
+  not have additional reactions (Otherwise we have at least index 2).
+
+        Best regards
+        Martin Ginkel
+
+PS: Does anyone know an url, where I can find sbml-files for 
+    testing.
+
+-- 
++-[Martin Ginkel]--------------[<A  HREF="mailto:ginkel">mailto:ginkel</A>(at)mpi-magdeburg.mpg.de]-+
+| MPI Magdeburg, Zi S2.09    Sandtorstr. 1, D-39106 Magdeburg, Germany |
+| Q: What is the shortest lie in computing? A: It works.               |
++-[tel/fax: +49 391 6110 482/529]----[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00005.html">[sbml-other] Minimal SBML Proposal comment</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00007.html">[sbml-other] RE: [sysbio] id attribute and elements</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00005.html">[sbml-other] Minimal SBML Proposal comment</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00007.html">[sbml-other] RE: [sysbio] id attribute and elements</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00006"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00006"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

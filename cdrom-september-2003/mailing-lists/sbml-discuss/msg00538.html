@@ -1,0 +1,139 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: FW: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: "Vreoreg Enheb" <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Wed, 9 Jul 2003 09:54:29 &#45;0700 -->
+<!--X-Message-Id: 601BBB4D9640CB4693A2384E4B37872E15B50F@dell2650&#45;0550.kgi.edu.96.173.134.in&#45;addr.arpa -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>FW: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00537.html">Date Prev</A>][<A HREF="msg00539.html">Date Next</A>][<A HREF="msg00568.html">Thread Prev</A>][<A HREF="msg00539.html">Thread Next</A>][<A HREF="maillist.html#00538">Date Index</A>][<A HREF="threads.html#00538">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>FW: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: FW: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 9 Jul 2003 09:53:30 -0700</LI>
+<LI>Thread-Index: AcNGGehn2PMNoN+NT3+bBGRLjSvHPAAH+UE9AAAzF5g=</LI>
+<LI>Thread-Topic: [sbml-discuss] Layout Extension Update</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+ 
+
+	As you probably know, I use bezier curves in jdesigner. For uniuni reaction I use just one bezier, for other reactions as use additional beziers, thus a unibi reaction uses one bzier from the uni side and two beziers to the bi side. This means that I acquire a centre point and to make things look nice the slopes at the end of the intersecting beziers match. I've thought about using other types of curve but never got round to it. As for sbml strorage, I store all control points and the centre point. Although one could compute the centre based on the centroid between all the nodes, I allow the user to move the center point, it make quite a bit of different to what users can draw.
+	 
+	If there are going to be different ways to draw the edges then we will proably need some information indicating what type of edge drawing it is, eg splines, beziers, straight edges with kinks etc.
+	 
+	Herbert Sauro
+
+		-----Original Message----- 
+		From: Sven Sahle [<A  HREF="mailto:sven.sahle@eml.villa-bosch.de">mailto:sven.sahle@eml.villa-bosch.de</A>] 
+		Sent: Wed 7/9/2003 5:50 AM 
+		To: 'sbml-discuss@caltech.edu ' 
+		Cc: 
+		Subject: Re: [sbml-discuss] Layout Extension Update
+		
+		
+
+		Hello all, 
+
+		On Tuesday 08 July 2003 19:55, Rowan Christmas wrote: 
+		&gt; I have a few questions about the Layout Extension, 
+		&gt; 
+		&gt; In looking at the layout stored for Reactions, I see that it should be 
+		&gt; represented as: 
+		&gt; 
+		&gt; &lt;sl2:listOfReactionGRs&gt; 
+		&gt;       &lt;sl2:reactionGR id="reaction_0_GR" ref="reaction_0" x1="119.0" 
+		&gt; y1="166.0" x2="120.0" y2="183.0"/&gt; 
+		&gt; 
+		&gt; but the sample file does not include this "edge layout" information. 
+		&gt; Obviously, the edges are drawn based on the location of their source and 
+		&gt; target nodes, but I am unsure how to add in edge-bend layout 
+		&gt; information.  There are many time-consuming layout algorithms that are 
+		&gt; able to make really nice orthoganal layouts that utilize edge-bends, and 
+		&gt; it would be nice to store that layout. 
+		&gt; 
+		&gt; So, if this can be done by simply adding "x3/y3" etc. to the above 
+		&gt; example, that would be swell.  Otherwise, let me know how this can be 
+		&gt; integrated. 
+		&gt; 
+		 Indeed the information about the exact layout of the edges is not yet present 
+		in our suggestion. We left it out because we are not shure yet how to do it 
+		best. So far it is only specified which graphical objects are connected by an 
+		edge (this is in the speciesReferenceGR element). 
+		So far we have been thinking about two ways to specify the exact path of an 
+		edge (how it bends, but not how thick it is, what colour it has...) : 
+		1. Just a list of additional points along the path (like Rowan mentioned) 
+		2. a list of splines (each given by 4 points, the end point of one spline 
+		being the start point of the next). 
+
+		This information would become part of the speciesReferenceGR object 
+
+		What do you think is the best way to specify the curves? 
+
+		Sven 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00539" HREF="msg00539.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Rowan Christmas &lt;xmas@systemsbiology.org&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00537.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00539.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00568.html">RE: [sbml-discuss] Layout Extension Update + controlled vocabularies</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00539.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00538"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00538"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,121 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] support for membranes -->
+<!--X-From-R13: @vpbynf Zr @birer <yrabiNcnfgrhe.se> -->
+<!--X-Date: Sun, 25 May 2003 02:06:50 &#45;0700 -->
+<!--X-Message-Id: Pine.OSF.4.21.0305251055320.176185&#45;100000@electre.pasteur.fr -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD36E40@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] support for membranes</TITLE>
+<LINK REV="made" HREF="mailto:lenov@pasteur.fr">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00315.html">Date Prev</A>][<A HREF="msg00317.html">Date Next</A>][<A HREF="msg00313.html">Thread Prev</A>][<A HREF="msg00349.html">Thread Next</A>][<A HREF="maillist.html#00316">Date Index</A>][<A HREF="threads.html#00316">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] support for membranes</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] support for membranes</LI>
+<LI><em>From</em>: Nicolas Le Novere &lt;<A HREF="mailto:lenov@pasteur.fr">lenov@pasteur.fr</A>&gt;</LI>
+<LI><em>Date</em>: Sun, 25 May 2003 11:03:53 +0200 (CEST)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+On Sat, 24 May 2003, Wagner,John wrote:
+
+&gt; &gt; A membrane IS a compartment of the cell.
+
+&gt; BTW, this isn't necessarily true in SBML
+
+It has to. The word compartment is an abstract term, meaning a portion
+of space. A 2D structure is a portion of space (of volume 0).
+
+A membrane is a physical structure, wich separate two other
+compartments. BTW a membrane is not necessarily identical to a 2D
+compartment. It can be necessary to model it as two adjacent 2D
+compartments, or even a 3D compartment.
+
+&gt; this clarified in Florida. Beyond the obvious three-dimensional
+&gt; nature of the "volume" attribute, there is a question of the
+&gt; "units" attribute, in particular, the units of the units
+&gt; assigned to it. That is, is it legal to set "units" equal
+&gt; to a set of units that are not volumetric? Could I have:
+&gt; 
+&gt; &lt;compartment name="PlasmaMembrane" volume="12" units="micronsSquared" /&gt;
+&gt; 
+&gt; (assuming I had already defined "micronsSquared"), or even,
+&gt; 
+&gt; &lt;compartment name="PlasmaMembrane" volume="12" units="becquerel" /&gt;
+
+The problem here is not the element "compartment" but the attribute
+"volume". This is why I like your proposal "Membranes", which I would
+rename "extendedCompartment" of something like that.
+
+-- 
+Nicolas LE NOVÈRE
+Récepteurs et Cognition,   Institut Pasteur,   75724 Paris cedex,    FRANCE
+e-mail : lenov@pasteur.fr                  <A  HREF="http://www-alt.pasteur.fr/~lenov">http://www-alt.pasteur.fr/~lenov</A>
+tel : 33-(0)1-45-68-88-44                         fax : 33-(0)1-45-68-88-36
+
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00313" HREF="msg00313.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00315.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00317.html">[sbml-discuss] SBML modularization</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00313.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00349.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00316"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00316"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

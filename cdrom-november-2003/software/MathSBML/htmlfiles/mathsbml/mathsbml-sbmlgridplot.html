@@ -1,0 +1,45 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table>
+</div>
+
+
+<h1>MathSBML Model Builder:<span class="function"> SBMLGridPlot</span></h1>
+<hr />
+
+
+<span class="function">SBMLGridPlot[solution,options]<br/>
+SBMLGridPlot[solution,{var1,var2,...}, options]<br />
+SBMLGridPlot[solution,{var1,var2,...}, {tbegin,tend},options]</span><br/>
+
+<p><span class="function">solution</span> is the output of 
+<span class="function">SBMLNDSolve</span></p>
+
+
+<p>These functions will 
+plot each specified variable (or the entire solution set) for the specified
+times (or the entire time span) on a separate graph, with the top of the 
+graph labeled with the variable name. The plots will be arranged on a grid 
+with three plots per line. The context of the variables should not be 
+included in the list of variable names.</p> 
+
+<p>Options include:</p>
+<p><span class="function">columns->3</span>, number of plots per line</p>
+<p>Any valid option for <span class="function">Plot</span> may also be used.</p>
+
+</body>
+</html>
+

@@ -1,0 +1,84 @@
+Flux name	Gene	Flux Description	EC Number	Reaction	Lower Limit	Upper Limit
+GLK1	glk	Glucokinase	2.7.1.2	GLC + ATP --> G6P + ADP	0	Inf
+PGI1R	pgi	Phosphoglucose isomerase	5.3.1.9	G6P <--> F6P	-Inf	Inf
+PFKA	pfkA	Phosphofructokinase	2.7.1.11	F6P + ATP --> FDP + ADP	0	Inf
+FBP	fbp	Fructose-1,6-bisphosphatase	3.1.3.11	FDP --> F6P + PI	0	Inf
+FBAR	fbaA	Fructose-1,6-bisphosphatate aldolase	4.1.2.13	FDP <--> T3P1 + T3P2	-Inf	Inf
+TPIAR	tpiA	Triosphosphate Isomerase	5.3.1.1	T3P1 <--> T3P2	-Inf	Inf
+GAPAR	gapA	Glyceraldehyde-3-phosphate dehydrogenase-A complex	1.2.1.12	T3P1 + PI + NAD <--> NADH + 13PDG	-Inf	Inf
+PGKR	pgk	Phosphoglycerate kinase	2.7.2.3	13PDG + ADP <--> 3PG + ATP	-Inf	Inf
+GPMAR	gpmA	Phosphoglycerate mutase 1	5.4.2.1	3PG <--> 2PG	-Inf	Inf
+ENOR	eno	Enolase	4.2.1.11	2PG <--> PEP	-Inf	Inf
+PPSA	ppsA	Phosphoenolpyruvate synthase	2.7.9.2	PYR + ATP --> PEP + AMP + PI	0	Inf
+PYKF	pykF	Pyruvate Kinase I	2.7.1.40	PEP + ADP --> PYR + ATP	0	Inf
+ACEE	lpdA, aceE, aceF	Pyruvate dehydrogenase	1.2.4.1,2.3.1.12,1.8.6.4	PYR + COA + NAD --> NADH + CO2 + ACCOA	0	Inf
+ZWFR	zwf	Glucose 6-phosphate-1-dehydrogenase	1.1.1.49	G6P + NADP <--> D6PGL + NADPH	-Inf	Inf
+PGL	pgl	6-Phosphogluconolactonase	3.1.1.31	D6PGL --> D6PGC	0	Inf
+GND	gnd	6-Phosphogluconate dehydrogenase (decarboxylating)	1.1.1.44	D6PGC + NADP --> NADPH + CO2 + RL5P	0	Inf
+RPIAR	rpiA	Ribose-5-phosphate isomerase A	5.3.1.6	RL5P <--> R5P	-Inf	Inf
+RPER	rpe	Ribulose phosphate 3-epimerase	5.1.3.1	RL5P <--> X5P	-Inf	Inf
+TKTA1R	tktA	Transketolase I	2.2.1.1	R5P + X5P <--> T3P1 + S7P	-Inf	Inf
+TKTA2R	tktA	Transketolase I	2.2.1.1	X5P + E4P <--> F6P + T3P1	-Inf	Inf
+TALBR	talB	Transaldolase B	2.2.1.2	T3P1 + S7P <--> E4P + F6P	-Inf	Inf
+GLTA	gltA	Citrate synthase	4.1.3.7	ACCOA + OA --> COA + CIT	0	Inf
+ACNAR	acnA	Aconitase A	4.2.1.3	CIT <--> ICIT	-Inf	Inf
+ICDAR	icdA	Isocitrate dehydrogenase	1.1.1.42	ICIT + NADP <--> CO2 + NADPH + AKG	-Inf	Inf
+SUCA	sucA,sucB	   2-Ketoglutarate dehyrogenase	1.2.4.2,2.3.1.61,1.8.1.4	AKG + NAD + COA --> CO2 + NADH + SUCCOA	0	Inf
+SUCCR	sucC,sucD	Succinyl-CoA synthetase	6.2.1.5	SUCCOA + ADP + PI <--> ATP + COA + SUCC	-Inf	Inf
+SDHA1	sdhA,sdhB,sdhC,sdhD	Succinate dehydrogenase	1.3.99.1	SUCC + FAD --> FADH + FUM	0	Inf
+FRDA	frdA,frdB,frdC,frdD	Fumurate reductase	1.3.99.1	FUM + FADH --> SUCC + FAD	0	Inf
+FUMAR	fumA	Fumarase A	4.2.1.2	FUM <--> MAL	-Inf	Inf
+MDHR	mdh	Malate dehydrogenase	1.1.1.37	MAL + NAD <--> NADH + OA	-Inf	Inf
+DLD1R	dld	D-Lactate dehydrogenase 1	1.1.1.28	PYR + NADH <--> NAD + LAC	-Inf	Inf
+ADHE2R	adhE	Acetaldehyde dehydrogenase	1.2.1.10	ACCOA + 2 NADH <--> ETH + 2 NAD + COA	-Inf	Inf
+PFLA	pflA,pflB	Pyruvate formate lyase 1	2.3.1.54	PYR + COA --> ACCOA + FOR	0	Inf
+PTAR	pta	Phosphotransacetylase	2.3.1.8	ACCOA + PI <--> ACTP + COA	-Inf	Inf
+ACKAR	ackA	Acetate kinase A	2.7.2.1	ACTP + ADP <--> ATP + AC	-Inf	Inf
+ACS	acs	Acetyl-CoA synthetase	6.2.1.1	ATP + AC + COA --> AMP + PPI + ACCOA	0	Inf
+PCKA	pckA	Phosphoenolpyruvate carboxykinase	4.1.1.49	OA + ATP --> PEP + CO2 + ADP	0	Inf
+PPC	ppc	Phosphoenolpyruvate carboxylase	4.1.1.31	PEP + CO2 --> OA + PI	0	Inf
+MAEB	maeB	Malic enzyme (NADP)	1.1.1.40	MAL + NADP --> CO2 + NADPH + PYR	0	Inf
+SFCA	sfcA	Malic enzyme (NAD)	1.1.1.38	MAL + NAD --> CO2 + NADH + PYR	0	Inf
+ACEA	aceA	Isocitrate lyase	4.1.3.1	ICIT --> GLX + SUCC	0	Inf
+ACEB	aceB	Malate synthase A	4.1.3.2	ACCOA + GLX --> COA + MAL	0	Inf
+PPA	ppa	Inorganic pyrophosphatase	3.6.1.1	PPI --> 2 PI	0	Inf
+NUOA	nuoA,nuoB,nuoC,nuoE,nuoF,nuoG,nuoH,nuoI,nuoJ,nuoK,nuoL,nuoM,nuoN	NADH dehydrogenase I	1.6.5.3	NADH + Q --> NAD + QH2 + 3.5 HEXT	0	Inf
+FDOH	fdoI,fdoH,fdoG	Formate dehydrogenase-O	1.2.2.1	FOR + Q --> QH2 + CO2 + 2 HEXT	0	Inf
+GLPD	glpD	Glycerol-3-phosphate dehydrogenase (aerobic)	1.1.99.5	GL3P + Q --> T3P2 + QH2	0	Inf
+CYOA	cyoA,cyoB,cyoC,cyoD,cycA,cydA,cydB	Cytochrome oxidase bo3	1.10.2.2,1.9.3.1	QH2 + 0.5 O2 --> Q + 2.5 HEXT	0	Inf
+SDHA2R	sdhA,sdhB,sdhC,sdhD	Succinate dehydrogenase complex	1.3.5.1	FADH + Q <--> FAD + QH2	-Inf	Inf
+PNT1A	pntA,pntB	Pyridine nucleotide transhydrogenase	1.6.1.1	NADPH + NAD --> NADP + NADH	0	Inf
+PNT2A	pntA,pntB	Pyridine nucleotide transhydrogenase	1.6.1.1	NADP + NADH + 2 HEXT --> NADPH + NAD	0	Inf
+ATPAR	atpA,atpB,atpC,atpD,atpE,atpF,atpG,atpH,atpI	F0F1-ATPase	3.6.1.34	ATP <--> ADP + PI + 4 HEXT	-Inf	Inf
+GLPK	glpK	Glycerol kinase	2.7.1.30	GL + ATP --> ADP + GL3P	0	Inf
+GPSA1R	gpsA	Glycerol-3-phosphate-dehydrogenase-[NAD(P)+]	1.1.1.94	GL3P + NADP <--> T3P2 + NADPH	-Inf	Inf
+RBSK	rbsK	Ribokinase	2.7.1.15	RIB + ATP --> R5P + ADP	0	Inf
+GLCUP2	gluP	Glucose/galactose transporter		GLCxt + HEXT --> GLC	0	Inf
+GLCPTS	ptsG,crr	Glucose		GLCxt + PEP --> G6P + PYR	0	Inf
+GLUPR	lacY	Glycerol transport		GLxt <--> GL	-Inf	Inf
+RIBUP	rbsA,rbsB,rbsC,rbsD,xylH	Ribose transport		RIBxt --> RIB + ATP + ADP + PI	0	Inf
+ACUPR	lldP	Acetate transport		ACxt + HEXT <--> AC	-Inf	Inf
+LACUP2R	focA	L-Lactate transport		LACxt + HEXT <--> LAC	-Inf	Inf
+FORUPR		Formate transport		FORxt <--> FOR	-Inf	Inf
+ETHUPR		Ethanol transport		ETHxt + HEXT <--> ETH	-Inf	Inf
+PYRUPR		Pyruvate transport		PYRxt + HEXT <--> PYR	-Inf	Inf
+SUCCUP2R	dcuA,dcuB,dctA	Succinate transport		SUCCxt + HEXT <--> SUCC	-Inf	Inf
+PIUP1	pstA,pstB,pstC,pstS	Phosphate transport		PIxt --> PI	0	Inf
+ATPM		ATP drain flux for constant maintenance requirements		ATP --> ADP + PI	7.6	7.6
+Growth		Growth Flux		Biomass --> BMxt + 23 ATP + 23 ADP + 23 PI	0	Inf
+VGRO		Biomass Production Flux		41.257 ATP + 3.547 NAD + 18.225 NADPH + 0.205 G6P + 0.0709 F6P + 0.8977 R5P + 0.36 E4P + 0.129 T3P1 + 1.496 3PG + 0.5191 PEP + 2.8328 PYR + 3.7478 ACCOA --> 3.7478 COA + 1.7867 OA + 1.0789 AKG + 41.257 ADP + 41.257 PI + 3.547 NADH + 18.225 NADP + Biomass	0	Inf
+ADK1R	adk	Adenylate kinase	2.7.4.3	ATP + AMP <--> 2 ADP	-Inf	Inf
+GLCxt		GLC Exchange		GLCxt --> GLC	0	10
+O2xt		O2 Exchange		O2xt --> O2	0	20
+GLxt		GL Exchange		GL --> GLxt	0	1000
+RIBxt		RIB Exchange		RIB --> RIBxt	0	1000
+ACxt		AC Exchange		AC --> ACxt	0	1000
+LACxt		LAC Exchange		LAC --> LACxt	0	1000
+FORxt		FOR Exchange		FOR --> FORxt	0	1000
+ETHxt		ETH Exchange		ETH --> ETHxt	0	1000
+PYRxt		PYR Exchange		PYR --> PYRxt	0	1000
+PIxt		PI Exchange		PI <--> PIxt	-1000	1000
+GL3Pxt		GL3P Exchange		GL3P --> GL3Pxt	0	1000
+SUCCxt		SUCC Exchange		SUCC --> SUCCxt	0	1000
+CO2xt		CO2 Exchange		CO2 <--> CO2xt	-100	1000
+BMxt		BM Exchange		BM --> BMxt	0	1000

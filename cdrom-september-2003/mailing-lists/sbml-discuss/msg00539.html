@@ -1,0 +1,160 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: FW: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: Dbjna Quevfgznf <kznfNflfgrzfovbybtl.bet> -->
+<!--X-Date: Wed, 9 Jul 2003 11:52:12 &#45;0700 -->
+<!--X-Message-Id: 3F0C6426.2080804@systemsbiology.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 601BBB4D9640CB4693A2384E4B37872E15B50F@dell2650&#45;0550.kgi.edu.96.173.134.in&#45;addr.arpa -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: FW: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:xmas@systemsbiology.org">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00538.html">Date Prev</A>][<A HREF="msg00540.html">Date Next</A>][<A HREF="msg00538.html">Thread Prev</A>][<A HREF="msg00540.html">Thread Next</A>][<A HREF="maillist.html#00539">Date Index</A>][<A HREF="threads.html#00539">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: FW: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>Subject</em>: Re: FW: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: Rowan Christmas &lt;<A HREF="mailto:xmas@systemsbiology.org">xmas@systemsbiology.org</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 09 Jul 2003 11:51:18 -0700</LI>
+<LI>Cc: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I have only implemented straight lines and bezier curves, so I would 
+like to see an option that does not require me to use splines ;) I think 
+that a line-type field is needed, and that should determine what the 
+list of points means ( i.e. straight lines, it is a list of points; 
+splines, it is a list of quads; etc. ).  Presumably people would 
+populate the list accordingly, and umimplemented types would just get 
+drawn in a default way that connects the two nodes.
+
+--rowan
+
+
+Herbert Sauro wrote:
+
+&gt; 
+&gt;
+&gt;	As you probably know, I use bezier curves in jdesigner. For uniuni reaction I use just one bezier, for other reactions as use additional beziers, thus a unibi reaction uses one bzier from the uni side and two beziers to the bi side. This means that I acquire a centre point and to make things look nice the slopes at the end of the intersecting beziers match. I've thought about using other types of curve but never got round to it. As for sbml strorage, I store all control points and the centre point. Although one could compute the centre based on the centroid between all the nodes, I allow the user to move the center point, it make quite a bit of different to what users can draw.
+&gt;	 
+&gt;	If there are going to be different ways to draw the edges then we will proably need some information indicating what type of edge drawing it is, eg splines, beziers, straight edges with kinks etc.
+&gt;	 
+&gt;	Herbert Sauro
+&gt;
+&gt;		-----Original Message----- 
+&gt;		From: Sven Sahle [<A  HREF="mailto:sven.sahle@eml.villa-bosch.de">mailto:sven.sahle@eml.villa-bosch.de</A>] 
+&gt;		Sent: Wed 7/9/2003 5:50 AM 
+&gt;		To: 'sbml-discuss@caltech.edu ' 
+&gt;		Cc: 
+&gt;		Subject: Re: [sbml-discuss] Layout Extension Update
+&gt;		
+&gt;		
+&gt;
+&gt;		Hello all, 
+&gt;
+&gt;		On Tuesday 08 July 2003 19:55, Rowan Christmas wrote: 
+&gt;		&gt; I have a few questions about the Layout Extension, 
+&gt;		&gt; 
+&gt;		&gt; In looking at the layout stored for Reactions, I see that it should be 
+&gt;		&gt; represented as: 
+&gt;		&gt; 
+&gt;		&gt; &lt;sl2:listOfReactionGRs&gt; 
+&gt;		&gt;       &lt;sl2:reactionGR id="reaction_0_GR" ref="reaction_0" x1="119.0" 
+&gt;		&gt; y1="166.0" x2="120.0" y2="183.0"/&gt; 
+&gt;		&gt; 
+&gt;		&gt; but the sample file does not include this "edge layout" information. 
+&gt;		&gt; Obviously, the edges are drawn based on the location of their source and 
+&gt;		&gt; target nodes, but I am unsure how to add in edge-bend layout 
+&gt;		&gt; information.  There are many time-consuming layout algorithms that are 
+&gt;		&gt; able to make really nice orthoganal layouts that utilize edge-bends, and 
+&gt;		&gt; it would be nice to store that layout. 
+&gt;		&gt; 
+&gt;		&gt; So, if this can be done by simply adding "x3/y3" etc. to the above 
+&gt;		&gt; example, that would be swell.  Otherwise, let me know how this can be 
+&gt;		&gt; integrated. 
+&gt;		&gt; 
+&gt;		 Indeed the information about the exact layout of the edges is not yet present 
+&gt;		in our suggestion. We left it out because we are not shure yet how to do it 
+&gt;		best. So far it is only specified which graphical objects are connected by an 
+&gt;		edge (this is in the speciesReferenceGR element). 
+&gt;		So far we have been thinking about two ways to specify the exact path of an 
+&gt;		edge (how it bends, but not how thick it is, what colour it has...) : 
+&gt;		1. Just a list of additional points along the path (like Rowan mentioned) 
+&gt;		2. a list of splines (each given by 4 points, the end point of one spline 
+&gt;		being the start point of the next). 
+&gt;
+&gt;		This information would become part of the speciesReferenceGR object 
+&gt;
+&gt;		What do you think is the best way to specify the curves? 
+&gt;
+&gt;		Sven 
+&gt;
+&gt;
+&gt;  
+&gt;
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00540" HREF="msg00540.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Akira Funahashi &lt;funa@symbio.jst.go.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00538" HREF="msg00538.html">FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert Sauro&quot; &lt;Herbert_Sauro@kgi.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00538.html">FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00540.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00538.html">FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00540.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00539"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00539"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

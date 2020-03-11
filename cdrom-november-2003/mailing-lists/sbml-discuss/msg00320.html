@@ -1,0 +1,152 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] DWG math display? -->
+<!--X-From-R13: Dnycu Unhtrf <enycu.tnhtrfNrzy.ivyyn&#45;obfpu.qr> -->
+<!--X-Date: Mon, 26 May 2003 00:16:57 &#45;0700 -->
+<!--X-Message-Id: FCB588AB&#45;8F49&#45;11D7&#45;9E7B&#45;000A95776A76@eml.villa&#45;bosch.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3FA493B792A6D311B51A009027D3B86101AC91FC@mail.kgi.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] DWG math display?</TITLE>
+<LINK REV="made" HREF="mailto:ralph.gauges@eml.villa-bosch.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00319.html">Date Prev</A>][<A HREF="msg00321.html">Date Next</A>][<A HREF="msg00293.html">Thread Prev</A>][<A HREF="msg00328.html">Thread Next</A>][<A HREF="maillist.html#00320">Date Index</A>][<A HREF="threads.html#00320">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] DWG math display?</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] DWG math display?</LI>
+<LI><em>From</em>: Ralph Gauges &lt;<A HREF="mailto:ralph.gauges@eml.villa-bosch.de">ralph.gauges@eml.villa-bosch.de</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 26 May 2003 09:16:36 +0200</LI>
+<LI>Cc: &quot;'<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A> '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I fully agree that both options are far from optimal, especially the 
+second one since you need all those programs installed. On the other 
+hand, it seems to work as long as there is no other option.
+Actually a java lib would not be that bad I think. Since the new gcc 
+compiler can compile java code to machine byte code, it should be 
+possible to create a normal library from java code and then write some 
+wrappers for perl, python, etc.
+Maybe I am wrong. Has anybody else played around with the gcc java 
+compiler yet?
+
+
+Ralph
+
+On Freitag, Mai 23, 2003, at 06:57  Uhr, Herbert Sauro wrote:
+
+&gt;
+&gt; All very well on paper but how do we programmers implement it? Someone
+&gt; earlier mentioned that they only knew of two portable libs (maybe) that
+&gt; could render MathML, a GTK method and a long winded approach to convery
+&gt; MathML to Latex, etc etc. Neither method sounds appleaing.
+&gt;
+&gt; I'm sure there is a Java lib somewhere but that isn't of much use to 
+&gt; many of
+&gt; use who use other languages.
+&gt;
+&gt; Herbert
+&gt;
+&gt; -----Original Message-----
+&gt; From: Poul Nielsen
+&gt; To: Wagner,John
+&gt; Cc: Poul Nielsen; sbml-discuss@caltech.edu
+&gt; Sent: 5/23/03 3:07 AM
+&gt; Subject: Re: [sbml-discuss] DWG math display?
+&gt;
+&gt;
+&gt; On Friday, May 23, 2003, at 14:56 Pacific/Auckland, Wagner,John wrote:
+&gt;
+&gt;&gt; There was also some discussion in Florida about display
+&gt;&gt; MathML, and I got to thinking about it...it seems like we
+&gt;&gt; could include display MathML markup in the Diagrams
+&gt;&gt; portion. Imagine if, in addition to diagrams for the
+&gt;&gt; reaction pathways, we also had a list of MathML display
+&gt;&gt; elements that are linked to the various MathML expressions
+&gt;&gt; in the SBML document.
+&gt;&gt;
+&gt;&gt; I was thinking of an addition to something like JDesigner
+&gt;&gt; such that when you hovered the pointer over a reaction
+&gt;&gt; arrow, you got a "tooltips" like action that popped up a
+&gt;&gt; tooltip window, and in it was displayed that reaction's
+&gt;&gt; kinetics; this MathML display element could provide the
+&gt;&gt; layout for the content (just as an example).
+&gt;&gt;
+&gt;&gt; However, someone--maybe me?--poninted out that we
+&gt;&gt; all pretty much knew how to do the math display anyway,
+&gt;&gt; so it wasn't clear to me if there was any consensus that
+&gt;&gt; display MathML was needed. Anyone care to weigh in
+&gt;&gt; on this? Poul, any comments?
+&gt; MathML provides mechanisms to combine content and presentation markup.
+&gt; Chapter 5 of the MathML 2.0 specification is devoted to just this
+&gt; issue. It seems pretty straightforward to tie the two together to
+&gt; enable the behaviour that you describe above.
+&gt;
+&gt; Poul Nielsen
+&gt; Bioengineering Institute
+&gt; University of Auckland
+&gt; New Zealand
+&gt;
+&gt;
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00293" HREF="msg00293.html">RE: [sbml-discuss] DWG math display?</A></STRONG>
+<UL><LI><EM>From:</EM> Herbert Sauro &lt;Herbert_Sauro@kgi.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00319.html">Re: [sbml-discuss] DWG - from a devil's advocate - a plan and othersuggestions</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00321.html">Re: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00293.html">RE: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00328.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00320"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00320"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,127 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the way stoichiometries are expresse -->
+<!--X-From-R13: [negva Uvaxry <tvaxryNzcv&#45;zntqrohet.zct.qr> -->
+<!--X-Date: Thu, 22 May 2003 03:03:22 &#45;0700 -->
+<!--X-Message-Id: XFMail.20030522120313.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1053594857.4577.49.camel@senin.e&#45;cell.org -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the way stoichiometries are expresse</TITLE>
+<LINK REV="made" HREF="mailto:ginkel@mpi-magdeburg.mpg.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00212.html">Date Prev</A>][<A HREF="msg00214.html">Date Next</A>][<A HREF="msg00232.html">Thread Prev</A>][<A HREF="msg00264.html">Thread Next</A>][<A HREF="maillist.html#00213">Date Index</A>][<A HREF="threads.html#00213">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the way stoichiometries are expresse</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the way stoichiometries are expresse</LI>
+<LI><em>From</em>: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 12:03:13 +0200 (CEST)</LI>
+<LI>Cc: SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;, <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+On 22-May-2003 Kouichi Takahashi wrote:
+&gt; I haven't decide my stance on this issue, but at least
+&gt; I agree it can be useful to have rational and fractional stoichiometries because
+&gt; I got some requests to support them from users.
+
+I think the main point having doubles there, is the use of software that works 
+only on stoichometry numbers but wants to be aware of phenomenons as biomass 
+production (this is a model simplification where the empiric parameter is recorded 
+just at the wrong(don't beat me) place). 
+In our models the same parameter (produced biomass per drained precursors) is instead
+used in something that I can only express as a rule in SBML.
+
+Does it make sense to assume that a model from a e.g. flux analysis tool will directly be
+used in a dynamic simulator without changes? Is this an important use-case?
+
+Since I don't really assume identical round trip transition of models 
+(toolA -&gt; toolB -&gt; toolA and toolA finds exactly the same model)
+between model editing tools, can't this be solved by the tool's importer?
+E.G. the Ecell importer doesn't want to have double stoichiometry and just 
+sets it to 1 and adds another rule/fast reaction to put the value of prduced biomass 
+right?
+
+I think we will have a problem with 1:1 mapping of SBML -&gt; Tool-Model in many cases.
+As we already found in some inofficial talk: SBML fits very well to Jarnac and Gepasi ;-)
+
+My Opinion to stoichiometric coefficients: use one double number and no denominator
+and record an issue to `Best Practice' that preferred are numbers with frac(x)=0.0.
+
+        Martin
+
+-- 
++-[Martin Ginkel]--------------[<A  HREF="mailto:ginkel">mailto:ginkel</A>(at)mpi-magdeburg.mpg.de]-+
+| MPI Magdeburg, Zi S2.09    Sandtorstr. 1, D-39106 Magdeburg, Germany |
+| I'm the '4' in "404 Not Found"                                       |
+|                                                                      |
++-[tel/fax: +49 391 6110 482/529]----[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00264" HREF="msg00264.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00285" HREF="msg00285.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> Ed Frank &lt;efrank@mcs.anl.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00207" HREF="msg00207.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00212.html">Re: [sbml-discuss] Rule change</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00214.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00232.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00264.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00213"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00213"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

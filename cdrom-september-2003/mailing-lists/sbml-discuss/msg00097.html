@@ -1,0 +1,121 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] Should compartments be optional? -->
+<!--X-From-R13: [vpunry Vhpxn <zuhpxnNpnygrpu.rqh> -->
+<!--X-Date: Thu, 3 Apr 2003 12:44:19 &#45;0800 -->
+<!--X-Message-Id: 16012.40006.154060.506600@erato1.cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] Should compartments be optional?</TITLE>
+<LINK REV="made" HREF="mailto:mhucka@caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00096.html">Date Prev</A>][<A HREF="msg00098.html">Date Next</A>][<A HREF="msg00093.html">Thread Prev</A>][<A HREF="msg00098.html">Thread Next</A>][<A HREF="maillist.html#00097">Date Index</A>][<A HREF="threads.html#00097">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] Should compartments be optional?</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] Should compartments be optional?</LI>
+<LI><em>From</em>: Michael Hucka &lt;<A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 3 Apr 2003 12:40:38 -0800</LI>
+<LI>Reply-To: <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+People,
+
+We're getting ready to issue revised drafts of SBML
+specifications for review and have run into some questions
+about certain matters.  I'd like to try to resolve a couple
+of the questions by discussing them on this list.
+
+The first one is: should compartments be optional in SBML?
+Note that if compartments are optional, then by necessity,
+the 'compartment' attribute on species definitions must also
+be optional.
+
+The arguments FOR making compartments optional in a model are:
+
+F1) A number of tools already make the assumption that in
+    the absence of specific compartment information, a
+    single compartment of unit volume should be assumed for
+    the entire model.
+
+F2) The assumption of a default compartment with unit volume
+    and specific units of volume can be a well-defined
+    assumption, in the sense that it provides enough
+    information that there is no possible ambiguity as to
+    intent (provided that the default is clearly stated in
+    the specification, of course).
+
+The arguments AGAINST making compartments optional are:
+
+A1) At the Stockholm meeting, there was a general consensus
+    that SBML should not make assumptions about default
+    values for any quantities, and that instead the absence
+    of a value for a quantity indicates that this value is
+    undefined and should be obtained by some other means.
+    Defining a default compartment violates this principle.
+
+To report your answer, please visit the following URL:
+
+  <A  HREF="http://www.surveymonkey.com/s.asp?u=75338192073">http://www.surveymonkey.com/s.asp?u=75338192073</A>
+
+
+-- 
+Mike Hucka, Ph.D.                         mhucka@caltech.edu  
+Control and Dynamical Systems, MC 107-81  tel: +1.626.395.6911
+Caltech, Pasadena, CA 91125, USA          fax: +1.702.554.3067
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00096.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00098.html">SBML Forum + Revised Draft Specification of SBML L2 + XML Schema</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00093.html">[sbml-discuss] Location of May SBML Forum</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00098.html">SBML Forum + Revised Draft Specification of SBML L2 + XML Schema</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00097"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00097"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

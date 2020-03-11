@@ -1,0 +1,237 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] RE: Hybrid Models Working Group (fwd) -->
+<!--X-From-R13: Sq Tenax <rsenaxNzpf.nay.tbi> -->
+<!--X-Date: Mon, 16 Jun 2003 05:37:18 &#45;0700 -->
+<!--X-Message-Id: 20030616123504.GQ456@mcs.anl.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] RE: Hybrid Models Working Group (fwd)</TITLE>
+<LINK REV="made" HREF="mailto:efrank@mcs.anl.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00478.html">Date Prev</A>][<A HREF="msg00480.html">Date Next</A>][<A HREF="msg00478.html">Thread Prev</A>][<A HREF="msg00481.html">Thread Next</A>][<A HREF="maillist.html#00479">Date Index</A>][<A HREF="threads.html#00479">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] RE: Hybrid Models Working Group (fwd)</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] RE: Hybrid Models Working Group (fwd)</LI>
+<LI><em>From</em>: Ed Frank &lt;<A HREF="mailto:efrank@mcs.anl.gov">efrank@mcs.anl.gov</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 16 Jun 2003 07:35:04 -0500</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+----- Forwarded message from Maria Schilstra &lt;m.j.1.schilstra@herts.ac.uk&gt; -----
+
+Subject: RE: Hybrid Models Working Group
+From: "Maria Schilstra" &lt;m.j.1.schilstra@herts.ac.uk&gt;
+To: "'Kouichi Takahashi'" &lt;shafi@sfc.keio.ac.jp&gt;,
+   "'Takeshi Sakurada'" &lt;sakurada@sfc.keio.ac.jp&gt;,
+   "'Ed Frank'" &lt;efrank@mcs.anl.gov&gt;,
+   "'vijay saraswat'" &lt;saraswat@cse.psu.edu&gt;,
+   "'Mike McCollum'" &lt;jmccoll2@utk.edu&gt;, "'Greg Peterson'" &lt;gdp@utk.edu&gt;,
+   "'Stefan Hoops'" &lt;shoops@vt.edu&gt;, "'Tom Kiehl'" &lt;kiehl@research.ge.com&gt;
+Date: Fri, 13 Jun 2003 15:57:37 +0100
+
+Thank you very much for your explanation, Kouichi, that helps (me) a
+lot! Yes, the talk I remember must have been the one you gave at the
+University of Hertfordshire, about a year ago now. I remember it so well
+because then I had only just bought Zeigler's book (and I've only
+started working my way through it seriously about two weeks ago...).
+
+What I like about Zeigler's book is that he makes a very clear
+distinction between models and simulators. Of course, SBML is meant to
+be simulator-independent language, and what I am trying to find out
+(from Zeigler, or however) is whether such a thing is actually possible.
+
+At the last Forum meeting in Ft Lauderdale, Takeshi mentioned that you
+E-cell people have your own markup language to describe models for
+E-cell (EML). Is EML capable of describing hybrid models?
+
+Furthermore, what sort of hybrid simulators are already out there
+(Copasi is one, isn't it? Would VCell count? And simulators that can
+deal with triggered events?)
+
+Maria
+
+
+
+
+&gt; -----Original Message-----
+&gt; From: Kouichi Takahashi [<A  HREF="mailto:shafi@sfc.keio.ac.jp">mailto:shafi@sfc.keio.ac.jp</A>] 
+&gt; Sent: 10 June 2003 18:45
+&gt; To: Takeshi Sakurada
+&gt; Cc: shafi@sfc.keio.ac.jp; m.j.1.schilstra@herts.ac.uk; 'Ed 
+&gt; Frank'; 'vijay saraswat'; 'Mike McCollum'; 'Greg Peterson'; 
+&gt; 'Stefan Hoops'; 'Tom Kiehl'
+&gt; Subject: Re: Hybrid Models Working Group
+&gt; 
+&gt; 
+&gt; Hi all,
+&gt; 
+&gt; 
+&gt; &gt; &gt; I have a book in front of me called "Theory of Modeling and 
+&gt; &gt; &gt; Simulation" 2nd ed., by Zeigler, Praehofer &amp; Kim. I remember 
+&gt; &gt; &gt; listening to a talk on E-cell (can't remember whether it 
+&gt; was given 
+&gt; &gt; &gt; by Takeshi), in which this book was cited as the 'basis' 
+&gt; for E-cell 
+&gt; &gt; &gt; - is that so, Takeshi?
+&gt; 
+&gt; I think that was me -- I gave a short talk in the SBML 
+&gt; meeting at your unversity.  (herts.ac.uk).
+&gt; 
+&gt; As Takeshi wrote for me, E-Cell Version 3's fundamental 
+&gt; algorithm is inspired by
+&gt; Zeigler's rigid theory of discrete event simulation.    
+&gt; However, the approach is
+&gt; very different actually.   It's basically unique, except that 
+&gt; I borrowed some fundamental 
+&gt; concepts from Zeigler's theory.     Such as:  (1) the fact 
+&gt; that it can be mathematically
+&gt; proven that any time driven simulation algorithms can be 
+&gt; mixed in the framework of discrete event, (2) discrete-event 
+&gt; scheduling method, and (3), hi classification of simulation 
+&gt; algorithms (see below).
+&gt; 
+&gt; Actually I'm now writing my phd thesis on this :)
+&gt; 
+&gt; 
+&gt; Zeigler proposed two different ways to combine different 
+&gt; formalisms:  combining and
+&gt; embedding.   The former means that it is possible to 
+&gt; 'combine' two different algorithms
+&gt; into one more powerful one (such as Zeigler's DEVS&amp;DESS).    
+&gt; E-Cell's algorithm
+&gt; is different, and may be classified into the latter category, 
+&gt; in which each different
+&gt; algorithm is embedded in the 'discrete-event world view' as a 
+&gt; module.   
+&gt; 
+&gt; One design goal of my algorithm, which I believe is one good 
+&gt; characteristic of my work, is to keep orthogonality between 
+&gt; algorithm modules: which means that existing simulation 
+&gt; algorithms (such as Gillespie, ODE solvers, automata,
+&gt; and anything) can be used with no or a little modification.     
+&gt; I think this is very important because we already have many 
+&gt; simulation algorithms
+&gt; and many partial models of cellular systems on those 
+&gt; algorithms.   A big challenge for
+&gt; a simulator developer now is how to combine these existing 
+&gt; sub-models to construct a higher-order models (such as a 
+&gt; whole-cell scale simulation).
+&gt; 
+&gt; 
+&gt; 
+&gt; &gt; &gt; To get back to your email, Ed, Zeigler et al. distinguish 3 types
+&gt; &gt; &gt; (formalisms) of dynamic model specification (as opposed to e.g. 
+&gt; &gt; &gt; object modelling, in which there is no concept of time): the 
+&gt; &gt; &gt; Discrete Time (DTSS), Differential Equation (DESS), and Discrete 
+&gt; &gt; &gt; Event (DEVS) System Specifications. DESS includes ODE and PDE 
+&gt; &gt; &gt; descriptions. DTSS includes things such as cellular 
+&gt; automata (which 
+&gt; &gt; &gt; are updated as a whole in a unit 'time' step).
+&gt; 
+&gt; This is one thing I borrowed from his theory.  
+&gt; E-Cell provides three fundamental 'Stepper' classes, 
+&gt; DiscreteTimeStepper, DifferentialStepper, and DiscreteEventStepper.
+&gt; 
+&gt; 
+&gt; &gt; I think (but I'm not entirely sure) that DEVS includes
+&gt; &gt; &gt; stochastic models (in which possible state transitions 
+&gt; have certain 
+&gt; &gt; &gt; probabilities), but also threshold models (in which a state 
+&gt; &gt; &gt; transition occurs when a certain parameter crosses a given 
+&gt; &gt; &gt; threshold). Have I understood this correctly?
+&gt; 
+&gt; DEVS include stochastic models, but DTS and DES can also be 
+&gt; stochastic.   
+&gt; (stochastic automata and stochastic differential equations)
+&gt; 
+&gt; 
+&gt; Gillespie's family of algorithms is one good example of 
+&gt; discrete-event simulation framework.
+&gt; 
+&gt; 
+&gt; We have tried to use E-Cell to do composite simulation of 
+&gt; Gillespie-Gibson and ODE 
+&gt; (we used Dormand-Prince 4(5)7M algorithm), and we found that
+&gt; it can improve the performance 600+ times in our case.  
+&gt; Actually it exceeds both pure-Gillespie and pure-ODE runs.   
+&gt; We are also trying some other combinations.  
+&gt; For example, we have a long-term depression model of a neuron 
+&gt; which has a discrete-time and an ODE sub-models.
+&gt; 
+&gt; 
+&gt; -Kouichi
+&gt; 
+&gt; P.S.  
+&gt; If you are interested, more detailed description of E-Cell's 
+&gt; algorithm is available upon request. 
+&gt; Sorry, it is still an unpublished work.   
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+----- End forwarded message -----
+
+-- 
+Ed Frank                                            Office:  (630) 252-4548
+<A  HREF="http://hep.uchicago.edu/~efrank">http://hep.uchicago.edu/~efrank</A>                     Fax   :  (630) 252-5986
+Division of Math &amp; Computer Science                 Argonne National Laboratory
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00478.html">[sbml-discuss] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00480.html">[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00478.html">[sbml-discuss] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00481.html">[sbml-discuss] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00479"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00479"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

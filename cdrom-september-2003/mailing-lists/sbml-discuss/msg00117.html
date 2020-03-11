@@ -1,0 +1,173 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Agenda items for SBML Forum 11&#45;12th May -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Thu, 24 Apr 2003 09:00:34 &#45;0700 -->
+<!--X-Message-Id: 003901c30a5e$7c96d850$2904860a@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3FA493B792A6D311B51A009027D3B86101AC90D0@mail.kgi.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Agenda items for SBML Forum 11-12th May</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00116.html">Date Prev</A>][<A HREF="msg00118.html">Date Next</A>][<A HREF="msg00118.html">Thread Prev</A>][<A HREF="msg00111.html">Thread Next</A>][<A HREF="maillist.html#00117">Date Index</A>][<A HREF="threads.html#00117">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Agenda items for SBML Forum 11-12th May</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Sbml-Discuss \(E-mail\)'&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Agenda items for SBML Forum 11-12th May</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 24 Apr 2003 13:38:23 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Folks
+
+Chris Cox at the University of Tennessee has built a stochastic
+simulator
+that supports "simple" kinetics and Hill kinetics.  He is in the process
+of using SBML L2 as part of DARPA BioSPICE.  He is at the stage of
+reading and 
+writing his own SBML.  Interoperability is next.  (Chris discussed
+this at the last MDL conference call)
+
+There have been requests for controlled vocabularies for models - to
+help
+software decide whether they can process a model - and for reactions
+- many software packages don't process free form rate laws but
+instead use a controlled vocabulary instead.
+
+We intend to have this on the agenda in Florida.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+Systems Biology Workbench Development Group
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Herbert Sauro
+&gt; Sent: 21 April 2003 18:19
+&gt; To: Sbml-Discuss (E-mail)
+&gt; Subject: RE: [sbml-discuss] Agenda items for SBML Forum 11-12th May
+&gt; 
+&gt; 
+&gt; 
+&gt; It's tempting to let the user do anything but in this case 
+&gt; I'm not sure.
+&gt; 
+&gt; 
+&gt; The trouble is we only currently have stochastic mass action 
+&gt; laws, note that a stochastic rate law has to be dervied for 
+&gt; each mechanism, and as far as I know we only currently have 
+&gt; mass action law in stochastic form. I think Chris Rao has 
+&gt; done some work in trying to derive stochastic Michaelis 
+&gt; Menten laws but I don't know how successful he was. I have 
+&gt; seen at least one accepted paper (it was rejected by three 
+&gt; referees) which made an inexcusable error in a stochastic 
+&gt; model, they tried to use a hill equation as a stochastic law 
+&gt; with out any justification. I think it's safer to let the 
+&gt; computer derive the rate laws otherwise users are likely to 
+&gt; enter all sorts of laws which violate one or more laws of 
+&gt; physics. If we want to allow users complete freedom in their 
+&gt; choice of rate laws then the simulator must be able to 
+&gt; identify any rough rate laws.
+&gt; 
+&gt; Herbert
+&gt; 
+&gt; -----Original Message-----
+&gt; From: Stefan Hoops [<A  HREF="mailto:shoops@vt.edu">mailto:shoops@vt.edu</A>]
+&gt; Sent: Monday, April 21, 2003 6:27 AM
+&gt; To: sbml-discuss@caltech.edu
+&gt; Subject: Re: [sbml-discuss] Agenda items for SBML Forum 11-12th May
+&gt; 
+&gt; 
+&gt; On Fri, 18 Apr 2003 14:45:11 -0700
+&gt; Herbert Sauro &lt;Herbert_Sauro@kgi.edu&gt; wrote:
+&gt; 
+&gt; &gt; I think that the rate law itself for a
+&gt; &gt; stochastic reaction should be empty (the software should derive the
+&gt; equation
+&gt; &gt; - this is what I do), and the SBML need only supply the 'rate 
+&gt; &gt; constant'.
+&gt; 
+&gt; I strongly disagree here! Why force Mass Action for 
+&gt; stochastic processes?
+&gt; 
+&gt; Stefan
+&gt; 
+&gt; 
+&gt; -- 
+&gt; Stefan Hoops, Ph.D.
+&gt; Senior Research Associate
+&gt; Virginia Bioinformatics Institute
+&gt; 1880 Pratt Dr.
+&gt; Blacksburg, VA 24061, USA
+&gt; 
+&gt; Phone: (540) 231-1799
+&gt; Fax: (540) 231-2606
+&gt; Email: shoops@vt.edu
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00113" HREF="msg00113.html">RE: [sbml-discuss] Agenda items for SBML Forum 11-12th May</A></STRONG>
+<UL><LI><EM>From:</EM> Herbert Sauro &lt;Herbert_Sauro@kgi.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00116.html">RE: [sbml-discuss] Stochastic simulation</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00118.html">RE: [sbml-discuss] Stochastic simulation</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00118.html">RE: [sbml-discuss] Stochastic simulation</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00111.html">Venue set for SBML Forum meeting</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00117"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00117"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

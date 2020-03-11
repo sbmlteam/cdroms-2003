@@ -1,0 +1,178 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG Goals, Constraints, etc. -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Thu, 22 May 2003 17:49:46 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC91EA@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG Goals, Constraints, etc.</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00240.html">Date Prev</A>][<A HREF="msg00242.html">Date Next</A>][<A HREF="msg00239.html">Thread Prev</A>][<A HREF="msg00243.html">Thread Next</A>][<A HREF="maillist.html#00241">Date Index</A>][<A HREF="threads.html#00241">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG Goals, Constraints, etc.</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Fabien Campagne '&quot; &lt;<A HREF="mailto:campagne@physbio.mssm.edu">campagne@physbio.mssm.edu</A>&gt;,  &quot;'<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A> '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG Goals, Constraints, etc.</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 17:49:25 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+I would tend to follow the EML people about using a multi-layered approach,
+sort of like levels in sbml. For example the absolute minimum that we can
+live with is simply the node coordinates, that could be level 1. I think
+every one could work with this minimum amount of information? :)
+
+Info on EML proposal is at:
+
+<A  HREF="http://projects.villa-bosch.de/bcb/sbml/level1/sbml-layout-extension.html">http://projects.villa-bosch.de/bcb/sbml/level1/sbml-layout-extension.html</A> 
+
+I think is there is one small issue with it which is the nature of the units
+for the coordinates. But a layered approach I think sounds the way to go.
+
+Herbert
+
+
+
+-----Original Message-----
+From: Fabien Campagne
+To: sbml-discuss@caltech.edu
+Sent: 5/22/03 5:09 PM
+Subject: [sbml-discuss] DWG Goals, Constraints, etc.
+
+
+Hi,
+
+I liked the forum (a lot more manageable than email for me), but since
+it has been dropped, I am reposting this below.
+
+<A  HREF="http://caboy.uchc.edu/SBML/topic.asp?TOPIC_ID=3">http://caboy.uchc.edu/SBML/topic.asp?TOPIC_ID=3</A>
+
+Let me know if you find this document useful, I am experimenting
+to see if this pattern can help clarify the discussions on the list.
+
+Fabien
+
+I tried here to summarize the objective and constraints of the diagram
+extensions. This will help me (and hopefully others) understand what the
+issues are. We can then reference the goals, constraints and issues in
+subsequent discussions. I believe that if we agree on goals, constraints
+and use scenarios, the design of the extensions will be a lot easier,
+because we will all be speaking about the same thing.
+
+Goal:
+------
+1. Provide a mechanism so that layouts created in one modeling
+environment
+can be used in another modeling in a relatively straightforward manner.
+We
+want to avoid users moving graphical elements around every time they
+import an SBML model in a target environment.
+
+Typical Use Scenario:
+---------------------
+1. Creating a model in JDesigner, exporting to SBML, importing into
+VCell.
+[layout is built interactively by the modeler using JDesigner.]
+2. Exporting an SBML model from SigPath, importing in Vcell or
+JDesigner.
+[the layout is automatically generated.]
+
+
+Constraint(s):
+--------------
+
+1. Avoid using information about how the graphical elements of the
+diagram
+will be rendered (support layered approach suggested by Sven Shale on
+smbl-discuss. This constraint is applicable to the second layer.)
+
+2. Minimize impact on existing SBML-aware software. Rationale: The
+extension is unlikely to be implemented (and therefore used) if it
+requires costly software adaptations and tests of the new behavior.
+
+Current issues:
+-----------------
+
+1. Should we specify units for positions of graphical elements of the
+diagram on the page? (Herbert Sauro)
+
+2. Should we be forcing font faces, font sizes, colours, or shapes for
+types of molecules on users (Hugh Spence), i.e., as an implicit
+convention
+across the entire set of possible SBML files, so that each tool knows
+exactly what to expect in terms of font size and can render the same
+layout as all the other tools will. (Fabien Campagne, I rephrased the
+last
+part of the sentence, I hope both mean the same, otherwise, please
+elaborate).
+
+3. There seems to be an extension proposed by the European Media
+Laboratory in circulation. Where can I read the proposal? (Fabien
+Campagne).
+
+Fabien Campagne
+
+<A  HREF="http://icb.mssm.edu">http://icb.mssm.edu</A> Institute for Computational Biomedicine
+phone: (212)-241-0860 Box 1218, Mount Sinai School of Medicine,
+fax: (212)-860-3369 One Gustave L. Levy Place,
+--------------------- New York, NY 10029-6574 -----------------
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00240.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00242.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00239.html">[sbml-discuss] DWG Goals, Constraints, etc.</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00243.html">RE: [sbml-discuss] DWG Goals, Constraints, etc.</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00241"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00241"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

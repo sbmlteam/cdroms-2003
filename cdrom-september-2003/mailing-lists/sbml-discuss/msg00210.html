@@ -1,0 +1,235 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Changing the way stoichiometries are expressed -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Thu, 22 May 2003 02:42:18 &#45;0700 -->
+<!--X-Message-Id: 002501c32046$680feea0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1053594857.4577.49.camel@senin.e&#45;cell.org -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Changing the way stoichiometries are expressed</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00209.html">Date Prev</A>][<A HREF="msg00211.html">Date Next</A>][<A HREF="msg00207.html">Thread Prev</A>][<A HREF="msg00214.html">Thread Next</A>][<A HREF="maillist.html#00210">Date Index</A>][<A HREF="threads.html#00210">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Changing the way stoichiometries are expressed</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'SBML'&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Changing the way stoichiometries are expressed</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 10:41:59 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Kouichi
+
+&gt; One thing I can say is it is also useful to have an attribute 
+&gt; to indicate the type of the stoichiometry:  such as one of 
+&gt; 'integer', 'rational', and 'fractional'.
+
+I think this is a very good idea especially if we retain the
+'denominator'
+attribute.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+Systems Biology Workbench Development Group
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of 
+&gt; Kouichi Takahashi
+&gt; Sent: 22 May 2003 10:14
+&gt; To: mhucka@caltech.edu
+&gt; Cc: shafi@sfc.keio.ac.jp; SBML Discussion List
+&gt; Subject: Re: [sbml-discuss] Changing the way stoichiometries 
+&gt; are expressed
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; I haven't decide my stance on this issue, but at least
+&gt; I agree it can be useful to have rational and fractional 
+&gt; stoichiometries because I got some requests to support them 
+&gt; from users.
+&gt; 
+&gt; One thing I can say is it is also useful to have an attribute 
+&gt; to indicate the type of the stoichiometry:  such as one of 
+&gt; 'integer', 'rational', and 'fractional'.
+&gt; 
+&gt; The information can be used in two ways:
+&gt; 
+&gt; (1) Checking:  if the simulator of the simulation algorithm 
+&gt; supports it.
+&gt;                        For example, Gillespie usually 
+&gt; supports only elementary reaction schemes,
+&gt;                        which means that the stoichiometries 
+&gt; are usually integers 1 or 2 (or 3..).
+&gt;                        In scientific programming float( 1.0 ) 
+&gt; must be distinguished from int( 1 ).   
+&gt;                        And frac{1.0}{1}  != 1, although 
+&gt; frac{1}{1} can be equal to int( 1 ).
+&gt; 
+&gt; (2) (less importantly) Optimizing: 
+&gt;                         If you have ever written simulation 
+&gt; code, you know what I mean.
+&gt;                         For example, in Gillespie code I 
+&gt; could have been able to eliminate several
+&gt;                         conditional statements (which can 
+&gt; stall super-pipiline in modern RISC CPU)
+&gt;                         by assuming stoichiometry is integer.  
+&gt; 
+&gt; 
+&gt; By the way, E-Cell currently does support  only integer stoichiometry.
+&gt; 
+&gt; -Kouichi
+&gt; 
+&gt; 
+&gt; &gt; SBML Levels 1 and 2 so far have stipulated that the 'stoichiometry' 
+&gt; &gt; field on species references in reactions must have a 
+&gt; positive integer 
+&gt; &gt; value.  To achieve fractional stoichiometries, SBML models are 
+&gt; &gt; supposed to use the additional 'denominator' field (also a positive 
+&gt; &gt; integer) to create a fraction.
+&gt; &gt; 
+&gt; &gt; Some users have pointed out that this is not the same thing as 
+&gt; &gt; actually allowing stoichiometries to be floating-point numbers.  In 
+&gt; &gt; certain modeling situations (such as flux balance models or other 
+&gt; &gt; phenomenological models), a user may want to record stoichiometries 
+&gt; &gt; that are not integers.  For example, Wayne Rindone's models contain 
+&gt; &gt; lumped reactions with floating-point stoichiometries whose 
+&gt; values were
+&gt; &gt; derived experimentally.  While these numbers could be
+&gt; &gt; converted into fractions ('stoichiometry'/'denominator') by
+&gt; &gt; the underlying software, this may not have the same meaning
+&gt; &gt; in the modeling context as the (originally measured)
+&gt; &gt; floating-point stoichiometry value.
+&gt; &gt; 
+&gt; &gt; A second issue is the question of whether to allow stoichiometry 
+&gt; &gt; values to be expressions rather than only numbers.  A 
+&gt; simple example 
+&gt; &gt; of the utility of doing this arises in models using non-integer 
+&gt; &gt; stoichiometries: the stoichiometry value may be the same in 
+&gt; two of the
+&gt; &gt; 'speciesReference' structures in a reaction, and it would be
+&gt; &gt; useful to be able to define a parameter for the value and
+&gt; &gt; using that parameter instead of repeating the same number
+&gt; &gt; (because the latter is more error-prone).
+&gt; &gt; 
+&gt; &gt; Finally, the logical conclusion of the ideas above would be 
+&gt; to get rid 
+&gt; &gt; of the 'denominator' field entirely, and allow 
+&gt; 'stoichiometry' to be a 
+&gt; &gt; MathML expression.  Then fractions could still be expressed 
+&gt; (using the 
+&gt; &gt; MathML equivalent instead of 'stoichiometry'/'denominator'); in 
+&gt; &gt; addition, parameters could be used naturally, and it would 
+&gt; leave room
+&gt; &gt; to grow in the future for more exotic formulations, should
+&gt; &gt; the need ever arise.
+&gt; &gt; 
+&gt; &gt; Several options come out of considering these different
+&gt; &gt; issues:
+&gt; &gt; 
+&gt; &gt; For the 'stoichiometry' field:
+&gt; &gt; 
+&gt; &gt; a) don't do anything; keep the 'stoichiometry' attribute as
+&gt; &gt;    it is currently defined (a positive integer)
+&gt; &gt; 
+&gt; &gt; b) change the 'stoichiometry' attribute to have type
+&gt; &gt;    'double'
+&gt; &gt; 
+&gt; &gt; c) change the 'stoichiometry' attribute to allow values of
+&gt; &gt;    type 'double' as well as constant parameter id's
+&gt; &gt; 
+&gt; &gt; d) change the 'stoichiometry' attribute to be a MathML
+&gt; &gt;    expression
+&gt; &gt; 
+&gt; &gt; For the 'denominator' field:
+&gt; &gt; 
+&gt; &gt; i) Keep the 'denominator' as-is (a positive integer)
+&gt; &gt; 
+&gt; &gt; ii) Remove 'denominator'
+&gt; &gt; 
+&gt; &gt; Please reflect on and discuss these issues on the list.  The voting 
+&gt; &gt; system will be enabled beginning this Friday and we will 
+&gt; post voting 
+&gt; &gt; information at that time.
+&gt; &gt; 
+&gt; &gt; If you have questions about this topic or the reason for the vote, 
+&gt; &gt; please feel free to call Mike or Andrew directly.
+&gt; &gt; 
+&gt; &gt; -- Mike &amp; Andrew
+&gt; &gt; 
+&gt; &gt; 
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00214" HREF="msg00214.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00207" HREF="msg00207.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00209.html">RE: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00211.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00207.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00214.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00210"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00210"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

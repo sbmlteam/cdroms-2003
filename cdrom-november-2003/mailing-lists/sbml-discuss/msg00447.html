@@ -1,0 +1,262 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Someone please set me straight on this -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Wed, 11 Jun 2003 11:17:40 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC92C2@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Someone please set me straight on this</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00446.html">Date Prev</A>][<A HREF="msg00448.html">Date Next</A>][<A HREF="msg00439.html">Thread Prev</A>][<A HREF="msg00449.html">Thread Next</A>][<A HREF="maillist.html#00447">Date Index</A>][<A HREF="threads.html#00447">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Someone please set me straight on this</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'SBML Discussion List'&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Someone please set me straight on this</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 11 Jun 2003 11:16:47 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+
+I've come in late to this discussion so I might have misinterpreted what is
+being suggested. 
+
+I agree with Maria, concentrations have been used in reaction rate
+expressions for at least the last 100 years so I don't see why we should
+change that and specify that species in SBML rate laws should be amounts
+rather than concentrations. It just adds yet another layer of complexity of
+SBML, L2 is complex enough as it is. 
+
+Herbert
+
+-----Original Message-----
+From: Maria Schilstra [<A  HREF="mailto:m.j.1.schilstra@herts.ac.uk">mailto:m.j.1.schilstra@herts.ac.uk</A>]
+Sent: Wednesday, June 11, 2003 3:31 AM
+To: 'SBML Discussion List'
+Subject: RE: [sbml-discuss] Someone please set me straight on this
+
+
+In theory, it is SAFEST to express molecular species in moles (i.e. as
+numbers). HOWEVER, second order rate constants and equilibrium
+dissociation constants and Michaelis constants are normally expressed in
+units of concentration (and time). In an equation such as the much used
+S/(K + S) (S = species, K = eq diss const), K and S must both be
+concentrations because of the way K is defined. Similarly, in dC/dt =
+k.A.B, where k is a 2nd order rate constant, at least one of the species
+A and B must be a concentration, and if the rate is a concentration over
+time, both must be concentrations. 
+Therefore, in practice it is SENSIBLE to use concentration units by
+default, particularly in SBML L2, since it it built, as it were, on
+enzyme kinetics conventions. The fact that you can have intialAmount or
+initialConcentration confuses the issue, but as long as it is spelled
+out clearly and makes people happy, it may not matter too much. Tools
+that deal with transport between compartments, or in which there is
+another source of possible confusion, should be very rigorous in dealing
+with units, and communicate potential pitfalls very clearly to their
+users. But this is not the job of SBML.
+
+In SBML L3 this whole discussion will move to the parameter sets set,
+won't it?
+
+Maria
+
+
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Andrew Finney
+&gt; Sent: 11 June 2003 09:44
+&gt; To: 'SBML Discussion List'
+&gt; Subject: RE: [sbml-discuss] Someone please set me straight on this
+&gt; 
+&gt; 
+&gt; Folks
+&gt; 
+&gt; IMHO I think we interpreted the intention of the community 
+&gt; correctly.  L1 and all the L2 drafts have used concentration 
+&gt; as the units for species in expressions.  I don't recall any 
+&gt; mention of any concensus for change to this either on 
+&gt; sbml-discuss or at the meeting at Florida.
+&gt; 
+&gt; This seems reasonable as must rate lwas are specified in 
+&gt; terms of concentration variables.
+&gt; 
+&gt; Further clarification:
+&gt; 
+&gt; The way the specification is written at the moment is
+&gt; as Mike has written.  Please don't try to interpret
+&gt; this until you have read and commented on Mike's email first.
+&gt; 
+&gt; The following are additional details:
+&gt; 
+&gt; - species initial value can be specified
+&gt; 	as substance or concentration (by using the initialAmont
+&gt; 	or initialConcentration attributes respectively)
+&gt; 
+&gt; 	However species symbols in forumlae ALWAYS
+&gt; 	have concentration units unless the spatial
+&gt; 	dimensions of the containing compartment
+&gt; 	is 0 in which case the species symbol
+&gt; 	has substance units.
+&gt; 
+&gt; 	The initialConcentration attribute can't be used
+&gt; 	if the spatial dimensions of the species' compartment is 0.
+&gt; 
+&gt; - the specific units of species symbols in formulae depend on
+&gt; 	the units specified on the species structure,
+&gt; 	the spatial dimensions of the compartment and
+&gt; 	the units of the compartment.
+&gt; 
+&gt; 	The units specified for a species symbol are those
+&gt; 	specified on the species structure if the initial
+&gt; 	value was specified using initialConcentration (or if
+&gt; 	the spatial dimensions of the compartment is 0)
+&gt; 
+&gt; 	The units specified for a species symbol are those
+&gt; 	specified on the species structure combined with those
+&gt; 	specified on the compartment structure if the inital value
+&gt; 	was specified using initialAmount and the spatial dimensions
+&gt; 	of the compartment is not 0.
+&gt; 
+&gt; 	The units used on species must be appropriate to the
+&gt; 	to initial value attribute used and to the spatial dimensions
+&gt; 	of the compartment.
+&gt; 
+&gt; Please comment on the above.
+&gt; 
+&gt; Specifically do you think having spatial dimensions of 0 is 
+&gt; appropriate/useful?
+&gt; 
+&gt; yours
+&gt; Andrew Finney
+&gt; +44 (0)1452 722487
+&gt; from US - 011 44 1452 722487
+&gt; University of Hertfordshire, UK
+&gt; 
+&gt; &gt; -----Original Message-----
+&gt; &gt; From: owner-sbml-discuss@its.caltech.edu
+&gt; &gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of 
+&gt; Michael Hucka
+&gt; &gt; Sent: 11 June 2003 01:41
+&gt; &gt; To: SBML Discussion List
+&gt; &gt; Subject: [sbml-discuss] Someone please set me straight on this
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; People,
+&gt; &gt; 
+&gt; &gt; I confess I've become confused over what people want to see 
+&gt; as far as 
+&gt; &gt; species units.  After rereading the many messages about this on 
+&gt; &gt; sbml-discuss, and comparing this to what we just wrote in 
+&gt; the L2 final 
+&gt; &gt; draft spec, it's no longer clear to me how people want to interpret 
+&gt; &gt; the appearance of a species symbol in a math expression.  
+&gt; Should it be 
+&gt; &gt; a number in units of substance, or in units of concentration?
+&gt; &gt; 
+&gt; &gt; Note that this is separate from the question of what the
+&gt; &gt; initial value for a species should be (people want the option 
+&gt; &gt; of using either concentration or substance) and also the 
+&gt; &gt; question of what the reaction rate expression should be 
+&gt; &gt; (people want substance/time, not concentration/time).  I 
+&gt; &gt; think those questions are settled at this point.
+&gt; &gt; 
+&gt; &gt; In the spec as written, we wrote that species identifiers in
+&gt; &gt; math expressions stand for the quantity of that species in 
+&gt; &gt; terms of CONCENTRATION units.  However, Joerg Weimar's recent 
+&gt; &gt; feedback, and a number of past messages on sbml-discuss, make 
+&gt; &gt; it seem that perhaps it should be in SUBSTANCE units.
+&gt; &gt; 
+&gt; &gt; Using substance units would appear to be more consistent
+&gt; &gt; with having reaction rates be in terms of substance/time.
+&gt; &gt; One could generate concentrations by dividing species by the
+&gt; &gt; compartments in which they're located.  So if one has two 
+&gt; &gt; reactions, A -&gt; B + C and B -&gt; D, with the former having a 
+&gt; &gt; rate of "k1*A" and the latter "k2*B" (where "A" and "B" 
+&gt; &gt; represent substance amounts), and each species is located in 
+&gt; &gt; separate compartments with volumes Va, Vb, Vc, and Vd, then 
+&gt; &gt; the rate of change in amount of B would be
+&gt; &gt; 
+&gt; &gt;    dB/dt = k1*A - k2*B
+&gt; &gt; 
+&gt; &gt; and the rate of change of concentration in B would be
+&gt; &gt; 
+&gt; &gt;    d[B]/dt = k1*A/Va - k2*B/Vb
+&gt; &gt; 
+&gt; &gt; Is that right?  Does that work for more complicated cases?
+&gt; &gt; 
+&gt; &gt; I'm sorry to bring this up.  I hope this is a simple
+&gt; &gt; question and people can just tell me it's obvious that we're
+&gt; &gt; going one way or the other.
+&gt; &gt; 
+&gt; &gt; MH
+&gt; &gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00449" HREF="msg00449.html">RE: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00446.html">RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00448.html">Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00439.html">RE: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00449.html">RE: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00447"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00447"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

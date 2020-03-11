@@ -1,0 +1,155 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] DWG &#45; from a devil's advocate &#45; a plan and othersuggestions -->
+<!--X-From-R13: Sevp [vapu <revp.zvapuNyvbaovbfpvrapr.pbz> -->
+<!--X-Date: Tue, 27 May 2003 02:58:51 &#45;0700 -->
+<!--X-Message-Id: 3ED336CA.9000803@lionbioscience.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD36E5C@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] DWG - from a devil's advocate - a plan and othersugge</TITLE>
+<LINK REV="made" HREF="mailto:eric.minch@lionbioscience.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00364.html">Date Prev</A>][<A HREF="msg00366.html">Date Next</A>][<A HREF="msg00360.html">Thread Prev</A>][<A HREF="msg00288.html">Thread Next</A>][<A HREF="maillist.html#00365">Date Index</A>][<A HREF="threads.html#00365">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] DWG - from a devil's advocate - a plan and othersuggestions</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] DWG - from a devil's advocate - a plan and othersuggestions</LI>
+<LI><em>From</em>: Eric Minch &lt;<A HREF="mailto:eric.minch@lionbioscience.com">eric.minch@lionbioscience.com</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 27 May 2003 11:58:34 +0200</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+John, Herbert, Ralph et al.--
+
+I brought up the logical/physical distinction to try summarizing points that 
+Andrew F and Sven S had made. Sven had talked about separating levels (model, 
+layout, render), and Andrew about very similar ideas (encoding graph 
+information, and minimal rendering information, augmenting these with a 
+stylesheet for detailed rendering).
+
+What this reminded me of is the way e.g. different browsers can render the same 
+HTML logical tags in different ways. Because SBML is an XML language it lets us 
+specify the structure of the model very nicely, but different 
+modeling/simulation packages will have varying preferences in how to present 
+this model. Thus Andrew's suggestion to use stylesheets for detailed rendering, 
+as I interpreted it, referred to one possible method on the *package* side and 
+not to a requirement for the SBML specification of the model. As Andrew and Hugh 
+S point out, this means having a controlled vocabulary for the types of objects, 
+whose appearance is then determined by the package.
+
+Andrew's neat idea that models could define their own CVs seems long-term 
+feasible and powerful, but under time pressure might best be deferred. But the 
+various types rendered by existing packages aren't nearly as rich as some of the 
+CVs and ontologies out there, so as Mike H suggested, an inventory of their 
+"common themes" isn't too onerous. For example, in pathSCOUT and its current 
+descendant, we distinguish several types of molecules (or other actors), and 
+types of interactions (or other actions), each of which has its own appearance 
+(listed below). The actors and actions correspond to the CV, and the appearance 
+correspond to the stylesheet information (though in pS this is actually hard 
+coded in constants in the code).
+
+I wouldn't claim the CV below is complete or ideal (quite the contrary); it's 
+just one candidate to contribute to the inventory, and it's rich enough for many 
+purposes.
+
+Bottom line: I go along with Ralph G's suggestion to try getting out a level A 
+proposal over the summer, but disagree with Ralph &amp; Herbert that inventorying 
+the CV is too much. Whether the inventory is done by the DWG or the CV-WG (or 
+both), enumerating the logical themes and agreeing on a minimal set is eminently 
+do-able in the short term.
+
+...At least from what I've seen of this group, in comparison with 
+standardization efforts in general....;)
+-- 
+	Best--
+	--Eric
+
+"actors"
+--------
+compound: ellipse
+protein: rectangle
+enzyme: rectangle with dotted border
+complex: two ellipses orthogonally superimposed
+polymer: three ellipses joined along minor axis (like part of a bead necklace)
+gene: elongated hexagon
+RNA: pentagon
+pathway: tiny graph with three nodes &amp; two edges
+compartment: rounded rectangular border containing actors &amp; actions
+
+"actions"
+---------
+interaction: solid line
+binding: dashed line
+reaction (mass transfer): solid line with single solid arrow
+reversible reaction:
+activation: solid line with open arrow
+inhibition: solid line with short line abutting orthogonally
+transcription: dotted line with single barbed arrow
+translation: dotted line with two barbed arrows at terminus
+transport: dotted line with three barbed arrows at terminus
+conformation change: dotted line with two barbed arrows, one at each end
+
+P.S. Describing these is easier with an image but that would probably violate 
+some policy or another.
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00360" HREF="msg00360.html">RE: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00364.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00366.html">[sbml-discuss] DWG - clarification of stylesheet concept and example</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00360.html">RE: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00288.html">Re: [sbml-discuss] DWG - from a devil's advocate - a plan andother suggestions</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00365"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00365"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

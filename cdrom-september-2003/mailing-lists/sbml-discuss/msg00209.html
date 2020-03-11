@@ -1,0 +1,416 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: FW: [sbml&#45;discuss] Arrays Working Group -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Thu, 22 May 2003 02:35:21 &#45;0700 -->
+<!--X-Message-Id: 002401c32045$6ea3d9d0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 60C86892&#45;8C31&#45;11D7&#45;8EBC&#45;00306575E512@auckland.ac.nz -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: FW: [sbml-discuss] Arrays Working Group</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00208.html">Date Prev</A>][<A HREF="msg00210.html">Date Next</A>][<A HREF="msg00204.html">Thread Prev</A>][<A HREF="msg00216.html">Thread Next</A>][<A HREF="maillist.html#00209">Date Index</A>][<A HREF="threads.html#00209">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: FW: [sbml-discuss] Arrays Working Group</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'SBML'&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: FW: [sbml-discuss] Arrays Working Group</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 10:35:01 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Poul
+
+I agree with yoour comment about MathML.
+The current array proposal maps SBML arrays to vectors and matrices
+in MathML.  A symbol declared as an array outside MathML
+can be used as the content of a &lt;ci&gt; element where the &lt;ci&gt;
+element is a argument to an MathML vector operator.
+SBML 1D arrays map to MathML vectors and SBML 2+D arrays
+map to MathML matrices.  
+
+Unfortunately this breaks down (or becomes fuzzy) since
+matrices in MathML are strictly 2D.  The semantics of matrices
+operators in MathML are not well defined for 3+D matrices.
+You sensibly suggested
+that we should overcome this by enclosing vectors inside vectors
+to give a scheme that is compatible with MathML. 
+In this representation each dimension (in declaration order) of an array
+maps to
+a vector where each element is either a number or another vector
+representing the
+next dimension of the array.
+This scheme would avoid the need to define operators for use in MathML
+although we might need to define a special operator to map between
+a vector of vectors and a matrix.
+
+One problem is that its not clear whether MathML really supports
+vectors of vectors.  What do you think?
+see
+
+<A  HREF="http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#contm.vector">http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#contm.vector</A>
+<A  HREF="http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#contm.constr">http://www.w3.org/TR/2003/WD-MathML2-20030411/chapter4.html#contm.constr</A>
+uctor
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+Systems Biology Workbench Development Group
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: Poul Nielsen [<A  HREF="mailto:p.nielsen@auckland.ac.nz">mailto:p.nielsen@auckland.ac.nz</A>] 
+&gt; Sent: 22 May 2003 09:43
+&gt; To: Andrew Finney
+&gt; Cc: Poul Nielsen; SBML
+&gt; Subject: Re: FW: [sbml-discuss] Arrays Working Group
+&gt; 
+&gt; 
+&gt; Dear all
+&gt; 
+&gt; One of the things that we should keep in mind is how such concepts as 
+&gt; 'arrays' or other collections mesh in with the rest of the language 
+&gt; components. Given that MathML is currently used to specify 
+&gt; relationships between SBML variables, and given that MathML already 
+&gt; defines a useful set of collections (vectors, matrices, sets, lists) 
+&gt; that are well integrated with the rest of the MathML 
+&gt; language, I would 
+&gt; strongly suggest that careful consideration be given to using MathML 
+&gt; collections as the model for SBML collections. I believe that a 
+&gt; one-to-one correspondence between MathML and SBML collection 
+&gt; constructs 
+&gt; would greatly ease the meshing of collections in SBML.
+&gt; 
+&gt; As I mentioned in the Fort Lauderdale talk, these ideas may not be 
+&gt; sensible to discuss in isolation from the more general notion of 
+&gt; introducing typing or classing mechanisms into the language. But that 
+&gt; is an even bigger problem to tackle...
+&gt; 
+&gt; Best wishes
+&gt; Poul
+&gt; 
+&gt; On Wednesday, May 21, 2003, at 07:46 Pacific/Auckland, Andrew Finney 
+&gt; wrote:
+&gt; 
+&gt; &gt; FYI...
+&gt; &gt;
+&gt; &gt; -----Original Message-----
+&gt; &gt; From: Steve Burbeck [<A  HREF="mailto:sburbeck@us.ibm.com">mailto:sburbeck@us.ibm.com</A>]
+&gt; &gt; Sent: 20 May 2003 20:12
+&gt; &gt; To: Andrew Finney
+&gt; &gt; Subject: Re: [sbml-discuss] Arrays Working Group
+&gt; &gt;
+&gt; &gt; Andrew,
+&gt; &gt;
+&gt; &gt; I'd like to participate in the "Arrays" working group, although I 
+&gt; &gt; would prefer it be called the "Collections" working group 
+&gt; so as not to 
+&gt; &gt; prejudge the answer to your question about whether they 
+&gt; should allow 
+&gt; &gt; Sets, Bags, OrderedCollections, Sorted Collections, 
+&gt; Dictionaries, etc.
+&gt; &gt;
+&gt; &gt; My own view, which is biased by my experience doing simulations in 
+&gt; &gt; Smalltalk rather than C, is that Arrays improperly mix 
+&gt; three separate
+&gt; &gt; concepts: collections, indexing and iteration.
+&gt; &gt;
+&gt; &gt; - The Collection concept provides the ability to refer to a bunch
+&gt; &gt; (i.e.,
+&gt; &gt; collection) of elements as "one thing,"  typically when the program
+&gt; &gt; needs to pass the whole bunch at once, e.g., as an argument, to some
+&gt; &gt; function.
+&gt; &gt;
+&gt; &gt; - The indexing concept is about how to refer to a 
+&gt; particular element. 
+&gt; &gt; In many cases, especially when the collection contains 
+&gt; elements that 
+&gt; &gt; are distributed evenly in space or time, naming the elements with an
+&gt; &gt; integer
+&gt; &gt; is exactly what you want to do.  But when the natural 
+&gt; organization of
+&gt; &gt; the elements is not isomorphic to a one-dimensional 
+&gt; physical axis with
+&gt; &gt; evenly spaced elements, integers become cryptic and arbitrary names 
+&gt; &gt; that
+&gt; &gt; don't offer much modeling power.  So, for example, a Dictionary is a
+&gt; &gt; collection in which names (or keys) other than integers can be used.
+&gt; &gt; [note, the implementation of a dictionary is usually a relatively 
+&gt; &gt; sparse
+&gt; &gt; array in which the names are converted to indices by a hash 
+&gt; function]
+&gt; &gt;
+&gt; &gt; - The iteration concept is about the order in which a 
+&gt; program wishes 
+&gt; &gt; to access, store, or modify the elements, usually with the implicit 
+&gt; &gt; understanding that all elements are to be dealt with.  For 
+&gt; example, in 
+&gt; &gt; an OrderedCollection, iteration is intended to start at the first 
+&gt; &gt; element and proceed successively to the end (or sometimes backwards 
+&gt; &gt; from last to first).  In a SortedCollection, the intent is to start 
+&gt; &gt; with the smallest element (not smallest index) and proceed to the 
+&gt; &gt; largest (again,
+&gt; &gt; one may want to go backwards).  Other kinds of collection 
+&gt; (e.g., Set or
+&gt; &gt; Bag) explicitly ignore order, i.e., they explicitly assert that the
+&gt; &gt; order of iteration is undefined or irrelevant.
+&gt; &gt;
+&gt; &gt; At the implementation level, when a simulation is running,  
+&gt; arrays are 
+&gt; &gt; almost always the implementation of choice.  SBML, however, 
+&gt; is a model 
+&gt; &gt; description language quite separate from the simulation.  
+&gt; It seems to 
+&gt; &gt; me that modelers might like to be able to make richer or 
+&gt; more nuanced
+&gt; &gt; statements about indexing and iteration than those allowed 
+&gt; by Arrays.
+&gt; &gt; They may want to index elements by names rather than 
+&gt; integers.  They 
+&gt; &gt; may
+&gt; &gt; want to indicate that the order in which the elements 
+&gt; appear in the XML
+&gt; &gt; text is, or is not, important.  They may want to indicate that 
+&gt; &gt; iteration
+&gt; &gt; should proceed in a sort order, e.g., smallest to largest, 
+&gt; however the
+&gt; &gt; elements appear in the list of XML.  And so forth.  Thus, if SBML
+&gt; &gt; allowed collection tags other than Array, the modeler could 
+&gt; use them to
+&gt; &gt; indicate to the consumer of the model whether the order of 
+&gt; elements in
+&gt; &gt; the list is important or not. If it allowed Dictionaries, 
+&gt; one could use
+&gt; &gt; /key and /value tags to name elements rather than referring to them 
+&gt; &gt; with
+&gt; &gt; some arbitrary integer.
+&gt; &gt;
+&gt; &gt; Regards,
+&gt; &gt; Steve Burbeck, Ph.D.
+&gt; &gt; Senior Technical Staff Member
+&gt; &gt; IBM Life Sciences
+&gt; &gt; Member, IBM Academy of Technology
+&gt; &gt; T/L444-0732, (919)254-0732
+&gt; &gt;
+&gt; &gt; _______________  Multi-cellular Computing _______________
+&gt; &gt;
+&gt; &gt; In the 20th century we sought to create ever more capable computers.
+&gt; &gt; Now
+&gt; &gt; we seek to create ever more elegant groups of collaborating 
+&gt; computers.
+&gt; &gt; We recapitulate the biological evolution from single-cell 
+&gt; to multi-cell
+&gt; &gt; organisms.
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;                       "Andrew Finney"
+&gt; &gt;
+&gt; &gt;                       &lt;afinney@cds.caltech.ed        To:
+&gt; &gt; &lt;sbml-discuss@caltech.edu&gt;
+&gt; &gt;
+&gt; &gt;                       u&gt;                             cc:
+&gt; &gt;
+&gt; &gt;                       Sent by:                       Subject:
+&gt; &gt; [sbml-discuss] Arrays Working Group
+&gt; &gt;
+&gt; &gt;                       owner-sbml-discuss@its.
+&gt; &gt;
+&gt; &gt;                       caltech.edu
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;                       05/20/2003 12:31 PM
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; Charter of the SBML Arrays Working Group
+&gt; &gt; ----------------------------------------
+&gt; &gt;
+&gt; &gt; Background
+&gt; &gt;
+&gt; &gt; At the recent SBML forum meeting in Florida it was decided to setup 
+&gt; &gt; working groups to develop proposals for incorporation into SBML. 
+&gt; &gt; Several people at the meeting signed up to a working group 
+&gt; to develop 
+&gt; &gt; a proposal for arrays in SBML
+&gt; &gt;
+&gt; &gt; Mission Statement and Scope
+&gt; &gt;
+&gt; &gt; Definition of an extension to SBML to allow the 
+&gt; construction of models 
+&gt; &gt; from homogeneous collections of objects.  Attributes of 
+&gt; these objects 
+&gt; &gt; can vary systematically across these collections.
+&gt; &gt;
+&gt; &gt; Any viable proposal must:
+&gt; &gt;
+&gt; &gt; - support a mechanism for describing the connections between array 
+&gt; &gt; elements
+&gt; &gt; - be compatible with other proposals in particular model composition
+&gt; &gt; and
+&gt; &gt; dynamic structures
+&gt; &gt;
+&gt; &gt; Main issues to resolve:
+&gt; &gt;
+&gt; &gt; - What objects can occur in these collections?
+&gt; &gt; - What is the correct mechanism for defining collections?
+&gt; &gt;              for example should we consider sets, bags etc as 
+&gt; &gt; alternatives
+&gt; &gt;              to arrays.
+&gt; &gt; - Do we need syntactic sugar to simplify the use of or compress the 
+&gt; &gt; encoding of arrays?
+&gt; &gt; - Should a function for defining the sparseness of an array 
+&gt; be dynamic
+&gt; &gt;              (vary during simulation)?
+&gt; &gt;
+&gt; &gt; Termination criterion:
+&gt; &gt;
+&gt; &gt;    Arrays is included into the SBML Level 3
+&gt; &gt;
+&gt; &gt;    or
+&gt; &gt;
+&gt; &gt;    The idea is considered as nonsense for Systems-Biology 
+&gt; and dropped
+&gt; &gt;    from the SBML Agenda
+&gt; &gt;
+&gt; &gt;    Timeframe: I expect a working proposal and first reference
+&gt; &gt;    implementations for the next SBML Forum Meeting in
+&gt; &gt;    Nov 2003 S. Louis
+&gt; &gt;
+&gt; &gt; Deliverables:
+&gt; &gt;
+&gt; &gt;    - a Array proposal for incorporation into SBML L3
+&gt; &gt;    - a reference implementation that can read and write the 
+&gt; proposed 
+&gt; &gt; standard including L2 in a
+&gt; &gt;      useful software context
+&gt; &gt;    - at least one published model encoded in the proposal
+&gt; &gt;    - optional: a tool that can translate from the proposed standard 
+&gt; &gt; including SBML L2 to
+&gt; &gt;      unextended SBML L2.
+&gt; &gt;
+&gt; &gt; Chair and Contact:
+&gt; &gt;
+&gt; &gt;   Andrew Finney
+&gt; &gt;   afinney@cds.caltech.edu
+&gt; &gt;   +44 (0)1452 722487
+&gt; &gt;   from US - 011 44 1452 722487
+&gt; &gt;   University of Hertfordshire, UK
+&gt; &gt;
+&gt; &gt;   Postal address:
+&gt; &gt;   Church Cottage
+&gt; &gt;   Church Lane
+&gt; &gt;   Moreton Valence
+&gt; &gt;   Gloucestershire
+&gt; &gt;   GL2 7NB
+&gt; &gt;   United Kingdom
+&gt; &gt;
+&gt; &gt;   Co-Chair open to volunteers.
+&gt; &gt;
+&gt; &gt; To Join please email the Chair.
+&gt; &gt;
+&gt; &gt; Current members:
+&gt; &gt;
+&gt; &gt; Martin Ginkel - Max Planck Institute - ginkel@mpi-magdeburg.mpg.de 
+&gt; &gt; Mike McCollum - University of Tennessee - jmccoll2@utk.edu Greg 
+&gt; &gt; Peterson - University of Tennessee - gdp@utk.edu Jonathan 
+&gt; Webb - BBN - 
+&gt; &gt; jwebb@bbn.com Vijay Saraswat - Penn State University - 
+&gt; &gt; saraswat@cse.psu.edu Ben Bornstein - JPL - 
+&gt; bornstein@aig.jpl.nasa.gov 
+&gt; &gt; Poul Neilsen - University of Auckland - p.neilsen@auckland.ac.nz
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; 
+&gt; Poul Nielsen
+&gt; Bioengineering Institute
+&gt; University of Auckland
+&gt; New Zealand
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00216" HREF="msg00216.html">Re: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Poul Nielsen &lt;p.nielsen@auckland.ac.nz&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00204" HREF="msg00204.html">Re: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Poul Nielsen &lt;p.nielsen@auckland.ac.nz&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00208.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00210.html">RE: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00204.html">Re: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00216.html">Re: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00209"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00209"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

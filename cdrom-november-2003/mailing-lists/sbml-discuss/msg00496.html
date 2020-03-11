@@ -1,0 +1,132 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] issue for Level 2 &#45; units attribute on species -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 17 Jun 2003 09:34:17 &#45;0700 -->
+<!--X-Message-Id: 002b01c334ed$94ea4360$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] issue for Level 2 - units attribute on species</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00495.html">Date Prev</A>][<A HREF="msg00497.html">Date Next</A>][<A HREF="msg00492.html">Thread Prev</A>][<A HREF="msg00499.html">Thread Next</A>][<A HREF="maillist.html#00496">Date Index</A>][<A HREF="threads.html#00496">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] issue for Level 2 - units attribute on species</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] issue for Level 2 - units attribute on species</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 17 Jun 2003 17:29:04 +0100</LI>
+<LI>Importance: High</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Folks
+
+Does anyone have objection to the following modification to
+the species structure in SBML Level 2?
+
+'units' attribute is replaced by 'substanceUnits' and 'spatialSizeUnits'
+attributes.
+
+the units of 'initialAmount' is determined by 'substanceUnits' only
+
+the units of all other uses of the species is
+determined by 'substanceUnits'/'spatialSizeUnits'
+(i.e. concentration)
+
+The uses of these concentration units are:
+
+a) the units of 'initialConcentration'
+b) the units of species symbols in formulae
+c) the result units of assignment rules
+d) concentration/time forms the units of rate rules
+
+In fact this 'concentration' will be know as 'the 
+units of the species'
+
+[
+ Why do we this change?: because 
+	a) initialAmount and initialConcentration have different but
+related
+		units.
+	b) we need to be able to determine exact units for each species
+		separately (rather than say deriving it from the
+compartment units.
+
+ Why can't you break out the substance component from a composed
+	concentration unit definition? : because
+	the unit scaling can't be reliably associated with
+	just one part of the composed unit
+
+	e.g. molesx10^-6/litre === moles/litrex10^6
+] 
+
+Any comments very gratefully received.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00499" HREF="msg00499.html">Re: [sbml-discuss] issue for Level 2 - units attribute on species</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00495.html">[sbml-discuss] RE: [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00497.html">[sysbio-team] help: issue for Level 2 - units attribute on species</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00492.html">[sbml-discuss] [Hybrid] [Fwd: Re: Hybrid Models Working Group]</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00499.html">Re: [sbml-discuss] issue for Level 2 - units attribute on species</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00496"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00496"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,215 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG: Suggestion for layout extension -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Fri, 13 Jun 2003 11:04:45 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD375B4@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG: Suggestion for layout extension</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00462.html">Date Prev</A>][<A HREF="msg00464.html">Date Next</A>][<A HREF="msg00461.html">Thread Prev</A>][<A HREF="msg00464.html">Thread Next</A>][<A HREF="maillist.html#00463">Date Index</A>][<A HREF="threads.html#00463">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG: Suggestion for layout extension</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Sven Sahle&quot; &lt;<A HREF="mailto:sahle@eml.org">sahle@eml.org</A>&gt;, &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG: Suggestion for layout extension</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 13 Jun 2003 14:02:20 -0400</LI>
+<LI>Thread-Index: AcMxxGzjkpeRtpI3RvuaHlaAY8VjegAETukQ</LI>
+<LI>Thread-Topic: [sbml-discuss] DWG: Suggestion for layout extension</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Sven,
+This is very similar to what I have posted.
+Thumbs up.
+
+Sorry I've been offline for a week, we had our
+annual short course, and my connection from
+home was down (thanks, Comcast). I'm now catching
+up on the huge volume of unread email.
+
+John
+
+&gt; -----Original Message-----
+&gt; From: Sven Sahle [<A  HREF="mailto:sahle@eml.org">mailto:sahle@eml.org</A>]
+&gt; Sent: Friday, June 13, 2003 2:23 PM
+&gt; To: sbml-discuss@caltech.edu
+&gt; Subject: [sbml-discuss] DWG: Suggestion for layout extension
+&gt; 
+&gt; 
+&gt; Hello all,
+&gt; 
+&gt; we would like to present another suggestion for the sbml 
+&gt; layout extension.
+&gt; 
+&gt; For that we took the basic idea that information about the 
+&gt; position and 
+&gt; relations between the graphical objects should be separated 
+&gt; from render 
+&gt; information like  line thicknesses, colors, shapes. We only 
+&gt; deal here with 
+&gt; the first. 
+&gt; We took from the discussion in this forum what we think are 
+&gt; the important 
+&gt; requirements (that our first suggestion did not meet).
+&gt; 
+&gt; The requirements we considered are:
+&gt; 
+&gt; 1. several layouts for one model in one file.
+&gt; 
+&gt; 2. layout separate from the model in the file.
+&gt; 
+&gt; 3. one model object (compartment, species, reaction, species 
+&gt; reference) can be 
+&gt; represented by several graphical objects.
+&gt; 
+&gt; 4. graphical objects that do not refer to model objects are 
+&gt; possible (Of 
+&gt; course graphical objects can refer to a part of the model and 
+&gt; usually do).
+&gt; 
+&gt; We provide a sample sbml file and a png file with the 
+&gt; rendered layout. These 
+&gt; files were generated manually and the sbml code is based on a 
+&gt; hypothetical 
+&gt; sbml level 2 that would have id´s for species references.
+&gt; 
+&gt; 
+&gt; Some additional notes:
+&gt; 
+&gt; -the basic structure of this suggestion is similar to John 
+&gt; Wagner´s draft 
+&gt; (that reflects requirements 1 and 2), while our first try was 
+&gt; similar to 
+&gt; Herbert Sauro´s suggestion.
+&gt; 
+&gt; - the ...GR in the tag names stands for graphical 
+&gt; representation (but the 
+&gt; actual names of the tags don´ t really matter that muchin 
+&gt; this phase of the 
+&gt; discussion)
+&gt; 
+&gt; -all the graphical objects have an id. This id is used only 
+&gt; in the case of the 
+&gt; speciesGR (it is needed in the reactionGR). But we think that 
+&gt; every object in 
+&gt; sbml should have an id.
+&gt; 
+&gt; - the "ref" attribute in the graphical objects is optional 
+&gt; and refers to the 
+&gt; id of a model object.
+&gt; 
+&gt; - there are two kinds of graphical objects that don´t refer 
+&gt; to a model object: 
+&gt; first the ones that _could_ refer to a model object but don´t 
+&gt; (since the 
+&gt; "ref" attribute is optional). This means you can have species 
+&gt; and reaction, 
+&gt; ... in the layout that are not in the model; second the 
+&gt; objects that are in 
+&gt; the "listOfAdditionalGraphicalObjects". In our example we 
+&gt; have put only a 
+&gt; text label object in this list, other types of objects would 
+&gt; be possible.
+&gt; 
+&gt; -  since a species reference in the model connects the 
+&gt; reaction with the 
+&gt; species, and the arrows (or arcs) in the diagram  connect the 
+&gt; reactionGR with 
+&gt; the speciesGR, we think the arcs (or arrows) should refer to 
+&gt; the species 
+&gt; references. To reflect that we have called them speciesReferenceGR
+&gt; 
+&gt; - the possibility to have several speciesReferenceGR objects 
+&gt; that refer to one 
+&gt; species reference in the model solves the following problem that was 
+&gt; mentioned in the discussion on the list: The user might want 
+&gt; to render the 
+&gt; reaction A-&gt;B with encyme E as a reaction A+E-&gt;B+E. So we 
+&gt; have 3 species 
+&gt; references in the model (one substrate, product, modifier 
+&gt; each) but 4 arcs 
+&gt; (two substrate, two product). So two speciesReferenceGRs (one 
+&gt; substrate, one 
+&gt; product) refer to one species reference (modifier) in the 
+&gt; model. This is the 
+&gt; reason why we put the "role" attribute in the 
+&gt; speciesReferenceGR tag. It 
+&gt; should be optional. If it is not there the role is taken from 
+&gt; the species 
+&gt; reference. 
+&gt; 
+&gt; -Right now the speciesReferenceGR specifies only startpoint 
+&gt; and endpoint of 
+&gt; the arc. It might make sense to include coordinates for an 
+&gt; arbitrary number 
+&gt; of points in the speciesReferenceGRs to describe the  the arc. 
+&gt; 
+&gt; We hope that our suggestion can be the base of some 
+&gt; discussion. Did we miss 
+&gt; anything important? Please comment.
+&gt; 
+&gt; Ursula Rost, Sven Sahle, Katja Wegner
+&gt; (European Media Laboratory, Heidelberg, Germany)
+&gt; 
+&gt; 
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00462.html">Re: [sbml-discuss] ALTREPS - example representations</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00464.html">[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00461.html">[sbml-discuss] DWG: Suggestion for layout extension</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00464.html">[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00463"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00463"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

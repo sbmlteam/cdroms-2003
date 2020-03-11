@@ -1,0 +1,110 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: FW: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: "Vreoreg Enheb" <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Fri, 11 Jul 2003 10:22:51 &#45;0700 -->
+<!--X-Message-Id: 601BBB4D9640CB4693A2384E4B37872E15B519@dell2650&#45;0550.kgi.edu.96.173.134.in&#45;addr.arpa -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: FW: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00546.html">Date Prev</A>][<A HREF="msg00548.html">Date Next</A>][<A HREF="msg00548.html">Thread Prev</A>][<A HREF="msg00557.html">Thread Next</A>][<A HREF="maillist.html#00547">Date Index</A>][<A HREF="threads.html#00547">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: FW: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: FW: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 11 Jul 2003 10:21:37 -0700</LI>
+<LI>Thread-Index: AcNHrulBGk2VyoCPSiOcU4AmrQ/5dgAIRIZ7</LI>
+<LI>Thread-Topic: FW: [sbml-discuss] Layout Extension Update</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+ 
+
+	 
+	 
+	Sven&gt;This could be a sequence of curves (I mean the curves that 
+	Sven&gt;are descibed by start point and end point and two additional points that 
+	Sven&gt;define the tangents to these points, I believe they are called bezier, but 
+	Sven&gt;I´m not shure about the terminology). This seems to be the way drawing 
+	Sven&gt;programs like adobe illustrator (or kontour) work. 
+	 
+	This is exactly what Jdesigner does, I took my cue from applications like illustrator. The calculations required to get things looking nice are quite tedious though. There are a bunch of linear equations that need solving in order to get the bezier segments to blend in a nice way, essentially the end tangents must match. Each time a control point is moved, the tangents have to be recomputed. If you look at the Jdesigner annoation spec you'll see that I store the set of control points and center point for each reaction.
+	 
+	I think we should at least permit straight line segements as there would be very little work in renderning these. Beziers are another matter, however if a app cannot render the beziers they can simply draw straight line segments and they can use the centre point or compute the centroid.
+
+	&gt;The first way (different curve types) would be easy to write, since all 
+	&gt;programs could write just like they internally represent the curves, but 
+	&gt;might involve conversion calculations while reading (if the curves are given 
+	&gt;as a curve type that my program doesn´t use internally). 
+	&gt;The other way (just one general curve type) would be easy to read (at least 
+	&gt;only one conversion routine is needed) while it might be difficult to 
+	&gt;translate the internally used curves to the one standard curve type in the 
+	&gt;sbml output. 
+
+	&gt;Sven 
+
+	On Thursday 10 July 2003 06:31, Akira Funahashi wrote: 
+	&gt; Current version of CellDesigner uses polylines to draw edges, and 
+	&gt; the selection of line-type depends on the design of application, so 
+	&gt; I completely agree with Herbert and Rowan that we will introduce 
+	&gt; a line-type. 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00546.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00548.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00548.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00557.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00547"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00547"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

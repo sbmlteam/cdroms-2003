@@ -1,0 +1,153 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] Trying to close the default compartments issue -->
+<!--X-From-R13: [vpunry Vhpxn <zuhpxnNpnygrpu.rqh> -->
+<!--X-Date: Fri, 2 May 2003 18:44:44 &#45;0700 -->
+<!--X-Message-Id: 16051.7839.591065.795206@erato1.cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] Trying to close the default compartments issue</TITLE>
+<LINK REV="made" HREF="mailto:mhucka@caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00119.html">Date Prev</A>][<A HREF="msg00121.html">Date Next</A>][<A HREF="msg00119.html">Thread Prev</A>][<A HREF="msg00121.html">Thread Next</A>][<A HREF="maillist.html#00120">Date Index</A>][<A HREF="threads.html#00120">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] Trying to close the default compartments issue</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] Trying to close the default compartments issue</LI>
+<LI><em>From</em>: Michael Hucka &lt;<A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 2 May 2003 18:42:55 -0700</LI>
+<LI>Reply-To: <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Everyone,
+
+Thank you for all the discussions surrounding the
+default/no-default compartments issue.  We really appreciate
+the wonderful level of participation and effort that you,
+the SBML community, have shown.
+
+We would like to close the matter of whether to make
+compartments be optional in SBML.  Eric Minch pointed out
+problems with the statistical significance of the survey
+results that we had not considered (thanks, Eric).  On the
+other hand, we are faced with the problem of having to make
+*some* sort of decision.
+
+Cliff put forward a cogent argument from the viewpoint that
+SBML Level 1 was intended to be an intersection of features
+needed by a variety of simulation tools.  For those models
+that don't require a compartment, it seems wrong to require
+them to define essentially a fake compartment. 
+
+On the other hand, we need to watch out for issues of
+logical consistency in the language.  It turns out that
+allowing compartments to be optional leads to a greater
+number of potential ambiguities than making compartments
+mandatory.  Here is a sample of possible ambiguities and
+logical inconsistencies that would result:
+
+1) If a compartment is optional, then the 'compartment'
+   attribute on a species definition necessarily must also
+   be optional.  As someone pointed out during the survey,
+   this leads to the possibility that a model could have
+   some species defined with a compartment attribute and
+   some without.  The interpretation of this is unclear.
+
+2) At the last SBML Forum meeting, people generally wanted
+   to move away from having default quantities in SBML and
+   instead have SBML define missing values as "unknown".  As
+   someone pointed out during the survey, compartments are
+   structural features of models and not quantities per se.
+   However, if compartments are made optional, then a
+   missing compartment in a model definition would imply
+   that a default compartment should be assumed, which in
+   turn would logically require that the default compartment
+   have a default volume.  This would constitute introducing
+   a default quantity.
+
+3) In the near future, the community hopes to be able to
+   compose models out of multiple other models.  If
+   compartments were made optional and some model (call it
+   "A") did not specify any explicit compartment, it would
+   lead to the following difficulty.  If an enclosing model
+   attempted to use model "A" as part of a larger model, and
+   it needed to link or refer to the compartment in "A",
+   then it would not be able to use the compartment name or
+   id in "A" (because there would not be any).  Working
+   around this would require either adding default
+   compartment names to go along with default compartments,
+   or introducing some sort of special case for composing
+   models out of submodels lacking compartments.  Both of
+   these alternatives would increase complexity compared to
+   simply making compartments mandatory.
+   
+There are other issues, but the general result seems to be
+that, although there are undeniably good arguments for
+having default compartments, on balance, there are more
+reasons to *avoid* default compartments.
+
+Thus, the conclusion appears to be that Level 1 version 2
+and Level 2 should make compartments mandatory.
+
+Mike &amp; Andrew
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00121" HREF="msg00121.html">Re: [sbml-discuss] Trying to close the default compartments issue</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Pedro Mendes&quot; &lt;mendes@vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00119.html">Proposals for SBML Level 3</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00121.html">Re: [sbml-discuss] Trying to close the default compartments issue</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00119.html">Proposals for SBML Level 3</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00121.html">Re: [sbml-discuss] Trying to close the default compartments issue</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00120"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00120"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

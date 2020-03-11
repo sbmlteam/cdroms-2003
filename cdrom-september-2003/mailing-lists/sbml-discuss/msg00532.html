@@ -1,0 +1,151 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Mon, 7 Jul 2003 06:41:59 &#45;0700 -->
+<!--X-Message-Id: 002701c3448d$72de88d0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 59D7F8A2&#45;B07E&#45;11D7&#45;A6EC&#45;000A95776A76@eml.villa&#45;bosch.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00531.html">Date Prev</A>][<A HREF="msg00533.html">Date Next</A>][<A HREF="msg00531.html">Thread Prev</A>][<A HREF="msg00533.html">Thread Next</A>][<A HREF="maillist.html#00532">Date Index</A>][<A HREF="threads.html#00532">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Ralph Gauges'&quot; &lt;<A HREF="mailto:ralph.gauges@eml.villa-bosch.de">ralph.gauges@eml.villa-bosch.de</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 7 Jul 2003 14:41:08 +0100</LI>
+<LI>Cc: &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Ralph 
+
+Your URL doesn't work me.
+
+2 points:
+
+ - Since this extension will be part of Level 3 why don't you add id
+fields where you need them.  Any changes you make just becomes part of
+your
+	proposal.  Document issues of scope/uniqueness.
+
+ - we seperated 'metaid' (an optional XML ID type field on Sbase) from
+'id'
+	(a typically mandatory restricted string field on SBML
+components.)
+	because an ID type fields must be unique across the whole of an 
+	XML document.  This makes it impossible to use ID type fields
+	which are unique say to just a submodel.  We only
+	added metaid to support RDF which requires the elements it
+references
+	to have ID fields.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Ralph Gauges
+&gt; Sent: 07 July 2003 14:25
+&gt; To: sbml-discuss@its.caltech.edu
+&gt; Subject: [sbml-discuss] Layout Extension Update
+&gt; 
+&gt; 
+&gt; We finally finished to put the suggestion Sven made a few weeks ago 
+&gt; into words.
+&gt; 
+<A  HREF="http://projects.eml.org/bcb/sbml/level1/">http://projects.eml.org/bcb/sbml/level1/</A>
+
+
+The major updates to the last proposal are:
+
+- based upon SBML Level 2
+- layout information was seperated from the model definition
+- all objects are based on SBase to be able to specify metainformation
+
+On our website you can read the document online or download a pdf 
+version. We also put up the schema definition and a small sample file.
+
+Since there are not going to be IDs on all objects in SBML Level 2, 
+referencing SpeciesReferences is still somewhat awkward.
+
+An alternative to the mode for referencing SpeciesReferences in this 
+proposal would be to use the metaids  for referencing.
+Actually I was kind of wondering why there was the need to have an 
+additional ID on some objects. Could not the metaid be used for both 
+purposes, identifying objects as well as reference point for 
+metainformation?  Maybe I missed something there?
+Again, we would like to get as much feedback as possible in  order to 
+further improve on this layout information proposal.
+
+Ralph Gauges
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00530" HREF="msg00530.html">[sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00531.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00533.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00531.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00533.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00532"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00532"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

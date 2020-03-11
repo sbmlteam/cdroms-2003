@@ -1,0 +1,176 @@
+<!doctype html public "-//w3c//dtd html 4.0 Transitional//en">
+<html>
+<head>
+<title><h1>Minimal Model for Circadian Oscillations</h1></title>
+</head>
+<body>			<h1><h1>Minimal Model for Circadian Oscillations</h1></h1>
+
+			<table border="0" cellspacing="0" cellpadding="2" >
+				<thead>
+					<tr>
+						<th align="left" valign="middle" bgcolor="#eeeeee">Citation</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Vilar JMG, Kueh HY, Barkai N, Leibler S, (2002). Mechanisms of noise resistance 
+						in genetic oscillators,  PNAS, 99(9):5988-5992.
+						<a href="http://www.pnas.org/cgi/content/abstract/99/9/5988">http://www.pnas.org/cgi/content/abstract/99/9/5988</a></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<table border="0" cellspacing="0" cellpadding="2" >
+				<thead>
+					<tr>
+						<th align="left" valign="middle" bgcolor="#eeeeee">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>A minimal model of genomically based oscillation, based on two mutually 
+						interacting genes, an activator and a repressor. Postive feedback is provided 
+						by the activator protein, which binds to the promotors of both the activator 
+						and the repressor genes. Negative feedback is provided by the repressor protein 
+						which binds to the activator protein.</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<table border="0" cellspacing="0" cellpadding="2" >
+				<thead>
+					<tr>
+						<th align="left" valign="middle" bgcolor="#eeeeee">Rate&#160;constant&#160;&#160;&#160;&#160;&#160;&#160;</th>
+						<th align="left" valign="middle" bgcolor="#eeeeee">Reaction</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>alphaA&#160;=&#160;50</td>
+						<td>DA&#160;->&#160;DA&#160;+&#160;MA</td>
+					</tr>
+					<tr>
+						<td>alphaAp&#160;=&#160;500</td>
+						<td>DAp&#160;->&#160;DAp&#160;+&#160;MA</td>
+					</tr>
+					<tr>
+						<td>alphaR&#160;=&#160;0.01</td>
+						<td>DR&#160;->&#160;DR&#160;+&#160;MR</td>
+					</tr>
+					<tr>
+						<td>alphaRp&#160;=&#160;50</td>
+						<td>DRp&#160;->&#160;DRp&#160;+&#160;MR</td>
+					</tr>
+					<tr>
+						<td>betaA&#160;=&#160;50</td>
+						<td>MA&#160;->&#160;A&#160;+&#160;MA</td>
+					</tr>
+					<tr>
+						<td>betaR&#160;=&#160;5</td>
+						<td>MR&#160;->&#160;MR&#160;+&#160;R</td>
+					</tr>
+					<tr>
+						<td>gammaA&#160;=&#160;1</td>
+						<td>A&#160;+&#160;DA&#160;->&#160;DAp</td>
+					</tr>
+					<tr>
+						<td>gammaC&#160;=&#160;2</td>
+						<td>A&#160;+&#160;R&#160;->&#160;C</td>
+					</tr>
+					<tr>
+						<td>gammaR&#160;=&#160;1</td>
+						<td>A&#160;+&#160;DR&#160;->&#160;DRp</td>
+					</tr>
+					<tr>
+						<td>deltaA&#160;=&#160;1</td>
+						<td>A&#160;->&#160;EmptySet</td>
+					</tr>
+					<tr>
+						<td>deltaA&#160;=&#160;1</td>
+						<td>C&#160;->&#160;R</td>
+					</tr>
+					<tr>
+						<td>deltaMA&#160;=&#160;10</td>
+						<td>MA&#160;->&#160;EmptySet</td>
+					</tr>
+					<tr>
+						<td>deltaMR&#160;=&#160;0.5</td>
+						<td>MR&#160;->&#160;EmptySet</td>
+					</tr>
+					<tr>
+						<td>deltaR&#160;=&#160;0.2</td>
+						<td>R&#160;->&#160;EmptySet</td>
+					</tr>
+					<tr>
+						<td>thetaA&#160;=&#160;50</td>
+						<td>DAp&#160;->&#160;A&#160;+&#160;DA</td>
+					</tr>
+					<tr>
+						<td>thetaR&#160;=&#160;100</td>
+						<td>DRp&#160;->&#160;A&#160;+&#160;DR</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table border="0" cellspacing="0" cellpadding="2" >
+				<thead>
+					<tr>
+						<th align="left" valign="middle" bgcolor="#eeeeee">Variable</th>
+						<th align="left" valign="middle" bgcolor="#eeeeee">IC&#160;&#160;</th>
+						<th align="left" valign="middle" bgcolor="#eeeeee">ODE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>A</td>
+						<td>0</td>
+						<td>A'[t]&#160;==&#160;-(deltaA*A[t])&#160;-&#160;gammaA*A[t]*DA[t]&#160;+&#160;thetaA*DAp[t]&#160;-&#160;gammaR*A[t]*DR[t]&#160;+&#160;thetaR*DRp[t]&#160;+&#160;betaA*MA[t]&#160;-&#160;gammaC*A[t]*R[t]</td>
+					</tr>
+					<tr>
+						<td>C</td>
+						<td>0</td>
+						<td>C'[t]&#160;==&#160;-(deltaA*C[t])&#160;+&#160;gammaC*A[t]*R[t]</td>
+					</tr>
+					<tr>
+						<td>DA</td>
+						<td>1</td>
+						<td>DA'[t]&#160;==&#160;-(gammaA*A[t]*DA[t])&#160;+&#160;thetaA*DAp[t]</td>
+					</tr>
+					<tr>
+						<td>DAp</td>
+						<td>0</td>
+						<td>DAp'[t]&#160;==&#160;gammaA*A[t]*DA[t]&#160;-&#160;thetaA*DAp[t]</td>
+					</tr>
+					<tr>
+						<td>DR</td>
+						<td>1</td>
+						<td>DR'[t]&#160;==&#160;-(gammaR*A[t]*DR[t])&#160;+&#160;thetaR*DRp[t]</td>
+					</tr>
+					<tr>
+						<td>DRp</td>
+						<td>0</td>
+						<td>DRp'[t]&#160;==&#160;gammaR*A[t]*DR[t]&#160;-&#160;thetaR*DRp[t]</td>
+					</tr>
+					<tr>
+						<td>MA</td>
+						<td>0</td>
+						<td>MA'[t]&#160;==&#160;alphaA*DA[t]&#160;+&#160;alphaAp*DAp[t]&#160;-&#160;deltaMA*MA[t]</td>
+					</tr>
+					<tr>
+						<td>MR</td>
+						<td>0</td>
+						<td>MR'[t]&#160;==&#160;alphaR*DR[t]&#160;+&#160;alphaRp*DRp[t]&#160;-&#160;deltaMR*MR[t]</td>
+					</tr>
+					<tr>
+						<td>R</td>
+						<td>0</td>
+						<td>R'[t]&#160;==&#160;deltaA*C[t]&#160;+&#160;betaR*MR[t]&#160;-&#160;deltaR*R[t]&#160;-&#160;gammaC*A[t]*R[t]</td>
+					</tr>
+				</tbody>
+			</table>
+<div style="font-style:italic;font-size:small;">
+<hr />
+Generated by Cellerator Version 1.0 update 2.1121 using Mathematica 4.2 for Mac OS X (June 4, 2002), November 21, 2002 12:48:06
+</div>
+</body>
+</html>

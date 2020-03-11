@@ -1,0 +1,246 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Someone please set me straight on this -->
+<!--X-From-R13: "Xbret D. Irvzne" <X.IrvzneNgh&#45;of.qr> -->
+<!--X-Date: Wed, 11 Jun 2003 02:37:48 &#45;0700 -->
+<!--X-Message-Id: 3EE6F85F.10107@tu&#45;bs.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 16102.31398.951919.574548@erato1.cds.caltech.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Someone please set me straight on this</TITLE>
+<LINK REV="made" HREF="mailto:J.Weimar@tu-bs.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00434.html">Date Prev</A>][<A HREF="msg00436.html">Date Next</A>][<A HREF="msg00438.html">Thread Prev</A>][<A HREF="msg00436.html">Thread Next</A>][<A HREF="maillist.html#00435">Date Index</A>][<A HREF="threads.html#00435">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Someone please set me straight on this</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Someone please set me straight on this</LI>
+<LI><em>From</em>: &quot;Joerg R. Weimar&quot; &lt;<A HREF="mailto:J.Weimar@tu-bs.de">J.Weimar@tu-bs.de</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 11 Jun 2003 11:37:35 +0200</LI>
+<LI>Cc: SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Organization</em>: TU Braunschweig</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+My opinion is unchanged:
+
+The species symbol should represent concentrations, as it is specified 
+in L1.
+
+The Confusion over my opinion arose because I also stated that I prefer 
+that the units of species are units of amount, not concentration, 
+regardless of whether initialConcentration or initialAmount is given.
+
+In the way things are stated in L2V1Final Draft, the interpretation of 
+the attribute "units" to &lt;species&gt; changes depending whether the 
+attribute "initialAmount" is present or the attribute 
+"initialConcentration" is present. So I prefer the "units" in &lt;species&gt;
+to refer to the symbol, not the numerical value appearing as initial 
+condition. A second problem with the current definition arises for 
+sepcies that do have units, but do not have an initial value (e.g., 
+because they are controlled by a rule).
+
+To summarize my position:
+
+(1) Species symbols appearing in rate laws are CONCENTRATIONS.
+
+(2) "units" definitions in &lt;species&gt; set the units of AMOUNT.
+
+(3) "initialAmount" is in the units of the species amount.
+
+(4) "initialConcentration" is in units of AMOUNT/VOLUME, where AMOUNT 
+are the units of the species, and VOLUME are the units of the 
+compartment volume for the enclosing compartment.
+
+Points (1), (2), (3) are as in Level 1 and in L2 Draft3.
+Points (2), (3), and (4) are different from the current FINAL DRAFT.
+
+
+Regarding the equations below: The first formula is correct, but does 
+not capture the problem fully. In SBML we do not specify the rate 
+equation directly, but only the contribution of each reaction. In 
+assembling the rate eqaution, these contributions are collected for all 
+reactions affecting a species. To illustrate the problem, I use a 
+simplified system:
+
+R1: A -&gt; B with rate k1 (in 1/second)
+R2: B -&gt; C with rate k2 (in 1/second)
+
+Each species in a separate volume Va, Vb, Vc.
+I use A,B,C for amounts, [A], [B], [C] for concentrations (A=[A]*Va).
+
+(AA) The reactions are in terms of amounts only (AA=Amount Amount):
+
+dA/dt = - k1 A
+dB/dt =   k1 A  - k2 B
+dC/dt =           k2 B
+
+(CC) In terms of concentrations only:
+
+d[A]/dt = 1/Va (- k1 [A]*Va )             = - k1 [A]
+d[B]/dt = 1/Vb (  k1 [A]*Va  - k2 [B]*Vb )=   k1 [A]*Va/Vb -k2 [B]
+d[C]/dt = 1/Vc (               k2 [B]*Vb )=                 k2 [B]*Vb/Vc
+
+(AC) In terms of amounts on the LHS and concentrations on the RHS:
+
+dA/dt = (- k1 [A]*Va )             = - k1 [A]*Va
+dB/dt = (  k1 [A]*Va  - k2 [B]*Vb )=   k1 [A]*Va - k2 [B]*Vb
+dC/dt = (               k2 [B]*Vb )=               k2 [B]*Vb
+
+(CA) In terms of concentrations on the LHS and amounts on the RHS:
+
+d[A]/dt = 1/Va (- k1 A )        = - k1 A/Va
+d[B]/dt = 1/Vb (  k1 A  - k2 B )=   k1 A/Vb - k2 B/Vb
+d[C]/dt = 1/Vc (          k2 B )=             k2 B/Vc
+
+
+We see that the first formula of Mike below is correct, while the second 
+is incorrect.
+
+ &gt;    d[B]/dt = k1*A/Va - k2*B/Vb
+
+Now remember that we specify rection rates, not the complete rate laws. 
+Therefore only those choices are candidates, for which a reaction always 
+appears with the same term in the rate laws. This is only the case for
+(AA) and (AC), see the last columns (when a mono-spaced font is used, 
+corresponding terms line up).
+
+The reason for choosing (AC) instead of (AA) was probably that enzymatic 
+rates mostly use parameters in terms of concentrations, for which AC 
+would look better. The same goes for higher order reactions. The first 
+order reactions used here are an exception in that the rate constant is 
+the same for formulas (AA) and (CC) if the volumes are all equal. For 
+higher order reactions and Michaelis-menten type rates, this is not the 
+case, and those rates are usually specified in terms of concentrations.
+
+
+
+
+
+
+Michael Hucka wrote:
+&gt; People,
+&gt; 
+&gt; I confess I've become confused over what people want to see
+&gt; as far as species units.  After rereading the many messages
+&gt; about this on sbml-discuss, and comparing this to what we
+&gt; just wrote in the L2 final draft spec, it's no longer clear
+&gt; to me how people want to interpret the appearance of a
+&gt; species symbol in a math expression.  Should it be a number
+&gt; in units of substance, or in units of concentration?
+&gt; 
+&gt; Note that this is separate from the question of what the
+&gt; initial value for a species should be (people want the
+&gt; option of using either concentration or substance) and also
+&gt; the question of what the reaction rate expression should be
+&gt; (people want substance/time, not concentration/time).  I
+&gt; think those questions are settled at this point.
+&gt; 
+&gt; In the spec as written, we wrote that species identifiers in
+&gt; math expressions stand for the quantity of that species in
+&gt; terms of CONCENTRATION units.  However, Joerg Weimar's
+&gt; recent feedback, and a number of past messages on
+&gt; sbml-discuss, make it seem that perhaps it should be in
+&gt; SUBSTANCE units.
+&gt; 
+&gt; Using substance units would appear to be more consistent
+&gt; with having reaction rates be in terms of substance/time.
+&gt; One could generate concentrations by dividing species by the
+&gt; compartments in which they're located.  So if one has two
+&gt; reactions, A -&gt; B + C and B -&gt; D, with the former having a
+&gt; rate of "k1*A" and the latter "k2*B" (where "A" and "B"
+&gt; represent substance amounts), and each species is located in
+&gt; separate compartments with volumes Va, Vb, Vc, and Vd, then
+&gt; the rate of change in amount of B would be
+&gt; 
+&gt;    dB/dt = k1*A - k2*B
+&gt; 
+&gt; and the rate of change of concentration in B would be
+&gt; 
+&gt;    d[B]/dt = k1*A/Va - k2*B/Vb
+&gt; 
+&gt; Is that right?  Does that work for more complicated cases?
+&gt; 
+&gt; I'm sorry to bring this up.  I hope this is a simple
+&gt; question and people can just tell me it's obvious that we're
+&gt; going one way or the other.
+&gt; 
+&gt; MH
+&gt; 
+
+
+-- 
+PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, TU-Braunschweig
+J.Weimar@tu-bs.de, <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+Tel. +49-531-391-3006  Mail: D-38092 Braunschweig
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00436" HREF="msg00436.html">Re: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00437" HREF="msg00437.html">Re: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00439" HREF="msg00439.html">RE: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00432" HREF="msg00432.html">[sbml-discuss] Someone please set me straight on this</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00434.html">RE: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00436.html">Re: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00438.html">RE: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00436.html">Re: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00435"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00435"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

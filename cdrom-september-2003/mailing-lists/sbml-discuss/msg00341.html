@@ -1,0 +1,104 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Changing the units of initial amounts -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Mon, 26 May 2003 09:19:28 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E50@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Changing the units of initial amounts</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00340.html">Date Prev</A>][<A HREF="msg00342.html">Date Next</A>][<A HREF="msg00330.html">Thread Prev</A>][<A HREF="msg00361.html">Thread Next</A>][<A HREF="maillist.html#00341">Date Index</A>][<A HREF="threads.html#00341">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Changing the units of initial amounts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Changing the units of initial amounts</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 26 May 2003 12:19:20 -0400</LI>
+<LI>Thread-Index: AcMjoo/wmldk2zvOTEGIvHlu6VsXjA==</LI>
+<LI>Thread-Topic: RE: [sbml-discuss] Changing the units of initial amounts</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Kouichi,
+In your formulation, having E and S0 in different
+dimensions is easier, yes, but now you are specifying
+species in different dimensions (that is, the species
+E and S0 are specified in different dimensions).
+To see how this is problematic, what if E and S0 are
+both enzymes catalyzing each other, that is, E catalyzes
+S0, and S0 catalyzes E? Then you would have
+ 
+S0 --E--&gt; S0*   with rate Kcat1*E*[S0]/(Km1 + [S0])
+E --S0--&gt; E*    with rate Kcat2*S0*[E]/(Km2 + [E])
+ 
+That is, you'd need different dimensions depending on use.
+ 
+But, in the end, you aren't getting around the problem, because
+if your volume changes, you'd *STILL* have to scale Km.
+ 
+As I said, there is no way around this, so we're going to
+have to pick the lesser of two evils.
+ 
+Barf.
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00361" HREF="msg00361.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00340.html">RE: [sbml-discuss] DWG: point</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00342.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00330.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00361.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00341"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00341"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,238 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage" ></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table>
+</div>
+
+
+
+
+<h1><span class="function">SBMLRead</span> Options</h1>
+	<a href="mathsbml-sbmlread.html">Return Value</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="mathsbml-sbmlread-options.html">Options</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="mathsbml-contexts.html">Variable Names and Scoping</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="mathsbml-sbmlread-examples.html">Examples</a>
+<hr/>
+
+<table bgcolor="#D0D0D0" border="1">
+	<tr>
+		<td>
+			<table border="0" cellpadding="5">
+				<thead style="font-weight:bold;">
+					<tr>
+						<td>Option</td>
+						<td>Value</td>
+						<td>Description</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="function">concise</td>
+						<td class="function">True</td>
+						<td>Turn off verbose listing. Opposite of <span class="function">verbose</span>.</td>
+					</tr>
+					<tr>
+						<td class="function">context</td>
+						<td class="function">Automatic</td>
+						<td><p>Context to use for model. See below for a description of contexts in SBMLRead.</p>
+							<p><span class="function">Context -> Automatic</span> means generate context  from the name (level 1) or id (level 2) of the model in  the XML file.<br/></p>
+							<p><span class="function">Context -> None</span> means place all variables  in the <span class="function">Global`</span> context. Note that if variables are placed in the <span class="function">Global`</span> context then a clash with  global or default Mathematica variables may occur, for example, the variables <span class="function">E</span> and <span class="function">Pi</span>, if they occur in the model, will be treated as the  constants 2.718 ... and 3.14 ..., etc. </p>
+						</td>
+					</tr>
+					<tr>
+						<td class="function">defaultIC</td><td class="function">Indeterminate</td><td>Value to be used for initial conditions of variables when  that are not assigned initial conditions in the model.</td>
+					</tr>
+					<tr>
+						<td class="function">defaultParameterValue</td><td class="function">Indeterminate</td><td>Value to be used for parameters that are not assigned values inthe model.</td>
+					</tr>	
+					<tr>
+						<td class="function">evaluateParameters</td><td  class="function">True</td><td>Immediately evaluate all parameters before  returning the model.  Otherwise all parameters are returned in their symbolic form.</td>
+					</tr>
+					<tr>
+						<td class="function">return</td><td><a href="#return">see below</a></td><td>Determines what gets returned by <span class="function">SBMLRead</span>, <a href="#return">as described below</a>. </td>
+					</tr>
+					<tr>
+						<td class="function">PlotOptions</td>
+						<td class="function">{}</td>
+						<td>
+							<p>If <span class="function">PlotOptions -> {}</span> then automatic plotting will be inhibited.</p>
+							<p>If <span class="function">Plot Options->True</span> then if automatic numerical solution was requeseted, 
+							it will automatically be sent to <span class="function">SBMLPlot</span>.</p>
+							<p>Automatic numerical solution is controled by the  <span class="function">return</span> option  <span class="function">SBMLNumericalSolution</span>.</p>
+							<p>If <span class="function">PlotOptions -></span> a list of options, then automatic plotting will be invoked, and the options will be passed to <span class="function">SBMLPlot</span>. Any valid options for <span class="function">SBMLPlot</span> or <span class="function">Plot</span> may be included here. </p>
+						</td>
+					</tr>
+					<tr>
+						<td class="function">stats</td>
+						<td class="function">False</td>
+						<td>Controls whether a table of statistics about the model is printed.</td>
+					</tr>	
+					<tr>
+						<td class="function">underscore</td><td  class="function">\[UnderBracket]</td><td>Character to replace underscore (
+						<span class="function">"_"</span>) in an identifier. Any valid Mathematica character may be specified. </td>
+					</tr>	
+					<tr>
+						<td class="function">verbose</td>
+						<td class="function">False</td>
+						<td>Produce an interpretive listing.  See below for <a href="#verbose">additional options that control the verbose listing.</a></td>
+					</tr>	
+				</tbody>
+
+			</table>
+		</td>
+	</tr>
+</table>
+
+<hr/>
+<a name="return" ></a>
+<h1>Options for <span class="function">return</span></h1>
+
+
+<table bgcolor="#D0D0D0" border="1">
+	<tr>
+		<td>
+			<table border="0" cellpadding="5">
+			<thead style="font-weight:bold;">
+			<tr>
+				<td>Option</td>
+				<td>Value</td>
+				<td>Description</td>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="function">SBMLODES</td><td class="function">True</td>
+					<td>If <span class="function">True</span>, returns a  list of differential equations as the value of  <span class="function">SBMLODES</span>, if any rules or reactions lead to differential equations in the model. If there are no differential equations, then a null list will be returned.</td>
+					
+					</tr>
+				<tr>
+					<td class="function">SBMLIC</td><td class="function">True</td>
+					<td>If <span class="function">True</span>, returns a list of initial condtions as the value of <span class="function">SBMLIC</span> if any of the species in the model contain initial conditions or the invocation to 
+						<span class="function">SBMLRead</span> sets <span class="function">defaultIC</span>.  If there are no initial conditions, a null list will be returned.</td>
+				</tr>
+				<tr>
+					<td class="function">SBMLParameters</td><td class="function">True</td>
+					<td>If <span class="function">True</span>, return a list of parameter rules as the value of <span class="function">SBMLParameters</span>, if there are any parameters in the model that are assigned values. If there are no such parameters in the model then a null list will be returned.</td>
+				</tr>
+				<tr><td class="function">SBMLSpecies</td><td class="function">True</td>
+					<td>If <span class="function">True</span>, return returns a list of species names (SBML Level 1) or ids (SBML Level 2) as the value of <span class="function">SBMLSpecies</span>.  If there are no species in the model then a null list will be returned.</td>
+				</tr>
+				<tr>
+					<td class="function">SBMLAlgebraicRules</td><td class="function">True</td>
+					<td>If <span class="function">True</span>, return a list of algebraic rules as the value of <span class="function">SBMLAlgebraicRules</span>, if any algebraic rules exist in the model.  If there are  no algebraic rules in the model then a null list will be returned.</td>
+				</tr>
+				<tr>
+					<td class="function">SBMLUnitDefinitions</td><td class="function">True</td>
+					<td>If <span class="function">True</span>, reutrn a list of unit definitions as the value of <span class="function">SBMLUnitDefinitions</span>. Default unit defintions will always be included in this list.</td>
+				</tr>
+				<tr>
+					<td class="function">SBMLUnitAssociations</td><td class="function">True</td>
+					<td>If <span class="function">True</span>, return a list of variable/unit associations as the value of <span class="function">SBMLUnitAssociations</span>. At the minimum, all species will have unit assignments, even if units are not defined or assigned explicitly in the model, because of default unit assignments.</td>
+				</tr>
+				<tr>
+					<td class="function">SBMLReactions</td><td class="function">True</td>
+					<td>If <span class="function">True</span>, and if there are any reactions in the model, return a list of reactions as the value of <span class="function">SBMLReactions</span>. If there are no reactions, a null  list will be returned.</td>
+				</tr>
+				<tr>
+					<td class="function">SBMLNameIDAssociations</td><td class="function">True</td>
+					<td>If <span class="function">True</span>, return a list of name/id associations as the value of <span class="function">SBMLNameIDAssociations</span>.  If there are no <span class="function">name</span> fields then a null list is returned. Not valid in SBML Level 1.</td>
+				</tr>
+				<tr>
+					<td class="function">SBMLEvents</td><td class="function">True</td>
+					<td>If <span class="function">True</span>, return a list of event defintions as the value of <span class="function">SBMLEvents</span>.  If there are no events a null list is returned. Not valid in SBML Level 1.</td>
+				</tr>
+				<tr>
+					<td class="function">SBMLFunctions</td><td class="function">True</td>
+					<td>If <span class="function">True</span>, return a list of pure function defintions as the value of <span class="function">SBMLFunctions</span>. If there are no functions then a null list will be returned. Not valid in SBML Level 1.</td>
+				</tr>
+				<tr>
+					<td class="function">SBMLModelName</td><td class="function">True</td>
+					<td>If <span class="function">True</span>, return the name (SBML Level 1) or id (Level 2) of the model as the value of <span class="function">SBMLModelName</span>.  If no model identifier is included in the model, an identifer is automatically generated, and its value will be given here.  This value is used to set the context of the model, unless the <span class="function">context</span> option is used in the call to <span class="function">SBMLRead</span>.</td>
+				</tr>
+				<tr>
+					<td class="function">SBMLNumericalSolution</td><td class="function">0</td>
+					<td>If set to a positive numerical value, then call <span class="function">SBMLNDSolve</span> for the requested amount of time and 
+					return the list of interpolating functions thereby generated as the value of <span class="function">SBMLNumericalSolution</span>. Otherwise, this field is not returned.</td>
+				</tr>
+			</tbody>
+
+			</table>
+		</td>
+	</tr>
+</table>
+
+
+
+
+<hr/>
+<a name="verbose" ></a>
+<h1><span class="function">SBMLRead</span> options
+ to control the verbose listing</h1>
+<p>The options in this table are ignored unless <span class="function">verbose->True</span>.</p>
+
+<table bgcolor="#d0d0d0" border="1">
+	<tr>
+		<td>
+			<table border="0" cellpadding="5">
+				<thead style="font-weight:bold;">
+					<tr>
+						<td>Option</td>
+						<td>Value</td>
+						<td>Description</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+		 				<td class="function">align</td>
+		 				<td class="function">"Left"</td>
+		 				<td>Determines alignment of data within each column. Values are <span class="function">"Left"</span>, <span class="function">"Center"</span>, <span class="function">"Right"</span> </td>
+					</tr>
+					<tr>
+		 				<td class="function">shortenODES</td>
+		 				<td class="function">False</td>
+		 				<td>If <span class="function">True</span>, the differential equations printed will be printed in Mathematica <span class="function">//Short</span> form.</td>
+		 			</tr>
+		 			<tr>
+		 				<td class="function">showKineticLaw</td>
+		 				<td class="function">True</td>
+		 				<td>Controls whether kinetic laws for individual reactions are printed.</td>
+		 			</tr>
+		 			<tr>
+		 				<td class="function">showReactionParameters</td>
+		 				<td class="function">True</td>
+		 				<td>Controls whether the reaction listing includes a column describing local parameters.</td>
+		 			</tr>
+		 			<tr>
+		 				<td class="function">verboseContext</td>
+		 				<td class="function">False</td>
+		 				<td>Controls whether identifiers in the model are printed using their full context, as in 
+		 				<span class="function">foo`x</span> and <span class="function">foo`reaction32`x</span> (when <span class="function">True</span>), or only in their shortened form, as in <span class="function">x</span> (when <span class="function">False</span>). Identifiers within the return value of <span class="function">SBMLRead</span> will always include the full context, regardless of the value of <span class="function">verboseContext</span>.</td>
+		 			</tr>	
+	 			</tbody>
+			</table>
+		</td>
+	</tr>
+</table>
+
+
+
+
+
+<hr />
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

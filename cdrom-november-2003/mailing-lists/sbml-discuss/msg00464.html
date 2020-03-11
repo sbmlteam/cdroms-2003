@@ -1,0 +1,202 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] [Hybrid] Re: Hybrid Models Working Group -->
+<!--X-From-R13: Hvwnl Enenfjng <fnenfjngNpfr.cfh.rqh> -->
+<!--X-Date: Sun, 15 Jun 2003 04:15:23 &#45;0700 -->
+<!--X-Message-Id: 3EEC54AD.8080204@cse.psu.edu -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Reference: 000801c331bc$23794a70$458cc593@herts.ac.uk -->
+<!--X-Reference: 1055521319.4051.57.camel@senin.e&#45;cell.org -->
+<!--X-Reference: 3EEA0129.1060204@research.ge.com -->
+<!--X-Derived: ps00001.ps -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</TITLE>
+<LINK REV="made" HREF="mailto:saraswat@cse.psu.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00463.html">Date Prev</A>][<A HREF="msg00465.html">Date Next</A>][<A HREF="msg00463.html">Thread Prev</A>][<A HREF="msg00465.html">Thread Next</A>][<A HREF="maillist.html#00464">Date Index</A>][<A HREF="threads.html#00464">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Thomas Kiehl &lt;<A HREF="mailto:kiehl@research.ge.com">kiehl@research.ge.com</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</LI>
+<LI><em>From</em>: Vijay Saraswat &lt;<A HREF="mailto:saraswat@cse.psu.edu">saraswat@cse.psu.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sun, 15 Jun 2003 07:12:45 -0400</LI>
+<LI>Cc: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;, <A HREF="mailto:m.j.1.schilstra@herts.ac.uk">m.j.1.schilstra@herts.ac.uk</A>,  &quot;'Takeshi Sakurada'&quot; &lt;<A HREF="mailto:sakurada@sfc.keio.ac.jp">sakurada@sfc.keio.ac.jp</A>&gt;,  &quot;'Ed Frank'&quot; &lt;<A HREF="mailto:efrank@mcs.anl.gov">efrank@mcs.anl.gov</A>&gt;, &quot;'Mike McCollum'&quot; &lt;<A HREF="mailto:jmccoll2@utk.edu">jmccoll2@utk.edu</A>&gt;,  &quot;'Greg Peterson'&quot; &lt;<A HREF="mailto:gdp@utk.edu">gdp@utk.edu</A>&gt;, &quot;'Stefan Hoops'&quot; &lt;<A HREF="mailto:shoops@vt.edu">shoops@vt.edu</A>&gt;,  <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Folks -- I think this discussion does belong to the main mailing list. I 
+am cc'ing my response to the main list.
+
+There are of course many notions of Hybrid. The issue of what is the 
+mainline definition and what is not usually gets quite politicized. Let 
+me say that there is a community of folks in Computer Science and 
+Control Theory who have been around for about ten years and who call 
+themselves the "Hybrid Systems" people.  The sixth workshop, for 
+instance, was held this year in Europe.  See e.g. 
+<A  HREF="http://www.stanford.edu/group/hscc2002/">http://www.stanford.edu/group/hscc2002/</A>
+
+The notion of hybrid here is this. A core divide at the heart of 
+computer science is continuous vs discrete. Traditionally, computer 
+science has been about discrete phenomena --- Turing machines, graphs, 
+lambda calculus, objects, discrete automata what have you. Think of them 
+as discrete, countable data-structures with a notion of discrete change. 
+The new state of the system obtained in "one step" is the same as the 
+previous state with a finite number of "cells" modified. Traditonally 
+logic (as in classical logic, intuitionistic logic, linear logic...) 
+deals with such phenomena as well.
+
+Whereas classical mathematics, as developed over centuries and applied 
+to engineering and the analysis of physical phenomena is about 
+continuous systems -- functions ove the reals (famously not countable!), 
+with notions of "smooth change", e.g. epsilon-delta. Differential 
+equations of various kinds -- algebraic, partial, ordinary, stochastic 
+are the favored means of modeling.
+
+Hybrid systems seek to combine this fundamental tension at the heart of 
+computer science and logic. This area seeks to develop algorithms and 
+techniques for representing and reasoning about systems that are best 
+described as combining discrete and continuous change. Consider, for 
+instance, systems that exist in a countable number of "phases", and are 
+subject to continuous evolution in these phases. Transitions between 
+these phases are instantaneous and discrete -- typically they are 
+triggered when some continuous variables cross thresholds. Such systems 
+arise very naturally in practice when you have "controlled" continuous 
+phenomena -- otherwise continuously varying phenomena that is subject to 
+discrete control laws that when triggered can fundamentally change the 
+dynamics of the system (and hence the way this is modeled).
+
+The relevance of hybrid systems to biology has been pointed out in a 
+number of papers. The first was:
+
+H Matsuno, A Doi, M Nagasaki and S Miyano "Hybrid petri net 
+representations of gene regulatory networks", Pacfiic Symposium on 
+Biocomputing, 5:333-349, 2000.
+
+R Alur, C Belta, F Ivancic, V Kumar, M Mintz, G J Pappas, H Rubin and J 
+Schung "Hybrid modeling and simulation of biomolecual networks" In 
+Hyurid Systmes: Computation and Control, HSCC 2001, Rome Italy, pages 
+19-32, Springer Verlag LNCS 2034, 2001.
+
+A typical example is gene expression. Expression of a gene A may 
+activate expression of another gene, whereas above a threshold it may 
+suppress the gene.
+
+A lucid account is given in the attached paper:
+
+A Bockmayr and A Courtois "Using hybrid concurrent constraint 
+programming to model dynamic biological systems", ICLP 2002.
+
+This shows how various biological phenomena may be modeling as hybrid 
+systems in HCC, the framework my colleagues and I have been developing 
+for about seven years.
+
+Best,
+Vijay
+
+
+
+Thomas Kiehl wrote:
+
+&gt; Thanks again Kouichi for your insight.  It is very useful to define 
+&gt; what it is that we mean by "hybrid" and whether or not that should 
+&gt; effect the definition of a model.
+&gt;
+&gt; We have a system which we call "hybrid" as well.  I'm not sure by the 
+&gt; definitions you give whether it falls into the mixed-mode or 
+&gt; multi-algorithm category.
+&gt;
+&gt; We assign the reactions in the model to be simulated using either a 
+&gt; continuous method (ode's) or to be handled stochastically by a 
+&gt; gillespie/gibson approach.   These methods run simultaneously and are 
+&gt; synchronized by some scheme.  We also handle what could be called 
+&gt; events and even delay differential equations.  Issues involved here 
+&gt; include synchronization of time steps as well as state variables.
+&gt;
+&gt; This assignment of reactions to "reaction engines" (that is the 
+&gt; solution method) is done outside of sbml in our simulator's 
+&gt; configuration file.  Thus the model remains portable.  Also this 
+&gt; allows us to run various experiments by changing the set of reactions 
+&gt; assigned to each method.
+&gt;
+&gt; Attached find a relatively recent version of a paper which we have 
+&gt; submitted and revised for the journal Bioinformatics.
+&gt;
+&gt; peace,
+&gt; Tom
+&gt;
+
+-- 
+Prof Vijay Saraswat
+Department of Computer Science and Engineering
+Pond Laboratory
+University Park, Pa 16802
+
+calendar: <A  HREF="http://calendar.yahoo.com/vjsaraswat">http://calendar.yahoo.com/vjsaraswat</A>
+homepage: <A  HREF="http://www.cse.psu.edu/~saraswat">http://www.cse.psu.edu/~saraswat</A>
+phone: +1.814.863.3599
+eFax: +1.973.529.0392
+mail: saraswat @ cse.psu.edu
+AIM, Yahoo IM, AT&amp;T IM: vjSaraswat
+MSN im: vijay@saraswat.org
+
+
+</PRE>
+<P><A HREF="ps00001.ps" >BockmayrCourtois.ps</A></P>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00465" HREF="msg00465.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00463.html">RE: [sbml-discuss] DWG: Suggestion for layout extension</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00465.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00463.html">RE: [sbml-discuss] DWG: Suggestion for layout extension</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00465.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00464"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00464"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,139 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] DWG: SBML extension for diagram layout -->
+<!--X-From-R13: uhtu.q.fcraprNtfx.pbz -->
+<!--X-Date: Wed, 21 May 2003 06:24:16 &#45;0700 -->
+<!--X-Message-Id: OF9CDEEBD2.01888012&#45;ON80256D2D.00453A85@sb.com -->
+<!--X-Content-Type: multipart/related -->
+<!--X-Derived: gif00000.gif -->
+<!--X-Derived: gif00001.gif -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] DWG: SBML extension for diagram layout</TITLE>
+<LINK REV="made" HREF="mailto:hugh.d.spence@gsk.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00180.html">Date Prev</A>][<A HREF="msg00182.html">Date Next</A>][<A HREF="msg00180.html">Thread Prev</A>][<A HREF="msg00185.html">Thread Next</A>][<A HREF="maillist.html#00181">Date Index</A>][<A HREF="threads.html#00181">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] DWG: SBML extension for diagram layout</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sahle@eml.org">sahle@eml.org</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] DWG: SBML extension for diagram layout</LI>
+<LI><em>From</em>: <A HREF="mailto:hugh.d.spence@gsk.com">hugh.d.spence@gsk.com</A></LI>
+<LI><em>Date</em>: Wed, 21 May 2003 14:22:41 +0100</LI>
+<LI>Cc: &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;,  <A HREF="mailto:owner-sbml-discuss@its.caltech.edu">owner-sbml-discuss@its.caltech.edu</A>, <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+
+<br><font size=2 face="Arial">&nbsp; &nbsp; &nbsp; &nbsp; I agree with Sven that the scaling should be done by the program doing the rendering. This makes the SBML more universally applicable, but will probably give the programmers some problems handling fonts for the labels.</font>
+<br><font size=2 face="Arial">&nbsp; &nbsp; &nbsp; &nbsp; Relative coordinates for positions and sizes of boxes allow for variations between programs. I'm not sure that we should be forcing font faces, font sizes, colours, or shapes for types of molecules on users. &nbsp;If the boxes are in the same relative positions the following diagrams are equivalent.</font>
+<br><img src="gif00000.gif"><font size=2 face="Arial">&nbsp;</font><img src="gif00001.gif">
+<br><font size=2 face="Arial">Here we again face the problem that the more tightly we specify how things should look, the more likely that existing pathway editors will not be able to cope without massive revisions and will ignore (or be forced to ignore by being unable to comply with) the standard we recommend.<br>
+<br>
+<br>
+<br>
+Hugh Spence<br>
+GSK Scientific Computing and Mathematical Modelling<br>
+Medicines Research Centre<br>
+Gunnels Wood Road<br>
+Stevenage<br>
+UK<br>
+SG1 2NY<br>
+<br>
+<br>
+</font>
+<br>
+<br>
+<br>
+<table width=100%>
+<tr valign=top>
+<td>
+<td><font size=1 face="sans-serif"><b>&quot;Sven Sahle&quot; &lt;sahle@eml.org&gt;</b></font>
+<br>
+<br><font size=1 face="sans-serif">Sent by: owner-sbml-discuss@its.caltech.edu</font>
+<p><font size=1 face="sans-serif">21-May-2003 16:08</font>
+<br>
+<td><font size=1 face="Arial">&nbsp; &nbsp; &nbsp; &nbsp; </font>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </font>
+<br>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; To: &nbsp; &nbsp; &nbsp; &nbsp;&quot;Herbert Sauro&quot;</font>
+<br>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; cc: &nbsp; &nbsp; &nbsp; &nbsp;sbml-discuss</font>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; Subject: &nbsp; &nbsp; &nbsp; &nbsp;Re: [sbml-discuss] DWG: SBML extension for diagram layout</font></table>
+<br>
+<br><font size=2 face="Courier New">On Wednesday 21 May 2003 02:20, Herbert Sauro wrote:<br>
+<br>
+&gt; Thanks, one question, I'm curious to know what units your coordinates are<br>
+&gt; in?<br>
+<br>
+We think that the layout should only specify relative places of the different <br>
+objects in the diagram. So we do not really have a unit for the coordinates. <br>
+<br>
+Any program can easily find a bounding box while parsing the file and scale <br>
+the diagram to its needs. <br>
+<br>
+A unit information would specify how big the diagram actually should be on <br>
+screen or on paper. We consider that to be render level information. <br>
+But maybe we missed something. Can someone provide a reason why unit <br>
+information is important for the layout of a reaction scheme?<br>
+<br>
+Sven<br>
+<br>
+<br>
+</font>
+<br>
+<br>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00185" HREF="msg00185.html">Re: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+<UL><LI><EM>From:</EM> Paul Shannon &lt;pshannon@systemsbiology.net&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00180.html">Re: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00182.html">[sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00180.html">Re: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00185.html">Re: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00181"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00181"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

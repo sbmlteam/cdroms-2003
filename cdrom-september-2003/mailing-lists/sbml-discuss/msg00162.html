@@ -1,0 +1,214 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] COMP &#45;&#45; Model Composition SIG Announcement -->
+<!--X-From-R13: [negva Uvaxry <tvaxryNzcv&#45;zntqrohet.zct.qr> -->
+<!--X-Date: Tue, 20 May 2003 01:54:19 &#45;0700 -->
+<!--X-Message-Id: XFMail.20030520105403.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] COMP -- Model Composition SIG Announcement</TITLE>
+<LINK REV="made" HREF="mailto:ginkel@mpi-magdeburg.mpg.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00161.html">Date Prev</A>][<A HREF="msg00163.html">Date Next</A>][<A HREF="msg00159.html">Thread Prev</A>][<A HREF="msg00163.html">Thread Next</A>][<A HREF="maillist.html#00162">Date Index</A>][<A HREF="threads.html#00162">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] COMP -- Model Composition SIG Announcement</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: SBML-Discuss &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] COMP -- Model Composition SIG Announcement</LI>
+<LI><em>From</em>: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 20 May 2003 10:54:03 +0200 (CEST)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi Folks,
+
+for those of you, who are interested in model composition,
+here we go with the initial announcement for the
+Model Composition Special Interest Group.
+
+I propose the following as a charter, I expect this as a start of some
+discussions and contributions are welcome:
+
+--8&lt;--
+
+Charter of the 
+Model Composition Special Interest Group
+at the SBML Forum
+
+!. Chair and Contact:
+   Martin Ginkel, Max-Planck-Institute Magdeburg, Sandtorstr. 1,
+   D-39106 Magdeburg Germany
+   Tel +49 391 6110 482
+   Fax +49 391 6110 529
+
+   Email (preferred): ginkel@mpi-magdeburg.mpg.de
+
+   Co-Chair: my suggestion is (if he wants to) Andrew Finney
+
+2. Discussion Forum 
+   Currently we use the sbml-discuss Mailing list at
+   sbml-discuss@caltech.edu with Subject: [sbml-discuss] COMP ...
+
+   Archives are kept at:
+   <A  HREF="http://www.sbw-sbml.org/sbml-discuss/archive/maillist.html">http://www.sbw-sbml.org/sbml-discuss/archive/maillist.html</A>
+
+   I will prepare some webspace (possibly for group editing) at
+   <A  HREF="http://www.mpi-magdeburg.mpg.de/zlocal/martins/sbml-comp/">http://www.mpi-magdeburg.mpg.de/zlocal/martins/sbml-comp/</A>
+   Mainly the different Proposals will be kept there intially.
+
+3. Mission statement and Scope:
+   
+   Definition of an extension of the SBML standard that allows for 
+   composition of models out of partial models. `Model' refers here 
+   to a model as some construct containing all elements that are 
+   specified in the current and future SBML standard(s).
+   Main features to achieve:
+   - Definition of different models in SBML documents
+     as submodels or modules (submodels with specified interface)
+     (see below)
+   - Instantiation of submodels in a model (-&gt;model-instances)
+   - Linkage of different model-instances
+   - Parametrization of model-instances (in cooperation with the
+       parameter-sets SIG)
+   This does not necessarily mean that two random SBML models from 
+   a repository that describe adjacent pathways can be composed as
+   they are.
+   Optional Goal: Allow for combining SBML models with CellML components.
+
+4. Termination criterium:
+   Model composition is included into the SBML Level 3
+
+   or
+
+   The idea is considered as nonsense for Systems-Biology and dropped
+   from the SBML Agenda
+
+   Timeframe: I expect a working proposal and first reference
+   implementations for the next SBML Forum Meeting in
+   Nov 2003 S. Lois 
+
+5. Deliverables:
+   - SBML standard proposal.
+   - Reference implementation of reading and writing SBML+COMP in 
+     a modeling tool.
+
+6. Dependencies of other groups:
+   As mentioned before: Model instances often need to be parametrized.
+   Therefore we need some standard that allows for setting at least
+   parameters and initial values inside model instances. This work is 
+   done by the Parameter Sets group.
+
+7. Joining the group:
+   Please send a email to the Chair.
+
+
+--8&lt;--
+
+Additional comments:
+- I suggested Andrew for co-chairing since he has already done
+  (2?) proposals for composion and knows the efforts across the SBML
+  community very well.
+
+- 'Submodels and Modules' or the story about defined Interfaces.
+  This is of course a controversal point but:
+  I would like to include both approaches. Whether the biologists will
+  use this or not can not be answered from the view of a programmer.
+
+  &lt;IMHO&gt; This is a question of software engineering: Large models are
+  large software projects which will be tedious to maintain without 
+  interfaces. But sofware engineering is learned by doing your own
+  failures and experiencing the problems, not by lectures of geeks and 
+  reading books &lt;/IMHO&gt;
+
+  We should not stop our progress with discussions of this point but 
+  define something that works with or without interfaces.
+  (Whatever you will do with this inside the tool finally)
+
+- Reference implementation: I see as an initial goal that a SBML
+  reader library recognizes also composition tags. This lib should
+  then be used by two composition-aware tools (Promot and ???).
+
+  I don't think that It makes sense to define a first approach inside 
+  &lt;annotation&gt; since models will not make any sense without submodels.
+  Another goal could be to write a program that reads composed models
+  and flattens them out to some sort of SBML L2.
+
+- Finally `Hello, is there anybody out there ...':
+  Which tools for Sysbio besides Promot support composition and how, 
+  to which extent ...
+  I would like to learn more about the different concepts we 
+  should support in the proposal.
+  
+
+        So come on It's time to flame me
+        Martin
+
+
+
+-- 
++-[Martin Ginkel]--------------[<A  HREF="mailto:ginkel">mailto:ginkel</A>(at)mpi-magdeburg.mpg.de]-+
+| MPI Magdeburg, Zi S2.09    Sandtorstr. 1, D-39106 Magdeburg, Germany |
+| Despair: I'ts always darkest just before it goes pitch black.        |
+|                                                                      |
++-[tel/fax: +49 391 6110 482/529]----[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00163" HREF="msg00163.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00167" HREF="msg00167.html">[sbml-discuss] COMP -- Model Composition SIG Announcement 2</A></STRONG>
+<UL><LI><EM>From:</EM> martin.ginkel@epost.de</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00161.html">RE: [sbml-discuss] FW: SBML extension</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00163.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00159.html">[sbml-discuss] DWG (Diagrams Working Group) Announcement</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00163.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00162"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00162"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

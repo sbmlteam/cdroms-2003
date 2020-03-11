@@ -1,0 +1,113 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Are we done with SBML Level 1 Version 2? -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Mon, 26 May 2003 03:52:42 &#45;0700 -->
+<!--X-Message-Id: 1053946303.3992.169.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3FA493B792A6D311B51A009027D3B86101AC920C@mail.kgi.edu -->
+<!--X-Reference: 3ED1D087.30204@tu&#45;bs.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Are we done with SBML Level 1 Version 2?</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00323.html">Date Prev</A>][<A HREF="msg00325.html">Date Next</A>][<A HREF="msg00322.html">Thread Prev</A>][<A HREF="msg00323.html">Thread Next</A>][<A HREF="maillist.html#00324">Date Index</A>][<A HREF="threads.html#00324">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Are we done with SBML Level 1 Version 2?</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Joerg R. Weimar&quot; &lt;<A HREF="mailto:J.Weimar@tu-bs.de">J.Weimar@tu-bs.de</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Are we done with SBML Level 1 Version 2?</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 26 May 2003 19:51:43 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>, &quot;'SBML Discussion List '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+
+I'm not completely sure about what you mean, but
+
+&gt; &gt; Question to the community: Does any simulator use the local namespace in a
+&gt; &gt; truely local namespace fashion?
+&gt; &gt; 
+&gt; 
+&gt; Yes, I use it in my SBML import/export for connecting to E-cell 1/2.
+
+By thorough design cleanup, it is more so in E-Cell 3.
+Every parameter is a property of a certain object.
+Every object has a unique object ID, and every parameter also has a unique 
+parameter ID which include an object ID.   (for example, OBJECT_ID:PARAM_NAME)
+
+
+&gt; To me it makes a lot of sense to be able to use parameters such as Vm 
+&gt; and Km repeatedly, since they have certain meaning for specific 
+&gt; mechanisms (and I can resue the same formula for each mechanism).
+
+I completely agree with Joerg. 
+
+
+-Kouichi
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00306" HREF="msg00306.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+<UL><LI><EM>From:</EM> Herbert Sauro &lt;Herbert_Sauro@kgi.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00322" HREF="msg00322.html">Re: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00323.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00325.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00322.html">Re: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00323.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00324"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00324"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

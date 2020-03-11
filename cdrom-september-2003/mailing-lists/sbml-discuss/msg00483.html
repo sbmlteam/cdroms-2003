@@ -1,0 +1,164 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] Re: Hybrid Models Working Group (fwd) -->
+<!--X-From-R13: Sq Tenax <rsenaxNzpf.nay.tbi> -->
+<!--X-Date: Mon, 16 Jun 2003 05:37:38 &#45;0700 -->
+<!--X-Message-Id: 20030616123524.GT456@mcs.anl.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] Re: Hybrid Models Working Group (fwd)</TITLE>
+<LINK REV="made" HREF="mailto:efrank@mcs.anl.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00482.html">Date Prev</A>][<A HREF="msg00484.html">Date Next</A>][<A HREF="msg00482.html">Thread Prev</A>][<A HREF="msg00484.html">Thread Next</A>][<A HREF="maillist.html#00483">Date Index</A>][<A HREF="threads.html#00483">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] Re: Hybrid Models Working Group (fwd)</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] Re: Hybrid Models Working Group (fwd)</LI>
+<LI><em>From</em>: Ed Frank &lt;<A HREF="mailto:efrank@mcs.anl.gov">efrank@mcs.anl.gov</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 16 Jun 2003 07:35:24 -0500</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+----- Forwarded message from Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt; -----
+
+Subject: Re: Hybrid Models Working Group
+From: Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;
+To: Thomas Kiehl &lt;kiehl@research.ge.com&gt;
+Cc: shafi@sfc.keio.ac.jp, m.j.1.schilstra@herts.ac.uk,
+   "'Takeshi Sakurada'" &lt;sakurada@sfc.keio.ac.jp&gt;,
+   "'Ed Frank'" &lt;efrank@mcs.anl.gov&gt;,
+   "'vijay saraswat'" &lt;saraswat@cse.psu.edu&gt;,
+   "'Mike McCollum'" &lt;jmccoll2@utk.edu&gt;, "'Greg Peterson'" &lt;gdp@utk.edu&gt;,
+   "'Stefan Hoops'" &lt;shoops@vt.edu&gt;
+Date: 14 Jun 2003 02:50:58 +0900
+
+Hello Tom,
+
+Thank you for your paper.
+It's a surprise!   Although our approaches are slightly different,  
+I've been working on my multi-algorithm 'meta-algorithm' which can also be
+used for Gillespie/ODE simulations these several years.
+
+Your approach seems like well targeted to Gillespie/ODE hybrid simulations, and 
+my impression is it would run efficiently.   I like its straightforward framework.
+
+Some questions:
+
+- I guess that you have used some polynomial interpolants to get dense output
+  from Runge-Kutta, but how did you generate events with time-varying propensities?
+  I couldn't get this very well because your paper has no equations..
+
+- What type of scheduler did you use?   Is it exactly what you described in paper 6 of 
+  the paper?
+
+- What happens if the ODE part takes much smaller stepsize than Gillespie, or
+  Gillespie's delta-t is very smaller than ODE?
+
+- Can this be extended for parallel computers?
+
+
+You may be interested in our paper on my algorithm too.    It is attached.
+I didn't want to post a large file to everyone, but this is a small specialized group..
+
+My algorithm provides a meta-algorithm based on a heap-tree event scheduler,
+and Hermite polynomial interpolants.   It is intended to make it possible to employ
+any simulation algorithms for sub-models (your paper also claims the same thing :).
+We are now working on parallelization and dynamic switching between algorithms,
+as well as usability improvements of E-Cell software itself.
+
+
+regards,
+-Kouichi
+
+
+&gt; Thanks again Kouichi for your insight.  It is very useful to define what 
+&gt; it is that we mean by "hybrid" and whether or not that should effect the 
+&gt; definition of a model.
+&gt; 
+&gt; We have a system which we call "hybrid" as well.  I'm not sure by the 
+&gt; definitions you give whether it falls into the mixed-mode or 
+&gt; multi-algorithm category.
+&gt; 
+&gt; We assign the reactions in the model to be simulated using either a 
+&gt; continuous method (ode's) or to be handled stochastically by a 
+&gt; gillespie/gibson approach.   These methods run simultaneously and are 
+&gt; synchronized by some scheme.  We also handle what could be called events 
+&gt; and even delay differential equations.  Issues involved here include 
+&gt; synchronization of time steps as well as state variables.
+&gt; 
+&gt; This assignment of reactions to "reaction engines" (that is the solution 
+&gt; method) is done outside of sbml in our simulator's configuration file.  
+&gt; Thus the model remains portable.  Also this allows us to run various 
+&gt; experiments by changing the set of reactions assigned to each method.
+&gt; 
+&gt; Attached find a relatively recent version of a paper which we have 
+&gt; submitted and revised for the journal Bioinformatics.
+&gt; 
+&gt; peace,
+&gt; Tom
+
+
+
+----- End forwarded message -----
+
+-- 
+Ed Frank                                            Office:  (630) 252-4548
+<A  HREF="http://hep.uchicago.edu/~efrank">http://hep.uchicago.edu/~efrank</A>                     Fax   :  (630) 252-5986
+Division of Math &amp; Computer Science                 Argonne National Laboratory
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00482.html">[sbml-discuss] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00484.html">[sbml-discuss] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00482.html">[sbml-discuss] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00484.html">[sbml-discuss] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00483"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00483"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

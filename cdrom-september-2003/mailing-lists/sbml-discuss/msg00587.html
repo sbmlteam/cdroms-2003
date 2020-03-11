@@ -1,0 +1,236 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] RE: Question about your libsbml -->
+<!--X-From-R13: "Vreoreg Enheb" <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Wed, 23 Jul 2003 18:09:25 &#45;0700 -->
+<!--X-Message-Id: 601BBB4D9640CB4693A2384E4B37872E0DD66D@dell2650&#45;0550.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] RE: Question about your libsbml</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00586.html">Date Prev</A>][<A HREF="msg00588.html">Date Next</A>][<A HREF="msg00586.html">Thread Prev</A>][<A HREF="msg00588.html">Thread Next</A>][<A HREF="maillist.html#00587">Date Index</A>][<A HREF="threads.html#00587">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] RE: Question about your libsbml</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Ben Bornstein&quot; &lt;<A HREF="mailto:bornstei@aig.jpl.nasa.gov">bornstei@aig.jpl.nasa.gov</A>&gt;,  &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] RE: Question about your libsbml</LI>
+<LI><em>From</em>: &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 23 Jul 2003 18:07:57 -0700</LI>
+<LI>Cc: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;, &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;</LI>
+<LI>Thread-Index: AcNRdo6qWhUMn9VpTrytCG7jp/yL8gACTwqg</LI>
+<LI>Thread-Topic: Question about your libsbml</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+It looks very easy to use, thanks. I've one question, I presume you have a function to free the ASTNode_t tree that is returned by SBML_parseFormula()? 
+
+Herbert
+
+-----Original Message-----
+From: Ben Bornstein [<A  HREF="mailto:bornstei@aig.jpl.nasa.gov">mailto:bornstei@aig.jpl.nasa.gov</A>]
+Sent: Wednesday, July 23, 2003 5:00 PM
+To: herbert_sauro@kgi.edu
+Cc: sbml-discuss@caltech.edu; biospice-mdl@bbn.com
+Subject: Re: Question about your libsbml
+
+
+&gt; Ben, I've got a question about your L2 library. Will you have a function
+&gt; that takes a infix and returns a MathML string? (and vice versa)?
+
+Hi Herbert,
+
+     Sorry for the late reply.  Also, I taken the liberty of copying
+sbml-discuss and biospice-mdl (I hope you don't mind), as this topic
+is somewhat timely.
+
+     It is my understanding that many simulation packages are already
+capable of parsing and generating what you might call standard C
+style expressions and that this was the reason the SBML L1 formula
+syntax was chosen.  To help facilitate the transition to SBML L2
+and MathML (or perhaps to never have to deal with MathML at all)
+libsbml provides some fairly sophisticated formula conversion
+routines.
+
+     The three functions of interest are:
+
+       ASTNode_t *SBML_parseFormula(const char *formula)
+
+         This function converts the given L1 infix formula string into
+         an abstract syntax tree (AST) and returns the root node of
+         the tree.
+
+       char *SBML_formulaToString(const ASTNode_t *math)
+
+         This function is the inverse of the first.  The returned
+         formula string is owned by the caller and it is their
+         responsibility to free it with free().  The returned
+         formula is, of course, appropriately and minimally
+         grouped (parenthesized).
+       
+       MathMLDocument_t *readMathMLFromString(cont char *xml)
+
+         This function is the MathML analog of readSBMLFromString().
+         I developed this soley for easy unit testing.  A user of
+         libsbml is never required to call this function.  However,
+         I thought others might find a user for it, so I exposed it
+         as a public API.
+
+         MathMLDocument_t is a simple container with one field, an
+         ASTNode_t named math, which is the root of the tree.  In
+         a future version of libsbml, MathMLDocument_t may have
+         additional fields.
+
+         There are currently two caveats to this function, one
+         good and one bad.  The good news is the custom MathML
+         content handler used by libsbml is exceedingly good at
+         handling MathML fragments.  For instance, you can
+         always skip the &lt;math&gt; tag and the &lt;apply&gt; tag
+         isn't necessary for simple expressions, e.g.:
+
+           &lt;plus/&gt; &lt;cn&gt; 1 &lt;/cn&gt; &lt;cn&gt; 2 &lt;/cn&gt;
+
+         Also superfluous qualifiers like &lt;bvar&gt;, &lt;degree&gt; and
+         &lt;logbase&gt; can be omitted.
+
+         The bad news is, the string must always be prefixed with:
+
+           "&lt;?xml version="1.0" encoding="..."?&gt;"
+
+         or the Xerces tokenizer will have a fit.  If others find
+         this third function useful, I can add some code to prepend
+         the above string if it's not already present.
+
+     For completeness, there should be a fourth function, something
+like writeMathMLToString(), but I never needed it for testing, or
+at least I never needed a C wrapped version for testing.  You can
+use the C++ MathMLFormatter directly:
+
+       MathMLFormatter &lt;&lt; SBML_parseFormula("x^2 + y^2");
+
+     I should mention a few things about infix formula expressions.
+First the libsbml formula parser recognizes the L1 pre-defined
+builtin functions.  This means for instance that: "log(x)" maps to:
+
+       &lt;apply&gt; &lt;ln/&gt; &lt;ci&gt; x &lt;/ci&gt; &lt;/apply&gt;
+
+     and "log10(x)" maps to:
+
+       &lt;apply&gt; &lt;log/&gt;
+               &lt;logbase&gt; &lt;ci type='integer'&gt; 10 &lt;/cn&gt; &lt;/logbase&gt;
+               &lt;ci&gt; x &lt;/ci&gt;
+       &lt;/apply&gt;
+
+     and similarly for sqr, sqrt, asin, acos, and atan.
+
+     However, if the formula parser only recognized L1 formulas, it
+would be of little use in helping to create MathML.  As you might
+have guessed, the parser also recognizes L2 function names
+(the MathML tag name without the "&lt;" "/&gt;").  So to create the MathML
+for "log(2, x)" simply type, well, "log(2, x)".  Note that the
+MathML for "log(10, x)" is equivalent to "log10(x)" in L1, so that:
+
+       SBML_formulaToString( SBML_parseFormula("log(10, x)") );
+
+     will yield "log10(x)", the appropriate L1 syntax.  What I mean
+to say here is that SBML_formulaToString() will always output the
+correct L1 syntax if it can.
+
+     The logical and relational operators as well as lambda and
+piecewise are expressed a functions in infix form.  In the case
+of lambda all but the last parameter are function arguments and
+the last parameter is the function itself.  For e.g.:
+
+       lambda(x, y, sqrt(x^2 + y^2))
+
+     For piecewise, arguments are taken in pairs to be value
+and condition, e.g.:
+
+       piecewise(value, condition, value, condition, ...)
+
+     If the there are an odd number of arguments, the last one is
+treated as the &lt;otherwise&gt; or else clause.
+
+     So what does all this mean for creating MathML in L2?  Well, it
+can be as easy as:
+
+       ASTNode_t *math = SBML_parseFormula("lambda(x, x^3)");
+       FunctionDefinition_createWith("pow3", math);
+
+     or:
+
+       const char *formula = "piecewise(-x, lt(x,0), 0, eq(x,0), x, gt(x,0))";
+       ASTNode_t  *math    = SBML_parseFormula(formula);
+       FunctionDefinition_createWith("MyAbs", math);
+
+     See the SBML L2 specification on FunctionDefinitions for the
+MathML for "pow3".  The MathML for the absolute value function is listed
+in the MathML specification itself, or in the libsbml sources:
+src/TestMathMLHandler.cpp (search for test_element_piecewise).
+
+     Let me know if you have any questions.
+
+
+Ben
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00588" HREF="msg00588.html">Re: [sbml-discuss] RE: Question about your libsbml</A></STRONG>
+<UL><LI><EM>From:</EM> Ben Bornstein &lt;bornstei@aig.jpl.nasa.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00586.html">[sbml-discuss] Re: Question about your libsbml</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00588.html">Re: [sbml-discuss] RE: Question about your libsbml</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00586.html">[sbml-discuss] Re: Question about your libsbml</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00588.html">Re: [sbml-discuss] RE: Question about your libsbml</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00587"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00587"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

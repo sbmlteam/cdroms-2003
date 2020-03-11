@@ -1,0 +1,188 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] SBML Level 2 -->
+<!--X-From-R13: Xbanguna Iroo <wjrooNooa.pbz> -->
+<!--X-Date: Thu, 5 Dec 2002 07:45:25 &#45;0800 -->
+<!--X-Message-Id: Pine.LNX.4.33.0212051042200.22916&#45;100000@dhcp33&#45;081&#45;013.bbn.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 001801c29c72$a5b829f0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] SBML Level 2</TITLE>
+<LINK REV="made" HREF="mailto:jwebb@bbn.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00012.html">Date Prev</A>][<A HREF="msg00013.html">Date Next</A>][<A HREF="msg00043.html">Thread Prev</A>][<A HREF="msg00011.html">Thread Next</A>][<A HREF="maillist.html#00010">Date Index</A>][<A HREF="threads.html#00010">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] SBML Level 2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] SBML Level 2</LI>
+<LI><em>From</em>: Jonathan Webb &lt;<A HREF="mailto:jwebb@bbn.com">jwebb@bbn.com</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 5 Dec 2002 10:50:10 -0500 (EST)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I would tend to make the following interpretation:
+
+ - Models identify (generally) labeled parameters within their
+   definition.
+
+ - Model definitions exist without reference to specific _numeric_
+   values for at least some of their parameters.  Whether this is
+   because the model developer does not know definitive values
+   for these parameters or because the parameter may take on a
+   range of values depending on various conditions I propose is
+   less relevant for the current discussion.
+
+ - Collections of parameters are meaningless without (at least)
+   reference to the associated model.
+
+ - There may be many collections of parameters associated with
+   different _uses_ of the same model.  These collections may
+   evolve over time without change to the underlying, referenced
+   model.
+
+This suggests to me the parameter sets should be distinct in some
+way from the definition of the model but should never be defined
+without reference to a model (and probably other information as well;
+how the parameters are used or generated as examples).
+
+Jonathan Webb
+BBN Technologies
+617-873-3321
+jwebb@bbn.com
+
+On Thu, 5 Dec 2002, Andrew Finney wrote:
+
+&gt; I tend to agree with Martin's last point
+&gt; which I interpret as meaning:
+&gt;
+&gt; Using a parameter set with a model for which
+&gt; it was not developed is typically a bad idea.
+&gt;
+&gt; This to my mind implies a parameter set refers to a specific model.
+&gt;
+&gt; (Although SBML itself can't enforce this
+&gt; a tool would probably throw errors if
+&gt;
+&gt; a) asked to analyse a model with a parameter set that
+&gt; doesn't refer to the model
+&gt;
+&gt; b) a parameter set refers to a parameter in the referenced model
+&gt; 	that doesn't exist (indicates something is wrong))
+&gt;
+&gt; yours Andrew
+&gt;
+&gt;
+&gt; &gt; -----Original Message-----
+&gt; &gt; From: owner-sbml-discuss@symbio.jst.go.jp
+&gt; &gt; [<A  HREF="mailto:owner-sbml-discuss@symbio.jst.go.jp">mailto:owner-sbml-discuss@symbio.jst.go.jp</A>] On Behalf Of
+&gt; &gt; Martin Ginkel
+&gt; &gt; Sent: 05 December 2002 15:12
+&gt; &gt; To: Stefan Hoops
+&gt; &gt; Cc: Pedro Mendes; sbml-discuss@symbio.jst.go.jp
+&gt; &gt; Subject: Re: [sbml-discuss] SBML Level 2
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; Hi Stefan,
+&gt; &gt;
+&gt; &gt; On 05-Dec-2002 Stefan Hoops wrote:
+&gt; &gt; &gt; I am stepping into this and know I will be kicked :)
+&gt; &gt;
+&gt; &gt; My virtual leg is out of order, so you are safe...
+&gt; &gt;
+&gt; &gt; &gt; Default values are not a part of the model. Default values
+&gt; &gt; are part of
+&gt; &gt; &gt; an user
+&gt; &gt; &gt; interface, e.g., a model editing tool.
+&gt; &gt;
+&gt; &gt; Yep, but more specifically I meant: the model description (not the
+&gt; &gt; SBML-Standard) defines e.g. default values for parameters
+&gt; &gt; whereas the parameter-sets for a specific simulation experiment
+&gt; &gt; may override these values.
+&gt; &gt;
+&gt; &gt; Especially: loading a SBML-Model while introducing the
+&gt; &gt; different default
+&gt; &gt; values of different modeling environments (for missing
+&gt; &gt; numbers) is very
+&gt; &gt; dangerous.
+&gt; &gt;
+&gt; &gt;         Martin
+&gt; &gt;
+&gt; &gt; --
+&gt; &gt; +-[Martin
+&gt; &gt; Ginkel]--------------[<A  HREF="mailto:ginkel">mailto:ginkel</A>(at)mpi-magdeburg.mpg.de]-+
+&gt; &gt; | MPI Magdeburg, Zi S2.09    Sandtorstr. 1, D-39106
+&gt; &gt; Magdeburg, Germany |
+&gt; &gt; | You shouldn't anthropomorphize computers; they don't like
+&gt; &gt; it.        |
+&gt; &gt; |
+&gt; &gt;          |
+&gt; &gt; +-[tel/fax: +49 391 6110
+&gt; &gt; 482/529]----[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+&gt; &gt;
+&gt;
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00011" HREF="msg00011.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> Darren J Wilkinson &lt;darrenjwilkinson@btinternet.com&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00009" HREF="msg00009.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00012.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00013.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00043.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00011.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00010"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00010"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

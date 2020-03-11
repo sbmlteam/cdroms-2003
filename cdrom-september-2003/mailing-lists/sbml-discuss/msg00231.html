@@ -1,0 +1,124 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Changing the way stoichiometries are expresse -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Thu, 22 May 2003 08:39:10 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC91E7@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Changing the way stoichiometries are expresse</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00230.html">Date Prev</A>][<A HREF="msg00232.html">Date Next</A>][<A HREF="msg00217.html">Thread Prev</A>][<A HREF="msg00278.html">Thread Next</A>][<A HREF="maillist.html#00231">Date Index</A>][<A HREF="threads.html#00231">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Changing the way stoichiometries are expresse</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Martin Ginkel '&quot; &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;,  Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Changing the way stoichiometries are expresse</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 08:38:48 -0700</LI>
+<LI>Cc: &quot;'SBML Discussion List '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+ 
+There is a whole class of analyses based on stoichiometry alone. The
+operations involve a lot of matrix manipulation, particularly elementary row
+operations. For large systems &gt;100+, it's far better to use rational
+arithmetic in the math rather than floating point numbers because of the
+propagation of rounding error. For large systems it is therefore not
+possible to be 100% sure that the conservation vectors for example are
+actually the correct set without doing so post analysis checking which I'm
+sure most simulator tools don't do. These vectors need to be computed for
+people doing dynamic analysis as well so the problem is not just confined to
+stoichiometry analysis.
+
+I think Mike'd idea for alowing either float or rational sounds like a good
+idea, keeps everyone happy. 
+
+
+Herbert
+
+-----Original Message-----
+From: Martin Ginkel
+To: Herbert Sauro
+Cc: SBML Discussion List
+Sent: 5/22/03 12:38 AM
+Subject: RE: [sbml-discuss] Changing the way stoichiometries are expresse
+
+
+On 22-May-2003 Herbert Sauro wrote:
+&gt; Rational stoichiometries were specified in Level 1 for very good
+reason. I'd
+
+Can you repeat this reason and the advantages please?
+I think nobody at the forum remembered it fully.
+
+        Martin
+
+
+-- 
++-[Martin Ginkel]--------------[<A  HREF="mailto:ginkel">mailto:ginkel</A>(at)mpi-magdeburg.mpg.de]-+
+| MPI Magdeburg, Zi S2.09    Sandtorstr. 1, D-39106 Magdeburg, Germany |
+| If I have made myself clear, you must have misunderstood me. Alan G. |
+|                                                                      |
++-[tel/fax: +49 391 6110 482/529]----[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00278" HREF="msg00278.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00230.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00232.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00217.html">Re: [sbml-discuss] Rule change</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00278.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00231"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00231"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

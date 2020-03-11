@@ -1,0 +1,256 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] Release Notice: libsbml 2.0.0 -->
+<!--X-From-R13: Pra Pbeafgrva <obeafgrvNnvt.wcy.anfn.tbi> -->
+<!--X-Date: Wed, 23 Jul 2003 15:14:42 &#45;0700 -->
+<!--X-Message-Id: 200307232213.h6NMDPH11014@xenium.jpl.nasa.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] Release Notice: libsbml 2.0.0</TITLE>
+<LINK REV="made" HREF="mailto:bornstei@aig.jpl.nasa.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00582.html">Date Prev</A>][<A HREF="msg00584.html">Date Next</A>][<A HREF="msg00582.html">Thread Prev</A>][<A HREF="msg00584.html">Thread Next</A>][<A HREF="maillist.html#00583">Date Index</A>][<A HREF="threads.html#00583">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] Release Notice: libsbml 2.0.0</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] Release Notice: libsbml 2.0.0</LI>
+<LI><em>From</em>: Ben Bornstein &lt;<A HREF="mailto:bornstei@aig.jpl.nasa.gov">bornstei@aig.jpl.nasa.gov</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 23 Jul 2003 15:13:25 -0700</LI>
+<LI>Cc: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi All,
+
+     libsbml 2.0.0 (supporting SBML Level 2) is now available on
+SourceForge:
+
+       <A  HREF="http://www.sourceforge.net/projects/sbml">http://www.sourceforge.net/projects/sbml</A>
+
+     There are two file releases available on the SF download site:
+
+       - libsbml-2.0.0.tar.gz
+
+         This a source only distribution that builds with a
+         "./configure; make; make install;" on Linux, MacOS X,
+         Solaris and Cygwin.
+
+       - libsbml-2.0.0.zip
+
+         This includes everything in the source distribution plus
+         two native precompiled Windows DLLs (one for Xerces 2.2.0
+         and the other for Xerces 2.3.0) in the win32/ subdirectory.
+
+     The highlights of this release include:
+
+       - Transparent support for SBML L2v1, L1v2 and L1v1
+
+       - A Developer's Manual and API Reference (see docs/formatted)
+
+       - Additional example programs including a command-line
+         program to convert SBML L1 files to L2.
+
+       - SBML L1 infix formula strings and SBML L2 MathML are parsed
+         into the same memory structure for easy direct manipulation
+         or convenient conversion from one form to the other.
+
+       - Intelligent XML Schema validation
+
+         The SBMLReader may be configured with one XML Schema file
+         per SBML level and version.  When an SBML file is read the
+         appropriate Schema file is used.
+
+       - Works with Xerces-C 2.3.0, 2.2.0 or 2.1.0
+
+     I've included the latest excerpt from NEWS.txt at the end of this
+message, listing new features in slightly greater detail.
+
+     If I provided you with a pre-release version of libsbml 2.0.0,
+please upgrade to the official release as soon as possible.
+
+     I look forward to your comments, questions and suggestions for
+improvement.
+
+     Thank you.
+
+
+Ben Bornstein
+
+
+           libsbml NEWS -- History of user-visible changes
+
+
+=== Version 2.0.0 ===
+
+* Near complete L2 support.  The two features not yet supported are:
+
+    1. RDF (although the metaid attribute is read, stored and written)
+
+    2. Processing of the MathML &lt;semantic&gt; element (for annotating
+       MathML elements with additional content, e.g. TeX).
+
+
+* New L2 Structures:
+
+    - FunctionDefinition
+    - Event
+    - EventAssignment
+    - SimpleSpeciesReference    (abstract)
+    - ModifierSpeciesReference
+    - AssignmentRule            (no longer abstract)
+    - RateRule
+
+    - MathML and L1 infix expressions (when parsed) are both stored in
+      the same Abstract Syntax Tree (AST) structure ASTNode.
+
+    - ListOf stores lists of others SBML objects and may contain a
+      metaid, notes or annotations.
+
+
+* New L2 Functions:
+
+    - The getters, setters, isSet and unset functions are too numerous
+      to mention here.  Like L1, they parallel the UML structures
+      defined in the SBML specification.  All L1 functions are kept
+      for backward compatibility (see below).
+
+    - Any structure containing a list now has a getListOfXXX()
+      function which returns the corresponding ListOf structure.
+
+    - There are currently three convenience functions for converting
+      between SBML infix and MathML formulae:
+
+        - ASTNode_t *SBML_parseFormula(const char *formula)
+        - char      *SBML_formulaToString(const ASTNode_t *math)
+        - ASTNode_t *readMathMLFromString(cont char *xml)
+
+      Again, these are provided purely for convenience.  Under normal
+      circumstances, libsbml performs all conversions behind the
+      scenes when necessary.
+
+
+* L1 to L2 Changes:
+
+  libsbml stores both L1 and L2 models in the same memory structure.
+  While the L1 getters, setters, isSet and unset functions exist for
+  backward compatibility there are some changes of which users of
+  previous versions of libsbml should be aware:
+
+    - Compartment:
+
+        - .volume has been renamed to .size.
+
+    - Species:
+
+        - .units has been renamed to .substanceUnits.
+
+        - .initialAmount and .initialConcentration are stored in a
+          union called .initial with discriminators .Amount and
+          .Concentration.
+
+    - Reaction:
+
+        - .fast is optional in L2 which introduces Reaction_isSet /
+          unsetFast() functions.
+
+    - SpeciesReference:
+
+        - .stoichiometry is now of type double which necessitated a
+          change in the signature of the getter and setter functions.
+
+        - The use of .denominator is deprecated in L2.
+
+          However, libsbml still uses denominator in L2 models.  When
+          reading a &lt;stoichiometry Math&gt; if the content is a single
+          &lt;cn type='rational'&gt;, libsbml will discard the
+          stoichiometryMath and set stoichiometry and denominator
+          directly.  Similarly, libsbml will write &lt;stoichiometryMath&gt;
+          in L2 documents if the .stoichiometryMath field is not set
+          and the denominator is not 1.
+
+    - CompartmentVolumeRule:
+    - SpeciesConcentrationRule:
+    - ParameterRule:
+
+        - .compartment, .species and .parameter have all been renamed
+          to .variable.
+
+    - The XXX_createWith() functions now set the .id field instead of
+      the .name field.
+
+    - List_t has been replaced by ListOf_t to store a metaid, notes,
+      and annotations.  ListOf_t is simply a wrapper around List_t.
+
+
+* SBMLReader allows you to set up to three Schema filenames (one each
+  for L1v1, L1v2 and L2v1) and it will automatically use the
+  appropriate Schema for the SBML document being read.
+
+* A simple command-line executable that converts L1 models to L2 was
+  added to the examples/ subdirectory.
+
+* A new subdirectory, xml-schemas/, contains schemas for SBML L1v1,
+  L1v2, L2v1 and MathML 2.
+
+* Xerces-C 2.3.0 is now supported by libsbml.  Older versions of
+  Xerces-C (2.2.0 and 2.1.0) are still supported.
+
+
+* Released July 23, 2003
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00582.html">UNSUBSCRIBE sbml-discuss marketa@ludwig.ucl.ac.uk</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00584.html">RE: [sbml-discuss] Release Notice: libsbml 2.0.0</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00582.html">UNSUBSCRIBE sbml-discuss marketa@ludwig.ucl.ac.uk</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00584.html">RE: [sbml-discuss] Release Notice: libsbml 2.0.0</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00583"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00583"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

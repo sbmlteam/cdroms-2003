@@ -1,0 +1,134 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the way stoichiometries are expresse -->
+<!--X-From-R13: Qyvss Eunssre <funssreNfunssre.pf.ig.rqh> -->
+<!--X-Date: Fri, 23 May 2003 08:43:32 &#45;0700 -->
+<!--X-Message-Id: Pine.LNX.4.53.0305231231210.3566@shaffer.cs.vt.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1053594857.4577.49.camel@senin.e&#45;cell.org -->
+<!--X-Reference: XFMail.20030522120313.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Reference: 20030523124022.GA1038@mcs.anl.gov -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the way stoichiometries are expresse</TITLE>
+<LINK REV="made" HREF="mailto:shaffer@shaffer.cs.vt.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00289.html">Date Prev</A>][<A HREF="msg00291.html">Date Next</A>][<A HREF="msg00286.html">Thread Prev</A>][<A HREF="msg00307.html">Thread Next</A>][<A HREF="maillist.html#00290">Date Index</A>][<A HREF="threads.html#00290">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the way stoichiometries are expresse</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Ed Frank &lt;<A HREF="mailto:efrank@mcs.anl.gov">efrank@mcs.anl.gov</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the way stoichiometries are expresse</LI>
+<LI><em>From</em>: Cliff Shaffer &lt;<A HREF="mailto:shaffer@shaffer.cs.vt.edu">shaffer@shaffer.cs.vt.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 12:36:55 -0400 (EDT)</LI>
+<LI>Cc: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;,  Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;,  SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;, <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+
+On Fri, 23 May 2003, Ed Frank wrote:
+
+&gt; So, I'm wondering if we are coming back to a recurring problem in
+&gt; which we want SBML to express any model, but then we fuzz our
+&gt; thinking over to a stance in which any model should be interpretable
+&gt; by any program and from there to every SBML statement should work
+&gt; make sense for any program.  Since the semantic content of the
+&gt; models aimed at different simulators can be different, indeed can
+&gt; be inconsistent, that just doesn't seem a viable plan.
+
+YES!!!
+
+&gt; Instead, I think the intention of the model needs to somehow be stated
+&gt; up front.  A simulator can look at that and decide whether there is a
+&gt; match.  Alternatively, using dependency inversion, the *model* can
+&gt; state what it needs from a simulator, and the simulator can use that
+&gt; to decide if there is a match.
+
+YES!!! This is what I've been arguing for all along. What we want is a
+flexible way for modelers to express their model information. But we ALSO
+need to let the modelers explicitly express what the model "type" is,
+with the consequence that inapropriate simulators will bail out
+immediately. This also helps to resolve some of the issues that come up,
+such as the peculiarity of a floating numerator and integer denominator.
+If you look at as undiferentiated model types with a "one size fits all"
+syntax, you probably see this as bizarre and redundanat. But if you look
+at it as available fields where the model type further constrains
+available usage, its not so bad. Because one "type" of model could require
+the numerator and denominator to be integer, and another "type" of model
+could require the numerator be integer or float and ignore the denominator.
+         -- Cliff
+--
+Cliff Shaffer, Associate Professor          Phone: (540) 231-4354
+Department of Computer Science              Email: shaffer@cs.vt.edu
+Virginia Tech, Blacksburg, VA 24061-0106    WWW:   www.cs.vt.edu/~shaffer
+-------------------------------------------------------------------------
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00307" HREF="msg00307.html">Re: [sbml-discuss] compliance with portions of SBML</A></STRONG>
+<UL><LI><EM>From:</EM> Nicolas Le Novere &lt;lenov@pasteur.fr&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00374" HREF="msg00374.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> Wayne Rindone &lt;wrindone@arep.med.harvard.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00207" HREF="msg00207.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00213" HREF="msg00213.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00285" HREF="msg00285.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> Ed Frank &lt;efrank@mcs.anl.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00289.html">Re: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00291.html">RE: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00286.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00307.html">Re: [sbml-discuss] compliance with portions of SBML</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00290"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00290"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

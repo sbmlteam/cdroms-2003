@@ -1,0 +1,195 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] 2D &#38; 3D layouts -->
+<!--X-From-R13: "Xbua Intare" <wjntareNafb.hpup.rqh> -->
+<!--X-Date: Sat, 12 Jul 2003 09:13:58 &#45;0700 -->
+<!--X-Message-Id: 000401c3488f$f267fbd0$0100a8c0@CERNUNNOS -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3F101585.1010407@med.cornell.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] 2D &amp; 3D layouts</TITLE>
+<LINK REV="made" HREF="mailto:jwagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00555.html">Date Prev</A>][<A HREF="msg00557.html">Date Next</A>][<A HREF="msg00555.html">Thread Prev</A>][<A HREF="msg00558.html">Thread Next</A>][<A HREF="maillist.html#00556">Date Index</A>][<A HREF="threads.html#00556">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] 2D &amp; 3D layouts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] 2D &amp; 3D layouts</LI>
+<LI><em>From</em>: &quot;John Wagner&quot; &lt;<A HREF="mailto:jwagner@nso.uchc.edu">jwagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 12 Jul 2003 12:09:17 -0400</LI>
+<LI>Importance: Normal</LI>
+<LI>Reply-To: &lt;<A HREF="mailto:jwagner@nso.uchc.edu">jwagner@nso.uchc.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Then why stop there? Let's define point2D and point3D,
+line2D and line3D, rectangle2D and rectangle3D. I know,
+why don't we define model0D, model1D, model2D and model3D?
+And function1, function2, function3, etc, depending upon
+how many arguments a function takes?
+
+Where it makes sense, we should use the schema to
+constrain the attribute set. But we're not just
+talking about modifying the schema, we're also
+talking about modifying the spec, and that is
+very worrisome to me.
+
+I would also point out that when given the chance
+to do something very similar with respect to
+membranes, we chose not to do so, even though it
+made a lot of sense to do so--even more sense than
+the layout issue. Instead, we chose to use a
+single element (compartment) and add a
+spatialDimensions attribute. As a consequence,
+if/when we add membrane potential, we will not
+be able to constrain compartments/membranes
+with respect to membrane potential in the
+schema. This was a very conscious choice.
+
+Finally, keep in mind that most of the enforcement
+of the spec is not really possible to do in the
+schema. Does the schema ensure that all reactants,
+products and modifiers used in a reaction are
+species? Does the schema ensure that we have no
+cycles in the compartment hierarchy? Does the
+schema enforce the constraint that referenced
+user-defined functions must exist in the list of
+functions? Did we design units in such a way that
+all the yucky details underlying units could be
+implemented in the schema? Nope.
+
+John
+
+-----Original Message-----
+From: Fabien Campagne [<A  HREF="mailto:fac2003@med.cornell.edu">mailto:fac2003@med.cornell.edu</A>]
+Sent: Saturday, July 12, 2003 10:05 AM
+To: Kevin D. Keck
+Cc: Wagner,John; Ralph Gauges; sbml-discuss@its.caltech.edu
+Subject: Re: [sbml-discuss] 2D &amp; 3D layouts
+
+
+I strongly support Kevin's point. The XML schema can, and should
+be used to put constraints on the attribute set of elements.
+
+To get back to the subject, having layout2d and layout3d makes it
+possible to define attributes (or sub-elements) in layout3d that are
+optional in a 3D layout and have nothing to do in layout2D (these
+attributes and elements can be absent from layout2D altogether).
+
+In my opinion, this is a better solution that what John suggests,
+because if we put attributes x,y, and z in layout to represent
+both 2D and 3D layout the z attribute must be defined both
+for 2D AND 3D layouts. This is just a simple example, but
+consider that other attributes and elements may be needed in
+the future in a 3D layout element).
+
+There is an intelligent way to use XML schemas to make the
+choice apparent to both humans and software. We can use this
+method and benefit from validation schema support. My
+experinece is that it will come handy when maintaining the
+exchange format, if/when people think it is time to have backward
+compatible changes to the spec), or we can just continue relying
+on a bunch of assumptions that developers may or may not
+remember and implement in their code (especially if they do
+not read the spec, as John suggested).
+
+Fabien
+
+
+Kevin D. Keck wrote:
+
+On Friday 11 July 2003 15:34, Wagner,John wrote:
+[...]
+
+However, if you would be happy with just having "layout" elements
+but with a "dimensions=" attribute (similar to what we do with
+compartments) I could go with that. This would deal with the
+important issues you have raised. Also, in this approach, the
+"unexpected" z, d, etc values would not be unexpected, and besides,
+don't take a single line of code or a moment's time to ignore.
+
+John
+
+
+Actually, that was my first thought. Unfortunately, unless I'm reading the
+specs incorrectly, XML Schema doesn't seem to like this. I mean, you could
+define the attribute, and even require it, but it would appear impossible to
+define different attribute constraints on the descendent elements based
+solely on that attribute value. I'm basing this conclusion as much on some
+bboard discussions and on this guideline I found
+(<A  HREF="http://www.xfront.com/VariableContentContainers.html">http://www.xfront.com/VariableContentContainers.html</A>) as on the spec
+itself,
+which is pretty tough to read.
+
+And as I thought about it, I decided this is in fact a feature, as it gives
+that tiny extra nudge to lazy implementors (not that there's anything wrong
+with that) to not ignore it, and I think on balance that's a good thing. And
+I'm guessing I can easily make it more trouble to continue arguing with me
+about it than it would be to just deal with it... ; )
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00558" HREF="msg00558.html">RE: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00555" HREF="msg00555.html">Re: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+<UL><LI><EM>From:</EM> Fabien Campagne &lt;fac2003@med.cornell.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00555.html">Re: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00557.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00555.html">Re: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00558.html">RE: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00556"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00556"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

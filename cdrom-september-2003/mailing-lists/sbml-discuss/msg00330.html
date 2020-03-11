@@ -1,0 +1,180 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the units of initial amounts -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Mon, 26 May 2003 07:41:13 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E47@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the units of initial amounts</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00329.html">Date Prev</A>][<A HREF="msg00331.html">Date Next</A>][<A HREF="msg00338.html">Thread Prev</A>][<A HREF="msg00341.html">Thread Next</A>][<A HREF="maillist.html#00330">Date Index</A>][<A HREF="threads.html#00330">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the units of initial amounts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the units of initial amounts</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 26 May 2003 10:41:02 -0400</LI>
+<LI>Thread-Index: AcMjlNSw3UIeB+atRjywmjT+NCtO+Q==</LI>
+<LI>Thread-Topic: Re: [sbml-discuss] Changing the units of initial amounts</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+We wholeheartedly disagree with the notion of
+associating reactions with compartments, as in
+the general case, a reaction involves species from
+several compartments; with which compartment is
+PIP2 hydrolysis associated, the membrane or the
+cytosol? The same applies to fluxes across membranes
+(transport processes) where the natural units are
+substance/area/time, and to choose the volume of one
+compartment over another is a completely arbitrary
+decision.
+ 
+The point is, no matter what, you will end up with
+*something* that has to scale with volume.
+ 
+John
+ 
+ 
+
+	-----Original Message----- 
+	From: Joerg R. Weimar [<A  HREF="mailto:J.Weimar@tu-bs.de">mailto:J.Weimar@tu-bs.de</A>] 
+	Sent: Mon 5/26/2003 6:54 AM 
+	To: Wagner,John 
+	Cc: sbml-discuss@caltech.edu 
+	Subject: Re: [sbml-discuss] Changing the units of initial amounts
+	
+	
+
+	Wagner,John wrote:
+	&gt;&gt;it is important to use concentrations as initial
+	&gt;&gt;values, since otherwise all initial conditions need
+	&gt;&gt;to change.
+	&gt;&gt;...
+	&gt;&gt;formula="cell * (Vm * S0)/(Km + S0) "
+	&gt;&gt;
+	&gt;
+	&gt; There is still a huge hole in the reaction rate
+	&gt; thing if the rate law's net units are allowed to
+	&gt; be substance/volume/time, because there is only
+	&gt; one well-defined way to interpret the volume
+	&gt; inherent in the rate, and that is in terms of
+	&gt; "total volume of all compartments". Thus, changing
+	&gt; any volumes at all would mean that rate constants
+	&gt; have to be changed as well. That is to say, in
+	&gt; your
+	
+	I agree (and have always stated this) that the overall reaction rate
+	should be in substance/time. The only alternative would be for a
+	reaction to be associated to a compartment, because then the volume of
+	the compartment where the reaction takes place ("cell" in the above
+	formula) could be inferred. For transport processes, explicit volumes of
+	the two compartments involved) would still appear in the formula.
+	
+	&gt;
+	&gt;&gt;formula="cell * (Vm * S0)/(Km + S0) "
+	&gt;
+	&gt; the only way to allow such a formulation is if
+	&gt; Vm is in terms of total volume (the sum of the
+	&gt; volumes of all compartments), which is obviously
+	&gt; why you had to multiply by "cell".
+	&gt;
+	&gt; And that is to say that, while in your approach
+	&gt; you don't have to change initial conditions, you
+	&gt; instead have to change reaction rates (like Vm
+	&gt; in your example).
+	&gt;
+	I am afraid, I am not quite with you here.
+	
+	&gt;
+	&gt;&gt;I disagree with Nicholas who wants to remove the
+	&gt;&gt;two different units used for the species id by
+	&gt;&gt;making a species id in a rate law represent
+	&gt;&gt;amout, not concentration.
+	&gt;
+	&gt; I'm with Nicolas on this one, unless someone can
+	&gt; see a way around it.
+	
+	What follows is not an argument about the units of substance ID in rate
+	laws:
+	
+	 &gt; All I know is, it's far
+	&gt; superior if the overall units of rate laws are
+	&gt; substance/time, since that always works independent
+	&gt; of which compartments species are in.
+	
+	We all agree with that, and that is also why the current and
+	future standard says that these are the units of the rate law.
+	
+	&gt; John
+	&gt;
+	
+	Joerg.
+	
+	
+	
+	--
+	PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, TU-Braunschweig
+	J.Weimar@tu-bs.de, <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+	Tel. +49-531-391-3006  Mail: D-38092 Braunschweig
+	
+	
+	
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00329.html">Re: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00331.html">Re: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00338.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00341.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00330"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00330"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

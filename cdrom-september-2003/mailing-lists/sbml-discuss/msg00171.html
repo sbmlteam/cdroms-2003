@@ -1,0 +1,283 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: FW: [sbml&#45;discuss] Arrays Working Group -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 20 May 2003 12:46:53 &#45;0700 -->
+<!--X-Message-Id: 000901c31f08$88ba5c60$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>FW: [sbml-discuss] Arrays Working Group</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00170.html">Date Prev</A>][<A HREF="msg00172.html">Date Next</A>][<A HREF="msg00166.html">Thread Prev</A>][<A HREF="msg00204.html">Thread Next</A>][<A HREF="maillist.html#00171">Date Index</A>][<A HREF="threads.html#00171">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>FW: [sbml-discuss] Arrays Working Group</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;SBML&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: FW: [sbml-discuss] Arrays Working Group</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 20 May 2003 20:46:34 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+FYI...
+
+-----Original Message-----
+From: Steve Burbeck [<A  HREF="mailto:sburbeck@us.ibm.com">mailto:sburbeck@us.ibm.com</A>] 
+Sent: 20 May 2003 20:12
+To: Andrew Finney
+Subject: Re: [sbml-discuss] Arrays Working Group
+
+Andrew,
+
+I'd like to participate in the "Arrays" working group, although I would
+prefer it be called the "Collections" working group so as not to
+prejudge the answer to your question about whether they should allow
+Sets, Bags, OrderedCollections, Sorted Collections, Dictionaries, etc.
+
+My own view, which is biased by my experience doing simulations in
+Smalltalk rather than C, is that Arrays improperly mix three separate
+concepts: collections, indexing and iteration.
+
+- The Collection concept provides the ability to refer to a bunch (i.e.,
+collection) of elements as "one thing,"  typically when the program
+needs to pass the whole bunch at once, e.g., as an argument, to some
+function.
+
+- The indexing concept is about how to refer to a particular element.
+In many cases, especially when the collection contains elements that are
+distributed evenly in space or time, naming the elements with an integer
+is exactly what you want to do.  But when the natural organization of
+the elements is not isomorphic to a one-dimensional physical axis with
+evenly spaced elements, integers become cryptic and arbitrary names that
+don't offer much modeling power.  So, for example, a Dictionary is a
+collection in which names (or keys) other than integers can be used.
+[note, the implementation of a dictionary is usually a relatively sparse
+array in which the names are converted to indices by a hash function]
+
+- The iteration concept is about the order in which a program wishes to
+access, store, or modify the elements, usually with the implicit
+understanding that all elements are to be dealt with.  For example, in
+an OrderedCollection, iteration is intended to start at the first
+element and proceed successively to the end (or sometimes backwards from
+last to first).  In a SortedCollection, the intent is to start with the
+smallest element (not smallest index) and proceed to the largest (again,
+one may want to go backwards).  Other kinds of collection (e.g., Set or
+Bag) explicitly ignore order, i.e., they explicitly assert that the
+order of iteration is undefined or irrelevant.
+
+At the implementation level, when a simulation is running,  arrays are
+almost always the implementation of choice.  SBML, however, is a model
+description language quite separate from the simulation.  It seems to me
+that modelers might like to be able to make richer or more nuanced
+statements about indexing and iteration than those allowed by Arrays.
+They may want to index elements by names rather than integers.  They may
+want to indicate that the order in which the elements appear in the XML
+text is, or is not, important.  They may want to indicate that iteration
+should proceed in a sort order, e.g., smallest to largest, however the
+elements appear in the list of XML.  And so forth.  Thus, if SBML
+allowed collection tags other than Array, the modeler could use them to
+indicate to the consumer of the model whether the order of elements in
+the list is important or not. If it allowed Dictionaries, one could use
+/key and /value tags to name elements rather than referring to them with
+some arbitrary integer.
+
+Regards,
+Steve Burbeck, Ph.D.
+Senior Technical Staff Member
+IBM Life Sciences
+Member, IBM Academy of Technology
+T/L444-0732, (919)254-0732
+
+_______________  Multi-cellular Computing _______________
+
+In the 20th century we sought to create ever more capable computers. Now
+we seek to create ever more elegant groups of collaborating computers.
+We recapitulate the biological evolution from single-cell to multi-cell
+organisms.
+
+
+ 
+
+                      "Andrew Finney"
+
+                      &lt;afinney@cds.caltech.ed        To:
+&lt;sbml-discuss@caltech.edu&gt;
+
+                      u&gt;                             cc:
+
+                      Sent by:                       Subject:
+[sbml-discuss] Arrays Working Group
+
+                      owner-sbml-discuss@its.
+
+                      caltech.edu
+
+ 
+
+ 
+
+                      05/20/2003 12:31 PM
+
+ 
+
+ 
+
+
+
+
+
+Charter of the SBML Arrays Working Group
+----------------------------------------
+
+Background
+
+At the recent SBML forum meeting in Florida it was decided to setup
+working groups to develop proposals for incorporation into SBML.
+Several people at the meeting signed up to a working group to develop a
+proposal for arrays in SBML
+
+Mission Statement and Scope
+
+Definition of an extension to SBML to allow the construction
+of models from homogeneous collections of objects.  Attributes of these
+objects can vary systematically across these collections.
+
+Any viable proposal must:
+
+- support a mechanism for describing the connections between array
+elements
+- be compatible with other proposals in particular model composition and
+dynamic structures
+
+Main issues to resolve:
+
+- What objects can occur in these collections?
+- What is the correct mechanism for defining collections?
+             for example should we consider sets, bags etc as
+alternatives
+             to arrays.
+- Do we need syntactic sugar to simplify the use of or compress the
+encoding of arrays?
+- Should a function for defining the sparseness of an array be dynamic
+             (vary during simulation)?
+
+Termination criterion:
+
+   Arrays is included into the SBML Level 3
+
+   or
+
+   The idea is considered as nonsense for Systems-Biology and dropped
+   from the SBML Agenda
+
+   Timeframe: I expect a working proposal and first reference
+   implementations for the next SBML Forum Meeting in
+   Nov 2003 S. Louis
+
+Deliverables:
+
+   - a Array proposal for incorporation into SBML L3
+   - a reference implementation that can read and write the proposed
+standard including L2 in a
+     useful software context
+   - at least one published model encoded in the proposal
+   - optional: a tool that can translate from the proposed standard
+including SBML L2 to
+     unextended SBML L2.
+
+Chair and Contact:
+
+  Andrew Finney
+  afinney@cds.caltech.edu
+  +44 (0)1452 722487
+  from US - 011 44 1452 722487
+  University of Hertfordshire, UK
+
+  Postal address:
+  Church Cottage
+  Church Lane
+  Moreton Valence
+  Gloucestershire
+  GL2 7NB
+  United Kingdom
+
+  Co-Chair open to volunteers.
+
+To Join please email the Chair.
+
+Current members:
+
+Martin Ginkel - Max Planck Institute - ginkel@mpi-magdeburg.mpg.de Mike
+McCollum - University of Tennessee - jmccoll2@utk.edu Greg Peterson -
+University of Tennessee - gdp@utk.edu Jonathan Webb - BBN -
+jwebb@bbn.com Vijay Saraswat - Penn State University -
+saraswat@cse.psu.edu Ben Bornstein - JPL - bornstein@aig.jpl.nasa.gov
+Poul Neilsen - University of Auckland - p.neilsen@auckland.ac.nz
+
+
+
+
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00204" HREF="msg00204.html">Re: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Poul Nielsen &lt;p.nielsen@auckland.ac.nz&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00170.html">RE: [sbml-discuss] COMP -- Submodels and Modules</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00172.html">RE: [sbml-discuss] COMP -- Submodels and Modules</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00166.html">[sbml-discuss] Arrays Working Group</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00204.html">Re: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00171"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00171"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,154 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Changing the units of initial amounts -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Mon, 26 May 2003 23:11:33 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD3759F@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Changing the units of initial amounts</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00361.html">Date Prev</A>][<A HREF="msg00363.html">Date Next</A>][<A HREF="msg00361.html">Thread Prev</A>][<A HREF="msg00198.html">Thread Next</A>][<A HREF="maillist.html#00362">Date Index</A>][<A HREF="threads.html#00362">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Changing the units of initial amounts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Kouichi Takahashi&quot; &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Changing the units of initial amounts</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 27 May 2003 02:08:59 -0400</LI>
+<LI>Cc: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI>Thread-Index: AcMkDHEmwH4cz9YxRayGl6LyMiQ21wACYX1g</LI>
+<LI>Thread-Topic: [sbml-discuss] Changing the units of initial amounts</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+&gt; Hi John,
+Hi Kouichi,
+
+&gt; I didn't intend to raise a new discussion on this but..
+That's okay. Discussion is good. :)
+
+&gt; &gt; S0, and S0 catalyzes E? Then you would have
+&gt; &gt; S0 --E--&gt; S0*   with rate Kcat1*E*[S0]/(Km1 + [S0])
+&gt; &gt; E --S0--&gt; E*    with rate Kcat2*S0*[E]/(Km2 + [E])
+&gt; &gt; That is, you'd need different dimensions depending on use.
+&gt; I don't think this is problematic, as long as we have an 
+&gt; explicit way to indicate which are in conc. and which are
+&gt; in amount. (such as Conc( S0 ), or [S0] or S0.Concentration,
+&gt; or whatever)
+Of course. I just think most of us would tend to think that
+approach would be a bit bulky and a pain in the butt to deal
+with in code. Such notation would end up in the KineticLaw
+formula string, as in formula="Kcat1*E*[S0]/(Km1 + [S0])"
+or formula="Kcat1*E*conc(S0)/(Km1 + conc(S0))" and I know
+my simulator (and the Virtual Cell) would require some
+work to deal with the extra notation.
+
+&gt; Vcell is going beyond enzyme kinetics. You may agree with 
+&gt; us that this flexibility to have both conc. and amount is
+&gt; very helpful in cell biology modeling.
+Oh, absolutely.
+
+&gt; &gt; But, in the end, you aren't getting around the problem, because
+&gt; &gt; if your volume changes, you'd *STILL* have to scale Km.
+&gt; Something must be changed, depending on the pivot. I know you
+&gt; have to change it because you want to preserve the reaction rate
+&gt; and the substances. And the other case is to preserve rate 
+&gt; constants and substances, allowing changes of the reaction rates.
+Right. I don't see an easy way around it. So Joerg's initial
+argument for solving this doesn't seem compelling. But, it
+needs to be solved in the sense that everyone is not currently
+respecting the unit conventions, and that probably means the
+current unit convention needs to be modified.
+
+The entire discussion boils down to two questions: do you want the
+dimensions of species to be substance or concentration, and do you
+want the dimensions of kineticLaws to be substance/time or
+concentration/time? For me, it's concentration, and substance/time,
+a solution that would require having a compartment's volume repre-
+sented in a variable somehow. 
+
+One suggestion was to have species be in units of substance,
+and then when you write out a formula like "Kcat1*E*S0/(Km1 + S0)"
+to convert the needed substances to concentrations, something like
+"Kcat1*E*(S0/compartmentName)/(Km1 + S0/compartmentName)" where
+"compartmentName" is the name of the compartment the species is
+defined in, and represents the volume of that compartment (yes,
+it's a bit bulky, but that name is already defined as unique
+within the global namespace, so it is an easy way to fix things).
+
+One thing is for certain, though, and that is, we have to start
+paying attention to such details when we're coding. I will also
+say that after checking all the SBML files that come with Gepasi
+and JDesigner, I was unable to find a single reference anywhere
+to units (that is, no unitDefinitions, and no units="..."
+attributes), so it's pretty clear that we have all taken our
+eyes off the ball with respect to units.
+
+&gt; It seems this discussion is recurring. I'll stop here.
+*L* Yeah. Do you know "The Song That Never Ends"?
+<A  HREF="http://www.lojban.org/wiki/index.php/The%20Song%20That%20Never%20Ends">http://www.lojban.org/wiki/index.php/The%20Song%20That%20Never%20Ends</A>
+
+&gt; &gt; As I said, there is no way around this, so we're going to
+&gt; &gt; have to pick the lesser of two evils.
+&gt; Agreed.
+I *hate* it when that happens.
+
+&gt; -Kouichi
+John
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00361.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00363.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00361.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00198.html">[sbml-discuss] Should Events have 'id' and 'name' attributes?</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00362"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00362"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

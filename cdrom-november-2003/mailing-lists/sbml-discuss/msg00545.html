@@ -1,0 +1,150 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: Dbjna Quevfgznf <kznfNflfgrzfovbybtl.bet> -->
+<!--X-Date: Fri, 11 Jul 2003 10:13:31 &#45;0700 -->
+<!--X-Message-Id: 3F0EF001.1090602@systemsbiology.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 59D7F8A2&#45;B07E&#45;11D7&#45;A6EC&#45;000A95776A76@eml.villa&#45;bosch.de -->
+<!--X-Reference: 200307101335.33469.kdkeck@lbl.gov -->
+<!--X-Reference: 3F0E7C31.5020605@lionbioscience.com -->
+<!--X-Reference: 200307111444.46797.sven.sahle@eml.villa&#45;bosch.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:xmas@systemsbiology.org">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00544.html">Date Prev</A>][<A HREF="msg00546.html">Date Next</A>][<A HREF="msg00543.html">Thread Prev</A>][<A HREF="msg00554.html">Thread Next</A>][<A HREF="maillist.html#00545">Date Index</A>][<A HREF="threads.html#00545">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: Rowan Christmas &lt;<A HREF="mailto:xmas@systemsbiology.org">xmas@systemsbiology.org</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 11 Jul 2003 10:12:33 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Sven,
+
+I was unable to find a schema for GraphXML( I looked at the Royere page, 
+but the links were broken), although the GXL site I looked at: 
+<A  HREF="http://www.gupro.de/GXL/">http://www.gupro.de/GXL/</A> seems remarkably well documented.  GXL seems 
+like it is desgined to be more of a UML type language, since all of 
+their examples show a UML translation. 
+
+One thing none of these formats seem to address is the need to have one 
+node with an associated set of data, but then be able to have that node 
+in the graph multiple times, either as an alias like JDesigner, or in an 
+embedded subgraph like me (Cytoscape).
+
+In short I think that the first option presented below is still a good 
+way to go.  But if someone has examples of how to get this functionality 
+without nasty hacks from these existing languages, that would be swell.
+
+--rowan
+
+Sven Sahle wrote:
+
+&gt;Hello,
+&gt;
+&gt;I did only a quick check of the file formats Eric mentioned. GML is not XML. 
+&gt;The other are indeed XML dialects to describe graphs. While I did not check 
+&gt;if they can do everything that we might need, I am certain they can do lots 
+&gt;of stuff with graphs.
+&gt;This leads us to a decision:
+&gt;
+&gt;-Do we want to create a language to describe layouts for SBML models?
+&gt;In this case we need a language that emphasizes the biochemical structure of 
+&gt;the graph (while maintaining the flexibility to also represent additional 
+&gt;graphical objects). This is what our proposal aims at.
+&gt;
+&gt;-Or do we want to have a general graph description language with the 
+&gt;additional feature to somehow refer to elements of an SBML model. In this 
+&gt;case we could evaluate whether GXL or  GraphXML with extensions that refer to 
+&gt;SBML model objects is what we want.
+&gt;
+&gt;I do prefer the first. I think the layout language should know about concepts 
+&gt;like "graphical representation of a species" or "graphical representation of 
+&gt;a reaction".
+&gt;
+&gt;Sven
+&gt;
+&gt;
+&gt;On Friday 11 July 2003 10:58, Eric Minch wrote:
+&gt;  
+&gt;
+&gt;&gt;Is anyone using GML or GraphXML or GXL for biochemical network layout? Most
+&gt;&gt;of these layout problems seem to have been addressed in the development of
+&gt;&gt;these XML-based graph exchange language standards.
+&gt;&gt;    
+&gt;&gt;
+&gt;
+&gt;
+&gt;  
+&gt;
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00530" HREF="msg00530.html">[sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml.villa-bosch.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00541" HREF="msg00541.html">[sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Kevin D. Keck&quot; &lt;kdkeck@lbl.gov&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00542" HREF="msg00542.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Eric Minch &lt;eric.minch@lionbioscience.com&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00543" HREF="msg00543.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Sven Sahle &lt;sven.sahle@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00544.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00546.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00543.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00554.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00545"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00545"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

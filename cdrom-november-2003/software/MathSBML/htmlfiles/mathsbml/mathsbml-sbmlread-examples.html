@@ -1,0 +1,210 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage" ></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table></div>
+
+
+
+<table width="100%" border="0" cellspacing="2" cellpadding="0">
+
+<tr>
+	<td>
+		<h1><span style="font-family:courier,monospace;font-size:larger;color:blue;">SBMLRead</span> Examples</h1>
+		<a href="mathsbml-sbmlread.html">Return Value</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="mathsbml-sbmlread-options.html">Options</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="mathsbml-contexts.html">Variable Names and Scoping</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="mathsbml-sbmlread-example">Examples</a>
+	<hr/>
+	<h2>Click on an Example to jump directly to it.</h2>
+	<ol style="font-size:14px;">
+		<li><a href="#readonly" style="font-size:14px;">Read file and return a value using default settings</a>.</li>
+		<li><a href="#context" style="font-size:14px;">Read file and change context</a>.</li>
+		<li><a href="#partial" style="font-size:14px;">Read file and only return some of the data</a>.</li>
+		<li><a href="#nosemicolon" style="font-size:14px;">Read file without displaying its contents</a>.</li>
+		<li><a href="#stats" style="font-size:14px;">Read file and display statistics</a>.</li>
+		<li><a href="#verbose" style="font-size:14px;">Read file and display an interpretive listing</a>.</li>
+		<li><a href="#solveplot" style="font-size:14px;">Read, solve, and plot using SBMLNDSolve and SBMLPlot</a>.</li>
+		<li><a href="#native" style="font-size:14px;">Read, solve, and plot using native functions NDSolve and Plot</a>.</li>
+		<li><a href="#autoplot" style="font-size:14px;">Read, solve, and plot using automated SBMLRead options</a>.</li>
+		
+	</ol>
+	
+	</td>
+</tr>
+
+<tr>
+	<td>
+<a name="readonly" ></a>
+	<hr/>	
+	<h2>Example 1: Read a file and return a value using default settings.</h2>
+	<p><a href="mathsbml-images/enzymedotxml.gif" style="font-size:14px;">
+	View input file.</a></p>
+	<p><img src="mathsbml-images/enzymedotxml-sbmlread.gif" border="1" /></p>		
+	</td>
+</tr>
+<!-- Go to the Top Button -->
+<tr><td ><a  href="#TopOfPage">Go to the top of this page</a></td></tr>
+<!-- End of Go to the Top Button -->
+	
+<tr>
+	<td>
+<a name="context" ></a>
+	<hr/>	
+	<h2>Example 2: Read a file and change the context; otherwise use all default settings.</h2>
+	<p><a href="mathsbml-images/enzymedotxml.gif" style="font-size:14px;">View input file.</a></p>
+	<p><img src="mathsbml-images/contextexample.gif" border="1" /></p>		
+	</td>
+</tr>
+
+<!-- Go to the Top Button -->
+<tr><td ><a  href="#TopOfPage">Go to the top of this page</a></td></tr>
+<!-- End of Go to the Top Button -->
+
+<tr>
+	<td>
+<a name="partial" ></a>
+	<hr/>	
+	<h2>Example 3: Read a file and inhibit the return of all data except for ODEs, species, and initial conditions.</h2>
+	<p><a href="mathsbml-images/enzymedotxml.gif" style="font-size:14px;">View input file.</a></p>
+	<p><img src="mathsbml-images/sbmlread-partialreturn.gif" border="1" /></p>		
+	</td>
+</tr>
+<!-- Go to the Top Button -->
+<tr><td ><a  href="#TopOfPage">Go to the top of this page</a></td></tr>
+<!-- End of Go to the Top Button -->
+
+<tr>
+	<td>
+<a name="partial" ></a>
+	<hr/>	
+	<h2>Example 4: Read a file but do not display its contents.</h2>
+	
+	<p>If you put a semicolon at the end of the <span style="font-family:courier,monospace;font-size:larger;color:blue;">SBMLRead["enzyme.xml"]</span>
+	 statement, the return value is not displayed. By setting it equal
+	to <span style="font-family:courier,monospace;font-size:larger;color:blue;">m</span> the value of <span style="font-family:courier,monospace;font-size:larger;color:blue;">m</span>
+	 is set to the value returned by <span style="font-family:courier,monospace;font-size:larger;color:blue;">SBMLRead</span>. The second input line, typing <span style="font-family:courier,monospace;font-size:larger;color:blue;">m</span> without a semicolon, tells Mathematica to
+	display the value of <span style="font-family:courier,monospace;font-size:larger;color:blue;">m</span>.
+	</p>
+	<p><a href="mathsbml-images/enzymedotxml.gif" style="font-size:14px;">View input file.</a></p>
+	<p><img src="mathsbml-images/sbmlread-nosemicolon.gif" border="1" /></p>		
+	</td>
+</tr>
+<!-- Go to the Top Button -->
+<tr><td ><a  href="#TopOfPage">Go to the top of this page</a></td></tr>
+<!-- End of Go to the Top Button -->
+
+<tr>
+	<td>
+<a name="stats" ></a>
+	<hr/>	
+	<h2>Example 5: Read a file and display statistics.</h2>
+	<p><a href="mathsbml-images/enzymedotxml.gif" style="font-size:14px;">View input file.</a></p>
+	<p><img src="mathsbml-images/sbmlread-stats.gif" border="1" /></p>		
+	</td>
+</tr>
+<!-- Go to the Top Button -->
+<tr><td ><a  href="#TopOfPage">Go to the top of this page</a></td></tr>
+<!-- End of Go to the Top Button -->
+
+
+<tr>
+	<td>
+<a name="verbose" ></a>
+	<hr/>	
+	<h2>Example 6: Verbose Listing.</h2>
+	
+	<p><a href="mathsbml-images/enzymedotxml.gif" style="font-size:14px;">View input file.</a></p>
+	<p><a href="mathsbml-images/sbmlread-verbose.gif">
+	<img src="mathsbml-images/sbmlread-verbose.gif" border="1" width="500px" /><br/>
+	Click on the image to see it full size.</a></p>		
+	</td>
+</tr>
+<!-- Go to the Top Button -->
+<tr><td ><a  href="#TopOfPage">Go to the top of this page</a></td></tr>
+<!-- End of Go to the Top Button -->
+
+<tr>
+	<td>
+<a name="solveplot" ></a>
+	<hr/>	
+	<h2>Example 7: Read, Solve, and Plot.</h2>
+	
+	
+	<p><a href="mathsbml-images/enzymedotxml.gif" style="font-size:14px;">View input file.</a></p>
+	<p>Here <span style="font-family:courier,monospace;font-size:larger;color:blue;">SBMLNDSolve</span>
+	 is used to solve the model for 1 second, and then <span style="font-family:courier,monospace;font-size:larger;color:blue;">SBMLPlot</span>
+	  is used to plot 
+	all model variables on a single graph. The <span style="font-family:courier,monospace;font-size:larger;color:blue;">/.{EK`Reaction2`k -> .1}</span>
+	 is used to set the value of parameter <span style="font-family:courier,monospace;font-size:larger;color:blue;">k</span> in reaction 2, 
+	since it is not defined in the model. </p>
+	<p><img src="mathsbml-images/sbmlread-solveplot.gif" border="1" /></p>		
+	<p>The following illsutrates what happens if we do not set the value of the missing parameter.</p>
+	<p><img src="mathsbml-images/sbmlread-ndsolve-error.gif" border="1" /></p>
+	<p>The line starting with <span style="font-family:courier,monospace;font-size:larger;color:blue;">>>Error</span> is MathSBML catching the missing parameter and telling you that <span style="font-family:courier,monospace;font-size:larger;color:blue;">NSDSolve</span> will probably crash. 
+	The next line, beginning with <span style="font-family:courier,monospace;font-size:larger;color:blue;">"NDSolve::ndnum"</span> is the message generated by Mathematica. The final line, starting with 
+	<span style="font-family:courier,monospace;font-size:larger;color:blue;">"NDSolve[{EK ..."</span> gives the actual call <span style="font-family:courier,monospace;font-size:larger;color:blue;">to NDSolve</span> that failed.</p>
+	
+	</td>
+</tr>
+<!-- Go to the Top Button -->
+<tr><td ><a  href="#TopOfPage">Go to the top of this page</a></td></tr>
+<!-- End of Go to the Top Button -->
+
+<tr>
+	<td>
+<a name="native" ></a>
+	<hr/>	
+	<h2>Example 8: Read, then solve and plot using native functions.</h2>
+	
+	<p><a href="mathsbml-images/enzymedotxml.gif" style="font-size:14px;">View input file.</a></p>
+	<p><img src="mathsbml-images/sbmlread-plotlegend.gif" border="1" /></p>		
+	</td>
+</tr>
+
+<!-- Go to the Top Button -->
+<tr><td ><a  href="#TopOfPage">Go to the top of this page</a></td></tr>
+<!-- End of Go to the Top Button -->
+
+<tr>
+	<td>
+<a name="autoplot" ></a>
+	<hr/>	
+	<h2>Example 9: Read, then solve and plot using automated options in SBMLRead.</h2>
+	
+	<p><a href="mathsbml-images/sbmlread-enzyme1.gif" style="font-size:14px;">View input file.</a> - Note that this is a different imput file from the 
+	earlier versions because the parameter k in reaction 2 is set in the model!</p>
+	<p><img src="mathsbml-images/sbmlread-autoplot.gif" border="1" /></p>	
+	
+	<p>Observe that there is an extra field - 
+	<span style="font-family:courier,monospace;font-size:larger;color:blue;">
+	SBMLNumericalSolution</span> - in the return value from SBMLRead.
+	</p>	
+	</td>
+</tr>
+
+
+
+
+
+<!-- Go to the Top Button -->
+<tr><td><hr/><a  href="#TopOfPage">Go to the top of this page</a></td></tr>
+<!-- End of Go to the Top Button -->
+
+		
+</table>
+
+</body>
+</html>
+

@@ -1,0 +1,128 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the units of initial amounts -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Thu, 22 May 2003 06:34:18 &#45;0700 -->
+<!--X-Message-Id: 1053599580.23556.0.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 16076.29219.900890.916131@erato1.cds.caltech.edu -->
+<!--X-Reference: 1053593045.4573.30.camel@senin.e&#45;cell.org -->
+<!--X-Reference: 3ECC9983.7080008@tu&#45;bs.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the units of initial amounts</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00221.html">Date Prev</A>][<A HREF="msg00223.html">Date Next</A>][<A HREF="msg00224.html">Thread Prev</A>][<A HREF="msg00211.html">Thread Next</A>][<A HREF="maillist.html#00222">Date Index</A>][<A HREF="threads.html#00222">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the units of initial amounts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the units of initial amounts</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 22 May 2003 22:33:24 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi Joerg,
+
+(did you get your memo-pad? ;)
+
+&gt; &gt; (1) In reality it is a natural number in the cell.     It is exact, and is better to 
+&gt; &gt;       support 'exact' methods such as Gillespie. 
+&gt; 
+&gt; Most models concern not one specific cell, but the "average" cell. In 
+&gt; this case even fractional molecule counts make sense.
+
+I agree that in practice it is useful to allow real numbers as averages in a population.   
+
+But mathematically it is problematic unless the model is completely linear.  
+What if there are at least two groups in the population which have different
+'average' concentrations of a specie, say, 10mM and 20mM.    The average over
+the whole population, 15mM yields completely different simulation result from the reality.
+Anyways I agree it is necessary in practice.
+
+
+&gt; &gt; (2) 'substance' is the primary representation, and concentration is secondary.
+&gt; &gt;       This can be understood by the fact that the simplest way to have support for changing
+&gt; &gt;       volume is to store the value as 'substance', not 'concentration'.
+&gt; &gt; 
+&gt; &gt; The input/output of the simulator can either be concentration or the exact number, 
+&gt; &gt; but the better internal representation by multi-compartment simulation is not
+&gt; &gt; concentration.    
+&gt; &gt; 
+&gt; 
+&gt; Remember that SBML is a standard for the exchange of models, not for the 
+&gt; internal representation of the model. This point was made several times 
+&gt; at the Florida meeting. 
+
+It is what I have been saying too!
+
+But still I think the whole (at least computational cell biology)
+community is moving toward counts rather than concentration as the
+stochastic simulation methods are being accepted.
+
+
+-Kouichi
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00197" HREF="msg00197.html">[sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00205" HREF="msg00205.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00221.html">Re: [sbml-discuss] Remaining issues for SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00223.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00224.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00211.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00222"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00222"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

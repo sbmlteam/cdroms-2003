@@ -1,0 +1,259 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] DWG: Revised Proposal -->
+<!--X-From-R13: Dnycu Unhtrf <enycu.tnhtrfNrzy&#45;e.ivyyn&#45;obfpu.qr> -->
+<!--X-Date: Mon, 22 Sep 2003 07:23:32 &#45;0700 -->
+<!--X-Message-Id: 98E2B2B8&#45;ED07&#45;11D7&#45;AC4E&#45;000A95776A76@eml&#45;r.villa&#45;bosch.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000001c380fd$417bf5f0$7131353e@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] DWG: Revised Proposal</TITLE>
+<LINK REV="made" HREF="mailto:ralph.gauges@eml-r.villa-bosch.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00641.html">Date Prev</A>][<A HREF="msg00643.html">Date Next</A>][<A HREF="msg00641.html">Thread Prev</A>][<A HREF="msg00643.html">Thread Next</A>][<A HREF="maillist.html#00642">Date Index</A>][<A HREF="threads.html#00642">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] DWG: Revised Proposal</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A> '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] DWG: Revised Proposal</LI>
+<LI><em>From</em>: Ralph Gauges &lt;<A HREF="mailto:ralph.gauges@eml-r.villa-bosch.de">ralph.gauges@eml-r.villa-bosch.de</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 22 Sep 2003 16:18:11 +0200</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+On Montag, September 22, 2003, at 01:32  Uhr, Andrew Finney wrote:
+
+&gt; Ralph
+&gt;
+&gt; Thanks for your proposal.
+&gt;
+&gt; Comments:
+&gt;
+&gt; The separation of layout from rendering provide us
+&gt; with a mechanism for encoding a style sheet
+&gt; approach to rendering given that more than one SBML
+&gt; component, e.g. species, can refer to the same render group.
+&gt;
+&gt; I suggest that we consider having default render group identification
+&gt; mechanism so that its possible to plug-in a render section
+&gt; into a model without having to specify the render groups
+&gt; on the glyph structures.  This makes sense to me since
+&gt; most diagrams will have a consistent look.
+&gt;
+
+This is a very good idea and I think we can easily incorporate it into 
+the next version.
+Since I already stated several times, the render document is in a very 
+early stage and a lot is still missing. We just posted it to get some 
+feedback, wether the general approach would be considered good.
+
+
+&gt; for example:
+&gt;
+&gt; &lt;species id="x"/&gt;
+&gt; ...
+&gt; &lt;speciesGlyph species="x" x="20" y="10" w="50" h="50"&gt;
+&gt; ...
+&gt; &lt;renderGroup defaultType="species"&gt;
+&gt; 	&lt;shape shape="StandCircle"&gt;
+&gt; 		&lt;transformation sx="50.0" sy="50.0"/&gt;
+&gt; 	&lt;shape/&gt;
+&gt; &lt;/renderGroup&gt;
+&gt;
+&gt; Obviously this mechanism needs to relate to roles etc.
+&gt; In the longer term the render element could be in a different
+&gt; document from the glyph elements.  To make this work we probably
+&gt; do need flexible bounding boxes for text/nodes.
+&gt;
+&gt; Is there provision for a background color for the whole diagram?
+&gt;
+
+As of now, there is none and I guess the only place, where it could go 
+is with the layout object in the layout part. This will probably have 
+to get a fillstyle attribute.
+
+
+&gt; Is there any reason why the layout and rendering elements have
+&gt; to be in a separate namespace?  I don't have opinion on this
+&gt; but what are your reasons?
+&gt;
+
+First I had thought about putting them into separate namespaces, but I 
+thought that this was changed and they are in the same namespace.
+I just had a look at the document and they are in the same namespace as 
+the first sentence in the namespace section states. This section will 
+be dropped once the documents are joined. For the time being until the 
+render document has caught up, we would like to hold them separate (the 
+documents not the namespaces).
+
+
+&gt; I'm concerned that the role attribute is building a fixed
+&gt; controlled vocabulary (CV) that can't be easily extended modified.
+&gt; In addition this information has much wider use beyond just layout
+&gt; information (although I acknowledge that it may be first used for real
+&gt; in layout processing).  I think we need to think carefully about
+&gt; how we tackle the use of CVs in SBML considering existing work
+&gt; by groups such as BioPAX.  IMHO It'll be better if 'role'
+&gt; is integrated into SBML if the layout structures end up in a separate
+&gt; namespace.  There is a real danger that we could have overlapping CVs 
+&gt; in
+&gt; SBML documents.
+&gt;
+
+I totally agree, but right now, I don't think we can do without the 
+role attribute.
+
+
+&gt; I suggest that you, if there is time, draw the UML diagram(s) for your
+&gt; proposals,
+&gt; in our experience this make understanding XML standard proposals easier
+&gt; on the reader.
+&gt;
+
+I don't know much about UML, but I think I can do that as soon as I 
+find the time. Hopefully we will get it into the next version as well.
+
+
+
+&gt; Forgive my ignorance but what is an affine transformation?
+&gt;
+
+I guess it is rather my bad english than your ignorance. I don't even 
+know if it is the correct english term for what I mean. basically 
+instead of giving translation, rotation and scaling in separate 
+attributes, you specify a transformation matrix which combines those 
+three basic transformation. Actually I think there are some 
+transformation that you can not get by translating, rotating and 
+scaling alone, but most people should be happy with the 
+SimpleTransformation as we call it for now.
+
+&gt; I tend to agree with Herbert that how you tackle text and font
+&gt; sizing is very important to the success of any layout proposal.
+&gt; Again I haven't picked up the following from your documents
+&gt; perhaps I have overlooked something or got confused.
+&gt;
+&gt; What text by default if any is displayed with compartments, reactions
+&gt; and species
+&gt; or are labels explicit?
+&gt; If labels are explicit where are they specified?
+&gt; By default what font and font size are used to render this text?
+&gt; If there is a default mechanism how are the defaults set?
+&gt;
+
+Those are all good questions and we already came up with some of them 
+ourselves, but the solution does not seem to be so easy. (See below.)
+
+
+&gt; IMHO the render group mechanism needs to support implicit text labels
+&gt; taken from the SBML component's id or name.  The render group should
+&gt; specify the font and font size for these text labels.
+&gt; The render group should be able to specify that the text is or isn't
+&gt; displayed at all.
+&gt; The glyph should specify whether the bounding box is flexible or not.
+&gt; If we don't do something like this scheme then you have to have a 
+&gt; render
+&gt; group
+&gt; (or something) for each sbml component displayed.
+&gt;
+
+This is all stuff, we have not had time to really go into yet since it 
+does not seem to be trivial. If for example you want to add some text 
+to an object that does not only consist of one line, but several, how 
+do you arrange them. Or if you want to have some circle that has some 
+text below and above and the text should be centered.
+I guess there will unfortunately be no way around making up a whole 
+schema for relative positioning of objects. The most simple form of 
+which could be a set of vertical and horizontal boxes that lay out 
+their components in the respective direction. Something like the Java 
+BoxLayout if you are familiar with that. (I guess most any other GUI 
+will have something similar.)
+Another issue is the flexibility of bounding boxes specified in the 
+layout part. If we would allow those boxes to be flexible, would this 
+not defy their purpose? If you change their size with the font that get 
+drawn inside, some of the components might end up overlapping and the 
+whole layout that was intended messed up.
+I think implicit text labels are important and we have to think about 
+some way to get them into this proposal. We already talked about this 
+here, but could not come up with a satisfying solution since we ran 
+into some problems. Lets say for example you wanted to have a default 
+rendering for species references that draws the name of the species and 
+below the name, the name of its compartment. How would you specify 
+something like that? One way would be to introduce another vocabulary 
+for some often used model attributes like the names of all the 
+components. But somehow this does not seem to be the optimal solution. 
+Sorry, but as I said, we have not been able to come up with anything 
+good for that problem yet. On the other hand, those are really things 
+we have not been talking about much since it didn't seem relevant for 
+this first draft.
+So any ideas to that are more then welcome.
+
+Thanks for the feedback and we hope that we will have some or most of 
+those issues resolved with the next version.
+
+Ralph
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00643" HREF="msg00643.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00641" HREF="msg00641.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00641.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00643.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00641.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00643.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00642"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00642"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

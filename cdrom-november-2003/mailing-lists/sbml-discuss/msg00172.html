@@ -1,0 +1,167 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] COMP &#45;&#45; Submodels and Modules -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 20 May 2003 13:01:00 &#45;0700 -->
+<!--X-Message-Id: 000a01c31f0a$815b6390$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: XFMail.20030520213958.martin.ginkel@epost.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] COMP -- Submodels and Modules</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00171.html">Date Prev</A>][<A HREF="msg00173.html">Date Next</A>][<A HREF="msg00170.html">Thread Prev</A>][<A HREF="msg00177.html">Thread Next</A>][<A HREF="maillist.html#00172">Date Index</A>][<A HREF="threads.html#00172">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] COMP -- Submodels and Modules</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;SBML&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] COMP -- Submodels and Modules</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 20 May 2003 21:00:41 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Martin 
+
+Thanks for the explaination.
+
+In my proposal I didn't have a module concept.
+Instead I simply allowed a model to
+have an optional set of ports which may or may not
+be respected by a given model composition context.
+
+I guess I would extend a submodel definition
+to have an attribute (perhaps "modular" or "enforceInterface") which
+allowed a model to state that its interface must be
+respected.
+
+This allows 3 types of submodels:
+
+a) submodels without interfaces
+b) submodels with interfaces that can be ignored
+	completely or partially
+c) modules with interfaces that must be respected.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+Systems Biology Workbench Development Group
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of 
+&gt; martin.ginkel@epost.de
+&gt; Sent: 20 May 2003 20:40
+&gt; To: Andrew Finney
+&gt; Cc: SBML-Discuss
+&gt; Subject: RE: [sbml-discuss] COMP -- Submodels and Modules
+&gt; 
+&gt; 
+&gt; 
+&gt; On 20-May-2003 Andrew Finney wrote:
+&gt; &gt; Can you guys describe the modules concept in more
+&gt; &gt; detail for the uninitiated please?
+&gt; &gt; 
+&gt; &gt; Whats the difference between moduoles and submodels?
+&gt; 
+&gt; OK, definition of terms:
+&gt; 
+&gt; Submodel: separated part in an SBML model that contains an 
+&gt; own namespace for 
+&gt;           it's elements but does not define an interface.
+&gt;           For connections to the parent model or other 
+&gt; submodels you can
+&gt;           establish links to all inner parts of the submodel 
+&gt; by (possibly
+&gt;           hierarchical) model references.
+&gt; 
+&gt; Module:   also separated part (as the submodel). But defines 
+&gt; an accessible
+&gt;           interface. The parts in the interface can be safely linked
+&gt;           to other modules.
+&gt;           Everything else is hidden and can be changed by the modeler
+&gt;           without notice. This allows for different 
+&gt; implementations (detail)
+&gt;           or model improvements without breaking other 
+&gt; 'applications' of the 
+&gt;           module.
+&gt; 
+&gt;         Clear enougth?
+&gt;         Martin
+&gt; 
+&gt; 
+&gt; -- 
+&gt; +-[Martin 
+&gt; Ginkel]-------------------[<A  HREF="mailto:martin.ginkel">mailto:martin.ginkel</A>(at)epost.de]-+
+&gt; |                          Immermannstr. 9, D-39108 
+&gt; Magdeburg, Germany |
+&gt; | It's all ... pshycology. -- Esme W.                         
+&gt;          |
+&gt; +-[tel: +49 391 
+&gt; 7347360]-------------[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+&gt; 
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00170" HREF="msg00170.html">RE: [sbml-discuss] COMP -- Submodels and Modules</A></STRONG>
+<UL><LI><EM>From:</EM> martin.ginkel@epost.de</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00171.html">FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00173.html">[sbml-discuss] Contacting Bioinformatics?</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00170.html">RE: [sbml-discuss] COMP -- Submodels and Modules</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00177.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00172"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00172"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

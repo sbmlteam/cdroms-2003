@@ -1,0 +1,212 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] COMP &#45;&#45; Model Composition SIG Announcement -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Tue, 20 May 2003 06:29:31 &#45;0700 -->
+<!--X-Message-Id: 1053437032.7161.495.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: XFMail.20030520105403.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00162.html">Date Prev</A>][<A HREF="msg00164.html">Date Next</A>][<A HREF="msg00162.html">Thread Prev</A>][<A HREF="msg00168.html">Thread Next</A>][<A HREF="maillist.html#00163">Date Index</A>][<A HREF="threads.html#00163">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 20 May 2003 22:23:52 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>, SBML-Discuss &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello Martin,
+
+
+I am definitely interested in participating in the COMP SIG.
+
+
+&gt; - 'Submodels and Modules' or the story about defined Interfaces.
+&gt;   This is of course a controversal point but:
+&gt;   I would like to include both approaches. Whether the biologists will
+&gt;   use this or not can not be answered from the view of a programmer.
+&gt; 
+&gt;   &lt;IMHO&gt; This is a question of software engineering: Large models are
+&gt;   large software projects which will be tedious to maintain without 
+&gt;   interfaces. But sofware engineering is learned by doing your own
+&gt;   failures and experiencing the problems, not by lectures of geeks and 
+&gt;   reading books &lt;/IMHO&gt;
+
+Ok please let me repeat what I've been saying to push it into the ML archive.
+I think this is the first time I say something on this topic on this ML, apart from
+some unofficial communications.
+
+First of all, this can be a bit too philosophical, but I want to recall biology is a science 
+of exception.     Many biological works have their values in finding
+and proposing certain biological phenomena that cannot be explained by existing
+understandings.   I believe this will not change, at least, in this century.
+Perhaps we could get something by firmly assuming the structure of the system
+if the system is physical, or maybe biochemical, but it is definitely not the case for
+cell biology.
+Secondly, the cell is not a human-engineered system, although a major focus
+of systems biology is to extract system structures from the living systems 
+that is analogous to, and can be understood by, engineering discipline.
+(When it comes to philosophy, Valera and Maturana defined a living entity as
+ 'a system without input and output'... anyways.)
+
+Being more practical, I definitely agree with Martin that constructing non-trivial biological
+model is a software engineering.   Actually I expect no major objection from people with 
+software engineering background if I say we can learn many from Brooks, RUP,
+and even XP.
+
+I also agree that interface is indispensable to clean modeling, but I suspect benefit of
+having explicit interface specie/reaction definitions in SBML.   
+Because:
+
+(1) Species (and Reactions) are already working as interfaces.   
+      As far as I can imagine, sound practices of SBML can use elements inside Reaction
+      or Rule if there are something that should be hidden.  
+       (this might invoke flaming.. but I want to hear your opinions..)
+      If the reaction scheme has some assumptions that hinder changing values of intermediate
+      variables (species), then it can be encapsulated in the proposed 'reaction mechanism' 
+      element.   (although I don't know the current status of the proposal)
+
+(2) As long as Species represent molecular species, as I wrote above, there are always
+      possibilities of branching by factors *external* to the sub-model.    (adding a new reaction,
+      changing context)    Therefore to maximize reusability  of the model, every Species should
+      be public.   And making public does not raise a problem if (1) can be agreed.
+
+(3) Putting everything in public is not so dangerous, contrary to popular belief.
+       If a programming language analogy is allowed here, SBML is more like a dynamically
+       typed language, rather than static compiled languages such as C++.
+       My experience with Python, in which basically everything is public, is not problematic
+       at all even for relatively large software projects (say, ~10k lines), but 
+       rather very productive.   Simpler the better.
+       
+
+
+
+&gt; - Finally `Hello, is there anybody out there ...':
+&gt;   Which tools for Sysbio besides Promot support composition and how, 
+&gt;   to which extent ...
+&gt;   I would like to learn more about the different concepts we 
+&gt;   should support in the proposal.
+
+
+I don't know if this helps, because E-Cell &lt;-&gt; SBML converter (which is under development by 
+takeshi) will involve significant ontological conversions (unfortunately), but 
+here is a brief overview of the structure of the current version of E-Cell (E-Cell 3).   
+It is slightly changed from the previous E-Cell 1, and most of the major changes
+come from a need to conduct multi-algorithm, multi-timescale simulation.
+For example, a model of discrete Gillespie-Gibson scheme with a micro-second timescale and
+a Michaelis-Menten type of continuous differential equation model of which 
+typical timescale is milli-second can compose a single model.   
+(The object-model can be further simplified in future versions.)
+
+It has three fundamental object classes, Variable, Process, and System.
+Obviously Variable objects represent state variables, and a Process object represent
+(either discrete or continuous) changes in values of the Variable objects.
+(No Reaction or Substance, these can be viewed as subclasses of Process and Variable.
+ I think it is rather standard object-scheme in generic simulators, such as in lower-level
+ layers of ProMoT?  This change was necessary to make it a cell biology simulator, 
+ rather than just a biochemical simulator.)
+
+System class is a container of these three classes of objects.   A System can contain
+other Systems, and the model can be hierarchical.  And of course, everything is public :)
+
+System has three subclasses, LogicalSystem, VirtualSystem and CompartmentSystem.
+
+CompartmentSystem obviously represent a compartment.   It has a volume value, and
+a full set of the list of the three fundamental objects.
+LogicalSystem also has the list of Variables, Processes, and sub-Systems, but does not
+have a volume.  If volume is requested it returns a volume value of the super (including) 
+system.   VirtualSystem has the list of Processes and sub-Systems, but shares the list of
+Variables with its super-system in addition to volume.
+
+In addition to the hierarchical structure constructed by System objects, each System 
+and Process must belong to a 'Stepper' object.    A Stepper implements a specific
+simulation algorithm with its own step sizing method.    A Stepper can be either
+discrete or continuous.   If there are more than one Steppers in a model, discrete-event
+scheduling is conducted, and integration errors in communications between 
+continuous&lt;-&gt;discrete and continuous&lt;-&gt;continuous Steppers are controlled by
+Hermite polynomial interpolants.  A Variable can be shared by multiple Steppers.
+Preliminarily we found that a composite simulation of Gillespie and ODE sub-models
+can show 100-1000 times better performance than traditional synchronous simulation
+methods.    
+
+More detailed description may be OT to this ML.    Please visit <A  HREF="http://ecell.sf.net">http://ecell.sf.net</A>.
+A slightly more detailed documentation is available upon request.
+
+
+
+-Kouichi
+
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00168" HREF="msg00168.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+<UL><LI><EM>From:</EM> martin.ginkel@epost.de</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00162" HREF="msg00162.html">[sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00162.html">[sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00164.html">[sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00162.html">[sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00168.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00163"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00163"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

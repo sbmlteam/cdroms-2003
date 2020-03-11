@@ -1,0 +1,73 @@
+
+
+                              Gepasi 3
+               (Bio)chemical Kinetics Simulation Software
+
+Copyright (C) Pedro Mendes 1989, 1992, 1993, 1996-1999, 2002. All Rights 
+Reserved. Portions of the code are Copyright (C) 1985-1998 Microsoft 
+Corporation. The associated program "gnuplot" is Copyright (C) 1986-1993,
+1998, 1999 Thomas Williams, Colin Kelley and many others.
+
+
+                          GEPASI 3 END USER
+                          LICENSE AGREEMENT
+
+GRANT. Pedro Mendes (Author) hereby grants to you (User) a non-exclusive
+license to use Gepasi 3 (Software) and accompanying documentation on the
+terms below.
+
+The User may: use the Software on any computer; make an unlimited number
+of copies of the Software for personal use; redistribute the Software
+provided this is done solely by transfer of unmodified copies of the
+files gep3xxi.zip or gep3xxa.zip (where ‘x’ are numerals between 0 and
+9) or the distribution floppy disks, no money is charged for it, it is
+not included as a part of any commercial package, or used or distributed
+in support of a commercial service without prior express written
+permission from the Author. 
+
+In addition the user may publish texts that include or comment results 
+obtained with the Software but only if these results or comments are 
+accompanied by a reference to the articles describing the Software 
+((a) Mendes, P. (1993) GEPASI: a software package for modelling the
+dynamics, steady states and control of biochemical and other systems.
+Comput. Appl. Biosci. 9, 563-571; (b) Mendes, P. (1997) Biochemistry by
+numbers: simulation of biochemical pathways with Gepasi 3. Trends
+Biochem. Sci. 22, 361-363; (c) Mendes P. & Kell D.B. (1998) Non-linear
+optimization of biochemical pathways: applications to metabolic 
+engineering and parameter estimation. Bioinformatics 14, 869-883)
+
+The User may not: permit other individuals to use the Software except
+under the terms listed above; translate, reverse engineer, decompile,
+disassemble the Software; rent or lease the Software; or remove any
+proprietary notices on the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+PURPOSE. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DAMAGES 
+WHATSOEVER INCLUDING DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, 
+LOSS OF BUSINESS PROFITS OR SPECIAL DAMAGES, EVEN IF THE AUTHOR 
+HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+The Software is not a supported product. The Author makes no commitment 
+or accepts liability to address any problems that may be encountered in
+using it.
+
+TITLE. Title, ownership rights, and intellectual property rights in and
+to the Software shall remain in the Author. The Software is protected by
+the copyright laws of the United States of America and international 
+copyright treaties.
+
+TERMINATION. The license will terminate automatically if the User fails
+to comply with the limitations described above. On termination, the User
+must destroy all copies of the Software and Documentation.
+
+MISCELLANEOUS. This Agreement represents the complete agreement
+concerning this license between the parties and supersedes all prior
+agreements and representations between them. It may be amended only by a
+writing executed by both parties. If any provision of this Agreement is
+held to be unenforceable for any reason, such provision shall be
+reformed only to the extent necessary to make it enforceable.
+
+Microsoft is a registered trademark of Microsoft Corporation.
+

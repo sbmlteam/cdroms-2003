@@ -1,0 +1,237 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] [Hybrid] Re: Hybrid Models Working Group -->
+<!--X-From-R13: Hvwnl Enenfjng <fnenfjngNpfr.cfh.rqh> -->
+<!--X-Date: Wed, 18 Jun 2003 03:59:01 &#45;0700 -->
+<!--X-Message-Id: 3EF045B1.5060409@cse.psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000801c331bc$23794a70$458cc593@herts.ac.uk -->
+<!--X-Reference: 1055521319.4051.57.camel@senin.e&#45;cell.org -->
+<!--X-Reference: 3EEA0129.1060204@research.ge.com -->
+<!--X-Reference: 3EEC54AD.8080204@cse.psu.edu -->
+<!--X-Reference: 1055702811.4051.223.camel@senin.e&#45;cell.org -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</TITLE>
+<LINK REV="made" HREF="mailto:saraswat@cse.psu.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00501.html">Date Prev</A>][<A HREF="msg00503.html">Date Next</A>][<A HREF="msg00465.html">Thread Prev</A>][<A HREF="msg00503.html">Thread Next</A>][<A HREF="maillist.html#00502">Date Index</A>][<A HREF="threads.html#00502">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</LI>
+<LI><em>From</em>: Vijay Saraswat &lt;<A HREF="mailto:saraswat@cse.psu.edu">saraswat@cse.psu.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 18 Jun 2003 06:57:53 -0400</LI>
+<LI>Cc: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+[Removed the folks who were explicitly cc'ed since I think all are on 
+the sbml-discuss list.]
+
+Kouichi Takahashi wrote:
+
+&gt;Hi Vijay,
+&gt;
+&gt;
+&gt;Thank you for your excellent overview of the hybrid systems in computer science.
+&gt;In computer science 'hybrid' usually means mixing continuous/discrete components.
+&gt;This is undoubtedly the most important 'hybrid' among many possible 'hybrids' I suggested
+&gt;in the previous messages.
+&gt;
+&gt;One serious cultural dissociation between 'computer science' and 'computational sciences'
+&gt;has been that in computer science simulation usually means running discrete-event or
+&gt;discrete-time (such as conventional cellular automata) systems or logic programming,
+&gt;while in computational science it almost always means numerically 
+&gt;solving differential equations.
+&gt;
+That is, if you ignore the work in the last ten years that I cited 
+earlier...But yes, your basic point is valid, the interest in combining 
+discrete and continuous systems stems from the early 90s (at least to my 
+knowledge).
+
+&gt;My impression is (though I'm not an expert) that CS people tend to prefer induction
+&gt;to dynamic simulation.   For example, some people are using temporal logic and
+&gt;collapsed automata to verify propositions on dynamic models.   (Of course some
+&gt;like simulation, and some computational scientists prefer analytical solutions to
+&gt;brute force computation. )
+&gt;
+Not quite sure where you are leading. Perhaps the point to make is that 
+there is a lot of interest in computer science to using symbolic 
+techniques for reasoning about programs, and not just "executing" them. 
+Obviously, wherever applicable symbolic techniques (e.g. model-checking) 
+can be very powerful and should be used.
+
+&gt;As maria gave a good summary, Zeigler's discrete event simulation theory was
+&gt;extended to include continuous phenomena into the discrete-event world view
+&gt;in late 90's.   (Actually it was published in 2000.) A virtue of his framework, as
+&gt;maria pointed out, is that he makes a clear distinction between model and simulator.
+&gt;
+Another remarkable point about Zeigler's book is the almost complete 
+lack of references to the Hybrid Systems or synchronous programming work 
+(there are a couple in Chapter 7) -- e.g. I couldn't find references to 
+Alur, Henzinger, Dill, Sastry, Kohn, Nerode, Antsaklis, Berry, 
+Halbwachs, Caspi....
+
+(Almost) All programming language research has made a clear distinction 
+between programs (syntax), their execution (operational semantics) and 
+their meaning (denotational semantics) since the 60s. Logic, the basis 
+of knowledge representation and modeling, has made a clear distinction 
+between syntax and semantics at least since the days of Tarski.....
+
+&gt;Another possible view, however, is to see simulation algorithms as indivisible
+&gt;parts of the models.    Every simulation model reflects its modeler's understanding
+&gt;of certain real phenomenon, and it can be thought that some part of the 'understanding'
+&gt;is implicitly coded in the computational procedure, or the simulation algorithm.
+&gt;The same model can produce completely different results when driven by different
+&gt;algorithms, and as we better understand the nature of the phenomenon, we becomes
+&gt;to be able to create more suitable algorithms, or just to choose more appropriate algorithms
+&gt;correctly.
+&gt;
+&gt;I don't think these two views conflict.   These are just parallel understanding of the
+&gt;same thing.
+&gt;
+I think they really conflict around inter-operability. If you want a 
+notation that can be used for modeling, simulation, diagnosis, design -- 
+you are perforce going to require a semantics for this notation 
+independent of the particular reasoner you are using. Then you can 
+establish theorems about whether your reasoner is sound or complete or 
+has other properties attractive to the theoretician or to the user. 
+Similarly, if your notation is useful, it is likely going to have 
+multiple implementations done by different groups around the world using 
+different techniques. Once again you are going to require a semantics 
+("gold standard") independent of a particular implementation so the 
+groups can agree that their different techniques yield the same result.
+
+I would say that one of the important lessons of the last fifty years of 
+research in computer science and languages is the need to separate out a 
+mathematical description of the notation from an algorithmic description 
+of the processing of that notation. This is not easy. (For instance, 
+this is still very hard for notations, e.g. Java, that seek to combine 
+imperative change with concurrency.) It forces a tremendous amount of 
+discipline on the language designer which is almost always enormously 
+beneficial to the designer and the users of the language. And it is 
+usually the basis for the application of reasoning techniques (such as 
+model-checking).
+
+So I would strongly encourage you to think hard about the semantics of 
+your language. The fundamental question to ask is:  Can a user of your 
+notation understand whether  the particular program s/he is writing (in 
+your notation) is "correct" for the situation at hand, independent of 
+his/her knowledge of the details of your execution engine ("operational 
+semantics")?
+
+&gt;Recent versions E-Cell deeply reflects the latter view. Also, that is why I distinguished
+&gt;'hybrid' and 'multi-algorithm' simulation frameworks in my previous message.   
+&gt;By 'multi-algorithm' I mean to be able to have multiple components (sub-models) that
+&gt;are sometimes specially designed for specific types of algorithms, and driven by 
+&gt;these algorithms.   
+&gt;
+There is also a long and honorable tradition in reasoning to combine 
+multiple inferencing engines (usually for multiple notations) into a 
+single one, e.g. Nelson/Oppen (1979), Shostak (1984). (A good set of 
+slides for this material may be found at 
+<A  HREF="http://www.csl.sri.com/users/tiwari/slides/shostak.pdf">http://www.csl.sri.com/users/tiwari/slides/shostak.pdf</A> -- also has an 
+annotated bibliography.)
+
+&gt;I believe this is one of the most important abilities of cell biology simulators, and that is
+&gt;not necessarily required for biochemical simulators.
+&gt;For example, a model of gene expression in form of S-System or GMA canonical
+&gt;differential equations, which is often solved by the special ESSYNS algorithm,
+&gt;cannot be run with Gillespie algorithm.   Or, a fluid dynamics model of 
+&gt;protoplasmic streaming  (which often involves solid-fluid interaction) described as a set of
+&gt;navie-stokes equations cannot be simply ported to ODE solvers in an efficient form.
+&gt;
+Equally true for physical modeling -- indeed for the modeling of any 
+complex phenomena, be it in the physical, biological or artificial 
+worlds (e.g. financial, online...).
+
+&gt;Models include algorithms.
+&gt;
+Sorry, I fundamentally disagree on this for the reasons cited above.
+
+Though perhaps a point of agreement is that annotations to models may 
+certainly include references to preferred or known execution engines 
+that can be used with them. i.e. notes on the usage of the model. This 
+"pragmatic" view is perhaps a way to bridge the "conceptual" gap.
+
+&gt;Importance of the 'continuous/discrete hybrid' of course does not decreases
+&gt;here.  Rather the multi-algorithm framework is-a hybrid (I mean it is a subclass),
+&gt;and it is indispensable to elegantly design and implement it.
+&gt;
+Certainly the choice of the phrase "Hybrid Systems" to name the sub-area 
+we are talking about is highly unfortunate: each of the words is widely 
+applicable, as well as the combination. But given that this choice is 
+made, I would recommend not fighting it, but looking for other technical 
+names to name different concepts.
+
+Best,
+Vijay.
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00503" HREF="msg00503.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00464" HREF="msg00464.html">[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Vijay Saraswat &lt;saraswat@cse.psu.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00465" HREF="msg00465.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00501.html">RE: [sbml-discuss] RE: [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00503.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00465.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00503.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00502"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00502"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

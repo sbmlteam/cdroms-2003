@@ -1,0 +1,125 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Survey results -->
+<!--X-From-R13: Qyvss Eunssre <funssreNfunssre.pf.ig.rqh> -->
+<!--X-Date: Thu, 17 Apr 2003 10:00:01 &#45;0700 -->
+<!--X-Message-Id: Pine.LNX.4.53.0304171316420.22129@shaffer.cs.vt.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 16023.21973.58319.672707@erato1.cds.caltech.edu -->
+<!--X-Reference: 3E9C1FDC.1702.96B1882E@localhost -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Survey results</TITLE>
+<LINK REV="made" HREF="mailto:shaffer@shaffer.cs.vt.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00103.html">Date Prev</A>][<A HREF="msg00105.html">Date Next</A>][<A HREF="msg00102.html">Thread Prev</A>][<A HREF="msg00100.html">Thread Next</A>][<A HREF="maillist.html#00104">Date Index</A>][<A HREF="threads.html#00104">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Survey results</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Survey results</LI>
+<LI><em>From</em>: Cliff Shaffer &lt;<A HREF="mailto:shaffer@shaffer.cs.vt.edu">shaffer@shaffer.cs.vt.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 17 Apr 2003 13:28:16 -0400 (EDT)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+I didn't notice there was a survey so didn't vote. Please put me down as
+in favor of default compartments (if I understand the wording... this
+sounds sort of like a double negative to me).
+
+We need to be thinking ahead a bit here. The fact is that SBML is growing
+and will grow more. There's basically two philosophies that such a
+language can take: either its the union of everyone's needs or its the
+intersection. I sense that this tension has always been understood, and
+was initially unresolved or perhaps initially resolved in the favor of the
+intersectionists. But recently the trend has very clearly moved in favor
+of making it the union of modeling needs, and this is going to become
+increasingly more so as we go into SBML Level 3.
+
+It is a fundamental fact that we have to get used to the idea that there
+are going to be features in the language such that soon EVERY model will
+not be using all of the features. Compartments is perhaps our first clear
+example of such a feature: some models need them now but many do not. We
+do not want to set a bad precedent here. I think its a bad idea to require
+those models WITHOUT any notion of compartments to put in a hack to
+satisify that feature's requirements. Its especially unmotivating to hear
+"its not that much work". Its not a sustainable precedent. Our models
+should be saying which subset of features they need. They should not be
+hacking around features that they don't need. For a model without a
+concept of compartments to create a compartment to satisfy the syntax of
+that feature is a poor idea in my opinion.
+
+On the other hand, we could have a features list, and a non-compartment
+model could be required to put in a statement like:
+
+&lt;feature compartments FALSE&gt;
+
+                -- Cliff
+
+--
+Cliff Shaffer, Associate Professor          Phone: (540) 231-4354
+Department of Computer Science              Email: shaffer@cs.vt.edu
+Virginia Tech, Blacksburg, VA 24061-0106    WWW:   www.cs.vt.edu/~shaffer
+-------------------------------------------------------------------------
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00099" HREF="msg00099.html">[sbml-discuss] Survey results</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00102" HREF="msg00102.html">Re: [sbml-discuss] Survey results</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Pedro Mendes&quot; &lt;mendes@vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00103.html">Request for a count of SBML Forum attendees BY FRIDAY</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00105.html">Agenda items for SBML Forum 11-12th May</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00102.html">Re: [sbml-discuss] Survey results</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00100.html">RE: [sbml-discuss] Survey results</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00104"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00104"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

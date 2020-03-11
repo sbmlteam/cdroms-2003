@@ -1,0 +1,198 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Release Notice: libsbml 1.0.0 -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: by paradigm (mbox mhucka)(with Cubic Circle's cucipop (v1.31 1998/05/13) Thu Mar 13 09:58:33 2003) -->
+<!--X-Message-Id: 1047577054.20089.1714.camel@fennel.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200303130406.h2D46Bv13827@xenium.jpl.nasa.gov -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Release Notice: libsbml 1.0.0</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00069.html">Date Prev</A>][<A HREF="msg00071.html">Date Next</A>][<A HREF="msg00069.html">Thread Prev</A>][<A HREF="msg00071.html">Thread Next</A>][<A HREF="maillist.html#00070">Date Index</A>][<A HREF="threads.html#00070">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Release Notice: libsbml 1.0.0</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>, <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Release Notice: libsbml 1.0.0</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 14 Mar 2003 02:38:08 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi Ben,
+
+I'm glad to know the availability of the SBML C library.  We have been waiting for this actually.
+
+As we discussed a bit in the previous meeting, we would like to help something to
+wrap it for Python.   We have a lot of experience in Python C API and Boost Python
+Library (C++ &lt;-&gt; Python interconnecting).
+Actually ecell is now a set of extension modules for Python: 
+ <A  HREF="http://ecell.sf.net">http://ecell.sf.net</A> 
+
+We are going to develop a SBML importer/exporter module for E-Cell.  We will use
+the SBML Python library and EML (E-Cell's XML) submodule of the E-Cell Python Library for it.
+(Probably we will not use XSLT for this because it involves semantic conversions.)
+
+
+-Kouichi
+
+
+&gt;      The SBML library is now available on SourceForge:
+&gt; 
+&gt;        <A  HREF="http://sourceforge.net/projects/sbml/">http://sourceforge.net/projects/sbml/</A>
+&gt; 
+&gt;      The library provides a C API to read SBML L1 (versions 1 and 2)
+&gt; objects from file or in-memory strings into corresponding C structures,
+&gt; manipulate those structures and write them out to files as SBML.
+&gt; Support for SBML level 2 is under active development.
+&gt; 
+&gt;      Some feature highlights include:
+&gt; 
+&gt;        - Complete user manual
+&gt; 
+&gt;          This is currently in plain-text format (in README.txt),
+&gt;          but will soon be converted to LaTeX, Postscript, PDF and HTML.
+&gt; 
+&gt;        - Small memory footprint and fast runtime
+&gt; 
+&gt;          The parser is event-based (SAX2) and loads SBML data into
+&gt;          C structures that mirror the SBML specification.
+&gt; 
+&gt;          The Gepasi generated 100 Yeast file (2Mb; 2000 reactions
+&gt;          <A  HREF="http://www.gepasi.org/gep3sbml.html">http://www.gepasi.org/gep3sbml.html</A>) loads in 1.18s on a
+&gt;          1 GHz AMD Athalon XP and uses 1.4Mb of memory.
+&gt; 
+&gt;        - The API mimics an object-oriented style
+&gt; 
+&gt;        - Fully supports &lt;notes&gt; and &lt;annotation&gt; elements, including XML
+&gt;          namespaces
+&gt; 
+&gt;        - Portable, pure ANSI-C
+&gt; 
+&gt;          The build system uses the GNU Autotools (Autoconf, Automake,
+&gt;          and Libtool) to build shared and static libraries.
+&gt; 
+&gt;          No errors or warnings with 'gcc -ansi -pedantic-errors -Wall',
+&gt;          i.e. ANSI violations are compilation errors, not warnings, and
+&gt;          all other warnings are reported.
+&gt; 
+&gt;        - Uses Apache Xerces-C++ XML library which supports:
+&gt;            - SAX 1 and 2
+&gt;            - DOM 1, 2, and 3
+&gt;            - Full DTD and Schema validation
+&gt;            - XML Namespaces
+&gt;            - Unicode
+&gt; 
+&gt;          SBML Documents are parsed and manipulated in the Unicode
+&gt;          codepage for efficiency (this is Xerces-C++ native format),
+&gt;          However, strings are transcoded to the local code page for
+&gt;          SBML structures.
+&gt; 
+&gt;        - The C++ parser API is transparent to the end-user, hidden behind
+&gt;          C functions such as:
+&gt; 
+&gt;            SBMLDocument_t *readSBML(const char *filename);
+&gt;            SBMLDocument_t *readSBMLFromString(const char *string);
+&gt; 
+&gt;            etc...
+&gt; 
+&gt;        - All memory for and contained in SBML structures is C memory, so
+&gt;          realloc() and free() may be used.
+&gt; 
+&gt;          This is an important distinction when working with mixed C
+&gt;          and C++ code.  C's malloc() and free() are not compatible
+&gt;          with C++'s new and delete operators.
+&gt; 
+&gt;        - Well tested: 226 unit tests, 1118 individual assertions.
+&gt; 
+&gt;          The entire library was written using the test-first
+&gt;          approach popularized by Kent Beck and eXtreme Programming,
+&gt;          where it's one of the 12 principles.
+&gt; 
+&gt;          Four test cases are responsible for reading entire SBML files
+&gt;          (three are examples from the L1 document) into memory and
+&gt;          verifying every field of the resulting structures.
+&gt; 
+&gt;        - Memory tests: 1782 allocations and frees, 0 leaks.
+&gt; 
+&gt;          For developers a custom memory trace facility tracks all
+&gt;          memory allocated and freed in both the library and all
+&gt;          test suites.  This facility must be enabled at build
+&gt;          time with ./configure --enable-memory-tracing.  For
+&gt;          performance reasons memory tracing should be turned
+&gt;          off in production environments.
+&gt; 
+&gt;      For all those interested, I look forward to your feedback.
+&gt; 
+&gt; 
+&gt; Ben Bornstein
+&gt; 
+-- 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00071" HREF="msg00071.html">Re: [sbml-discuss] Release Notice: libsbml 1.0.0</A></STRONG>
+<UL><LI><EM>From:</EM> Ben Bornstein &lt;bornstei@aig.jpl.nasa.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00069" HREF="msg00069.html">[sbml-discuss] Release Notice: libsbml 1.0.0</A></STRONG>
+<UL><LI><EM>From:</EM> Ben Bornstein &lt;bornstei@aig.jpl.nasa.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00069.html">[sbml-discuss] Release Notice: libsbml 1.0.0</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00071.html">Re: [sbml-discuss] Release Notice: libsbml 1.0.0</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00069.html">[sbml-discuss] Release Notice: libsbml 1.0.0</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00071.html">Re: [sbml-discuss] Release Notice: libsbml 1.0.0</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00070"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00070"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

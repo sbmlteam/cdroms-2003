@@ -1,0 +1,187 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] RE: [Biospice&#45;sepdtf] clarification    onthegenerated SBML model -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Thu, 16 Oct 2003 11:21:15 &#45;0700 -->
+<!--X-Message-Id: 1066318564.3655.96.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.44.0310130853080.21236&#45;100000@kincora.cds.caltech.edu -->
+<!--X-Reference: Pine.LNX.4.44.0310140718120.8963&#45;100000@mailsvr.ncbs.res.in -->
+<!--X-Reference: 1344.213.22.127.80.1066124511.squirrel@webmail.vbi.vt.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification    onthegenerated</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00703.html">Date Prev</A>][<A HREF="msg00705.html">Date Next</A>][<A HREF="msg00697.html">Thread Prev</A>][<A HREF="msg00685.html">Thread Next</A>][<A HREF="maillist.html#00704">Date Index</A>][<A HREF="threads.html#00704">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification    onthegenerated SBML model</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification    onthegenerated SBML model</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 17 Oct 2003 00:36:57 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+I would like to exemplify another existing practice in E-Cell
+Version 3, but before that let me say the conclusions first, because
+some of people here won't be interested in E-Cell's specific data
+structure.
+
+- I still like the original definition by Andrew:
+
+&gt; A modifier, as the standard is written, is a species that affects the
+&gt; reaction,
+&gt; but is not a product or reactant of the reaction.
+  
+  I do not have any strong opinion about whether a reactant/product can
+   also be a modifier or not.   But I think it is dependent on how
+   the model is constructed, especially the rate law, and the structure
+   and the dynamics of the model should be independent as far as
+   possible. The Andrew's definition above is good to this end because
+   it is clear and simple.
+
+  If it is decided that a reactant/product can also be a modifier,
+   E-Cell's SBML importer would ignore the modifier that is also a
+   reactant/product, because unlike SBML it does have a single list
+   of species (see below).
+
+- I agree that in SBML it should be more useful to be able to mark up
+   each species reference's role.
+
+
+
+E-Cell 3's structure is somewhat similar to Gepasi, which is like:
+
+(Pedro's comment:)
+&gt; And in Gepasi this is easy to do since the *species roles* are
+&gt; separated from the *species* in the rate laws (the more I see these
+&gt; discussions the more I like toi have made this choice!) This means that
+&gt; rate laws are defined with symbols that are not the species names. Then
+&gt; the species are assigned to those symbols that are substrates, products
+&gt; and modifiers. This lets me write a rate law such as: V*S/(K+S+M)  and
+&gt; then assign the same species to S and M. It is the symbols S and M that
+&gt; are labeled as substrate and modifier, not the species that is assigned to
+&gt; them (which in this case has both roles). 
+
+
+In addition, unlike the previous versions of E-Cell, it does not have
+separate lists for substrates, products and modifiers.   Instead, it has a
+single list of 'VariableReferences'.    
+
+Each instance of VariableReference has the following fields:
+
+- a reference name (this is like 'V', 'S' and 'M' in the Pedro's example)
+- an ID of a variable in the model
+- an integer coefficient
+- an 'accessor' flag
+
+If the 'coefficient' is negative, it indicates that it is decreased
+in forward occurrences of the 'Process' (an object representing 
+a type of phenomenon in the model such as a reaction).   If the Process
+is a reaction-Process, then it is a substrate.   If the coefficient
+is plus, it is a product.   If it is zero, then the Process can use
+its value to calculate something, but is not changed by this Process 
+(read-only).    
+
+The Process identifies variables either by the reference names or
+coefficients.   For example, it can just get the value of the variable
+whose reference name is 'S0', OR, it can also get all the references
+with negative coefficients and take a product of these values 
+(i.e. mass-action).   That is, the role and meaning of each reference is 
+not determined by the model itself, but by each specific implementation
+of the Process object class.  Such information about the specification
+of each Process class is exported to be used by modeling software.
+For example, some Processes may define 'E' as the enzyme and 'S0' as
+the first substrate.
+
+The 'accessor flag' indicates if the Process reads the value of
+the variable to determine its behavior.   If this is false,
+it means that the Process object does not use the value of this
+variable. This flag is meaningful only when the coefficient is non-zero.
+This information is used mainly in multi-algorithm
+(multi-stepper) environments for synchronization between sub-models.
+
+
+This cannot be directly compared to SBML because this is a very lower
+level semantics.  Unlike SBML it does not discriminate between chemical
+reactions and other phenomena and rules.     Our decision was to use
+a single pair of objects (Variable and Process) to represent everything.
+This is to make it as generic as possible because we need to face the
+ontological complexity of cell biology.
+In SBML there are rules, reactions, events, and the number is still
+growing.    This difference is quite understandable because SBML is a 
+language and E-Cell is a simulator.
+
+
+-Kouichi
+
+
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00681" HREF="msg00681.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert M. Sauro&quot; &lt;hsauro@cds.caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00684" HREF="msg00684.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</A></STRONG>
+<UL><LI><EM>From:</EM> Upinder Singh Bhalla &lt;bhalla@ncbs.res.in&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00691" HREF="msg00691.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerated SBML model</A></STRONG>
+<UL><LI><EM>From:</EM> mendes@vbi.vt.edu</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00703.html">Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00705.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification  onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00697.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification      onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00685.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00704"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00704"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

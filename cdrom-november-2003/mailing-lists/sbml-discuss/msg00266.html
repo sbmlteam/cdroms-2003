@@ -1,0 +1,179 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG &#45;&#45; UNITS -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Thu, 22 May 2003 23:19:48 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E35@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG -- UNITS</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00265.html">Date Prev</A>][<A HREF="msg00267.html">Date Next</A>][<A HREF="msg00263.html">Thread Prev</A>][<A HREF="msg00274.html">Thread Next</A>][<A HREF="maillist.html#00266">Date Index</A>][<A HREF="threads.html#00266">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG -- UNITS</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;, &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG -- UNITS</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 02:19:30 -0400</LI>
+<LI>Thread-Index: AcMg74QBGEtE0TB4S+6Y9trEeXuYpgAAjPaQ</LI>
+<LI>Thread-Topic: [sbml-discuss] DWG -- UNITS</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I concur, and agree with 1/72 as a choice--it's
+one of the few choices that doesn't seem arbitrary.
+I also agree with optional resolution in the header,
+with 1/72 the default. Also, as much as ints would
+be easier, I don't see any way around doubles.
+
+John
+
+&gt; -----Original Message-----
+&gt; From: Herbert Sauro [<A  HREF="mailto:Herbert_Sauro@kgi.edu">mailto:Herbert_Sauro@kgi.edu</A>]
+&gt; Sent: Friday, May 23, 2003 1:38 AM
+&gt; To: 'sbml-discuss@caltech.edu '
+&gt; Subject: [sbml-discuss] DWG -- UNITS
+&gt; 
+&gt; 
+&gt;  
+&gt; One of the most fundamental issues to decide on with respect 
+&gt; to the layout
+&gt; spec is the unit for the dimensions. I took a look at the 
+&gt; postscript ref doc
+&gt; and found the following sentence:
+&gt; 
+&gt; "The length of a unit along both the x and y axes is 1&amp;#8260;72 inch.
+&gt; This coordinate system is the default user space." 
+&gt; 
+&gt; The other thing I noticed was:
+&gt; 
+&gt; "A coordinate pair is a pair of real numbers x and y that 
+&gt; locate a point
+&gt; horizontally and vertically within a Cartesian (two-axis) coordinate
+&gt; system..."
+&gt; 
+&gt; In JDesigner I used the dimension of 1/92 pixels per inch 
+&gt; simply because
+&gt; that's what my screen resolution happen to be at the time. 
+&gt; However it's not
+&gt; difficult to standardize on a default resolution of 1/72 is 
+&gt; that's what is
+&gt; required.
+&gt; 
+&gt; In view of this I would like to put forward the following proposal:
+&gt; 
+&gt; Assume by default that dimensional units are measured in 1/72 
+&gt; of an inch, ie
+&gt; 72dpi.
+&gt; 
+&gt; I don't have any preference on the question of whether to use 
+&gt; integers or 
+&gt; floating point to represent dimensions, I guess floats would 
+&gt; be better.
+&gt; 
+&gt; I would suggest an optional resolution in some kind of header 
+&gt; (you'll need
+&gt; some kind of header to store global info, eg background 
+&gt; color) so that the
+&gt; 72dpi can be overridden if necessary. eg a diagram might have 
+&gt; been drawn at
+&gt; 300dpi (ready for printing perhaps), thus the SBML file 
+&gt; should have this
+&gt; info for other apps that read the file. An example of this would be an
+&gt; application than translates the SBML layout into raw SVG or some other
+&gt; vector format (There doesn't seem to be a great advantage in 
+&gt; using SVG per
+&gt; se since applications can easily translate the SBML to other 
+&gt; formats, eg
+&gt; SVG, PS, or even bitmap formats).
+&gt; 
+&gt; Note that we need some form of unit system because our fonts 
+&gt; are specified
+&gt; in terms of 1/72 units (hence 1/72 is a convenient size to 
+&gt; settle on). I
+&gt; don't think our unit system can be dimensionless.
+&gt; 
+&gt; Units are probably the first thing we must settle on so what 
+&gt; are people's
+&gt; comments in this?
+&gt; 
+&gt; I think we should try and avoid allowing other units to be 
+&gt; employed directly
+&gt; in the SBML file, eg inchs, cm etc because it would such a 
+&gt; pain to deal with
+&gt; at the programmatic level. The dimensions can in any case be 
+&gt; set by the
+&gt; resolution specifier in the header so it wouldn't be 
+&gt; difficult to translate
+&gt; the coords to other units *in* the application. It would make 
+&gt; life a lot
+&gt; easier if we just used one unit type in the SBML file. I 
+&gt; don't think we
+&gt; loose nothing in the process as far as I can see. Comments?
+&gt; 
+&gt; Herbert
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt;  
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00265.html">RE: [sbml-discuss] DWG preliminary issues - shapes</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00267.html">RE: [sbml-discuss] DWG preliminary issues - shapes</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00263.html">[sbml-discuss] DWG -- UNITS</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00274.html">[sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00266"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00266"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

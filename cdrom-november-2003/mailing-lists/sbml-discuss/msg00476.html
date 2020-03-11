@@ -1,0 +1,334 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] Re: Hybrid Models Working Group (fwd) -->
+<!--X-From-R13: Sq Tenax <rsenaxNzpf.nay.tbi> -->
+<!--X-Date: Mon, 16 Jun 2003 05:36:42 &#45;0700 -->
+<!--X-Message-Id: 20030616123434.GM456@mcs.anl.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] Re: Hybrid Models Working Group (fwd)</TITLE>
+<LINK REV="made" HREF="mailto:efrank@mcs.anl.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00475.html">Date Prev</A>][<A HREF="msg00477.html">Date Next</A>][<A HREF="msg00475.html">Thread Prev</A>][<A HREF="msg00477.html">Thread Next</A>][<A HREF="maillist.html#00476">Date Index</A>][<A HREF="threads.html#00476">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] Re: Hybrid Models Working Group (fwd)</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] Re: Hybrid Models Working Group (fwd)</LI>
+<LI><em>From</em>: Ed Frank &lt;<A HREF="mailto:efrank@mcs.anl.gov">efrank@mcs.anl.gov</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 16 Jun 2003 07:34:34 -0500</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+----- Forwarded message from Ed Frank &lt;efrank@mcs.anl.gov&gt; -----
+
+Subject: Re: Hybrid Models Working Group
+From: Ed Frank &lt;efrank@mcs.anl.gov&gt;
+To: Maria Schilstra &lt;m.j.1.schilstra@herts.ac.uk&gt;
+Cc: 'vijay saraswat' &lt;saraswat@cse.psu.edu&gt;,
+	'Takeshi Sakurada' &lt;sakurada@sfc.keio.ac.jp&gt;,
+	'Mike McCollum' &lt;jmccoll2@utk.edu&gt;, 'Greg Peterson' &lt;gdp@utk.edu&gt;,
+	'Stefan Hoops' &lt;shoops@vt.edu&gt;, 'Tom Kiehl' &lt;kiehl@research.ge.com&gt;
+Date: Thu, 5 Jun 2003 10:09:38 -0500
+
+
+Hi Maria,
+
+Thank you for the note.  In answer to your question, "yes," i.e.,
+"yes, I am not sure which discrete I meant" AND, "yes, _both._" It is
+all part and parcel of enumerating simulation types and clarifying
+terminology.
+
+Would the following modifications to the charter incorporate your
+comments fully:
+  1. elaborate "discrete" in the example text
+  2. Add before "enumerate 5 models," "enumerate simulation types/modes/
+     frameworks"
+  3. Add as a deliverable, refinment of terminology/concepts.
+
+Where I am coming from: I am trained as a high energy particle
+physicist and have worked with, but not written, large simulations,
+e.g., simulations with millions of model elements and simulations with
+large run times (10's of CPU years 8 years ago.  Since then they have
+probably racked up a multiple of 1000 CPU years).  I have written
+simple simulators for particle interactions which I suppose you would
+call discrete time (but not time on a grid). I have handled random
+number management over large run-sets and data management. I have
+worked on application frameworks for this kind of processing,
+frameworks supporting executables constructed from 100 to 1000
+computational modules in a code base of about 4 million lines of C++.
+In that context, I've worked on release management, parameter
+management and, in general, pulling out great quantities of hair.  A
+year ago I started into computational biology at Argonne National Lab
+where our interests are in whole-cell modeling with an eye towards
+engineering organisms for hydrogen production and carbon sequestration
+(greenhouse gasses).
+
+	-Ed
+
+ps. Although this thread is outside the SBW discuss mailing list, I'd
+like to see us collect this thread and post it to the list once we've
+agreed on the proto-type charter.  Would that be ok?  Then people will
+see the history and join in on refining the charter.
+
+
+
+On Tue, Jun 03, 2003 at 01:27:33PM +0100, Maria Schilstra wrote:
+&gt; Hi Ed,
+&gt; 
+&gt; In the first place: thank you for initiating the hybrid models working
+&gt; group, and my apologies for not reacting earlier (I had a to get a grant
+&gt; proposal out of the way, but that's almost done now).
+&gt; 
+&gt; I think your proposal is very sensible, and I can't tear it apart at
+&gt; all. You're right in assuming that hybrid modelling has not been pursued
+&gt; (at least not in detail). What do you mean by "discrete" simulations, by
+&gt; the way: discrete time (as in cellular automata) or discrete event (as
+&gt; in stochastic sims), or both? 
+&gt; 
+&gt; Come to think about it: it might be useful (well, it would be for me) to
+&gt; have a list of possible simulation types/modes/frameworks, with
+&gt; examples. I suspect that this would tie in with the work of the
+&gt; alternative representations group that Tom has volunteered to start up.
+&gt; 
+&gt; Getting hold of examples of biological hybrid systems is the most
+&gt; important thing to do first - and I have a feeling that that is not
+&gt; going to be as easy as some people think. On the other hand: doesn't
+&gt; E-Cell support hybrid modelling, Takeshi? In that case you must have
+&gt; examples. At Poul Nielsen's suggestion, I'll have a look at the CellML
+&gt; repository - apparently there are several models in there that operate
+&gt; on very different time scales (which, of course, doesn't necessarily
+&gt; make them hybrid).
+&gt; 
+&gt; The other thing I would like to know about my fellow group members is
+&gt; where they are 'coming from' - so that we can make use of the knowledge
+&gt; that is present. For instance, I am a biochemist (turned computer
+&gt; scientist in the new millennium) who has measured Kms and other
+&gt; enzyme-kineticky things. When I was an experimentalist, I've needed to
+&gt; do continuous (ODE) simulations, and 15 years ago we had a problem that
+&gt; could only be solved by doing stochastic simulations. The program that
+&gt; I've been writing over the last 2 years (NetBuilder) is a discrete time
+&gt; base simulator (but it would like to become hybrid...). 
+&gt; 
+&gt; Well, that's quite long enough for now.
+&gt; 
+&gt; Cheers,
+&gt; 
+&gt; Maria
+&gt; 
+&gt; 
+&gt; Dr Maria Schilstra 
+&gt; Biocomputation Research Group, STRC 
+&gt; University of Hertfordshire 
+&gt; 
+&gt;  
+&gt;  
+&gt; 
+&gt; 
+&gt; &gt; -----Original Message-----
+&gt; &gt; From: Ed Frank [<A  HREF="mailto:efrank@mcs.anl.gov">mailto:efrank@mcs.anl.gov</A>] 
+&gt; &gt; Sent: 02 June 2003 17:29
+&gt; &gt; To: vijay saraswat; mana schilstra; Takeshi Sakurada; Mike 
+&gt; &gt; McCollum; Greg Peterson; Stefan Hoops; Tom Kiehl
+&gt; &gt; Subject: Re: Hybrid Models Working Group
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; Hi,
+&gt; &gt; 
+&gt; &gt; I have not done anything on this because there have been no 
+&gt; &gt; substantial replies.  How shall we proceed?
+&gt; &gt; 
+&gt; &gt; 	-Ed
+&gt; &gt; 
+&gt; &gt; 
+&gt; &gt; On Wed, May 21, 2003 at 02:13:51PM -0500, Ed Frank wrote:
+&gt; &gt; &gt; 
+&gt; &gt; &gt; This is the promised "first email" related to the Hybrid Models 
+&gt; &gt; &gt; working group.  I'd like to propose that we, as a group, 
+&gt; &gt; formulate the 
+&gt; &gt; &gt; initial note to go to the SBML-discuss group and propose 
+&gt; &gt; having that 
+&gt; &gt; &gt; done by this Monday?  Then we can carry on in that forum.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; There are three things to accomplish to send that note out:
+&gt; &gt; &gt;    o proposed chair, co-chair.
+&gt; &gt; &gt;    o proposed charter
+&gt; &gt; &gt;    o date at which these proposals transition from proposed to 
+&gt; &gt; &gt; adopted.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; I would be happy to chair this.  With such a small group, I 
+&gt; &gt; think that 
+&gt; &gt; &gt; just means occasional call-to-arms and some secretarial work.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Here is a straw-man charter to get us started....tear it apart!
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 	-Ed
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; -----------------------------------------------
+&gt; &gt; &gt; Charter of the SBML Hybrid Models Working Group
+&gt; &gt; &gt; -----------------------------------------------
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Background
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Hybrid Models are those that include phenomena modeled in 
+&gt; &gt; &gt; fundamentally different ways or which include elements that change 
+&gt; &gt; &gt; their mode of operation, or both.  For example, discrete and 
+&gt; &gt; &gt; continuous models are fundamentally different.  A model 
+&gt; &gt; including both 
+&gt; &gt; &gt; would be hybrid as would a system including both non-spatial 
+&gt; &gt; &gt; components (represented by ODEs) and spatial components (PDE's, 
+&gt; &gt; &gt; reaction-diffusion).
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Mission Statement and Scope
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Except for combined continuous/discrete simulation, little hybrid 
+&gt; &gt; &gt; modeling is being pursued in the SBML community [is this correct?]. 
+&gt; &gt; &gt; Thus the Hybrid modeling group is at an earlier stage than 
+&gt; &gt; the other 
+&gt; &gt; &gt; groups and the mission statement reflects this.  Our 
+&gt; &gt; mission statement
+&gt; &gt; &gt; is:
+&gt; &gt; &gt; 
+&gt; &gt; &gt;    1. Enumerate 5 sample problems ("challenges") to be 
+&gt; &gt; addressed by hybrid 
+&gt; &gt; &gt;       approaches.
+&gt; &gt; &gt;    2. Determine what is needed from SBML to express these models.
+&gt; &gt; &gt;    3. Determine what, if any, deliverable there is for the Level 3 
+&gt; &gt; &gt; deadline.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Deliverables:
+&gt; &gt; &gt;    -  proposal for SBML L3 extensions (this is not expected to be
+&gt; &gt; &gt;       support of hybrid systems, but only support of 
+&gt; &gt; limited capabilities
+&gt; &gt; &gt;       like Events done with an eye toward future, fuller 
+&gt; &gt; hybrid systems).
+&gt; &gt; &gt;    -  challenge problems
+&gt; &gt; &gt;    -  SBML requirements for Hybrid systems modeling.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; [This is not meant to be a waterfall process.  I am 
+&gt; &gt; actually probing 
+&gt; &gt; &gt; here to see if others feel as I do that we are at the very 
+&gt; &gt; beginning. 
+&gt; &gt; &gt; If so, then some time on seeing if we are all talking about 
+&gt; &gt; the same 
+&gt; &gt; &gt; things when we say the same words is worthwhile.  The 
+&gt; &gt; requirements and 
+&gt; &gt; &gt; enumeration of challenges is thus more agreement on a 
+&gt; &gt; destination than 
+&gt; &gt; &gt; a waterfall methodology.]
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Termination criterion:
+&gt; &gt; &gt;    -
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Chairperson and Contact:
+&gt; &gt; &gt;   Chairperson :
+&gt; &gt; &gt;   Co-Chairperson:
+&gt; &gt; &gt; 
+&gt; &gt; &gt; To Join please email the Chairperson.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Current members (alphabetically):
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Ed Frank		efrank@mcs.anl.gov
+&gt; &gt; &gt; Stefan Hoops   		shoops@vt.edu
+&gt; &gt; &gt; Tom Kiehl    		kiehl@research.ge.com
+&gt; &gt; &gt; Mike McCollum 		jmccoll2@utk.edu
+&gt; &gt; &gt; Greg Peterson 		gdp@utk.edu
+&gt; &gt; &gt; Takeshi Sakurada 	sakurada@sfc.keio.ac.jp
+&gt; &gt; &gt; Vijay Saraswat		saraswat@cse.psu.edu
+&gt; &gt; &gt; Mana Schilstra 		M.J.1.Schilstra@herts.ac.uk
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; 
+&gt; &gt; &gt; -- 
+&gt; &gt; &gt; Ed Frank                                            Office: 
+&gt; &gt;  (630) 252-4548
+&gt; &gt; &gt; <A  HREF="http://hep.uchicago.edu/~efrank">http://hep.uchicago.edu/~efrank</A>                     Fax   : 
+&gt; &gt;  (630) 252-5986
+&gt; &gt; &gt; Division of Math &amp; Computer Science                 Argonne 
+&gt; &gt; National Laboratory
+&gt; &gt; 
+&gt; &gt; -- 
+&gt; &gt; Ed Frank                                            Office:  
+&gt; &gt; (630) 252-4548
+&gt; &gt; <A  HREF="http://hep.uchicago.edu/~efrank">http://hep.uchicago.edu/~efrank</A>                     Fax   :  
+&gt; &gt; (630) 252-5986
+&gt; &gt; Division of Math &amp; Computer Science                 Argonne 
+&gt; &gt; National Laboratory
+&gt; &gt; 
+
+-- 
+Ed Frank                                            Office:  (630) 252-4548
+<A  HREF="http://hep.uchicago.edu/~efrank">http://hep.uchicago.edu/~efrank</A>                     Fax   :  (630) 252-5986
+Division of Math &amp; Computer Science                 Argonne National Laboratory
+
+----- End forwarded message -----
+
+-- 
+Ed Frank                                            Office:  (630) 252-4548
+<A  HREF="http://hep.uchicago.edu/~efrank">http://hep.uchicago.edu/~efrank</A>                     Fax   :  (630) 252-5986
+Division of Math &amp; Computer Science                 Argonne National Laboratory
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00475.html">[sbml-discuss] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00477.html">[sbml-discuss] RE: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00475.html">[sbml-discuss] Re: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00477.html">[sbml-discuss] RE: Hybrid Models Working Group (fwd)</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00476"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00476"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

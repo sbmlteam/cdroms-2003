@@ -1,0 +1,621 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Mon, 7 Jul 2003 08:48:18 &#45;0700 -->
+<!--X-Message-Id: 002c01c3449f$0bc36730$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Reference: 59D7F8A2&#45;B07E&#45;11D7&#45;A6EC&#45;000A95776A76@eml.villa&#45;bosch.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00532.html">Date Prev</A>][<A HREF="msg00534.html">Date Next</A>][<A HREF="msg00532.html">Thread Prev</A>][<A HREF="msg00534.html">Thread Next</A>][<A HREF="maillist.html#00533">Date Index</A>][<A HREF="threads.html#00533">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Ralph Gauges'&quot; &lt;<A HREF="mailto:ralph.gauges@eml.villa-bosch.de">ralph.gauges@eml.villa-bosch.de</A>&gt;,  &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 7 Jul 2003 16:47:16 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Ralph
+
+Correct to your proposal - there is a schema for Level 2.
+It was included in the final specification for level 2.
+I have attached the schema as a seperate document.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Ralph Gauges
+&gt; Sent: 07 July 2003 14:25
+&gt; To: sbml-discuss@its.caltech.edu
+&gt; Subject: [sbml-discuss] Layout Extension Update
+&gt; 
+&gt; 
+&gt; We finally finished to put the suggestion Sven made a few weeks ago 
+&gt; into words.
+&gt; 
+<A  HREF="http://projects.eml.org/bcb/sbml/level1/">http://projects.eml.org/bcb/sbml/level1/</A>
+
+
+The major updates to the last proposal are:
+
+- based upon SBML Level 2
+- layout information was seperated from the model definition
+- all objects are based on SBase to be able to specify metainformation
+
+On our website you can read the document online or download a pdf 
+version. We also put up the schema definition and a small sample file.
+
+Since there are not going to be IDs on all objects in SBML Level 2, 
+referencing SpeciesReferences is still somewhat awkward.
+
+An alternative to the mode for referencing SpeciesReferences in this 
+proposal would be to use the metaids  for referencing.
+Actually I was kind of wondering why there was the need to have an 
+additional ID on some objects. Could not the metaid be used for both 
+purposes, identifying objects as well as reference point for 
+metainformation?  Maybe I missed something there?
+Again, we would like to get as much feedback as possible in  order to 
+further improve on this layout information proposal.
+
+Ralph Gauges
+
+</PRE>
+<PRE>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsd:schema targetNamespace="<A  HREF="http://www.sbml.org/sbml/level2">http://www.sbml.org/sbml/level2</A>" xmlns="<A  HREF="http://www.sbml.org/sbml/level2">http://www.sbml.org/sbml/level2</A>" xmlns:mml="<A  HREF="http://www.w3.org/1998/Math/MathML">http://www.w3.org/1998/Math/MathML</A>" xmlns:xlink="<A  HREF="http://www.w3.org/1999/xlink">http://www.w3.org/1999/xlink</A>" xmlns:xsi="<A  HREF="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</A>" xmlns:xsd="<A  HREF="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</A>" elementFormDefault="qualified" attributeFormDefault="unqualified" version="$Version$"&gt;
+	&lt;xsd:import namespace="<A  HREF="http://www.w3.org/1998/Math/MathML">http://www.w3.org/1998/Math/MathML</A>" schemaLocation="<A  HREF="http://www.w3.org/Math/XMLSchema/mathml2/mathml2.xsd">http://www.w3.org/Math/XMLSchema/mathml2/mathml2.xsd</A>"/&gt;
+	&lt;xsd:annotation&gt;
+		&lt;xsd:documentation&gt;
+      File name : sbml.xsd
+      Author : M. Hucka, A. Finney, D. Lucio
+      Description : XML Schema for the Systems Biology Markup Language Level 2.  
+                    This is designed for XML Schema version 1.0.
+      Version : 1
+      Modified : $Date: 2003/06/24 13:06:36 $
+      Revision: $Id: sbml-l2.xsd,v 1.4 2003/06/24 13:06:36 afinney Exp $
+
+      Copyright 2003 California Institute of Technology and Japan Science and 
+      Technology Corporation.
+      
+      This library is free software; you can redistribute it and/or modify it
+      under the terms of the GNU Lesser General Public License as published
+      by the Free Software Foundation; either version 2.1 of the License, or
+      any later version.
+      
+      This file is distributed in the hope that it will be useful, but
+      WITHOUT ANY WARRANTY, WITHOUT EVEN THE IMPLIED WARRANTY OF
+      MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  The software 
+      and documentation provided hereunder is on an "as is" basis, and the
+      California Institute of Technology and Japan Science and Technology
+      Corporation have no obligations to provide maintenance, support,
+      updates, enhancements or modifications.  In no event shall the
+      California Institute of Technology or the Japan Science and Technology
+      Corporation be liable to any party for direct, indirect, special,
+      incidental or consequential damages, including lost profits, arising
+      out of the use of this software and its documentation, even if the
+      California Institute of Technology and/or Japan Science and Technology
+      Corporation have been advised of the possibility of such damage.  See
+      the GNU Lesser General Public License for more details.
+      
+      You should have received a copy of the GNU Lesser General Public License
+      along with this library; if not, write to the Free Software Foundation,
+      Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
+&lt;/xsd:documentation&gt;
+	&lt;/xsd:annotation&gt;
+	&lt;!--The definition of SId follows.--&gt;
+	&lt;xsd:simpleType name="SId"&gt;
+		&lt;xsd:annotation&gt;
+			&lt;xsd:documentation&gt;The type SId is used throughout SBML as the type of the 'id' attributes on model elements.&lt;/xsd:documentation&gt;
+		&lt;/xsd:annotation&gt;
+		&lt;xsd:restriction base="xsd:string"&gt;
+			&lt;xsd:pattern value="(_|[a-z]|[A-Z])(_|[a-z]|[A-Z]|[0-9])*"/&gt;
+		&lt;/xsd:restriction&gt;
+	&lt;/xsd:simpleType&gt;
+	&lt;!--The definition of SBase follows.--&gt;
+	&lt;xsd:complexType name="SBase" abstract="true"&gt;
+		&lt;xsd:annotation&gt;
+			&lt;xsd:documentation&gt;The SBase type is the base type of all main components in SBML.  It supports attaching metadata, notes and annotations to components.&lt;/xsd:documentation&gt;
+		&lt;/xsd:annotation&gt;
+		&lt;xsd:sequence&gt;
+			&lt;xsd:element name="notes" minOccurs="0"&gt;
+				&lt;xsd:complexType&gt;
+					&lt;xsd:sequence&gt;
+						&lt;xsd:any namespace="<A  HREF="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</A>" processContents="skip" maxOccurs="unbounded"/&gt;
+					&lt;/xsd:sequence&gt;
+				&lt;/xsd:complexType&gt;
+			&lt;/xsd:element&gt;
+			&lt;xsd:element name="annotation" minOccurs="0"&gt;
+				&lt;xsd:complexType&gt;
+					&lt;xsd:sequence&gt;
+						&lt;xsd:any processContents="skip" maxOccurs="unbounded"/&gt;
+					&lt;/xsd:sequence&gt;
+				&lt;/xsd:complexType&gt;
+			&lt;/xsd:element&gt;
+		&lt;/xsd:sequence&gt;
+		&lt;xsd:attribute name="metaid" type="xsd:ID" use="optional"/&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;!--The definition of FunctionDefinition follows.--&gt;
+	&lt;xsd:complexType name="FunctionDefinition"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element ref="mml:math"/&gt;
+				&lt;/xsd:sequence&gt;
+				&lt;xsd:attribute name="id" type="SId" use="required"/&gt;
+				&lt;xsd:attribute name="name" type="xsd:string" use="optional"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;!--The definition of UnitKind follows.--&gt;
+	&lt;xsd:simpleType name="UnitKind"&gt;
+		&lt;xsd:restriction base="xsd:string"&gt;
+			&lt;xsd:enumeration value="ampere"/&gt;
+			&lt;xsd:enumeration value="becquerel"/&gt;
+			&lt;xsd:enumeration value="candela"/&gt;
+			&lt;xsd:enumeration value="Celsius"/&gt;
+			&lt;xsd:enumeration value="coulomb"/&gt;
+			&lt;xsd:enumeration value="dimensionless"/&gt;
+			&lt;xsd:enumeration value="farad"/&gt;
+			&lt;xsd:enumeration value="gram"/&gt;
+			&lt;xsd:enumeration value="gray"/&gt;
+			&lt;xsd:enumeration value="henry"/&gt;
+			&lt;xsd:enumeration value="hertz"/&gt;
+			&lt;xsd:enumeration value="item"/&gt;
+			&lt;xsd:enumeration value="joule"/&gt;
+			&lt;xsd:enumeration value="katal"/&gt;
+			&lt;xsd:enumeration value="kelvin"/&gt;
+			&lt;xsd:enumeration value="kilogram"/&gt;
+			&lt;xsd:enumeration value="litre"/&gt;
+			&lt;xsd:enumeration value="lumen"/&gt;
+			&lt;xsd:enumeration value="lux"/&gt;
+			&lt;xsd:enumeration value="metre"/&gt;
+			&lt;xsd:enumeration value="mole"/&gt;
+			&lt;xsd:enumeration value="newton"/&gt;
+			&lt;xsd:enumeration value="ohm"/&gt;
+			&lt;xsd:enumeration value="pascal"/&gt;
+			&lt;xsd:enumeration value="radian"/&gt;
+			&lt;xsd:enumeration value="second"/&gt;
+			&lt;xsd:enumeration value="siemens"/&gt;
+			&lt;xsd:enumeration value="sievert"/&gt;
+			&lt;xsd:enumeration value="steradian"/&gt;
+			&lt;xsd:enumeration value="tesla"/&gt;
+			&lt;xsd:enumeration value="volt"/&gt;
+			&lt;xsd:enumeration value="watt"/&gt;
+			&lt;xsd:enumeration value="weber"/&gt;
+		&lt;/xsd:restriction&gt;
+	&lt;/xsd:simpleType&gt;
+	&lt;!--The definition of Unit follows.--&gt;
+	&lt;xsd:complexType name="Unit"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:attribute name="kind" type="UnitKind" use="required"/&gt;
+				&lt;xsd:attribute name="exponent" type="xsd:integer" default="1"/&gt;
+				&lt;xsd:attribute name="scale" type="xsd:integer" default="0"/&gt;
+				&lt;xsd:attribute name="multiplier" type="xsd:double" default="1"/&gt;
+				&lt;xsd:attribute name="offset" type="xsd:double" default="0"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;!--The definition of UnitDefinition follows.--&gt;
+	&lt;xsd:complexType name="ListOfUnits"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element name="unit" type="Unit" maxOccurs="unbounded"/&gt;
+				&lt;/xsd:sequence&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="UnitDefinition"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element name="listOfUnits" type="ListOfUnits"/&gt;
+				&lt;/xsd:sequence&gt;
+				&lt;xsd:attribute name="id" type="SId" use="required"/&gt;
+				&lt;xsd:attribute name="name" type="xsd:string" use="optional"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;!--The definition of Compartment follows.--&gt;
+	&lt;xsd:complexType name="Compartment"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:attribute name="id" type="SId" use="required"/&gt;
+				&lt;xsd:attribute name="name" type="xsd:string" use="optional"/&gt;
+				&lt;xsd:attribute name="size" type="xsd:double" use="optional"/&gt;
+				&lt;xsd:attribute name="spatialDimensions" use="optional" default="3"&gt;
+					&lt;xsd:simpleType&gt;
+						&lt;xsd:restriction base="xsd:integer"&gt;
+							&lt;xsd:minInclusive value="0"/&gt;
+							&lt;xsd:maxInclusive value="3"/&gt;
+						&lt;/xsd:restriction&gt;
+					&lt;/xsd:simpleType&gt;
+				&lt;/xsd:attribute&gt;
+				&lt;xsd:attribute name="units" type="SId" use="optional"/&gt;
+				&lt;xsd:attribute name="outside" type="SId" use="optional"/&gt;
+				&lt;xsd:attribute name="constant" type="xsd:boolean" use="optional" default="true"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;!--The definition of Species follows.--&gt;
+	&lt;xsd:complexType name="Species"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:attribute name="id" type="SId" use="required"/&gt;
+				&lt;xsd:attribute name="name" type="xsd:string" use="optional"/&gt;
+				&lt;xsd:attribute name="compartment" type="SId"/&gt;
+				&lt;xsd:attribute name="initialAmount" type="xsd:double" use="optional"/&gt;
+				&lt;xsd:attribute name="initialConcentration" type="xsd:double" use="optional"/&gt;
+				&lt;xsd:attribute name="substanceUnits" type="SId" use="optional"/&gt;
+				&lt;xsd:attribute name="spatialSizeUnits" type="SId" use="optional"/&gt;
+				&lt;xsd:attribute name="hasOnlySubstanceUnits" type="xsd:boolean" use="optional" default="false"/&gt;
+				&lt;xsd:attribute name="boundaryCondition" type="xsd:boolean" use="optional" default="false"/&gt;
+				&lt;xsd:attribute name="charge" type="xsd:integer" use="optional"/&gt;
+				&lt;xsd:attribute name="constant" type="xsd:boolean" use="optional" default="false"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;!--The definition of Parameter follows.--&gt;
+	&lt;xsd:complexType name="Parameter"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:attribute name="id" type="SId" use="required"/&gt;
+				&lt;xsd:attribute name="name" type="xsd:string" use="optional"/&gt;
+				&lt;xsd:attribute name="value" type="xsd:double" use="optional"/&gt;
+				&lt;xsd:attribute name="units" type="SId" use="optional"/&gt;
+				&lt;xsd:attribute name="constant" type="xsd:boolean" use="optional" default="true"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="ListOfParameters"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element name="parameter" type="Parameter" maxOccurs="unbounded"/&gt;
+				&lt;/xsd:sequence&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;!--The definition of Rule follows. --&gt;
+	&lt;xsd:complexType name="Rule" abstract="true"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element ref="mml:math"/&gt;
+				&lt;/xsd:sequence&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="AlgebraicRule"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="Rule"/&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="AssignmentRule"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="Rule"&gt;
+				&lt;xsd:attribute name="variable" type="SId" use="required"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="RateRule"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="Rule"&gt;
+				&lt;xsd:attribute name="variable" type="SId" use="required"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;!--The definition of Reaction follows.--&gt;
+	&lt;xsd:complexType name="KineticLaw"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element ref="mml:math"/&gt;
+					&lt;xsd:element name="listOfParameters" type="ListOfParameters" minOccurs="0"/&gt;
+				&lt;/xsd:sequence&gt;
+				&lt;xsd:attribute name="timeUnits" type="SId" use="optional"/&gt;
+				&lt;xsd:attribute name="substanceUnits" type="SId" use="optional"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="SimpleSpeciesReference" abstract="true"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:attribute name="species" type="SId" use="required"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="ModifierSpeciesReference"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SimpleSpeciesReference"/&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="ListOfModifierSpeciesReferences"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element name="modifierSpeciesReference" type="ModifierSpeciesReference" maxOccurs="unbounded"/&gt;
+				&lt;/xsd:sequence&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="StoichiometryMath"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element ref="mml:math"/&gt;
+				&lt;/xsd:sequence&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="SpeciesReference"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SimpleSpeciesReference"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element name="stoichiometryMath" type="StoichiometryMath" minOccurs="0"/&gt;
+				&lt;/xsd:sequence&gt;
+				&lt;xsd:attribute name="stoichiometry" type="xsd:double" use="optional" default="1"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="ListOfSpeciesReferences"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element name="speciesReference" type="SpeciesReference" maxOccurs="unbounded"/&gt;
+				&lt;/xsd:sequence&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="Reaction"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element name="listOfReactants" type="ListOfSpeciesReferences" minOccurs="0"/&gt;
+					&lt;xsd:element name="listOfProducts" type="ListOfSpeciesReferences" minOccurs="0"/&gt;
+					&lt;xsd:element name="listOfModifiers" type="ListOfModifierSpeciesReferences" minOccurs="0"/&gt;
+					&lt;xsd:element name="kineticLaw" type="KineticLaw" minOccurs="0"/&gt;
+				&lt;/xsd:sequence&gt;
+				&lt;xsd:attribute name="id" type="SId" use="required"/&gt;
+				&lt;xsd:attribute name="name" type="xsd:string" use="optional"/&gt;
+				&lt;xsd:attribute name="reversible" type="xsd:boolean" use="optional" default="true"/&gt;
+				&lt;xsd:attribute name="fast" type="xsd:boolean" use="optional"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;!--The definition of Event follows.--&gt;
+	&lt;xsd:complexType name="EventAssignment"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element ref="mml:math"/&gt;
+				&lt;/xsd:sequence&gt;
+				&lt;xsd:attribute name="variable" type="SId" use="required"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="ListOfEventAssignments"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element name="eventAssignment" type="EventAssignment" maxOccurs="unbounded"/&gt;
+				&lt;/xsd:sequence&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="MathField"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element ref="mml:math"/&gt;
+				&lt;/xsd:sequence&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;xsd:complexType name="Event"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element name="trigger" type="MathField"/&gt;
+					&lt;xsd:element name="delay" type="MathField" minOccurs="0"/&gt;
+					&lt;xsd:element name="listOfEventAssignments" type="ListOfEventAssignments"/&gt;
+				&lt;/xsd:sequence&gt;
+				&lt;xsd:attribute name="id" type="SId" use="optional"/&gt;
+				&lt;xsd:attribute name="name" type="xsd:string" use="optional"/&gt;
+				&lt;xsd:attribute name="timeUnits" type="SId" use="optional"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;!-- The definition of Model follows.--&gt;
+	&lt;xsd:complexType name="Model"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element name="listOfFunctionDefinitions" minOccurs="0"&gt;
+						&lt;xsd:complexType&gt;
+							&lt;xsd:complexContent&gt;
+								&lt;xsd:extension base="SBase"&gt;
+									&lt;xsd:sequence&gt;
+										&lt;xsd:element name="functionDefinition" type="FunctionDefinition" maxOccurs="unbounded"/&gt;
+									&lt;/xsd:sequence&gt;
+								&lt;/xsd:extension&gt;
+							&lt;/xsd:complexContent&gt;
+						&lt;/xsd:complexType&gt;
+					&lt;/xsd:element&gt;
+					&lt;xsd:element name="listOfUnitDefinitions" minOccurs="0"&gt;
+						&lt;xsd:complexType&gt;
+							&lt;xsd:complexContent&gt;
+								&lt;xsd:extension base="SBase"&gt;
+									&lt;xsd:sequence&gt;
+										&lt;xsd:element name="unitDefinition" type="UnitDefinition" maxOccurs="unbounded"/&gt;
+									&lt;/xsd:sequence&gt;
+								&lt;/xsd:extension&gt;
+							&lt;/xsd:complexContent&gt;
+						&lt;/xsd:complexType&gt;
+					&lt;/xsd:element&gt;
+					&lt;xsd:element name="listOfCompartments" minOccurs="0"&gt;
+						&lt;xsd:complexType&gt;
+							&lt;xsd:complexContent&gt;
+								&lt;xsd:extension base="SBase"&gt;
+									&lt;xsd:sequence&gt;
+										&lt;xsd:element name="compartment" type="Compartment" maxOccurs="unbounded"/&gt;
+									&lt;/xsd:sequence&gt;
+								&lt;/xsd:extension&gt;
+							&lt;/xsd:complexContent&gt;
+						&lt;/xsd:complexType&gt;
+					&lt;/xsd:element&gt;
+					&lt;xsd:element name="listOfSpecies" minOccurs="0"&gt;
+						&lt;xsd:complexType&gt;
+							&lt;xsd:complexContent&gt;
+								&lt;xsd:extension base="SBase"&gt;
+									&lt;xsd:sequence&gt;
+										&lt;xsd:element name="species" type="Species" maxOccurs="unbounded"/&gt;
+									&lt;/xsd:sequence&gt;
+								&lt;/xsd:extension&gt;
+							&lt;/xsd:complexContent&gt;
+						&lt;/xsd:complexType&gt;
+					&lt;/xsd:element&gt;
+					&lt;xsd:element name="listOfParameters" minOccurs="0"&gt;
+						&lt;xsd:complexType&gt;
+							&lt;xsd:complexContent&gt;
+								&lt;xsd:extension base="SBase"&gt;
+									&lt;xsd:sequence&gt;
+										&lt;xsd:element name="parameter" type="Parameter" maxOccurs="unbounded"/&gt;
+									&lt;/xsd:sequence&gt;
+								&lt;/xsd:extension&gt;
+							&lt;/xsd:complexContent&gt;
+						&lt;/xsd:complexType&gt;
+					&lt;/xsd:element&gt;
+					&lt;xsd:element name="listOfRules" minOccurs="0"&gt;
+						&lt;xsd:complexType&gt;
+							&lt;xsd:complexContent&gt;
+								&lt;xsd:extension base="SBase"&gt;
+									&lt;xsd:choice maxOccurs="unbounded"&gt;
+										&lt;xsd:element name="algebraicRule" type="AlgebraicRule" minOccurs="0"/&gt;
+										&lt;xsd:element name="assignmentRule" type="AssignmentRule" minOccurs="0"/&gt;
+										&lt;xsd:element name="rateRule" type="RateRule" minOccurs="0"/&gt;
+									&lt;/xsd:choice&gt;
+								&lt;/xsd:extension&gt;
+							&lt;/xsd:complexContent&gt;
+						&lt;/xsd:complexType&gt;
+					&lt;/xsd:element&gt;
+					&lt;xsd:element name="listOfReactions" minOccurs="0"&gt;
+						&lt;xsd:complexType&gt;
+							&lt;xsd:complexContent&gt;
+								&lt;xsd:extension base="SBase"&gt;
+									&lt;xsd:sequence&gt;
+										&lt;xsd:element name="reaction" type="Reaction" maxOccurs="unbounded"/&gt;
+									&lt;/xsd:sequence&gt;
+								&lt;/xsd:extension&gt;
+							&lt;/xsd:complexContent&gt;
+						&lt;/xsd:complexType&gt;
+					&lt;/xsd:element&gt;
+					&lt;xsd:element name="listOfEvents" minOccurs="0"&gt;
+						&lt;xsd:complexType&gt;
+							&lt;xsd:complexContent&gt;
+								&lt;xsd:extension base="SBase"&gt;
+									&lt;xsd:sequence&gt;
+										&lt;xsd:element name="event" type="Event" maxOccurs="unbounded"/&gt;
+									&lt;/xsd:sequence&gt;
+								&lt;/xsd:extension&gt;
+							&lt;/xsd:complexContent&gt;
+						&lt;/xsd:complexType&gt;
+					&lt;/xsd:element&gt;
+				&lt;/xsd:sequence&gt;
+				&lt;xsd:attribute name="id" type="SId" use="optional"/&gt;
+				&lt;xsd:attribute name="name" type="xsd:string" use="optional"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;!-- The following is the type definition for the top-level element in an SBML document.--&gt;
+	&lt;xsd:complexType name="Sbml"&gt;
+		&lt;xsd:complexContent&gt;
+			&lt;xsd:extension base="SBase"&gt;
+				&lt;xsd:sequence&gt;
+					&lt;xsd:element name="model" type="Model"/&gt;
+				&lt;/xsd:sequence&gt;
+				&lt;xsd:attribute name="level" type="xsd:positiveInteger" use="required" fixed="2"/&gt;
+				&lt;xsd:attribute name="version" type="xsd:positiveInteger" use="required" fixed="1"/&gt;
+			&lt;/xsd:extension&gt;
+		&lt;/xsd:complexContent&gt;
+	&lt;/xsd:complexType&gt;
+	&lt;!--The following is the (only) top-level element allowed in an SBML document.--&gt;
+	&lt;xsd:element name="sbml" type="Sbml"/&gt;
+	&lt;!--The end.--&gt;
+&lt;/xsd:schema&gt;
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00534" HREF="msg00534.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00530" HREF="msg00530.html">[sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00532.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00534.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00532.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00534.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00533"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00533"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

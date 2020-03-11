@@ -1,0 +1,290 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage" ></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table>
+</div>
+
+<h1>
+    The	MathSBML Model Builder </h1>
+<hr/>
+
+<p>
+The MathSBML Model Builder is a suite of functions allowing one to build an SBML 
+model from basic Mathematica expressions.  <u>It is only compatible with SBML Level 2.</u>
+</p>
+
+<p>The model builder does not currently support notes and annotations. Support for
+notes and annotations will be added in a future release.</p>
+<p>The model builder will allow the user to build SBML in three different manners:
+	<ul>
+		<li>As pieces of pure SBML text, that can be cut and pasted to build a full SBML model.</li>
+		<li>As <a href="#symbolic">symbolic SBML</a>, based on
+		 on <a href="http://documents.wolfram.com/v5/Add-onsLinks/XMLCapabilities/Introduction/SymbolicXML/index.html">Mathematica's symbolic XML</a>. </li>
+		<li>Using the 	<a href="mathsbml-addremove.html">Model Builder interface</a>, adding SBML concepts to a database of objects that can then be assembled into a 
+		full model. (These functions are still being developed and will be included in a future release).</li>
+	</ul>
+A table showing analogous functions for the each of the three different interfaces <a href="#compare">is shown below</a>.</p>
+<p>In addition there are functions that can be used to convert between MathML and standard Mathematica infix expressions.</p>
+
+<p>Finally, there are several functions that are used to convert a model into either symbolic
+or textual SBML (Level 2 only); read a text file into the model builder; or convert the
+model into a form compatable with the model builder. <a href="mathsbml-addremove.html">Click here for more detail</a>. </p>
+
+<p>At the present time, the model builder is developmental, and we are
+experimenting with appropriate syntactical and functional structures. Thus 
+these functions are not fixed and are subject to change. The purpose of 
+including this information on the web page is to allow users to experiment 
+with functions that have been developed and to stimulate discussion and suggestions
+for improvement. Changes currently under development include:
+<ul>
+	<li>The <span class="function">modify_</span> functions listed in the table below for the model builder interface.</li>
+	<li>Level 1 compatibility</li>
+</ul>
+</p>
+
+<p><a href="mathsbml-addremove.html">Click here</a> for a detailed example illustrating model construction with the model builder.</p>
+<hr/>
+<h1>Functions that return SBML text</h1><p>
+Click on any function name to get more details.</p>
+<table bgcolor="#FFFFFF" border="1" width="600">
+	<tr>
+		<td>
+			<table border="0" cellpadding="5" width="100%" >
+				<thead style="background:#D0D0D0;">
+					<tr>
+						<td><b>Function</b></td>
+						<td><b>Item(s) returned</b></td>
+					</tr>
+				</thead>
+				<tbody>
+						<tr>
+							<td valign="top"><a href="mathsbml-compartmentToSBML.html"><span class="function">compartmentToSBML</span></a></td>
+							<td valign="top"><span class="function">&lt;compartment.../&gt;<br/>&lt;listOfCompartments&gt;</span></td>
+						</tr>												
+				
+						<tr style="background:#D0D0D0;">
+							<td valign="top"><a href="mathsbml-eventToSBML.html"><span class="function">eventToSBML</span></a></td>
+							<td valign="top"><span class="function">&lt;event.../&gt;<br/>&lt;listOfEvents.../&gt;</span></td>
+						</tr>												
+	
+						<tr>
+							<td valign="top"><a href="mathsbml-functionToSBML.html"><span class="function">functionToSBML</span></a></td>
+							<td valign="top"><span class="function">&lt;function.../&gt;<br/>&lt;listOfFunctionDefinitions.../&gt;</span></td>
+						</tr>												
+
+						<tr style="background:#D0D0D0;">
+							<td valign="top"><a href="mathsbml-parameterToSBML.html"><span class="function">parameterToSBML</span></a></td>
+							<td valign="top"><span class="function">&lt;parameter.../&gt;<br/>&lt;listOfParameters.../&gt;</span></td>
+						</tr>												
+
+						<tr>
+							<td valign="top"><a href="mathsbml-reactionToSBML.html"><span class="function">reactionToSBML</span></a></td>
+							<td valign="top"><span class="function">&lt;reaction.../&gt;<br/>&lt;listOfReactions.../&gt;</span></td>
+						</tr>												
+
+						<tr style="background:#D0D0D0;">
+							<td valign="top"><a href="mathsbml-ruleToSBML.html"><span class="function">ruleToSBML</span></a></td>
+							<td valign="top"><span class="function">&lt;rule.../&gt;<br/>&lt;listOfRules.../&gt;</span></td>
+						</tr>												
+
+						<tr>
+							<td valign="top"><a href="mathsbml-speciesToSBML.html"><span class="function">speciesToSBML</span></a></td>
+							<td valign="top"><span class="function">&lt;species.../&gt;<br/>&lt;listOfSpecies.../&gt;</span></td>
+						</tr>												
+						<tr style="background:#D0D0D0;">
+							<td valign="top"><a href="mathsbml-unitToSBML.html"><span class="function">unitToSBML</span></a></td>
+							<td valign="top"><span class="function">&lt;unitDefinition.../&gt;<br/>&lt;listOfUnitDefinitons.../&gt;</span></td>
+						</tr>												
+
+				</tbody>
+				</table>
+		</td>
+	</tr>
+</table>
+
+<hr/>
+<h1>Conversion between MathML and Infix Notation</h1><p>Click on a function name to get more details.</p>
+<table bgcolor="#FFFFFF" border="1" width="600">
+	<tr>
+		<td>
+			<table border="0" cellpadding="5" width="100%" >
+				<thead style="background:#D0D0D0;">
+					<tr>
+						<td><b>Function</b></td>
+						<td><b>Input</b></td>
+						<td><b>Item(s) returned</b></td>
+					</tr>
+				</thead>
+				<tbody>
+						<tr>
+							<td valign="top"><a href="mathsbml-mathmlconversion.html"><span class="function">InfixToMathSBML</span></a></td>
+							<td>Mathematica Infix Expression</td>
+							<td>MathSBML Text</td>
+						</tr>												
+						<tr style="background:#D0D0D0;">
+							<td valign="top"><a href="mathsbml-mathmlconversion.html"><span class="function">MathSBMLToInfix</span></a></td>
+							<td>MathSBML Text</td>
+							<td>Mathematica Infix Expression</td>
+						</tr>												
+				</tbody>
+				</table>
+		</td>
+	</tr>
+</table>
+	
+<a name="symbolic"></a>	
+<hr />
+<h1>Symbolic SBML</h1>
+
+<p>Symbolic SBML is identical to Mathematica's Symbolic XML, using SBML tags, and consists of Mathematica Expressions of the form</p>
+<p>
+&nbsp;&nbsp;&nbsp;<span class="function">XMLElement[name, {n<sub>1</sub>->v<sub>1</sub>,n<sub>2</sub>->v<sub>2</sub>,...}, {s<sub>1</sub>,s<sub>2</sub>,...}]</span>
+</p>
+where <span class="function">name</span> is the text name of the xml element, <span class="function">n<sub>i</sub>->v<sub>i</sub></span>
+are name/value pairs that should be placed inline with the xml tag, and <span class="function">s<sub>i</sub></span> are XMLElement expressions for
+XML sub elements, e.g., 
+<pre style="font-size:larger;color:blue;">
+    XMLElement["name1",
+              {"n1"->"v1","n2"->"v2"},
+              { XMLElement["listOfS",
+                          {"n5"-> "v5"},
+                          {XMLElement["s1",{"n3"->"v3"},{}],
+                           XMLElement["s2",{"n4"->"v4"},{}]}]
+               }]
+</pre>
+
+represents the pure XML 
+<pre style="font-size:larger;color:blue;">
+	&lt;name1 n1="v1" n2="v2"&gt;
+	 &lt;listOfS n5="v5"&gt;
+	  &lt;s1 n3="v3"/&gt;
+	  &lt;s2 n4="v4"/&gt;
+	 &lt;/listOfS&gt;
+	&lt;/name1&gt;
+	</pre>
+
+<p>For more details on Symbolic XML see the
+<a href="http://documents.wolfram.com/v5/Add-onsLinks/XMLCapabilities/Introduction/SymbolicXML/index.html">Online Mathematica Documentation Center</a>.
+</p>
+
+
+<a name="compare"></a>
+<p>The following table illustrates the corresponding functions for pure SBML, symbolic SBML, and the model builder interface. The 
+calling format for the symbolic functions are identical to those for pure SBML, the only difference is what they return.</p>
+
+<p>Click on any function name in the following table to get additional details on that 
+function.</p>
+<table bgcolor="#FFFFFF" border="1" width="600">
+	<tr>
+		<td>
+			<table border="0" cellpadding="5" width="100%" >
+				<thead style="background:#D0D0D0;">
+					<tr>
+						<td><b>Pure SBML Function</b><br />Returns SBML text</td>
+						<td><b>Symbolic SBML Function</b><br />Returns Symbolic XML</td>
+						<td><b>Model Builder Functions</b><br />Changes contents of database<br/>(*In Development)</td>
+					</tr>
+				</thead>
+				<tbody>
+				
+						<tr>
+							<td valign="top"><a href="mathsbml-compartmentToSBML.html"><span class="function">compartmentToSBML</span></a></td>
+							<td valign="top"><a href="mathsbml-compartmentToSBML.html"><span class="function">compartmentToSymbolicSBML</span></a></td>
+							<td valign="top">
+								<a href="mathsbml-addremove.html">
+									<span class="function">addCompartment<br/>removeCompartment<br/>modifyCompartment</span>*
+								</a>
+							</td>
+						</tr>												
+				
+						<tr style="background:#D0D0D0;">
+							<td valign="top"><a href="mathsbml-eventToSBML.html"><span class="function">eventToSBML</span></a></td>
+							<td valign="top"><a href="mathsbml-eventToSBML.html"><span class="function">eventToSymbolicSBML</span>*</a></td>
+							<td valign="top">
+								<a href="mathsbml-addremove.html">
+									<span class="function">addEvent<br/>removeEvent<br/>modifyEvent</span>
+								</a>
+							</td>
+						</tr>												
+	
+						<tr>
+							<td valign="top"><a href="mathsbml-functionToSBML.html"><span class="function">functionToSBML</span></a></td>
+							<td valign="top"><a href="mathsbml-functionToSBML.html"><span class="function">functionToSymbolicSBML</span>*</a></td>
+							<td valign="top">
+								<a href="mathsbml-addremove.html">
+									<span class="function">addFunction<br/>removeFunction<br/>modifyFunction</span>*
+								</a>
+							</td>
+						</tr>												
+
+						<tr style="background:#D0D0D0;">
+							<td valign="top"><a href="mathsbml-parameterToSBML.html"><span class="function">parameterToSBML</span></a></td>
+							<td valign="top"><a href="mathsbml-parameterToSBML.html"><span class="function">parameterToSymbolicSBML</span></a></td>
+							<td valign="top">
+								<a href="mathsbml-addremove.html">
+									<span class="function">addParameter<br/>removeParameter<br/>modifyFunction</span>*
+								</a>
+							</td>
+						</tr>												
+
+						<tr>
+							<td valign="top"><a href="mathsbml-reactionToSBML.html"><span class="function">reactionToSBML</span></a></td>
+							<td valign="top"><a href="mathsbml-reactionToSBML.html"><span class="function">reactionToSymbolicSBML</span></a></td>
+							<td valign="top">
+								<a href="mathsbml-addremove.html">
+									<span class="function">addReaction<br/>removeReaction<br/>modifyReaction</span>*
+								</a>
+							</td>
+						</tr>												
+
+						<tr style="background:#D0D0D0;">
+							<td valign="top"><a href="mathsbml-ruleToSBML.html"><span class="function">ruleToSBML</span></a></td>
+							<td valign="top"><a href="mathsbml-ruleToSBML.html"><span class="function">ruleToSymbolicSBML</span></a></td>
+							<td valign="top">
+								<a href="mathsbml-addremove.html">
+									<span class="function">addRule<br/>removeRule<br/>modifyRule</span>*
+								</a>
+							</td>
+						</tr>												
+
+						<tr>
+							<td valign="top"><a href="mathsbml-speciesToSBML.html"><span class="function">speciesToSBML</span></a></td>
+							<td valign="top"><a href="mathsbml-speciesToSBML.html"><span class="function">speciesToSymbolicSBML</span></a></td>
+							<td valign="top">
+								<a href="mathsbml-addremove.html">
+									<span class="function">addSpecies<br/>removeSpecies<br/>modifySpecies</span>*
+								</a>
+							</td>
+						</tr>												
+						<tr style="background:#D0D0D0;">
+							<td valign="top"><a href="mathsbml-unitToSBML.html"><span class="function">unitToSBML</span></a></td>
+							<td valign="top"><a href="mathsbml-unitToSBML.html"><span class="function">unitToSymbolicSBML</span></a></td>
+							<td valign="top">
+								<a href="mathsbml-addremove.html">
+									<span class="function">addUnit<br/>removeUnit<br />modifyUnit</span>*
+								</a>
+							</td>
+						</tr>												
+				</tbody>
+			</table>
+		</td>
+	</tr>
+</table>
+<br /><br />
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

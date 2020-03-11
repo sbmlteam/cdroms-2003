@@ -1,0 +1,134 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] Re: SBML Level 2 -->
+<!--X-From-R13: Qyvss Eunssre <funssreNfunssre.pf.ig.rqh> -->
+<!--X-Date: Wed, 4 Dec 2002 09:07:10 &#45;0800 -->
+<!--X-Message-Id: Pine.LNX.4.33.0212041251430.12757&#45;100000@shaffer.cs.vt.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 002901c29b97$e44f1470$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] Re: SBML Level 2</TITLE>
+<LINK REV="made" HREF="mailto:shaffer@shaffer.cs.vt.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00004.html">Date Prev</A>][<A HREF="msg00014.html">Date Next</A>][<A HREF="msg00004.html">Thread Prev</A>][<A HREF="msg00014.html">Thread Next</A>][<A HREF="maillist.html#00005">Date Index</A>][<A HREF="threads.html#00005">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] Re: SBML Level 2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Biospice Model Definition Language &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] Re: SBML Level 2</LI>
+<LI><em>From</em>: Cliff Shaffer &lt;<A HREF="mailto:shaffer@shaffer.cs.vt.edu">shaffer@shaffer.cs.vt.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 4 Dec 2002 13:06:47 -0500 (EST)</LI>
+<LI>cc: SBML &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Andrew -- Good to hear from you! Unfortunately, I will be unable to attend
+the SBML meeting. Here are a few comments.
+
+I'll mention that we are finally getting up to speed with true use of SBML
+Level 2.0. Marc Vass is completing his translator software from the
+JigCell Model Builder to SBML Level 2.0. This means we are getting true
+hands-on experience with converting our models to SBML 2.0. So its not a
+theoretical discussion for us so much as it used to be. Note that by SBML
+2.0, we mean support for what is in that appendix... we are assuming that
+this will be included.
+
+Beyond that, this issue of initial conditions and parameter values has
+certainly come up before. It will need to be addressed in some way. It
+becomes increasingly clear to us that the IC/Param values need to be
+separated from the rest of the model, since these vary on a more rapid
+development schedule. That is, a modeler is likely to set his equations
+and leave them, while tweaking parameter sets frequently. Thus, the
+"model" part needs to be stable while the "values" part changes
+frequently. Ideally these would be in separate files. The notion of
+include files would help a great deal here. It might be premature to deal
+with that. But as a stopgap, making paramter/IC values optional is good
+step. From our point of view, the idea that parameter values are a
+required part of the model is totally wrong. What happens in practice is
+that default value of (for example) zero gets stuck in... with the
+horrible result currently that one cannot distinguish a default
+placeholder (put there only because SBML requires it) from a value that
+has been deliberately set to zero.
+
+It would be helpful to us if the named functions had some sort of optional
+tag that let us distinguish rate laws from other types of functions. The
+reason is that we wish to display to the user of our model builder
+software a list of available ratelaws, without including other functions
+that are not meant to be used as ratelaws.
+
+Finally, we do have need of variable parameter lists. The canonical
+example is the mass action law, with variable numbers of parameters to be
+multiplied together. We can live without this for now (we have Mass Action
+1, Mass Action 2, etc... ugly but tolerable), but it would be beneficial
+to get this supported.
+           -- Cliff
+
+-- Cliff Shaffer, Associate Professor Phone: (540) 231-4354 Department of
+Computer Science Email: shaffer@cs.vt.edu Virginia Tech, Blacksburg, VA
+24061-0106 WWW:  www.cs.vt.edu/~shaffer
+-------------------------------------------------------------------------
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00014" HREF="msg00014.html">RE: SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00004" HREF="msg00004.html">[sbml-discuss] SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00004.html">[sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00014.html">RE: SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00004.html">[sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00014.html">RE: SBML Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00005"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00005"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

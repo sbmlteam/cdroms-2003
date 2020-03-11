@@ -1,0 +1,102 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] how to do stochastic calculation? -->
+<!--X-From-R13: =?Pvt5?P?dildGC==?= <gfujnat8Nlnz.pbz> -->
+<!--X-Date: Tue, 15 Jul 2003 03:24:18 &#45;0700 -->
+<!--X-Message-Id: 570970759.1058264607421.JavaMail.jmail@jm8 -->
+<!--X-Content-Type: text/html -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] how to do stochastic calculation?</TITLE>
+<LINK REV="made" HREF="mailto:tshwang8@yam.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00568.html">Date Prev</A>][<A HREF="msg00570.html">Date Next</A>][<A HREF="msg00558.html">Thread Prev</A>][<A HREF="msg00570.html">Thread Next</A>][<A HREF="maillist.html#00569">Date Index</A>][<A HREF="threads.html#00569">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] how to do stochastic calculation?</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] how to do stochastic calculation?</LI>
+<LI><em>From</em>: =?Big5?B?qvyqUQ==?= &lt;<A HREF="mailto:tshwang8@yam.com">tshwang8@yam.com</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 15 Jul 2003 18:23:27 +0800 (CST)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+Hello:  
+<br>
+
+<br>
+I used JDesigner(v1.8h) to load a sample file oscli.xml to do stochastic calculation, but I got an error message as listed below. The message appear again when I did Gibson simulation. Actually I have a file sbml.xsd in c:\WINNT\system32, but the program still gave me the message that it could not find the file sbml.xsd in c:\WINNT\system32. This is the first time I did stochastic calculation. Please help me to solve it. Thanks!
+<br>
+
+<br>
+Best Regards 
+<br>
+TS Hwang  
+<br>
+
+<br>
+
+<br>
+
+<br>
+[Error] :3:69: General Schema Error: Stopping after fatal error: File "C:\WINNT\system32\sbml.xsd" not found..[Error] :3:69: General Schema Error: Can't get back Schema document's root element :C:\WINNT\system32\sbml.xsd.[Error] :3:69: General Schema Error: Grammar with uri 2: http://www.sbml.org/sbml/level1 , can not be found.[Error] :3:69: Element type "sbml" must be declared.[Error] :5:102: Element type "model" must be declared.[Error] :7:21: Element type "listOfCompartments" must be declared.[Error] :8:46: Element type "compartment" must be declared.[Error] :11:16: Element type "listOfSpecies" must be declared.[Error] :12:91: Element type "specie" must be declared.[Error] :13:91: Element type "specie" must be declared.[Error] :14:91: Element type "specie" must be declared.[Error] :15:91: Element type "specie" must be declared.[Error] :16:91: Element type "specie" must be declared.[Error] :19:18: Element type "listOfReactions" must be declared.[Error] :20:40: Element type "reaction" must be declared.[Error] :21:18: Element type "listOfReactants" must be declared.[Error] :22:48: Element type "specieReference" must be declared.[Error] :24:17: Element type "listOfProducts" must be declared.[Error] :25:48: Element type "specieReference" must be declared.[Error] :28:26: Element type "kineticLaw" must be declared.[Error] :29:19: Element type "listOfParameters" must be declared.[Error] :30:37: Element type "parameter" must be declared.[Error] :35:40: Element type "reaction" must be declared.[Error] :36:18: Element type "listOfReactants" must be declared.[Error] :37:48: Element type "specieReference" must be declared.[Error] :39:17: Element type "listOfProducts" must be declared.[Error] :40:48: Element type "specieReference" must be declared.[Error] :43:29: Element type "kineticLaw" must be declared.[Error] :44:19: Element type "listOfParameters" must be declared.[Error] :45:37: Element type "parameter" must be declared.[Error] :50:40: Element type "reaction" must be declared.[Error] :51:18: Element type "listOfReactants" must be declared.[Error] :52:48: Element type "specieReference" must be declared.[Error] :54:17: Element type "listOfProducts" must be declared.[Error] :55:48: Element type "specieReference" must be declared.[Error] :58:49: Element type "kineticLaw" must be declared.[Error] :59:19: Element type "listOfParameters" must be declared.[Error] :60:37: Element type "parameter" must be declared.[Error] :61:38: Element type "parameter" must be declared.[Error] :62:36: Element type "parameter" must be declared.[Error] :63:36: Element type "parameter" must be declared.[Error] :68:40: Element type "reaction" must be declared.[Error] :69:18: Element type "listOfReactants" must be declared.[Error] :70:48: Element type "specieReference" must be declared.[Error] :72:17: Element type "listOfProducts" must be declared.[Error] :73:48: Element type "specieReference" must be declared.[Error] :76:29: Element type "kineticLaw" must be declared.[Error] :77:19: Element type "listOfParameters" must be declared.[Error] :78:37: Element type "parameter" must be declared.context:java.lang.Exception	at edu.caltech.sbw.SBWException.appendStackTrace(SBWException.java:300)	at edu.caltech.sbw.SBWException.(SBWException.java:289)	at edu.caltech.sbw.SBWApplicationException.(SBWApplicationException.java:96)	at SBMLValidate.TJXML.postParseProcessing(SBMLValidate.java:549)	at SBMLValidate.TJXML.LoadFromString(SBMLValidate.java:569)	at SBMLValidate.NOMService.loadSBML(NOMService.java:160)	at java.lang.reflect.Method.invoke(Native Method)	at edu.caltech.sbw.ServiceImpl.invokeMethod(ServiceImpl.java:215)	at edu.caltech.sbw.ObjectOrientedReceiver.receive(ObjectOrientedReceiver.java:163)	at edu.caltech.sbw.RPCInCall.doReceive(RPCInCall.java:299)	at edu.caltech.sbw.RPCInCall.run(RPCInCall.java:192)context:java.lang.Exception	at edu.caltech.sbw.SBWException.appendStackTrace(SBWException.java:300)	at edu.caltech.sbw.SBWException.(SBWException.java:289)	at edu.caltech.sbw.SBWApplicationException.(SBWApplicationException.java:96)	at edu.caltech.sbw.RPCOutCall.waitForReply(RPCOutCall.java:208)	at edu.caltech.sbw.SBWRPC.call(SBWRPC.java:207)	at edu.caltech.sbw.ServiceInvocationHandler.invoke(ServiceInvocationHandler.java:142)	at $Proxy1.loadSBMLModel(Unknown Source)	at edu.caltech.sbw.analyses.TimeBasedAnalysisFrame.doAnalysis(TimeBasedAnalysisFrame.java:167)	at java.lang.reflect.Method.invoke(Native Method)	at edu.caltech.sbw.ServiceImpl.invokeMethod(ServiceImpl.java:215)	at edu.caltech.sbw.ObjectOrientedReceiver.receive(ObjectOrientedReceiver.java:163)	at edu.caltech.sbw.RPCInCall.doReceive(RPCInCall.java:299)	at edu.caltech.sbw.RPCInCall.run(RPCInCall.java:192)
+<br>
+
+<br>
+
+<br>
+<DIV class=ad><SPAN style="COLOR: #0000ff; FONT-SIZE: 10pt">＝蕃薯藤快訊＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ </SPAN>
+<br>
+<A href="http://ads.yam.com/click?ADTYPE=214&amp;AD_ID=342&amp;MID=37934&amp;link=http://chat.yam.com/pm/starlink.htm" target=target_top>想和海豚灣戀人的主角們聊天嗎?每週四晚上<BR>8點到9點，蕃薯藤明星聊天室LIVE熱烈展開...</A> <BR><SPAN style="COLOR: #0000ff; FONT-SIZE: 10pt">＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ </SPAN></DIV><br>
+
+
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00568.html">RE: [sbml-discuss] Layout Extension Update + controlled vocabularies</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00570.html">[sbml-discuss] Reminder: SBML Hackathon in less than 2 weeks!</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00558.html">RE: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00570.html">[sbml-discuss] Reminder: SBML Hackathon in less than 2 weeks!</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00569"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00569"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

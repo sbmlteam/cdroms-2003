@@ -1,0 +1,149 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Complex Species -->
+<!--X-From-R13: "Vreoreg Enheb" <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Thu, 17 Jul 2003 12:56:40 &#45;0700 -->
+<!--X-Message-Id: 601BBB4D9640CB4693A2384E4B37872E15B536@dell2650&#45;0550.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Complex Species</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00572.html">Date Prev</A>][<A HREF="msg00574.html">Date Next</A>][<A HREF="msg00572.html">Thread Prev</A>][<A HREF="msg00574.html">Thread Next</A>][<A HREF="maillist.html#00573">Date Index</A>][<A HREF="threads.html#00573">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Complex Species</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;zucker&quot; &lt;<A HREF="mailto:zucker@research.dfci.harvard.edu">zucker@research.dfci.harvard.edu</A>&gt;,  &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Complex Species</LI>
+<LI><em>From</em>: &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 17 Jul 2003 12:52:54 -0700</LI>
+<LI>Thread-Index: AcNMnBMKlfPFiPpyRPWaQInWdegq9wAAK7lV</LI>
+<LI>Thread-Topic: [sbml-discuss] Complex Species</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+ 
+I think the first question is how many complexes will you have in any one model? Hundreds? Tens? If they just run into tens, then it might be better to just list them out as distinct species and reactions in the normal way.
+ 
+Herbert Sauro
+
+	-----Original Message----- 
+	From: zucker [<A  HREF="mailto:zucker@research.dfci.harvard.edu">mailto:zucker@research.dfci.harvard.edu</A>] 
+	Sent: Thu 7/17/2003 12:37 PM 
+	To: sbml-discuss@its.caltech.edu 
+	Cc: 
+	Subject: [sbml-discuss] Complex Species
+	
+	
+
+	Hello all, 
+
+	   I am rather new to this discussion list, but I had a question about 
+	representing complex species in SBML.   I am currently involved in a 
+	project in George Church's lab to build metabolic flux models from 
+	Biocyc, and I need to represent the relationship between genes and the 
+	enzyme complexes that catalyze reactions in SBML. Accordig the the SBML 
+	level 2 final draft, it appears that a full implementation of Complex 
+	species is being held off until Level 3..  Instead, it seems that the 
+	recommended way to represent the relationship between genes and enzymes 
+	is by using annotations: 
+
+	&lt;species id="="ACETYL-COA-CARBOXYLTRANSFER-CPLX" name="acetyl-CoA 
+	carboxyltransferase" compartment="cytoplasm" boundaryCondition="false"&gt; 
+
+	&lt;annotation xmlns:fbml="<A  HREF="http://arep.med.harvard.edu/fbml">http://arep.med.harvard.edu/fbml</A>"&gt; 
+
+	&lt;fbml:gene id="EG11647" name="accA"/&gt; 
+
+	&lt;fbml:gene id="EG10217" name="accD"/&gt; 
+
+	&lt;/annotation&gt; 
+
+	&lt;/species&gt; 
+
+	(FBML is my own faux namespace that I created just to get the job done). 
+	 My question is this: 
+
+	1. Is this the "approved" way to solve this problem until complex 
+	species have been worked out? 
+	2. Should I include the genes as an additional species in the ListOfSpecies? 
+	2. Is there a Complex Species working group that I can sign onto in 
+	order to get involved in future developments for Level 3? 
+
+
+	Sincerely, 
+
+	Jeremy Zucker 
+
+	-- 
+	============================================================= 
+	 Jeremy Zucker &lt;Jeremy_Zucker@dfci.harvard.edu&gt; 
+	 Bioinformatics Specialist, Research Computing 
+	 Dana-Farber Cancer Institute 
+	 44 Binney Street, JF 314 
+	 Boston, MA 02115 
+	 Tel: 617/632-6852 
+	 Cel: 781/820-1903 
+	 Fax: 617/632-4012 
+	 <A  HREF="http://research.dfci.harvard.edu">http://research.dfci.harvard.edu</A> 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00574" HREF="msg00574.html">Re: [sbml-discuss] Complex Species</A></STRONG>
+<UL><LI><EM>From:</EM> zucker &lt;zucker@research.dfci.harvard.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00572.html">[sbml-discuss] Complex Species</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00574.html">Re: [sbml-discuss] Complex Species</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00572.html">[sbml-discuss] Complex Species</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00574.html">Re: [sbml-discuss] Complex Species</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00573"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00573"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

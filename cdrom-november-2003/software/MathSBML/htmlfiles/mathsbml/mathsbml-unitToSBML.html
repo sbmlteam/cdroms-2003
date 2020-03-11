@@ -1,0 +1,194 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage"></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table>
+</div>
+
+
+<h1>MathSBML Model Builder:<span class="function"> unitToSBML</span> </h1>
+
+<hr/>
+
+			
+<p><span class="function">unitToSBML[options]</span> returns an SBML 
+<span class="function">&lt;unitDefinition .../&gt;</span></p>
+
+<p><span class="function">unitToSBML[{{options},{options},...}]</span> returns a <span class="function">&lt;listOfUnitDefinitions .../&gt;</span>
+where each option list corresponds to the options for single unitDefinition.</p>
+
+<p><span class="function">unitToSymbolicSBML[arguments]</span> returns Symbolic XML for a
+<span class="function">&lt;unitDefinition .../&gt;</span>.</p>
+<span style="font-size:smaller;">New in version 2.1.5.</span>
+
+<hr />
+<h1>Options</h1>
+<table bgcolor="#C0C0C0" border="1">
+	<tr>
+		<td>
+			<table border="0" cellpadding="5">
+				<thead style="font-weight:bold;">
+					<tr>
+						<td>Option</td>
+						<td>Default</td>
+						<td>Description</td>
+					</tr>
+				</thead>
+				<tbody>
+				
+						<tr>
+							<td valign="top"><span class="function">id</span></td>
+							<td valign="top"><span class="function"></span>generated*</td>
+							<td valign="top">Value of SBML <span class="function">id</span>. *If not specified, an id of the form <span class="function">unit<i>n</i></span>, 
+							where <span class="function"><i>n</i></span> is an integer, is generated.</td>
+						</tr>												
+				
+						<tr>
+							<td valign="top"><span class="function">name</span></td>
+							<td valign="top">Uses <span class="function">id</span>*</td>
+							<td valign="top">Value of SBML <span class="function">name</span>. *If not specified, the value of the <span class="function">id</span> is used. </td>
+						</tr>												
+						
+						<tr>
+							<td valign="top"><span class="function">unit</span></td>
+							<td valign="top">No default.</td>
+							<td valign="top">Options list of the form <span class="function">{<i>kind_string</i>->{options},<i>kind_string</i>->{options},...}</span>, where options are as described 
+							in table below, and each <span class="function"><i>kind_string</i></span>
+							is one ofthe allowed unit kinds listed in tables 2 (unitKind units) or 3 (build in units) of the spec. Defines <span class="function">&lt;unit ... /&gt;</span></td>
+						</tr>												
+					</tbody>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<h1>Options within <span class="function">units</span></h1>
+<table bgcolor="#C0C0C0" border="1">
+	<tr>
+		<td>
+			<table border="0" cellpadding="5">
+				<thead style="font-weight:bold;">
+					<tr>
+						<td>Option</td>
+						<td>Default</td>
+						<td>Description</td>
+					</tr>
+				</thead>
+				<tbody>
+				
+						<tr>
+							<td valign="top"><span class="function">exponent</span></td>
+							<td valign="top"><span class="function">1</span></td>
+							<td valign="top">unit exponent, ignored unless different from 1.</td>
+						</tr>												
+				
+						<tr>
+							<td valign="top"><span class="function">scale</span></td>
+							<td valign="top"><span class="function">0</span></td>
+							<td valign="top">unit scale, ignored unless different from 0.</td>
+						</tr>												
+						<tr>
+							<td valign="top"><span class="function">multiplier</span></td>
+							<td valign="top"><span class="function">1</span></td>
+							<td valign="top">unit multiplier, ignored unless different from 1.</td>
+						</tr>												
+						<tr>
+							<td valign="top"><span class="function">offset</span></td>
+							<td valign="top"><span class="function">0</span></td>
+							<td valign="top">unit offset, ignored unless different from 0.</td>
+						</tr>												
+					</tbody>
+			</table>
+		</td>
+	</tr>
+</table>
+<hr />
+
+<h1>Example 1: Single unit definition:</h1>
+<pre style="font-size:larger;color:blue;">
+unitToSBML[
+   id->"mmlh",
+   name->"millimoles_per_liter_per_hour",
+   unit-> {"mole"-> {scale-> -3}, 
+           "litre"-> {exponent-> -1}, 
+           "second"-> {scale->3600, exponent-> -1}}]
+</pre>
+
+returns the string
+<pre style="font-size:larger;color:blue;">
+&lt;unitDefinition id="mmlh"
+    name="millimoles_per_liter_per_hour"&gt;
+ &lt;listOfUnits&gt;
+  &lt;unit kind="mole"
+      scale="-3"/&gt;
+  &lt;unit kind="litre"
+      exponent="-1"/&gt;
+  &lt;unit kind="second"
+      exponent="-1"
+      scale="3600"/&gt;
+ &lt;/listOfUnits&gt;
+&lt;/unitDefinition&gt;
+</pre>
+
+<h1>Example 2: list of unit definitions:</h1>
+The input string:
+
+<pre style="font-size:larger;color:blue;">
+unitToSBML[
+  { {id->"mmlh",name->"millimoles_per_liter_per_hour",
+     unit->{"mole"->{scale->-3},
+            "litre"->{exponent->->1},
+            "second"->{scale->3600,exponent->-1}}
+     },
+     {id->"fred",
+      unit->{"ampere"->{exponent->-1},
+             "ohm"->{scale->4}}
+     }
+   }]
+</pre>
+
+returns
+
+<pre style="font-size:larger;color:blue;">
+
+&lt;listOfUnitDefinitions&gt;
+ &lt;unitDefinition id="mmlh"
+     name="millimoles_per_liter_per_hour"&gt;
+  &lt;listOfUnits&gt;
+   &lt;unit kind="mole"
+       scale="-3"/&gt;
+   &lt;unit kind="litre"
+       exponent="-1"/&gt;
+   &lt;unit kind="second"
+       exponent="-1"
+       scale="3600"/&gt;
+  &lt;/listOfUnits&gt;
+ &lt;/unitDefinition&gt;
+ &lt;unitDefinition id="fred"
+     name="fred"&gt;
+  &lt;listOfUnits&gt;
+   &lt;unit kind="ampere"
+       exponent="-1"/&gt;
+   &lt;unit kind="ohm"
+       scale="4"/&gt;
+  &lt;/listOfUnits&gt;
+ &lt;/unitDefinition&gt;
+&lt;/listOfUnitDefinitions&gt;"
+</pre>
+	
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

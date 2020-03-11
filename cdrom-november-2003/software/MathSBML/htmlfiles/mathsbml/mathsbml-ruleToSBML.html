@@ -1,0 +1,132 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage"></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table></div>
+
+
+<h1>MathSBML Model Builder:<span class="function"> ruleToSBML</span> </h1>
+
+<hr/>
+
+			
+<p><span class="function">ruleToSBML[options]</span> returns an SBML rule definition</p>
+
+<p><span class="function">ruleToSBML[{{options},{options},...}]</span> returns a <span class="function">&lt;listOfRules .../&gt;</span>
+where each option list corresponds to the options for single rule definition.</p>
+
+<p><span class="function">ruleToSymbolicSBML[arguments]</span> returns Symbolc SBML for a rule definition</p>
+
+<span style="font-size:smaller;">New in version 2.1.5.</span>
+
+<hr />
+<h1>Options</h1>
+<table bgcolor="#C0C0C0" border="1">
+	<tr>
+		<td>
+			<table border="0" cellpadding="5">
+				<thead style="font-weight:bold;">
+					<tr>
+						<td>Option</td>
+						<td>Default</td>
+						<td>Description</td>
+					</tr>
+				</thead>
+				<tbody>
+				
+						<tr>
+							<td valign="top"><span class="function">type</span></td>
+							<td valign="top"><span class="function"></span>none</td>
+							<td valign="top">type of rule: <span class="function">algebraicRule</span>, 
+							<span class="function">assignmentRule</span>, or <span class="function">rateRule</span>.</td>
+						</tr>												
+				
+						<tr>
+							<td valign="top"><span class="function">variable</span></td>
+							<td valign="top">none*</td>
+							<td valign="top">Name of variable for <span class="function">assignmentRule</span>, or <span class="function">rateRule</span>.   *If not specified, <span class="function">variable<i>n</i></span> is used.
+							Ignored for <span class="function">algebraicRule</span>. </td>
+						</tr>												
+						
+						<tr>
+							<td valign="top"><span class="function">math</span></td>
+							<td valign="top"><span class="function">0</span></td>
+							<td valign="top">Formula to use for the rule.</td>
+						</tr>												
+					</tbody>
+			</table>
+		</td>
+	</tr>
+</table>
+
+
+<hr />
+
+<h1>Example 1: Single rule definition:</h1>
+<pre style="font-size:larger;color:blue;">
+ruleToSBML[type -> assignmentRule, variable -> x, math -> x + y]
+</pre>
+
+returns the string
+<pre style="font-size:larger;color:blue;">
+&lt;assignmentRule variable="x"&gt;
+ &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+  &lt;apply&gt;
+   &lt;plus/&gt;
+   &lt;ci&gt;x&lt;/ci&gt;
+   &lt;ci&gt;y&lt;/ci&gt;
+  &lt;/apply&gt;
+ &lt;/math&gt;
+&lt;/assignmentRule&gt;
+</pre>
+
+<h1>Example 2: list of rules:</h1>
+The input string:
+
+<pre style="font-size:larger;color:blue;">
+ruleToSBML[{{type->"algebraicRule",  math->x^2},
+            {type -> "rateRule", variable->y, math->2*x}
+            }]
+</pre>
+
+returns
+
+<pre style="font-size:larger;color:blue;">
+&lt;listOfRules&gt;
+ &lt;algebraicRule&gt;
+  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+   &lt;apply&gt;
+    &lt;power/&gt;
+    &lt;ci&gt;x&lt;/ci&gt;
+    &lt;cn type="integer"&gt;2&lt;/cn&gt;
+   &lt;/apply&gt;
+  &lt;/math&gt;
+ &lt;/algebraicRule&gt;
+ &lt;rateRule variable="y"&gt;
+  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+   &lt;apply&gt;
+    &lt;times/&gt;
+    &lt;cn type="integer"&gt;2&lt;/cn&gt;
+    &lt;ci&gt;x&lt;/ci&gt;
+   &lt;/apply&gt;
+  &lt;/math&gt;
+ &lt;/rateRule&gt;
+&lt;/listOfRules&gt;
+</pre>
+	
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

@@ -1,0 +1,220 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] CWG: Constraints Working Group -->
+<!--X-From-R13: Inlar Dvaqbar <jevaqbarNnerc.zrq.uneineq.rqh> -->
+<!--X-Date: Mon, 22 Sep 2003 13:48:22 &#45;0700 -->
+<!--X-Message-Id: Pine.OSF.3.94.1030922152230.25711C&#45;100000@arep.med.harvard.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2C053E37F2@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] CWG: Constraints Working Group</TITLE>
+<LINK REV="made" HREF="mailto:wrindone@arep.med.harvard.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00643.html">Date Prev</A>][<A HREF="msg00645.html">Date Next</A>][<A HREF="msg00638.html">Thread Prev</A>][<A HREF="msg00639.html">Thread Next</A>][<A HREF="maillist.html#00644">Date Index</A>][<A HREF="threads.html#00644">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] CWG: Constraints Working Group</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] CWG: Constraints Working Group</LI>
+<LI><em>From</em>: Wayne Rindone &lt;<A HREF="mailto:wrindone@arep.med.harvard.edu">wrindone@arep.med.harvard.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 22 Sep 2003 16:48:47 -0400 (EDT)</LI>
+<LI>Cc: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI>Reply-To: Wayne Rindone &lt;<A HREF="mailto:wrindone@arep.med.harvard.edu">wrindone@arep.med.harvard.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi all,
+
+     Yes, as John indicated, I am more than willing to lead
+this group (unless someone else wants to do so more), since
+both our models have contraints as a central feature.  These
+are flux balance models and 4D chromosome folding models.
+
+      These represent two very different kinds of contraints,
+but I expect others can come up with other examples that have
+little in common with either of these.
+
+       In the flux balance models, we wish to describe lower
+and upper flux limits for each flux reaction.  We have prototyped doing
+this using annotations in the flux balance SBML models produced thus far.
+A typical reaction looks like this:
+
+         &lt;reaction id="U0140" name="Membrane Transport (Other Compounds): ATP drain flux for constant maintenance requirements" reversible="false"&gt;
+             &lt;annotation xmlns:flux="<A  HREF="http://arep.med.harvard.edu/fluxns">http://arep.med.harvard.edu/fluxns</A>"&gt;
+                     &lt;flux:limitation lower="7.6"/&gt;
+                     &lt;flux:limitation upper="7.6"/&gt;
+             &lt;/annotation&gt;
+            &lt;listOfReactants&gt;
+               &lt;speciesReference species="ATP" stoichiometry="1"/&gt;
+            &lt;/listOfReactants&gt;
+            &lt;listOfProducts&gt;
+               &lt;speciesReference species="ADP" stoichiometry="1"/&gt;
+               &lt;speciesReference species="PI" stoichiometry="1"/&gt;
+            &lt;/listOfProducts&gt;
+         &lt;/reaction&gt;
+
+    Actually, this is the only case of a reaction in the E coli flux model
+where the flux is constrained to maintain a constant value.  There are a
+number of other cases if irreversible reactions with finite upper limits
+and reversible reactions with finite lower and upper limits.  The vast
+majority of reversible reactions have lower limits of -INF and upper
+limits of INF, and most irreversible reactions have lower limits of 0 and
+upper limits of INF.  We have nontheless represented both lower and upper
+limits for all reactions lest there be any question of what the default
+values might be.  Obviously, from the example shown, either limit could be
+a number with decimals, though more often it is an integer or a
+representation of Infinity.
+
+     We do not yet have a proposal for the specifics of a 4D chromosome
+folding model, but pairwise angstrom unit distance limits are a central
+element of it.  If I understand correctly there are no reactions to list
+for the models we have now. Rather, we have a chromosome broken into a
+number of segments.  Obviously, two segments cannot be occupying the same
+space within the cell, though we may not need to represent that in the
+model.  We do, however, for all chromosome segments need to set
+constraints so that all parts of the chromosome lie within the cell.  So
+all segments that are not contrained further can be no further than the
+width of the cell from one another.  One example of smaller distance
+contraints involves segments that contain genes that code for components
+of a common complex enzyme, which are constrained to be close to one
+another.  And segments that contain genes that code for membrane bound
+proteins must be in the vicinity of the cell membrane.  I do not believe
+we would want to be limited to integer values in defining these distance
+constraints. 
+
+      Among the differences between these two kinds of contraints are that
+the flux limits are arbitrary numbers with no units associated with them
+and the maximum distance constraints do have units associated with them. 
+There is a pair of limits associated with every reaction.  In the 4D
+chromosome model there are no reactions, but there appear to be species,
+as long as they are not constrained to being named in reactions.  At least
+some pairs of species need to have upper limits of the distances between
+them. The species would consist of the chromosome segments plus the cell
+membrance if these end up getting enumerated as species.  It would be good
+to have a universally applicable upper distance limit for all pairs not
+explicitly enumerated, based on the cell width.
+
+         The 4D chromosome folding model also touches on issues relative
+to the spatial modeling group, where I sent out the original announcement
+indicating I should not lead that group given how atypical our model was
+for the main issues in that domain as far as most models are concerned. 
+So far no one has stepped forward to lead that discussion, hope someone
+will, since there are other models for which it is even more important. 
+The 4D chromosome model is not nearly as atypical when it comes to the
+requirement of needing to represent constraints.
+
+        It would be good to hear from others who need to represent
+contraints that are not identical to the two kinds I have described
+already so that we can generate some concrete proposals.  Thanks.
+
+				Wayne Rindone
+				Lipper Center for Computational Genetics
+				Harvard Medical School
+			
+ On Fri, 19 Sep 2003, Wagner,John wrote:
+
+&gt; Many of you may recall that in Ft. Lauderdale I said
+&gt; that I or someone in our group (ie. Jim Schaff) would
+&gt; start off the Constraints Working Group discussion.
+&gt; Many of you probably realize I have not done so yet.
+&gt; So, let me first apologize. I should have done this
+&gt; many, many moons ago. I simply let it fall off my
+&gt; radar, and I apologize for that. This is definitely a
+&gt; case of mea culpa.
+&gt;  
+&gt; Next, let me announce the formation of the Constraints
+&gt; Working Group, and then say that I will not be leading
+&gt; it. I believe that a number of us are interested enough
+&gt; that someone will take it over. In particular, I believe
+&gt; that Wayne Rindone would make a perfect leader/
+&gt; moderator, and I believe he is interested in doing so
+&gt; (note that I'm not committing him to doing so :).
+&gt; The first order of business should be to get an idea of
+&gt; who is interested, and what we all feel it should include.
+&gt; The second order of business should be to put together
+&gt; a group charter.
+&gt;  
+&gt; Unfortunately, once this email is posted, my involvement
+&gt; in the Constraints Working Group will end. Indeed, my
+&gt; future contributions to the SBML working group are
+&gt; definitely in question. My NRSA fellowship runs out
+&gt; in about 6 weeks, and my two body problem restricts
+&gt; me to looking for a position in the New York metropolitan
+&gt; area (ie. where my wife works). I have an interview lined
+&gt; up in that area, one that would allow me to continue individual
+&gt; reseach including working on the SBML, but I do not know
+&gt; what my chances are of getting it. For now I am continuing
+&gt; my participation in the DWG, but I do not know what lies
+&gt; ahead.
+&gt;  
+&gt; I hope that Rashad will continue representing the Virtual
+&gt; Cell group in the SBML effort, and that Jim Schaff will
+&gt; contribute his talents and expertise to the Constraints
+&gt; Working Group.
+&gt;  
+&gt; Best regards,
+&gt; John
+&gt; 
+
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00638" HREF="msg00638.html">[sbml-discuss] CWG: Constraints Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00643.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00645.html">2 Sbml-discuss admin request(s) waiting</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00638.html">[sbml-discuss] CWG: Constraints Working Group</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00639.html">2 Sbml-discuss admin request(s) waiting</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00644"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00644"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

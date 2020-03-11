@@ -1,0 +1,129 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] test models for SBML level 2 compliant software... -->
+<!--X-From-R13: "mhpxre" <mhpxreNerfrnepu.qspv.uneineq.rqh> -->
+<!--X-Date: Thu, 7 Aug 2003 11:54:06 &#45;0700 -->
+<!--X-Message-Id: 006c01c35cf0$17e07bc0$9cbdb784@RCLPTP1 -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.OSF.3.94.1030612134957.14445B&#45;100000@arep.med.harvard.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] test models for SBML level 2 compliant software...</TITLE>
+<LINK REV="made" HREF="mailto:zucker@research.dfci.harvard.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00589.html">Date Prev</A>][<A HREF="msg00591.html">Date Next</A>][<A HREF="msg00458.html">Thread Prev</A>][<A HREF="msg00592.html">Thread Next</A>][<A HREF="maillist.html#00590">Date Index</A>][<A HREF="threads.html#00590">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] test models for SBML level 2 compliant software...</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] test models for SBML level 2 compliant software...</LI>
+<LI><em>From</em>: &quot;zucker&quot; &lt;<A HREF="mailto:zucker@research.dfci.harvard.edu">zucker@research.dfci.harvard.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 7 Aug 2003 10:27:55 -0400</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello there,
+
+  For those of you who attended the SBML Hackathon: thanks,  I had a great
+time, and actually got something accomplished, too...which is why I'm
+emailing this list.  I've actually managed to successfully
+generate valid SBML level 2 files from Biocyc, at least according
+to the libSBML version 2.0.1 validator.  What I was wondering is if there is
+any level 2 compliant software I could try to load these files into.
+
+As these are steady-state models, and contain no kinetic parameters, any
+software that can represent networks and stoichiometries would be useful.
+Ideally, I'd like to use JDesigner to represent the nodes, and then run
+SBWMetatool
+to find the extreme pathways and elementary flux modes.
+However, JDesigner 1.8k keeps coughing up blood whenever I try to load the
+files.
+It complains that there is an "Error in ParseXMLDoc:  Badly formed SBML: no
+reactants specified in reaction
+[ATP-SYN-RXN]".
+
+ATP-SYN-RXN does have reactants, but it is the first reaction in
+&lt;listOfReactions&gt;. If I remove that reaction from the SBML file,
+then JDesigner complains that the next reaction has no reactants.
+
+I tried installing the other SBW software modules, Gepasy, and the Biospice
+agents, without succcess.
+The closest I got was the SBW SBMLValidator, which did validate my files,
+but
+wasn't very interesting otherwise.
+
+Anyway, if you go to <A  HREF="http://genome.dfci.harvard.edu/~zucker/BPHYS/sbml.zip">http://genome.dfci.harvard.edu/~zucker/BPHYS/sbml.zip</A>
+
+you can download all the models I have generated from the Biocyc
+Pathway/Genome databases,
+and test them on your SBML level 2 compliant software.
+
+Sincerely,
+
+Jeremy
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00592" HREF="msg00592.html">Re: [sbml-discuss] test models for SBML level 2 compliant software...</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00458" HREF="msg00458.html">Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+<UL><LI><EM>From:</EM> Wayne Rindone &lt;wrindone@arep.med.harvard.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00589.html">[sbml-discuss] fwd: hey its me again</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00591.html">[sbml-discuss] libsbml 2.0.1 Released</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00458.html">Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00592.html">Re: [sbml-discuss] test models for SBML level 2 compliant software...</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00590"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00590"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

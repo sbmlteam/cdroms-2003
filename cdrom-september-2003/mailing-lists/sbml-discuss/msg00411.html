@@ -1,0 +1,139 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG: multiple layouts -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Tue, 3 Jun 2003 08:50:11 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC9279@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG: multiple layouts</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00410.html">Date Prev</A>][<A HREF="msg00412.html">Date Next</A>][<A HREF="msg00418.html">Thread Prev</A>][<A HREF="msg00412.html">Thread Next</A>][<A HREF="maillist.html#00411">Date Index</A>][<A HREF="threads.html#00411">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG: multiple layouts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG: multiple layouts</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 3 Jun 2003 08:49:47 -0700 </LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+&gt; &gt; This only works as long as you only have a substance once in a
+&gt; &gt; reaction. Imagine the same substance would used as substrate and
+&gt; &gt; product in the same reaction. This would mean we would have to use
+&gt; &gt; another attribute to denote the function. Would work as well, but as
+&gt; &gt; soon as someone gets the idea to specify a reaction like 2*A -&gt; B as
+&gt; &gt; A+A -&gt; B, it wouldn't work anymore!
+&gt;
+&gt; That is one of the motivations for separating
+&gt; the "view" from the "model".
+&gt;
+&gt; In the language of my prototype
+&gt;
+<A  HREF="http://caboy.uchc.edu/wagner/Science/VirtualCell/SBML-DWG/FutileCycle-0.xml">http://caboy.uchc.edu/wagner/Science/VirtualCell/SBML-DWG/FutileCycle-0.xml</A>
+&gt; we'd have something like,
+&gt;
+&gt; &lt;sbml ...&gt; ...
+&gt; &lt;view ...&gt; ...
+&gt; &lt;listOfDiagrams&gt;
+&gt; 	&lt;diagram name="DiagramName"&gt;
+&gt; 		&lt;listOfSpeciesGlyphs&gt;
+&gt; 			&lt;speciesGlyph species="A" x="127" y="241" /&gt;
+&gt; 			&lt;speciesGlyph species="A" x="912" y="711" /&gt;
+&gt; 			&lt;speciesGlyph species="B" x="238" y="564" /&gt;
+&gt; 		&lt;/listOfSpeciesGlyphs&gt;
+&gt; 		...
+&gt; 	&lt;/diagram&gt;
+&gt; 	...
+&gt; &lt;/listOfDiagrams&gt;
+&gt; &lt;/view&gt;
+&gt; &lt;/sbml&gt;
+&gt;
+&gt; This makes it clearer and easier to specify what the species
+&gt; is (in the model) versus how the species is used (in the view).
+&gt; Putting the diagram spec in with the model spec means that
+&gt; whatever constraints you have on the species in terms of the
+&gt; model are de facto constraints on the diagram, which is clearly
+&gt; undesirable.
+&gt;
+&gt; &gt; Ralph
+&gt;
+&gt; John
+
+&gt;I understand the example above, I think it makes sense and our proposal
+would 
+&gt;certainly look similar if we put the layout separate from the model. 
+&gt;What I don´t understand is how this solves Ralphs problem.
+&gt;SBML allows several identical species references in a reaction. I think
+every 
+&gt;species reference in the model should (at least potentially) be related to
+an 
+&gt;arc (or arrow or however you like to name it) in the layout.
+&gt;So if the layout is put separate from the model there needs to be a way to 
+&gt;unambiguously refer to a species reference.
+
+&gt;Sven
+
+I agree, for something like 2A -&gt; ... I can have two arcs coming from the
+species node. If the user doesn't want to do that they can simply have one
+arc and set the stoichiometry to 2.
+
+Herbert
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00410.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00412.html">RE: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00418.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00412.html">RE: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00411"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00411"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

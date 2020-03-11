@@ -1,0 +1,166 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;other] common denominator Vs. flexibility -->
+<!--X-From-R13: @vpbynf  Zr @birer <yrabiNcnfgrhe.se> -->
+<!--X-Date: Thu, 29 Aug 2002 05:38:45 &#45;0700 -->
+<!--X-Message-Id: Pine.OSF.4.21.0208291407190.1894&#45;100000@electre.pasteur.fr -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: XFMail.20020829084237.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-other] common denominator Vs. flexibility</TITLE>
+<LINK REV="made" HREF="mailto:lenov@pasteur.fr">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00022.html">Date Prev</A>][Date Next][<A HREF="msg00022.html">Thread Prev</A>][Thread Next][<A HREF="maillist.html#00023">Date Index</A>][<A HREF="threads.html#00023">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-other] common denominator Vs. flexibility</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-other@symbio.jst.go.jp">sbml-other@symbio.jst.go.jp</A></LI>
+<LI><em>Subject</em>: [sbml-other] common denominator Vs. flexibility</LI>
+<LI><em>From</em>: Nicolas  Le Novere &lt;<A HREF="mailto:lenov@pasteur.fr">lenov@pasteur.fr</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 29 Aug 2002 14:38:22 +0200 (CEST)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+[not directly related to the MathML problem]
+
+On Thu, 29 Aug 2002, Martin Ginkel wrote:
+
+&gt; Exactly what I meant, for example:
+&gt; - Promot has and wants modularity
+&gt; - same for Stochsim and complex species
+&gt; - VCell and spatial distribution (specialized PDE)
+&gt; - Cellerator and flexible (moving) arrays
+&gt; 
+&gt; I believe the way an *exchange* standard makes sense is first 
+&gt; to support agreed standard features and to export (translate)
+&gt; tool-internal features into these standardized elements.
+&gt; (common denominator approach)
+&gt; Of course there then is loss of information in export. But the 
+&gt; model can be used in many other tools. And the implementation 
+&gt; effort for the tools is not too high.
+
+I'm not sure I share this view. SBML should not only be a language to 
+exchange models, but also to store models. Obviously all simulators do not
+need the same level of details. That does not mean we don't have to allow
+for the possibility to store all the information we possess. And the
+package system proposed in the document "miscellaneous features" is perfect
+for that. Here is a specific example, based on StochSim (how surprising!).
+We can export multistate species and reactions in SBML1 and SBML2 files (we
+will eventually, I promise). We just enumerate all the possible states, and
+write down all the equations with the modified parameters. 
+
+      k
+A + B -&gt; C   A and B possesses 2 binary flags affecting the reaction
+
+  |
+  V
+
+          k0000
+A00 + B00 ----&gt; C
+          k0010
+A00 + B10 ----&gt; C
+          k0001
+A00 + B01 ----&gt; C
+          k0011
+A00 + B11 ----&gt; C
+          k1000
+A10 + B00 ----&gt; C
+          k1010
+A10 + B10 ----&gt; C
+          k1001
+A10 + B01 ----&gt; C
+          k1011
+A10 + B11 ----&gt; C
+          k0100
+A01 + B00 ----&gt; C
+          k0110
+A01 + B10 ----&gt; C
+          k0101
+A01 + B01 ----&gt; C
+          k0111
+A01 + B11 ----&gt; C
+          k1100
+A11 + B00 ----&gt; C
+          k1110
+A11 + B10 ----&gt; C
+          k1101
+A11 + B01 ----&gt; C
+          k1111
+A11 + B11 ----&gt; C
+
+Now Jarnac can run the simulation. But if I import back this file in 
+StochSim, how can I now that A00 and A11 are two states of the same species, 
+but not  B10? I can't (Or I have to design a really complex parser, 
+particularly to  treat the rates ...). So I can run the simulation, but ten 
+times slower.
+
+Now, ultimately, I would like to use a storage format for StochSim as close 
+as possible to SBMLX. With a system of package, I could generate two kinds 
+of files, a compact one for the multistate aware programs, and one more 
+verbose for the  simulators blind to the multistates.
+
+&gt; IMHO it's a common failure for &lt;**ML&gt; standards to include 
+&gt; everything and have literally *no* tool supporting the full
+&gt; featureset (in many cases it's unknown, to which standard the 
+&gt; tool agrees.)
+
+You're right. The most famous examples are HTML4 and CSS. But for the sake 
+of stability and perennity, it was necessary to have broad standards to 
+avoid the wild extensions which led to the failure of HTML3. And somehow I 
+think we're in the same situation. 
+
+--
+Nicolas LE NOVÈRE                                 
+Récepteurs et Cognition,   Institut Pasteur,    75724 Paris cedex,   FRANCE
+e-mail : lenov@pasteur.fr                  <A  HREF="http://www-alt.pasteur.fr/~lenov">http://www-alt.pasteur.fr/~lenov</A>
+tel : 33-(0)1-45-68-88-44                         fax : 33-(0)1-45-68-88-36
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00022.html">[sbml-other] sbml-discuss will be active once we get the archive up</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00022.html">[sbml-other] sbml-discuss will be active once we get the archive up</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00023"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00023"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

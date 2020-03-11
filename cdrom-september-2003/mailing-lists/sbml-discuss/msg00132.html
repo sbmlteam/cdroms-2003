@@ -1,0 +1,178 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] Re: Regarding MathML -->
+<!--X-From-R13: Pra Pbeafgrva <obeafgrvNnvt.wcy.anfn.tbi> -->
+<!--X-Date: Wed, 7 May 2003 13:21:13 &#45;0700 -->
+<!--X-Message-Id: 200305072020.h47KKm617159@xenium.jpl.nasa.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] Re: Regarding MathML</TITLE>
+<LINK REV="made" HREF="mailto:bornstei@aig.jpl.nasa.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00131.html">Date Prev</A>][<A HREF="msg00133.html">Date Next</A>][<A HREF="msg00131.html">Thread Prev</A>][<A HREF="msg00133.html">Thread Next</A>][<A HREF="maillist.html#00132">Date Index</A>][<A HREF="threads.html#00132">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] Re: Regarding MathML</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] Re: Regarding MathML</LI>
+<LI><em>From</em>: Ben Bornstein &lt;<A HREF="mailto:bornstei@aig.jpl.nasa.gov">bornstei@aig.jpl.nasa.gov</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 07 May 2003 13:20:48 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi All,
+
+  jwebb&gt; I would contend there is some experience about using MathML
+  jwebb&gt; "in the wild" from a development perspective.
+
+     I would have to agree with Jonathan on this point.  The funny
+thing about content MathML is that if you (conceptually) replace
+the &lt;apply&gt; elements with open and close parentheses and the operators
+with their symbol or function name, you are left with an s-expression.
+S-expressions are renowned for being incredibly easy to parse and
+manipulate.  Not to mention they have existed "in the wild" since
+the first implementations of Lisp.
+
+  hsauro&gt; I'm a little bit suspicious I guess because I'm unfamiliar
+  hsauro&gt; with programming to it. Parsing infix is very easy, it's a
+  hsauro&gt; first year undergrad problem.
+
+     Actually, if I remember correctly, it's about a third or fourth
+year undergrad problem.  :)  Seriously, to parse SBML L1 formulas
+into consistently derived abstract syntax trees (ASTs) requires 15 grammar
+rules, a sparse 390-entry SLR parse table with 151 shift or reduce
+actions and, of course, a lexer.
+
+  hsauro&gt; I think I would agree (though I've not tried myself)
+  hsauro&gt; that parsing MathML should be even easier.
+
+     I agree.  There are two approaches to consider, DOM and SAX.
+If you parse MathML into a DOM, the left-most child node of any "&lt;apply&gt;"
+node is always the operator.  Any remaining children are the operands.
+
+     To parse MathML into a custom AST data structure requires SAX
+and is only slightly trickier.  S-expressions are designed to be parsed
+recursively, but unfortunately SAX does not lend itself to easy (or
+efficient) recursion.  This means you will have to maintain a stack of
+AST nodes.  The good news is that, unlike an infix shift-reduce parser,
+reductions are always simple and in most cases immediate.
+
+  hsauro&gt; however most simulators allow users to enter infix expressions,
+  hsauro&gt; on output these must be converted to MathML and of course when
+  hsauro&gt; read back in, the MathML must be converted back to infix
+  hsauro&gt; (for the user to see). 
+
+     libSBML parses both infix formula expressions and MathML into
+the same syntax tree.  Given such a tree, a preorder traversal
+yields a prefix (e.g. MathML) expression, an inorder traversal
+yields an infix expression and a postorder traversal yields an
+RPN expression suitable for stack-based evaluation.
+
+     There is a representational mismatch between L1 and L2 formulas
+I have yet to solve: In L1 '+' and '*' are binary and in L2 they are
+n-ary.  I'm not sure about the "the best" internal representation yet,
+but I'm leaning toward the canonical binary tree (except for functions
+which are still n-ary).
+
+  hsuaro&gt; One issue with the conversion to infix is bracketing
+
+     In an inorder traversal of an AST a sub-expression should be
+bracketed if it has a parent of higher precedence.  This is what
+led to the construction of that particular tree in the first place.
+
+     Allow me to illustrate some of these different forms with a brief
+example (you'll need a mono-spaced font for the ASCII art):
+
+              Expr:     1 + 2 * 3         (1 + 2) * 3
+
+               AST:       +                    *
+                         / \                  / \
+                        1   *                +   3
+                           / \              / \
+                          2   3            1   2
+
+        s-expr
+        (preorder):     (+ 1 (* 2 3))          (* (+ 1 2) 3)
+
+        MathML
+        (preorder):     &lt;apply&gt; &lt;plus/&gt; &lt;cn&gt; 1 &lt;/cn&gt;
+        1 + 2 * 3                       &lt;apply&gt; &lt;times/&gt; &lt;cn&gt; 2 &lt;/cn&gt;
+                                                         &lt;cn&gt; 3 &lt;/cn&gt;
+                                        &lt;/apply&gt;
+                        &lt;apply&gt;
+
+        MathML
+        (preorder):     &lt;apply&gt; &lt;times/&gt; &lt;apply&gt; &lt;plus/&gt; &lt;cn&gt; 1 &lt;/cn&gt;
+        (1 + 2) * 3                                      &lt;cn&gt; 2 &lt;/cn&gt;
+                                       &lt;/apply&gt;
+                                       &lt;cn&gt; 3 &lt;/cn&gt;
+                        &lt;/apply&gt;
+
+           inorder:     1 + 2 * 3          1 + 2 * 3
+
+         bracketed
+         (inorder):     1 + 2 * 3          (1 + 2) * 3
+
+       (postorder):     1 2 3 * +          1 2 + 3 *
+     
+
+     I hope to talk more about some of this in my libSBML tutorial at the
+upcoming workshop.
+
+
+Ben
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00131.html">RE: [sbml-discuss] RE: Regarding MathML</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00133.html">RE: [sbml-discuss] Re: Regarding MathML</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00131.html">RE: [sbml-discuss] RE: Regarding MathML</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00133.html">RE: [sbml-discuss] Re: Regarding MathML</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00132"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00132"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

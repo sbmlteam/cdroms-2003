@@ -1,0 +1,207 @@
+<html><head><title>E. coli most important fluxes</title>
+</head>
+         <body xmlns="http://www.w3.org/1999/xhtml">
+<table>
+	<thead><tr>
+	    <th align="left" valign="middle" bgcolor="#cccccc">E. coli most important fluxes</th>
+        </tr></thead><tbody><tr><td>      <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      <thead><tr>
+        <th align="left" valign="middle" bgcolor="#cccccc">Citations</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>D. Segre, J. Zucker, J. Katz, X. Lin, P. D'haeseleer, W. Rindone, P. Kharchenko, D. Nguyen, M. Wright, G. Church<br/>
+        <a href="http://genetics.med.harvard.edu/~dsegre/Segre_etal_OMICS_2003.pdf">&quot;From annotated genomes to metabolic flux models and kinetic parameter fitting,&quot;</a><br/>
+        OMICS 7:3 301-317 2003</td>
+
+</tr> </table></td></tr>
+<tr><td>
+<table width="100%">
+		<thead><tr><th align="left" valign="middle" bgcolor="#cccccc">Description</th></tr>
+</thead>	<tbody><tr><td>			This SBML Level 2 model represents the most important fluxes included in the E coli model that is used in the Mimimization of Metabolic Adjustment (MOMA) application described at <a href="http://arep.med.harvard.edu/moma">http://arep.med.harvard.edu/moma</td><tr>
+<tr><td><img src="FluxBalance-ecolipartial.jpg"></td></tr>
+<tr><td><b>A schematic description of how a Flux Balance Analysis (FBA) model works.</b><br/>  The fundamental constraints derive from mass conservation of metabolites at steady state. One should note that in addition to intracellular flxues, reactions include transport across the membrane and a growth flux that produces biomass.  In general, the mass balance equations involve stoichiometric coefficients S<sub>ij</sub>. The conditions for a specific <i>in silico</i> experiment are defined by choosing bounds for the nutrients' uptake rates.  No kinetic parameters are used in FBA modeling.  Metabolic phenotypes (i.e., growth rate and flux distributions) are computed using Linear Programming (LP).  For example, one can find the flux state that maximizes growth, and test the hypothesis that a bacterium evolved towards that same goal.  (For a more complete description of FBA, see 
+<p>
+Covert, M.W., Schilling, C.H., Famili, I., et. al. (2001).<br/>
+&quot;Metabolic modeling of microbial strains <i>in silico</i>.&quot;<br/>
+Trends Biochem Sci 26, 179-186.
+</p></td></tr>
+</tbody>
+
+</table>
+
+</td></tr>
+<tr><td>      <table>
+	<thead><tr><th>Flux</th><th align="left">Enzyme name</th><th>genes</th></tr><tr><th>Flux</th><th align="left" colspan="2">Reaction equation</th></tr></thead>
+<tbody>
+           <tr><td> GLK1 </td><td>Glucokinase</td><td> glk, </td></tr>
+           <tr><td>GLK1</td><td colspan="2" > GLC + ATP --&gt; G6P + ADP</td></tr>
+           <tr><td bgcolor="#eeeeee"> PGI1R </td><td bgcolor="#eeeeee">Phosphoglucose isomerase</td><td bgcolor="#eeeeee"> pgi, </td></tr>
+           <tr><td bgcolor="#eeeeee">PGI1R</td><td bgcolor="#eeeeee" colspan="2" > G6P &lt;--&gt; F6P</td></tr>
+           <tr><td> PFKA </td><td>Phosphofructokinase</td><td> pfkA, </td></tr>
+           <tr><td>PFKA</td><td colspan="2" > F6P + ATP --&gt; FDP + ADP</td></tr>
+           <tr><td bgcolor="#eeeeee"> FBP </td><td bgcolor="#eeeeee">Fructose-1 6-bisphosphatase</td><td bgcolor="#eeeeee"> fbp, </td></tr>
+           <tr><td bgcolor="#eeeeee">FBP</td><td bgcolor="#eeeeee" colspan="2" > FDP --&gt; F6P + PI</td></tr>
+           <tr><td> FBAR </td><td>Fructose-1 6-bisphosphatate aldolase</td><td>fbaA, </td></tr>
+           <tr><td>FBAR</td><td colspan="2" > FDP &lt;--&gt; T3P1 + T3P2</td></tr>
+           <tr><td bgcolor="#eeeeee"> TPIAR </td><td bgcolor="#eeeeee">Triosphosphate Isomerase</td><td bgcolor="#eeeeee"> tpiA, </td></tr>
+           <tr><td bgcolor="#eeeeee">TPIAR</td><td bgcolor="#eeeeee" colspan="2" > T3P1 &lt;--&gt; T3P2</td></tr>
+           <tr><td> GAPAR </td><td>Glyceraldehyde-3-phosphate dehydrogenase-A complex</td><td> gapA, </td></tr>
+           <tr><td>GAPAR</td><td colspan="2" > T3P1 + PI + NAD &lt;--&gt; NADH + 13PDG</td></tr>
+           <tr><td bgcolor="#eeeeee"> PGKR </td><td bgcolor="#eeeeee">Phosphoglycerate kinase</td><td bgcolor="#eeeeee"> pgk, </td></tr>
+           <tr><td bgcolor="#eeeeee">PGKR</td><td bgcolor="#eeeeee" colspan="2" > 13PDG + ADP &lt;--&gt; 3PG + ATP</td></tr>
+           <tr><td> GPMAR </td><td>Phosphoglycerate mutase 1</td><td> gpmA, </td></tr>
+           <tr><td>GPMAR</td><td colspan="2" > 3PG &lt;--&gt; 2PG</td></tr>
+           <tr><td bgcolor="#eeeeee"> ENOR </td><td bgcolor="#eeeeee">Enolase</td><td bgcolor="#eeeeee"> eno, </td></tr>
+           <tr><td bgcolor="#eeeeee">ENOR</td><td bgcolor="#eeeeee" colspan="2" > 2PG &lt;--&gt; PEP</td></tr>
+           <tr><td> PPSA </td><td>Phosphoenolpyruvate synthase</td><td> ppsA, </td></tr>
+           <tr><td>PPSA</td><td colspan="2" > PYR + ATP --&gt; PEP + AMP + PI</td></tr>
+           <tr><td bgcolor="#eeeeee"> PYKF </td><td bgcolor="#eeeeee">Pyruvate Kinase I</td><td bgcolor="#eeeeee"> pykF, </td></tr>
+           <tr><td bgcolor="#eeeeee">PYKF</td><td bgcolor="#eeeeee" colspan="2" > PEP + ADP --&gt; PYR + ATP</td></tr>
+           <tr><td> ACEE </td><td>Pyruvate dehydrogenase</td><td> lpdA, aceE, aceF, </td></tr>
+           <tr><td>ACEE</td><td colspan="2" > PYR + COA + NAD --&gt; NADH + CO2 + ACCOA</td></tr>
+           <tr><td bgcolor="#eeeeee"> ZWFR </td><td bgcolor="#eeeeee">Glucose 6-phosphate-1-dehydrogenase</td><td bgcolor="#eeeeee"> zwf, </td></tr>
+           <tr><td bgcolor="#eeeeee">ZWFR</td><td bgcolor="#eeeeee" colspan="2" > G6P + NADP &lt;--&gt; D6PGL + NADPH</td></tr>
+           <tr><td> PGL </td><td>6-Phosphogluconolactonase</td><td> pgl, </td></tr>
+           <tr><td>PGL</td><td colspan="2" > D6PGL --&gt; D6PGC</td></tr>
+           <tr><td bgcolor="#eeeeee"> GND </td><td bgcolor="#eeeeee">6-Phosphogluconate dehydrogenase (decarboxylating)</td><td bgcolor="#eeeeee"> gnd, </td></tr>
+           <tr><td bgcolor="#eeeeee">GND</td><td bgcolor="#eeeeee" colspan="2" > D6PGC + NADP --&gt; NADPH + CO2 + RL5P</td></tr>
+           <tr><td> RPIAR </td><td>Ribose-5-phosphate isomerase A</td><td> rpiA, </td></tr>
+           <tr><td>RPIAR</td><td colspan="2" > RL5P &lt;--&gt; R5P</td></tr>
+           <tr><td bgcolor="#eeeeee"> RPER </td><td bgcolor="#eeeeee">Ribulose phosphate 3-epimerase</td><td bgcolor="#eeeeee"> rpe, </td></tr>
+           <tr><td bgcolor="#eeeeee">RPER</td><td bgcolor="#eeeeee" colspan="2" > RL5P &lt;--&gt; X5P</td></tr>
+           <tr><td> TKTA1R </td><td>Transketolase I</td><td> tktA, </td></tr>
+           <tr><td>TKTA1R</td><td colspan="2" > R5P + X5P &lt;--&gt; T3P1 + S7P</td></tr>
+           <tr><td bgcolor="#eeeeee"> TKTA2R </td><td bgcolor="#eeeeee">Transketolase I</td><td bgcolor="#eeeeee"> tktA, </td></tr>
+           <tr><td bgcolor="#eeeeee">TKTA2R</td><td bgcolor="#eeeeee" colspan="2" > X5P + E4P &lt;--&gt; F6P + T3P1</td></tr>
+           <tr><td> TALBR </td><td>Transaldolase B</td><td> talB, </td></tr>
+           <tr><td>TALBR</td><td colspan="2" > T3P1 + S7P &lt;--&gt; E4P + F6P</td></tr>
+           <tr><td bgcolor="#eeeeee"> GLTA </td><td bgcolor="#eeeeee">Citrate synthase</td><td bgcolor="#eeeeee"> gltA, </td></tr>
+           <tr><td bgcolor="#eeeeee">GLTA</td><td bgcolor="#eeeeee" colspan="2" > ACCOA + OA --&gt; COA + CIT</td></tr>
+           <tr><td> ACNAR </td><td>Aconitase A</td><td> acnA, </td></tr>
+           <tr><td>ACNAR</td><td colspan="2" > CIT &lt;--&gt; ICIT</td></tr>
+           <tr><td bgcolor="#eeeeee"> ICDAR </td><td bgcolor="#eeeeee">Isocitrate dehydrogenase</td><td bgcolor="#eeeeee"> icdA, </td></tr>
+           <tr><td bgcolor="#eeeeee">ICDAR</td><td bgcolor="#eeeeee" colspan="2" > ICIT + NADP &lt;--&gt; CO2 + NADPH + AKG</td></tr>
+           <tr><td> SUCA </td><td>   2-Ketoglutarate dehyrogenase</td><td> sucA,sucB, </td></tr>
+           <tr><td>SUCA</td><td colspan="2" > AKG + NAD + COA --&gt; CO2 + NADH + SUCCOA</td></tr>
+           <tr><td bgcolor="#eeeeee"> SUCCR </td><td bgcolor="#eeeeee">Succinyl-CoA synthetase</td><td bgcolor="#eeeeee"> sucC,sucD, </td></tr>
+           <tr><td bgcolor="#eeeeee">SUCCR</td><td bgcolor="#eeeeee" colspan="2" > SUCCOA + ADP + PI &lt;--&gt; ATP + COA + SUCC</td></tr>
+           <tr><td> SDHA1 </td><td>Succinate dehydrogenase</td><td> sdhA,sdhB,sdhC,sdhD, </td></tr>
+           <tr><td>SDHA1</td><td colspan="2" > SUCC + FAD --&gt; FADH + FUM</td></tr>
+           <tr><td bgcolor="#eeeeee"> FRDA </td><td bgcolor="#eeeeee">Fumurate reductase</td><td bgcolor="#eeeeee"> frdA,frdB,frdC,frdD, </td></tr>
+           <tr><td bgcolor="#eeeeee">FRDA</td><td bgcolor="#eeeeee" colspan="2" > FUM + FADH --&gt; SUCC + FAD</td></tr>
+           <tr><td> FUMAR </td><td>Fumarase A</td><td> fumA, </td></tr>
+           <tr><td>FUMAR</td><td colspan="2" > FUM &lt;--&gt; MAL</td></tr>
+           <tr><td bgcolor="#eeeeee"> MDHR </td><td bgcolor="#eeeeee">Malate dehydrogenase</td><td bgcolor="#eeeeee"> mdh, </td></tr>
+           <tr><td bgcolor="#eeeeee">MDHR</td><td bgcolor="#eeeeee" colspan="2" > MAL + NAD &lt;--&gt; NADH + OA</td></tr>
+           <tr><td> DLD1R </td><td>D-Lactate dehydrogenase 1</td><td> dld, </td></tr>
+           <tr><td>DLD1R</td><td colspan="2" > PYR + NADH &lt;--&gt; NAD + LAC</td></tr>
+           <tr><td bgcolor="#eeeeee"> ADHE2R </td><td bgcolor="#eeeeee">Acetaldehyde dehydrogenase</td><td bgcolor="#eeeeee"> adhE, </td></tr>
+           <tr><td bgcolor="#eeeeee">ADHE2R</td><td bgcolor="#eeeeee" colspan="2" > ACCOA + 2 NADH &lt;--&gt; ETH + 2 NAD + COA</td></tr>
+           <tr><td> PFLA </td><td>Pyruvate formate lyase 1</td><td> pflA,pflB, </td></tr>
+           <tr><td>PFLA</td><td colspan="2" > PYR + COA --&gt; ACCOA + FOR</td></tr>
+           <tr><td bgcolor="#eeeeee"> PTAR </td><td bgcolor="#eeeeee">Phosphotransacetylase</td><td bgcolor="#eeeeee"> pta, </td></tr>
+           <tr><td bgcolor="#eeeeee">PTAR</td><td bgcolor="#eeeeee" colspan="2" > ACCOA + PI &lt;--&gt; ACTP + COA</td></tr>
+           <tr><td> ACKAR </td><td>Acetate kinase A</td><td> ackA, </td></tr>
+           <tr><td>ACKAR</td><td colspan="2" > ACTP + ADP &lt;--&gt; ATP + AC</td></tr>
+           <tr><td bgcolor="#eeeeee"> ACS </td><td bgcolor="#eeeeee">Acetyl-CoA synthetase</td><td bgcolor="#eeeeee"> acs, </td></tr>
+           <tr><td bgcolor="#eeeeee">ACS</td><td bgcolor="#eeeeee" colspan="2" > ATP + AC + COA --&gt; AMP + PPI + ACCOA</td></tr>
+           <tr><td> PCKA </td><td>Phosphoenolpyruvate carboxykinase</td><td> pckA, </td></tr>
+           <tr><td>PCKA</td><td colspan="2" > OA + ATP --&gt; PEP + CO2 + ADP</td></tr>
+           <tr><td bgcolor="#eeeeee"> PPC </td><td bgcolor="#eeeeee">Phosphoenolpyruvate carboxylase</td><td bgcolor="#eeeeee"> ppc, </td></tr>
+           <tr><td bgcolor="#eeeeee">PPC</td><td bgcolor="#eeeeee" colspan="2" > PEP + CO2 --&gt; OA + PI</td></tr>
+           <tr><td> MAEB </td><td>Malic enzyme (NADP)</td><td> maeB, </td></tr>
+           <tr><td>MAEB</td><td colspan="2" > MAL + NADP --&gt; CO2 + NADPH + PYR</td></tr>
+           <tr><td bgcolor="#eeeeee"> SFCA </td><td bgcolor="#eeeeee">Malic enzyme (NAD)</td><td bgcolor="#eeeeee"> sfcA, </td></tr>
+           <tr><td bgcolor="#eeeeee">SFCA</td><td bgcolor="#eeeeee" colspan="2" > MAL + NAD --&gt; CO2 + NADH + PYR</td></tr>
+           <tr><td> ACEA </td><td>Isocitrate lyase</td><td> aceA, </td></tr>
+           <tr><td>ACEA</td><td colspan="2" > ICIT --&gt; GLX + SUCC</td></tr>
+           <tr><td bgcolor="#eeeeee"> ACEB </td><td bgcolor="#eeeeee">Malate synthase A</td><td bgcolor="#eeeeee"> aceB, </td></tr>
+           <tr><td bgcolor="#eeeeee">ACEB</td><td bgcolor="#eeeeee" colspan="2" > ACCOA + GLX --&gt; COA + MAL</td></tr>
+           <tr><td> PPA </td><td>Inorganic pyrophosphatase</td><td> ppa, </td></tr>
+           <tr><td>PPA</td><td colspan="2" > PPI --&gt; 2 PI</td></tr>
+           <tr><td bgcolor="#eeeeee"> NUOA </td><td bgcolor="#eeeeee">NADH dehydrogenase I</td><td bgcolor="#eeeeee"> nuoA,nuoB,nuoC,nuoE,nuoF,nuoG,nuoH,nuoI,nuoJ,nuoK,nuoL,nuoM,nuoN, </td></tr>
+           <tr><td bgcolor="#eeeeee">NUOA</td><td bgcolor="#eeeeee" colspan="2" > NADH + Q --&gt; NAD + QH2 + 3.5 HEXT</td></tr>
+           <tr><td> FDOH </td><td>Formate dehydrogenase-O</td><td> fdoI,fdoH,fdoG, </td></tr>
+           <tr><td>FDOH</td><td colspan="2" > FOR + Q --&gt; QH2 + CO2 + 2 HEXT</td></tr>
+           <tr><td bgcolor="#eeeeee"> GLPD </td><td bgcolor="#eeeeee">Glycerol-3-phosphate dehydrogenase (aerobic)</td><td bgcolor="#eeeeee"> glpD, </td></tr>
+           <tr><td bgcolor="#eeeeee">GLPD</td><td bgcolor="#eeeeee" colspan="2" > GL3P + Q --&gt; T3P2 + QH2</td></tr>
+           <tr><td> CYOA </td><td>Cytochrome oxidase bo3</td><td> cyoA,cyoB,cyoC,cyoD,cycA,cydA,cydB, </td></tr>
+           <tr><td>CYOA</td><td colspan="2" > QH2 + 0.5 O2 --&gt; Q + 2.5 HEXT</td></tr>
+           <tr><td bgcolor="#eeeeee"> SDHA2R </td><td bgcolor="#eeeeee">Succinate dehydrogenase complex</td><td bgcolor="#eeeeee"> sdhA,sdhB,sdhC,sdhD, </td></tr>
+           <tr><td bgcolor="#eeeeee">SDHA2R</td><td bgcolor="#eeeeee" colspan="2" > FADH + Q &lt;--&gt; FAD + QH2</td></tr>
+           <tr><td> PNT1A </td><td>Pyridine nucleotide transhydrogenase</td><td> pntA,pntB, </td></tr>
+           <tr><td>PNT1A</td><td colspan="2" > NADPH + NAD --&gt; NADP + NADH</td></tr>
+           <tr><td bgcolor="#eeeeee"> PNT2A </td><td bgcolor="#eeeeee">Pyridine nucleotide transhydrogenase</td><td bgcolor="#eeeeee"> pntA,pntB, </td></tr>
+           <tr><td bgcolor="#eeeeee">PNT2A</td><td bgcolor="#eeeeee" colspan="2" > NADP + NADH + 2 HEXT --&gt; NADPH + NAD</td></tr>
+           <tr><td> ATPAR </td><td>F0F1-ATPase</td><td> atpA,atpB,atpC,atpD,atpE,atpF,atpG,atpH,atpI, </td></tr>
+           <tr><td>ATPAR</td><td colspan="2" > ATP &lt;--&gt; ADP + PI + 4 HEXT</td></tr>
+           <tr><td bgcolor="#eeeeee"> GLPK </td><td bgcolor="#eeeeee">Glycerol kinase</td><td bgcolor="#eeeeee"> glpK, </td></tr>
+           <tr><td bgcolor="#eeeeee">GLPK</td><td bgcolor="#eeeeee" colspan="2" > GL + ATP --&gt; ADP + GL3P</td></tr>
+           <tr><td> GPSA1R </td><td>Glycerol-3-phosphate-dehydrogenase-[NAD(P)+]</td><td> gpsA, </td></tr>
+           <tr><td>GPSA1R</td><td colspan="2" > GL3P + NADP &lt;--&gt; T3P2 + NADPH</td></tr>
+           <tr><td bgcolor="#eeeeee"> RBSK </td><td bgcolor="#eeeeee">Ribokinase</td><td bgcolor="#eeeeee"> rbsK, </td></tr>
+           <tr><td bgcolor="#eeeeee">RBSK</td><td bgcolor="#eeeeee" colspan="2" > RIB + ATP --&gt; R5P + ADP</td></tr>
+           <tr><td> GLCUP2 </td><td>Glucose/galactose transporter</td><td> gluP, </td></tr>
+           <tr><td>GLCUP2</td><td colspan="2" > GLCxt + HEXT --&gt; GLC</td></tr>
+           <tr><td bgcolor="#eeeeee"> GLCPTS </td><td bgcolor="#eeeeee">Glucose</td><td bgcolor="#eeeeee"> ptsG,crr, </td></tr>
+           <tr><td bgcolor="#eeeeee">GLCPTS</td><td bgcolor="#eeeeee" colspan="2" > GLCxt + PEP --&gt; G6P + PYR</td></tr>
+           <tr><td> GLUPR </td><td>Glycerol transport</td><td> lacY, </td></tr>
+           <tr><td>GLUPR</td><td colspan="2" > GLxt &lt;--&gt; GL</td></tr>
+           <tr><td bgcolor="#eeeeee"> RIBUP </td><td bgcolor="#eeeeee">Ribose transport</td><td bgcolor="#eeeeee"> rbsA,rbsB,rbsC,rbsD,xylH, </td></tr>
+           <tr><td bgcolor="#eeeeee">RIBUP</td><td bgcolor="#eeeeee" colspan="2" > RIBxt --&gt; RIB + ATP + ADP + PI</td></tr>
+           <tr><td> ACUPR </td><td>Acetate transport</td><td> lldP, </td></tr>
+           <tr><td>ACUPR</td><td colspan="2" > ACxt + HEXT &lt;--&gt; AC</td></tr>
+           <tr><td bgcolor="#eeeeee"> LACUP2R </td><td bgcolor="#eeeeee">L-Lactate transport</td><td bgcolor="#eeeeee"> focA, </td></tr>
+           <tr><td bgcolor="#eeeeee">LACUP2R</td><td bgcolor="#eeeeee" colspan="2" > LACxt + HEXT &lt;--&gt; LAC</td></tr>
+           <tr><td> FORUPR </td><td>Formate transport</td><td> </td></tr>
+           <tr><td>FORUPR</td><td colspan="2" > FORxt &lt;--&gt; FOR</td></tr>
+           <tr><td bgcolor="#eeeeee"> ETHUPR </td><td bgcolor="#eeeeee">Ethanol transport</td><td bgcolor="#eeeeee"> </td></tr>
+           <tr><td bgcolor="#eeeeee">ETHUPR</td><td bgcolor="#eeeeee" colspan="2" > ETHxt + HEXT &lt;--&gt; ETH</td></tr>
+           <tr><td> PYRUPR </td><td>Pyruvate transport</td><td> </td></tr>
+           <tr><td>PYRUPR</td><td colspan="2" > PYRxt + HEXT &lt;--&gt; PYR</td></tr>
+           <tr><td bgcolor="#eeeeee"> SUCCUP2R </td><td bgcolor="#eeeeee">Succinate transport</td><td bgcolor="#eeeeee"> dcuA,dcuB,dctA, </td></tr>
+           <tr><td bgcolor="#eeeeee">SUCCUP2R</td><td bgcolor="#eeeeee" colspan="2" > SUCCxt + HEXT &lt;--&gt; SUCC</td></tr>
+           <tr><td> PIUP1 </td><td>Phosphate transport</td><td> pstA,pstB,pstC,pstS, </td></tr>
+           <tr><td>PIUP1</td><td colspan="2" > PIxt --&gt; PI</td></tr>
+           <tr><td bgcolor="#eeeeee"> ATPM </td><td bgcolor="#eeeeee">ATP drain flux for constant maintenance requirements</td><td bgcolor="#eeeeee"> </td></tr>
+           <tr><td bgcolor="#eeeeee">ATPM</td><td bgcolor="#eeeeee" colspan="2" > ATP --&gt; ADP + PI</td></tr>
+           <tr><td> Growth </td><td>Growth Flux</td><td> </td></tr>
+           <tr><td>Growth</td><td colspan="2" > Biomass --&gt; BMxt + 23 ATP + 23 ADP + 23 PI</td></tr>
+           <tr><td bgcolor="#eeeeee"> VGRO </td><td bgcolor="#eeeeee">Biomass Production Flux</td><td bgcolor="#eeeeee"> </td></tr>
+           <tr><td bgcolor="#eeeeee">VGRO</td><td bgcolor="#eeeeee" colspan="2" > 41.257 ATP + 3.547 NAD + 18.225 NADPH + 0.205 G6P + 0.0709 F6P + 0.8977 R5P + 0.36 E4P + 0.129 T3P1 + 1.496 3PG + 0.5191 PEP + 2.8328 PYR + 3.7478 ACCOA --&gt; 3.7478 COA + 1.7867 OA + 1.0789 AKG + 41.257 ADP + 41.257 PI + 3.547 NADH + 18.225 NADP + Biomass</td></tr>
+           <tr><td> ADK1R </td><td>Adenylate kinase</td><td> adk, </td></tr>
+           <tr><td>ADK1R</td><td colspan="2" > ATP + AMP &lt;--&gt; 2 ADP</td></tr>
+           <tr><td bgcolor="#eeeeee"> GLCxt </td><td bgcolor="#eeeeee">GLC Exchange</td><td bgcolor="#eeeeee"> </td></tr>
+           <tr><td bgcolor="#eeeeee">GLCxt</td><td bgcolor="#eeeeee" colspan="2" > GLCxt --&gt; GLC</td></tr>
+           <tr><td> O2xt </td><td>O2 Exchange</td><td> </td></tr>
+           <tr><td>O2xt</td><td colspan="2" > O2xt --&gt; O2</td></tr>
+           <tr><td bgcolor="#eeeeee"> GLxt </td><td bgcolor="#eeeeee">GL Exchange</td><td bgcolor="#eeeeee"> </td></tr>
+           <tr><td bgcolor="#eeeeee">GLxt</td><td bgcolor="#eeeeee" colspan="2" > GL --&gt; GLxt</td></tr>
+           <tr><td> RIBxt </td><td>RIB Exchange</td><td> </td></tr>
+           <tr><td>RIBxt</td><td colspan="2" > RIB --&gt; RIBxt</td></tr>
+           <tr><td bgcolor="#eeeeee"> ACxt </td><td bgcolor="#eeeeee">AC Exchange</td><td bgcolor="#eeeeee"> </td></tr>
+           <tr><td bgcolor="#eeeeee">ACxt</td><td bgcolor="#eeeeee" colspan="2" > AC --&gt; ACxt</td></tr>
+           <tr><td> LACxt </td><td>LAC Exchange</td><td> </td></tr>
+           <tr><td>LACxt</td><td colspan="2" > LAC --&gt; LACxt</td></tr>
+           <tr><td bgcolor="#eeeeee"> FORxt </td><td bgcolor="#eeeeee">FOR Exchange</td><td bgcolor="#eeeeee"> </td></tr>
+           <tr><td bgcolor="#eeeeee">FORxt</td><td bgcolor="#eeeeee" colspan="2" > FOR --&gt; FORxt</td></tr>
+           <tr><td> ETHxt </td><td>ETH Exchange</td><td> </td></tr>
+           <tr><td>ETHxt</td><td colspan="2" > ETH --&gt; ETHxt</td></tr>
+           <tr><td bgcolor="#eeeeee"> PYRxt </td><td bgcolor="#eeeeee">PYR Exchange</td><td bgcolor="#eeeeee"> </td></tr>
+           <tr><td bgcolor="#eeeeee">PYRxt</td><td bgcolor="#eeeeee" colspan="2" > PYR --&gt; PYRxt</td></tr>
+           <tr><td> PIxt </td><td>PI Exchange</td><td> </td></tr>
+           <tr><td>PIxt</td><td colspan="2" > PI &lt;--&gt; PIxt</td></tr>
+           <tr><td bgcolor="#eeeeee"> GL3Pxt </td><td bgcolor="#eeeeee">GL3P Exchange</td><td bgcolor="#eeeeee"> </td></tr>
+           <tr><td bgcolor="#eeeeee">GL3Pxt</td><td bgcolor="#eeeeee" colspan="2" > GL3P --&gt; GL3Pxt</td></tr>
+           <tr><td> SUCCxt </td><td>SUCC Exchange</td><td> </td></tr>
+           <tr><td>SUCCxt</td><td colspan="2" > SUCC --&gt; SUCCxt</td></tr>
+           <tr><td bgcolor="#eeeeee"> CO2xt </td><td bgcolor="#eeeeee">CO2 Exchange</td><td bgcolor="#eeeeee"> </td></tr>
+           <tr><td bgcolor="#eeeeee">CO2xt</td><td bgcolor="#eeeeee" colspan="2" > CO2 &lt;--&gt; CO2xt</td></tr>
+           <tr><td> BMxt </td><td>BM Exchange</td><td> </td></tr>
+           <tr><td>BMxt</td><td colspan="2" > BM --&gt; BMxt</td></tr>
+      </tbody>
+      </table>
+<hr/><p><address><a href="mailto:wrindone@arep.med.harvard.edu">Wayne P. Rindone</a></address></p>
+    </body>
+         </body>
+</html>

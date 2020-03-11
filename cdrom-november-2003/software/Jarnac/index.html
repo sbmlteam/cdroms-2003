@@ -1,0 +1,943 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!-- saved from url=(0045)http://www.cds.caltech.edu/~hsauro/Jarnac.htm -->
+
+<HTML><HEAD><TITLE>Jarnac Metabolic Simulation Package</TITLE>
+
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+
+<META content="Herbert Sauro" http-equiv=author>
+
+<META content="Metabolic Simulation Software" http-equiv=description>
+
+<META content="metabolism, simulation, software, control, analysis" 
+
+http-equiv=keywords>
+
+<META content="Microsoft FrontPage 5.0" name=GENERATOR></HEAD>
+
+<BODY>
+
+<P><B><FONT 
+
+color=#000080 face=Arial size=5>
+
+Jarnac: Systems Biology Software</FONT></B></P>
+
+<P align=center><FONT face=Arial><SMALL><A 
+
+href="http://www.cds.caltech.edu/~hsauro/index.htm"><B>HOME 
+
+PAGE</B></A></SMALL></FONT></P>
+
+		<TABLE border=0 cellPadding=5 cellSpacing=0 width="100%">
+
+  <TBODY>
+
+  <TR>
+
+    <TD bgColor=#e0e0e0><B><FONT face=verdana,arial size=5>Jarnac</FONT><FONT 
+
+      face=verdana,arial size=4> 2.0 Production Version </FONT><FONT face=verdana,arial 
+
+      size=3>#4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+      </FONT><FONT 
+
+      face=verdana,arial size=4><a href="ISetup.exe">Install for Windows</a></FONT></B></TD></TR></TBODY></TABLE>
+
+		<P align="center"><b><font face="Arial">Jarnac is only recommended for very 
+
+experienced <br>
+
+users. If you want a nice easy tool to do<br>
+
+					simulations etc, then use <a href="../JDesigner/index.html">JDesigner</a></font></b></P>
+
+		<P></P>
+
+		<p><STRONG><FONT color=#800040 face=Arial style="FONT-SIZE: smaller"><A 
+
+href="http://www.cds.caltech.edu/~hsauro/J20_16_src.zip">Source Code</A> for 
+
+Jarnac version 2.0 Build #16 (~10MB)</FONT></STRONG></p>
+
+		<P><FONT face=Arial><STRONG>Jarnac: An Interactive Metabolic Systems 
+
+Language</STRONG></FONT></P>
+
+		<P><STRONG><FONT face=Arial>What is Jarnac ?</FONT></STRONG></P>
+
+<P><FONT face=Arial><SMALL>Jarnac is a language for describing and manipulating 
+
+cellular system models and can be used to describe metabolic, signal 
+
+transduction and gene networks, or in fact any physical system which can be 
+
+described in terms of a network and associated flows. Jarnac is basically 
+
+version 2 of SCAMP.</SMALL></FONT></P>
+
+		<P><FONT face=Arial><SMALL>Jarnac is a project I've been toying with for some 
+
+years now and I finally took the plunge to write it after a stimulating trip to 
+
+a recent NATO conference in April 1999. The current version is still being 
+
+enhanced, this version and all future versions are being released into the 
+
+public domain free of charge. However, the author still retains copyright and no 
+
+commercial exploitation may be permitted without 
+
+</SMALL><SMALL>acknowledging</SMALL><SMALL> the author.<BR><BR>I wrote Jarnac 
+
+with a specific application in mind and this is still the main focus for 
+
+continuing its development. I do not wish to suggest that Jarnac is in any way a 
+
+formal standard for specifying metabolic systems or might even be useful to any 
+
+other person other than myself, however if others do find it useful then all the 
+
+better. Jarnac is a Windows based program that can run under 95/98, NT and 2000. 
+
+Documentation is still being written but the latest release has more 
+
+documentation and more examples that the previous release. There are over 100 
+
+working example Jarnac programs, (including a 15 reaction model of glycolysis, a 
+
+model of the calvin cycle and a structural model of </SMALL></FONT><FONT 
+
+face=Verdana>T</FONT><SMALL><FONT face=Arial>he core pathways of Tryps brucei), 
+
+a 49 page summary (in LaTeX and PDF) and a QuickStart document is supplied with 
+
+the distribution.</FONT></SMALL></P>
+
+		<P><STRONG><FONT face=Arial>Other points of interest:</FONT></STRONG></P>
+
+		<P><FONT face=Arial size=3><B>Jarnac 2.0 also has an SBW interface (System 
+
+Biology Workbench), this means Jarnac can be used as a server to provide 
+
+simulation capabilities for alternative clients, such as Java based GUIs, 
+
+pathway databases which require simulation capability, Web pages etc.&nbsp; In 
+
+server mode Jarnac can be run invisibly in the background. The latest version of 
+
+JDesigner has simulation capabilities which are provided by Jarnac via 
+
+SBW.</B></FONT></P>
+
+<P><B><FONT face=Arial size=2>What is Jarnac written in?</FONT></B></P>
+
+<P><B><FONT face=Arial size=2>For such a large project, a variety of languages 
+
+are employed. These include Fortran and C/C++ for the numerical analysis and 
+
+some core functionality, and Delphi 6 (Borland) for the main interface (GUI) 
+
+elements. In this way we maximize each languages' strengths within the overall 
+
+project. In terms of code size Jarnac comprises of 214,036 lines of compiled 
+
+source code. This does not include the support DLLs, third-party GUI elements or 
+
+commenting within the code itself.</FONT></B></P>
+
+<P><B><FONT face=Arial size=2>Could Jarnac be compiled to run under 
+
+Linux?</FONT></B></P>
+
+<P><B><FONT face=Arial size=2>In principal yes, all the languages used to 
+
+compile Jarnac are available on the Linux platform, including GUI 
+
+support.</FONT></B></P>
+
+<P><B><FONT face=Arial size=2>Is the source code available and what license is 
+
+it distributed under?</FONT></B></P>
+
+<P><B><FONT face=Arial size=2>Yes, just email me a request and I'll send you all 
+
+the code. Jarnac is distributed under the LGPL license to allow greater 
+
+flexibility.&nbsp;</FONT></B></P>
+
+<P><B><FONT face=Arial size=2>Can Jarnac be used in a commercial 
+
+setting?</FONT></B></P>
+
+<P><B><FONT face=Arial size=2>Yes, there are no restrictions except an 
+
+acknowledgement that you are using code written by Herbert M 
+
+Sauro</FONT></B></P>
+
+<P align=left><FONT face=Verdana size=2>History of Version 2.0 Beta 
+
+Builds:</FONT> </P>
+
+<P align=left><FONT face=Verdana size=2>Build #6 Gillespie failed to 
+
+reinitialise correctly when used a second time on the same model</FONT> </P>
+
+<P align=left><FONT face=Verdana size=2>1. Complex data type added. Jarnac now 
+
+fully supports complex<BR>data, including complex scalar, vectors and 
+
+matrices.&nbsp;<BR><BR>2. imag and real functions added to extract parts of a 
+
+complex number<BR><BR>3. Syntax high-lighter in the editor panels redone, a 
+
+number of annoying bugs eliminated.<BR><BR>4. Console window rewritten, now 
+
+allows cut, copy and paste of text fragments<BR><BR>5. Industrial strength 
+
+numerical routines employed to carry out svd, 
+
+eigenvalues,&nbsp;<BR>eigenvectors, inverse, determinant and LU decomposition, 
+
+routines provided&nbsp;<BR>by IMSL. Additional function eigenvectors 
+
+added.<BR><BR>6. mod arithmetic function added<BR><BR>7. New function float, 
+
+converts integer value to a float<BR><BR>8. Stochastic simulation facility added 
+
+via new function, gillespie()<BR><BR>9. Added five-point evaluation of control 
+
+coefficients<BR><BR>8. Interface to SBW redesigned for greater flexibility - 
+
+still in progress<BR><BR>9. Exit via close button or exit menu added</FONT> </P>
+
+<P align=left><FONT face=Verdana size=2>10. New and more extensive test suite 
+
+included</FONT> </P>
+
+<P align=left><FONT face=Verdana size=2>11. Exit via close button or exit menu 
+
+added<BR><BR>12. Added augr() function which augments two matrices by 
+
+row<BR><BR>Beta #7<BR><BR>13. Jacobian is now labeled with species 
+
+names<BR><BR>14. Graph title was sometimes disappearing, now it 
+
+doesn't<BR><BR>15. Basic 3d Surface plotting available with command graphsurface 
+
+(m)</FONT> </P>
+
+<P align=left><FONT face=Verdana size=2>16. More extensive SBW interface 
+
+available (Use SBW <A 
+
+href="http://www.cds.caltech.edu/~hsauro/sbwApps/InspectorSetup.exe">Inspector</A> 
+
+to obtain interface documentation)</FONT> </P>
+
+<P align=left><FONT face=Verdana size=2>Beta #8</FONT> </P>
+
+<P align=left><FONT face=Verdana size=2>17 Jacobian labeling for models with 
+
+conserved cycles was wrong, now fixed.</FONT> </P>
+
+<P align=left><FONT face=Verdana size=2>Beta #9 - required to fix problem with 
+
+SBML<BR><BR>17. Fixed a problem with the console history buffer which has been 
+
+annoying<BR>me for months<BR><BR>18. Bug crept in from last build with respect 
+
+to SBML generation, it was<BR>generating parameter tags for every parameter in 
+
+each reaction.<BR><BR>19. A minor bug with saving 'new' files from the editor 
+
+was fixed</FONT> </P>
+
+<P align=left><FONT face=Verdana size=2>Beta #10<BR><BR>20. Small typo bug in 
+
+SBML output, prevented correct parsing of SBML<BR><BR>21. New function 
+
+CopyToSBW, copies a SBML string to the Systems Biology Workbench<BR><BR>Beta 
+
+#11<BR><BR>22. Added PasteFromSBW() function, returns SBML currently held in SBW 
+
+clipboard.<BR>See change 21 above<BR><BR>23. Fixed some issues with rules and 
+
+SBML </FONT><BR><BR><FONT face=Verdana size=2>Beta #12<BR><BR>24. Added a few 
+
+more methods to the SBW interface (use SBW Inspector for details)<BR><BR>25. One 
+
+issue with SBML generation when rules were employed was fixed</FONT><BR><FONT 
+
+face=Verdana size=1><BR></FONT><FONT face=Verdana size=2>No Beta #13<BR><BR>Beta 
+
+#14<BR><BR>26. Fixed error handling in new IMSL library interface</FONT> </P>
+
+<P><FONT face=Verdana size=2>Beta #15<BR><BR>27. Error crept into Rules and XML 
+
+generation</FONT>
+
+<P><font face="Verdana" size="2">2.0 Final January 2003<br>
+
+======================<br>
+
+<br>
+
+1. The SBW API interface has been augmented with an additional<br>
+
+simulation service to permit multiple model simulation.<br>
+
+<br>
+
+2. The stoichiometry matrix method, .sm was slow and with the introduction<br>
+
+of complex types, used too much memory. It has now been greatly speeded up<br>
+
+and is much more efficient with memory allocation. This was only<br>
+
+a problem with very large models.<br>
+
+<br>
+
+3. Documentation has been updated.</font><P><FONT face=Arial><SMALL>Jarnac was demonstrated at the latest version at the 
+
+BTK2000 meeting to be held in S. Africa in April 2000. </SMALL></FONT><FONT 
+
+face=Arial size=2>See <A 
+
+href="http://www.sun.ac.za/biochem/btk">http://www.sun.ac.za/biochem/btk</A> for 
+
+details.<BR><BR>Jarnac was demonstrated at the Computation in Cells workshop at 
+
+the University of Hertfordshire. This is a&nbsp; <A 
+
+href="http://www.epsrc.ac.uk/documents/announcements/ecomp_nw0.htm">EPSRC 
+
+Emergent Computing Workshop.</A></FONT>
+
+<P><FONT face=Arial size=2>See <A 
+
+href="http://www.epsrc.ac.uk/documents/announcements/ecomp_nw0.htm">http://www.epsrc.ac.uk/documents/announcements/ecomp_nw0.htm</A></FONT> 
+
+<FONT face=Arial size=2>for details<A 
+
+href="http://www.epsrc.ac.uk/documents/announcements/ecomp_nw0.htm"><BR></A></FONT>
+
+<P><font face="Verdana" size="2">2.0 Final January 2003 #1<br>
+
+======================</font><P><font face="Verdana" size="2">Added more methods 
+
+to the SBW interface, in particular metabolic control analysis method calls.</font><P>
+
+<font face="Verdana" size="2">2.0 Final #2 February 2003 #2<br>
+
+==========================<br>
+
+<br>
+
+Someone spotted some bugs that got introduced into the ode object solver 
+
+(doesn't affect the usual reaction modeling).</font><P>
+
+<font face="Verdana" size="2">2.0 Final #3 March 2003<br>
+
+==========================<br>
+
+<br>
+
+Fixed a problem with the 3D plotter and fixed a compartment issue introduced<br>
+
+in Final #2<br>
+
+&nbsp;</font><P>
+
+<font face="Verdana" size="2">2.0 Final #4 March 2003<br>
+
+==========================<br>
+
+<br>
+
+My mistake!</font><P>
+
+&nbsp;<P><B><FONT face=Verdana size=3>VERSION ONE</FONT></B></P>
+
+<P><STRONG><FONT color=#800040 face=Arial><SMALL>Source Code to Jarnac is 
+
+Available for download</SMALL></FONT></STRONG></P>
+
+<P><A href="http://www.cds.caltech.edu/~hsauro/J1_18b_src.zip">Jarnac Source 
+
+Code (7 MB)</A> (1.18b) </P>
+
+<P>Update to version 1.2 is available</P>
+
+<P><A 
+
+href="http://www.cds.caltech.edu/~hsauro/Jarnac.htm#Installation - IMPORTANT">See 
+
+Installation Notes</A></P>
+
+<P><FONT color=#800040 face=Arial><STRONG><SMALL><A 
+
+href="http://www.cds.caltech.edu/~hsauro/bin/JSetup.exe">Download Latest 
+
+Version</A> (1.2)</SMALL></STRONG></FONT></P>
+
+<P><FONT color=#800040 face=Arial><STRONG><SMALL>If you wish to be put on a 
+
+mailing list and be informed about the latest updates, send an email to <A 
+
+href="mailto:hsauro@cds.caltech.edu">hsauro@cds.caltech.edu</A> giving your 
+
+email address and in the subject heading enter 
+
+'Join'.</SMALL></STRONG></FONT></P>
+
+<P><FONT face=Arial><B><SMALL>Latest Changes - version 
+
+1.2</SMALL></B></FONT></P>
+
+<P><FONT face=Arial size=2>1. Added simple project support<BR>2. Upon exit, 
+
+Jarnac will ask if you want changed files saved or not<BR>3. Email and/or zip 
+
+models and/or projects<BR>4. Requires ZipDll and UnzDll for zip functionality 
+
+(supplied with the distribution)&nbsp;<BR>5. Updated charting tool </FONT><FONT 
+
+face=Verdana size=2><BR></FONT><FONT face=Arial><SMALL><B><BR>Latest 
+
+Changes.</B></SMALL><B><SMALL> version 1.19</SMALL></B></FONT></P>
+
+<P><FONT face=Arial><FONT size=2>1. The network matrix property 'L' has been 
+
+changed to 'LM'. 'L' is frequently used<BR>to mean Ligand in biochemistry. This 
+
+change was made to restore the symbol 'L' to<BR>its more traditional role. To 
+
+obtain the Reder L matrix for a network use p.LM instead&nbsp;<BR>of the usual 
+
+p.L<BR></FONT></FONT><FONT face=Arial size=2><BR>2. The socket interface which 
+
+allowed Jarnac to act as a server was broken,<BR>this crept in during the last 
+
+release when the socket management code<BR>was changed.<BR><BR>3. New shell 
+
+command, 'pwd', returns the current directory<BR><BR>4. Better printing 
+
+facilities from the editor<BR><BR>5. SBW implementation in beta release with 
+
+this version.<BR><BR>6. Launching of JDesigner from the tool bar is now achieved 
+
+via SBW. If you<BR>wish to enable this feature then you must download the SBW 
+
+distribution from<BR>www.cds.caltech.edu/erato. In addition you must register 
+
+JDesigner with the<BR>SBW broker, you can do this by running JDesigner and from 
+
+the options<BR>menu select register with SBW menu item.</FONT></P>
+
+<P><FONT face=Arial><SMALL><B>Latest Changes.</B></SMALL><B><SMALL> version 
+
+1.18b</SMALL></B></FONT></P>
+
+<P><FONT face=Arial size=2>1. Changes to a previous version of the scanner 
+
+caused End line character&nbsp;<BR>to be miss-interpreted when the last item in 
+
+an input line was a string.<BR>This meant that two return keys were required to 
+
+cause Jarnac to<BR>compute the command line.<BR><BR>2. Added Print button to 
+
+script editor to allow printing directly from the editor<BR><BR>3. Conflict 
+
+between hardcopy print and console print keywords (oops). Therefore<BR>the 
+
+hardcopy print shell command has been changed to 'HardCopy filename'<BR><BR>4. 
+
+solve() function was passing the wrong number of arguments to the solver 
+
+(bug<BR>introduced during a recent change to the calling mechanism)<BR><BR>5. 
+
+Added a splash screen with status info<BR><BR>6. New Keypressed 
+
+function<BR><BR>7. Complete rewrite of interface between Visual Designer and 
+
+Jarnac. Visual designer<BR>is now a stand-alone application, communication to 
+
+designer is via a socket interface.<BR><BR>8. Introduced new visual designer 
+
+object to allow programmic control of JDesigner<BR><BR>9. Fixed a very annoying 
+
+problem with comments interfering with model declarations</FONT></P>
+
+<P><FONT face=Arial><B><SMALL>Latest Changes, 1.18a</SMALL></B></FONT></P>
+
+<P><FONT face=Arial size=2>1. Problems when using edit command to load a new 
+
+.jan file. After closing Jarnac, reopening Jarnac<BR>caused a list index out of 
+
+bounds because the file name was saved under a slightly altered name.<BR>2. 
+
+Added new function tau(x) which evaluates: 1/x * ln (1/rnd). Useful for 
+
+implementing<BR>Gillespie's stochastic simulation algorithm. See stats.jan for 
+
+details<BR>3. Added new property 'AsMolecules' to network object type. Enables 
+
+easy conversion of amounts<BR>in moles to number of molecules and visa versa. eg 
+
+p.AsMolecules ("S1") = 10e12;<BR>4. Added a few useful constants to the math.jan 
+
+startup file<BR>5. Built-in editor has Drag &amp; Drop enabled, thus one can 
+
+drag files from, say explorer<BR>and drop the file on to the editor panel.<BR>6. 
+
+Associating jan files with Jarnac now works correctly, double click on a jan 
+
+file<BR>(once you've associated jan files with Jarnac) and Jarnac will start and 
+
+load the<BR>selected file into the built-in editor.<BR>7. Other internal 
+
+changes, for example, Visual designer has been made more independent.<BR>8. The 
+
+socket access to the Jarnac server has been changed so that an external 
+
+client<BR>much first 'login' to the server - this is simply a security measure, 
+
+see docs for details.</FONT></P>
+
+<P><FONT face=Arial><SMALL><B>Latest Changes.</B></SMALL><B><SMALL> version 
+
+1.18</SMALL></B></FONT></P>
+
+<P><FONT face=Arial size=2>1. Enhancements to the editor: Multiple file editing, 
+
+better search facilities<BR>2. Implementation of CVODE integrator (supplied as a 
+
+DLL)<BR>3. XML import/export has been updated to conform to the the latest ERATO 
+
+release documents on SBML standard model exchange format.<BR>4. Jarnac can now 
+
+act as a server for remote requests, this is achieved by implementing a server 
+
+socket. Any legal Jarnac script can<BR>be sent to a remote machine where Jarnac 
+
+is running. In tests, we have successfully run a simulations from a Linux 
+
+desktop machine using<BR>Python as the socket client. Python sample code is 
+
+supplied in the documentation. Any machine or OS that supports standard BSD 
+
+sockets may run Jarnac remotely. This change is part of a broader objective to 
+
+open up Jarnac for remote and programatic access.<BR>5. Introduction of a new 
+
+data type, 'code type'. The syntax for the sim.eval(), cc() and ee() methods 
+
+have <B>changed</B> to accommodate code types.<BR>6. Documentation 
+
+updated<BR></FONT></P>
+
+<P><FONT face=Arial><SMALL><B>Latest Changes.</B></SMALL><B><SMALL> version 
+
+1.17b</SMALL></B></FONT> </P>
+
+<P><FONT face=Arial size=2>Bug fix release<BR><BR>1. Xml files were not being 
+
+found in some situations<BR>2. GenScript was not taking into account the 
+
+reversibility flag when generating -&gt; or =&gt;</FONT></P>
+
+<P><FONT face=Arial><SMALL><B>Latest Changes.</B></SMALL><B><SMALL> version 
+
+1.17a</SMALL></B></FONT> </P>
+
+<P><FONT face=Arial size=2>1. Network clone method was broken when dealing with 
+
+multi-reactant systems<BR>2. Forcing functions functionality has been completely 
+
+changed - see docs for details<BR>3. Minor update to the help file, fixed broken 
+
+links<BR>4. Three new generic methods for objects, methods, functions and 
+
+properties, each<BR>of these return a list of names of the respective types. 
+
+Useful if you're not<BR>sure what methods are available for a particular object. 
+
+Once you have the name you<BR>can use the quick help to get more details on the 
+
+item.<BR>5. Small additions to the network syntax to make it easier to port 
+
+other formats.</FONT></P>
+
+<P><FONT face=Arial><SMALL><B>Latest Changes.</B></SMALL><B><SMALL> version 
+
+1.17</SMALL></B></FONT> 
+
+<P>Significant changes:<BR><BR>1. Added Solve function for solving sets of 
+
+non-linear equations<BR>2. New keywords in network declarations to include 
+
+compartments (vol, in)<BR>3. Added AsMoles and AsMolarity properties to network 
+
+object<BR>4. New style installer<BR>5. Metatool support failed in certain cases 
+
+in version 1.16. Many thanks to<BR>Frank Bruggeman for spotting this 
+
+problem.&nbsp;<BR>6. Compartmentation<BR>7. XML Import/export - prototype, see 
+
+http://www.cds.caltech.edu/~hsauro for more details
+
+<P><FONT face=Arial><SMALL><B>Latest Changes.</B></SMALL><B><SMALL> version 
+
+1.16</SMALL></B></FONT>
+
+<P><FONT face=Arial size=2>Significant changes:<BR><BR>1. Minor bug fix to user 
+
+function calling (see history for details)<BR>2. Exception handling 
+
+implemented<BR>3. Added SizeOf (x), get number of bytes occupied by x<BR>4. 
+
+Added Dim (v|m), get dimension of matrix/vector as a list<BR>5. Added Mark 
+
+method to graph object<BR>6. File History added to editor<BR>7. New methods for 
+
+graph object, 'hide' and 'show'<BR>8. New constructors added to graph 
+
+object<BR>9. New method, 'join' added to graph object<BR>10. New property, 
+
+'axes', to set all axes limits in one call, cf. xmax, xmin etc<BR>11. New 
+
+keyword, extern added to language to allow access to external<BR>variables in 
+
+user functions<BR>12. New key word, break added to allow control to exit from 
+
+while/repeat/for loops<BR>13. More examples<BR>14. Updated Metatool setup plus a 
+
+bug fix</FONT><FONT face=Arial size=2><BR>15. Updated documentation</FONT> 
+
+<P><FONT face=Arial><SMALL><B>Latest Changes.</B></SMALL><B><SMALL> version 
+
+1.15</SMALL></B></FONT>
+
+<P><FONT face=Arial size=2>Significant changes:<BR><BR>1. Bug fixes as reported 
+
+by Frank Bruggman and Marcel Hoefnagel (see history)<BR>2. Computation of 
+
+elementary modes using MetaTool (Thanks the Stefan Schuster)<BR>3. New steady 
+
+state solver<BR>4. User Functions prompted to Jarnac object types<BR>5. 
+
+Experimental runtime network manipulation implemented<BR>6. See history file for 
+
+details of other changes</FONT> 
+
+<P><FONT face=Arial><SMALL><B>Latest Changes.</B></SMALL><B><SMALL> version 
+
+1.13</SMALL></B></FONT> 
+
+<P><FONT face=Arial size=2>1. Default properties used as matrix/vector indices 
+
+not correctly handled.<BR>2. Range checking failed during assignment of vectors 
+
+to matrix rows<BR>3. Models containing conserved cycles which resulted in the 
+
+reordering of&nbsp;<BR>the stoichiometry matrix failed to reorder the metabolite 
+
+vector with resulting<BR>errors in the numerical solution.&nbsp;<BR>4. New 
+
+functions, GetRowName and GetColumnName. eg GetRowName (m, 2) retrieves 
+
+the<BR>row label at the second row in matrix m.<BR>5. Changed method by which 
+
+conserve function computes the conservation matrix,&nbsp;<BR>computation is now 
+
+carried out in the same way as internal numerical method.<BR>6. New function 
+
+'aug' (augment) used to augment one matrix with either another<BR>matrix or a 
+
+vector, eg q = aug ({{1,2},{3,4}}, m)<BR>7. Better error reporting from the 
+
+Lsoda integrator<BR>8. Sample scripts tidied up<BR>9. New 'real' models, Calvin 
+
+cycle model and the Tryps brucei model (structural model only)<BR>10. New 
+
+functions comb and perm (combinations and permutations), new 
+
+function<BR>fact(orial) and GammaLn. Required for certain network 
+
+computations.<BR>11. New builtin variables MatMaxWidth and MatDecPlaces for 
+
+controlling matrix display<BR>format. Useful for displaying nice looking 
+
+stoichiometry matrices (see tryp.jan for<BR>example - this example also uses a 
+
+new file object for printing out results, not<BR>yet fully implemented yet, thus 
+
+not documented officially here).&nbsp;<BR>12. Internal memory management 
+
+changes.<BR>13. New Tolerance properties (rtol, atol) exposed in the simulation 
+
+object.</FONT><BR>
+
+<P><FONT face=Arial><SMALL><B>Latest Changes.</B></SMALL><B><SMALL> version 
+
+1.12</SMALL></B></FONT>
+
+<P><FONT face=Arial><SMALL>1. Some syntactical constructs did not generate 
+
+correct code, eg m[1, v[1]] = 99;<BR>&nbsp;&nbsp;&nbsp; m[1, mod.v[2]] = 88, 
+
+some tweaking to the parser.<BR>2. urndv (x) caused access violations<BR>3. 
+
+Include Addhelp function for Modules<BR>4. Docs updated.<BR>5. New functions, 
+
+vector(n), readkey, readstring, hist, pause, sdf&nbsp;<BR>6. Further 
+
+</SMALL><SMALL>enhancement</SMALL><SMALL> to graphing including new 3D graphing 
+
+object<BR>7. More samples scripts.<BR>8. New properties for the network 
+
+object.<BR>9. See History.txt file for further details.</SMALL></FONT> 
+
+<P><FONT face=Arial><SMALL><B>Latest Changes.</B></SMALL><B><SMALL> version 
+
+1.11</SMALL></B></FONT>
+
+<P><FONT face=Arial><SMALL>1. Rewritten front-end parser to remove some annoying 
+
+inconsistencies<BR>2. <B>IMPORTANT</B>: Equality symbol is now '==' rather than 
+
+'=', '=' used in assignments<BR>3. Further improvements to graphing, eg multiple 
+
+graphing panes<BR>4. Docs updated.<BR>5. IDE saves more user settings<BR>6. New 
+
+uElast method for metabolic object (unscaled elasticity matrix)<BR>7. Windows 
+
+Class Viewer (includes additional help and </SMALL><SMALL>function 
+
+disassembler)<BR>8. Misc: xor, improved matrix formatting and 
+
+</SMALL><SMALL>labeling</SMALL><SMALL><BR>9. Disassembler - disassembles Jarnac 
+
+code<BR>10. New graphing object<BR>11. More samples scripts.<BR>12. See 
+
+History.txt file for further details.</SMALL></FONT>
+
+<P>&nbsp;
+
+<P><STRONG><FONT face=Arial>What can it do ?</FONT></STRONG> 
+
+<P><FONT face=Arial><SMALL>Jarnac can be used as a general purpose language for 
+
+performing </SMALL><SMALL>arithmetic</SMALL><SMALL> operations, including matrix 
+
+and vector arithmetic, numerical differentiation and integration and as a 
+
+function or data grapher. The real usefulness of Jarnac however is its ability 
+
+to manipulate, analyse and simulate </SMALL><SMALL>metabolic 
+
+networks..</SMALL></FONT></P>
+
+<P><FONT face=Arial><SMALL>Jarnac is based on a simple control language, similar 
+
+to the Basic language and supports many of the constructs one would 
+
+expect,&nbsp; for loops, conditionals, while/do and repeat/until. It supports at 
+
+least 7 different data types, including integers, floats, 
+
+</SMALL><SMALL>Booleans</SMALL><SMALL>, strings, vectors, matrices and lists. 
+
+Jarnac also supports user defined functions and external 
+
+modules.</SMALL></FONT></P>
+
+<P><FONT face=Arial><SMALL>Metabolic support is similar to that found in SCAMP 
+
+but more extensive and much more flexible. In principle there is no limit to the 
+
+number of reactions or metabolites a model can contain but there will be 
+
+practical limits imposed by the computing hardware.&nbsp;</SMALL></FONT></P>
+
+<P><SMALL><FONT face=Arial>There is built-in computational support 
+
+for:</FONT></SMALL></P>
+
+<P><FONT face=Arial><SMALL>Dynamic Simulation (using LSODA integrator)<BR>Steady 
+
+State Analysis using the NLEQ solver<BR>Simple Stability Analysis 
+
+(eigenvalues)<BR>Matrix Arithmetic (All the main operators including things like 
+
+transpose, det etc)<BR>Metabolic Control Analysis (All steady state control 
+
+coefficients and elasticities)<BR>Metabolic Structural Analysis (Null space and 
+
+conservation relation analysis with others to 
+
+follow)</SMALL><BR><BR></FONT>S<SMALL><FONT face=Arial>ome of the things 
+
+currently being worked on: </FONT></SMALL></P>
+
+<P><FONT face=Arial><SMALL>Ability to generate stand-alone 
+
+executables</SMALL><BR><SMALL>Additional built-in kinetic rate 
+
+laws</SMALL></FONT> <FONT face=Arial><SMALL><BR>Running simulations in separate 
+
+process threads, this will allow multiple simulations to be run simultaneously. 
+
+It will allow simulations to be run in the background while the user can 
+
+continue with other duties, perhaps other simulations or analyses of completed 
+
+runs.<BR></SMALL></FONT><FONT face=Arial size=2><BR>The following Windows 32 
+
+executable is now freely available. Comments, suggestions for improvements, bug 
+
+reports, syntax issues and general queries to <A 
+
+href="mailto:HSauro@fssc.demon.co.uk">mailto:HSauro@fssc.demon.co.uk</A></FONT><BR></P>
+
+<P><B><A name="Installation - IMPORTANT">Installation</A></B> </P>
+
+<P><FONT face=Arial size=2>Jarnac is now supplied with a fully automated 
+
+installation mechanism. To install Jarnac simple run the setup program and 
+
+follow the instructions. If you have an earlier version of Jarnac installed 
+
+please remove this first. See the Quickstart guide for more information.</FONT> 
+
+</P>
+
+<DIV align=center>
+
+<CENTER>
+
+</CENTER></DIV>
+
+<P>&nbsp;</P>
+
+<HR>
+
+
+
+<P align=left><FONT face=Arial size=2>Sample Screen Shot (v1.1):</FONT></P>
+
+<P align=left><IMG border=0 src="jScreen.gif" width="749" height="550"></P>
+
+<P align=left><FONT face=Arial size=2>Duffing Model showing Poincare Section 
+
+generated by the model shown in the screen shot above. The map shows x plotted 
+
+against y where each point is taken at 2 pi time units.</FONT></P>
+
+<P align=left><IMG border=0 src="duffing.gif" width="207" height="204"></P>
+
+<P align=left><FONT face=Arial size=2>Other Example Scripts:</FONT></P>
+
+<P align=left><FONT face="Courier New"><SMALL>// Simple Steady state calculation 
+
+with repeat loop <BR>// Lines with // are comments<BR><BR>// Model 
+
+Specification<BR></SMALL><SMALL>DefaultModel model<BR>&nbsp; [J1] $X0 -&gt; 
+
+S1;&nbsp; Vmax1/Km1*(X0 - S1/Keq1)/(1 + X0/Km1 + S1/Km2); <BR>&nbsp; [J2] 
+
+S1&nbsp; -&gt; $X1; Vmax2/Km3*(S1 - X1/Keq2)/(1 + S1/Km3 + 
+
+X1/Km4);<BR>end;<BR><BR>// --------------------------------------<BR>// Start of 
+
+main program: Main entry point</SMALL><BR><SMALL>// 
+
+--------------------------------------</SMALL></FONT></P>
+
+<P align=left><FONT face="Courier New"><SMALL>&nbsp; // Initialize constants and 
+
+variables<BR>&nbsp; Vmax1 = 3; Vmax2 = 1.5;&nbsp; <BR>&nbsp; Km1 = 3.4; Km2 = 
+
+2.3;<BR>&nbsp; Km3 = 6.7; Km4 = 8.2;<BR>&nbsp; Keq1 = 15; Keq2 = 
+
+1;<BR><BR>&nbsp; X0 = 1; X1 = 0; S1 = 0.1;<BR><BR>&nbsp; // Format() is a 
+
+general purpose formatting function<BR>&nbsp; println "Stoichiometry matrix=", 
+
+nl, Format ("%g ", [Sm]);<BR><BR>&nbsp; if rows (L0) &gt; 0 
+
+then<BR>&nbsp;&nbsp;&nbsp;&nbsp; println "Reder's L0 matrix=", nl, Format ("%g", 
+
+[L0])&nbsp; <BR>&nbsp; else</SMALL><BR><SMALL>&nbsp;&nbsp;&nbsp;&nbsp; println 
+
+"No L0 matrix available", nl; <BR><BR>&nbsp; // Compute the steady state and one 
+
+control coefficient over<BR>&nbsp; // a range of boundary condition 
+
+X0<BR><BR>&nbsp; println " X0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S1 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; J1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C(J1, 
+
+E1)";<BR>&nbsp; println "-----------------------------------";<BR>&nbsp; 
+
+repeat<BR>&nbsp;&nbsp;&nbsp; ss.eval;&nbsp;&nbsp; // Compute steady 
+
+state<BR>&nbsp;&nbsp;&nbsp; println FormatStr (" %2g %8.5g %7.5g %7.5g", [X0, 
+
+S1, J1, CC(J1, Vmax1)]); <BR>&nbsp;&nbsp;&nbsp; X0 = X0 + 3.0;&nbsp; // Next 
+
+Xo<BR>&nbsp; until X0 &gt; 30;<BR>&nbsp; end</SMALL></FONT></P>
+
+<P align=left>Generates the following output</P>
+
+<P align=left><FONT face="Courier New"><SMALL>Stoichiometry matrix=<BR><BR>[1 -1 
+
+]<BR><BR>No L0 matrix available<BR><BR><BR>X0&nbsp;&nbsp;&nbsp;&nbsp; 
+
+S1&nbsp;&nbsp;&nbsp;&nbsp; J1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C(J1, E1) 
+
+<BR>---------------------------------- <BR>1&nbsp;&nbsp;&nbsp; 2.0374&nbsp; 
+
+0.34978&nbsp;&nbsp; 0.57641 <BR>4&nbsp;&nbsp;&nbsp; 5.6768&nbsp; 
+
+0.688&nbsp;&nbsp;&nbsp;&nbsp; 0.45985 <BR>7&nbsp;&nbsp;&nbsp; 8.5149&nbsp; 
+
+0.83946&nbsp;&nbsp; 0.4092 <BR>10&nbsp; 11.059&nbsp;&nbsp; 
+
+0.9341&nbsp;&nbsp;&nbsp; 0.37487 <BR>13&nbsp; 13.443&nbsp;&nbsp; 
+
+1.0011&nbsp;&nbsp;&nbsp; 0.34848 <BR>16&nbsp; 15.724&nbsp;&nbsp; 
+
+1.0518&nbsp;&nbsp;&nbsp; 0.32692 <BR>19&nbsp; 17.934&nbsp;&nbsp; 
+
+1.092&nbsp;&nbsp;&nbsp;&nbsp; 0.30868 <BR>22&nbsp; 20.092&nbsp;&nbsp; 
+
+1.1249&nbsp;&nbsp;&nbsp; 0.29287 <BR>25&nbsp; 22.208&nbsp;&nbsp; 
+
+1.1524&nbsp;&nbsp;&nbsp; 0.27896 <BR>28&nbsp; 24.293&nbsp;&nbsp; 
+
+1.1757&nbsp;&nbsp;&nbsp; 0.26655 </SMALL></FONT></P>
+
+		<P align=left><FONT face=Arial><SMALL><A 
+
+href="file:///C:/FrontPage%20Webs/Content/MyWebPages/WebOf2000/index.htm">HOME 
+
+PAGE</A></SMALL></FONT></P>
+
+		<NOSCRIPT>
+
+<IMG alt="web-stat.com : counters and traffic analysis" border=0 
+
+height=33 src="Jarnac_files/fastcount4.gif" width=72 
+
+target="_top"></A></NOSCRIPT>
+
+		</P>
+
+	</BODY></HTML>

@@ -1,0 +1,86 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage" ></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table></div>
+
+
+<h1>MathSBML Model Builder:<span class="function"> parameterToSBML</span> </h1>
+
+<hr/>
+
+
+			
+<p><span class="function">parameterToSBML[options]</span> returns a 
+<span class="function">&lt;parameter.../&gt;</span> definition.</p>
+<p><span class="function">parameterToSBML[{{options}, {options},...}]</span> 
+returns a <span class="function">&lt;listOfParameters../&gt;></span>.	</p>
+<p><span class="function">parameterToSymbolicSBML[options]</span> returns Symbolic SBML
+for a <span class="function">&lt;parameter.../&gt;</span> definition.</p>
+
+
+<span style="font-size:smaller;">New in version 2.1.5.</span>
+
+<hr />
+<h1>Options</h1>
+The options for <span class="function">parameterToSBML</span> 
+are identical to <span class="function">parameter</span> fields listed in the SBML spec, i.e., 
+<span class="function">id</span>, 
+<span class="function">name</span>, 
+<span class="function">value</span>, 
+<span class="function">units</span>,
+<span class="function">constant</span>.
+
+
+<hr />
+
+<h1>Example 1: Single Parameter</h1>
+<p>The following input expression will create a single <span class="function">parameter</span> definition (linefeeds and indentation added to emphasize syntax):</p>
+
+<pre style="font-size:larger;color:blue;">
+parameterToSBML[id->"Pi", name->"pi",  value->3.14]
+</pre>
+
+<p>and will produce the following output:</p>
+
+<pre style="font-size:larger;color:blue;">
+&lt;parameter id="Pi" name="pi" value="3.14"/&gt;
+</pre>
+<br />
+<h1>Example 1: Multiple parameters</h1>
+<p>The following will generate a <span class="function">listOfParameters</span>:</p>
+
+<pre style="font-size:larger;color:blue;">
+parameterToSBML[{
+     {id->"pi", value->3.14}, 
+     {id->"e", value->2.718}, 
+     {id->"E", name->"Enzyme_Concentration",constant->"false",value->1}
+     }]
+</pre>
+<p>returns the following string:</p>
+<pre style="font-size:larger;color:blue;">
+&lt;listOfParameters&gt;
+ &lt;parameter id="pi" name="pi" value="3.14"/&gt;
+ &lt;parameter id="e" name="e" value="2.718"/&gt;
+ &lt;parameter id="E" name="Enzyme_Concentration" value="1" constant="false"/&gt;
+&lt;/listOfParameters&gt;</pre>
+
+Additional line feeds and indentation may be inserted by the program as it deems necessary.
+<br /><br />
+
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

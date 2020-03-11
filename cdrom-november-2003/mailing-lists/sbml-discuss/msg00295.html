@@ -1,0 +1,136 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] support for membranes -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Fri, 23 May 2003 10:38:52 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E38@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] support for membranes</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00294.html">Date Prev</A>][<A HREF="msg00296.html">Date Next</A>][<A HREF="msg00275.html">Thread Prev</A>][<A HREF="msg00302.html">Thread Next</A>][<A HREF="maillist.html#00295">Date Index</A>][<A HREF="threads.html#00295">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] support for membranes</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] support for membranes</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 13:37:52 -0400</LI>
+<LI>Thread-Index: AcMhBlel3hrbzMTSSte1Ai78hP9dIQASO2Bg</LI>
+<LI>Thread-Topic: [sbml-discuss] support for membranes</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+&gt; &gt; First, we HAVE TO HAVE membranes. 
+&gt; &gt; What we really want is a completely separate
+&gt; &gt; element, called membrane; this element will
+&gt; &gt; then serve as a container for all of the
+&gt; &gt; *other* membrane pieces we want/need
+&gt; I strongly disagree with that statement. We HAVE
+&gt; TO HAVE compartments of various dimensionality.
+Yes, I was not precise. We (and by we, I mean, the
+Virtual Cell group) have to have some way of
+representing those things that separate compartments.
+
+&gt; The example you give just require a 2-D compartment,
+&gt; sandwiched between 3D-compartments. If we begin to
+&gt; create SBML elements representing biological components,
+&gt; we'll end up having a mapping between SBML and the
+&gt; component vocabulary of Gene Ontology.
+&gt; In the 1D, you'll have &lt;microfilament&gt;, &lt;microtubule&gt;,
+&gt; then in addition to the &lt;membrane&gt;, you'll need things
+&gt; like &lt;lipid_rafts&gt; etc.
+Thanks for bringing these up. We need those things too.
+
+&gt; [...] Why not really expand the compartment element to
+&gt; describe it?
+This is basically what I described as the first option,
+and we're perfectly happy with this option--provided it
+is done well enough that it can (now or later) elegantly
+include other things we need, like membrane potential.
+
+One of the reasons I like that approach is that it *does*
+allow specification of microfilaments, etc...that is,
+compartments of all dimensions.
+
+However, we were, at the time, unable to come up with
+a generalization of the word "volume" that would make
+sense regardless of the dimension of the compartment;
+one suggestion was "size", but if everyone else can
+live with "volume" we can as well (keeping in mind
+that the highest-level compartment's dimension may
+not be 3).
+
+&gt; And we're just talking about the cell. But Systems
+&gt; Biology is about global study of biological systems,
+&gt; whatever the organizational level. Let's think to
+&gt; the Noble/Hunter simulations of whole organs and
+&gt; individuals ... 
+Agreed. But the SBML already makes the assumption that
+one has compartments, which may or may not make sense
+for all Systems Biology models. (Cliff is starting to
+bring me over to his Dark Side... :)
+
+&gt; Nicolas LE NOVÈRE
+John
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00302" HREF="msg00302.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrzej Przekwas&quot; &lt;ajp@cfdrc.com&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00294.html">RE: [sbml-discuss] DWG Goals, Constraints, etc.</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00296.html">RE: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00275.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00302.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00295"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00295"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

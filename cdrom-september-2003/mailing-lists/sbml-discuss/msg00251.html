@@ -1,0 +1,107 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG preliminary issues -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Thu, 22 May 2003 19:37:45 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E31@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG preliminary issues</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00250.html">Date Prev</A>][<A HREF="msg00252.html">Date Next</A>][<A HREF="msg00250.html">Thread Prev</A>][<A HREF="msg00252.html">Thread Next</A>][<A HREF="maillist.html#00251">Date Index</A>][<A HREF="threads.html#00251">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG preliminary issues</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Fabien Campagne&quot; &lt;<A HREF="mailto:campagne@physbio.mssm.edu">campagne@physbio.mssm.edu</A>&gt;, &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG preliminary issues </LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 22:37:36 -0400</LI>
+<LI>Thread-Index: AcMg0MLr+wy7uRzsTiaVlHrKr1fDBwAAXm/g</LI>
+<LI>Thread-Topic: [sbml-discuss] DWG preliminary issues </LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+&gt; If you need to keep references from an SBML model to high-quality
+&gt; rendering, better in my opinion to use URLs to allow SBML to support
+&gt; various graphics formats:
+&gt; &lt;diagram-renderings&gt;
+&gt;  &lt;diagram href="<A  HREF="http://server1.edu/sb/models/rendering1.gif">http://server1.edu/sb/models/rendering1.gif</A>"/&gt;
+&gt;  &lt;diagram href="<A  HREF="http://server1.edu/sb/models/rendering1.svg">http://server1.edu/sb/models/rendering1.svg</A>"/&gt;
+&gt;  &lt;diagram href="<A  HREF="http://server1.edu/sb/models/rendering1.pdf">http://server1.edu/sb/models/rendering1.pdf</A>"/&gt;
+&gt; &lt;/diagram-renderings&gt;
+Hey, that's a pretty good idea...we could use this idea...
+
+You know how the &lt;IMG&gt; tag in HTML has an ALT="..." that
+specifies a textual replacement for those browsers who can't
+display images? What if we had something like,
+
+&lt;diagram name="SomeName" ... alt="<A  HREF="http://server1.edu/sb/models/rendering1.gif">http://server1.edu/sb/models/rendering1.gif</A>"&gt;
+
+that could serve more or less the same function? That
+is, if you had a tool that didn't do any kind of
+layout, it could very easily display the alt image
+instead. We (the Virtual Cell) might use it when we
+import a model, and there might be a piece (maybe
+a membrane) that we couldn't do the layout on...we
+might display that image in a window and tell the
+user to layout the crap in the membrane by hand (based
+on the image).
+
+&gt; Fabien
+John
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00250.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00252.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00250.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00252.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00251"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00251"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

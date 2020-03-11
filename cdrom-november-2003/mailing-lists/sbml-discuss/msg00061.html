@@ -1,0 +1,241 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] RE: A proposal for model composition -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: by anteroom (mbox mhucka)(with Cubic Circle's cucipop (v1.31 1998/05/13) Wed Mar  5 12:40:32 2003) -->
+<!--X-Message-Id: 003001c2e317$bd7ec530$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.33.0303041741560.5604&#45;100000@dhcp33&#45;081&#45;013.bbn.com -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] RE: A proposal for model composition</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00060.html">Date Prev</A>][<A HREF="msg00062.html">Date Next</A>][<A HREF="msg00060.html">Thread Prev</A>][<A HREF="msg00062.html">Thread Next</A>][<A HREF="maillist.html#00061">Date Index</A>][<A HREF="threads.html#00061">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] RE: A proposal for model composition</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;, &quot;SBML&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] RE: A proposal for model composition</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 5 Mar 2003 13:04:15 -0000</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Jonathan
+
+Many thanks for your interesting proposal.
+I think it is a useful contribution to the development of SBML.
+I have taken the liberty of forwarding it to the sbml-discuss
+mailing list.
+
+I particularly like the way in which the approach can be applied
+to all elements in a generic fashion.
+
+I agree with your comments of inclusion verses encapsulation.
+I would add that composition of models implies a hierarchical structure.
+Are you implying that composition should restricted to one level?
+
+I'm a bit confused as to how you would compose 2 instances of the same
+sub-model in your scheme.  Do you have an example?
+
+I believe we need to work towards a model composition
+standard with the following features:
+
+a) Interfaces
+
+I think we can use defined interfaces.  In fact in some contexts they
+will be very useful
+for example they will guide users to those elements that the sub-model
+author
+thought were appropriate places to link to other models. Interfaces
+enable two sub-models
+to be composed graphically without the whole of the sub-models being
+visible.
+
+A user can chose whether interfaces
+should be respected or not.  I think we can do some useful link checking
+without labels
+e.g. making sure that elements of different types aren't linked e.g.
+species to compartment
+in addition parameter units can be checked e.g. block a volts parameter
+being connected to a
+moles parameter.  In fact this was a motivation behind units.
+
+b) Alternative model 'implementations'
+
+It would be very useful to have alternative submodel "implementations"
+for the same subsystem.
+Alternative sub-models can model at different levels of details and/or
+use different math 
+representations.
+
+The main problem with this is providing a labeling mechanism that would
+allow users
+to select the set of sub-models that should be applied to a given tool.
+This implies
+a kind of ontology that's either public or private to just a given set
+of models.
+
+c) overloading
+
+You wondered how we would resolve the attributes of linked elements.
+There are 3 possible complementary mechanisms:
+
+i) abstraction - allow some attributes to be undefined/missing
+(typically this needs to be restricted
+to just those elements on the interface of a model).  some attributes
+are already optional in SBML.
+A missing attribute value is then overloaded by a 'concrete' element
+which has an attribute value.
+
+ii) hierarchical overloading - an attribute value from a higher level
+overloads a lower level attribute value.
+
+iii) directed linking - label one end of a link as being an overloader
+that supplies the attribute value.
+
+On XPATH, XLINK et al
+
+I'm currently considering the use of XSLT as a mechanism
+for implementing parameter sets (simple mechanism for overloading
+parameter values).
+XSLT uses XPATH.
+
+There are problems with XPATH and related standards IMHO, that we should
+be aware of.
+I'm interested in what other people think of using these standards.  I
+have an open mind
+at this stage.
+
+The problems I see are:
+
+a) XPATH can only refer to concrete XML structures.  Structures that are
+inferred
+by SBML - in the future - such as the inside of a specific model
+instance can't be referred
+to (if you allow any number of instances of the same sub-model).  I
+guess it can be done by
+a pair of XPATHs one to the instance and the other to inside the
+sub-model.
+
+b) these standards work fine if you use them in combination with the
+'source' data structures.
+You can apply them to DOM representations easily.  However you're
+operating on your
+own non-DOM representation you have write you're own parser - XPATH
+isn't XML! :-(
+Many developers prefer to parse direct to custom structures.  Are there
+parsers for XPATH?
+
+c) these standards can be unconstrained - for example you can write
+references to ranges of elements 
+in contexts where this is meaningless - this might require some
+complexity for a
+validator.  A custom format based on XML might well make this impossible
+at the syntactic level.
+
+I have an open mind on this mainly to avoid reinventing the wheel.
+
+Thanks again for your contribution
+
+yours
+
+Andrew
+
+&gt; -----Original Message-----
+&gt; From: owner-biospice-mdl@billygraham.bbn.com 
+&gt; [<A  HREF="mailto:owner-biospice-mdl@billygraham.bbn.com">mailto:owner-biospice-mdl@billygraham.bbn.com</A>] On Behalf Of 
+&gt; Jonathan Webb
+&gt; Sent: 04 March 2003 22:47
+&gt; To: biospice-mdl@bbn.com
+&gt; Subject: A proposal for model composition
+&gt; 
+&gt; 
+&gt; All:
+&gt; 
+&gt; I've posted a proposal strategy for constructing models
+&gt; out of components at the following URL:
+&gt; 
+  <A  HREF="http://bio.bbn.com/biospice/mdl/design/compose.html">http://bio.bbn.com/biospice/mdl/design/compose.html</A>
+
+The document is not complete but I believe it provides enough
+information to understand the basic character of what I am proposing.
+Comments are solicited.
+
+The executive summary is roughly to use facilities proposed by W3C as
+part of XML to compose SBML models rather than inventing a
+function-call-like syntax in the manner of CellML.
+
+Jonathan Webb
+BBN Technologies
+617-873-3321
+jwebb@bbn.com
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00062" HREF="msg00062.html">[sbml-discuss] RE: A proposal for model composition</A></STRONG>
+<UL><LI><EM>From:</EM> Jonathan Webb &lt;jwebb@bbn.com&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00066" HREF="msg00066.html">RE: [sbml-discuss] RE: A proposal for model composition</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00060" HREF="msg00060.html">A proposal for model composition</A></STRONG>
+<UL><LI><EM>From:</EM> Jonathan Webb &lt;jwebb@bbn.com&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00060.html">A proposal for model composition</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00062.html">[sbml-discuss] RE: A proposal for model composition</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00060.html">A proposal for model composition</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00062.html">[sbml-discuss] RE: A proposal for model composition</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00061"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00061"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

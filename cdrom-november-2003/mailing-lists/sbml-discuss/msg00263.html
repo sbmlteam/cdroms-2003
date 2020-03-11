@@ -1,0 +1,135 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] DWG &#45;&#45; UNITS -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Thu, 22 May 2003 22:39:16 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC91F6@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] DWG -- UNITS</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00262.html">Date Prev</A>][<A HREF="msg00264.html">Date Next</A>][<A HREF="msg00267.html">Thread Prev</A>][<A HREF="msg00266.html">Thread Next</A>][<A HREF="maillist.html#00263">Date Index</A>][<A HREF="threads.html#00263">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] DWG -- UNITS</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A> '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] DWG -- UNITS</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 22:37:37 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+ 
+One of the most fundamental issues to decide on with respect to the layout
+spec is the unit for the dimensions. I took a look at the postscript ref doc
+and found the following sentence:
+
+"The length of a unit along both the x and y axes is 1&amp;#8260;72 inch.
+This coordinate system is the default user space." 
+
+The other thing I noticed was:
+
+"A coordinate pair is a pair of real numbers x and y that locate a point
+horizontally and vertically within a Cartesian (two-axis) coordinate
+system..."
+
+In JDesigner I used the dimension of 1/92 pixels per inch simply because
+that's what my screen resolution happen to be at the time. However it's not
+difficult to standardize on a default resolution of 1/72 is that's what is
+required.
+
+In view of this I would like to put forward the following proposal:
+
+Assume by default that dimensional units are measured in 1/72 of an inch, ie
+72dpi.
+
+I don't have any preference on the question of whether to use integers or 
+floating point to represent dimensions, I guess floats would be better.
+
+I would suggest an optional resolution in some kind of header (you'll need
+some kind of header to store global info, eg background color) so that the
+72dpi can be overridden if necessary. eg a diagram might have been drawn at
+300dpi (ready for printing perhaps), thus the SBML file should have this
+info for other apps that read the file. An example of this would be an
+application than translates the SBML layout into raw SVG or some other
+vector format (There doesn't seem to be a great advantage in using SVG per
+se since applications can easily translate the SBML to other formats, eg
+SVG, PS, or even bitmap formats).
+
+Note that we need some form of unit system because our fonts are specified
+in terms of 1/72 units (hence 1/72 is a convenient size to settle on). I
+don't think our unit system can be dimensionless.
+
+Units are probably the first thing we must settle on so what are people's
+comments in this?
+
+I think we should try and avoid allowing other units to be employed directly
+in the SBML file, eg inchs, cm etc because it would such a pain to deal with
+at the programmatic level. The dimensions can in any case be set by the
+resolution specifier in the header so it wouldn't be difficult to translate
+the coords to other units *in* the application. It would make life a lot
+easier if we just used one unit type in the SBML file. I don't think we
+loose nothing in the process as far as I can see. Comments?
+
+Herbert
+
+
+
+
+
+ 
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00262.html">Re: [sbml-discuss] DWG preliminary issues - shapes</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00264.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00267.html">RE: [sbml-discuss] DWG preliminary issues - shapes</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00266.html">RE: [sbml-discuss] DWG -- UNITS</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00263"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00263"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,133 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] RE: [Biospice&#45;sepdtf] clarification on  thegenerated SBML model -->
+<!--X-From-R13: Sq Tenax <rsenaxNzpf.nay.tbi> -->
+<!--X-Date: Tue, 14 Oct 2003 15:06:00 &#45;0700 -->
+<!--X-Message-Id: 20031014215949.GD1703@mcs.anl.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.44.0310140718120.8963&#45;100000@mailsvr.ncbs.res.in -->
+<!--X-Reference: 006701c39242$01116580$0300000a@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated </TITLE>
+<LINK REV="made" HREF="mailto:efrank@mcs.anl.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00694.html">Date Prev</A>][<A HREF="msg00696.html">Date Next</A>][<A HREF="msg00688.html">Thread Prev</A>][<A HREF="msg00689.html">Thread Next</A>][<A HREF="maillist.html#00695">Date Index</A>][<A HREF="threads.html#00695">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Andrew Finney &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</LI>
+<LI><em>From</em>: Ed Frank &lt;<A HREF="mailto:efrank@mcs.anl.gov">efrank@mcs.anl.gov</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 14 Oct 2003 16:59:49 -0500</LI>
+<LI>Cc: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>, <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+On Tue, Oct 14, 2003 at 11:57:40AM +0100, Andrew Finney wrote:
+
+&gt; Are you suggesting that we label modifiers with somekind of controlled
+&gt; vocabulary to indicate the modifiers role in a reaction?
+
+
+I continue to believe that what is mandatory or not depends upon the
+intention of the model and the meaning of the model elements. Also,
+this intention should not be left to inference by the application
+because it is hard enough that we will all do it differently.  It
+should be stated as part of the model + modeling language.  Given this
+information, An application can decide if it can satisfy the
+intentions/needs of the model.
+
+This is the exact opposite of the current approach, as I understand
+it, which is to make the language such that models will satisfy some
+sort of union over the requirements of the present pool of
+applications and the meaning or intention of the model is carried
+in the understanding of the sbml documents and correct sniffing by the
+application.
+
+I'm trying to decide if the present discussion is an illustration of
+this.  I think it is. It sounds like the disagreement in the discussion
+originates in different applications needing reaction specifications
+to mean different things (and that need is unresolvable and fundamental).
+
+The only way out I see is to specify in the model what the _model_
+means and let apps decide if they can satisfy the needs.  "This is a
+flux model."  "This is a stochastic model."  "This is an ODE model
+with an explicit list of rates."  "This rx is really an annotation (eye
+candy) on the following rate equation"  "This rx defines the entities
+from which to generate equations."  etc.
+
+To wear it on my sleeve: I believe that models, fundamentally, are
+_not_ portable across all applications. The game is to record what the
+model means and facilitate the transfer of those parts that can be
+transfered.
+
+    -Ed
+
+
+-- 
+Ed Frank                                            Office:  (630) 252-4548
+<A  HREF="http://hep.uchicago.edu/~efrank">http://hep.uchicago.edu/~efrank</A>                     Fax   :  (630) 252-5986
+Division of Math &amp; Computer Science                 Argonne National Laboratory
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00684" HREF="msg00684.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</A></STRONG>
+<UL><LI><EM>From:</EM> Upinder Singh Bhalla &lt;bhalla@ncbs.res.in&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00686" HREF="msg00686.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00694.html">Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00696.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegenerated SBML model</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00688.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00689.html">Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00695"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00695"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

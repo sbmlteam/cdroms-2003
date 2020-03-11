@@ -1,0 +1,157 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage" ></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table></div>
+
+
+<table width="100%" border="0" cellspacing="2" cellpadding="0">
+  <tr>
+    <td>
+    	<h1>
+    		<span  class="function">
+    		SBMLRead</span> Variable Names and Scopes (Contexts) </h1>
+			<a href="mathsbml-sbmlread.html">Return Value</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="mathsbml-sbmlread-options.html">Options</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="mathsbml-contexts.html">Variable Names and Scoping</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="mathsbml-sbmlread-examples.html">Examples</a>
+		</td>
+	</tr>
+	<tr>
+		<td><hr/></td>
+	</tr>
+	<tr>
+		<td>
+			<p>
+			<span  class="function">
+			SBMLRead</span> will attempt to match all identifiers in the Mathematica version of the model as closely as possible to the name in the model.
+			Identifiers typically will be the values of <span  class="function">>
+			"name"</span> fields in SBML Level 1 files and the values of <span  class="function">>
+			"id"</span> fields in SBML Level 2 files.
+			</p>
+
+			<h2>SBML Characters Not Allowed in Mathematica Identifiers</h2>
+			<p>
+			The only character that is allowed in an SBML identifier is the underscore (<span class="function">"_"</span>) character.
+			<span class="function">SBMLRead</span> will replace the underscore character with the <span class="function">\[UnderBracket]</span> character 
+			(which looks like <img src="mathsbml-images/UnderBracket.gif" border="0" />).  For example, if the model contains a variable <span class="function">A_B</span> it will
+			be represented in Mathematica as the variable 
+			<img src="mathsbml-images/a_b.gif" height="9px" border="0" align="bottom" />.
+			</p>
+
+			<p>
+			To use a different character, the user may set the value of the option <span class="function">underscore</span> to any other valid character in Mathematica.
+			</p>
+
+			<h2>Mathematica Representation of Invalid Characters</h2>
+	
+			<p>
+			<span class="function">SBMLRead</span> accepts identifiers that contain any unicode character. This is an extension beyond the standard SId Type in SBML.
+			Since many unicode characters are not permitted in Mathematica, invalid characters are replaced with the character string  
+			<span class="function" style="font-style:italic;">#n#</span>, where <span class="function" style="font-style:italic;">n</span> 
+			is the  decimal unicode representation of the character, and <span  class="function" style="font-style:italic;">#</span> is the Mathematica 
+			<span class="function">\[NumberSign]</span> character (unicode 63268), which is different from the Shift-3 (cross-hatch, &#035;, or ASCII 35) character common on American keyboards.  The number sign character is considered a "letter-like" form by Mathematica, and any letter-like form may be included in an identifier.
+			</p>
+
+			<p>For example, a user may specify a variable identifier as <span class="function">Hello[World]</span>, with embedded brackets. 
+			Brackets may not be embedded in a Mathematica identifier, and the variable will be represented as <span class="function">Hello<span style="font-style:italic;">#</span>91<span style="font-style:italic;">#</span>World<span style="font-style:italic;">#</span>93<span style="font-style:italic;">#</span></span> by <span class="function">SBMLRead</span>.
+		</p>
+
+		<h2>Variable Scoping (Contexts)</h2>
+
+
+		<p>SBML model variables are defined in a local context; the name of the context is determined by the  model <span class="function">"name"</span> in SBML Level 1,  and by the model <span class="function">"id"</span> in SBML Level 2.
+		</p>
+
+		<p>
+ 		Thus if the SBML model <span class="function">foo</span> contains species <span class="function">A</span> and <span class="function">B</span>, and global parameters <span class="function">f</span> and <span class="function">k</span>, they will be represented as <span class="function">foo`A</span>, <span class="function">foo`B</span>, <span class="function">foo`f</span>, and <span class="function">foo`k</span>, respectively.  Local parameters <span class="function">k</span> and <span class="function">kf</span> defined in reactions <span class="function">R1</span> and <span class="function">R2</span> will become <span class="function">foo`R1`k</span>, <span class="function">foo`R1`kf</span>, <span class="function">foo`R2`k</span>, and <span class="function">foo`R2`kf</span>, respectively. 
+		</p>
+
+
+		<p>
+		Mathematica represents the scope of a symbol by its context. The context of a variable is indicated by predicating it with a string of characters ending in the back-quote character (normally
+		found to the lefet of the number 1 on American keyboards).  For example, <span class="function">foo`fred</span> and <span class="function">fooo`fred</span> represent two different variables in two different contexts, <span class="function">foo`</span> and <span class="function">fooo`</span>
+		</p>
+
+		<p>
+		Mathematica contains a number of standard contexts. In particular, any variables that you type in during a  Mathematica session that do not explicitly include a context are placed in the <span class="function">Global`</span> context. You  do not have to explicitly include the context in <span class="function">Global`</span> variables. Thus the identifiers <span class="function">Barney</span> and <span class="function">Global`Barney</span> represent the same variable. You can change the default context form <span class="function">Global`</span> to something else  by changing the value of the Mathematica identifier <span class="function">$Context</span>.
+		</p>
+
+		<p>
+		Mathematica also provides a global variable <span class="function">$ContextPath</span>
+	 (its default value is <span class="function">{Global`, System`}</span>
+  	that gives a list of contexts to search, after <span class="function">$Context</span>, 
+  	in trying to find the definintion of a symbol. Standard functions like <span class="function">List</span> or 
+  	<span class="function">Plus</span> are defined in the <span class="function">System`</span>
+  	context. You do not have to explicitly state the name of the context for any variables in contexts listed in <span class="function">$ContextPath</span>.
+  	When you load a new package, a new context is added to <span class="function">$ContextPath</span>. For example, when you
+	  load <span class="function">MathSBML</span>, then <span class="function">$ContextPath</span>
+  	 becomes <span class="function">{Global`, System`, MathSBML`}</span>. The function <span class="function">SBMLRead</span>
+  	 is really <span class="function">MathSBML`SBMLRead</span> but you can omit the <span class="function">MathSBML`</span>
+ 	  because it is included in <span class="function">$Context$Path</span>.
+	  </p>
+  
+
+		<p>For more detail, the user should refer to <i>The Mathematica Book</i> section 2.6.8. 
+		</p>
+
+		<hr />	
+		
+		<h1>Example</h1>
+
+		<p>Suppose we have encoded a model in the file <a href="mathsbml-enzyme.xml">enzyme.xml</a>,
+		</p>
+
+		<p><img src="mathsbml-images/enzymedotxml.gif" border="1" /></p> 
+
+		<p>If we call SBMLRead without any options, the following information will be returned:</p>
+
+		<p><img src="mathsbml-images/enzymedotxml-sbmlread.gif" border="1" /></p>
+
+		<p>Because the model name is <span class="function">EnyzmeKinetics</span>, all symbols are prefaced with their context <span class="function">EnzymeKinetics`</span>.
+		Additionally, the parameter <span class="function">k</span> in reaction <span class="function">Reaction2</span> does not have a value assigned to it, so that in the 
+		list of differential equations, rather than being evaluated, it is specified as <span class="function">EnzymeKinetics`Reaction2`k</span>.  All units are placed in their own context, 
+		specified in general as <span  class="function">model-identifier`Units`</span>; in this case, the units are in the context 
+		<span class="function">EnzymeKinetics`Units</span>.
+		</p>
+
+		<p>	
+		It is also worth observing at this point that this model contains a species by the name of <span class="function">E</span>. Normally in Mathematica, the sybmol <span class="function">E</span> would evaluate to the real number 2.71828...; by putting the variable within the model's context, this conflict does not occur.
+		</p>
+
+		<p>Having the word <span class="function">EnzymeKinetics</span> pop up everywhere makes the model seem a bit wordy.  The following will shorten it to a simple <span class="function">EK</span>:
+		</p>
+		
+		<p><img src="mathsbml-images/contextexample.gif" border="1" />
+		</p>
+		
+		<p>If we really want the variables to all be in the global context, we could instead use the option <span class="function">context->None</span>. However, this can cause conflicts if we are not very careful. For example, now that the variable <span class="function">E</span> is placed in the global context, it is replaced with the irrational number e. Disastarous results would occur if we tried to solve this model.
+		</p>
+
+		<p><img src="mathsbml-images/e.gif" border="1" />
+		</p>
+		
+		<p>The basic rule to learn from this example is this: never override the context unless you are absolutely sure that no conflicts will occur.
+		</p>
+
+		<hr />	
+	</td>
+</tr>
+</table>
+	
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

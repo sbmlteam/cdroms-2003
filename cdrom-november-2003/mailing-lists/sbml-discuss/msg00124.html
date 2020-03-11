@@ -1,0 +1,244 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: Regarding MathML (was RE: [sbml&#45;discuss] Trying to close the default compartments issue) -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Tue, 6 May 2003 10:37:18 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC9162@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: Regarding MathML (was RE: [sbml-discuss] Trying to close the default</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00123.html">Date Prev</A>][<A HREF="msg00125.html">Date Next</A>][<A HREF="msg00123.html">Thread Prev</A>][<A HREF="msg00125.html">Thread Next</A>][<A HREF="maillist.html#00124">Date Index</A>][<A HREF="threads.html#00124">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: Regarding MathML (was RE: [sbml-discuss] Trying to close the default compartments issue)</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: RE: Regarding MathML (was RE: [sbml-discuss] Trying to close the default compartments issue)</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 6 May 2003 10:21:46 -0700 </LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+I'm not making any firm judgment yet on the choice of MathML, I'm still on
+the fence on this one, I'm a little bit suspicious I guess because I'm
+unfamiliar with programming to it. Parsing infix is very easy, it's a first
+year undergrad problem. I think I would agree (thought I've not tried
+myself) that parsing MathML should be even easier, however most simulators
+allow users to enter infix expressions, on output these must be converted to
+MathML and of course when read back in, the MathML must be converted back to
+infix (for the user to see). One issue with the conversion to infix is
+bracketing, the naive approach is to bracket everything in which case the
+user will see a significant change in the appearance of their infix
+expressions, particularly a problem I think with script based simulators.
+There must be some effort to make sure that the infix expressions that users
+enter come back to them as unaltered as possible I think.
+
+One other think worth noting is that SBML Level 1 is very easy to edit and
+I've found myself on a number of occasions editing the SBML directly,
+especially the rates laws (XML is human readable), this is very useful. With
+SBML Level 2 this won't be so easy.
+
+Although MathML obviously has it's advantages (easier to parse than infix,
+defined set of symbols) we should also be aware of it's disadvantages and
+try to reduce the impact of these on the developer and user. It is the
+developers of SBML libraries who have this responsibility (lucky me I'm not
+one of them!) and we as arm-chair developers (speaking for myself in this
+case) should be careful not to load the developers with needless tasks
+unless we're sure that payback is well worth it.
+
+I'm currently on the fence with respect to MathML, there are advantages and
+disadvantages and I can't quite make up my mind yet whether we're getting
+something worth while or not, hence it will be interesting to see how it
+goes over the next year or so. 
+
+Ben may have a lot of experience with parsing MathML and it would be worth
+hearing from him on this. As I said I've zero experience with writing
+software to read and write MathML so I'm not the one to talk, but it is
+worth pointing out some of the issues I've raised.
+
+As for an alternative, I don't have one other than infix which probably
+isn't a good answer. But users understand it and the majority of our tools
+can happily read and write it now.
+
+Herbert
+
+-----Original Message-----
+From: Jonathan Webb [<A  HREF="mailto:jwebb@bbn.com">mailto:jwebb@bbn.com</A>]
+Sent: Tuesday, May 06, 2003 6:55 AM
+To: sbml-discuss@caltech.edu
+Subject: Regarding MathML (was RE: [sbml-discuss] Trying to close the
+default compartments issue)
+
+
+I would contend there is some experience about using MathML "in the wild"
+from a development perspective.  It's about the same as any reasonably
+facile, prefix based syntax for expressions, namely significant, but
+much simpler than infix expressions with the same expressiveness.
+
+What would you propose using instead of MathML for expressions?
+Simple expression syntaxes have a way of evolving into not-so-simple,
+customized, expression syntaxes and these are always more difficult
+to maintain because they require a more specialized body of knowledge
+about the implementation.
+
+Marc Vass may also want to comment on his experience building a level
+2 compatible processor and the impact MathML has on its complexity.
+
+Jonathan Webb
+BBN Technologies
+617-873-3321
+jwebb@bbn.com
+
+On Mon, 5 May 2003, Herbert Sauro wrote:
+
+&gt;
+&gt; I may not agree with the explicit and mandatory specification of the unit
+&gt; volume compartment in all models (although I abide by the community
+&gt; decision) I do agree with Pedro's sentiments with respect to letting these
+&gt; standards live a life first in the real world before they get cast into
+&gt; stone. For example, let's see how the use of MathML in Level 2 turns out,
+it
+&gt; may or may not be the best route to take, we don't actually know how it
+will
+&gt; turn out since none of us have tried to use it in the wild (so to speak).
+&gt; Perhaps MathML might turn out too be expensive to support in terms of
+&gt; programming cost, both development and maintenance. I know Ben is writing
+a
+&gt; MathML reader/writer, but once he has gone who maintains it, it's not as
+if
+&gt; we have a vibrant open-source comp bio community which contributes code or
+&gt; modifies existing code, quite the opposite in fact.
+&gt;
+&gt; There are still issues in level 1 that haven't been resolved and at the
+&gt; moment we're managing to get models portable between tools because the
+&gt; authors of the tools have agreed to use Level 1 in a certain way which may
+&gt; or may not follow the strict guidelines in the level 1 document.
+&gt;
+&gt; I am aware however of the urgency in setting the standard, I know there
+are
+&gt; many pressures to get the standard out asap.
+&gt;
+&gt; Herbert
+&gt;
+&gt; -----Original Message-----
+&gt; From: Pedro Mendes [<A  HREF="mailto:mendes@vt.edu">mailto:mendes@vt.edu</A>]
+&gt; Sent: Monday, May 05, 2003 9:13 AM
+&gt; To: sbml-discuss@caltech.edu
+&gt; Subject: Re: [sbml-discuss] Trying to close the default compartments
+&gt; issue
+&gt;
+&gt;
+&gt; On 2 May 2003 at 18:42, Michael Hucka wrote:
+&gt;
+&gt; &gt; Thus, the conclusion appears to be that Level 1 version 2
+&gt; &gt; and Level 2 should make compartments mandatory.
+&gt;
+&gt; Mike &amp; Andrew,
+&gt;
+&gt; I support the analysis you made and therefore the conclusion.
+&gt;
+&gt; This discussion brings up an issue that has been dormant (but here!) since
+&gt; the
+&gt; freeze of level 1 version 1: the need for a longer period of time between
+&gt; deciding on features and actually freezing (publishing) the specification.
+&gt; When
+&gt; I and Herbert were working on making existing software import/export SBML
+&gt; level
+&gt; 1 we discovered a number of features that could have been decided in a
+&gt; better
+&gt; way, and others that were missing. While you made a very good analysis of
+&gt; the
+&gt; problem of default compartments, it is easy to miss out important
+&gt; consequences
+&gt; from such analyses. I propose that the next specs be accepted first as
+draft
+&gt;
+&gt; for a considerable period of time (say 1 year), and then adjusted
+according
+&gt; to
+&gt; feedback from those who have been implementing for the draft. It would
+also
+&gt; be
+&gt; important to publish reference software that demonstrates use of the
+&gt; standard.
+&gt; This procedure would ensure that we iron out problems with the standards.
+&gt; Given
+&gt; that we already have a standard for the most common features of models, we
+&gt; should be careful to get the standard right for the features that are only
+&gt; now
+&gt; being thought of (ie most simulators do not implement them yet, in some
+&gt; cases
+&gt; none)
+&gt;
+&gt; Pedro
+&gt;
+&gt;
+&gt;
+&gt; Pedro Mendes, Ph. D.
+&gt; Research Assistant Professor
+&gt; Virginia Bioinformatics Institute (0477), Virginia Tech
+&gt; 1880 Pratt Drive, Blacksburg, VA 24061 USA
+&gt; TEL: +1-540-231-7411     FAX: +1-540-231-2606
+&gt; <A  HREF="http://www.vbi.vt.edu/~mendes">http://www.vbi.vt.edu/~mendes</A>
+&gt;
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00125" HREF="msg00125.html">[sbml-discuss] RE: Regarding MathML</A></STRONG>
+<UL><LI><EM>From:</EM> Eric Mjolsness &lt;emj@uci.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00123.html">Regarding MathML (was RE: [sbml-discuss] Trying to close the defaultcompartments issue)</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00125.html">[sbml-discuss] RE: Regarding MathML</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00123.html">Regarding MathML (was RE: [sbml-discuss] Trying to close the defaultcompartments issue)</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00125.html">[sbml-discuss] RE: Regarding MathML</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00124"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00124"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

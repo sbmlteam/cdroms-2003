@@ -1,0 +1,150 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] SBML Level 2 -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Thu, 5 Dec 2002 06:54:30 &#45;0800 -->
+<!--X-Message-Id: 001401c29c6e$28705020$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20021205093707.00c37261.shoops@vt.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] SBML Level 2</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00006.html">Date Prev</A>][<A HREF="msg00022.html">Date Next</A>][<A HREF="msg00006.html">Thread Prev</A>][<A HREF="msg00008.html">Thread Next</A>][<A HREF="maillist.html#00007">Date Index</A>][<A HREF="threads.html#00007">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] SBML Level 2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Stefan Hoops'&quot; &lt;<A HREF="mailto:shoops@vt.edu">shoops@vt.edu</A>&gt;, &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;,  &quot;'Pedro Mendes'&quot; &lt;<A HREF="mailto:mendes@vt.edu">mendes@vt.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] SBML Level 2</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 5 Dec 2002 14:53:53 -0000</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Stefan
+
+I think the concensus at the moment is that:
+
+a) we should have optional parameter values
+
+b) they should not default to anything
+	its upto tools how they handle this - ideally they 
+	should complain
+
+c) we should have parameter value sets which can be incomplete
+
+d) parameter sets refer to models
+
+I think (c) implies that parameter sets can be stacked up
+
+Its not clear if parameter sets should be internal/external to the model
+or how parameter sets will work with modularity
+
+yours Andrew
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@symbio.jst.go.jp 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@symbio.jst.go.jp">mailto:owner-sbml-discuss@symbio.jst.go.jp</A>] On Behalf Of Stefan Hoops
+&gt; Sent: 05 December 2002 14:37
+&gt; To: sbml-discuss@symbio.jst.go.jp; Pedro Mendes
+&gt; Subject: Re: [sbml-discuss] SBML Level 2
+&gt; 
+&gt; 
+&gt; Hi All,
+&gt; 
+&gt; I am stepping into this and know I will be kicked :)
+&gt; 
+&gt; Default values are not a part of the model. Default values 
+&gt; are part of an user interface, e.g., a model editing tool. 
+&gt; 
+&gt; The model itself has values for each needed parameter. Which 
+&gt; parameters are mandatory or optionally I will not discus 
+&gt; here. By introducing default values as part of the SBML 
+&gt; language you complicate the parsing of an SBML file. This is 
+&gt; something I would very much like to avoid. 
+&gt; XML is not normalized and therefore it will repeat 
+&gt; information. We should not try to normalize SBML by 
+&gt; introducing default values.
+&gt; 
+&gt; SBML is intended to be an exchange standard between tools. If 
+&gt; default values are introduced all tools would have to 
+&gt; implement them to understand the SBML file at hand. This 
+&gt; complicates the tool development and will likely keep the use 
+&gt; of SBML to a minimum. We should avoid everything which slows 
+&gt; the spreading of SBML. 
+&gt; 
+&gt; Stefan
+&gt; 
+&gt; 
+&gt; -- 
+&gt; Stefan Hoops, Ph.D.
+&gt; Senior Research Associate
+&gt; Virginia Bioinformatics Institute
+&gt; 1880 Pratt Dr.
+&gt; Blacksburg, VA 24061, USA
+&gt; 
+&gt; Phone: (540) 231-1799
+&gt; Fax: (540) 231-2606
+&gt; Email: shoops@vt.edu
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00006" HREF="msg00006.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> Stefan Hoops &lt;shoops@vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00006.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00022.html">[sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00006.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00008.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00007"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00007"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

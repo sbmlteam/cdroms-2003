@@ -1,0 +1,597 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] RE: A proposal for model composition -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: by anteroom (mbox mhucka)(with Cubic Circle's cucipop (v1.31 1998/05/13) Wed Mar  5 12:40:32 2003) -->
+<!--X-Message-Id: 001e01c2e33f$befc3640$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.33.0303050820460.7736&#45;100000@dhcp33&#45;081&#45;013.bbn.com -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] RE: A proposal for model composition</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00062.html">Date Prev</A>][<A HREF="msg00064.html">Date Next</A>][<A HREF="msg00062.html">Thread Prev</A>][<A HREF="msg00064.html">Thread Next</A>][<A HREF="maillist.html#00063">Date Index</A>][<A HREF="threads.html#00063">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] RE: A proposal for model composition</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;, &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] RE: A proposal for model composition</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 5 Mar 2003 17:50:42 -0000</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Jonathan
+
+Many thanks for your clarifications.
+
+I'm unclear about the way your example works.....
+you gave the following:
+
+&lt;listOfComponentInstances&gt;
+  &lt;elementReference xlink:label="ref1" xlink:href="...somewhere in A" /&gt;
+  &lt;elementReference xlink:label="ref2" xlink:href="...somewhere in B" /&gt;
+  &lt;elementReference xlink:label="ref3" xlink:href="...somehwere in C" /&gt;
+
+  &lt;componentInstance xlink:href="componentA.sbml"&gt;
+    &lt;link xlink:from="ref2" xlink:to="ref1" /&gt;
+... other links potentially ...
+  &lt;/componentInstance&gt;
+
+  &lt;componentInstance xlink:href="componentA.sbml"&gt;
+    &lt;link xlink:from="ref3" xlink:to="ref1" /&gt;
+... other links potentially ...
+  &lt;/componentInstance&gt;
+&lt;/listOfComponentInstances&gt;
+
+I'm assuming that this means two components at the same level are linked
+together.
+Good I understand that but if I expand this very slightly by adding 2 B
+components
+I run into a problem - see arrow
+
+&lt;listOfComponentInstances&gt;
+  &lt;elementReference xlink:label="top" xlink:href=" somewhere a the top
+level"/&gt;
+  &lt;elementReference xlink:label="ref1" xlink:href="...somewhere in A" /&gt;
+  &lt;elementReference xlink:label="ref2" xlink:href="...somewhere in B" /&gt;
+  &lt;elementReference xlink:label="ref3" xlink:href="...somehwere in C" /&gt;
+
+  &lt;componentInstance xlink:href="componentB.sbml"/&gt;
+  &lt;componentInstance xlink:href="componentB.sbml"/&gt;
+
+  &lt;componentInstance xlink:href="componentA.sbml"&gt;
+    &lt;link xlink:from="ref2" xlink:to="ref1" /&gt;      &lt;&lt;&lt;&lt;---- what does
+ref2 refer to????
+... other links potentially ...
+  &lt;/componentInstance&gt;
+
+  &lt;componentInstance xlink:href="componentA.sbml"&gt;
+    &lt;link xlink:from="ref3" xlink:to="ref1" /&gt;
+... other links potentially ...
+  &lt;/componentInstance&gt;
+
+ 
+&lt;/listOfComponentInstances&gt;
+
+Have I missed something?   More than likely :-)
+
+An alternative would be to recast this in the following way:
+
+&lt;listOfComponentInstances&gt;
+  &lt;elementReference xlink:label="top" xlink:href=" somewhere at the top
+level only"/&gt;
+
+  &lt;componentInstance xlink:href="componentB.sbml"&gt;
+  	&lt;elementReference xlink:label="ref1" xlink:href="...somewhere in
+B" /&gt;
+  &lt;/componentInstance&gt;
+
+  &lt;componentInstance xlink:href="componentB.sbml"/&gt;
+  	&lt;elementReference xlink:label="ref2" xlink:href="...somewhere in
+B" /&gt;
+  &lt;/componentInstance&gt;
+
+  &lt;componentInstance xlink:href="componentA.sbml"&gt;
+  	&lt;elementReference xlink:label="ref3" xlink:href="...somewhere in
+A" /&gt;
+  &lt;/componentInstance&gt;
+
+  &lt;componentInstance xlink:href="componentA.sbml"&gt;
+  	&lt;elementReference xlink:label="ref4" xlink:href="...somewhere in
+A" /&gt;
+  &lt;/componentInstance&gt;
+
+  &lt;link xlink:from="ref1" xlink:to="ref3" /&gt;
+  &lt;link xlink:from="ref2" xlink:to="ref4" /&gt;
+  &lt;link xlink:from="ref2" xlink:to="top" /&gt;
+
+&lt;/listOfComponentInstances&gt;
+
+Is this any better or worse?
+
+you wrote:
+
+&gt; &gt; a) XPATH can only refer to concrete XML structures.  
+&gt; Structures that 
+&gt; &gt; are inferred by SBML - in the future - such as the inside of a 
+&gt; &gt; specific model instance can't be referred
+&gt; &gt; to (if you allow any number of instances of the same sub-model).  I
+&gt; &gt; guess it can be done by
+&gt; &gt; a pair of XPATHs one to the instance and the other to inside the
+&gt; &gt; sub-model.
+&gt; 
+&gt; I don't think I understand what you mean with this.  Could 
+&gt; you give me an example?
+&gt; 
+
+OK, using the scheme I outlined above...
+
+consider the inside of B:
+...
+&lt;listOfComponentInstances&gt;
+  &lt;componentInstance xlink:href="componentC.sbml"&gt;
+  	&lt;elementReference xlink:label="ref1" xlink:href="...somewhere in
+C" /&gt;
+  &lt;/componentInstance&gt;
+
+  &lt;componentInstance xlink:href="componentC.sbml"/&gt;
+  	&lt;elementReference xlink:label="ref2" xlink:href="...somewhere in
+C" /&gt;
+  &lt;/componentInstance&gt;
+
+  &lt;link xlink:from="ref1" xlink:to="ref2" /&gt;
+&lt;/listOfComponentInstances&gt;
+...
+
+now the top level:
+
+&lt;listOfComponentInstances&gt;
+  &lt;componentInstance xlink:href="componentB.sbml"&gt;
+  	&lt;elementReference xlink:label="ref1" xlink:href="...somewhere
+inside the first C inside B" /&gt; 
+ 	&lt;elementReference xlink:label="ref2" xlink:href="...somewhere
+inside the 2nd C inside B" /&gt;
+  &lt;/componentInstance&gt;
+
+  &lt;componentInstance xlink:href="componentA.sbml"&gt;
+  	&lt;elementReference xlink:label="ref3" xlink:href="...somewhere in
+A" /&gt;
+  &lt;/componentInstance&gt;
+
+  &lt;link xlink:from="ref1" xlink:to="ref3" /&gt;
+  &lt;link xlink:from="ref2" xlink:to="ref3" /&gt;
+
+&lt;/listOfComponentInstances&gt;
+
+Now I don't see how you write the XPATH to do 
+xlink:href="...somewhere inside the first C inside B" 
+
+I believe you can do this in a single XPATH reference:
+you have to have one XPATH which refers to the instance and then
+an XPATH that refers to the element inside the instance.
+
+This is not a showstopper.
+The real question is: Do we care?
+
+Note: ideally instances should have a optional(?) id field so that its
+possible to refer
+them directly without using XPATH indexing.
+
+I still like the general scheme.
+
+&gt; &gt; b) these standards work fine if you use them in combination 
+&gt; with the 
+&gt; &gt; 'source' data structures. You can apply them to DOM representations 
+&gt; &gt; easily.  However you're operating on your
+&gt; &gt; own non-DOM representation you have write you're own parser - XPATH
+&gt; &gt; isn't XML! :-(
+&gt; 
+&gt; I think people should be using DOM, SAX, etc... rather than 
+&gt; rolling their own parsers.  The additional constraints for 
+&gt; SBML model checking should be written on top of those APIs.
+&gt; 
+
+I agree.
+If you use SAX event interface the result is not a DOM structure but
+your own structures.
+Then if you wish to navigate using XPATH you probably have to interpret
+the XPATH
+yourself, I suspect, since XPATH interpreters will operate on DOMs only.
+Perhaps I'm conjecturing too much.
+
+&gt; &gt; Many developers prefer to parse direct to custom structures.  Are 
+&gt; &gt; there parsers for XPATH?
+&gt; 
+&gt; I've started looking at this some.  There are a number of 
+&gt; XPath processors out there, Xindice being one I have some 
+&gt; familiarity with although it's not strictly a XPath 
+&gt; processor.  I've not yet seen any I would consider useful 
+&gt; components.  That said, the grammar for XPath is not terribly 
+&gt; complex and writing a *CC style representation doesn't strike 
+&gt; me as difficult.  I've seen references to grammars suitable 
+&gt; for parser generators but haven't tried to track one down yet.
+&gt; 
+I agree.  I don't think this is an argument against XPATH but
+once developers go down this path then the benefits of reusing XPATH
+might be diminished (?)
+
+Is your motivation of using XLINK to use generic XLINK savvy programs to
+read SBML directly?
+If yes what are the benefits?
+
+yours
+Andrew
+
+&gt; -----Original Message-----
+&gt; From: owner-biospice-mdl@billygraham.bbn.com 
+&gt; [<A  HREF="mailto:owner-biospice-mdl@billygraham.bbn.com">mailto:owner-biospice-mdl@billygraham.bbn.com</A>] On Behalf Of 
+&gt; Jonathan Webb
+&gt; Sent: 05 March 2003 16:39
+&gt; To: biospice-mdl@bbn.com; sbml-discuss@caltech.edu
+&gt; Subject: RE: A proposal for model composition
+&gt; 
+&gt; 
+&gt; 
+&gt; On Wed, 5 Mar 2003, Andrew Finney wrote:
+&gt; 
+&gt; &gt; I would add that composition of models implies a hierarchical 
+&gt; &gt; structure. Are you implying that composition should 
+&gt; restricted to one 
+&gt; &gt; level?
+&gt; 
+&gt; There is certainly a hierarchy of composition.  I think there 
+&gt; are multiple kinds of hierarchy a user may want to impose on 
+&gt; a model. Composition is a particular kind of hierarchy and, 
+&gt; of necessity, a fairly rigid one.  By this I mean you are 
+&gt; forced to construct the hierarchy following the structure of 
+&gt; components.  If you change the hierarchy, you've either 
+&gt; changed the model or you've changed the content of one or 
+&gt; more components.  Users may wish to use hierarchy as a 
+&gt; structuring mechanism for presentation purposes without 
+&gt; altering the definition of the model.
+&gt; 
+&gt; I do not mean to imply composition is limited to a single 
+&gt; level. Any given model or component may reference other 
+&gt; models as components. The depth of nesting is not bounded by 
+&gt; the design of the composition mechanism.
+&gt; 
+&gt; &gt; I'm a bit confused as to how you would compose 2 instances 
+&gt; of the same 
+&gt; &gt; sub-model in your scheme.  Do you have an example?
+&gt; 
+&gt; Roughly as follows:
+&gt; 
+&gt; &lt;listOfComponentInstances&gt;
+&gt;   &lt;elementReference xlink:label="ref1" 
+&gt; xlink:href="...somewhere in A" /&gt;
+&gt;   &lt;elementReference xlink:label="ref2" 
+&gt; xlink:href="...somewhere in B" /&gt;
+&gt;   &lt;elementReference xlink:label="ref3" 
+&gt; xlink:href="...somehwere in C" /&gt;
+&gt; 
+&gt;   &lt;componentInstance xlink:href="componentA.sbml"&gt;
+&gt;     &lt;link xlink:from="ref2" xlink:to="ref1" /&gt;
+&gt; ... other links potentially ...
+&gt;   &lt;/componentInstance&gt;
+&gt; 
+&gt;   &lt;componentInstance xlink:href="componentA.sbml"&gt;
+&gt;     &lt;link xlink:from="ref3" xlink:to="ref1" /&gt;
+&gt; ... other links potentially ...
+&gt;   &lt;/componentInstance&gt;
+&gt; &lt;/listOfComponentInstances&gt;
+&gt; 
+&gt; Each occurance of a componentInstance element defines a new 
+&gt; occurance of a component, a copy if you will.  Each instance 
+&gt; has an implied, distinct name space in the composed model, 
+&gt; part of the encapsulation model.  This needs to be developed 
+&gt; in more detail in one of the missing sections but what I have 
+&gt; in mind is the usual symbol renaming approach a-la free 
+&gt; variable renaming in proof theories.
+&gt; 
+&gt; &gt; I believe we need to work towards a model composition standard with 
+&gt; &gt; the following features:
+&gt; &gt;
+&gt; &gt; a) Interfaces
+&gt; &gt;
+&gt; &gt; I think we can use defined interfaces.  In fact in some 
+&gt; contexts they 
+&gt; &gt; will be very useful for example they will guide users to those 
+&gt; &gt; elements that the sub-model author
+&gt; &gt; thought were appropriate places to link to other models.
+&gt; 
+&gt; I view interface definition as a documentation issue in the 
+&gt; development of a component.  I argue in the presentation we 
+&gt; can't do type checking, one of the main things you get from 
+&gt; the definition of interfaces.  Without a meaningful notion of 
+&gt; type, I would argue you can't systematically represent the 
+&gt; meaning of a model as anything more than an organized 
+&gt; collection of labels, useful but very difficult to analyze.  
+&gt; It is incumbent on the developer of a model to provide useful 
+&gt; documentation about the structure and use of a component.  
+&gt; This includes such things as selecting the set of labels to 
+&gt; be meaningful in the context of the application.  There is 
+&gt; nothing preventing a model developer from assigning labels A, 
+&gt; B, C, ... to species elements when they in fact represent 
+&gt; known compounds like a calcium ion, a phosphate group, atomic 
+&gt; oxygen, ...
+&gt; 
+&gt; Similarly, it is incumbent upon the user of a component to 
+&gt; understand the intent and structure of the component.  
+&gt; Writing good components in a modelling language is and always 
+&gt; will be difficult.  A user must evaluate whether a given 
+&gt; _implementation_ of a component is indeed suitable for use in 
+&gt; a particular application.
+&gt; 
+&gt; Having said we can't do type checking, I will say there are 
+&gt; some things we can check which are types at the level of 
+&gt; SBML/XML.  These fall in the category of reference 
+&gt; consistency for various attributes.  For example, a species 
+&gt; reference in a reaction must refer to a species label.  There 
+&gt; are similar kinds of checks one can make with the composition 
+&gt; model and these will need to be enumerated; notionally, they 
+&gt; are part of the definition of the combined model, yet another 
+&gt; of the missing sections.  An example of what I have in mind 
+&gt; here is you can't link a species element to anything other 
+&gt; than a species element, an example you mention later in your message.
+&gt; 
+&gt; &gt; Interfaces
+&gt; &gt; enable two sub-models
+&gt; &gt; to be composed graphically without the whole of the 
+&gt; sub-models being 
+&gt; &gt; visible.
+&gt; 
+&gt; I view this use of an interface defintion as being the 
+&gt; responsibility of a model editor.  We may wish to provide 
+&gt; specific elements in SBML to identify these attributes of a 
+&gt; model but I would argue they are in no way part of the 
+&gt; _definition_ of the composed model.  I consider them to be 
+&gt; analogous to graph layout information.
+&gt; 
+&gt; &gt; A user can chose whether interfaces
+&gt; &gt; should be respected or not.  I think we can do some useful link 
+&gt; &gt; checking without labels e.g. making sure that elements of different 
+&gt; &gt; types aren't linked e.g. species to compartment
+&gt; &gt; in addition parameter units can be checked e.g. block a 
+&gt; volts parameter
+&gt; &gt; being connected to a
+&gt; &gt; moles parameter.  In fact this was a motivation behind units.
+&gt; 
+&gt; Again, more detail is needed on the combined form of a 
+&gt; composed model. One of those details is the constraints on 
+&gt; link targets and a set of rules needs to be developed.
+&gt; 
+&gt; As an aside, I'm not sure I agree with your example about 
+&gt; substituting "volts" for "moles" - consider the case where a 
+&gt; user is building a model representing an experiment.  
+&gt; Concentration may be measured as a voltage.  Is it a _good_ 
+&gt; idea to mix the 2 concepts without an appropriate conversion 
+&gt; term?  Proabably not.  Should we actually specify it to not 
+&gt; be possible?  Again, I would argue no since I see this as an 
+&gt; issue of model quality rather than correctness.  It might be 
+&gt; a suitable rule for a lint-like application but I would 
+&gt; contend it's probably not something to specify for the 
+&gt; definition of the language.
+&gt; 
+&gt; &gt; b) Alternative model 'implementations'
+&gt; &gt;
+&gt; &gt; It would be very useful to have alternative submodel 
+&gt; "implementations" 
+&gt; &gt; for the same subsystem. Alternative sub-models can model at 
+&gt; different 
+&gt; &gt; levels of details and/or use different math
+&gt; &gt; representations.
+&gt; &gt;
+&gt; &gt; The main problem with this is providing a labeling mechanism that 
+&gt; &gt; would allow users to select the set of sub-models that should be 
+&gt; &gt; applied to a given tool. This implies
+&gt; &gt; a kind of ontology that's either public or private to just 
+&gt; a given set
+&gt; &gt; of models.
+&gt; 
+&gt; I'll presume you mean something analogous to conditional 
+&gt; compilation here and hope you'll elaborate if I've missed 
+&gt; your point.  Also, I view this as somewhat orthogonal to the 
+&gt; definition of components due, at least in part, to my 
+&gt; opinions about how these capabilities should be addressed.
+&gt; 
+&gt; The goal is to allow information from the usage environment 
+&gt; to have an impact on the definition of the model.  The 
+&gt; obvious mechanism is a conditional like the #ifdef macros in 
+&gt; the C preprocessor.  My experience with C is this becomes a 
+&gt; maintenance nightmare very quickly.  You get combinatoric 
+&gt; explosion of feature combinations very quickly and the code 
+&gt; becomes very bulky and difficult to understand.  I believe 
+&gt; some combination of XSLT conditional elements and parameters 
+&gt; would be a suitable implementation for this type of 
+&gt; functionality.  I don't think any changes are required in 
+&gt; SBML with this approach.
+&gt; 
+&gt; I would argue this specific example is a minor variant of the 
+&gt; notion of model families,  a collection of implementations of 
+&gt; related models where the "bulk" of a model is the same and 
+&gt; selected variants are made. XML documents are structured data 
+&gt; streams suitable for inclusion in databases.  With the 
+&gt; understanding I am not really a user, I want to store models 
+&gt; in a database and my component library is a real database 
+&gt; rather than a simple file.  As such, I would construct 
+&gt; variants using something like XUpdate, see 
+&gt; <A  HREF="http://www.xmldb.org/xupdate/">http://www.xmldb.org/xupdate/</A> for its defintion and 
+&gt; <A  HREF="http://xml.apache.org/xindice/">http://xml.apache.org/xindice/</A> for a particular 
+&gt; implementation.  Each variant would somehow have a set of 
+&gt; attributes describing its criteria for selection, my 
+&gt; preference here would be an RDF based, or similar, attribute 
+&gt; model.  Whether the attribute descriptions for a variant are 
+&gt; just part of the model metadata or if they need some special 
+&gt; standing in the defintion of SBML is something I haven't 
+&gt; worked out yet.
+&gt; 
+&gt; I'm not sure I understand your comment about an ontology.
+&gt; 
+&gt; &gt; c) overloading
+&gt; &gt;
+&gt; &gt; You wondered how we would resolve the attributes of linked 
+&gt; elements. 
+&gt; &gt; There are 3 possible complementary mechanisms:
+&gt; &gt;
+&gt; &gt; i) abstraction - allow some attributes to be undefined/missing 
+&gt; &gt; (typically this needs to be restricted to just those 
+&gt; elements on the 
+&gt; &gt; interface of a model).  some attributes are already 
+&gt; optional in SBML.
+&gt; &gt; A missing attribute value is then overloaded by a 'concrete' element
+&gt; &gt; which has an attribute value.
+&gt; &gt;
+&gt; &gt; ii) hierarchical overloading - an attribute value from a 
+&gt; higher level 
+&gt; &gt; overloads a lower level attribute value.
+&gt; &gt;
+&gt; &gt; iii) directed linking - label one end of a link as being an 
+&gt; overloader 
+&gt; &gt; that supplies the attribute value.
+&gt; 
+&gt; I think this is a case of my not making a very effective 
+&gt; presentation. What I have in mind is a combination of the 3 
+&gt; of your mechanisms. Starting with (iii), links are directed 
+&gt; with the "xlink:from" attribute of a link element defining 
+&gt; the parent and the "xlink:to" attribute defining the child.  
+&gt; The final value of an attribute in the composed model is (ii) 
+&gt; followed by (i).  In words, look for the attribute in the 
+&gt; parent.  If it's not defined, look for it in the child.  
+&gt; Recurse if there are multiple levels to the definition of the 
+&gt; element (e.g. the child target of a link in a component could 
+&gt; itself be the parent of a link in the definition of the component).
+&gt; 
+&gt; &gt; (... the problems with XPath etc... are)
+&gt; &gt;
+&gt; &gt; a) XPATH can only refer to concrete XML structures.  
+&gt; Structures that 
+&gt; &gt; are inferred by SBML - in the future - such as the inside of a 
+&gt; &gt; specific model instance can't be referred
+&gt; &gt; to (if you allow any number of instances of the same sub-model).  I
+&gt; &gt; guess it can be done by
+&gt; &gt; a pair of XPATHs one to the instance and the other to inside the
+&gt; &gt; sub-model.
+&gt; 
+&gt; I don't think I understand what you mean with this.  Could 
+&gt; you give me an example?
+&gt; 
+&gt; &gt; b) these standards work fine if you use them in combination 
+&gt; with the 
+&gt; &gt; 'source' data structures. You can apply them to DOM representations 
+&gt; &gt; easily.  However you're operating on your
+&gt; &gt; own non-DOM representation you have write you're own parser - XPATH
+&gt; &gt; isn't XML! :-(
+&gt; 
+&gt; I think people should be using DOM, SAX, etc... rather than 
+&gt; rolling their own parsers.  The additional constraints for 
+&gt; SBML model checking should be written on top of those APIs.
+&gt; 
+&gt; &gt; Many developers prefer to parse direct to custom structures.  Are 
+&gt; &gt; there parsers for XPATH?
+&gt; 
+&gt; I've started looking at this some.  There are a number of 
+&gt; XPath processors out there, Xindice being one I have some 
+&gt; familiarity with although it's not strictly a XPath 
+&gt; processor.  I've not yet seen any I would consider useful 
+&gt; components.  That said, the grammar for XPath is not terribly 
+&gt; complex and writing a *CC style representation doesn't strike 
+&gt; me as difficult.  I've seen references to grammars suitable 
+&gt; for parser generators but haven't tried to track one down yet.
+&gt; 
+&gt; &gt; c) these standards can be unconstrained - for example you can write 
+&gt; &gt; references to ranges of elements in contexts where this is 
+&gt; meaningless 
+&gt; &gt; - this might require some complexity for a
+&gt; &gt; validator.  A custom format based on XML might well make 
+&gt; this impossible
+&gt; &gt; at the syntactic level.
+&gt; 
+&gt; My general preference is to let users have as much rope as 
+&gt; they want. Next, XML is a poor choice as a representation for 
+&gt; enforcing syntactic checks and SBML, being an XML 
+&gt; application, inherits this.  A validator will always work 
+&gt; with a specific model instance and should be constructed to 
+&gt; resolve linked elements.  I think once you have the result of 
+&gt; the XPath expression in the link element, the validation is 
+&gt; not much different than checking an interface definition or 
+&gt; many of the other constraints SBML imposes over and above 
+&gt; those possible to specify in a XSchema definition.
+&gt; 
+&gt; &gt; Thanks again for your contribution
+&gt; 
+&gt; Thanks for your comments!
+&gt; 
+&gt; Jonathan Webb
+&gt; BBN Technologies
+&gt; 617-873-3321
+&gt; jwebb@bbn.com
+&gt; 
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00064" HREF="msg00064.html">[sbml-discuss] RE: A proposal for model composition</A></STRONG>
+<UL><LI><EM>From:</EM> Jonathan Webb &lt;jwebb@bbn.com&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00062" HREF="msg00062.html">[sbml-discuss] RE: A proposal for model composition</A></STRONG>
+<UL><LI><EM>From:</EM> Jonathan Webb &lt;jwebb@bbn.com&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00062.html">[sbml-discuss] RE: A proposal for model composition</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00064.html">[sbml-discuss] RE: A proposal for model composition</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00062.html">[sbml-discuss] RE: A proposal for model composition</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00064.html">[sbml-discuss] RE: A proposal for model composition</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00063"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00063"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

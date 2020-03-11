@@ -1,0 +1,160 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG preliminary issues -->
+<!--X-From-R13: Tnovra Qnzcntar <pnzcntarNculfovb.zffz.rqh> -->
+<!--X-Date: Thu, 22 May 2003 18:59:06 &#45;0700 -->
+<!--X-Message-Id: Pine.SGI.4.44.0305222158130.1542743&#45;100000@fulcrum.physbio.mssm.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG preliminary issues</TITLE>
+<LINK REV="made" HREF="mailto:campagne@physbio.mssm.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00244.html">Date Prev</A>][<A HREF="msg00246.html">Date Next</A>][<A HREF="msg00242.html">Thread Prev</A>][<A HREF="msg00246.html">Thread Next</A>][<A HREF="maillist.html#00245">Date Index</A>][<A HREF="threads.html#00245">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG preliminary issues</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG preliminary issues </LI>
+<LI><em>From</em>: Fabien Campagne &lt;<A HREF="mailto:campagne@physbio.mssm.edu">campagne@physbio.mssm.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 21:58:50 -0400</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+On Thu, 22 May 2003, Herbert Sauro wrote:
+
+&gt;
+&gt; I can live with SVG so long as someone is willing to write the parser for it
+&gt; (portable C please), it's not pure XML so it might be some work at the
+&gt; software end.
+
+I am not terribly enthusiastic about SVG in this context (I used it
+before and am familliar with the tools/API that you can use to generate
+and parse it).
+
+My lack of enthusiasm is mostly because I do not think that full rendering
+details are needed in the SBML file. I see SBML as a way to exchange
+models among modeling environments.
+
+To take an analogy with the tools of structural biology, SBML is the PDB
+file (a lot better, of course).
+
+People interested in making neat snapshot of a molecular structure, for
+publication or other use, read the PDB file with a structure viewer
+(Quanta, Insight, RasMol, VMD, etc).
+
+They tune the 3D rendering to show what they need, etc. The rendering
+is not written back to the PDB file.
+
+I expect similar viewers to be developed on top of SBML. Each one
+with its own strength and weaknesses.
+
+Some diagram viewers that import SBML may support exporting the
+diagram to SVG or other high-quality format.
+
+If you need to keep references from an SBML model to high-quality
+rendering, better in my opinion to use URLs to allow SBML to support
+various graphics formats:
+
+&lt;diagram-renderings&gt;
+ &lt;diagram href="<A  HREF="http://server1.edu/sb/models/rendering1.gif">http://server1.edu/sb/models/rendering1.gif</A>"/&gt;
+ &lt;diagram href="<A  HREF="http://server1.edu/sb/models/rendering1.svg">http://server1.edu/sb/models/rendering1.svg</A>"/&gt;
+ &lt;diagram href="<A  HREF="http://server1.edu/sb/models/rendering1.pdf">http://server1.edu/sb/models/rendering1.pdf</A>"/&gt;
+&lt;/diagram-renderings&gt;
+
+Fabien
+
+&gt; -----Original Message-----
+&gt; From: Wagner,John
+&gt; To: sbml-discuss@caltech.edu
+&gt; Sent: 5/22/03 3:22 PM
+&gt; Subject: [sbml-discuss] DWG preliminary issues
+&gt;
+&gt; First, it looks like we are not going to use the forum.
+&gt; Several members expressed that they'd much prefer
+&gt; to use email. (That's why I didn't reply to your email
+&gt; earlier, Pedro.)
+&gt;
+&gt; That said, without an indexing by working group
+&gt; and topic, this is pretty unworkable, especially
+&gt; given the tremendous volume of discussion now
+&gt; and, most likely, in the future; 39 of my last 50
+&gt; email messages have been sbml-discuss--and I
+&gt; have purposefully not sent any DWG messages
+&gt; out. What a complete pain in the ass.
+&gt;
+&gt; Now, for the preliminary issues:
+&gt;
+&gt; 1. It appears that some groups want a LOT of
+&gt; flexibility in diagrams, others want very little.
+&gt; Can we all agree on the general approach of
+&gt; "lots of optional details"?
+&gt;
+&gt; 2. A number of people have suggested SVG
+&gt; might be a viable approach. I hadn't read up
+&gt; on it until recently, but now that I have, I can
+&gt; see some distinct advantages. What is everyone's
+&gt; initial view on this: do you think SVG would
+&gt; be a good/viable approach, or would it be
+&gt; too much of a pain in the butt for people to
+&gt; jump on board?
+&gt;
+&gt; John
+&gt;
+&gt;
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00244.html">[sbml-discuss] First real proposal</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00246.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00242.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00246.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00245"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00245"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

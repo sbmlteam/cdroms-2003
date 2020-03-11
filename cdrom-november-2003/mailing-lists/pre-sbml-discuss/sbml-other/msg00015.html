@@ -1,0 +1,142 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;other] RE: clarification on interaction of algebraic rules and variable -->
+<!--X-From-R13: [negva Uvaxry <tvaxryNzcv&#45;zntqrohet.zct.qr> -->
+<!--X-Date: Mon, 29 Jul 2002 00:16:24 &#45;0700 -->
+<!--X-Message-Id: XFMail.20020729091613.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000401c2358f$5a4ff460$d72a94d9@ANDREWLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-other] RE: clarification on interaction of algebraic rules and var</TITLE>
+<LINK REV="made" HREF="mailto:ginkel@mpi-magdeburg.mpg.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00014.html">Date Prev</A>][<A HREF="msg00016.html">Date Next</A>][<A HREF="msg00014.html">Thread Prev</A>][<A HREF="msg00016.html">Thread Next</A>][<A HREF="maillist.html#00015">Date Index</A>][<A HREF="threads.html#00015">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-other] RE: clarification on interaction of algebraic rules and variable</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Andrew Finney &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-other] RE: clarification on interaction of algebraic rules and variable</LI>
+<LI><em>From</em>: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 29 Jul 2002 09:16:13 +0200 (CEST)</LI>
+<LI>Cc: SBML OTHER &lt;<A HREF="mailto:sbml-other@symbio.jst.go.jp">sbml-other@symbio.jst.go.jp</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Hi Andrew,
+
+On 27-Jul-2002 Andrew Finney wrote:
+&gt; what happens if the given initial
+&gt; conditions contradict the algebraic constraints
+&gt; e.g.
+&gt; x = 0
+&gt; y = 1
+&gt; 0 = x + y
+
+The solver stops with an error ;-)
+The point is, if you do DAE then the initial conditions have to be 
+consistent. In serious simulators before simulating anything there is a
+numeric equation solver invoked that tries to find a set of initial 
+values that fulfills the initial conditions starting with the given values and
+modifying the states.
+It solves the values of dotx and x. In some tools it is possible to 
+provide additional equations for this process. (Since dotx are also unknowns
+you may have size(dotx) more equations).
+There are several publications, dealing with this problem of finding consistent
+ conditions e.g.:
+Pantelides C.C. The consistent initialization of differential-algebraic systems.
+SIAM J. Sci. Stat. Computing. 9 213-231 (1988)
+
+&gt; 2nd consider the actual simulation
+
+Integration can only start with good initial values.
+
+&gt; should variables e.g. parameters or boundary
+&gt; condition species that would be constant
+&gt; in the absence of algebraic equations
+&gt; vary to satisfy algebraic constraints?
+
+No. Unless you have equations to define them. (Input functions for
+boundaries, parameterRules).
+
+&gt; 
+&gt; exists for the  variable.  If we put algebraic rules into
+&gt; the mix I think we have a problem:
+&gt; what variables are constant and what can vary 
+&gt; to satisfy constraints?
+
+The states can vary: species, compartments, state-like parameters.
+If this doesn't lead to success, then the initvalues must be defined better.
+
+&gt; am I being paranoid?   
+
+As far as I can tell: No ;-}
+
+
+        Martin
+
+
+-- 
++-[Martin Ginkel]--------------[<A  HREF="mailto:ginkel">mailto:ginkel</A>(at)mpi-magdeburg.mpg.de]-+
+| MPI Magdeburg, Zi S2.09    Sandtorstr. 1, D-39106 Magdeburg, Germany |
+| If at first you don't succeed, failure may be your style.            |
++-[tel/fax: +49 391 6110 482/529]----[<A  HREF="http://www.mpi-magdeburg.mpg.de]-+">http://www.mpi-magdeburg.mpg.de]-+</A>
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00014" HREF="msg00014.html">[sbml-other] clarification on interaction of algebraic rules and variable assignments</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00014.html">[sbml-other] clarification on interaction of algebraic rules and variable assignments</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00016.html">[sbml-other] Proposed features for SBML Level 2 - not discussed at workshop</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00014.html">[sbml-other] clarification on interaction of algebraic rules and variable assignments</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00016.html">[sbml-other] Proposed features for SBML Level 2 - not discussed at workshop</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00015"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00015"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

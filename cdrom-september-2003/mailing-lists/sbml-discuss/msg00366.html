@@ -1,0 +1,207 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] DWG &#45; clarification of stylesheet concept and example -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 27 May 2003 04:25:49 &#45;0700 -->
+<!--X-Message-Id: 005001c32442$ac869b10$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] DWG - clarification of stylesheet concept and example</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00365.html">Date Prev</A>][<A HREF="msg00367.html">Date Next</A>][<A HREF="msg00348.html">Thread Prev</A>][<A HREF="msg00367.html">Thread Next</A>][<A HREF="maillist.html#00366">Date Index</A>][<A HREF="threads.html#00366">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] DWG - clarification of stylesheet concept and example</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;SBML&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] DWG - clarification of stylesheet concept and example</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 27 May 2003 12:25:21 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Folks
+
+Just some clarification of the stylesheet idea:
+
+a) I'm suggesting a split between on the one hand
+	i) the model and minimal diagrammatic information
+and on the other
+	ii) detailed rendering information
+
+(i) is as logical as possible but isn't purely logical
+i.e. includes just enough information to render the diagram
+without most unintended crossing artifacts.  It would
+exclude color, bitmaps, fonts, shapes etc.
+
+(ii) is described in stylesheet form
+
+b) a stylesheet can be included inside the model document
+or be external or be overridden by the user i.e. you don't
+need a separate document necessarily.  Anyway the minimal
+diagrammatic information should be enough to do a basic rendering
+of the diagram without a stylesheet.
+
+Concretely a model file would consist of:
+a) the Level 2 stuff as now but labeled using a CV like that given by
+Eric (thanks)
+b) a series of minimal diagramed views of the model
+c) each dioramic view would have an associated stylesheet
+	which may or may not be in the document
+
+here's a very crude example, forgive any weird chemistry please
+
+&lt;sbml&gt;
+&lt;model id="test&gt;
+	&lt;listOfCompartments&gt;
+		&lt;compartment kind="cytoplasm" id="cell"/&gt;
+	&lt;/listOfCompartments&gt;
+	&lt;listOfSpecies&gt;
+		&lt;species kind="smallMolecule" id="glucoseA"/&gt;
+		&lt;species kind="smallMolecule" id="glucoseB"/&gt;
+		&lt;species kind="protein" id="fooase"/&gt;
+	&lt;/listOfSpecies&gt;
+	&lt;listofReactions&gt;
+		&lt;reaction id="reaction1"&gt;
+			&lt;listOfReactants&gt;
+				&lt;speciesReference species="glucoseA"/&gt;
+			&lt;/listOfReactants&gt;
+			&lt;listOfProducts&gt;
+				&lt;speciesReference species="glucoseB"/&gt;
+			&lt;/listOfProducts&gt;
+			&lt;listOfModifiers&gt;
+				&lt;speciesReference species="fooase"
+kind="enzyme"/&gt;
+			&lt;/listOfModifiers&gt;
+		&lt;/reaction&gt;
+	&lt;/listofReaction&gt;
+	&lt;listOfViews&gt;
+		&lt;view id="whole" scale="100"
+stylesheet="#xpointer(/sbml/model/listOfStylesheets/stylesheet[@id="myst
+yle"]"&gt;
+			&lt;listOfObjects&gt;
+				&lt;object object="glucoseA"
+					centerX="1" centerY="1"
+lowerBoundX="-1" upperBoundX="1" upperBoundX="-1" upperBoundY="1"/&gt;
+&lt;object object="glucoseB"
+					centerX="3" centerY="1"
+lowerBoundX="-1" upperBoundX="1" upperBoundX="-1" upperBoundY="1"/&gt;
+&lt;object object="fooase"
+					centerX="2" centerY="2"
+lowerBoundX="-1" upperBoundX="1" upperBoundX="-1" upperBoundY="1"/&gt;
+&lt;object object="reaction1"
+					centerX="2" centerY="1"
+lowerBoundX="0" upperBoundX="0" upperBoundX="0" upperBoundY=0"/&gt;
+&lt;/listOfObjects&gt;
+			&lt;listOfPaths&gt;
+				&lt;path type="reactant"
+reaction="reaction1" species="glucoseA"&gt;
+					&lt;line x1="1" y1="1" x2="2"
+x2="1"/&gt;
+				&lt;/path&gt;
+				&lt;path type="product"
+reaction="reaction1" species="glucoseB"&gt;
+					&lt;line x1="2" y1="1" x2="3"
+x2="1"/&gt;
+				&lt;/path&gt;
+				&lt;path type="modifier"
+reaction="reaction1" species="fooase"&gt;
+					&lt;line x1="2" y1="2" x2="2"
+x2="1"/&gt;
+				&lt;/path&gt;
+			&lt;listOfPaths&gt;
+		&lt;/view&gt;
+	&lt;/listOfViews&gt;
+	&lt;listOfStyleSheets&gt;
+		&lt;styleSheet id="mystyle"&gt;
+			&lt;listOfObjectStyles&gt;
+				&lt;objectStyle kind="smallMolecule"&gt;
+					some svg describing a diagram
+centered on the location given for matching objects	
+				&lt;/objectStyle&gt;
+				&lt;objectStyle kind="protein"&gt;
+					some svg describing a diagram
+centered on the location given for matching objects	
+				&lt;/objectStyle&gt;
+			&lt;/listOfObjectStyles&gt;
+			&lt;listOfPathStyles&gt;
+				&lt;pathStyle type="reactant"&gt;
+					svg compatable stuff here that
+can be applied to lines
+				&lt;/pathStyle&gt;
+				&lt;pathStyle type="product"&gt;
+					svg compatable stuff here that
+can be applied to lines
+				&lt;/pathStyle&gt;
+				&lt;pathStyle type="modifier"
+specieskind="enzyme"&gt;
+					svg compatable stuff here that
+can be applied to lines
+				&lt;/pathStyle&gt;
+			&lt;/listOfPathStyles&gt;
+		&lt;/styleSheet&gt;
+	&lt;/listOfStyleSheets&gt;
+&lt;/model&gt;
+&lt;/sbml&gt;
+
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00365.html">Re: [sbml-discuss] DWG - from a devil's advocate - a plan and othersuggestions</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00367.html">[sbml-discuss] Events</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00348.html">RE: [sbml-discuss] General namespace inquiry</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00367.html">[sbml-discuss] Events</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00366"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00366"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

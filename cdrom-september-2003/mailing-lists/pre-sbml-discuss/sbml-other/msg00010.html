@@ -1,0 +1,110 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;other] RE: [sysbio] SBML Level 2 decisions -->
+<!--X-From-R13: [vpunry Vhpxn <zuhpxnNpnygrpu.rqh> -->
+<!--X-Date: Thu, 25 Jul 2002 01:26:01 &#45;0700 -->
+<!--X-Message-Id: 15679.46642.973969.128359@erato1.cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 15670.35208.435625.66090@erato1.cds.caltech.edu -->
+<!--X-Reference: XFMail.020718231250.martin.ginkel@epost.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-other] RE: [sysbio] SBML Level 2 decisions</TITLE>
+<LINK REV="made" HREF="mailto:mhucka@caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00009.html">Date Prev</A>][<A HREF="msg00011.html">Date Next</A>][<A HREF="msg00009.html">Thread Prev</A>][<A HREF="msg00011.html">Thread Next</A>][<A HREF="maillist.html#00010">Date Index</A>][<A HREF="threads.html#00010">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-other] RE: [sysbio] SBML Level 2 decisions</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Martin Ginkel &lt;<A HREF="mailto:martin.ginkel@epost.de">martin.ginkel@epost.de</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-other] RE: [sysbio] SBML Level 2 decisions</LI>
+<LI><em>From</em>: Michael Hucka &lt;<A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 25 Jul 2002 01:26:26 -0700</LI>
+<LI>Cc: <A HREF="mailto:sysbio@caltech.edu">sysbio@caltech.edu</A>, <A HREF="mailto:sbml-other@symbio.jst.go.jp">sbml-other@symbio.jst.go.jp</A></LI>
+<LI>Reply-To: <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+  MG&gt; On 18-Jul-02 Michael Hucka wrote:
+  &gt;&gt; 1. Changes to the syntax of names and identifiers
+  &gt;&gt; -------------------------------------------------
+  &gt;&gt;
+  &gt;&gt; c) The 'name' attributes that (in SBML Level 1) are
+  &gt;&gt; restricted to the syntax defined by 'SName' will be
+
+  MG&gt; Are there ideas about scope and uniqueness of the
+  MG&gt; `name'?  I would like to keep local namespaces on
+  MG&gt; names, see below:
+
+You're right; there may be a problem with XML ID's.  Andrew
+actually spotted it as well and has been investigating
+alternatives.  The problem is what you pointed out below:
+
+  MG&gt; The difference here is the scope: AFAIR is the scope
+  MG&gt; for ID is in every case the whole document. There is
+  MG&gt; no possibility for local ID-namespaces in a
+  MG&gt; document. Currently this only affects the local
+  MG&gt; parameters and speciesRefs in reactions. But for
+  MG&gt; modular models this is not that nice. Also for further
+  MG&gt; developments like hierarchical names, the matching
+  MG&gt; feature of XML doesn't help us much: A hierarchical
+  MG&gt; name attribute may have the type IDREFS, but you still
+  MG&gt; have to check, if the reference really points to
+  MG&gt; something ...
+
+Stay tuned... :-)
+
+MH
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00009.html">[sbml-other] sbml-other-unsubscribe@symbio.jst.go.jp</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00011.html">[sbml-other] the french girl</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00009.html">[sbml-other] sbml-other-unsubscribe@symbio.jst.go.jp</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00011.html">[sbml-other] the french girl</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00010"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00010"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

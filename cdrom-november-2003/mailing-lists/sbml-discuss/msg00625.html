@@ -1,0 +1,171 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] DWG: Revised Proposal -->
+<!--X-From-R13: Dnycu Unhtrf <enycu.tnhtrfNrzy&#45;e.ivyyn&#45;obfpu.qr> -->
+<!--X-Date: Fri, 12 Sep 2003 10:12:39 &#45;0700 -->
+<!--X-Message-Id: AB1AA7A6&#45;E505&#45;11D7&#45;81DA&#45;000A95776A76@eml&#45;r.villa&#45;bosch.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2C053E3772@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] DWG: Revised Proposal</TITLE>
+<LINK REV="made" HREF="mailto:ralph.gauges@eml-r.villa-bosch.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00624.html">Date Prev</A>][<A HREF="msg00626.html">Date Next</A>][<A HREF="msg00621.html">Thread Prev</A>][<A HREF="msg00622.html">Thread Next</A>][<A HREF="maillist.html#00625">Date Index</A>][<A HREF="threads.html#00625">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] DWG: Revised Proposal</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] DWG: Revised Proposal</LI>
+<LI><em>From</em>: Ralph Gauges &lt;<A HREF="mailto:ralph.gauges@eml-r.villa-bosch.de">ralph.gauges@eml-r.villa-bosch.de</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 12 Sep 2003 11:44:13 +0200</LI>
+<LI>Cc: &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;,  &quot;Herbert M. Sauro&quot; &lt;<A HREF="mailto:hsauro@cds.caltech.edu">hsauro@cds.caltech.edu</A>&gt;,  &quot;Ralph Gauges&quot; &lt;<A HREF="mailto:ralph.gauges@eml.villa-bosch.de">ralph.gauges@eml.villa-bosch.de</A>&gt;,  &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Actually we have not given much thought to the render part yet since we
+wanted to get the layout part done first.
+We just had a little discussion about it so and what came up was
+something very much along the lines of the layout part.
+
+We would take the render information completely out of the layout part
+and have a separate &lt;render&gt; part.
+Therein we would define a listOfLinetypes for the different line types
+we are going to use. Likewise we would have a listOfCurves,
+listOfShapes, listOfTextlabels, listOfBitmaps and renderGroups.
+Actually the listOfTextlabels might not be necesary since it could be
+defined as a kind of shape and put into the listOfShapes.
+The ListOfRenderGroups would contain a list of groups that again 
+contain a
+list of references to either curves, shapes or bitmaps and their
+relative positions within the group.
+The glyphs in the layout part could then reference one of the render
+groups.
+So the structure would essentialy be something like that
+
+&lt;listOfLayouts&gt;
+   &lt;layout ...&gt;
+     ...
+      &lt;speciesGlyph ... rendering="greenRec" .../&gt;
+     ...
+   &lt;/layout ...&gt;
+.....
+&lt;/listOfLayouts&gt;
+
+&lt;render&gt;
+      &lt;listOfLinetypes&gt;
+        &lt;lineType id="someLineType" stroke="solid" color="0,0,0,255" 
+thickness="1" /&gt;
+      ....
+      &lt;/listOfLinetypes&gt;
+     &lt;listOfCurves&gt;
+     ....
+     &lt;/listOfCurves&gt;
+     &lt;listShapes&gt;
+       &lt;shape id="greenRec" xsi:type="sr:rectangle" color="0,255,0,255"
+linetype="someLineType"/&gt;
+     ....
+     &lt;/listOfShapes&gt;
+     &lt;listOfBitmaps&gt;
+     ....
+     &lt;/listOfBitmaps&gt;
+     &lt;renderGroups&gt;
+     ....
+     &lt;/renderGroups&gt;
+&lt;/render&gt;
+
+
+I hope this is was not too confusing, but if everyone else thinks that
+we have the layout part pretty much covered, we could go ahead and
+write this up in a little more detail so that we can discuss about it.
+
+Ralph
+
+P.S.: Concerning the new bounding box for layouts in the layout 
+proposal, everybody is free to ignore it if their canvas does not have 
+a limited size. It is not a limit, but rather a hint as to how large 
+your view needs to be in order to show the whole diagram.
+
+
+
+On Donnerstag, September 11, 2003, at 01:00  Uhr, Wagner,John wrote:
+
+&gt; Looking really good, Ralph. One question...
+&gt;
+&gt; Your document mentions separating layout and render info
+&gt; (which I very much like). Obviously, we've not gotten to the
+&gt; rendering part, at least not yet. But, what is your vision of
+&gt; how rendering would fit into your scheme? One of the
+&gt; reasons I ask is, depending on where it fits in, the naming
+&gt; might not quite make sense as is. In *my* head, instead of
+&gt; your &lt;listOfLayouts&gt; element, I envision a &lt;listOfDiagrams&gt;
+&gt; element, which would contain 0 or more &lt;diagram&gt; elements,
+&gt; with each &lt;diagram&gt; element containing a &lt;layout&gt; element
+&gt; and a &lt;render&gt; element. On the other hand, I could also
+&gt; imagine sticking &lt;render&gt; inside &lt;layout&gt; (although I don't
+&gt; think that makes sense). Can you say a few words about this?
+&gt;
+&gt; John
+&gt;
+&gt;
+&gt;
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00621" HREF="msg00621.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00624.html">test3</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00626.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00621.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00622.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00625"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00625"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

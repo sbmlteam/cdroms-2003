@@ -1,0 +1,164 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Changing the way stoichiometries are expressed -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Wed, 21 May 2003 22:09:17 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC91E1@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Changing the way stoichiometries are expressed</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00191.html">Date Prev</A>][<A HREF="msg00193.html">Date Next</A>][<A HREF="msg00196.html">Thread Prev</A>][<A HREF="msg00199.html">Thread Next</A>][<A HREF="maillist.html#00192">Date Index</A>][<A HREF="threads.html#00192">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Changing the way stoichiometries are expressed</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'SBML Discussion List '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Changing the way stoichiometries are expressed</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 21 May 2003 22:09:01 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+ 
+Rational stoichiometries were specified in Level 1 for very good reason. I'd
+like to know the difference that some found significant between a rational
+and real number to be important enough to suggest removing the rational
+stoichiometries. By loosing rational stoichiometries we loose some
+advantages (significant advantages I think), by using the entire real number
+set (within machine precision) some feel we gain more. The toss up between
+the two depends on the balance of what we loose and what we gain.
+
+Anyone know what these are, those in favour of floating point
+stoichiometries should voice the advantages of the real number set over
+rational numbers so that we can make a reasoned decision here. If there are
+'real' advantages to using real over rational numbers then obviously we
+should use them but lets make sure we know all the issues before we go for
+one or the other.
+
+There is one argument for using expressions for the stoichiometries, which
+is the case when stoichiometries are a function of the state of the system,
+happens sometimes with transport processes (known as slippage). If we do
+(and we probably should) we will need to use MathML, sorry John, you might
+have to have MathML after all in the stoichiometries (wish it could be
+avoided).
+
+Herbert Sauro
+
+PS I agree with John that expressions in initial conditions would be nice.
+
+-----Original Message-----
+From: Wagner,John
+To: mhucka@caltech.edu
+Cc: SBML Discussion List
+Sent: 5/21/03 6:57 PM
+Subject: RE: [sbml-discuss] Changing the way stoichiometries are expressed
+
+I was under the impression that we'd be getting rid of the
+denominator field altogether. What's the utility in expressing
+a stoichiometric coefficient as 2.36435/12345? (That's not a
+sarcastic remark, I'm wondering if there might be some kind
+of use for it among, say, the stochastic folks, etc, that I'm not
+seeing).
+ 
+John
+
+	-----Original Message----- 
+	From: Michael Hucka [<A  HREF="mailto:mhucka@caltech.edu">mailto:mhucka@caltech.edu</A>] 
+	Sent: Wed 5/21/2003 9:53 PM 
+	To: Wagner,John 
+	Cc: SBML Discussion List 
+	Subject: RE: [sbml-discuss] Changing the way stoichiometries are
+expressed
+	
+	
+
+	  JWagner&gt; I know I expressed dissent in Ft. Lauderdale, but
+	  JWagner&gt; after realizing that we'd already make
+	  JWagner&gt; stoichiometric coefficients fractions, I with-
+	  JWagner&gt; drew my objections to making them floats.
+	
+	  JWagner&gt; OTOH, making them MathML expressions seems to be
+	  JWagner&gt; going a bit far--with no payback whatsoever
+	  JWagner&gt; outside of the issue of having the same constant
+	  JWagner&gt; in two places being error prone (I'd point out
+	  JWagner&gt; that having the same MathML expression in two
+	  JWagner&gt; places is equally, or, arguable, a LOT more,
+	  JWagner&gt; error prone). Moreover, this "simplification"
+	  JWagner&gt; means a big complication for developers, who
+	  JWagner&gt; would now be forced to evaluate these MathML
+	  JWagner&gt; expressions in their stoichiometry code. As
+	  JWagner&gt; always, it's a matter of priorities, and we have
+	  JWagner&gt; much bigger fish to fry (for example, I'd MUCH
+	  JWagner&gt; rather allow initial conditions to be MathML
+	  JWagner&gt; expressions--far more useful, with far more
+	  JWagner&gt; payoff).
+	
+	OK, so if you're ok with allowing for floating point numbers
+	in the 'stoichiometry' field, what is your feeling about the
+	'denominator' field?  Should that remain an integer?
+	
+	MH
+	
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00199" HREF="msg00199.html">RE: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00200" HREF="msg00200.html">RE: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00191.html">RE: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00193.html">Re: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00196.html">RE: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00199.html">RE: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00192"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00192"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

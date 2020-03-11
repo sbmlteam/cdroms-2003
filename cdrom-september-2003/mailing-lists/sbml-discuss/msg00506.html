@@ -1,0 +1,204 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] [Hybrid] Re: Hybrid Models Working Group -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Wed, 18 Jun 2003 07:29:20 &#45;0700 -->
+<!--X-Message-Id: 1055946066.16322.252.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000801c331bc$23794a70$458cc593@herts.ac.uk -->
+<!--X-Reference: 1055521319.4051.57.camel@senin.e&#45;cell.org -->
+<!--X-Reference: 3EEA0129.1060204@research.ge.com -->
+<!--X-Reference: 3EEC54AD.8080204@cse.psu.edu -->
+<!--X-Reference: 1055702811.4051.223.camel@senin.e&#45;cell.org -->
+<!--X-Reference: 3EF045B1.5060409@cse.psu.edu -->
+<!--X-Reference: 1055938789.16322.194.camel@senin.e&#45;cell.org -->
+<!--X-Reference: 3EF067CB.5060300@cse.psu.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00505.html">Date Prev</A>][<A HREF="msg00507.html">Date Next</A>][<A HREF="msg00505.html">Thread Prev</A>][<A HREF="msg00491.html">Thread Next</A>][<A HREF="maillist.html#00506">Date Index</A>][<A HREF="threads.html#00506">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Vijay Saraswat &lt;<A HREF="mailto:saraswat@cse.psu.edu">saraswat@cse.psu.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 18 Jun 2003 23:27:30 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>, <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+&gt; So lets put the credentials aside. Obviously, its really important to
+&gt; work through the bits and tweak your system's performance. Its equally
+&gt; important to make sure that the validity of your user's modeling
+&gt; efforts dont depend on it! 
+
+I agree.
+I didn't deny anything.   What you are making seems quite correct
+and I'm just showing my view on that... except that I couldn't get
+anything convincing to make light of Zeigler's theory :)
+
+
+&gt; &gt; I was not talking about the syntax/semantics separation when I said algorithms
+&gt; &gt; are parts of models, though I was when I said we must distinguish models
+&gt; &gt; from implementations.   And I was not talking about languages.	
+&gt; &gt; When talking about formal languages and induction engines
+&gt; &gt; it is the core concept, but in numerical simulators it is not always true.
+&gt; &gt; You may agree that if we need to assure the interoperability, it should be 
+&gt; &gt; done in the level of the higher level languages, not in data structures of
+&gt; &gt; implementations.
+&gt; &gt; 
+&gt; &gt; I meant that when we choose to use differential equations it implicitly but definitely
+&gt; &gt; indicate we understand, or at least we are trying to understand the dynamics of 
+&gt; &gt; the model in terms of, continuous and deterministic computation (I meant this
+&gt; &gt; by 'algorithm').   
+&gt; &gt;   
+&gt; Two points.
+&gt; 
+&gt; (1) Hmm. Of course differential equations have dynamic content, just
+&gt; as procedures and higher-order functions do (albeit for different
+&gt; notions of "time").  But this doesnt mean that they have to be
+&gt; understood only through their "execution". In all these cases there
+&gt; are also abtract mathematical ways of understanding them.
+&gt; 
+&gt; (2) I dont believe that there is anything fundamentally different
+&gt; about "numerical simulators" vs "formal languages and induction
+&gt; engines". (I dont actually know what induction engines you are talking
+&gt; about; I assume you mean reasoning engines). The only distinction I
+&gt; see is that one deals with the continuous domain --- and of course
+&gt; that has a lot of interesting and challenging structure in its own
+&gt; right -- and the other has traditionally dealt with discrete
+&gt; phenomena.
+
+
+In the program/implementation model below, no one would disagree that
+the separation must be:
+
+-----------------------------
+ Language  (program)
+-----------------------------   &lt;&lt;----  here
+ Engine    (implementation)
+-----------------------------
+
+
+While there are two possibilities on this one:
+
+-------------------------------------------
+ Model (semantic? model 
+        -- I don't have the right word)
+-------------------------------------------  &lt;&lt;--- (1)
+ Model (specific dynamics 
+               e.g. ODE or stochastic)
+-------------------------------------------  &lt;&lt;--- (2)
+ Engine (implementation)
+-------------------------------------------
+
+
+I meant in many numeric simulators there are boundaries at (1),
+and the structure of the model and choice of the way how it
+drives the model are often specified in separate files.
+It is so because it is useful, but I argued that in some cases
+cutting at (2) is also very useful, and
+often necessary for composite simulations.
+
+I guess you meant that, especially in your domain, the boundary
+is already at (2).   
+
+Useful practical language like SBML may need to support separation at
+both layers;  (1) and (2).
+
+
+-sha
+
+
+
+&gt; (3) There may be another thing going on here. There is of course a lot
+&gt; of really good work to be done around meta-architectures for modeling
+&gt; and reasoning: systems intended to be extensible by end-users, each
+&gt; extension to be thought of as yielding an architecture for reasoning.
+&gt; The possibility of such meta-architectures has really been facilitated
+&gt; over the last 20 years by the emergence of OO languages, and
+&gt; reflection/introspection techniques. Indeed a well-designed API can
+&gt; allow the same user to write a program which both (a) specializes the
+&gt; reasoning engine (b) provides input (models) to the reasoning engine.
+&gt; This may be accomplished merely by subclassing a few well-chosen
+&gt; classses, for instance. 
+&gt; 
+&gt; But lets bring the discussion back to SBML. At least my sense from
+&gt; participating in the last meeting is that SBML is not about trying to
+&gt; formalize such an API for different reasoners in the systems biology
+&gt; domain (though that can be a very interesting task!). Instead there is
+&gt; already a commitment to using an XML-based language, essentially as a
+&gt; declarative representation for a notation intended primarily to
+&gt; describe "subject domain" phenomena, i.e. pathways of interaction,
+&gt; kinetics etc etc.
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00464" HREF="msg00464.html">[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Vijay Saraswat &lt;saraswat@cse.psu.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00465" HREF="msg00465.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00502" HREF="msg00502.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Vijay Saraswat &lt;saraswat@cse.psu.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00503" HREF="msg00503.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00505" HREF="msg00505.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Vijay Saraswat &lt;saraswat@cse.psu.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00505.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00507.html">[sbml-discuss] SPATIAL - Re: Gillespie algorithm for reaction-diffusion problems.</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00505.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00491.html">[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00506"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00506"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

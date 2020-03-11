@@ -1,0 +1,141 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the units of initial amounts -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Thu, 22 May 2003 02:32:28 &#45;0700 -->
+<!--X-Message-Id: 1053595906.4576.64.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: XFMail.20030522110530.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the units of initial amounts</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00207.html">Date Prev</A>][<A HREF="msg00209.html">Date Next</A>][<A HREF="msg00206.html">Thread Prev</A>][<A HREF="msg00219.html">Thread Next</A>][<A HREF="maillist.html#00208">Date Index</A>][<A HREF="threads.html#00208">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the units of initial amounts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Martin Ginkel &lt;<A HREF="mailto:ginkel@mpi-magdeburg.mpg.de">ginkel@mpi-magdeburg.mpg.de</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the units of initial amounts</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 22 May 2003 18:31:46 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>, SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;,  <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Martin,
+
+
+&gt; On 22-May-2003 Kouichi Takahashi wrote:
+&gt; &gt; (1) In reality it is a natural number in the cell. It is exact, and is better to 
+&gt; &gt;     support 'exact' methods such as Gillespie. 
+&gt; &gt; (2) 'substance' is the primary representation, and concentration is secondary.
+&gt; &gt;     This can be understood by the fact that the simplest way to have support 
+&gt; &gt;     for changing volume is to store the value as 'substance', not 
+&gt; &gt;     'concentration'.
+&gt; &gt; 
+&gt; &gt; The input/output of the simulator can either be concentration or the exact number, 
+&gt; &gt; but the better internal representation by multi-compartment simulation is not
+&gt; &gt; concentration.    
+&gt; 
+&gt; The argument was from a software engineering point of view:
+&gt; Species are defined in Items/Moles but whenever their id appears in some
+&gt; ratelaw/rule it is implicitly treated as concentration, which is not
+&gt; obvious and self-documenting. I consider this as the main point.
+
+Then it is not an issue of the initial value.  
+Rules should explicitly indicate it is concentration or not.
+Species may, for example, have concentration property apart from the exact value. 
+In E-Cell concentration property is read-only, and the core accepts only the value, not
+concentration.   Its frontend allows users to input concentration, and converts it to
+value when it passes to the core.   
+
+Anyways if SBML has the compartment volume (or size, whatever), it does not make much 
+sense to have concentration as the default.
+
+
+&gt; &gt; Considering SBML as a long-term standard, I believe it is going for exact 
+&gt; &gt; value from concentration, and it is better not to use concentration as the 
+&gt; &gt; default.
+&gt; 
+&gt; I am not sure whether pretending to know the exact number of glucose-molecules
+&gt; in a model of a cell is really an advantage ...
+&gt; Don't trust the digits far right of the decimal point ;-)
+
+It is an advantage, at least computationally.   
+It is necessary to mix continuous and discrete simulation algorithms.   
+We are currently going to implement a per-process (per-reaction) dynamic migration
+between algorithms modules according to some conditions such as the absolute number of
+molecules.   For example, if the number of molecules is very small (say less than ten),
+ODE simulation is no longer reliable.  We should instead use some discrete and stochastic
+one such as Gillespie.    If it is represented as concentration, it is much difficult to design
+this.   To make it simpler it allows real number values (such as 1.5 molecules).   
+
+
+-Kouichi
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00219" HREF="msg00219.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Stefan Hoops &lt;shoops@vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00206" HREF="msg00206.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00207.html">Re: [sbml-discuss] Changing the way stoichiometries are expressed</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00209.html">RE: FW: [sbml-discuss] Arrays Working Group</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00206.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00219.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00208"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00208"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

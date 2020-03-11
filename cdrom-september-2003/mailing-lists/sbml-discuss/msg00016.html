@@ -1,0 +1,229 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: SBML Level 2 -->
+<!--X-From-R13: Qyvss Eunssre <funssreNfunssre.pf.ig.rqh> -->
+<!--X-Date: Thu, 5 Dec 2002 09:17:46 &#45;0800 -->
+<!--X-Message-Id: Pine.LNX.4.33.0212051301160.13753&#45;100000@shaffer.cs.vt.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000301c29c44$cd5f4fc0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: SBML Level 2</TITLE>
+<LINK REV="made" HREF="mailto:shaffer@shaffer.cs.vt.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00021.html">Date Prev</A>][<A HREF="msg00019.html">Date Next</A>][<A HREF="msg00015.html">Thread Prev</A>][<A HREF="msg00006.html">Thread Next</A>][<A HREF="maillist.html#00016">Date Index</A>][<A HREF="threads.html#00016">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: SBML Level 2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Biospice Model Definition Language Maillist &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;</LI>
+<LI><em>Subject</em>: RE: SBML Level 2</LI>
+<LI><em>From</em>: Cliff Shaffer &lt;<A HREF="mailto:shaffer@shaffer.cs.vt.edu">shaffer@shaffer.cs.vt.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 5 Dec 2002 13:15:25 -0500 (EST)</LI>
+<LI>cc: &quot;'SBML'&quot; &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+<LI>Reply-To: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+On Thu, 5 Dec 2002, Andrew Finney wrote:
+
+&gt; On optional parameters
+&gt;
+&gt; I guess we're going down this route already as
+&gt; groups doing flux analysis don't require
+&gt; initialAmount on specie. Then its not a major step to
+&gt; make parameters optional.
+
+Good.
+
+&gt; The only problem is that we're taking the model
+&gt; further away from what can be simulated which is
+&gt; unfortunate.  This makes establishing a regime of
+&gt; publishing models that simulate more problematic.
+&gt; I guess we can farily easily create an additionl
+&gt; stricter namespace and XML schema derived from the
+&gt; main standard which forces parameter values and
+&gt; initial values to be present.
+
+We recognize that a model consists of two distinct parts: the "structure"
+(equations, contraints, etc.) and the values to various parameters (that
+term used loosely). Of course to do a simulation, there must be bindings
+to all of the necessary values. But users need to be able to separate the
+more "stable" structure from the more changable value settings.
+
+
+&gt; It may not be worth getting stressed by this,
+&gt; as lets face it, just having a parameter value
+&gt; (and thus a simulation) doesn't tell you anything
+&gt; about the correctness of the parameter value.
+&gt; A missing value is just a real bad value!
+
+I vehmently disagree. Recognizing that a value is missing is FAR more
+information to the reader than a bad value. If you know you have no value,
+you can stick in a bad value if you want for simulation purposes, but at
+least you know what you are doing so. If you are given a value, in the
+current SBML you have no clue that it is a bad value (except hopefully in
+the comments). As an analogy, in the numerical analysis community, NaN
+(Not a Number) is a very important entity!
+
+&gt; A publishing regime would probably need to
+&gt; have a verification step where simulation
+&gt; results are compared to experimental data.
+
+Yes, you might recall I proposed that eventually we need some sort of
+definition language support for experimental data, among other things. Not
+only the experimental data, but also objective functions for comparing
+experimental data to simulation output should be expressable for a model.
+Plenty for us to tackle later! :-)
+
+&gt; On the parameter sets concept.
+&gt;
+&gt; I can imagine sets of parameters being applied
+&gt; to models in much the same way as stylesheets
+&gt; to xml or html data.
+&gt;
+&gt; There are some issues with this:
+&gt;
+&gt; a) should we allow incomplete parameter sets?
+&gt; 	IMHO yes - it becomes a useful way to support
+&gt; 	models of mutations.  We may want to allow
+&gt; 	'stacks' of parameter sets to form a simulation
+&gt; 	input.
+
+We do this extensively, so support for this would be welcome.
+
+&gt; b) does the model refer to the parameter set or visa-versa?
+&gt; 	certainly from a language development
+&gt; 	point of view it would be convient if
+&gt; 	the parameter sets refer to the model.
+&gt; 	That also appears to make sense from
+&gt; 	your requirements: a model has more than
+&gt; 	one parameter set and a parameter set is
+&gt; 	not meaningful without a model.  But a model
+&gt; 	could be considered useful without a parameter set.
+
+Agreed.
+
+&gt; c) I'm not keen to bring parameter sets into the publishing
+&gt; 	senario at least not initially (you may disagree).  When a model
+&gt; 	is published IMHO the parameters should be transferred into a
+&gt; single
+&gt; 	model document.  (I guess this may break down in the mutation
+&gt; 	case.)  This will greatly simplify the curation process.
+
+We certainly do use the concept of a suite of mutants, which generates an
+ensemble of simulation runs.
+
+&gt; I think we could potentially move forward by creating a
+&gt; separate related standard for parameter sets that is almost
+&gt; entirely independent of the model standard.  Will this work?
+
+Yes, so long as there is a recognized link between them. Such as one
+referencing the other.
+
+&gt; On functions specifically for rate laws
+&gt;
+&gt; We should discuss this further with more people.
+&gt; IMHO this is an issue of presentation in your
+&gt; tool (but it may be common to many others)
+&gt; I suggest that, for the moment at least,
+&gt; you solve this by using a simple annotation.
+&gt; Do you need to communicate this specific information
+&gt; to other independantly coded tools?
+
+That is probably what we will do. We can then see who else has an
+interest.
+
+&gt; On functions with variable numbers of arguments
+&gt; (Mass Action)
+&gt;
+&gt; I think, probably needs further research,
+&gt; that you're right at the edge of what MathML
+&gt; supports right now.  If we want to fix this
+&gt; it will take some work putting this into
+&gt; the standard.  I say 'if' because a flexible
+&gt; scheme for this will introduce much complexity
+&gt; into the standard for perhaps little(?) pay off.
+&gt; I'm not unsymphaetic to your needs its just
+&gt; a question of where the big payoffs are.
+&gt; Feel free to make concrete suggestions of
+&gt; how the standard should be extended to tackle
+&gt; this issue.
+
+I'm not positive... but I thought MathML supports variable-length
+parameter lists for functions? If so, we would solve this problem just by
+including that part of MathML in the standard. This is another case where
+we can see who needs it. I am hopeful we are about to see more widespread
+use of SBML, and that will test a lot of assumptions.
+
+&gt; Again you should examine if the use of
+&gt; annotations could reduce the uglyness
+&gt; of the current setup.
+
+In this case, I think that is not how we will go. For now, I believe we
+will simply code multiple versions of (for example) Mass Action.
+
+-- 
+Cliff Shaffer, Associate Professor          Phone: (540) 231-4354
+Department of Computer Science              Email: shaffer@cs.vt.edu
+Virginia Tech, Blacksburg, VA 24061-0106    WWW:   www.cs.vt.edu/~shaffer
+-------------------------------------------------------------------------
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00014" HREF="msg00014.html">RE: SBML Level 2</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00021.html">[sbml-discuss] Re: SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00019.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00015.html">Re: [sbml-discuss] RE: SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00006.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00016"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00016"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

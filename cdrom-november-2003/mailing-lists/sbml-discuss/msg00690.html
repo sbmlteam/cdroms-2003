@@ -1,0 +1,194 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Re: Internet Draft for sbml+xml media type -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 14 Oct 2003 12:55:24 &#45;0700 -->
+<!--X-Message-Id: 006201c39230$20fccdb0$0300000a@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1066068889.3f8aeb99a7ebf@webmail.nethere.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Re: Internet Draft for sbml+xml media type</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00689.html">Date Prev</A>][<A HREF="msg00691.html">Date Next</A>][<A HREF="msg00683.html">Thread Prev</A>][<A HREF="msg00678.html">Thread Next</A>][<A HREF="maillist.html#00690">Date Index</A>][<A HREF="threads.html#00690">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Re: Internet Draft for sbml+xml media type</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Re: Internet Draft for sbml+xml media type</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 14 Oct 2003 09:49:44 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Ben
+
+FYI
+
+the SBML Level 2 document states in section 4.1:
+
+"The character encoding for SBML is UTF-8. SBML documents should include
+the encoding
+attribute with the value UTF-8 in the XML prologue."
+
+SBML Level 1 doesn't have this text as far as I remember.
+
+I don't know if that helps.
+
+My vote would be to specify that SBML is always encoded in UTF-8
+and follow through with that in the MIME registration.
+Would that make SBML unusual for an XML format?
+Do MIME processors need the flexibility to transform UTF-8 into
+us-ASCII?
+i.e. what are the concrete implications? if we do this are we imposing
+an unrealistic
+restriction on transmission that would probably not happen in practice?
+
+Can we make the char set non-optional and restricted to UFT-8?
+If yes this would then avoid the issue with rewriting to disk.
+If we restrict the car set does that make interpreting the incoming
+stream 
+because the its in only char set?
+
+yours
+Andrew Finney
++44 (0)1453 827833
+from US - 011 44 1453 827833
+University of Hertfordshire, UK 
+
+
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Ben Kovitz
+&gt; Sent: 13 October 2003 19:15
+&gt; To: Ben Kovitz
+&gt; Cc: sbml-discuss@caltech.edu
+&gt; Subject: [sbml-discuss] Re: Internet Draft for sbml+xml media type
+&gt; 
+&gt; 
+&gt; Regarding: 
+&gt;  
+&gt; <A  HREF="http://www.ietf.org/internet-drafts/draft-sbml-media-type-00.txt">http://www.ietf.org/internet-drafts/draft-sbml-media-type-00.txt</A> 
+&gt;  
+&gt; Chris Lilley on the ietf-types@iana.org mailing list wrote: 
+&gt;  
+&gt;    Do the existing SBML-consuming tools honor the charset 
+&gt;    parameter when SBML is sent over HTTP or email?  And where 
+&gt;    the charset parameter disagrees with the encoding in the XMl 
+&gt;    encoding declaration, do these tools rewrite the XML when 
+&gt;    saving it to disk? 
+&gt;  
+&gt;    Note that, although charset is optional in this registration, 
+&gt;    RFC 3023 still imposes requirements on software in the 
+&gt;    *absence* of a charset. 
+&gt;  
+&gt;    If not, I suggest removing this optional parameter as 
+&gt;    follows: 
+&gt;  
+&gt;         There is no charset parameter. Character handling has 
+&gt;         identical semantics to the case where the charset 
+&gt;         parameter of the "application/xml" media type is 
+&gt;         omitted, as described in [RFC3023]. 
+&gt;  
+&gt;  
+&gt; I'd like to hear your opinions on this. 
+&gt;  
+&gt; The default handling referred to above is to assume that the 
+&gt; application/sbml+xml entity is encoded in us-ascii when it's 
+&gt; sent over HTTP. 
+&gt;  
+&gt; If we follow Chris Lilley's suggestion, then we would *not* be 
+&gt; able to specify that an application/sbml+xml entity sent over 
+&gt; the web or through email is encoded in, say, utf-8 or 
+&gt; iso-2022-jp. 
+&gt;  
+&gt; If we *do* follow his suggestion, then we would be imposing a 
+&gt; requirement on all software that would directly read SBML models 
+&gt; encoded as MIME entities: we would be requiring that they deal 
+&gt; properly with encodings other than us-ascii. 
+&gt;  
+&gt; To get a handle on the relevant issues, you might want to read 
+&gt; the relevant section of RFC 3023.  It's at: 
+&gt;  
+   <A  HREF="http://www.rfc-editor.org/rfc/rfc3023.txt">http://www.rfc-editor.org/rfc/rfc3023.txt</A> 
+   section 3.1 (the full discussion takes 1 page) 
+ 
+If I don't hear from anyone, I'll incorporate Chris Lilley's 
+suggestion and disallow the charset parameter. 
+ 
+Ben K. 
+ 
+ 
+P.S. To view all comments received from the ietf-types list so 
+far, see: 
+ 
+   
+<A  HREF="http://eikenes.alvestrand.no/pipermail/ietf-types/2003-October/thread.ht">http://eikenes.alvestrand.no/pipermail/ietf-types/2003-October/thread.ht</A>
+ml 
+ 
+
+
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00683" HREF="msg00683.html">[sbml-discuss] Re: Internet Draft for sbml+xml media type</A></STRONG>
+<UL><LI><EM>From:</EM> Ben Kovitz &lt;bkovitz@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00689.html">Re: [sbml-discuss] RE: [Biospice-sepdtf] clarification onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00691.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification     onthegenerated SBML model</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00683.html">[sbml-discuss] Re: Internet Draft for sbml+xml media type</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00678.html">Re: [Biospice-sepdtf] clarification on the generated SBML model</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00690"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00690"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

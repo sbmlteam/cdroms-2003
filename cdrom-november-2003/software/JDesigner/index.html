@@ -1,0 +1,905 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!-- saved from url=(0048)http://www.cds.caltech.edu/~hsauro/JDesigner.htm -->
+
+<HTML><HEAD><TITLE>Metabolic Simulation</TITLE>
+
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+
+<META content="Computational Biochemistry, Metabolic Simulation" 
+
+name=Description>
+
+<META content="Microsoft FrontPage 5.0" name=GENERATOR>
+
+<META content="Metabolic, Simulation, Jarnac, WinScamp, Control Analysis, Erato" 
+
+name=Keywords>
+
+<META content=FrontPage.Editor.Document name=ProgId>
+
+<STYLE>BODY {
+
+	FONT: x-small 'Verdana'; MARGIN-RIGHT: 1.5em
+
+}
+
+.e {
+
+	MARGIN-LEFT: 1em; MARGIN-RIGHT: 1em; TEXT-INDENT: -1em
+
+}
+
+.tx {
+
+	FONT-WEIGHT: bold
+
+}
+
+.m {
+
+	COLOR: blue
+
+}
+
+.t {
+
+	COLOR: #990000
+
+}
+
+.b {
+
+	COLOR: red; FONT-FAMILY: 'Courier New'; FONT-WEIGHT: bold; TEXT-DECORATION: none
+
+}
+
+</STYLE>
+
+</HEAD>
+
+<BODY>
+
+<TABLE border=0 borderColor=#111111 cellPadding=16 
+
+style="BORDER-COLLAPSE: collapse" width="873">
+
+  <TBODY>
+
+  <TR>
+
+    <TD align=left bgColor=#f8f8f8 borderColor=#ffffff vAlign=top 
+
+      width="182"><BASEFONT size=2><B><FONT color=#000080 
+
+      size=4>JDesigner</FONT></B>
+
+      <P><IMG border=0 src="JDNetwork.gif" width="182" height="174"></P>
+
+						<P><FONT face=verdana,arial size=2><IMG alt=- src="Images/arrow.gif" width="12" height="8"><A 
+
+      href="http://www.cds.caltech.edu/~hsauro/index.htm">Home</A></FONT></P>
+
+						<P>&nbsp;</P>
+
+					</TD>
+
+    <TD width=627><FONT color=#000080 face=Arial size=5><STRONG>JDesigner - A 
+
+      Biochemical Network Layout Tool </STRONG></FONT>
+
+      <P align=center><FONT face=Arial><SMALL><A 
+
+      href="http://www.cds.caltech.edu/~hsauro/index.htm">HOME 
+
+      PAGE</A></SMALL></FONT></P>
+
+      <P align=center>
+
+      <a href="http://www.cds.caltech.edu/~hsauro/bin/JDSetup.exe">
+
+      <img src="setup.gif" align="absMiddle" border="0" width="32" height="32"></a>&nbsp;
+
+      <font size="2">&nbsp;</font><b><font size="2"><a href="JDSetup.exe">Install JDesigner for Windows</a></font></b><font size="2"><b> </b>(~3.4m) </font></P>
+
+      <P><FONT color=#000000 face=Verdana><B><FONT color=#000000> - 
+
+      <FONT size=2>Tested on Windows 2000, XP and VMware under 
+
+      Linux (also believed to run on Mac OS using a PC emulator).</FONT></FONT></B></FONT></P>
+
+      <P><B><FONT color=#ff0000 face="Verdana" size="2">Latest update: 
+
+      1.8k (April 28 2003) </FONT>
+
+      </B></P>
+
+      <P><FONT color=#000000 face=Verdana size=2><B><A 
+
+      href="JDesignerTutorial.pdf">Basic 
+
+      Tutorial </A><font color="#000000">&nbsp;-</font> how to run a simulation using JDesigner, SBW and 
+
+      the Jarnac simulation server</B></FONT></P>
+
+      <P><FONT color=#000000 face=Verdana size=2><A 
+
+      href="JDesigner.pdf">View 
+
+      Documentation</A> for JDesigner</FONT></P>
+
+      <P><FONT color=#000000 face=Verdana size=2>
+
+      <a href="JDesignerSBW.pdf">View 
+
+      Documentation</a> for the SBW Interface</FONT></P>
+
+      <P><FONT color=#000000 face=Arial size=2><a href="JDSBMLEx.pdf">View 
+
+      Documentation</a> on the SBML annotation extensions for JDesigner</FONT></P>
+
+      <P><FONT color=#000000 face=Arial size=2><br>
+
+      JDesigner is an Open Source 
+
+      Project distributed under the LGPL license.</FONT></P>
+
+      <P><FONT face=Arial size=2>Development of JDesigner was supported by the 
+
+      Kitano ERATO project at <A href="http://www.caltech.edu/">Caltech</A> and 
+
+      more recently<BR>by the <A href="http://www.kgi.edu/">Keck Graduate 
+
+      Institute.</A></FONT></P>
+
+      <P><FONT color=#000000 face=Verdana size=2>From this page you can obtain 
+
+      the latest version of JDesigner&nbsp;</FONT></P>
+
+      <P><FONT color=#000000 face=Verdana size=2>JDesigner is a Win32 
+
+      application which allows one to draw a biochemical network<BR>and export 
+
+      the network in the form of SBML. The Designer has an SBW interface 
+
+      that<BR>allows it to be called from other SBW compliant modules, for 
+
+      example Python. In addition,<BR>JDesigner has the ability to use Jarnac as 
+
+      a simulation server (via SBW) thus allowing<BR>models to be run from 
+
+      within JDesigner. In this mode JDesigner is both a network design<BR>tool 
+
+      and simulator. Full binaries and source code is available in the 
+
+      download.</FONT></P>
+
+      <P><B><FONT color=#ff0000 face="Verdana" size="2">Latest update: 1.8k (April 28 2003)&nbsp;&nbsp;</FONT></B></P>
+
+      <P>YOU <b>MUST</b> USE THE LATEST JARNAC 2.0 for versions 1.8+. When you 
+
+      install
+
+      Jarnac make sure you <b>RE</b>-<b>REGISTER</b> Jarnac with SBW. Go to the 
+
+      options menu and select register with SBW. Then QUIT and <b>RESTART</b> 
+
+      SBW. To restart SBW, stop it first then restart it (see System Biology 
+
+      Workbench menu in start menu).</P>
+
+      <P><FONT face=Verdana size=2><B>Latest update: 1.8k</B>&nbsp; This is a 
+
+      recommended update to 1.8</FONT></P>
+
+      <P><font size="2">1.8k<br>
+
+      ----</font></P>
+
+      <P><font size="2">Hill coefficients in the builtin rate laws were not 
+
+      being prefixed with the<br>
+
+      reaction name when written to the SBML file. This would cause problems for 
+
+      models<br>
+
+      with more than one hill equation which used the builtin hill equation.</font></P>
+
+      <P><font size="2">1.8j<br>
+
+      ----</font></P>
+
+      <div>
+
+        <font size="2">There was a missing notification message when users 
+
+        deleted nodes and edges. Thus if a simulation had been carried out on a 
+
+        model and the user deleted a node or edge, the simulation server would 
+
+        not be notified and would continue using the original model instead of 
+
+        the new model. This release fixes this issue. Thanks to a user for 
+
+        spotting this problem.</font></div>
+
+      <P><font size="2">1.8i<br>
+
+      ----<br>
+
+      <br>
+
+      1. Version 1.8h inadvertently renamed reactions labels when a model was 
+
+      loaded.</font></P>
+
+      <P><font size="2">1.8h<br>
+
+      ----<br>
+
+      <br>
+
+      1. Product alias nodes weren't working due to a rogue boolean expression.</font></P>
+
+      <P><font size="2">2. Duplicate reactions names for non uni-uni reaction 
+
+      sorted out as well.</font></P>
+
+      <P><font size="2">3. Updated OpenXML library to 2.4</font></P>
+
+      <P><font size="2">1.8g<br>
+
+      ----<br>
+
+      <br>
+
+      1. The root cause of duplicated reactions identified.<br>
+
+      <br>
+
+      <br>
+
+      1.8f - never released<br>
+
+      ----<br>
+
+      <br>
+
+      1. Range check error when node added with regulatory network display on<br>
+
+      <br>
+
+      2. Certain ways of adding reactions caused duplicate names to arise in the 
+
+      reaction list.<br>
+
+      <br>
+
+      3. Multiple UniUni reactions do not overlay each other when drawn from the 
+
+      same nodes<br>
+
+      <br>
+
+      4. Changing Species names now prompts user if associated rate laws should 
+
+      also be changed.<br>
+
+      <br>
+
+      5. Small bug in drawing regulatory network while panning network image 
+
+      (bug visible when<br>
+
+      viewing Calvin cycle).<br>
+
+      <br>
+
+      6. In complex networks with conservation cycles where the stoichiometry 
+
+      matrix can gets<br>
+
+      rearranged, JDesigner was using the wrong information when instructing the 
+
+      simulator from the<br>
+
+      selection output list. Resulted in incorrect initialization, potentially 
+
+      leading to<br>
+
+      mass conservation violation. This bug became apparent when testing SBML 
+
+      files from the SigPath site.<br>
+
+      <br>
+
+      7. Potential for access violation when closing down JDesigner has finally 
+
+      been plugged!<br>
+
+      Caused by a race condition between the SBW issuing notifications and 
+
+      JDesigner closing<br>
+
+      down. I hope there are no more of these, they look bad but they're fairly 
+
+      harmless.<br>
+
+      <br>
+
+      1.8e - never released<br>
+
+      ----<br>
+
+      <br>
+
+      1. Range Check error when regulatory network display was on and user added 
+
+      new nodes or edges.</font><br>
+
+      <br>
+
+      <font size="2">1.8d<br>
+
+      ----<br>
+
+      <br>
+
+      1. Reset button sometimes screwed up and reinitialised wrong nodes<br>
+
+      <br>
+
+      2. Pictogram option wasn't quite working correctly.<br>
+
+      <br>
+
+      3. Parameter scans and control coefficient selections didn't include 
+
+      boundary conditions as one of the parameter types.<br>
+
+      <br>
+
+      4. Added multiselect to the selection box<br>
+
+&nbsp;</font></P>
+
+      <P><font size="2"><font color="#FF0000">You must</font> download Jarnac 
+
+      2.0 &gt;#1 if you intend to use 1.8d as &gt;#1 has an enhanced<br>
+
+      SBW interface which is required by this version.</font></P>
+
+      <P><font size="2">1. Added Control coefficient and elasticity evaluation</font></P>
+
+      <P><font size="2">2. Fixed a number of access violations and further 
+
+      tidying up of the interface.</font></P>
+
+      <P><font size="2">Version 1.8</font></P>
+
+      <P>There are significant changes in this release.<br>
+
+      <br>
+
+      <font size="2">1. The node and edge property forms have been completely 
+
+      reworked. These<br>
+
+      forms (activated by right clicking over an edge or node and selecting<br>
+
+      properties), are now dockable on either the left or right of the main<br>
+
+      form. This allows users to select nodes and edges one after the other<br>
+
+      and the property forms will update themselves to reflect the currently <br>
+
+      selected object. In addition, to facilitate this, the keyboard short-cut,
+
+      <br>
+
+      ALT will cycle through node and edge objects. Each time a node or edge is<br>
+
+      selected, it's properties may be edited. These changes makes it much 
+
+      easier<br>
+
+      to edit the details of models.<br>
+
+      <br>
+
+      2. The user interface edge property form has been partially redesigned. 
+
+      The<br>
+
+      most noticeable change is much better support for built-in rate laws. The 
+
+      form<br>
+
+      has two tabs, one for built-ins (default) and another for free format<br>
+
+      rate laws. <br>
+
+      <br>
+
+      3. The time course simulation control panel has been enhanced so that 
+
+      users<br>
+
+      can
+
+      select what variables should be passed to the plotter panel.<br>
+
+      <br>
+
+      4. The time course simulation control has also been enhanced to enable 
+
+      simple<br>
+
+      parameter scans to be carried out.<br>
+
+      <br>
+
+      5. A new analysis panel is supplied. This is a steady state analysis panel 
+
+      which<br>
+
+      not only computes the steady state but also gives an indication to the 
+
+      state's<br>
+
+      stability. Also includes a simple parameter scanning facility. No slider 
+
+      control yet,<br>
+
+      they will come in a later version.<br>
+
+      <br>
+
+      6. Jdesigner now fully supports the ability to simulate multiple models. 
+
+      Users<br>
+
+      can now, in a single session, maintain and analyse multiple models in 
+
+      separate<br>
+
+      windows. This facility requires the latest version of Jarnac (Full 2.0 
+
+      release)<br>
+
+      because it employs a new service API.<br>
+
+      <br>
+
+      7. A second output panel has been introduced, this is a simple text output
+
+      <br>
+
+      window, useful for just collecting raw numbers from simulations etc.<br>
+
+      <br>
+
+      8. You can now select what the simulator will return to JDesigner, by 
+
+      default all<br>
+
+      species concentrations are returned to JDesigner. However the 
+
+      selection panel <br>
+
+      permits a user to choose what they'd like returned, eg 
+
+      species, fluxes and even <br>
+
+      eigenvalues for steady state analysis. The selection choice will be 
+
+      increased with<br>
+
+      later versions</font></P>
+
+      <P><font size="2">Version 1.70b</font></P>
+
+      <P><FONT size=2>1. Multiple window support (MDI model). cut/copy and paste 
+
+      between windows.<BR>2. Two new reactions, BiTri (A + B -&gt; C + D + F) 
+
+      and TriTri (A + B + C -&gt; D + E + F).</FONT></P>
+
+      <P><FONT size=2>From 1.7 to 1.7b (fixes and additions):</FONT></P>
+
+      <P><FONT size=2>1. Added TriUni and UniTri to complete reaction set.<BR>2. 
+
+      Text not positioned correctly when double clicked and scroll bars 
+
+      moved<BR>3. Changes to edge detection algorithm resulted in very small 
+
+      errors in edge detection for destination arcs. <BR>4. Some multi-arcs not 
+
+      correctly imported, introduced when new arc types were 
+
+      introduced.</FONT></P>
+
+      <P><FONT face=Verdana size=2><B>Latest update: 1.65b</B> - Lots of 
+
+      changes<BR><BR>Bug fixes including:<BR><BR>1. Moving reaction arcs with 
+
+      control key was not working correctly<BR>2. Text scaling on text objects 
+
+      not correct because text objects<BR>in correctly used non-true type 
+
+      fonts.<BR>3. Save to metafile brings up save dialog box<BR>4. Previous 
+
+      versions were not saving the background colour to the SBML<BR>5. Print 
+
+      Preview was not quite matching actual print out, now it does<BR>6. 
+
+      Printing of text objects was not working<BR><BR></FONT><FONT 
+
+      size=2>Printing from JDesigner</FONT><FONT face=Verdana size=2> now works 
+
+      well. If you have Acrobat you can install the PDF<BR>printer driver, this 
+
+      will allow you to generate PDF files of the pathway images, very 
+
+      handy<BR>for publication etc.<BR><BR>New features:<BR><BR>1. Selection box 
+
+      added, drag with mouse while holding mouse left mouse<BR>button to select 
+
+      a group of nodes and reactions.<BR>2. Add notes to model, species, 
+
+      reactions and compartments<BR>3. Allow use of keyboard cursor keys to move 
+
+      selected objects.<BR>4. An initial release of functionality to support 
+
+      cut/copy/paste<BR>5. Export Scamp scripts<BR>6. Added popup menu on the 
+
+      drawing canvas to set colours and add models notes<BR>7. Notes many now be 
+
+      added to individual nodes and reaction arcs<BR>8. The beginnings of a 
+
+      MSHTML help file<BR>9. Displaying regulatory networks has been improved, 
+
+      see BorisEJ.xml for example<BR>(see screenshot below).</FONT></P>
+
+      <P><FONT face=Verdana size=2>Latest update: 1.62a<FONT color=#ff0000> 
+
+      </FONT>- Printing was not working correctly, now fixed, a very 
+
+      rudimentary<BR>print preview added. A couple of issues with magnification 
+
+      of images fixed which also<BR>caused problems with printing. Support for 
+
+      loading the old binary network files has now<BR>been completely removed. 
+
+      If you still need to load these binary files then use version<BR>1.61g. If 
+
+      you need to load them into later versions save them as xml files. Fill 
+
+      colors can<BR>now be specified for nodes if they have a border (see node 
+
+      properties dialog box). Still<BR>problems with printing if pictograms are 
+
+      used in the diagrams, trying to fix this one, might<BR>be a bug in the 
+
+      printer driver. File Drag now uses sbml files rather than the dat files 
+
+      (drag<BR>an sbml file on to the jdesigner canvas and it will load 
+
+      it).</FONT></P>
+
+      <P><FONT face=Verdana size=2>Sample Models:</FONT></P>
+
+      <P><FONT size=2>Here are some JDesigner compatible models (These are SBML 
+
+      models and will load into<BR>ANY SBML compliant application, eg 
+
+      Gepasi):</FONT></P>
+
+      <OL>
+
+        <LI><B><A 
+
+        href="http://www.cds.caltech.edu/~hsauro/models/Heinrich77.xml"><FONT 
+
+        size=2>Positive Feedback Oscillator</FONT></A><FONT size=2> From 
+
+        Heinrich et al 1977 review on metabolic<BR>regulation</FONT></B> 
+
+        <LI><B><A 
+
+        href="http://www.cds.caltech.edu/~hsauro/models/singleGene.xml"><FONT 
+
+        size=2>Single Gene Feeback Oscillator</FONT></A><FONT size=2> From SBML 
+
+        Bioinfomatics Standards Paper</FONT></B> 
+
+        <LI><B><A 
+
+        href="http://www.cds.caltech.edu/~hsauro/models/BorisEJB.xml"><FONT 
+
+        size=2>Negative Feedback in MAPK </FONT></A><FONT size=2>&nbsp;From 
+
+        Boris Kholodenko, EJB, 267, 1588 (2000)</FONT></B> </LI></OL>
+
+      <P><FONT size=2>The following were taken from the Gepasi site at <A 
+
+      href="http://www.gepasi.org/">http://www.gepasi.org/</A> to illustrate the 
+
+      ease<BR>with which it is now possible to interchange models between 
+
+      different simulators. The<BR>SBML models at www.gepasi.org were loaded 
+
+      into JDesigner, and the networks were adjusted by hand so that the 
+
+      networks were more ordered on screen. <BR>&nbsp;</FONT></P>
+
+      <P><SPAN class=tx><FONT size=2>Taken from the Gepasi site and modified for 
+
+      JDesigner display, see<BR><A 
+
+      href="http://www.gepasi.org/">http://www.gepasi.org/</A> for 
+
+      details.</FONT></SPAN></P>
+
+      <OL>
+
+        <LI><SPAN class=tx><A 
+
+        href="http://www.cds.caltech.edu/~hsauro/models/YeastGlycolysisJD.xml"><FONT 
+
+        size=2>Yeast Glycolysis</FONT></A><FONT size=2>. From Pritchard and Kell 
+
+        (2002) Eur. J. Biochem. 269, 3894-3904 </FONT></SPAN>
+
+        <LI><SPAN class=tx><A 
+
+        href="http://www.cds.caltech.edu/~hsauro/models/GepasiSTM.xml"><FONT 
+
+        size=2>Signal Transduction Cascade.</FONT></A></SPAN> 
+
+        <LI><B><A 
+
+        href="http://www.cds.caltech.edu/~hsauro/models/GepasiHMM.xml"><FONT 
+
+        size=2>The Henri-Michaelis-Menten model</FONT></A></B> 
+
+        <LI><B><A 
+
+        href="http://www.cds.caltech.edu/~hsauro/models/GepasiSmallest.Hopf.xml"><FONT 
+
+        size=2>Minimal chemical Hopf bifurcation</FONT></A></B> </LI></OL>
+
+      <P><FONT face=Verdana size=2><A 
+
+      href="http://www.cds.caltech.edu/~hsauro/JDSetup61.exe"><B>1.61g</B><FONT 
+
+      color=#ff0000> </FONT></A>- ratelaw.ini is now searched for in the 
+
+      application directory (caused problems if<BR>JDesigner was installed on a 
+
+      network for multi-users). Download this version if you need<BR>to load the 
+
+      old binary data files.</FONT></P>
+
+      <P><FONT face=Verdana size=2><B>1.61e</B> - Fixed possible access 
+
+      violation when starting JDesigner is SBW wasn't installed.</FONT></P>
+
+      <P><FONT face=Verdana size=2><B>1.61d</B> - Further tinkering with the 
+
+      source distribution. The only change to the exe is that<BR>when using 
+
+      simple mass-action rate laws, the rate constant name is 
+
+      appended</FONT><FONT face=Arial size=2> </FONT><FONT face=Verdana 
+
+      size=2>with the<SPAN 
+
+      style="mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><BR></SPAN><SPAN 
+
+      style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 12pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><IMG 
+
+      align=right height=403 src="JDesig2.jpg" vspace=12 width=507 
+
+      v:shapes="_x0000_i1025"></SPAN><SPAN 
+
+      style="mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">reaction 
+
+      name.</SPAN><SPAN 
+
+      style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 12pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">&nbsp;</SPAN></FONT></P>
+
+      <P><FONT face=Verdana size=2><FONT color=#000000>1.61c </FONT>- two small 
+
+      problems fixed, array color over flow when there are more than 10 species 
+
+      to plot, and a minor bug introduced in the last build. Many thanks to the 
+
+      person who spotting these errors.</FONT></P>
+
+      <P><FONT face=Verdana size=2>Latest update, 1.61d - no bug fixes, just 
+
+      added instructions to enable people to compile JDesigner from the source, 
+
+      if they so wish. Note that JDesigner is ready compiled and unless there 
+
+      are special reasons there is NO need to recompile JDesigner, but the 
+
+      option is there if you need to.</FONT></P>
+
+      <P><FONT face=Verdana size=2>Printing support added. You can now print 
+
+      networks at high resolution. A magnification option is provided to scale 
+
+      the network to the output page. Networks can also be saved<BR>as windows 
+
+      metafiles.<BR></P><BR>
+
+      <P>Mulitiselect of objects is now supported. This allows groups of objects 
+
+      to be moved simultaneously, or deleted simultaneously. Some basic 
+
+      alignment tools have also been added and will probably be further enhanced 
+
+      in future versions. Movement of whole groups of objects is achieved by 
+
+      selecting the group then holding the&nbsp;control key down while dragging 
+
+      the group with the mouse. See documentation for further 
+
+details.</FONT></P>
+
+      <P><FONT face=Verdana size=2>Full native support for loading and saving 
+
+      models as SBML. See <A 
+
+      href="http://www.cds.caltech.edu/~hsauro/sbml.htm">SBML Extensions</A> for 
+
+      details.</FONT></P>
+
+      <P><FONT face=Verdana size=2>NOTE: If you want to do simulations using 
+
+      JDesigner, you must download the <A 
+
+      href="http://www.cds.caltech.edu/erato">Systems Biology Workbench</A> and 
+
+      <A href="http://www.cds.caltech.edu/~hsauro/Jarnac.htm">Jarnac</A>. In 
+
+      addition Jarnac must be registered with SBW. To use Metatool with 
+
+      JDesigner you must download the <A 
+
+      href="http://www.cds.caltech.edu/~hsauro/sbw.htm">SBW metatool 
+
+      interface</A> components.</FONT></P>
+
+      <P><FONT color=#000000 face=Arial size=2>Latest update: 5 Sept, v1.61, 
+
+      lots of changes:</FONT></P>
+
+      <P><FONT color=#000000 face=Arial size=2>1. Multiselect nodes, reactions 
+
+      and other objects.</FONT></P>
+
+      <P><FONT color=#000000 face=Arial size=2>Latest update: 26 August, v1.6. 
+
+      Read and write models in native SBML. Better support for simulation via 
+
+      SBW.</FONT></P>
+
+      <P><FONT face=Arial><FONT size=2>Latest update: 14 July, v1.51b, added 
+
+      experimental support for saving and loading of models using SBML. Also 
+
+      added experimental simulation interface which uses&nbsp;SBW to access the 
+
+      simulation services provided by Jarnac 2.0. If you&nbsp; want Jarnac 2.0 
+
+      is automatically start when you request computational 
+
+      capability,&nbsp;make sure you register it first (see options menu in 
+
+      Jarnac 2.0) otherwise you'll have to start it by hand, in server mode if 
+
+      desired. To request computational capability, select the menu options and 
+
+      choose 'connect to simulator', if this was successful the run toolbar 
+
+      button will become enabled. Click this button to bring up the simulation 
+
+      gui</FONT></P>
+
+      <P><FONT color=#000000 face=Arial size=2>Latest update: 20 June, v1.4e, 
+
+      fixed a problem with parameter value assignment</FONT></P>
+
+      <P><FONT color=#000000 face=Arial size=2>Latest update: 26 May 
+
+      2002&nbsp;(Latest version 1.4b adds compartmentation). Version 1.4 had 
+
+      problems if SBW wasn't installed on your machine, 1.4b has fixed 
+
+      this&nbsp;unnecessary dependency.</FONT></P>
+
+      <P><FONT color=#000000 face=Arial size=2>New version 1.4c, fixes a few 
+
+      annoying problems. Now has a save as toolbar button, screens rate laws 
+
+      more carefully, setting arc thickness now works!<BR>
+
+								<BR>
+
+								S</FONT><FONT 
+
+      color=#000000 face=Verdana size=2><A 
+
+      name="Screenshot of JDesigner:">creenshot of JDesigner:</A></FONT></P>
+
+      <P>&nbsp;</P>
+
+      <P align=center><SPAN 
+
+      style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 12pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><IMG 
+
+      height=403 src="JDesig2.jpg" width=507 
+
+      v:shapes="_x0000_i1025"></SPAN></P>
+
+      <P align=center>
+
+      <IMG border=0 
+
+      src="glycolysis.gif" width="433" height="373">&nbsp;&nbsp;&nbsp;&nbsp; 
+
+      <IMG border=0 src="MAPKBK.gif" width="479" height="373"></P>
+
+      <P align=center><SPAN 
+
+      style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 12pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><!--[if gte mso 9]><xml>
+
+ <o:OLEObject Type="Embed" ProgID="Paint.Picture" ShapeID="_x0000_i1025"
+
+  DrawAspect="Content" ObjectID="_1092986713">
+
+ </o:OLEObject>
+
+</xml><![endif]--></SPAN></P>
+
+      <P align=center>&nbsp; <IMG border=0 
+
+      src="JDesigner.gif" width="543" height="513"></P>
+
+      <P align=center>&nbsp;</P>
+
+      <P><FONT color=#000000 face=Verdana size=2><B><A 
+
+      href="JDSetup.exe">Download 
+
+      JDesigner Installer (includes src)</A>.</B></FONT> </P>
+
+      <P>&nbsp;</P>
+
+      <P><SMALL><A href="http://www.cds.caltech.edu/~hsauro/index.htm">HOME 
+
+      PAGE</A></SMALL></P></FONT></TD></TR></TBODY></TABLE>
+
+<HR>
+
+
+
+<P>Author Herbert M Sauro. Email: <A 
+
+href="mailto:HSauro@cds.caltech.edu">hsauro@cds.caltech.edu</A><BR><CITE>All 
+
+trademarks used are hereby acknowledged</CITE> </P>
+
+<HR>
+
+
+
+<P><CITE>This page was last modified on </CITE>
+
+<!--webbot bot="Timestamp"
+
+S-Type="REGENERATED" S-Format="%B %d, %Y" startspan -->April 28, 2003<!--webbot bot="Timestamp" i-checksum="17797" endspan --> </P></BODY></HTML>

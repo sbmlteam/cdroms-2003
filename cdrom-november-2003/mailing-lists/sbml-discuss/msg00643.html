@@ -1,0 +1,382 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG: Revised Proposal -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Mon, 22 Sep 2003 08:59:46 &#45;0700 -->
+<!--X-Message-Id: 001e01c38122$3ca67940$7131353e@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 98E2B2B8&#45;ED07&#45;11D7&#45;AC4E&#45;000A95776A76@eml&#45;r.villa&#45;bosch.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG: Revised Proposal</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00642.html">Date Prev</A>][<A HREF="msg00644.html">Date Next</A>][<A HREF="msg00642.html">Thread Prev</A>][<A HREF="msg00610.html">Thread Next</A>][<A HREF="maillist.html#00643">Date Index</A>][<A HREF="threads.html#00643">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG: Revised Proposal</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG: Revised Proposal</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 22 Sep 2003 16:57:26 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Ralph
+
+you wrote:
+
+&gt; Another issue is the flexibility of bounding boxes specified in the 
+&gt; layout part. If we would allow those boxes to be flexible, would this 
+&gt; not defy their purpose?
+
+Yes, the bounding box is simply omitted
+
+&gt; If you change their size with the 
+&gt; font that get 
+&gt; drawn inside, some of the components might end up overlapping and the 
+&gt; whole layout that was intended messed up.
+
+The diagram is formed from the totality of the model + layout +
+rendering.
+If a user changes the model including the name or id text then the
+layout and rendering need
+to change to compensate.  In fact it really doesn't make any difference
+whether the text comes from a label or the name/id field: if the user
+changes
+the text then yes the diagram might look wrong.  How did you think you
+were going to avoid this?
+
+What is essential is not fixing the box but ensuing that when the
+diagram
+is transmitted (generated and then parsed) both ends know exactly what
+font and font size is being used.  If that is arranged then they both
+know
+what the effective size of the box is.  In fact the bounding box doesn't
+buy any thing: unless you guarentee the precise text size you will
+either
+potentially clip the text when you enforce the bounding box or the box
+will be the wrong size if don't enforce the box size.
+
+&gt; If for example you want to add some text 
+&gt; to an object that does not only consist of one line, but several, how 
+&gt; do you arrange them.
+
+can't you simply apply a transform?
+You have this already.
+
+&gt; Or if you want to have some circle that has some 
+&gt; text below and above and the text should be centered.
+
+That would be useful, doesn't simple transformation achieve this
+
+&gt; I guess there will unfortunately be no way around making up a whole 
+&gt; schema for relative positioning of objects.
+&gt; The most simple form of 
+&gt; which could be a set of vertical and horizontal boxes that lay out 
+&gt; their components in the respective direction. Something like the Java 
+&gt; BoxLayout if you are familiar with that. (I guess most any other GUI 
+&gt; will have something similar.)
+
+Hmm. sounds like overkill.
+
+&gt; I think implicit text labels are important and we have to think about 
+&gt; some way to get them into this proposal. We already talked about this 
+&gt; here, but could not come up with a satisfying solution since we ran 
+&gt; into some problems. Lets say for example you wanted to have a default 
+&gt; rendering for species references that draws the name of the 
+&gt; species and 
+&gt; below the name, the name of its compartment.
+
+I suggest the following:
+
+a) on 'shape' elements when 'type="sl2:textLabel"'
+make 'text' mutually exclusive with another attribute 'field' (say) 
+'field' contains the following CV:
+'species', 'compartment', 'reaction', 'model'
+these indicate the text to be 'filled in' on rendering from
+the SBML component that is referencing the glyph.
+If present the name attribute on the SBML component
+is used in preference to its id.
+e.g.:
+&lt;shape type="textLabel" id="label1" font="..." fontSize"..."
+field="species"/&gt;
+
+b) somehow allow a shape to enclose a text label.  The simplest
+approach might be to allow all the attributes of 'textLabel' to appear
+on any shape and then include the following new attributes:
+
+textFit with the following CV values : 'clip', 'resize', 'unclipped'
+textXMargin 
+textYMargin
+
+yours
+Andrew Finney
++44 (0)1453 827833
+from US - 011 44 1453 827833
+University of Hertfordshire, UK 
+
+
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Ralph Gauges
+&gt; Sent: 22 September 2003 15:18
+&gt; To: 'sbml-discuss@caltech.edu '
+&gt; Subject: Re: [sbml-discuss] DWG: Revised Proposal
+&gt; 
+&gt; 
+&gt; 
+&gt; On Montag, September 22, 2003, at 01:32  Uhr, Andrew Finney wrote:
+&gt; 
+&gt; &gt; Ralph
+&gt; &gt;
+&gt; &gt; Thanks for your proposal.
+&gt; &gt;
+&gt; &gt; Comments:
+&gt; &gt;
+&gt; &gt; The separation of layout from rendering provide us
+&gt; &gt; with a mechanism for encoding a style sheet
+&gt; &gt; approach to rendering given that more than one SBML component, e.g. 
+&gt; &gt; species, can refer to the same render group.
+&gt; &gt;
+&gt; &gt; I suggest that we consider having default render group 
+&gt; identification 
+&gt; &gt; mechanism so that its possible to plug-in a render section into a 
+&gt; &gt; model without having to specify the render groups on the glyph 
+&gt; &gt; structures.  This makes sense to me since most diagrams will have a 
+&gt; &gt; consistent look.
+&gt; &gt;
+&gt; 
+&gt; This is a very good idea and I think we can easily 
+&gt; incorporate it into 
+&gt; the next version.
+&gt; Since I already stated several times, the render document is 
+&gt; in a very 
+&gt; early stage and a lot is still missing. We just posted it to get some 
+&gt; feedback, wether the general approach would be considered good.
+&gt; 
+&gt; 
+&gt; &gt; for example:
+&gt; &gt;
+&gt; &gt; &lt;species id="x"/&gt;
+&gt; &gt; ...
+&gt; &gt; &lt;speciesGlyph species="x" x="20" y="10" w="50" h="50"&gt;
+&gt; &gt; ...
+&gt; &gt; &lt;renderGroup defaultType="species"&gt;
+&gt; &gt; 	&lt;shape shape="StandCircle"&gt;
+&gt; &gt; 		&lt;transformation sx="50.0" sy="50.0"/&gt;
+&gt; &gt; 	&lt;shape/&gt;
+&gt; &gt; &lt;/renderGroup&gt;
+&gt; &gt;
+&gt; &gt; Obviously this mechanism needs to relate to roles etc.
+&gt; &gt; In the longer term the render element could be in a 
+&gt; different document 
+&gt; &gt; from the glyph elements.  To make this work we probably do need 
+&gt; &gt; flexible bounding boxes for text/nodes.
+&gt; &gt;
+&gt; &gt; Is there provision for a background color for the whole diagram?
+&gt; &gt;
+&gt; 
+&gt; As of now, there is none and I guess the only place, where it 
+&gt; could go 
+&gt; is with the layout object in the layout part. This will probably have 
+&gt; to get a fillstyle attribute.
+&gt; 
+&gt; 
+&gt; &gt; Is there any reason why the layout and rendering elements 
+&gt; have to be 
+&gt; &gt; in a separate namespace?  I don't have opinion on this but what are 
+&gt; &gt; your reasons?
+&gt; &gt;
+&gt; 
+&gt; First I had thought about putting them into separate 
+&gt; namespaces, but I 
+&gt; thought that this was changed and they are in the same 
+&gt; namespace. I just had a look at the document and they are in 
+&gt; the same namespace as 
+&gt; the first sentence in the namespace section states. This section will 
+&gt; be dropped once the documents are joined. For the time being 
+&gt; until the 
+&gt; render document has caught up, we would like to hold them 
+&gt; separate (the 
+&gt; documents not the namespaces).
+&gt; 
+&gt; 
+&gt; &gt; I'm concerned that the role attribute is building a fixed 
+&gt; controlled 
+&gt; &gt; vocabulary (CV) that can't be easily extended modified. In addition 
+&gt; &gt; this information has much wider use beyond just layout information 
+&gt; &gt; (although I acknowledge that it may be first used for real 
+&gt; in layout 
+&gt; &gt; processing).  I think we need to think carefully about how 
+&gt; we tackle 
+&gt; &gt; the use of CVs in SBML considering existing work by groups such as 
+&gt; &gt; BioPAX.  IMHO It'll be better if 'role' is integrated into 
+&gt; SBML if the 
+&gt; &gt; layout structures end up in a separate namespace.  There is a real 
+&gt; &gt; danger that we could have overlapping CVs in
+&gt; &gt; SBML documents.
+&gt; &gt;
+&gt; 
+&gt; I totally agree, but right now, I don't think we can do without the 
+&gt; role attribute.
+&gt; 
+&gt; 
+&gt; &gt; I suggest that you, if there is time, draw the UML 
+&gt; diagram(s) for your 
+&gt; &gt; proposals, in our experience this make understanding XML standard 
+&gt; &gt; proposals easier on the reader.
+&gt; &gt;
+&gt; 
+&gt; I don't know much about UML, but I think I can do that as soon as I 
+&gt; find the time. Hopefully we will get it into the next version as well.
+&gt; 
+&gt; 
+&gt; 
+&gt; &gt; Forgive my ignorance but what is an affine transformation?
+&gt; &gt;
+&gt; 
+&gt; I guess it is rather my bad english than your ignorance. I don't even 
+&gt; know if it is the correct english term for what I mean. basically 
+&gt; instead of giving translation, rotation and scaling in separate 
+&gt; attributes, you specify a transformation matrix which combines those 
+&gt; three basic transformation. Actually I think there are some 
+&gt; transformation that you can not get by translating, rotating and 
+&gt; scaling alone, but most people should be happy with the 
+&gt; SimpleTransformation as we call it for now.
+&gt; 
+&gt; &gt; I tend to agree with Herbert that how you tackle text and 
+&gt; font sizing 
+&gt; &gt; is very important to the success of any layout proposal. Again I 
+&gt; &gt; haven't picked up the following from your documents perhaps I have 
+&gt; &gt; overlooked something or got confused.
+&gt; &gt;
+&gt; &gt; What text by default if any is displayed with compartments, 
+&gt; reactions 
+&gt; &gt; and species or are labels explicit?
+&gt; &gt; If labels are explicit where are they specified?
+&gt; &gt; By default what font and font size are used to render this text?
+&gt; &gt; If there is a default mechanism how are the defaults set?
+&gt; &gt;
+&gt; 
+&gt; Those are all good questions and we already came up with some of them 
+&gt; ourselves, but the solution does not seem to be so easy. (See below.)
+&gt; 
+&gt; 
+&gt; &gt; IMHO the render group mechanism needs to support implicit 
+&gt; text labels
+&gt; &gt; taken from the SBML component's id or name.  The render group should
+&gt; &gt; specify the font and font size for these text labels.
+&gt; &gt; The render group should be able to specify that the text is or isn't
+&gt; &gt; displayed at all.
+&gt; &gt; The glyph should specify whether the bounding box is 
+&gt; flexible or not.
+&gt; &gt; If we don't do something like this scheme then you have to have a 
+&gt; &gt; render
+&gt; &gt; group
+&gt; &gt; (or something) for each sbml component displayed.
+&gt; &gt;
+&gt; 
+&gt; This is all stuff, we have not had time to really go into yet 
+&gt; since it 
+&gt; does not seem to be trivial. If for example you want to add some text 
+&gt; to an object that does not only consist of one line, but several, how 
+&gt; do you arrange them. Or if you want to have some circle that has some 
+&gt; text below and above and the text should be centered.
+&gt; I guess there will unfortunately be no way around making up a whole 
+&gt; schema for relative positioning of objects. The most simple form of 
+&gt; which could be a set of vertical and horizontal boxes that lay out 
+&gt; their components in the respective direction. Something like the Java 
+&gt; BoxLayout if you are familiar with that. (I guess most any other GUI 
+&gt; will have something similar.)
+&gt; Another issue is the flexibility of bounding boxes specified in the 
+&gt; layout part. If we would allow those boxes to be flexible, would this 
+&gt; not defy their purpose? If you change their size with the 
+&gt; font that get 
+&gt; drawn inside, some of the components might end up overlapping and the 
+&gt; whole layout that was intended messed up.
+&gt; I think implicit text labels are important and we have to think about 
+&gt; some way to get them into this proposal. We already talked about this 
+&gt; here, but could not come up with a satisfying solution since we ran 
+&gt; into some problems. Lets say for example you wanted to have a default 
+&gt; rendering for species references that draws the name of the 
+&gt; species and 
+&gt; below the name, the name of its compartment. How would you specify 
+&gt; something like that? One way would be to introduce another vocabulary 
+&gt; for some often used model attributes like the names of all the 
+&gt; components. But somehow this does not seem to be the optimal 
+&gt; solution. 
+&gt; Sorry, but as I said, we have not been able to come up with anything 
+&gt; good for that problem yet. On the other hand, those are really things 
+&gt; we have not been talking about much since it didn't seem relevant for 
+&gt; this first draft.
+&gt; So any ideas to that are more then welcome.
+&gt; 
+&gt; Thanks for the feedback and we hope that we will have some or most of 
+&gt; those issues resolved with the next version.
+&gt; 
+&gt; Ralph
+&gt; 
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00642" HREF="msg00642.html">Re: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml-r.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00642.html">Re: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00644.html">Re: [sbml-discuss] CWG: Constraints Working Group</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00642.html">Re: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00610.html">[sbml-discuss] example for AST APIs</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00643"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00643"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

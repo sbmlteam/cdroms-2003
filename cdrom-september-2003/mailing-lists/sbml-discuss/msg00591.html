@@ -1,0 +1,244 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] libsbml 2.0.1 Released -->
+<!--X-From-R13: Pra Pbeafgrva <obeafgrvNnvt.wcy.anfn.tbi> -->
+<!--X-Date: Thu, 7 Aug 2003 11:54:14 &#45;0700 -->
+<!--X-Message-Id: 200308071840.h77IeKT04308@xenium.jpl.nasa.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] libsbml 2.0.1 Released</TITLE>
+<LINK REV="made" HREF="mailto:bornstei@aig.jpl.nasa.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00590.html">Date Prev</A>][<A HREF="msg00592.html">Date Next</A>][<A HREF="msg00589.html">Thread Prev</A>][<A HREF="msg00593.html">Thread Next</A>][<A HREF="maillist.html#00591">Date Index</A>][<A HREF="threads.html#00591">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] libsbml 2.0.1 Released</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] libsbml 2.0.1 Released</LI>
+<LI><em>From</em>: Ben Bornstein &lt;<A HREF="mailto:bornstei@aig.jpl.nasa.gov">bornstei@aig.jpl.nasa.gov</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 07 Aug 2003 11:40:20 -0700</LI>
+<LI>Cc: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Announcement
+============
+
+     I'm pleased to announce the latest release of libsbml, version 2.0.1.
+This release contains fixes for a few bugs (see What's New below) and several
+new features and improvements.  All users and developers are encouraged to
+upgrade as soon as possible.
+
+
+Download
+========
+
+     The libsbml 2.0.1 distributions may be downloaded from SourceForge:
+
+       <A  HREF="http://www.sourceforge.net/projects/sbml">http://www.sourceforge.net/projects/sbml</A>
+
+     There are two distributions.  The .tar.gz is a source-code only
+distribution, but new to this release, it does include a Visual C++ project
+file for building Windows binaries. The .zip distribution contains everything
+in the .tar.gz distribution as well as pre-compiled Windows binaries for
+libsbml, Xerces-C 2.2.0 and the example programs.
+
+     Unix users: You can uninstall a previous version of libsbml by cd'ing
+into its source directory and typing 'make uninstall'.
+
+
+What's New
+==========
+
+* Bug Fixes:
+
+    - The correct namespace is now output for SBML Level 2 documents.
+
+    - The MathMLHandler now correctly constructs ASTs for calls to
+      user-defined function containing numeric arguments (Thanks to
+      Colin Gillespie for reporting an anomaly that lead to the
+      discovery of this bug).
+
+    - SBML_formulaToString() did not correctly reproduce (sub)
+      expressions with operators of the same precedence, but modified
+      associativity.  For example, "1 / (2 * 3)" was correctly parsed
+      (in infix or MathML) but incorrectly converted to "1 / 2 * 3".
+      This bug has been fixed!
+
+* Major New Features:
+
+    - When reading SBML Level 2, MathML expressions are automatically
+      converted to and stored as SBML L1 infix expressions for maximum
+      backward compatibility with L1.  That is, either XXX_getMath()
+      or XXX_getFormula() may be used.  There is no need to call
+      SBML_formulaToString() under most circumstances.
+
+    - SBML_convertToL2(SBase_t *sb) converts any SBML Level 1 object
+      and its subordinate objects to SBML Level 2.  Currently this
+      function:
+
+        - Converts name fields to id fields
+
+        - Adds ModifierSpeciesReferences when converting Reactions
+          (via SBML_addModifiersToReaction(Reaction_t *r, const Model_t *m))
+
+      In the future this function will also:
+
+        - Add FunctionDefinitions for L1 predefined functions
+
+     SBMLDocument_setLevel() calls SBML_convertToL2() automatically
+     when the current level is 1 and the new level is 2.
+
+* Major New APIs:
+
+    - char *
+      writeMathMLToString (MathMLDocument_t *d)
+  
+    - unsigned int
+      Model_getNumSpeciesWithBoundaryCondition (const Model_t *m)
+
+    - Species_t *
+      Model_getSpeciesById (const Model_t *m, const char *sid)
+ 
+    - SpeciesReference_t *
+      Reaction_getReactantById (const Reaction_t *r, const char *sid)
+
+    - SpeciesReference_t *
+      Reaction_getProductById (const Reaction_t *r, const char *sid)
+
+    - ModifierSpeciesReference_t *
+      Reaction_getModifierById (const Reaction_t *r, const char *sid)
+
+    - unsigned int
+      ListOf_countIf (const ListOf_t *lo, ListItemPredicate p);
+
+    - void *
+      ListOf_find (const ListOf_t *lo, const void *item1, ListItemComparator c)
+
+    - List_t *
+      ASTNode_getListOfNodes (const ASTNode_t *node, ASTNodePredicate p)
+
+    Where ListItemPredicate, ListItemComparator and ASTNodePredicate
+    are pointers to functions with a particular signature.  This
+    allows for convenient and powerful Lisp map-like or C++ STL
+    operations over a container (In fact, the XXX_countIf() name was
+    inspired by the C++ STL).  For example,
+    Model_getNumSpeciesWithBoundaryCondition() (above) is implemented
+    simply as follows:
+
+      return ListOf_countIf( m-&gt;species,
+                            (ListItemPredicate) Species_getBoundaryCondition );
+
+
+* New example program:
+
+    - translateMath.c is an interactive console program that translates infix
+      formulas into MathML and vice-versa.
+
+* Improved Windows build and binary distribution:
+
+    - Andrew Finney constructed an MSVC++ project file and a set of
+      batch files to build both regular and debug versions of libsbml
+      and all example programs.
+
+    - Xerces-C++ 2.2.0 headers, DLLs and .lib files are included with
+      the Windows distribution (libsbml-2.0.1.zip; see the win32/
+      subdirectory).
+
+* Minor improvements:
+
+  - Public API header files no longer include references to C-specific
+    header files (e.g. stdio.h).  This should make it easier for
+    automated tools to read these header files and generate API
+    bindings for other languages (e.g. Delphi; Thanks to Herbert Sauro
+    for suggesting this).
+
+  - SBMLTypes.h now #includes both SBMLReader.h and SBMLWriter.h.
+
+  - Internal utility classes and functions are now officially public.
+    See List.h, Stack.h, StringBuffer.h and util.h.
+
+
+Supported Platforms
+===================
+
+Linux
+Mac OS X
+Solaris
+Cygwin
+Windows (native)
+
+
+Acknowledgments
+===============
+
+     Many of the new features (and discovery of some of the bugs) are owed to
+interactions at the recent SBML Hackathon and correspondence via e-mail.  I'd
+like to thank the following people for their contributions to this release:
+Andrew Finney, Colin Gillespie, Stefan Hoops, Mike Hucka, Pedro Mendes,
+Herbert Sauro, Marc Vass, and Jeremy Zucker.
+
+     Thank you.
+
+
+--
+Ben Bornstein
+bornstei@caltech.edu
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00590.html">[sbml-discuss] test models for SBML level 2 compliant software...</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00592.html">Re: [sbml-discuss] test models for SBML level 2 compliant software...</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00589.html">[sbml-discuss] fwd: hey its me again</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00593.html">New subscription request to list Sbml-discuss from wierling@molgen.mpg.de</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00591"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00591"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,217 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] DWG: multiple layouts (should be IDs) -->
+<!--X-From-R13: Dnycu Unhtrf <enycu.tnhtrfNrzy.ivyyn&#45;obfpu.qr> -->
+<!--X-Date: Thu, 5 Jun 2003 00:58:31 &#45;0700 -->
+<!--X-Message-Id: EFCF8FE3&#45;972B&#45;11D7&#45;974B&#45;000A95776A76@eml.villa&#45;bosch.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD36E8E@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] DWG: multiple layouts (should be IDs)</TITLE>
+<LINK REV="made" HREF="mailto:ralph.gauges@eml.villa-bosch.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00419.html">Date Prev</A>][<A HREF="msg00421.html">Date Next</A>][<A HREF="msg00419.html">Thread Prev</A>][<A HREF="msg00421.html">Thread Next</A>][<A HREF="maillist.html#00420">Date Index</A>][<A HREF="threads.html#00420">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] DWG: multiple layouts (should be IDs)</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] DWG: multiple layouts (should be IDs)</LI>
+<LI><em>From</em>: Ralph Gauges &lt;<A HREF="mailto:ralph.gauges@eml.villa-bosch.de">ralph.gauges@eml.villa-bosch.de</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 5 Jun 2003 10:01:39 +0200</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I agree with John that IDs should be put into SBase with all the 
+implications that this may have.
+Leaving out IDs from units now will most probably lead to someone 
+coming up with an example why units need IDs within two weeks after it 
+was decided that they don't need any.
+I also never saw the listOf.. structures as subclasses of SBase! Is 
+this mentioned anywhere in the specification?
+
+Ralph
+
+
+
+
+On Donnerstag, Juni 5, 2003, at 05:56  Uhr, Wagner,John wrote:
+
+&gt; Okay, now I see why IDs shouldn't be put into SBase. :)
+&gt; I'm actually in favor of it, too, but I'm betting a significant
+&gt; number of others won't be. So...
+&gt;
+&gt; I guess minimally, for diagrams we could use ID fields in
+&gt; SpeciesReference, ModifierSpeciesReference and, possibly,
+&gt; KineticLaw. However, Unit already has name, and it is used
+&gt; as a primary key, so it's a very good candidate for an ID
+&gt; field--the only difference being that it must be unique across
+&gt; the whole model. Also, models will probably benefit from
+&gt; an ID field in the context of model composition (and from
+&gt; being required as opposed to optional).
+&gt;
+&gt; But, I see no reason at all for lists to have them (I didn't think
+&gt; about these structures being subclassed from  SBase), and I
+&gt; see no reason for &lt;unit&gt; or &lt;sbml&gt; elements to have them.
+&gt;
+&gt; So maybe it would just be easier to go and stick them into
+&gt; everything that *needs* them?
+&gt;
+&gt; But, as I said, I actually lean toward sticking them into SBase.
+&gt;
+&gt; John
+&gt;
+&gt;
+&gt;
+&gt; 	-----Original Message-----
+&gt; 	From: Michael Hucka [<A  HREF="mailto:mhucka@caltech.edu">mailto:mhucka@caltech.edu</A>]
+&gt; 	Sent: Wed 6/4/2003 9:59 PM
+&gt; 	To: SBML Discussion List
+&gt; 	Cc:
+&gt; 	Subject: Re: [sbml-discuss] DWG: multiple layouts
+&gt; 	
+&gt; 	
+&gt;
+&gt; 	  JWagner&gt; I don't see why SID isn't put into SBase (the
+&gt; 	  JWagner&gt; primary key argument would imply it belongs
+&gt; 	  JWagner&gt; here). I say let's put it into SBase in Level 2.
+&gt; 	
+&gt; 	I'm actually in favor of this.  (I assume also that this
+&gt; 	would involve putting the 'name' field on SBase, since the
+&gt; 	'id' and 'name' fields go hand in hand.)
+&gt; 	
+&gt; 	However, before doing this, everyone should think about some
+&gt; 	of the implications:
+&gt; 	
+&gt; 	* The following substructures currently don't have ids or
+&gt; 	  names because they are subordinate to other structures
+&gt; 	  that *do* have ids.
+&gt; 	
+&gt; 	  - Unit
+&gt; 	  - AlgebraicRule, AssignmentRule, RateRule
+&gt; 	  - SpeciesReference, ModifierSpeciesReference
+&gt; 	  - KineticLaw
+&gt; 	  - EventAssignment
+&gt; 	
+&gt; 	  Remember that ids have to be unique across the whole
+&gt; 	  model.  Under this proposed change to SBML, even unit
+&gt; 	  definitions would have to have unique id's like this:
+&gt; 	
+&gt; 	   &lt;listOfUnitDefinitions id="u1"&gt;
+&gt; 	       &lt;unitDefinition id="mmls"&gt;
+&gt; 	           &lt;listOfUnits id="u2"&gt;
+&gt; 	               &lt;unit id="u3" kind="mole"   scale="-3"/&gt;
+&gt; 	               &lt;unit id="u4" kind="litre"  exponent="-1"/&gt;
+&gt; 	               &lt;unit id="u5" kind="second" exponent="-1"/&gt;
+&gt; 	           &lt;/listOfUnits&gt;
+&gt; 	       &lt;/unitDefinition&gt;
+&gt; 	   &lt;/listOfUnitDefinitions&gt;
+&gt; 	
+&gt; 	  Note the added id's on listOfUnitDefinitions, listOfUnits,
+&gt; 	  and the &lt;unit...&gt; elements.  The point in particular is
+&gt; 	  that nothing can refer to the &lt;unit ...&gt; elements, but
+&gt; 	  this change to SBML would force software to generate the
+&gt; 	  id's in some way.  Same for Rules, KineticLaw, etc.
+&gt; 	  Further, it will bloat a model definition with more
+&gt; 	  identifiers that have to be hashed and processed.
+&gt; 	
+&gt; 	
+&gt; 	* If SBase included SId, then the listOf___s would also gain
+&gt; 	  id and name fields.  But these correspond to array
+&gt; 	  containers.  It seems strange to give ids and names to
+&gt; 	  array containers.  (Admittedly, though, this has already
+&gt; 	  happened with 'notes', 'annotation' and 'metaid'.)
+&gt; 	
+&gt; 	
+&gt; 	* It is currently the case that SId is a required field in
+&gt; 	  all places where is used, *except* on the Model structure,
+&gt; 	  where it is only an optional field.  (The reason is simply
+&gt; 	  that there's no construct within a model that can refer to
+&gt; 	  the model's id, unlike the ids of species and other
+&gt; 	  components.)  If SBase adopts SId, it would need 'id' to
+&gt; 	  be required everywhere, including Model.
+&gt; 	
+&gt; 	
+&gt; 	* The top-level Sbml structure (which defines the &lt;sbml ...&gt;
+&gt; 	  tag) is currently also derived from SBase.  Under this
+&gt; 	  proposal, it too would require an id, unless an exception
+&gt; 	  were made.
+&gt; 	
+&gt; 	
+&gt; 	There may be other interactions that haven't come to mind.
+&gt; 	
+&gt; 	--
+&gt; 	Mike Hucka, Ph.D.                         mhucka@caltech.edu
+&gt; 	Control and Dynamical Systems, MC 107-81  tel: +1.626.395.6911
+&gt; 	Caltech, Pasadena, CA 91125, USA          fax: +1.702.554.3067
+&gt; 	
+&gt; 	
+&gt; 	
+&gt;
+&gt;
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00421" HREF="msg00421.html">RE: [sbml-discuss] DWG: multiple layouts (should be IDs)</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00422" HREF="msg00422.html">Re: [sbml-discuss] DWG: multiple layouts (should be IDs)</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00419" HREF="msg00419.html">Re: [sbml-discuss] DWG: multiple layouts (should be IDs)</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00419.html">Re: [sbml-discuss] DWG: multiple layouts (should be IDs)</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00421.html">RE: [sbml-discuss] DWG: multiple layouts (should be IDs)</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00419.html">Re: [sbml-discuss] DWG: multiple layouts (should be IDs)</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00421.html">RE: [sbml-discuss] DWG: multiple layouts (should be IDs)</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00420"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00420"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

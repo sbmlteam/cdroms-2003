@@ -1,0 +1,181 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: "Xbua Intare" <wjntareNafb.hpup.rqh> -->
+<!--X-Date: Fri, 11 Jul 2003 20:01:40 &#45;0700 -->
+<!--X-Message-Id: 005b01c34821$3a9c0550$0100a8c0@CERNUNNOS -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 59D7F8A2&#45;B07E&#45;11D7&#45;A6EC&#45;000A95776A76@eml.villa&#45;bosch.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:jwagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00553.html">Date Prev</A>][<A HREF="msg00555.html">Date Next</A>][<A HREF="msg00545.html">Thread Prev</A>][<A HREF="msg00559.html">Thread Next</A>][<A HREF="maillist.html#00554">Date Index</A>][<A HREF="threads.html#00554">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Ralph Gauges'&quot; &lt;<A HREF="mailto:ralph.gauges@eml.villa-bosch.de">ralph.gauges@eml.villa-bosch.de</A>&gt;,  &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: &quot;John Wagner&quot; &lt;<A HREF="mailto:jwagner@nso.uchc.edu">jwagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 11 Jul 2003 22:56:44 -0400</LI>
+<LI>Importance: Normal</LI>
+<LI>Reply-To: &lt;<A HREF="mailto:jwagner@nso.uchc.edu">jwagner@nso.uchc.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I finally have a few minutes to type out my initial
+thoughts about the EML group's latest efforts. They
+have been working very hard on this layout stuff!
+Anyway, nothing earth-shattering here, just some
+minor points...
+
+0. With a few exceptions, SBML does not use abbreviations.
+Abbreviations are a Bad Idea, because they rarely make sense
+to anyone but the person who thought them up in the first
+place. So, I would change the "GR" and "GRs" to something
+more intuitive; I like "Glyph" and "Glyphs".
+1. In SBML, things like reactants and products, in referencing
+other things like species, use an attribute name that is specific
+to their context. For example, a speciesReference element has
+a "species" attribute to refer to a species. The layout markup
+should follow this approach. Specifically:
+	* &lt;compartmentGR id="cGR1" compartment="c1" ... /&gt;
+	* &lt;speciesGR id="sGR1" species="s1" ... /&gt;
+	* &lt;reactionGR id="rGR1" reaction="r1" ... /&gt;
+	* &lt;speciesReferenceGR id="sRGR1" speciesGR="sGR1" ... /&gt;
+Consistency begets clarity, beauty, and all sorts of other
+wonderful nouns.
+2. The whole "role" stuff in speciesReferenceGR elements seems
+a bit vague and misplaced to me, and unless someone can explain
+how a graphical representation has a "role" in another graphical
+representation (as is suggested by their verbiage)--especially
+given roles like "product" or "substrate", which are chemical
+roles rather than visual, graphical representation roles--I
+would like to see this overhauled. That is, these are either
+visual entities, or they are chemistry. If they are visual
+entities, then the attribute names (and roles themselves)
+should be given names reflecting this. If they are chemistry,
+then they should be moved to model section; in that case, my
+initial reaction would be to make speciesReferenceGR elements
+specifically reference the speciesReference that they are
+visually representing, and then put the role info in the
+speciesReference elements. IN ANY CASE, a lot of the "role"
+stuff seems incredibly redundant and vague, and belongs
+(and indeed, already exists) elsewhere.
+
+I also agree with Herbert et al about line placement, but we
+need to think pretty hard about it so that everyone is happy.
+For example, JDesigner (as I recall) doesn't have a
+graphical representation for the reaction; instead, the
+reaction is represented by the collection of lines in
+an implicit manner. On the other hand, the Virtual Cell
+group takes an approach similar to the EML approach, with
+two (x, y) points representing the reaction (one point
+where reactants hook in, one where products hook in).
+I think we need to treat both approaches.
+
+John
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu]On">mailto:owner-sbml-discuss@its.caltech.edu]On</A> Behalf Of Ralph Gauges
+&gt; Sent: Monday, July 07, 2003 9:25 AM
+&gt; To: sbml-discuss@its.caltech.edu
+&gt; Subject: [sbml-discuss] Layout Extension Update
+&gt; 
+&gt; 
+&gt; We finally finished to put the suggestion Sven made a few weeks ago 
+&gt; into words.
+&gt; 
+&gt; <A  HREF="http://projects.eml.org/bcb/sbml/level1/">http://projects.eml.org/bcb/sbml/level1/</A>
+&gt; 
+&gt; 
+&gt; The major updates to the last proposal are:
+&gt; 
+&gt; - based upon SBML Level 2
+&gt; - layout information was seperated from the model definition
+&gt; - all objects are based on SBase to be able to specify metainformation
+&gt; 
+&gt; On our website you can read the document online or download a pdf 
+&gt; version. We also put up the schema definition and a small sample file.
+&gt; 
+&gt; Since there are not going to be IDs on all objects in SBML Level 2, 
+&gt; referencing SpeciesReferences is still somewhat awkward.
+&gt; 
+&gt; An alternative to the mode for referencing SpeciesReferences in this 
+&gt; proposal would be to use the metaids  for referencing.
+&gt; Actually I was kind of wondering why there was the need to have an 
+&gt; additional ID on some objects. Could not the metaid be used for both 
+&gt; purposes, identifying objects as well as reference point for 
+&gt; metainformation?  Maybe I missed something there?
+&gt; Again, we would like to get as much feedback as possible in  order to 
+&gt; further improve on this layout information proposal.
+&gt; 
+&gt; Ralph Gauges
+&gt; 
+&gt; 
+&gt; 
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00559" HREF="msg00559.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Sven Sahle &lt;sven.sahle@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00530" HREF="msg00530.html">[sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00553.html">RE: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00555.html">Re: [sbml-discuss] 2D &amp; 3D layouts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00545.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00559.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00554"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00554"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

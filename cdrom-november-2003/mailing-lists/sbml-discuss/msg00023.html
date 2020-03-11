@@ -1,0 +1,323 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: annotations on listOf* elements -->
+<!--X-From-R13: Xbanguna Iroo <wjrooNooa.pbz> -->
+<!--X-Date: Fri, 6 Dec 2002 05:12:32 &#45;0800 -->
+<!--X-Message-Id: Pine.LNX.4.33.0212060758250.26361&#45;200000@dhcp33&#45;081&#45;013.bbn.com -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Reference: 15855.55507.150668.453822@erato1.cds.caltech.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: annotations on listOf* elements</TITLE>
+<LINK REV="made" HREF="mailto:jwebb@bbn.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00043.html">Date Prev</A>][<A HREF="msg00024.html">Date Next</A>][<A HREF="msg00049.html">Thread Prev</A>][<A HREF="msg00024.html">Thread Next</A>][<A HREF="maillist.html#00023">Date Index</A>][<A HREF="threads.html#00023">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: annotations on listOf* elements</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Michael Hucka &lt;<A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: annotations on listOf* elements</LI>
+<LI><em>From</em>: Jonathan Webb &lt;<A HREF="mailto:jwebb@bbn.com">jwebb@bbn.com</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 6 Dec 2002 08:17:53 -0500 (EST)</LI>
+<LI>cc: Biospice Model Definition Language &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;,  SBML &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Mike:
+
+The particular example I have uses an annotation element in the
+listOfModifiers element of a reaction.  For Bio Sketch Pad, the
+model editing application we're developing, regulation of a
+reaction is represented as a distinct node in the graph representing
+the model.  Rendering information associated with the regulation node
+is most convenient to attatch to the listOfModifiers elements rather
+than replicating it among the the referenced species or picking a
+distinguished species reference to hold the information for the group.
+
+As for the other listOf* elements, I generalized the notion since
+I can see wanting to attatch information to the group of elements
+uniformly.  For example, I attatched notes elements to some of the
+listOf* nodes indicating the commentary applied to the collection
+as a whole rather than an individual element.  See the listOfSpecies
+element as an example.
+
+I've attatched a simple, hand generated, SBML model as an example
+of how I'm using this.
+
+Jonathan Webb
+BBN Technologies
+617-873-3321
+jwebb@bbn.com
+
+On Thu, 5 Dec 2002, Michael Hucka wrote:
+
+&gt; &gt;&gt;&gt;&gt;&gt; On 5 Dec 2002, Jonathan Webb &lt;jwebb@bbn.com&gt; wrote:
+&gt;
+&gt;   jwebb&gt; I would find it useful to be able to add annotation
+&gt;   jwebb&gt; or notes elements to the listOf* elements,
+&gt;   jwebb&gt; including the listOfReactants, listOfProducts, and
+&gt;   jwebb&gt; listOfModifiers elements in the Reaction element.
+&gt;   jwebb&gt; This appears to be precluded in the current
+&gt;   jwebb&gt; document.
+&gt;
+&gt; Jonathan,
+&gt;
+&gt; You're right that in SBML as it is currently defined, there
+&gt; is no provision for attaching annotation or notes elements.
+&gt;
+&gt; (...)
+&gt;
+&gt; But first, Jonathan, could you provide some examples of how
+&gt; putting annotations/notes on listOf* elements would be more
+&gt; effective than putting them on the parent element or the
+&gt; elements within the listOf* lists?
+</PRE>
+<PRE>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;sbml xmlns="<A  HREF="http://bio.bbn.com/xmlns/biospice/sbml2-lite">http://bio.bbn.com/xmlns/biospice/sbml2-lite</A>"
+      xmlns:sbml="<A  HREF="http://bio.bbn.com/xmlns/biospice/sbml2-lite">http://bio.bbn.com/xmlns/biospice/sbml2-lite</A>"
+      version="1" level="2"&gt;
+&lt;model id="modelid1" name="modelname1"&gt;
+
+&lt;!--
+  - question about the note element: what is the intended top level
+  - element?  should this represent a complete (x)html page, ie
+  - everything but the xml pi and dtd/xschema declaration?  the
+  - note element might also substitute for the top level html
+  - element.  it could also just be interpreted as the body.
+  -
+  - for the moment, we'll assume it serves in the same role as the
+  - html element.
+  -
+  - another question about the note element: is the namespace
+  - attribute implied by the type restriction to xhtml in the
+  - uml model?  the sbml level 1 schema seems to indicate the
+  - namespace is implied/specified/...
+  --&gt;
+
+&lt;sbml:notes xmlns="<A  HREF="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</A>" xml:lang="en" lang="en"&gt;
+&lt;head&gt;
+&lt;title&gt;Simple SBML L2 Model&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;A Simple Model in SBML Level 2&lt;/h1&gt;
+&lt;p&gt;
+This is a test representation of a model in SBML Level 2.  The model
+is nominally a reaction of the form:
+&lt;pre&gt;
+  2A + B -&gt; C
+&lt;/pre&gt;
+with species &lt;code&gt;D&lt;/code&gt; acting as a regulating agent or modifier
+in the SBML terminology.
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/sbml:notes&gt;
+
+&lt;listOfSpecies&gt;
+&lt;sbml:notes xmlns="<A  HREF="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</A>" xml:lang="en" lang="en"&gt;
+&lt;head&gt;
+&lt;title&gt;Notes on Species Defintions&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Notes on the Included Species Definitions&lt;/h1&gt;
+&lt;p&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;id&lt;/code&gt; attribute is used only within the SBML definition.
+  It does not represent the displayed label of the species.  The
+  &lt;code&gt;name&lt;/code&gt; attribute is used for the displayed label since
+  it is not used for reference purposes within the SBML model and is
+  not constructed from a restricted class of characters.  If the
+  &lt;code&gt;name&lt;/code&gt; attribute is not supplied in the SBML depiction
+  of the model, the display label in BSP will be empty.
+&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;location&lt;/code&gt; attribute used in the Bio Sketch Pad is mapped
+  to the compartment definition in SBML.
+&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;charge&lt;/code&gt; and &lt;code&gt;initialAmount&lt;/code&gt; attributes on
+  the &lt;code&gt;species&lt;/code&gt; element map directly to the corresponding attributes
+  used in the species description in Bio Sketch Pad.
+&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;polymerizationState&lt;/code&gt; element is an optional element
+  appearing in the species annotation namespace, XMLNS attribute ???.
+  It has no content, a single attribute with the default value of
+  &lt;quote&gt;1&lt;/quote&gt;, and is restricted to a positive integer greater
+  than 0.
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/sbml:notes&gt;
+
+&lt;species id="A" name="A" initialAmount="1.0" charge="0" compartment="global"&gt;
+  &lt;annotations xmlns:bsp="<A  HREF="http://bio.bbn.com/xmlns/biospice/bspspecies">http://bio.bbn.com/xmlns/biospice/bspspecies</A>"
+               xmlns:graph="<A  HREF="http://bio.bbn.com/xmlns/biospice/bsplayout">http://bio.bbn.com/xmlns/biospice/bsplayout</A>"&gt;
+    &lt;bsp:species polymerizationState="1"
+                 physicalState="solid"
+                 speciesType="molecule" /&gt;
+    &lt;graph:layout color="Green"
+                  shape="Ellipse"
+                  border="true"
+                  xposition="100"
+                  yposition="100" /&gt;
+  &lt;/annotations&gt;
+&lt;/species&gt;
+
+&lt;species id="B" name="B" initialAmount="1.0" charge="0" compartment="global"&gt;
+  &lt;annotations xmlns:bsp="<A  HREF="http://bio.bbn.com/xmlns/biospice/bspspecies">http://bio.bbn.com/xmlns/biospice/bspspecies</A>"
+               xmlns:graph="<A  HREF="http://bio.bbn.com/xmlns/biospice/bsplayout">http://bio.bbn.com/xmlns/biospice/bsplayout</A>"&gt;
+    &lt;bsp:species polymerizationState="1"
+                 physicalState="solid"
+                 speciesType="molecule" /&gt;
+    &lt;graph:layout color="Green"
+                  shape="Ellipse"
+                  border="true"
+                  xposition="100"
+                  yposition="200" /&gt;
+  &lt;/annotations&gt;
+&lt;/species&gt;
+
+&lt;species id="C" name="C" initialAmount="1.0" charge="0" compartment="global"&gt;
+  &lt;annotations xmlns:bsp="<A  HREF="http://bio.bbn.com/xmlns/biospice/bspspecies">http://bio.bbn.com/xmlns/biospice/bspspecies</A>"
+               xmlns:graph="<A  HREF="http://bio.bbn.com/xmlns/biospice/bsplayout">http://bio.bbn.com/xmlns/biospice/bsplayout</A>"&gt;
+    &lt;bsp:species polymerizationState="1"
+                 physicalState="solid"
+                 speciesType="molecule" /&gt;
+    &lt;graph:layout color="Green"
+                  shape="Ellipse"
+                  border="true"
+                  xposition="300"
+                  yposition="150" /&gt;
+  &lt;/annotations&gt;
+&lt;/species&gt;
+
+&lt;species id="D" name="D" initialAmount="2.0" charge="0" compartment="global"&gt;
+  &lt;annotations xmlns:bsp="<A  HREF="http://bio.bbn.com/xmlns/biospice/bspspecies">http://bio.bbn.com/xmlns/biospice/bspspecies</A>"
+               xmlns:graph="<A  HREF="http://bio.bbn.com/xmlns/biospice/bsplayout">http://bio.bbn.com/xmlns/biospice/bsplayout</A>"&gt;
+    &lt;bsp:species polymerizationState="1"
+                 physicalState="solid"
+                 speciesType="molecule" /&gt;
+    &lt;graph:layout color="Green"
+                  shape="Ellipse"
+                  border="true"
+                  xposition="200"
+                  yposition="350" /&gt;
+  &lt;/annotations&gt;
+&lt;/species&gt;
+
+&lt;/listOfSpecies&gt;
+
+&lt;listOfReactions&gt;
+&lt;sbml:notes xmlns="<A  HREF="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</A>" xml:lang="en" lang="en"&gt;
+&lt;head&gt;
+&lt;title&gt;Notes on Reaction Definitions&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Notes on Included Reaction Definitions&lt;/h1&gt;
+&lt;p&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/sbml:notes&gt;
+
+&lt;reaction id="r1" reversible="false"&gt;
+  &lt;annotations xmlns:bsp="<A  HREF="http://bio.bbn.com/xmlns/biospice/bspreaction">http://bio.bbn.com/xmlns/biospice/bspreaction</A>"
+               xmlns:graph="<A  HREF="http://bio.bbn.com/xmlns/biospice/bsplayout">http://bio.bbn.com/xmlns/biospice/bsplayout</A>"&gt;
+    &lt;bsp:reaction reactionType="transformation"
+                  inputEdgeArcType="line"
+                  outputEdgeArcType="line" /&gt;
+    &lt;graph:layout xposition="200"
+                  yposition="150" /&gt;
+  &lt;/annotations&gt;
+
+  &lt;listOfReactants&gt;
+    &lt;speciesReference species="A" stoichiometry="2" denominator="1" /&gt;
+    &lt;speciesReference species="B" stoichiometry="1" denominator="1" /&gt;
+  &lt;/listOfReactants&gt;
+
+  &lt;listOfProducts&gt;
+    &lt;speciesReference species="C" stoichiometry="1" denominator="1" /&gt;
+  &lt;/listOfProducts&gt;
+
+  &lt;listOfModifiers&gt;
+    &lt;annotations xmlns:bsp="<A  HREF="http://bio.bbn.com/xmlns/biospice/bspreaction">http://bio.bbn.com/xmlns/biospice/bspreaction</A>"
+                 xmlns:graph="<A  HREF="http://bio.bbn.com/xmlns/biospice/bsplayout">http://bio.bbn.com/xmlns/biospice/bsplayout</A>"&gt;
+      &lt;bsp:reaction endPointType="promotor"
+                    inputEdgeArcType="line"
+                    outputEdgeArcType="line" /&gt;
+      &lt;graph:layout xposition="200"
+                    yposition="250" /&gt;
+    &lt;/annotations&gt;
+
+    &lt;modifierSpeciesReference species="D" /&gt;
+  &lt;/listOfModifiers&gt;
+&lt;/reaction&gt;
+
+&lt;/listOfReactions&gt;
+
+&lt;!--
+  - we'll want a name space declaration for model rendering geometry
+  - to include in this element.  it could go in the annotation element
+  - directly or in the top level declaration.
+  --&gt;
+
+&lt;annotations xml:lang="en" lang="en"&gt;
+&lt;/annotations&gt;
+
+&lt;/model&gt;
+&lt;/sbml&gt;
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00024" HREF="msg00024.html">RE: annotations on listOf* elements</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert M Sauro&quot; &lt;hsauro@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00043.html">RE: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00024.html">RE: annotations on listOf* elements</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00049.html">RE: [sbml-discuss] thoughts on models and and model parameters - correction</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00024.html">RE: annotations on listOf* elements</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00023"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00023"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

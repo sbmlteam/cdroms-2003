@@ -1,0 +1,174 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Changing the units of initial amounts -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Mon, 26 May 2003 08:51:10 &#45;0700 -->
+<!--X-Message-Id: 1053964189.3804.238.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD3759B@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Changing the units of initial amounts</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00337.html">Date Prev</A>][<A HREF="msg00339.html">Date Next</A>][<A HREF="msg00325.html">Thread Prev</A>][<A HREF="msg00330.html">Thread Next</A>][<A HREF="maillist.html#00338">Date Index</A>][<A HREF="threads.html#00338">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Changing the units of initial amounts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Changing the units of initial amounts</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 27 May 2003 00:49:49 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>, <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+
+Below is just to check my understanding.
+
+Please point out if I missed something.
+
+&gt; formula="cell * (Vm * S0)/(Km + S0) " 
+
+We have never used this kind of formulation...
+We always use:
+
+Vm = Kcat * enzyme.
+
+Here dimension of Kcat is 1/s (it's the maximum turnover).
+
+formula="Kcat * E * [S0] / (Km + [S0] )
+
+([] denotes concentration, and E is amount of the enzyme)
+
+'[S0] / (Km + [S0] )'  part  becomes a dimensionless number.   (Conc /
+Conc = 1)
+
+
+If the dimension (not unit, is it?) of the formula is1/s,  E must be the
+number of molecules because:
+
+1/s = 1/s * E * 1
+
+
+Therefore the volume of the compartment does not explicitly appear in the formula, and
+the reaction rate is not related to the enzyme concentration, 
+because the volume is already implicitly taken into account in [S0].
+
+In this specific case it is more concise to use two different dimensions
+(E and [S0]), rather than multiplying by the volume (cell).
+(We are always explicit: something like E.Value and S0.Concentration in E-Cell 3).
+
+Another thing that must be taken care is if the concentration unit (here it is unit) is
+ M or mM or something related to mole, Avogadro numbers appear when converting
+concentrations to amounts.   
+Fortunately this is not the case for Michaelis-type equations because the 
+concentration part becomes dimensionless  (so the main part is Kcat * E, and [S0]/(Km+[S0])
+is just a scaling factor),  but it is, for example, in mass action.
+
+
+-Kouichi
+
+
+
+
+&gt; &gt; it is important to use concentrations as initial
+&gt; &gt; values, since otherwise all initial conditions need
+&gt; &gt; to change.
+&gt; &gt; ...
+&gt; &gt; formula="cell * (Vm * S0)/(Km + S0) "
+&gt; &gt;
+&gt; There is still a huge hole in the reaction rate
+&gt; thing if the rate law's net units are allowed to
+&gt; be substance/volume/time, because there is only
+&gt; one well-defined way to interpret the volume
+&gt; inherent in the rate, and that is in terms of
+&gt; "total volume of all compartments". Thus, changing
+&gt; any volumes at all would mean that rate constants
+&gt; have to be changed as well. That is to say, in
+&gt; your
+&gt; &gt; formula="cell * (Vm * S0)/(Km + S0) "
+&gt; the only way to allow such a formulation is if
+&gt; Vm is in terms of total volume (the sum of the
+&gt; volumes of all compartments), which is obviously
+&gt; why you had to multiply by "cell".
+&gt; 
+&gt; And that is to say that, while in your approach
+&gt; you don't have to change initial conditions, you
+&gt; instead have to change reaction rates (like Vm
+&gt; in your example).
+&gt; 
+&gt; &gt; I disagree with Nicholas who wants to remove the
+&gt; &gt; two different units used for the species id by
+&gt; &gt; making a species id in a rate law represent
+&gt; &gt; amout, not concentration.
+&gt; I'm with Nicolas on this one, unless someone can
+&gt; see a way around it. All I know is, it's far
+&gt; superior if the overall units of rate laws are
+&gt; substance/time, since that always works independent
+&gt; of which compartments species are in.
+&gt; 
+&gt; John
+&gt; 
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00314" HREF="msg00314.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00337.html">RE: [sbml-discuss] DWG: point</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00339.html">Re: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00325.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00330.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00338"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00338"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

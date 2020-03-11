@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+		<meta name="generator" content="Adobe GoLive 6">
+		<title>SBML Collection CD, Release 1</title>
+	</head>
+
+	<body background="../../graphics/bg0.gif" bgcolor="#ffffff" link="#003399" vlink="#0099ff"  leftmargin="14" topmargin="10" marginwidth="14" marginheight="10">
+		<table width="720" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+				<td>
+					<div align="center">
+						<h2><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Known Issues with the SBW Installer Under Windows</font></h2>
+					</div>
+					<div align="left">
+						<p>We are aware of the following issues with the Windows installation of SBW.</p>
+						<ul>
+							<li><b>Windows 98SE, 2000 and XP are the only versions supported at this time</b>
+							<p>SBW has not be designed or tested to run with versions of Windows other than 98SE, 2000 and XP. It has been the case that users who attempted to install SBW on other versions of Windows have encountered problems; therefore, we do not recommend attempting to use SBW with Windows versions other than 98SE, 2000 and XP. We apologize if your version of Windows is not in the supported list, but our limited resources prevent us from supporting more systems.</p>
+							<li><b>Conflict with ZipMagic</b>
+							<p>The SBW Installer is built using ZeroG's InstallAnywhere application. InstallAnywhere is known to be incompatible with systems running OnTrack Software's ZipMagic compression utility. Users with ZipMagic installed will need to disable, or uninstall ZipMagic in order to use InstallAnywhere installers, including the SBW installer.</p>
+							<p>If you attempt to run the SBW installer on a system that has ZipMagic installed and running, the installer will fail with the following error message:</p>
+							<pre> 
+java.lang.NullPointerException
+	at java.io.RandomAccessFile.open(Native Method)
+ 	at java.io.RandomAccessFile.
+								<init>
+								(Unknown Source)
+ 	at ZeroGv.
+								<init>
+								(Unknown Source)	
+ 	...
+</pre>
+							<p>For more information, please <a href="http://gamma.zerog.com/devnet_l/uT.jsp?page=kb/viewKB.jsp&itemID=282">support item #282 in the Zero G support knowledge base</a>.</p>
+							<p></p>
+							<li><b>SBW does not operate properly under Windows 98</b>
+							<p>SBW 1.0.2 appears to exhibit problems running under Windows 98. Windows 98SE does appear to work, but plain 98 has not be tested by the SBW developers and users who have tried it have reported failures to run.</p>
+						</ul>
+						If you experience problems not described here, please report them using our <a href="http://sourceforge.net/tracker/?group_id=58157&atid=486721">bug reporting and tracking facilities</a>. </div>
+				</td>
+			</tr></table>
+	</body>
+
+</html>

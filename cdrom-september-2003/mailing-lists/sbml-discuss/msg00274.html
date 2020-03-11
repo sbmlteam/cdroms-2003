@@ -1,0 +1,124 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] DWG: SBML extension for layout -->
+<!--X-From-R13: heNrzy.bet -->
+<!--X-Date: Fri, 23 May 2003 02:32:25 &#45;0700 -->
+<!--X-Message-Id: 3ECDEABD.5050909@eml.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] DWG: SBML extension for layout</TITLE>
+<LINK REV="made" HREF="mailto:ur@eml.org">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00273.html">Date Prev</A>][<A HREF="msg00275.html">Date Next</A>][<A HREF="msg00266.html">Thread Prev</A>][<A HREF="msg00292.html">Thread Next</A>][<A HREF="maillist.html#00274">Date Index</A>][<A HREF="threads.html#00274">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] DWG: SBML extension for layout</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] DWG: SBML extension for layout </LI>
+<LI><em>From</em>: <A HREF="mailto:ur@eml.org">ur@eml.org</A></LI>
+<LI><em>Date</em>: Fri, 23 May 2003 11:32:45 +0200</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+1.) Units
+
+Maybe we miss some point but in our opinion it should not be necessary
+to specify units for diagrams. If all size constraints are specified
+relative to each other the diagram (including fonts) can be scaled to
+any resolution the user/application wants. Lets say we have a node as
+a text label, then we could specify the size of the node as being 200
+* 50 and the font being of size 20. Now, if we want to represent the
+text label with a 10pt font, this would mean that the node would have
+to be rescaled to have the size 100 * 25. If the application doesn't
+want the font to scale with the rest of the diagram, the render
+information for the font could e.g. include an attribute called
+"fixed".
+
+
+2.) SVG as layout format
+
+When we first discussed creating a layout extension for SBML, we also
+looked at SVG in order to store the pathway diagram/graph (that was
+also a reason why we did not include a 3rd dimension in the first
+draft). Finally, we dropped this alternative mainly because of the
+following reason: SVG is a vector graphics format and not a graph
+format. SVG does not allow to specify relations between objects as
+would be needed e.g. by any (reaction) graph or network.
+
+
+3.) Using SVG tags as render information
+
+Although the complete SVG would probably be an overkill, we agree that
+part of the SVG specification could be used as rendering
+information(elements like e.g. circles, defs,...). One point that
+should be considered is whether the individual SVG elements can easily
+be extended to port 3D information or if we want to limit ourselfs to
+2D rendering information.
+
+4.) MathML rendering
+
+There was the question whether there are any libraries that deal with
+rendering MathML. So far the only free widget that we found is a GTK
+widget(GtkMathView).
+The alternative would be to convert the MathML to LaTeX, run LaTex and
+convert the resulting DVI file to a bitmap file. For this there are
+free tools, but no libraries.
+For further tools see: <A  HREF="http://www.w3.org/Math/implementations.html">http://www.w3.org/Math/implementations.html</A>
+
+
+Ralph Gauges, Ursula Rost
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00273.html">RE: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00275.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00266.html">RE: [sbml-discuss] DWG -- UNITS</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00292.html">RE: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00274"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00274"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

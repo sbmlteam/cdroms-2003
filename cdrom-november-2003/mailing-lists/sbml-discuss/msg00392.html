@@ -1,0 +1,312 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG: multiple layouts -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Mon, 2 Jun 2003 07:30:43 &#45;0700 -->
+<!--X-Message-Id: 003e01c32913$849b17e0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 663F139A&#45;9503&#45;11D7&#45;81B0&#45;000A95776A76@eml.villa&#45;bosch.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG: multiple layouts</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00391.html">Date Prev</A>][<A HREF="msg00393.html">Date Next</A>][<A HREF="msg00390.html">Thread Prev</A>][<A HREF="msg00395.html">Thread Next</A>][<A HREF="maillist.html#00392">Date Index</A>][<A HREF="threads.html#00392">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG: multiple layouts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG: multiple layouts</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 2 Jun 2003 15:30:23 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Ralph
+
+I think I "solved" the "problem" of referencing species references in 
+my previous example
+
+see <A  HREF="http://www.sbw-sbml.org/sbml-discuss/archive/msg00366.html">http://www.sbw-sbml.org/sbml-discuss/archive/msg00366.html</A>
+
+In the diagram encoding you have an element 'path' which has a
+'reaction' attribute
+and a 'species' attribute.  The species reference is indicated through
+the
+combination of the 'reaction' and 'species' atttributes.
+
+for example
+
+the species reference
+
+...
+&lt;reaction id="reaction1"&gt;
+    &lt;listOfReactants&gt;
+        &lt;speciesReference species="glucoseA"/&gt;
+    &lt;/listOfReactants&gt;
+...
+&lt;/reaction&gt;
+...
+
+is referenced by
+
+...
+&lt;listOfPaths&gt;
+&lt;path type="reactant" reaction="reaction1" species="glucoseA"&gt;
+	&lt;line x1="1" y1="1" x2="2" x2="1"/&gt;
+&lt;/path&gt;
+...
+&lt;/listOfPaths&gt;
+...
+
+I'm sorry that my formatting got a bit garbled
+in my previous message.
+
+This issue of how you reference part of a model from a diagram
+will have to be revisited in the light of developments in
+the arrays and model composition WGs.  The above shouldn't
+necesarily be regarded as definitive.
+
+It might be useful
+to know how diagrams will interact with the model composition features.
+For example are diagrams always going to show a view of components
+all at the same heirarcical level or not?
+
+Putting the type attribute on the path is probably not a good
+idea - ideally it should be on the species reference.
+It's not diagramatic information.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Ralph Gauges
+&gt; Sent: 02 June 2003 15:06
+&gt; To: Wagner,John
+&gt; Cc: sbml-discuss@caltech.edu
+&gt; Subject: Re: [sbml-discuss] DWG: multiple layouts
+&gt; 
+&gt; 
+&gt; Several people raised the issue of including several layouts for one 
+&gt; model. This is a point we actually had not thought about so 
+&gt; far, but we 
+&gt; agree, that it might be a good idea.
+&gt; We potentially see two possibilities to include several 
+&gt; layouts in one 
+&gt; model:
+&gt; 
+&gt; 
+&gt; The first possibility would be a small extension to the draft we 
+&gt; mentioned. In &lt;listOfNodes&gt; for &lt;Specie&gt; we would define all 
+&gt; nodes that 
+&gt; are needed for all the different layouts. Which would 
+&gt; effectively leave 
+&gt; it unchanged in respect to our current proposal (This implies 
+&gt; that only 
+&gt; &lt;SpeciesReference&gt;s are to be displayed. If people would like to 
+&gt; display Species without a Reaction, each node would have to have a 
+&gt; display attribute which represents an enumeration of all the layouts, 
+&gt; it takes part in.). For the &lt;layout&gt; tag in Compartment as 
+&gt; well as for 
+&gt; the &lt;connector&gt; tag in Reaction and the &lt;edge&gt; tag in 
+&gt; SpecieReference, 
+&gt; we would include a new attribute called "layoutID", which 
+&gt; would hold a 
+&gt; unique id of the layout for which the element has been 
+&gt; defined. E.g. for a &lt;SpecieReference&gt; this could look like this
+&gt; 
+&gt; &lt;SpecieReference&gt;
+&gt; ....
+&gt; &lt;edge nodeRef="3" layoutID="1"/&gt;
+&gt; &lt;edge nodeRef="5" layoutID="2"/&gt;
+&gt; ....
+&gt; &lt;/SpecieReference&gt;
+&gt; 
+&gt; The advantage of this version is that only a small overhead 
+&gt; is produced 
+&gt; and only small changes to the current draft are needed.
+&gt; The disadvantage would be that it would not be very human readable if 
+&gt; many layouts would be included in a model.
+&gt; 
+&gt; 
+&gt; 
+&gt; The second version would be more along the lines of Andrew Finney and 
+&gt; John Wagners proposal to take the layout information out of the model 
+&gt; and put it all in a seperate tag, lets call it view, after the model 
+&gt; definition.
+&gt; In this version the different layouts would be seperated in 
+&gt; individual 
+&gt; tags (e.g. &lt;view id="1"&gt;).
+&gt; Each layout element would also have to have some reference to 
+&gt; the model 
+&gt; element it belongs to. This reference would probably have to be 
+&gt; different depending on wether we talk about sbml level 1 or 
+&gt; level 2. In 
+&gt; level 1, we could just use the name attribute since it is unique 
+&gt; throughout the model.
+&gt; In sbml level 2, we have the SId on most elements. But what about 
+&gt; &lt;SpeciesReferences&gt;, they do not have an SId of their own, so 
+&gt; how would 
+&gt; they be referenced? So far we have not been able to come up with any 
+&gt; reasonable solution for that.
+&gt; This second approach would not be much different from the first 
+&gt; approach, the layout information would just be moved to a different 
+&gt; place in the file. The will probably enhance readability, but on the 
+&gt; other hand produce some more overhead since the corresponding 
+&gt; elements 
+&gt; in the model must be referenced somehow, which is not even 
+&gt; trivial for 
+&gt; all elements.
+&gt; 
+&gt; 
+&gt; After presenting the possibilities as we see them, we would very much 
+&gt; like to get some feedback on what other people think and on how the 
+&gt; problem with the missing ids for &lt;SpeciesReference&gt; tags in 
+&gt; sbml level 
+&gt; 2 could be overcome in order to be able to implement the second 
+&gt; approach.
+&gt; 
+&gt; 
+&gt; Ralph
+&gt; 
+&gt; 
+&gt; 
+&gt; On Dienstag, Mai 27, 2003, at 08:18  Uhr, Wagner,John wrote:
+&gt; 
+&gt; &gt; Ralph,
+&gt; &gt; I think we should start by agreeing on a basic layout ML (call it 
+&gt; &gt; Level A, if you like) that is flexible enough that it could 
+&gt; be further 
+&gt; &gt; modified, but I don't think that should necessarily be our stopping 
+&gt; &gt; point; rather, it should then serve as the basis for 
+&gt; further defining 
+&gt; &gt; additional features that people feel are needed. Thus, I am calling 
+&gt; &gt; them "revisions" (see below).
+&gt; &gt;
+&gt; &gt; I do not dislike what your group has done, in broad terms. However, 
+&gt; &gt; the display markup must be removed from the model's individual 
+&gt; &gt; elements, and put in a section all by itself. This is not only a 
+&gt; &gt; matter of aesthetics, it's necessary so that your approach can be 
+&gt; &gt; modified to include multiple views (something many tools 
+&gt; must have). 
+&gt; &gt; Andrew did this one way, adding to the &lt;model&gt; element 
+&gt; another list, 
+&gt; &gt; the &lt;listOfViews&gt; I think he called it. I have taken a different 
+&gt; &gt; approach, (go here and click on FutileCycle-0.xml):
+&gt; &gt;
+&gt; &gt; 
+&gt; <A  HREF="http://caboy.uchc.edu/wagner/Science/VirtualCe">http://caboy.uchc.edu/wagner/Science/VirtualCe</A>&gt;
+ll/SBML-DWG/Default.htm
+&gt; &gt;
+&gt; &gt; I have called this DWG revision 0 in the expectation that 
+&gt; this will be 
+&gt; &gt; modified over time (as we hash things through) to an actual working 
+&gt; &gt; group "revision" (what you called "level"). For now, it's ONLY a 
+&gt; &gt; dartboard--something to throws darts at. You will find that 
+&gt; &gt; content-wise, it's similar to your approach, but with the 
+&gt; diagramming 
+&gt; &gt; markup removed from the individual model elements and put into a 
+&gt; &gt; completely separate section. You will also see that so far, 
+&gt; I've only 
+&gt; &gt; put in (x, y) coordinates, whereas your group also tracks width and 
+&gt; &gt; height. I am of the opinion that we should do (x, y, w, h), I just 
+&gt; &gt; wanted to get agreement from those who don't currently track (w, h) 
+&gt; &gt; that they'd be willing to go with an (x, y, w,
+&gt; &gt; h)
+&gt; &gt; approach and simply convert using x + w/2, y + h/2. If so, then I 
+&gt; &gt; would propose to add w and h attributes to compartmentGlyphs and 
+&gt; &gt; speciesGlyphs, if not others. Also, should the &lt;diagram&gt; 
+&gt; element have 
+&gt; &gt; x, y, w and h?
+&gt; &gt;
+&gt; &gt; I think once we have massaged this into a working and accepted 
+&gt; &gt; baseline level, at that point we can start discussing what more we 
+&gt; &gt; want--shapes, fonts, colors, whatever. I'd just like to 
+&gt; first get to a 
+&gt; &gt; baseline revision that has DWG consensus as "this is the 
+&gt; bare minimum 
+&gt; &gt; we want/need" before throwing in bells and whistles.
+&gt; &gt;
+&gt; &gt; John
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; 	-----Original Message-----
+&gt; &gt; 	From: Ralph Gauges [<A  HREF="mailto:ralph.gauges@eml.villa-bosch.de">mailto:ralph.gauges@eml.villa-bosch.de</A>]
+&gt; &gt; 	Sent: Tue 5/27/2003 4:40 AM
+&gt; &gt; 	To: Wagner,John
+&gt; &gt; 	Cc: sbml-discuss@caltech.edu
+&gt; &gt; 	Subject: Re: [sbml-discuss] DWG math display?
+&gt; &gt; 	
+&gt; &gt; 	
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00395" HREF="msg00395.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00390" HREF="msg00390.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00391.html">RE: [sbml-discuss] Remaining issues for SBML Level 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00393.html">RE: [sbml-discuss] Remaining issues for SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00390.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00395.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00392"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00392"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

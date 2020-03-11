@@ -1,0 +1,188 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] DWG math display? -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Mon, 26 May 2003 07:12:22 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E42@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] DWG math display?</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00327.html">Date Prev</A>][<A HREF="msg00329.html">Date Next</A>][<A HREF="msg00320.html">Thread Prev</A>][<A HREF="msg00332.html">Thread Next</A>][<A HREF="maillist.html#00328">Date Index</A>][<A HREF="threads.html#00328">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] DWG math display?</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] DWG math display?</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 26 May 2003 10:11:59 -0400</LI>
+<LI>Thread-Index: AcMjkMWjb3bUzi3CStS0M9Ywdj7mfA==</LI>
+<LI>Thread-Topic: Re: [sbml-discuss] DWG math display?</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I guess the way I was thinking about the whole math display is...
+ 
+Either a program wants to display math in a nice and formatted
+manner, or it doesn't. Those that don't want to display formatted
+math simply won't display formatted math. But, those that *do*
+want to display formatted math are faced with doing the drawing
+and layout themselves. For *those* applications, it would be very
+helpful to have the MathML, because it basically specifies the
+layout for you.
+ 
+For example, in the Virtual Cell, when you type in an expression
+like (a+b)/(c+d/e), Jim Schaff has written a very nice algorithm
+that takes the expression tree as input and outputs a "format tree"
+very similar to the MathML display.
+ 
+So I was thinking it might make it easier for those people wanting
+to do something like that.
+ 
+John
+ 
+ 
+
+	-----Original Message----- 
+	From: Ralph Gauges [<A  HREF="mailto:ralph.gauges@eml.villa-bosch.de">mailto:ralph.gauges@eml.villa-bosch.de</A>] 
+	Sent: Mon 5/26/2003 3:16 AM 
+	To: Herbert Sauro 
+	Cc: 'sbml-discuss@caltech.edu ' 
+	Subject: Re: [sbml-discuss] DWG math display?
+	
+	
+
+	I fully agree that both options are far from optimal, especially the
+	second one since you need all those programs installed. On the other
+	hand, it seems to work as long as there is no other option.
+	Actually a java lib would not be that bad I think. Since the new gcc
+	compiler can compile java code to machine byte code, it should be
+	possible to create a normal library from java code and then write some
+	wrappers for perl, python, etc.
+	Maybe I am wrong. Has anybody else played around with the gcc java
+	compiler yet?
+	
+	
+	Ralph
+	
+	On Freitag, Mai 23, 2003, at 06:57  Uhr, Herbert Sauro wrote:
+	
+	&gt;
+	&gt; All very well on paper but how do we programmers implement it? Someone
+	&gt; earlier mentioned that they only knew of two portable libs (maybe) that
+	&gt; could render MathML, a GTK method and a long winded approach to convery
+	&gt; MathML to Latex, etc etc. Neither method sounds appleaing.
+	&gt;
+	&gt; I'm sure there is a Java lib somewhere but that isn't of much use to
+	&gt; many of
+	&gt; use who use other languages.
+	&gt;
+	&gt; Herbert
+	&gt;
+	&gt; -----Original Message-----
+	&gt; From: Poul Nielsen
+	&gt; To: Wagner,John
+	&gt; Cc: Poul Nielsen; sbml-discuss@caltech.edu
+	&gt; Sent: 5/23/03 3:07 AM
+	&gt; Subject: Re: [sbml-discuss] DWG math display?
+	&gt;
+	&gt;
+	&gt; On Friday, May 23, 2003, at 14:56 Pacific/Auckland, Wagner,John wrote:
+	&gt;
+	&gt;&gt; There was also some discussion in Florida about display
+	&gt;&gt; MathML, and I got to thinking about it...it seems like we
+	&gt;&gt; could include display MathML markup in the Diagrams
+	&gt;&gt; portion. Imagine if, in addition to diagrams for the
+	&gt;&gt; reaction pathways, we also had a list of MathML display
+	&gt;&gt; elements that are linked to the various MathML expressions
+	&gt;&gt; in the SBML document.
+	&gt;&gt;
+	&gt;&gt; I was thinking of an addition to something like JDesigner
+	&gt;&gt; such that when you hovered the pointer over a reaction
+	&gt;&gt; arrow, you got a "tooltips" like action that popped up a
+	&gt;&gt; tooltip window, and in it was displayed that reaction's
+	&gt;&gt; kinetics; this MathML display element could provide the
+	&gt;&gt; layout for the content (just as an example).
+	&gt;&gt;
+	&gt;&gt; However, someone--maybe me?--poninted out that we
+	&gt;&gt; all pretty much knew how to do the math display anyway,
+	&gt;&gt; so it wasn't clear to me if there was any consensus that
+	&gt;&gt; display MathML was needed. Anyone care to weigh in
+	&gt;&gt; on this? Poul, any comments?
+	&gt; MathML provides mechanisms to combine content and presentation markup.
+	&gt; Chapter 5 of the MathML 2.0 specification is devoted to just this
+	&gt; issue. It seems pretty straightforward to tie the two together to
+	&gt; enable the behaviour that you describe above.
+	&gt;
+	&gt; Poul Nielsen
+	&gt; Bioengineering Institute
+	&gt; University of Auckland
+	&gt; New Zealand
+	&gt;
+	&gt;
+	
+	
+	
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00332" HREF="msg00332.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml.villa-bosch.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00352" HREF="msg00352.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00327.html">Re: [sbml-discuss] CAP capabilites controlled vocabulary SBML modularization</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00329.html">Re: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00320.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00332.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00328"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00328"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

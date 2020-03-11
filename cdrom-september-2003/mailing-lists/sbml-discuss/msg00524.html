@@ -1,0 +1,183 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Final Proof of SBML Level 2 specification -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Sat, 28 Jun 2003 01:36:16 &#45;0700 -->
+<!--X-Message-Id: 00c301c33d50$22ad8120$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200306241753.13823.kdkeck@lbl.gov -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Final Proof of SBML Level 2 specification</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00523.html">Date Prev</A>][<A HREF="msg00525.html">Date Next</A>][<A HREF="msg00512.html">Thread Prev</A>][<A HREF="msg00513.html">Thread Next</A>][<A HREF="maillist.html#00524">Date Index</A>][<A HREF="threads.html#00524">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Final Proof of SBML Level 2 specification</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'Sbml-Discuss (E-mail)'&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Final Proof of SBML Level 2 specification</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 28 Jun 2003 09:34:42 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Kevin
+
+If only it was that simple.
+
+I don't disagree that this might be useful.
+
+However getting agreement on a controlled vocabulary like this
+is not straight forward.
+
+And even if we did I don't believe that in general CVs can be considered
+static especially relative to the rest of sbml so we need a mechanism
+for seperating out the cvs from the rest of the language and then
+maintaining the cvs and developing a process for that.
+
+The CV working group is the context for these developments.
+<A  HREF="http://www.sbw-sbml.org/sbml-discuss/archive/msg00510.html">http://www.sbw-sbml.org/sbml-discuss/archive/msg00510.html</A>
+
+If you could contribute an outline CV for modifiers...
+
+In the meantime you could investigate using GO via
+CellML metadata with SBML or using an annotation.
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: Kevin D. Keck [<A  HREF="mailto:kdkeck@lbl.gov">mailto:kdkeck@lbl.gov</A>] 
+&gt; Sent: 25 June 2003 01:53
+&gt; To: Andrew Finney; 'Sbml-Discuss (E-mail)'
+&gt; Subject: Re: [sbml-discuss] Final Proof of SBML Level 2 specification
+&gt; 
+&gt; 
+&gt; It's been brought up before, but I never saw any resolution:
+&gt; 
+&gt; <A  HREF="http://www.sbw-sbml.org/sbml-discuss/archive/msg00155.html">http://www.sbw-sbml.org/sbml-discuss/archive/msg00155.html</A>
+&gt; 
+&gt; Even if it's best placed in an annotation, it would be nice 
+&gt; to have a minimal 
+&gt; set of modifier types defined in the SBML namespace, rather 
+&gt; than us all 
+&gt; having to invent our own. E.g.:
+&gt; 
+&gt; ...
+&gt; &lt;modifierSpeciesReference species="S3" 
+&gt; modifierType="inhibiting" /&gt; ...
+&gt; 
+&gt; OR
+&gt; 
+&gt; ...
+&gt; &lt;modifierSpeciesReference species="S3" &gt;
+&gt;   &lt;annotation&gt;&lt;modifierType value="inhibiting" 
+&gt; /&gt;&lt;/annotation&gt; &lt;/modifierSpeciesReference&gt; ...
+&gt; 
+&gt; I know you're trying to wrap things up, but this seems like a 
+&gt; simple and 
+&gt; harmless addition. ; )
+&gt; -- 
+&gt; Kevin D. Keck
+&gt; <A  HREF="http://vimss.lbl.gov/~kdkeck/">http://vimss.lbl.gov/~kdkeck/</A>
+&gt; 510-486-4856
+&gt; 
+&gt; 
+&gt; On Tuesday 24 June 2003 06:12, Andrew Finney wrote:
+&gt; &gt;  SBML Level 2 Version 1 Final Proof
+&gt; &gt;  ----------------------------------
+&gt; &gt;
+&gt; &gt; The last proof raised some technical issues
+&gt; &gt; with a reviewer which are addressed in this
+&gt; &gt; proof of the specification.  Unless
+&gt; &gt; further issues are raised this is the final
+&gt; &gt; proof.  Please review this specification and
+&gt; &gt; reply with comments to afinney@cds.caltech.edu by
+&gt; &gt; Saturday 28th June 2003 at 9am BST (UK time)
+&gt; &gt;
+&gt; &gt; THIS REALLY IS THE LAST CHANCE TO REVIEW THIS SPECIFICATION.
+&gt; &gt;
+&gt; &gt; We plan to publish and freeze SBML Level 2 Version 1
+&gt; &gt; at 5pm BST (UK time) Saturday 28th June 2003.
+&gt; &gt;
+&gt; &gt; Technical changes have been made to the following
+&gt; &gt; sections since the last proof was sent to SBML Discuss:
+&gt; &gt;
+&gt; &gt; 3.6.3
+&gt; &gt; 4.6
+&gt; &gt; 4.6.4
+&gt; &gt; 4.8.2
+&gt; &gt; 4.8.3
+&gt; &gt; 4.10.5
+&gt; &gt;
+&gt; &gt; yours
+&gt; &gt; Andrew Finney
+&gt; &gt; +44 (0)1452 722487
+&gt; &gt; from US - 011 44 1452 722487
+&gt; &gt; University of Hertfordshire, UK
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00512" HREF="msg00512.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Kevin D. Keck&quot; &lt;kdkeck@lbl.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00523.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00525.html">FW: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00512.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00513.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00524"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00524"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,128 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] DWG: SBML extension for diagram layout -->
+<!--X-From-R13: Eira Enuyr <fnuyrNrzy.bet> -->
+<!--X-Date: Tue, 20 May 2003 06:52:04 &#45;0700 -->
+<!--X-Message-Id: 200305201617.07745.sahle@eml.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] DWG: SBML extension for diagram layout</TITLE>
+<LINK REV="made" HREF="mailto:sahle@eml.org">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00163.html">Date Prev</A>][<A HREF="msg00165.html">Date Next</A>][<A HREF="msg00167.html">Thread Prev</A>][<A HREF="msg00165.html">Thread Next</A>][<A HREF="maillist.html#00164">Date Index</A>][<A HREF="threads.html#00164">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] DWG: SBML extension for diagram layout</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] DWG: SBML extension for diagram layout</LI>
+<LI><em>From</em>: Sven Sahle &lt;<A HREF="mailto:sahle@eml.org">sahle@eml.org</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 20 May 2003 16:17:07 +0000</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello all,
+
+we thank you very much for all your feedback to the SBML diagram layout 
+proposal during the  last days. 
+
+Pedros suggestion to add z-coordinates to all objects definitely makes sense 
+and does not do any harm since it can easily be ignored by programs that 
+don´t use it. 
+
+About Stefans proposal to include color and shape information: 
+With our design we tried to separate several levels of information. First 
+level is obviously standard SBML which describes the reaction network without 
+any layout information. 
+Second level (the layout level, which is what we describe in our document) 
+contains only information about the layout of the reaction scheme, not about 
+how it is rendered. This seems to fit the information that John mentioned in 
+his last mail. This would be exactly the information that an automatic layout 
+algorithm would deal with. 
+Third level (the render level, which we didn´t specify yet) would contain 
+anything about how a specific object is rendered. This includes color, shape, 
+pixmaps, ...
+
+The reason why we chose to separate these levels is that we think it should be 
+comparably easy to agree on a format for the second level (layout 
+information). We could have a working and stable version of that soon. The 
+third level (render information) would deal with a lot more details and it 
+will certainly take longer time to reach an agreement. 
+
+About the modifiers:
+On the layout level  we see no reason to treat modifiers different from 
+substrates or products. SBML L2 already works that way (as Andrew pointed 
+out). On the render level of course different programs will have different 
+ideas of how to draw a reaction with a modifier. We are not shure yet where 
+the information whether a modifier is an activator or an inhibitor belongs. I 
+tend to put it in the layout level but that needs some more discussion. 
+
+About several layouts for one model: We haven´t thought about that yet and 
+would very much like to see suggestions.
+
+we will send an updated proposal soon.
+
+Sven
+
+-----
+Sven Sahle,  European Media Laboratory, Heidelberg, Germany
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00165" HREF="msg00165.html">Re: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+<UL><LI><EM>From:</EM> Stefan Hoops &lt;shoops@vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00163.html">Re: [sbml-discuss] COMP -- Model Composition SIG Announcement</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00165.html">Re: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00167.html">[sbml-discuss] COMP -- Model Composition SIG Announcement 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00165.html">Re: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00164"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00164"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

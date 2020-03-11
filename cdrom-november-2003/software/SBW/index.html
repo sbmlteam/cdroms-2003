@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+		<meta name="generator" content="Adobe GoLive 6">
+		<title>SBML Collection CD, Release 1</title>
+	</head>
+
+	<body background="../../graphics/bg0.gif" bgcolor="#ffffff" link="#003399" vlink="#0099ff"  leftmargin="14" topmargin="10" marginwidth="14" marginheight="10">
+		<table width="720" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+				<td>
+					<div align="center">
+						<h2><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">The Systems Biology Workbench</font></h2>
+						<address>Andrew Finney, Michael Hucka, Herbert Sauro, Hamid Bolouri<br>
+							
+							ERATO Kitano Symbiotic Systems Project<br>
+							Control and Dynamical Systems MC 107-81<br>
+							California Institute of Technology, Pasadena, CA, USA<br>
+							<a href="http://www.sbw-sbml.org">http://www.sbw-sbml.org</a></address>
+					</div>
+					<p>
+					The Systems Biology Workbench (SBW) is a modular, broker-based, message-passing framework for simplified application intercommunications. SBW offers <a href="#more-about-sbw">many features</a>, including native language libraries (currently for C, C++, Delphi, Java, Perl and Python), tutorial and demonstration modules, and documentation. Note that SBW provides infrastructure for other programs, and does not have a user interface per se. After installing SBW, you will want to install other programs to use with it, such as <a href="../JDesigner/index.html"><i>JDesigner</i></a>, <a href="../Jarnac/index.html"><i>Jarnac</i></a>, and <a href="../CellDesigner/index.htm"><i>CellDesigner</i></a> (all provided on this <a href="../../index.htm">CD-ROM</a>). For more packages, please see the <a
+		  href="#contributed-software"><i>Contributed
+		  Software</i></a> section below.
+</p>
+					<h3><i><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">SBW Installation</font></i></h3>
+					<p><b>Requirements</b>: For details, please read the <a href="INSTALL.txt">installation instructions</a>. You will need <a href="http://java.sun.com/j2se/1.3/"><b>Java 1.3.x</b></a> or later. If you wish to use the SBW Python scripting interface, you will also need <a href="http://python.org/download/"><b>Python</b></a> version 2.1 or later, and the <a href="http://pfdubois.com/numpy/">Numerical Python</a> package version 20 or later. If you wish to use the SBW Perl scripting interface, you will need Perl version 5.6 or later. (On Windows, we use the <a href="http://www.activestate.com/ActivePerl/download.htm">ActivePerl port</a>.)</p>
+					<table width="100%" border="0" cellpadding="0" cellspacing="8">
+						<tr>
+							<td width="180"></td>
+							<td bgcolor="#eeeeee" width="170"><b><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Windows 98SE/2000/XP<br>
+										<a href="windows_warnings.html">(Warnings)</a></font></b></td>
+							<td bgcolor="#eeeeee" width="170"><b><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Linux</font></b></td>
+							<td bgcolor="#eeeeee" width="170"><b><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">MacOS X</font></b></td>
+						</tr>
+						<tr>
+							<td width="180"><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><b>Minimal <a href="min_inst_explanation.html">(explanation)</a>:</b></font></td>
+							<td width="170"><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><a href="sbw-1.0.5-win-min.exe?download"><b>1.0.5 installer</b></a>&nbsp;(5.8&nbsp;MB)</font></td>
+							<td width="170"><b><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Coming for 1.1</font></b></td>
+							<td width="170"><b><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Coming for 1.1</font></b></td>
+						</tr>
+						<tr>
+							<td width="180"><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><b>Full <a href="full_inst_explanation.html">(explanation)</a>:</b></font></td>
+							<td width="170"><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><a href="sbw-1.0.5-win-full.exe?download"><b>1.0.5 installer</b></a>&nbsp;(25&nbsp;MB)</font></td>
+							<td width="170"><b><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Coming for 1.1</font></b></td>
+							<td width="170"><b><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Coming for 1.1</font></b></td>
+						</tr>
+						<tr>
+							<td width="180"><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><b>Source only <a href="src_inst_explanation.html">(explanation)</a>:</b></font></td>
+							<td width="170"><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><a href="sbw-1.0.5-src.zip?download"><b>1.0.5 src zip</b></a>&nbsp;(18&nbsp;MB)</font></td>
+							<td width="170"><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><a href="sbw-1.0.5-src.zip?download"><b>1.0.5 src zip</b></a>&nbsp;(18&nbsp;MB)</font></td>
+							<td width="170"><b><font size="-1" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Coming for 1.1</font></b></td>
+						</tr>
+					</table>
+					<h3><i><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Reporting Problems with SBW</font></i></h3>
+					<p><b>Please report bugs</b> using our <a href="https://sourceforge.net/tracker/?func=add&group_id=58157&atid=486721">bug reporting facility</a> on SourceForge.net. (You will need to have a SourceForge account to do this, but getting one is free and easy.) Using the bug-tracking facility will help us continue to improve SBW.</p>
+					<h3><i><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Contributed SBW-Enabled Software</font><font face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><a name="contributed-software"></a></font></i></h3>
+					<p>Other parties have been developing software for use with SBW. Below are links to this contributed software.</p>
+					<table border="0" cellpadding="3" cellspacing="5" width="100%">
+						<tr>
+							<td width="350" bgcolor="#eeeeee"><b><font color="#003399">Description</font></b></td>
+							<td width="90" bgcolor="#eeeeee"><b><font color="#003399">Date</font></b></td>
+							<td bgcolor="#eeeeee"><b><font color="#003399">Link</font></b></td>
+						</tr>
+						<tr valign="top">
+							<td width="350"><font color="#000077"><b><i>JDesigner</i></b>, a visual biochemical network layout tool that can read and write models in SBML format.</font><br>
+								<font size="-1"><i>Written by Herbert M. Sauro and available under LGPL. This is both a binary and source code installation that includes modifications for working with SBW. The home page for JDesigner is <a href="http://www.sys-bio.org/JDesigner.htm">http://www.sys-bio.org/JDesigner.htm</a></i></font></td>
+							<td width="90"><b><font color="#003399">2002-11-30</font></b></td>
+							<td width="50"><b><a href="../JDesigner/index.html">Available on this CD-ROM</a></b></td>
+						</tr>
+						<tr valign="top">
+							<td width="350"><font color="#000077"><b><i>Jarnac</i></b>, a biochemical simulation package for Windows.</font><br>
+								<font size="-1"><i>Written by Herbert M. Sauro and available under LGPL. This is a binary installation that includes modifications for working with SBW. The source code is available seperately from the Jarnac homepage, <a href="http://www.sys-bio.org/Jarnac.htm">http://www.sys-bio.org/Jarnac.htm</a>.</i></font></td>
+							<td width="90"><b><font color="#003399">2002-07-03</font></b></td>
+							<td width="50"><b><font color="#000077"><a href="../Jarnac/index.html">Available on this CD-ROM</a></font></b></td>
+						</tr>
+						<tr valign="top">
+							<td width="350"><font color="#000077"><b><i>CellDesigner</i></b>, a visual biochemical network layout tool that can read and write models in SBML format and is portable to Windows, Linux and MacOS.</font><br>
+								<font size="-1"><i>Written by the CellDesigner Development Team at the Systems Biology Institute and the Fuji Research Institute Corporation in Japan.</i></font></td>
+							<td width="90"><b><font color="#003399">2003-06-09</font></b></td>
+							<td width="50"><b><a href="../CellDesigner/index.htm">Available on this CD-ROM</a></b></td>
+						</tr>
+						<tr valign="top">
+							<td width="350"><font color="#000077"><b><i>TauLeapService</i></b>, a module implementing Gillespie's Approximate Accelerated Stochastic Algorithm for chemically reacting systems. This is implemented as a service for SBW, and is supplied as source code and in binary form for MS windows.</font><br>
+								<font size="-1"><i>Written by <a href="http://www.herts.ac.uk/natsci/physics/Staff/vanderZee.htm">Pieter van der Zee</a>, University of Hertfordshire, and available under LGPL.</i></font></td>
+							<td width="90"><b><font color="#003399">2002-12-20</font></b></td>
+							<td width="50"><b><a href="http://strc.herts.ac.uk/bio/tauleap/tauleap-home.htm">1.0</a></b></td>
+						</tr>
+						<tr valign="top">
+							<td width="350"><font color="#000077"><b><i>MetaToolSBW</i></b>, a wrapper around Stefan Schuster's MetaTool package. MetaTool provides a variety of functions, including the ability to compute elementary modes, null spaces and conservation vectors for arbitrary networks. MetaToolSBW can accept models from either MetaTool input files, or SBML Level 1 via the &quot;NOM&quot; included with SBW. </font><br>
+								<font size="-1"><i>Written by Herbert M. Sauro and available under LGPL.</i></font></td>
+							<td width="90"><b><font color="#003399">2002-08-20</font></b></td>
+							<td width="50"><b><a href="http://www.sys-bio.org/sbwApps/metaToolSetup.exe">1.0</a></b></td>
+						</tr>
+						<tr valign="top">
+							<td width="350"><font color="#000077"><b><i>Pasadena Twain</i></b>, a simple interactive ODE solver with an SBW interface. </font><br>
+								<font size="-1"><i>Written by Herbert M. Sauro and available under LGPL.</i></font></td>
+							<td width="90"><b><font color="#003399">2002-11-07</font></b></td>
+							<td width="50"><b><a href="http://www.cds.caltech.edu/~hsauro/sbwApps/PTsetup.exe">1.1</a></b></td>
+						</tr>
+						<tr valign="top">
+							<td width="350"><font color="#000077"><b><i>SBML Validator</i></b>, a simple tool for checking the syntax of an SBML file. </font><br>
+								<font size="-1"><i>Written by Herbert M. Sauro and available under LGPL.</i></font></td>
+							<td width="90"><b><font color="#003399">2002-04-22</font></b></td>
+							<td width="50"><b><a href="http://www.cds.caltech.edu/~hsauro/sbwApps/setupSBMLValidator.exe">1.01</a></b></td>
+						</tr>
+						<tr valign="top">
+							<td width="350"><font color="#000077"><b><i>TrayTool</i></b>, a simple module that sits in the Windows tray and provides a list of running SBW modules when clicked </font><br>
+								<font size="-1"><i>Written by Herbert M. Sauro and available under LGPL.</i></font></td>
+							<td width="90"><b><font color="#003399">2002-06-11</font></b></td>
+							<td width="50"><b><a href="http://www.cds.caltech.edu/~hsauro/sbwApps/TrayToolsetup.exe">1.0</a></b></td>
+						</tr>
+						<tr valign="top">
+							<td width="350"><font color="#000077"><b><i>Inspector</i></b>, a module that allows you to list running modules and inspect the services that they expose via SBW </font><br>
+								<font size="-1"><i>Written by Herbert M. Sauro and available under LGPL.</i></font></td>
+							<td width="90"><b><font color="#003399">2002-06-11</font></b></td>
+							<td width="50"><b><a href="http://www.cds.caltech.edu/~hsauro/sbwApps/InspectorSetup.exe">0.4</a></b></td>
+						</tr>
+						<tr valign="top">
+							<td width="350"><font color="#000077"><b><i>GillespieService</i></b>, a module implementing Gillespie's algorithm for stochastic simulation and providing it as a service for SBW </font><br>
+								<font size="-1"><i>Written by Herbert M. Sauro and available under LGPL.</i></font></td>
+							<td width="90"><b><font color="#003399">2002-04-22</font></b></td>
+							<td width="50"><b><a href="http://www.cds.caltech.edu/~hsauro/sbwApps/GSsetup.exe">1.0</a></b></td>
+						</tr>
+						<tr valign="top">
+							<td width="350"><font color="#000077"><b><i>Bifurcation Module</i></b>, a module that performs bifurcation analysis using <b>bifpack</b> and provides it as a service for SBW. (This is a first-cut implementation; an improved version is forthcoming.) </font><br>
+								<font size="-1"><i>Written by Herbert M. Sauro and available under LGPL.</i></font></td>
+							<td width="90"><b><font color="#003399">2002-07-03</font></b></td>
+							<td width="50"><b><a href="http://www.cds.caltech.edu/~hsauro/sbwApps/bifSetup.exe">0.9</a></b></td>
+						</tr>
+						<tr valign="top">
+							<td width="350"><font color="#000077"><b><i>Optimization Module</i></b>, a module that performs optimization and provides it as a service for SBW. </font><br>
+								<font size="-1"><i>Written by Herbert M. Sauro and available under LGPL.</i></font></td>
+							<td width="90"><b><font color="#003399">2002-07-03</font></b></td>
+							<td width="50"><b><a href="http://www.cds.caltech.edu/~hsauro/sbwApps/optSetup.exe">0.9</a></b></td>
+						</tr>
+					</table>
+					<h3><i><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">More about the Systems Biology Workbench</font><font face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><a name="more-about-sbw"></a></font></i></h3>
+					<p>The Systems Biology Workbench uses a portable broker-based architecture that enables applications (potentially running on separate machines via SSH) to learn about and communicate with each other. The communications facilities allow heterogeneous packages to be connected together using a remote procedure call mechanism; this mechanism uses a simple message-passing network protocol and allows either synchronous or asynchronous invocations. The interfaces to the system are encapsulated in client libraries for different programming languages (currently C, C++, Delphi, Java, Perl and Python), but the protocol is open and small, and developers may implement their own interfaces to the system if they choose.</p>
+					Summary of features of SBW 1.0:
+					<ul type=disc>
+						<li>Open source under the GNU LGPL license.
+						<li>Languages supported: C, C++, Delphi, Java, Perl, Python.
+						<li>Windows (98, 2000, XP) and Linux supported, with MacOS X support in progress.
+						<li>CORBA gateway allowing bidirectional communications between SBW modules and programs using CORBA.
+						<li>Distributed operation via SSH, featuring remote starting of modules.
+						<li>Collection of basic modules provided with the SBW distribution:
+						<ul type=circle>
+							<li>A simple stochastic simulator based on the Gibson-Bruck variant of the Gillespie algorithm
+							<li>An SBML-to-MATLAB ODE or Simulink file translator
+							<li>An SBML reader tool that allows a program to extract (via an API) the components of an SBML description
+							<li>A &quot;clipboard&quot; module that stores an SBML model description, for allowing the easy transfer of models between separate modules
+							<li>A Browser module that allows querying SBW for registered modules and producing descriptions of each module's interface in Java or CORBA IDL
+							<li>A simple plotting module for time-series data
+							<li>A generic simulation-control GUI interface.
+							<li>A collection of tutorial example modules in C, C++, Delphi and Java
+						</ul>
+						<li>Extensive documentation: in addition to overview documents and published papers, every language library has its own programmer's manual and API reference.
+					</ul>
+					In addition, there are now many third-party modules available, including a visual tool for defining biochemical reaction networks and a ODE-based biochemical network simulator. Finally, a number of groups are working on building interfaces to SBW into their tools. </td>
+			</tr></table>
+	</body>
+
+</html>

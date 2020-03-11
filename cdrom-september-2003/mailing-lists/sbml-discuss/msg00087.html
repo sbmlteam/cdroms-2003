@@ -1,0 +1,179 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] SBML: Concentration vs. Quantity in SBML Level1 -->
+<!--X-From-R13: Xbret Irvzne <X.IrvzneNwjrvzne.qr> -->
+<!--X-Date: by anteroom (mbox mhucka)(with Cubic Circle's cucipop (v1.31 1998/05/13) Fri Mar 28 02:48:09 2003) -->
+<!--X-Message-Id: 3E841497.9030803@jweimar.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3FA493B792A6D311B51A009027D3B86101AC8FF7@mail.kgi.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</TITLE>
+<LINK REV="made" HREF="mailto:J.Weimar@jweimar.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00086.html">Date Prev</A>][<A HREF="msg00091.html">Date Next</A>][<A HREF="msg00086.html">Thread Prev</A>][<A HREF="msg00088.html">Thread Next</A>][<A HREF="maillist.html#00087">Date Index</A>][<A HREF="threads.html#00087">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;, <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</LI>
+<LI><em>From</em>: Joerg Weimar &lt;<A HREF="mailto:J.Weimar@jweimar.de">J.Weimar@jweimar.de</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 28 Mar 2003 10:23:35 +0100</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+SBML provides the posibility of defining compartments and specify 
+volumes. Species provisions are made for rules that change the volumes. 
+If a model uses volumes that change in time and second order reactions 
+appear in the model, it is not possible to ensure that your units are 
+compatible, no matter whether you have a PhD or not. You need the volume 
+to convert between quantities of molecules and concentrations, or you 
+need a modelling tool that is able to do this for you.
+
+I read somewhere (this might be out of date), that Jarnac assumes a 
+single compartment with unit volume (constant in time), so for this tool 
+the issue does not appear. Changing volumes can still be modeled, but 
+then the volume would be a separate variable that would probably appear 
+in SBML as a substance.
+
+JDesigner does allow the creation of compartments, and specification of 
+their volume, though how they are used is unclear to me ( I am working 
+on linux and have not installed JDesigner).
+
+An example of the complications that appear even with fixed volumes is 
+the following:
+
+Imagine two compartments with different volumes and a transport process 
+between the two. Transporting one molecule between the two compartments 
+has a different effect on the concentrations in the two volumes: in the 
+smaller volume the change in concentration is proportionally larger. So 
+where does this information go?
+Does the user have to include the conversion between molecule numbers 
+and concentrations in the kineticLaw formula?
+
+I have appended an SBML example file, which does not include the 
+rescaling, but uses numbers of molecules for substance definitions. The 
+problematic point here is that the kinetic law should really be
+&lt;kineticLaw formula="(KcF * MEMBRANE_Enzyme  * compA_X)/( KmS + 
+(compA_X/compA.volume))"&gt;
+
+instead of
+
+&lt;kineticLaw formula="(KcF * MEMBRANE_Enzyme  * compA_X)/( KmS + compA_X)"&gt;
+
+but how does one access the volume (here I used compA.volume, but such 
+usage is not defined anywhere)?
+
+Note also that
+&lt;kineticLaw formula="uui(compA_X, KcF * MEMBRANE_Enzyme, KmS)"&gt;
+would be incorrect,  while
+&lt;kineticLaw formula="compA.volume * uui(compA_X/compA.volume, KcF * 
+MEMBRANE_Enzyme, KmS)"&gt;
+would be correct.
+
+
+Jörg Weimar
+
+Herbert Sauro wrote:
+
+&gt;I (JDesigner author) assume that the author of a model has made sure that
+&gt;the units they are using are correct and compatible, I don't check if this
+&gt;is the case. As far as I am aware all modeling tools do this. Even tools
+&gt;such as Matlab make no attempt to check your units, it's up to the model
+&gt;builder to do this. Since I don't check on units it means that users are not
+&gt;restricted to what they can use, they can use mM, microM etc, what ever is
+&gt;suitable, but they must make sure that the parameter units correspond. In
+&gt;SBML if you don't specify units then the numbers can mean what ever the
+&gt;modeller intended. 
+&gt;
+The SBML specification says that the default unit for substances is 
+"mole", not whatever the modeller intends!
+
+&gt;For real models one should of course indicate somewhere
+&gt;in the SBML what the basic units are. 
+&gt;
+&gt;I don't think this is an unreasonable requirement for the user to do, I
+&gt;presume that our users are scientists (i.e they have PhDs etc) and will
+&gt;understand the importance of compatible units!
+&gt;  
+&gt;
+Most scientists are well aware of this, that is why there is a separate 
+notation for concentrations
+and molecule numbers: [X] is the concentration of species X. It is only 
+for convenience that the [] is often left out.
+
+
+-- 
+PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, TU-Braunschweig
+J.Weimar@tu-bs.de, <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+Tel. +49-531-391-3006  Mail: D-38092 Braunschweig
+
+
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00088" HREF="msg00088.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00089" HREF="msg00089.html">Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Leve</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00086" HREF="msg00086.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+<UL><LI><EM>From:</EM> Herbert Sauro &lt;Herbert_Sauro@kgi.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00086.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00091.html">[Fwd: Re: [sbml-discuss] SBML: Concentration vs. Quantity in SBMLLevel 1]</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00086.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level1</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00088.html">RE: [sbml-discuss] SBML: Concentration vs. Quantity in SBML Level 1</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00087"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00087"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

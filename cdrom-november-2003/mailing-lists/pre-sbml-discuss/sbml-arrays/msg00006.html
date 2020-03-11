@@ -1,0 +1,136 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;arrays] -->
+<!--X-From-R13: Hvpgbevn Ube <tbeNnvt.wcy.anfn.tbi> -->
+<!--X-Date: Mon, 28 Jan 2002 17:06:58 &#45;0800 -->
+<!--X-Message-Id: 200201290104.RAA07034@xoanon.jpl.nasa.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-arrays]</TITLE>
+<LINK REV="made" HREF="mailto:gor@aig.jpl.nasa.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00005.html">Date Prev</A>][<A HREF="msg00007.html">Date Next</A>][<A HREF="msg00005.html">Thread Prev</A>][<A HREF="msg00007.html">Thread Next</A>][<A HREF="maillist.html#00006">Date Index</A>][<A HREF="threads.html#00006">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-arrays]</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>, <A HREF="mailto:sbml-arrays@symbio.jst.go.jp">sbml-arrays@symbio.jst.go.jp</A></LI>
+<LI><em>Subject</em>: Re: [sbml-arrays] </LI>
+<LI><em>From</em>: Victoria Gor &lt;<A HREF="mailto:gor@aig.jpl.nasa.gov">gor@aig.jpl.nasa.gov</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 28 Jan 2002 17:04:02 -0800 (PST)</LI>
+<LI>Cc: <A HREF="mailto:Eric.D.Mjolsness@jpl.nasa.gov">Eric.D.Mjolsness@jpl.nasa.gov</A>, <A HREF="mailto:bornstei@aig.jpl.nasa.gov">bornstei@aig.jpl.nasa.gov</A>,  <A HREF="mailto:bshapiro@jpl.nasa.gov">bshapiro@jpl.nasa.gov</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello Andrew.
+
+Following are my thoughts on your comments.
+
+First about connections.
+You are right, the example I presented has every cell connected to it adjacent 
+neighbor and does not need explicit connection mechanism. But there are biological
+systems were explicit connections would need to be specified,
+that is why I have suggested before connections of three types:"explicit", 
+"function_based" or "complete". And even though neither "complete" nor 
+"function_based" connections need explicit list of connections, "explicit" 
+type would need all the connections listed. So, we must maintain some sort of
+&lt;listOfConnections&gt; element, where all types of connections can be specified.
+
+You proposed that connections are best thought of as sparse arrays. From the 
+viewpoint of SBML it does not matter, I suppose. But translator from SBML2 to 
+SBML1 will care, and it can be sparse matrix if you wish or linked list. 
+Now about your "elementOccurs" proposition, why keep renaming things? I thought 
+we have agreed already that &lt;listOfConnections&gt; can be defined within any 
+array element (or any element that can have a listOfDimensions element),
+so why rename it with "elementOccurs"? Do you think it is a more descriptive 
+name? Moreover, I still believe that formula is not an only method to define 
+where connection occurs. For example, in neuron interactions formula will not do, 
+we will need explicit connections. Or am I not understanding something?
+
+Now about functions. The type of the functions you introduced in the example do 
+not worry me too much. Those are easy functions: just a formula and an 
+arguments, they can be easily avoided by listing formulas in place. If such
+formula has to be repeated many times, then such short functions (in essence - 
+macros) can be useful. Nevertheless, in-place code is more readable if formula 
+appears only once. For our example, I think, functions like you proposed do not 
+simplify things, but they might for other examples. On the other hand, 
+functions that worry me a lot are functions like "sum" in our example. They are
+more complicated; while interpreted they require loops and tracing of various 
+data structures. Those are the functions, I would like to avoid expanding in 
+SBML. They require traditional programming and I think they are better to be
+expanded in interpreters. So what that there will be "profusion of standard 
+functions defined inside the language"? Many languages, especially high level
+specialized languages have such profusion of standard functions (matlab for 
+example). So, why can't we have "biolab" library which includes all these 
+functions. I am sure that biologist have a lot of structures and operations 
+that they all use repeatedly and would like to have some "short hand" for them.
+For example, SBML1 has an entire list of rate law functions already, so why 
+can't we have more functions of different types. For example, connection 
+functions can automate summing or product over the immediate neighbors, or 
+X-degree neighbors, or over explicit connections. Once one biologist needs such 
+function, the chances are that others also will need it.
+
+Any way, On Thursday, 10:00 am, I will discuss these issues with members of 
+my group. Let's see what they will say. Do you want to come to the meeting too?
+It will be at JPL.
+
+Victoria.
+ 
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00007" HREF="msg00007.html">RE: [sbml-arrays]</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00005.html">[sbml-arrays] reply to victoria</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00007.html">RE: [sbml-arrays]</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00005.html">[sbml-arrays] reply to victoria</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00007.html">RE: [sbml-arrays]</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00006"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00006"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

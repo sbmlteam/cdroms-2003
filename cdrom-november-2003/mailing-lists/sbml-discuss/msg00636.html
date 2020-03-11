@@ -1,0 +1,218 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] DWG: Revised Proposal -->
+<!--X-From-R13: Dnycu Unhtrf <enycu.tnhtrfNrzy&#45;e.ivyyn&#45;obfpu.qr> -->
+<!--X-Date: Fri, 19 Sep 2003 21:27:28 &#45;0700 -->
+<!--X-Message-Id: B1FA1F6B&#45;EA81&#45;11D7&#45;B9A3&#45;000A95776A76@eml&#45;r.villa&#45;bosch.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 601BBB4D9640CB4693A2384E4B37872E15B5ED@dell2650&#45;0550.kgi.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] DWG: Revised Proposal</TITLE>
+<LINK REV="made" HREF="mailto:ralph.gauges@eml-r.villa-bosch.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00635.html">Date Prev</A>][<A HREF="msg00637.html">Date Next</A>][<A HREF="msg00635.html">Thread Prev</A>][<A HREF="msg00641.html">Thread Next</A>][<A HREF="maillist.html#00636">Date Index</A>][<A HREF="threads.html#00636">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] DWG: Revised Proposal</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] DWG: Revised Proposal</LI>
+<LI><em>From</em>: Ralph Gauges &lt;<A HREF="mailto:ralph.gauges@eml-r.villa-bosch.de">ralph.gauges@eml-r.villa-bosch.de</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 19 Sep 2003 11:14:38 +0200</LI>
+<LI>Cc: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+&gt; The layout information is simply that, positional information for the 
+&gt; varous parts of the diagram? The only information that is given are 
+&gt; positions of the nodes and the coordinates of the edges?
+&gt;
+
+Yes that is correct. The only exception being the 
+speciesReferenceGlyphs that can specify a curve instead of just a 
+bounding box.
+
+
+&gt; Is there any information on objects other than modeling specific 
+&gt; objects, or is this information reserved for the rendering info (see 
+&gt; Jonathon's proposal for example).
+
+First of all, the reference to objects in the model is optional for all 
+Glyph objects, so you can have a CompartmentGlyph in the layout that 
+does not reference a Compartment in the Model.
+For all other objects that have absolutely nothing to do with reaction 
+networks, we have the listOfAdditionalGraphicalObjects. So if you would 
+like to include a picture of your red ferrari in the layout, you add 
+some bounding box to this list and reference a bitmap of the car in the 
+render parts listOfShapes.
+
+&gt;
+&gt; In the proposal you mention the bounding box but don't give an 
+&gt; example. I can't easily read xml-schema, so I need to ask is the 
+&gt; bounding box optional? I also notice you have a role attribute, is 
+&gt; this optional?
+&gt;
+
+The bounding box that is mentioned is a set of attributes on the glyph 
+objects. If you take for example the SpeciesGlyph it has the attributes 
+x,y,z and w,h,d where z and d are optional and default to 0.0. The 
+x,y,z attributes are used to set the position of the bounding box and 
+the w,h,d are the width, height and depth respectively. The x,y,w and h 
+attributes are not optional, so no, the bounding box is not optional.
+The SpeciesReferenceGlyph is somewhat different since it can either 
+have a bounding box object which again has the above mentioned 
+attributes or it can have a curve that specifies the arrow that is used 
+to represent the relation. Actually one of the two should be given, so 
+there might be a mistake in the schema specification because there it 
+would be optional.
+The role attribute is indeed optional and it can be used to specify the 
+role of the SpeciesReference in the reaction without having to figure 
+it out from the kinetics. So if your program draws inhibitors 
+differently from activators you could specify wether it is one or the 
+other. If you use the render part as well, this would be redundant 
+information since you would probably specify the complete render 
+information there anyway.
+
+
+&gt; The pseudo node coordinates I presume can coincide? I ask this because 
+&gt; some of us don't use a straight line segment in the center of the 
+&gt; reaction arc.
+&gt;
+
+Yes the two points of the reaction can coincide. Actually you can 
+either see those two points as two pseudo nodes or as a bounding box. 
+In the second case, you could specify some renderGroup (see render 
+part) to be drawn inside this bounding box. Maybe this is a little 
+ambiguous and should be changed.
+
+&gt; Without rendering info, is there any recommandation for font sizes 
+&gt; since you have width and height infor for node sizes, if the font size 
+&gt; isn't chosen appropriately then the font will over flow the box. I 
+&gt; think I would like to see something that indicates whether the node 
+&gt; bounding box should be elastic or fixed, if elastic then the box will 
+&gt; resize according to the font used. This is what I do in jdesigner and 
+&gt; it avoids any font sizing issues.
+
+This assumes that everybody will be drawing the nodes as text labels 
+which might not be the case. Without render information it is up to the 
+program what is drawn inside the bounding box.
+I have not given any thought to elastic bounding boxes yet. Don't they 
+defy the purpose of a bounding box? If I have some layout, so I want 
+the program to be able to enlarge bounding boxes even though this might 
+end up in a messy layout? If a text label would not fit into a given 
+bounding box, would it not make more sense to have the layout 
+recalculated?
+What do other people think about his?
+
+
+&gt; On first glance, I can't see anything which records the background 
+&gt; colour? Do you have one?
+&gt;
+Short answer: not yet.
+Longer answer: Since we did not specify concrete examples for shapes, 
+we did not bother with their details yet. All the document states so 
+far is that there will de an abstract class shape and that all shapes 
+that will eventually be defined are subclasses of Shape. We are not 
+sure yet if it would make sense to have an attribute for background 
+color in Shape directly rather than in the subclasses (where needed). 
+E.g. you might not need a background color for text label shapes or 
+bitmaps. Actually depending on how we handle this, a background  color 
+may not be needed at all. You could for example just draw some text on 
+a filled rectangle that has the color you want as the background.
+
+
+&gt; I was looking at the rendering document and noticed that most of it is 
+&gt; in schema notation, probably I'm the only one but I find it difficult 
+&gt; to read schema (it's like trying to read a C program that's written in 
+&gt; assembler), would it be possible to put more real examples?
+&gt;
+
+I don't think you would be the only one having difficulties reading the 
+schema notation and as you can see from the mistakes that I made 
+writing it, I am not as comfortable with it as I would wish. Actually 
+we had hoped that the text would make the points clear we were trying 
+to make without having to rely on the schema. Obviously this is not the 
+case and I apologize for that. As this is just a first draft and 
+doesn't have all the features that are needed, it is somehow difficult 
+to give examples. I tried to make up a short example towards the end to 
+demonstrate how layout and render information would play together. For 
+this I already made up some Shapes like text labels and circle, but as 
+I just said, I made this just up for this example, we haven't defined 
+any concrete shapes yet. We had hoped to get some feedback as to what 
+kind of shapes people would need first. So could you tell us what kind 
+of basic shapes you would like to have and the properties they need. As 
+stated in the document, we are probably going to borrow some of the 
+notation from SVG, we only need to know what is needed first.
+
+
+
+I hope I could clarify some of the issues raised.
+Thanks a lot for the feedback and we hope to hear more along this line
+
+Ralph
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00641" HREF="msg00641.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00635" HREF="msg00635.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Herbert Sauro&quot; &lt;Herbert_Sauro@kgi.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00635.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00637.html">Sbml-discuss post from owner-sbml-discuss@its.caltech.edu requires approval</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00635.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00641.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00636"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00636"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

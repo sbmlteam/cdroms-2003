@@ -1,0 +1,110 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;arrays] domain and symbols -->
+<!--X-From-R13: @vpbynf  Zr @birer <yrabiNcnfgrhe.se> -->
+<!--X-Date: Sat, 25 May 2002 10:12:55 &#45;0700 -->
+<!--X-Message-Id: Pine.OSF.4.21.0205251906050.50947&#45;100000@electre.pasteur.fr -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-arrays] domain and symbols</TITLE>
+<LINK REV="made" HREF="mailto:lenov@pasteur.fr">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00009.html">Date Prev</A>][Date Next][<A HREF="msg00009.html">Thread Prev</A>][Thread Next][<A HREF="maillist.html#00010">Date Index</A>][<A HREF="threads.html#00010">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-arrays] domain and symbols</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-arrays@symbio.jst.go.jp">sbml-arrays@symbio.jst.go.jp</A></LI>
+<LI><em>Subject</em>: [sbml-arrays] domain and symbols</LI>
+<LI><em>From</em>: Nicolas  Le Novere &lt;<A HREF="mailto:lenov@pasteur.fr">lenov@pasteur.fr</A>&gt;</LI>
+<LI><em>Date</em>: Sat, 25 May 2002 19:12:38 +0200 (CEST)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi,
+
+I'm not sure to understand the interest of defining a domain and then,
+symbols belonging to that domain. Why not equating domains and symbols:
+
+&lt;listOfDomains&gt;
+    &lt;domain symbol="x" lowerbound="0" upperbound="9"&gt;
+    &lt;domain symbol="y" lowerbound="0" upperbound="5"&gt;
+    &lt;domain symbol="z" lowerbound="6" upperbound="9"&gt;
+&lt;/listOfDomains&gt;
+
+It is much more parcimonious than:
+
+&lt;listOfDomains&gt;
+    &lt;domain lowerbound="0" upperbound="9"&gt;
+	&lt;listOfSymbols&gt;
+	    &lt;symbol name="x" /&gt;
+	&lt;/listOfSymbols&gt;
+    &lt;/domain&gt;
+    &lt;domain lowerbound="0" upperbound="5"&gt;
+        &lt;listOfSymbols&gt;
+            &lt;symbol name="y" /&gt;
+        &lt;/listOfSymbols&gt;
+    &lt;/domain&gt;
+    &lt;domain lowerbound="6" upperbound="9"&gt;
+        &lt;listOfSymbols&gt;
+            &lt;symbol name="z" /&gt;
+        &lt;/listOfSymbols&gt;
+    &lt;/domain&gt;
+&lt;/listOfDomains&gt;
+
+?
+
+--
+Nicolas LE NOVÈRE                                 
+Récepteurs et Cognition,   Institut Pasteur,    75724 Paris cedex,   FRANCE
+e-mail : lenov@pasteur.fr                  <A  HREF="http://www-alt.pasteur.fr/~lenov">http://www-alt.pasteur.fr/~lenov</A>
+tel : 33-(0)1-45-68-88-44                         fax : 33-(0)1-45-68-88-36
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00009.html">[sbml-arrays] FW: Initialization of large data arrays in SBML</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00009.html">[sbml-arrays] FW: Initialization of large data arrays in SBML</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00010"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00010"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

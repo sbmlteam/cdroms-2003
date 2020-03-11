@@ -1,0 +1,225 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] DWG: Revised Proposal -->
+<!--X-From-R13: Dnycu Unhtrf <enycu.tnhtrfNrzy&#45;e.ivyyn&#45;obfpu.qr> -->
+<!--X-Date: Fri, 19 Sep 2003 21:25:44 &#45;0700 -->
+<!--X-Message-Id: 6C6638EC&#45;E9EA&#45;11D7&#45;B9A3&#45;000A95776A76@eml&#45;r.villa&#45;bosch.de -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2C053E3785@ITEVS.uchc.net -->
+<!--X-Derived: pdf00016.pdf -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] DWG: Revised Proposal</TITLE>
+<LINK REV="made" HREF="mailto:ralph.gauges@eml-r.villa-bosch.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00630.html">Date Prev</A>][<A HREF="msg00632.html">Date Next</A>][<A HREF="msg00626.html">Thread Prev</A>][<A HREF="msg00633.html">Thread Next</A>][<A HREF="maillist.html#00631">Date Index</A>][<A HREF="threads.html#00631">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] DWG: Revised Proposal</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] DWG: Revised Proposal</LI>
+<LI><em>From</em>: Ralph Gauges &lt;<A HREF="mailto:ralph.gauges@eml-r.villa-bosch.de">ralph.gauges@eml-r.villa-bosch.de</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 18 Sep 2003 17:11:48 +0200</LI>
+<LI>Cc: &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;,  &quot;Herbert M. Sauro&quot; &lt;<A HREF="mailto:hsauro@cds.caltech.edu">hsauro@cds.caltech.edu</A>&gt;, &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Since we feel that the layout part of the proposal contains more or 
+less everything that would be needed and nobody told us different, we 
+sat down and tried to write up a first draft of the render part. It is 
+basically a more detailed description of what I wrote in my last mail. 
+Although we made some slight changes in some places.
+As mentioned before, the general schema is pretty much the same as for 
+the layout and we put pretty much emphasis on allowing people to reuse 
+objects. That is to say, you define a color and can use it in several 
+places, or you define some shape and use it over and over again in 
+different sizes.
+We hope that people again give us feedback and tell us what they like 
+or what they dislike. And it is especially what people don't like that 
+we want to hear.
+
+Ralph
+
+The document can also be found at the usual place 
+(<A  HREF="http://projects.villa-bosch.de/bcb/sbml/">http://projects.villa-bosch.de/bcb/sbml/</A>)
+
+
+</PRE>
+<P><A HREF="pdf00016.pdf" >SBMLRenderExtension.pdf</A></P>
+<PRE>
+
+
+On Freitag, September 12, 2003, at 02:30  Uhr, Wagner,John wrote:
+
+&gt; Ralph,
+&gt; That's pretty much one of the approaches I'd thought
+&gt; about, and probably the preferable approach from my
+&gt; perspective: it maximizes reuse of the render components,
+&gt; separates render from layout, and allows the render
+&gt; markup to be written completely in rendering terms
+&gt; (lines, bitmaps, shapes, etc).
+&gt; Agreed, the bounding box is more or less a hint. Anyone
+&gt; who does their own automatic sizing can simply iggy
+&gt; it.
+&gt; John
+&gt;
+&gt; 	-----Original Message-----
+&gt; 	From: Ralph Gauges [<A  HREF="mailto:ralph.gauges@eml-r.villa-bosch.de">mailto:ralph.gauges@eml-r.villa-bosch.de</A>]
+&gt; 	Sent: Fri 9/12/2003 5:44 AM
+&gt; 	To: Wagner,John
+&gt; 	Cc: Herbert Sauro; Herbert M. Sauro; Ralph Gauges; 
+&gt; sbml-discuss@caltech.edu
+&gt; 	Subject: Re: [sbml-discuss] DWG: Revised Proposal
+&gt; 	
+&gt; 	
+&gt;
+&gt; 	Actually we have not given much thought to the render part yet since 
+&gt; we
+&gt; 	wanted to get the layout part done first.
+&gt; 	We just had a little discussion about it so and what came up was
+&gt; 	something very much along the lines of the layout part.
+&gt; 	
+&gt; 	We would take the render information completely out of the layout part
+&gt; 	and have a separate &lt;render&gt; part.
+&gt; 	Therein we would define a listOfLinetypes for the different line types
+&gt; 	we are going to use. Likewise we would have a listOfCurves,
+&gt; 	listOfShapes, listOfTextlabels, listOfBitmaps and renderGroups.
+&gt; 	Actually the listOfTextlabels might not be necesary since it could be
+&gt; 	defined as a kind of shape and put into the listOfShapes.
+&gt; 	The ListOfRenderGroups would contain a list of groups that again
+&gt; 	contain a
+&gt; 	list of references to either curves, shapes or bitmaps and their
+&gt; 	relative positions within the group.
+&gt; 	The glyphs in the layout part could then reference one of the render
+&gt; 	groups.
+&gt; 	So the structure would essentialy be something like that
+&gt; 	
+&gt; 	&lt;listOfLayouts&gt;
+&gt; 	   &lt;layout ...&gt;
+&gt; 	     ...
+&gt; 	      &lt;speciesGlyph ... rendering="greenRec" .../&gt;
+&gt; 	     ...
+&gt; 	   &lt;/layout ...&gt;
+&gt; 	.....
+&gt; 	&lt;/listOfLayouts&gt;
+&gt; 	
+&gt; 	&lt;render&gt;
+&gt; 	      &lt;listOfLinetypes&gt;
+&gt; 	        &lt;lineType id="someLineType" stroke="solid" color="0,0,0,255"
+&gt; 	thickness="1" /&gt;
+&gt; 	      ....
+&gt; 	      &lt;/listOfLinetypes&gt;
+&gt; 	     &lt;listOfCurves&gt;
+&gt; 	     ....
+&gt; 	     &lt;/listOfCurves&gt;
+&gt; 	     &lt;listShapes&gt;
+&gt; 	       &lt;shape id="greenRec" xsi:type="sr:rectangle" 
+&gt; color="0,255,0,255"
+&gt; 	linetype="someLineType"/&gt;
+&gt; 	     ....
+&gt; 	     &lt;/listOfShapes&gt;
+&gt; 	     &lt;listOfBitmaps&gt;
+&gt; 	     ....
+&gt; 	     &lt;/listOfBitmaps&gt;
+&gt; 	     &lt;renderGroups&gt;
+&gt; 	     ....
+&gt; 	     &lt;/renderGroups&gt;
+&gt; 	&lt;/render&gt;
+&gt; 	
+&gt; 	
+&gt; 	I hope this is was not too confusing, but if everyone else thinks that
+&gt; 	we have the layout part pretty much covered, we could go ahead and
+&gt; 	write this up in a little more detail so that we can discuss about it.
+&gt; 	
+&gt; 	Ralph
+&gt; 	
+&gt; 	P.S.: Concerning the new bounding box for layouts in the layout
+&gt; 	proposal, everybody is free to ignore it if their canvas does not have
+&gt; 	a limited size. It is not a limit, but rather a hint as to how large
+&gt; 	your view needs to be in order to show the whole diagram.
+&gt; 	
+&gt; 	
+&gt; 	
+&gt; 	On Donnerstag, September 11, 2003, at 01:00  Uhr, Wagner,John wrote:
+&gt; 	
+&gt; 	&gt; Looking really good, Ralph. One question...
+&gt; 	&gt;
+&gt; 	&gt; Your document mentions separating layout and render info
+&gt; 	&gt; (which I very much like). Obviously, we've not gotten to the
+&gt; 	&gt; rendering part, at least not yet. But, what is your vision of
+&gt; 	&gt; how rendering would fit into your scheme? One of the
+&gt; 	&gt; reasons I ask is, depending on where it fits in, the naming
+&gt; 	&gt; might not quite make sense as is. In *my* head, instead of
+&gt; 	&gt; your &lt;listOfLayouts&gt; element, I envision a &lt;listOfDiagrams&gt;
+&gt; 	&gt; element, which would contain 0 or more &lt;diagram&gt; elements,
+&gt; 	&gt; with each &lt;diagram&gt; element containing a &lt;layout&gt; element
+&gt; 	&gt; and a &lt;render&gt; element. On the other hand, I could also
+&gt; 	&gt; imagine sticking &lt;render&gt; inside &lt;layout&gt; (although I don't
+&gt; 	&gt; think that makes sense). Can you say a few words about this?
+&gt; 	&gt;
+&gt; 	&gt; John
+&gt; 	&gt;
+&gt; 	&gt;
+&gt; 	&gt;
+&gt; 	
+&gt; 	
+&gt;
+&gt;
+&gt;
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00626" HREF="msg00626.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00630.html">[sbml-discuss] Release notes: BioUML workbench v.0.7.1 (correction)</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00632.html">Sbml-discuss post from owner-sbml-discuss@its.caltech.edu requires approval</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00626.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00633.html">RE: [sbml-discuss] DWG: Revised Proposal</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00631"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00631"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

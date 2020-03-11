@@ -1,0 +1,138 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG: SBML extension for diagram layout -->
+<!--X-From-R13: zraqrfNiov.ig.rqh -->
+<!--X-Date: Thu, 22 May 2003 05:31:41 &#45;0700 -->
+<!--X-Message-Id: 1203.192.12.209.8.1053606691.squirrel@webmail.vbi.vt.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3FA493B792A6D311B51A009027D3B86101AC91DE@mail.kgi.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG: SBML extension for diagram layout</TITLE>
+<LINK REV="made" HREF="mailto:mendes@vbi.vt.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00219.html">Date Prev</A>][<A HREF="msg00221.html">Date Next</A>][<A HREF="msg00190.html">Thread Prev</A>][<A HREF="msg00191.html">Thread Next</A>][<A HREF="maillist.html#00220">Date Index</A>][<A HREF="threads.html#00220">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG: SBML extension for diagram layout</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG: SBML extension for diagram layout</LI>
+<LI><em>From</em>: <A HREF="mailto:mendes@vbi.vt.edu">mendes@vbi.vt.edu</A></LI>
+<LI><em>Date</em>: Thu, 22 May 2003 08:31:31 -0400 (EDT)</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I agree with a previous comment that the diagram language should contain
+high-level information about the diagram. If we put lower level
+information in, then I agree with Herbert that SVG might be a better
+option for the diagram. Having said this, given the nature of XML, one can
+easily ignore things like scaling information.
+
+In that spirit, I thing scaling information for the graphs should be in
+dpi units, graph dimensions should be in pixels.
+
+Pedro
+
+&gt; The units I use are expressed as screen units, roughly 92dpi. Users can
+&gt; override this resolution if they wish. The reason for using a physical
+&gt; size
+&gt; is to do with font information (which is expressed in pts) and allows the
+&gt; program to preproduce the actual size the model was designed to. I think
+&gt; this is what Hugh said in his email. If you have a dimension of 100 units
+&gt; and a font specified at 10pt, what does the 100 mean, what size is it
+&gt; relative to the font since the font is specified in actual physical units
+&gt; but the dimension in no units.
+&gt;
+&gt; Herbert
+&gt;
+&gt;
+&gt; -----Original Message-----
+&gt; From: Sven Sahle
+&gt; To: Herbert Sauro
+&gt; Cc: sbml-discuss@caltech.edu
+&gt; Sent: 5/21/03 8:08 AM
+&gt; Subject: Re: [sbml-discuss] DWG: SBML extension for diagram layout
+&gt;
+&gt; On Wednesday 21 May 2003 02:20, Herbert Sauro wrote:
+&gt;
+&gt;&gt; Thanks, one question, I'm curious to know what units your coordinates
+&gt; are
+&gt;&gt; in?
+&gt;
+&gt; We think that the layout should only specify relative places of the
+&gt; different
+&gt; objects in the diagram. So we do not really have a unit for the
+&gt; coordinates.
+&gt;
+&gt; Any program can easily find a bounding box while parsing the file and
+&gt; scale
+&gt; the diagram to its needs.
+&gt;
+&gt; A unit information would specify how big the diagram actually should be
+&gt; on
+&gt; screen or on paper. We consider that to be render level information.
+&gt; But maybe we missed something. Can someone provide a reason why unit
+&gt; information is important for the layout of a reaction scheme?
+&gt;
+&gt; Sven
+&gt;
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00190" HREF="msg00190.html">RE: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+<UL><LI><EM>From:</EM> Herbert Sauro &lt;Herbert_Sauro@kgi.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00219.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00221.html">Re: [sbml-discuss] Remaining issues for SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00190.html">RE: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00191.html">RE: [sbml-discuss] DWG: SBML extension for diagram layout</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00220"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00220"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

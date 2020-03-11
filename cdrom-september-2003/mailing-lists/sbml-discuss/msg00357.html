@@ -1,0 +1,572 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] General namespace inquiry -->
+<!--X-From-R13: [vpunry Vhpxn <zuhpxnNpnygrpu.rqh> -->
+<!--X-Date: Mon, 26 May 2003 18:18:40 &#45;0700 -->
+<!--X-Message-Id: 16082.48352.111142.195625@erato1.cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD36E53@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] General namespace inquiry</TITLE>
+<LINK REV="made" HREF="mailto:mhucka@caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00356.html">Date Prev</A>][<A HREF="msg00358.html">Date Next</A>][<A HREF="msg00343.html">Thread Prev</A>][<A HREF="msg00348.html">Thread Next</A>][<A HREF="maillist.html#00357">Date Index</A>][<A HREF="threads.html#00357">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] General namespace inquiry</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] General namespace inquiry</LI>
+<LI><em>From</em>: Michael Hucka &lt;<A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 26 May 2003 18:18:24 -0700</LI>
+<LI>Cc: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI>Reply-To: <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+  JWagner&gt; Just to get some feedback...those of you who do
+  JWagner&gt; *not* have (separate) namespaces, how do you
+  JWagner&gt; mangle/convert the local parameters in
+  JWagner&gt; KineticLaw? I guess one obvious approach is to
+  JWagner&gt; blindly throw them into the global namespace and
+  JWagner&gt; ignore the consequences, and another is to check
+  JWagner&gt; to see if throwing them in the global namespace
+  JWagner&gt; would result in a collision and tell the user
+  JWagner&gt; "I'm sorry, Dave, I'm afraid I can't do that".  A
+  JWagner&gt; "better" way might be to mangle the name,
+  JWagner&gt; converting Reaction R's kinetic parameter V to,
+  JWagner&gt; say, R_V (appending a number or something until
+  JWagner&gt; it is unique with respect to the global
+  JWagner&gt; namespace), but then you'd have to substitute the
+  JWagner&gt; new name back into the KineticLaw's expression
+  JWagner&gt; (not to mention that the user might be a little
+  JWagner&gt; distressed to suddenly see his/her parameter name
+  JWagner&gt; changed).
+ 
+  JWagner&gt; I'm not asking because I want to change the spec,
+  JWagner&gt; I'm asking because I am trying to implement this,
+  JWagner&gt; and it's still a problem. Currently, I'm throwing
+  JWagner&gt; them blindly into the global namespace (ugh!).
+
+About 1.5 years ago, we had an internal (to sysbio-team)
+discussion in an attempt to devise a set of rules for how a
+software tool might perform translation of names.  The
+scheme is not perfect, as subsequent internal discussions
+revealed, but for whatever it's worth, here it is, along
+with subsequent email exchanges about unresolved issues.  I
+think the discussions are pertinent here, although this
+message is going to be very long (sorry!).
+
+Look for lines of '=' as dividers between the messages below.
+
+I know Joerg Weimar mentioned having a translation scheme
+as well, and I have no idea how this one compares to his.
+
+MH
+
+=== message #1 =============================================
+
+&gt; From: Michael Hucka &lt;mhucka@caltech.edu&gt;
+&gt; Date: Tue, 26 Feb 2002 20:02:45 -0500
+&gt; To: Systems Biology Workbench Development Team &lt;sysbio-team@cds.caltech.edu&gt;
+&gt; Subject: Clarification of name mangling
+&gt; 
+&gt; Here's an attempt at spelling out in detail what I think
+&gt; needs to happen when different kinds of simulators read and
+&gt; write SBML.  I think this resolves the issues of name
+&gt; mangling that we've discussed.  The exposition may not be
+&gt; clear enough, so please help clarify this if it's still not
+&gt; good enough.
+&gt; 
+&gt; 
+&gt; Ground rule #1: An SBML input file/data stream must obey the
+&gt; namespace rules described in section 3.4 of the level 1
+&gt; spec.  These rules are as follows:
+&gt; 
+&gt;   1.i) All model-level component names (compartments,
+&gt;   species, reactions, parameters, parameter rules, and
+&gt;   units) reside in the same global namespace.  This means,
+&gt;   for example, that a reaction and a specie definition
+&gt;   cannot both have the same name.
+&gt;   
+&gt;   1.ii) Each reaction definition establishes a private local
+&gt;   namespace for parameter names.  Within the definition of a
+&gt;   given reaction, parameter names introduced in that
+&gt;   reaction override (shadow) identical names in the global
+&gt;   namespace.
+&gt;   
+&gt;   1.iii) Certain names in SBML Level 1 are reserved or
+&gt;   otherwise have special meaning.  Table 2 in the spec lists
+&gt;   these reserved names.  In order to prevent name
+&gt;   collisions, these reserved names cannot be used as names
+&gt;   for any component of a model.
+&gt; 
+&gt;   (Comment: The implication of these rules is that SBML
+&gt;   employs local namespaces.  This choice was dictated in
+&gt;   part by the desire to ensure that the introduction of
+&gt;   submodels wouldn't require changing the namespace
+&gt;   interpretation rules.)
+&gt; 
+&gt; Ground rule #2: It doesn't matter what a simulator does
+&gt; internally.  If it writes out SBML, the names used in the
+&gt; SBML output must obey SBML's namespace rules.
+&gt; 
+&gt;   Corollary 2.a: If Gepasi, Jarnac, or any other tool writes
+&gt;   out SBML, the result is not "Gepasi SBML" or "Jarnac SBML"
+&gt;   or anything else.  It is SBML.
+&gt; 
+&gt;   Corollary 2.b: A tool can assume that when it reads SBML,
+&gt;   the input obeys SBML's namespace rules and not some
+&gt;   modified version thereof.
+&gt; 
+&gt;   Corollary 2.c: If a tool has to modify model names
+&gt;   internally for whatever reason, it should not write out
+&gt;   the modified names in SBML.  It should remove any prefix
+&gt;   or other modification that it uses for its internal needs.
+&gt; 
+&gt; 
+&gt; How does a tool read and write SBML given these rules?
+&gt; There seem to be three cases to consider: 
+&gt; 
+&gt;   Case A: a tool uses exactly the same rules internally as
+&gt;   those stated for SBML.
+&gt; 
+&gt;   Case B: a tool uses local namespaces internally even more
+&gt;   extensively than SBML.
+&gt; 
+&gt;   Case C: a tool uses a global namespace internally.
+&gt; 
+&gt; Let's consider each case in turn:
+&gt; 
+&gt;   Case A is obviously an easy one: the tool does not need to
+&gt;   do anything to model names when reading/writing SBML.
+&gt; 
+&gt;   Case B does not appear to be possible.  Reactions are the
+&gt;   only thing in SBML that have local symbols (in the form of
+&gt;   parameters inside reaction definitions).  I don't see
+&gt;   another element in SBML that would somehow generate a
+&gt;   name local to itself.  Therefore, this case reduces to A.
+&gt; 
+&gt;   Case C is the only one left.  Since SBML specifies the
+&gt;   rules for names written into SBML, the onus on conforming
+&gt;   to SBML is on the tools.  A tool using a global namespace
+&gt;   internally must make internal accommodations to translate
+&gt;   incoming SBML into a form that it can use, and then to
+&gt;   translate its internal format into SBML-compliant form on
+&gt;   output.  How can it do this?
+&gt; 
+&gt;     Subcase C.1: Let's say the tool is a package that
+&gt;     provides a graphical user interface around internal
+&gt;     representations of reactions, parameters, species, etc.
+&gt;     The user of the tool never sees the internal structures
+&gt;     because the user only sees what's presented by the tool
+&gt;     in the user interface.  This tool therefore has complete
+&gt;     control over how it records the names of entities
+&gt;     defined in an SBML model, because it can decouple the
+&gt;     presentation of names to the user from the
+&gt;     representation of names internally.  Since the tool uses
+&gt;     a global namespace, presumably the tool uses some sort
+&gt;     of global symbol table internally, and all names go into
+&gt;     this symbol table.  One approach to handling the SBML
+&gt;     names internally would be to add an additional to the
+&gt;     symbol entry for each name.  This slot could hold some
+&gt;     additional piece of information, for example the name of
+&gt;     the reaction where the parameter appears, or just a
+&gt;     numerical index for the reaction.  If for some reason
+&gt;     storing this additional piece of information is
+&gt;     undesirable, the tool could use a simpler scheme of
+&gt;     simply altering the names of parameters by internally
+&gt;     prefixing them with a unique (to the tool) string of
+&gt;     characters.  E.g., if the tool's name is "mytool", and
+&gt;     if there is a reaction R1 with two parameters, a and b,
+&gt;     and another reaction R2 with a different parameter a:
+&gt; 
+&gt;         __mytool__R1_a
+&gt;         __mytool_R1__b
+&gt;         __mytool_R2__a
+&gt; 
+&gt;     The prefix "__mytool_Rx__" should NOT be shown to the
+&gt;     user.  It's simply how the tool would translate the
+&gt;     user's input into an internal form.  Input dialog boxes,
+&gt;     etc., would only show "a", "b", "c", and not the whole
+&gt;     string.  Internally, the tool would take the input from
+&gt;     the user and prefix each name with the prefix string,
+&gt;     then use that internally.  When it came time to write
+&gt;     out SBML, it would again strip off the prefix string
+&gt;     from those symbols that had one.  The prefix string
+&gt;     would NOT show up in the SBML output.  There is no
+&gt;     possibility of name collisions in the SBML after
+&gt;     stripping off such prefixes because SBML assumes names
+&gt;     are local to reactions anyway.  Also, since the prefix
+&gt;     string is unique to the tool, the tool can always
+&gt;     recognize when a name has the prefix and when it does
+&gt;     not.  Note that it is always possible to generate a
+&gt;     unique prefix string.
+&gt; 
+&gt; 
+&gt;     Subcase C.2: Let's say that the tool is a scripting tool
+&gt;     that provides some functionality to read/write SBML.
+&gt;     This functionality must be implemented as code written
+&gt;     in the script language, and what it offers to the user
+&gt;     is some set of new script-level commands.  E.g., the
+&gt;     commands might be the equivalents of "define a new
+&gt;     compartment", "define a reaction", "define a parameter
+&gt;     on the reaction", "give me the value of such-and-such
+&gt;     parameter on such-and-such reaction", etc.  This
+&gt;     situation can be handled exactly the same as in Subcase
+&gt;     C.1.  Here's why: the code implementing the
+&gt;     functionality *is* the user interface in this situation.
+&gt;     Therefore, this code can be designed to perform the same
+&gt;     kinds of name-rewriting operations (internally, hidden
+&gt;     from the user) as described for Subcase C.1 above.
+&gt; 
+&gt; 
+&gt;     Subcase C.3: Let's say that the tool is a scripting tool
+&gt;     and for some reason, the author of the tool does not
+&gt;     wish to perform behind-the-scenes rewriting of names to
+&gt;     shield the user from the issue.  The tool still must
+&gt;     read SBML (=&gt; a model with names in local namespaces)
+&gt;     and translate parameters inside reactions into some
+&gt;     globally-unique form.  In this worst-case scenario, the
+&gt;     tool can still use a sensible prefix, such as
+&gt;     "__reactionname__parametername".  The user will see
+&gt;     these names, and be annoyed that the tool's author did
+&gt;     not chose to hide them as described in Subcase C.2, but
+&gt;     they will be able to deal with it, because the names
+&gt;     coming from an SBML model will be have been rendered
+&gt;     unique by virtue of this name rewriting.  Now, since the
+&gt;     tool is a global namespace tool, any new symbols that
+&gt;     the user creates in the tool environment will already be
+&gt;     unique by definition.  Therefore, when it comes time to
+&gt;     write out a model in SBML form, the tool only needs to
+&gt;     strip off the "_reactionname_" prefix (the opposite of
+&gt;     what it does to incoming SBML models) from those symbols
+&gt;     that have it, and leave other symbols alone.  This works
+&gt;     because new names generated in the tool have to be
+&gt;     unique by definition, and therefore, if they're left
+&gt;     untouched when generating SBML, they can't result in
+&gt;     name collisions in the resulting SBML.
+&gt; 
+&gt; As a final concrete example, let's look at two tools in
+&gt; particular, Gepasi (local) and Jarnac (global), exchanging
+&gt; some SBML.  Jarnac is an example of Subcase C.1: it's a
+&gt; tool using a global namespace and it has a user interface
+&gt; that can hide name manipulations.
+&gt; 
+&gt; Let's say we have a reaction named R1, in which there is a
+&gt; parameter a in the original model, and then in the second
+&gt; tool we create a new parameter b in the same reaction.  In
+&gt; this situation, since Jarnac is the one using a global
+&gt; namespace, it is the one that has to do something internally
+&gt; to the names.  For the sake of discussion, let's say it
+&gt; simply rewrites the names using a prefix of the form
+&gt; "__jarnac_reactionname__".
+&gt; 
+&gt;  Symbol  Direction   Symbol
+&gt;  in      of	     in
+&gt;  Gepasi  Writing     Jarnac          Comment
+&gt;  ------  ---------   ----------      ------------------------
+&gt;  a       -&gt; SBML -&gt;  __jarnac_R1__a  Gepasi simply writes
+&gt;                                      the symbol a in the 
+&gt;                                      reaction to SBML
+&gt;                                      straight out, because
+&gt;                                      it's already using
+&gt;                                      local namespace rules
+&gt;                                      like SBML does.  Jarnac
+&gt;                                      prefixes the name when
+&gt;                                      it reads it in.  Jarnac
+&gt;                                      doesn't show this to
+&gt;                                      the user, though; in
+&gt;                                      the user interface, the
+&gt;                                      symbol is shown as "a"
+&gt;                                      because Jarnac can
+&gt;                                      strip off the prefix
+&gt;                                      when it's showing the
+&gt;                                      name to the user.
+&gt; 
+&gt;                      __jarnac_R1__b  User creates a new symbol.
+&gt;                                      The user sees it as "a"
+&gt;                                      in the user interface, but
+&gt;                                      Jarnac internally calls
+&gt;                                      it "__jarnac_R1__b".
+&gt; 
+&gt;  b      &lt;- SBML &lt;-   __jarnac_R1__b  Jarnac strips off the
+&gt;                                      prefix when writing SBML
+&gt;                                      and calls the symbol "b"
+&gt;                                      in the reaction. 
+&gt; 
+&gt;  b      -&gt; SBML -&gt;   __jarnac_R1__b  The user does something
+&gt;                                      in Gepasi, and writes a
+&gt;                                      new SBML output.
+&gt;                                      Jarnac reads it and
+&gt;                                      again prefixes the
+&gt;                                      parameter "b" in
+&gt;                                      reaction R1 with the
+&gt;                                      prefix "__jarnac_R1__b".
+&gt;                                      It doesn't know it's the
+&gt;                                      same reaction or model;
+&gt;                                      it's simply following
+&gt;                                      the same prefixing
+&gt;                                      rules for every SBML
+&gt;                                      input.
+&gt;                      
+&gt; Etc.
+&gt; 
+&gt; Does this cover all the cases, and does it work?
+&gt; 
+&gt; MH
+
+
+=== message #2 ==================================================
+
+&gt; From: "Andrew Finney" &lt;afinney@cds.caltech.edu&gt;
+&gt; To: &lt;mhucka@caltech.edu&gt;
+&gt; Cc: "Herbert M Sauro" &lt;hsauro@cds.caltech.edu&gt;,
+&gt;    "Hamid Bolouri" &lt;hbolouri@caltech.edu&gt;
+&gt; Subject: RE: [sysbio-team] Clarification of name mangling
+&gt; Date: Wed, 27 Feb 2002 09:57:12 -0800
+&gt; 
+&gt; Mike
+&gt; 
+&gt; Thanks
+&gt; 
+&gt; Some comments:
+&gt; 
+&gt; 
+&gt; a) I think you have glossed over an issues with respect
+&gt; to Jarnac of any other tool using a global namespace.
+&gt; Its not possible to neatly divide this global namespace
+&gt; as you want: for example suppose we have an incoming model in
+&gt; SBML with a global parameter 'a' and a local parameter
+&gt; 'a' in reaction r.  we can mangle the name of the local
+&gt; one to _mangle_r_a. That's fine.  But if the user
+&gt; interface demangles it back to 'a' then the user can't
+&gt; distinguish between the global and local parameters.
+&gt; In short some form of mangling scheme has to be visible
+&gt; to the user.
+&gt; 
+&gt; b) the user can create new global parameters what will
+&gt; overlap with the name mangling scheme. e.g. the user
+&gt; could create _mangle_r_b.  A tool is best recording which
+&gt; parameters were imported as local parameters and should only
+&gt; apply demangling to those parameters as required.
+&gt; The demangler should check the scope of the parameter before
+&gt; transforming it back to a local parameter (the previously
+&gt; local parameter may have been used globally).
+&gt; 
+&gt; c) if you record whether a parameter is imported local or global
+&gt; you can minimize the name mangling to only the names that clash
+&gt; i.e. you're not using the name as a mechanism for recording 
+&gt; whether the parameter is local or global.  In addition the
+&gt; mangling can be made unobtrusive e.g. parameter a in reaction r =&gt; r_a
+&gt; if r_a doesn't exist anywhere else.
+&gt; 
+&gt; d) comments on implementation:
+&gt; 
+&gt; We can consider the purely global form and the purely
+&gt; local forms as restricted forms of SBML then... I suggest
+&gt; we only focus, for the moment, on moving models from the
+&gt; restricted forms to/from general SBML. IMHO A tool must
+&gt; not try to go from its restricted form to the other
+&gt; restricted form. e.g. Jarnac shouldn't output fully localized
+&gt; SBML, it should just return a modified model back something
+&gt; like its starting point.
+&gt; 
+&gt; We then have the following functions, which can either
+&gt; ideally transform a NOM like structure or modify an SBML
+&gt; stream: makeLocalParametersGlobal, unmakeLocalParametersGlobal,
+&gt; makeGlobalParametersLocal, unmakeLocalParametersGlobal.
+&gt; A given tool only implements/uses the appropriate make/unmake pair.
+&gt; e.g. Jarnac implements makeLocalParametersGlobal and unmakeLocalParametersGlobal
+&gt; 
+&gt; There 3 scenarios for the implementation of this
+&gt; in order of preference:
+&gt; 
+&gt; a) the importing tool implements the make, unmake function pair that it requires
+&gt; and it records which parameters are local/global in a straight forward fashion.
+&gt; 
+&gt; b) the NOM implements the make* functions but in each case generates a table
+&gt; (array of string) of the parameters that were made global or local depending
+&gt; on the direction of the transformation.  The tool that calls one of these
+&gt; functions stores the table and then later passes the table to the unmake*
+&gt; function.  This minimizes the disruption to the module importing the SBML.
+&gt; (as long as caller keeps the table the caller can import the transformed
+&gt; SBML as XML or by accessing the NOM structures.)
+&gt; 
+&gt; c) the NOM implements the 4 functions but adds an XML annotation to the SBML stream 
+&gt; that labels parameters as local or global depending on the transformation.
+&gt; Tools would have to preserve the annotation on import and export.  This sucks
+&gt; because its complex.
+&gt; 
+&gt; d) the NOM implements the 4 functions without any annotation
+&gt; scheme or table.  In this case the NOM uses an mangling scheme to record whether
+&gt; a parameter  was or was not global or local.  This mechanism sucks
+&gt; because the user sees mangled names that don't strictly have to be mangled.
+&gt; 
+&gt; The advantage of a, b and c, is that name mangling can be minimized or
+&gt; eliminated depending on the original SBML model i.e. you only mangle
+&gt; to eliminate name clashes.  c and d suck so much I would be against their
+&gt; implementation.
+&gt; 
+&gt; I can advise in detail on the algorithms for these various scenarios
+&gt; but you did a good first stab and I don't want to bore you now.
+&gt; 
+&gt; yours Andrew
+
+
+=== message #3 ==================================================
+
+&gt; From: Michael Hucka &lt;mhucka@caltech.edu&gt;
+&gt; Date: Wed, 27 Feb 2002 11:26:43 -0800
+&gt; To: "Andrew Finney" &lt;afinney@cds.caltech.edu&gt;
+&gt; Cc: "Herbert M Sauro" &lt;hsauro@cds.caltech.edu&gt;,
+&gt;     "Hamid Bolouri" &lt;hbolouri@caltech.edu&gt;
+&gt; Subject: RE: [sysbio-team] Clarification of name mangling
+&gt; 
+&gt; Let's take the issues from easiest to hardest (so these are
+&gt; out of order):
+&gt; 
+&gt;   afinney&gt; c) if you record whether a parameter is imported
+&gt;   afinney&gt;    local or global
+&gt;   afinney&gt; you can minimize the name mangling to only the
+&gt;   afinney&gt; names that clash i.e. you're not using the name
+&gt;   afinney&gt; as a mechanism for recording whether the
+&gt;   afinney&gt; parameter is local or global.  In addition the
+&gt;   afinney&gt; mangling can be made unobtrusive e.g. parameter a
+&gt;   afinney&gt; in reaction r =&gt; r_a if r_a doesn't exist
+&gt;   afinney&gt; anywhere else.
+&gt; 
+&gt; This sounds reasonable.  Probably a tool should do this in
+&gt; practice, instead of always mangling everything.
+&gt; 
+&gt;   afinney&gt; b) the user can create new global parameters what
+&gt;   afinney&gt;    will
+&gt;   afinney&gt; overlap with the name mangling scheme. e.g. the
+&gt;   afinney&gt; user could create _mangle_r_b.
+&gt; 
+&gt; No.  I submit to you that I can invent a name mangling
+&gt; scheme that will not conflict with anything the user is ever
+&gt; *likely* to use.  Admittedly the key word is "likely".  Yes,
+&gt; if the user has infinite time and the desire to repeatedly
+&gt; test alternatives, and run an exhaustive search algorithm
+&gt; adapted from a password cracking tool, then they may hit on
+&gt; the particular prefix string used by a simulator.  But this
+&gt; is unlikely.  If the string is chosen wisely, there won't be
+&gt; conflicts in practice.
+&gt; 
+&gt; So I believe this is a non-issue.
+&gt; 
+&gt;   afinney&gt; a) I think you have glossed over an issues with
+&gt;   afinney&gt;    respect
+&gt;   afinney&gt; to Jarnac of any other tool using a global
+&gt;   afinney&gt; namespace.  Its not possible to neatly divide
+&gt;   afinney&gt; this global namespace as you want: for example
+&gt;   afinney&gt; suppose we have an incoming model in SBML with a
+&gt;   afinney&gt; global parameter 'a' and a local parameter 'a' in
+&gt;   afinney&gt; reaction r.  we can mangle the name of the local
+&gt;   afinney&gt; one to _mangle_r_a. That's fine.  But if the user
+&gt;   afinney&gt; interface demangles it back to 'a' then the user
+&gt;   afinney&gt; can't distinguish between the global and local
+&gt;   afinney&gt; parameters.  In short some form of mangling
+&gt;   afinney&gt; scheme has to be visible to the user.
+&gt; 
+&gt; Ah, yes, you're right; I didn't think about this.
+&gt; 
+&gt; In this case, since the tool knows that it's encountered a
+&gt; conflict from trying to adapt an incoming SBML model, it's
+&gt; probably going to have to tell the user about it.  It could,
+&gt; for example, bring up a dialog box and offer the user
+&gt; multiple alternatives for how to rename/mangling the
+&gt; variables.  Or it could just prefix the internal parameters
+&gt; with the name of the reaction.
+&gt; 
+&gt;   afinney&gt; d) comments on implementation:
+&gt; 
+&gt;   afinney&gt; We can consider the purely global form and the
+&gt;   afinney&gt; purely local forms as restricted forms of SBML
+&gt;   afinney&gt; then... I suggest we only focus, for the moment,
+&gt;   afinney&gt; on moving models from the restricted forms
+&gt;   afinney&gt; to/from general SBML. IMHO A tool must not try to
+&gt;   afinney&gt; go from its restricted form to the other
+&gt;   afinney&gt; restricted form. e.g. Jarnac shouldn't output
+&gt;   afinney&gt; fully localized SBML, it should just return a
+&gt;   afinney&gt; modified model back something like its starting
+&gt;   afinney&gt; point.
+&gt; 
+&gt; Right, I think that makes sense in the context of ground
+&gt; rule #2.
+&gt; 
+&gt;   afinney&gt; We then have the following functions, which can
+&gt;   afinney&gt; either ideally transform a NOM like structure or
+&gt;   afinney&gt; modify an SBML stream: makeLocalParametersGlobal,
+&gt;   afinney&gt; unmakeLocalParametersGlobal,
+&gt;   afinney&gt; makeGlobalParametersLocal,
+&gt;   afinney&gt; unmakeLocalParametersGlobal.  A given tool only
+&gt;   afinney&gt; implements/uses the appropriate make/unmake pair.
+&gt;   afinney&gt; e.g. Jarnac implements makeLocalParametersGlobal
+&gt;   afinney&gt; and unmakeLocalParametersGlobal
+&gt; 
+&gt; I'll have to think about the implementation notes some
+&gt; more.
+&gt; 
+&gt; Thanks for the reply!
+&gt; 
+&gt; MH
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00343" HREF="msg00343.html">[sbml-discuss] General namespace inquiry</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00356.html">RE: [sbml-discuss] Are we done with SBML Level 1 Version 2?</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00358.html">RE: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00343.html">[sbml-discuss] General namespace inquiry</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00348.html">RE: [sbml-discuss] General namespace inquiry</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00357"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00357"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

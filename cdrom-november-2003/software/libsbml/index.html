@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+		<meta name="generator" content="Adobe GoLive 6">
+		<title>SBML Collection CD, Release 1</title>
+	</head>
+
+	<body background="../../graphics/bg0.gif" bgcolor="#ffffff" link="#003399" vlink="#6600ff" alink="#ff6600"  leftmargin="14" topmargin="10" marginwidth="14" marginheight="10">
+		<table width="720" border="0" cellspacing="0" cellpadding="0">
+		<tr><td>
+					<div align="center">
+						<h2><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><small>LIBSBML</small></font></h2>
+						<address>Ben Bornstein<br>
+							JST ERATO Kitano Symbiotic Systems Project</address>
+						<address>Control and Dynamical Systems, MC 107-81</address>
+						<address>California Institute of Technology</address>
+						<address>Pasadena, CA, 91125, USA</address>
+						<address><br>
+							<a title="SBML.org, the SBML project website" href="http://www.sbml.org">http://www.sbml.org/</a></address>
+						<address><a href="mailto:sbml-team@caltech.edu">sbml-team@caltech.edu</a></address>
+					</div>
+					<div align="left">
+						<h3><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><i>Quick Start</i></font></h3>
+						<p><b><i>Prerequisites</i></b>: <small>LIBSBML</small> depends on Apache&#146;s Xerces-C++ XML library for low-level XML tokenizing and Unicode support. Xerces is supported on Unix (Linux), Windows and MacOS X. Many popular Linux systems provide the Xerces library either as part of their standard distribution or as an optional RPM or Debian package. Apache provides a Windows binary distribution which includes both a <tt>.dll</tt> and a <tt>.lib</tt> file. For more information, see <a href="http://xml.apache.org/xerces-c/">http://xml.apache.org/xerces-c/</a>. The following instructions assume Xerces is already installed on your system.</p>
+						<h4><font color="black" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Linux, Cygwin or MacOS X</font></h4>
+						<p>At the Unix, Cygwin or MacOS X command prompt, untar the distribution file <a href="libsbml-2.0.2.tar">libsbml-2.0.2.tar</a>, cd into the directory created (e.g., <tt>libsbml-2.0.2/</tt>), and type the following command:</p>
+						<pre>% ./configure
+% make
+% make install</pre>
+						<p>To compile programs that use <small>LIBSBML</small> with GCC, use a command of the following form:</p>
+						<pre>% gcc -o myapp.c myapp.c -lsbml</pre>
+						<h4><font color="black" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular">Windows</font></h4>
+						<p>Unzip the distribution file <a href="libsbml-2.0.2.zip">libsbml-2.0.2.zip</a> and open the resulting folder (e.g., <tt>libsbml-2.0.2</tt>). There are debug (<tt>libsbmld</tt>) and release (<tt>libsbml</tt>) versions of <small>LIBSBML</small>, with <tt>.dll</tt> and <tt>.lib</tt> files for both versions in the Win32 subdirectory. <small>LIBSBML</small> header files are located in <tt>src/sbml</tt>. Visual C++ projects should link with <tt>libsbml.lib</tt> or <tt>libsbmld.lib</tt> and generate code for the Multithreaded DLL or Debug Multithreaded DLL version of the VC++ runtime, respectively.</p>
+						<h3><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><i>Introduction</i></font></h3>
+						<p><small>LIBSBML is</small> a C application programming interface (API) library for reading, writing and manipulating the Systems Biology Markup Language&nbsp;(SBML). Currently, the library supports all of SBML Level&nbsp;1 Version&nbsp;1 and Version&nbsp;2, and nearly all of SBML Level&nbsp;2 Version&nbsp;1. (The still-unimplemented parts of Level 2 are support for RDF and support for MathML's <tt>semantics</tt>, <tt>annotation</tt> and <tt>annotation-xml</tt> elements. These will be implemented in the near future.) For more information about SBML, please see the references or visit <tt><a name="tex2html3" href="http://www.sbml.org/">http://www.sbml.org/</a></tt> on the Internet.</p>
+						<p>Since the library provides a C API, familiarity with the C programming language is assumed. Some parts of the library were written in C++, however, experience with C++ is not required; its use is &quot;hidden&quot; behind C functions. The <a href="libsbml-api-ref.pdf"><small>LIBSBML</small> API Reference Manual</a> provides detailed information about the API.</p>
+						<p><small>LIBSBML</small> is entirely open-source and all specifications and source code are freely and publicly available. For more information about SBML, please see <a name="tex2html4" href="../../index.htm">the rest of this CD-ROM</a>.</p>
+						<p>Some of the features of <small>LIBSBML</small> include:</p>
+						<ul>
+							<li><b>Small Memory Footprint</b>
+							<p>The parser is event-based (SAX2) and loads SBML data into C structures that mirror the classes in the SBML specification. No intermediate DOM is used, which greatly reduces runtime memory usage.</p>
+							<li><b>Fast Runtime</b>
+							<p>The Gepasi generated 100 Yeast file (2Mb; 2000 reactions <a name="tex2html5" href="http://www.gepasi.org/gep3sbml.html">http://www.gepasi.org/gep3sbml.html</a>) loads in 1.18s on a 1 GHz AMD Athlon XP and uses 1.4Mb of memory.</p>
+							<li><b>Portable</b>
+							<p>The C source code is pure ANSI for maximum portability. It produces no errors or warnings when compiled with either GCC or Microsoft Visual&nbsp;C++. GCC compilation flags are: <tt>-ansi -pedantic-errors -Wall</tt>, i.e., ANSI violations are compilation errors instead of warnings and all warnings are reported.</p>
+							<p>The build system uses the GNU Autotools (Autoconf, Automake, and Libtool) to build shared and static libraries on a variety of Unix-based platforms.</p>
+							<p>Microsoft Windows is supported either through the Cygwin environment or as a native Win32 Dynamic Link Library (DLL). A Microsoft Visual&nbsp;C++ 6.0 project file is included in the source distribution and a precompiled Windows distribution is available.</p>
+							<li><b>Full SBML Support</b>
+							<p>The parser supports both spellings of <i>species</i> and <i>annotation</i> (i.e., with and without the last <i>s</i>) for any level and version. When writing SBML documents, the appropriate specification-sanctioned spelling is used.</p>
+							<p>The full-text (including any namespace declarations) of <tt>&lt;notes&gt;</tt> and <tt>&lt;annotation&gt;</tt> elements may be retrieved from any SBML object. For compatibility with some technically incorrect but popular SBML documents, the parser recognizes and stores notes and annotations defined for the top-level <tt>&lt;sbml&gt;</tt> element (though a warning is logged).</p>
+							<li><b>Full XML Schema Validation</b>
+							<p>The library uses the Apache Xerces-C++ XML library, which supports full XML Schema validation. All XML and Schema warning, error and fatal error messages are logged with line and column number information and may be retrieved and manipulated pragmatically. The Schema file to use for validation is configurable.</p>
+							<li><b>Full Unicode Support</b>
+							<p>SBML Documents are parsed and manipulated in the Unicode codepage for efficiency (this is Xerces-C++ native format); however, strings are transcoded to the local code page for the SBML C&nbsp;structures.</p>
+							<li><b>Well Tested</b>
+							<p>The entire library was written using the test-first approach popularized by Kent Beck and eXtreme Programming, where it's one of the 12 principles.</p>
+							<p>Currently there are 3014 individual assertions in 583 functional unit tests. Four test cases are responsible for reading entire SBML files (three are examples from the SBML Level&nbsp;1 specification) into memory and verifying every field of the resulting structures.</p>
+							<li><b>Conscientious Use of Memory</b>
+							<p>All memory for and contained in SBML structures is C memory, so <tt>realloc()</tt> and <tt>free()</tt> may be used. This is an important distinction when working with mixed C and C++ code. C's <tt>malloc()</tt> and <tt>free()</tt> are not compatible with C++'s <tt>new</tt> and <tt>delete</tt> operators.</p>
+							<p>A custom memory trace facility can be used to track all memory allocated and freed in both the library and all test suites. This facility must be enabled at build time with <tt>./configure -enable-memory-tracing</tt>. For performance reasons memory tracing should be turned off in production environments. Currently all unit tests produce 1782 memory allocations and matched frees with no leaks.</p>
+						</ul>
+						<p>For detailed instructions about installing and using LIBSBML, please see the <a href="libsbml-manual.pdf"><i>LIBSBML Developer's Manual</i></a> and the <i><a href="libsbml-api-ref.pdf"><small>LIBSBML</small> API Reference Manual</a></i>.</p>
+						<h3><font color="#003399" face="Arial,Helvetica,Sans,Geneva,Swiss,SunSans-Regular"><i>Documentation</i></font></h3>
+						<p><small>LIBSBML</small> comes with extensive documentation.  The following manuals are included on this CD-ROM.</p>
+						<ul>
+							<li>The <i><small>LIBSBML</small> Developer's Manual</i>: <a href="libsbml-manual.pdf">[PDF]</a>
+							<li>The<i> <small>LIBSBML</small> API Reference Manual<a name="api-ref"></a></i>: <a href="libsbml-api-ref.pdf">[PDF]</a>
+						</ul>
+					</div>
+				</td></tr></table>
+	</body>
+
+</html>

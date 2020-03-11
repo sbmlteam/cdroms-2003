@@ -1,0 +1,144 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] On the subject of arrayes. -->
+<!--X-From-R13: Egrsna Vbbcf <fubbcfNig.rqh> -->
+<!--X-Date: Wed, 11 Dec 2002 10:12:49 &#45;0800 -->
+<!--X-Message-Id: 20021211131127.5d0e237b.shoops@vt.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200212101956.LAA19166@utgard.jpl.nasa.gov -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] On the subject of arrayes.</TITLE>
+<LINK REV="made" HREF="mailto:shoops@vt.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00029.html">Date Prev</A>][<A HREF="msg00055.html">Date Next</A>][<A HREF="msg00029.html">Thread Prev</A>][<A HREF="msg00055.html">Thread Next</A>][<A HREF="maillist.html#00056">Date Index</A>][<A HREF="threads.html#00056">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] On the subject of arrayes.</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] On the subject of arrayes.</LI>
+<LI><em>From</em>: Stefan Hoops &lt;<A HREF="mailto:shoops@vt.edu">shoops@vt.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 11 Dec 2002 13:11:27 -0500</LI>
+<LI><em>Organization</em>: Virginia Bioinformatics Institute</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello Victoria,
+
+I agree that we have the need for multicellular models and that this kind of modelling will become more important in the future. But I disagree that SBML should become a meta language. 
+
+The large models you are talking about will most likely not be handled by humans directly. Graphical editing tools need to be and are developed to handle those.
+
+For these tools handling large files (creating and reading) is not a problem. If you need to save storage space there is the option of compressed xml (but that is not human readable).
+
+I do not see any advantage in saying something like (free text):
+
+"I have 10 reactions varying in the name by a subscript and all species involved are also indexed by the same subscript except species A."
+
+This are compilation instructions you would give to a program. Therefore, to correctly implement SBML a program must have a build in compiler.
+
+The same can be achieved by creating 10 reactions which are individually described in SBML. This approach is possible today with SBML 1 and 2. 
+
+In my opinion complicating SBML will limit its adoption in the modelling community.
+
+As Pedro said SBML does not need an enhancement like the above to achieve the goal of representing large models with repetitive elements. 
+
+I would very much like to see SBML becoming a broad adopted standard. Complicating it is counterproductive.
+
+
+Stefan
+
+On Tue, 10 Dec 2002 11:56:51 -0800 (PST)
+Victoria Gor &lt;gor@aig.jpl.nasa.gov&gt; wrote:
+
+&gt; Stefan, 
+&gt; 
+&gt; I would like to refer you to "SBML Level 2 Proposal: Array Features" by Andrew
+&gt; Finney at all. In this proposal SBML DOES NOT generate the model with arrays, 
+&gt; it only describes the arrays and connections between compartments in concise 
+&gt; manner, therefore it stores model information (such as array bounds and types 
+&gt; of interactions between cells) without generating actual arrays and without 
+&gt; performing any operations and/or interactions. 
+&gt; 
+&gt; I also disagree with the statement that repeating information for each element 
+&gt; of the array is not a problem (since large models will be created and handled 
+&gt; pragmatically). We are working with multicellular organisms and our applications 
+&gt; will be executed on parallel platforms. Connections between cells will obey same 
+&gt; set of rules, but there will be millions of such connections. Often humans will 
+&gt; need to examine SBML files, often humans will have to create them. But even if 
+&gt; that was not true, saving and passing around huge files with millions of 
+&gt; connections is impractical. 
+&gt; 
+&gt; I understand that arrays has been postponed to Level 3, so it is not urgent to 
+&gt; dwell on this issue right now. Nevertheless, multicellular models are studied in 
+&gt; our group and are read and produced by our software. Popularity of such models in 
+&gt; the future is beyond any doubt and is supported by big advances in the field of 
+&gt; parallel computing. It will be a mistake to totally ignore array representation 
+&gt; in SBML or to postpone it till indefinite future.
+&gt; 
+&gt; Victoria.
+
+
+-- 
+Stefan Hoops, Ph.D.
+Senior Research Associate
+Virginia Bioinformatics Institute
+1880 Pratt Dr.
+Blacksburg, VA 24061, USA
+
+Phone: (540) 231-1799
+Fax: (540) 231-2606
+Email: shoops@vt.edu
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00029.html">Re: [sbml-discuss] On the subject of arrayes.</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00055.html">[sbml-discuss] new proposal for SBML3 multistate enhancement</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00029.html">Re: [sbml-discuss] On the subject of arrayes.</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00055.html">[sbml-discuss] new proposal for SBML3 multistate enhancement</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00056"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00056"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

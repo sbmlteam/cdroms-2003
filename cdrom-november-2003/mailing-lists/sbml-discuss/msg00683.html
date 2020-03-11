@@ -1,0 +1,149 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] Re: Internet Draft for sbml+xml media type -->
+<!--X-From-R13: Pra Ybivgm <oxbivgmNpnygrpu.rqh> -->
+<!--X-Date: Mon, 13 Oct 2003 11:38:53 &#45;0700 -->
+<!--X-Message-Id: 1066068889.3f8aeb99a7ebf@webmail.nethere.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1065642446.3f8469ce9148e@webmail.nethere.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] Re: Internet Draft for sbml+xml media type</TITLE>
+<LINK REV="made" HREF="mailto:bkovitz@caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00682.html">Date Prev</A>][<A HREF="msg00684.html">Date Next</A>][<A HREF="msg00677.html">Thread Prev</A>][<A HREF="msg00690.html">Thread Next</A>][<A HREF="maillist.html#00683">Date Index</A>][<A HREF="threads.html#00683">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] Re: Internet Draft for sbml+xml media type</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Ben Kovitz &lt;<A HREF="mailto:bkovitz@caltech.edu">bkovitz@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] Re: Internet Draft for sbml+xml media type</LI>
+<LI><em>From</em>: Ben Kovitz &lt;<A HREF="mailto:bkovitz@caltech.edu">bkovitz@caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 13 Oct 2003 11:14:49 -0700</LI>
+<LI>Cc: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Regarding: 
+ 
+<A  HREF="http://www.ietf.org/internet-drafts/draft-sbml-media-type-00.txt">http://www.ietf.org/internet-drafts/draft-sbml-media-type-00.txt</A> 
+ 
+Chris Lilley on the ietf-types@iana.org mailing list wrote: 
+ 
+   Do the existing SBML-consuming tools honor the charset 
+   parameter when SBML is sent over HTTP or email?  And where 
+   the charset parameter disagrees with the encoding in the XMl 
+   encoding declaration, do these tools rewrite the XML when 
+   saving it to disk? 
+ 
+   Note that, although charset is optional in this registration, 
+   RFC 3023 still imposes requirements on software in the 
+   *absence* of a charset. 
+ 
+   If not, I suggest removing this optional parameter as 
+   follows: 
+ 
+        There is no charset parameter. Character handling has 
+        identical semantics to the case where the charset 
+        parameter of the "application/xml" media type is 
+        omitted, as described in [RFC3023]. 
+ 
+ 
+I'd like to hear your opinions on this. 
+ 
+The default handling referred to above is to assume that the 
+application/sbml+xml entity is encoded in us-ascii when it's 
+sent over HTTP. 
+ 
+If we follow Chris Lilley's suggestion, then we would *not* be 
+able to specify that an application/sbml+xml entity sent over 
+the web or through email is encoded in, say, utf-8 or 
+iso-2022-jp. 
+ 
+If we *do* follow his suggestion, then we would be imposing a 
+requirement on all software that would directly read SBML models 
+encoded as MIME entities: we would be requiring that they deal 
+properly with encodings other than us-ascii. 
+ 
+To get a handle on the relevant issues, you might want to read 
+the relevant section of RFC 3023.  It's at: 
+ 
+   <A  HREF="http://www.rfc-editor.org/rfc/rfc3023.txt">http://www.rfc-editor.org/rfc/rfc3023.txt</A> 
+   section 3.1 (the full discussion takes 1 page) 
+ 
+If I don't hear from anyone, I'll incorporate Chris Lilley's 
+suggestion and disallow the charset parameter. 
+ 
+Ben K. 
+ 
+ 
+P.S. To view all comments received from the ietf-types list so 
+far, see: 
+ 
+   
+<A  HREF="http://eikenes.alvestrand.no/pipermail/ietf-types/2003-October/thread.html">http://eikenes.alvestrand.no/pipermail/ietf-types/2003-October/thread.html</A> 
+ 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00690" HREF="msg00690.html">RE: [sbml-discuss] Re: Internet Draft for sbml+xml media type</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00677" HREF="msg00677.html">[sbml-discuss] Internet Draft for sbml+xml media type</A></STRONG>
+<UL><LI><EM>From:</EM> Ben Kovitz &lt;bkovitz@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00682.html">Re: [Biospice-sepdtf] clarification on the generated SBML model</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00684.html">RE: [sbml-discuss] RE: [Biospice-sepdtf] clarification on  thegeneratedSBML model</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00677.html">[sbml-discuss] Internet Draft for sbml+xml media type</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00690.html">RE: [sbml-discuss] Re: Internet Draft for sbml+xml media type</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00683"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00683"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,254 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] 2D &#38; 3D layouts -->
+<!--X-From-R13: "Yriva R. Yrpx" <xqxrpxNyoy.tbi> -->
+<!--X-Date: Thu, 10 Jul 2003 13:37:57 &#45;0700 -->
+<!--X-Message-Id: 200307101335.33469.kdkeck@lbl.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 59D7F8A2&#45;B07E&#45;11D7&#45;A6EC&#45;000A95776A76@eml.villa&#45;bosch.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] 2D &amp; 3D layouts</TITLE>
+<LINK REV="made" HREF="mailto:kdkeck@lbl.gov">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00540.html">Date Prev</A>][<A HREF="msg00542.html">Date Next</A>][<A HREF="msg00580.html">Thread Prev</A>][<A HREF="msg00542.html">Thread Next</A>][<A HREF="maillist.html#00541">Date Index</A>][<A HREF="threads.html#00541">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] 2D &amp; 3D layouts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Ralph Gauges &lt;<A HREF="mailto:ralph.gauges@eml.villa-bosch.de">ralph.gauges@eml.villa-bosch.de</A>&gt;,  <A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] 2D &amp; 3D layouts</LI>
+<LI><em>From</em>: &quot;Kevin D. Keck&quot; &lt;<A HREF="mailto:kdkeck@lbl.gov">kdkeck@lbl.gov</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 10 Jul 2003 13:35:33 -0700</LI>
+<LI><em>Organization</em>: Lawrence Berkeley National Lab</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I'm all for using as uniform a syntax as possible for representing both 2D and 
+3D layouts, but I'd personally prefer each layout to be explicit about which 
+one it is, since a layout designed for 3D won't generally look very good 
+projected along z onto a plane.
+
+This can be done with minimal impact on the XML representation, if we get a 
+little sophisticated about using XML Schema. The July 5 draft 
+(<A  HREF="http://projects.eml.org/bcb/sbml/level2/20030705/sbml-layout-extension.html">http://projects.eml.org/bcb/sbml/level2/20030705/sbml-layout-extension.html</A>) 
+would need to have the ListOfLayouts element and most of its children 
+redefined something like as follows:
+
+&lt;xsd:complexType name="ListOfLayouts"&gt;
+  &lt;xsd:complexContent&gt;
+  &lt;xsd:extension base="sl2:SBase"&gt;
+   &lt;xsd:sequence&gt;
+    &lt;xsd:choice maxOccurs="unbounded"&gt;
+     &lt;xsd:element name="layout2d" type="sl2:Layout2D"/&gt;
+     &lt;xsd:element name="layout3d" type="sl2:Layout3D"/&gt;
+    &lt;/xsd:choice&gt;
+   &lt;/xsd:sequence&gt;
+  &lt;/xsd:extension&gt;
+ &lt;/xsd:complexContent&gt; 
+&lt;/xsd:complexType&gt;
+
+&lt;complexType name="Layout2D"&gt;
+  &lt;xsd:sequence&gt;
+    &lt;xsd:element name="listOfCompartmentGRs"
+	type="sl2:ListOfCompartmentGRs2D" minOccurs="0"/&gt;
+    &lt;xsd:element name="listOfSpeciesGRs"
+	type="sl2:ListOfSpeciesGRs2D" minOccurs="0"/&gt;
+    &lt;xsd:element name="listOfReactionGRs"
+	type="sl2:ListOfReactionGRs2D" minOccurs="0"/&gt;
+    &lt;xsd:element name="listOfAdditionalGraphicalObjects"
+	type="sl2:ListOfAdditionalGraphicalObjects2D" minOccurs="0"/&gt;
+   &lt;/xsd:sequence&gt;
+   &lt;xsd:attribute name="id" type="sl2:SId"/&gt;
+&lt;/xsd:complexType&gt;
+
+&lt;complexType name="Layout3D"&gt;
+  &lt;xsd:sequence&gt;
+    &lt;xsd:element name="listOfCompartmentGRs"
+	type="sl2:ListOfCompartmentGRs3D" minOccurs="0"/&gt;
+    &lt;xsd:element name="listOfSpeciesGRs"
+	type="sl2:ListOfSpeciesGRs3D" minOccurs="0"/&gt;
+    &lt;xsd:element name="listOfReactionGRs"
+	type="sl2:ListOfReactionGRs3D" minOccurs="0"/&gt;
+    &lt;xsd:element name="listOfAdditionalGraphicalObjects"
+	type="sl2:ListOfAdditionalGraphicalObjects" minOccurs="0"/&gt;
+   &lt;/xsd:sequence&gt;
+   &lt;xsd:attribute name="id" type="sl2:SId"/&gt;
+&lt;/xsd:complexType&gt;
+
+&lt;xsd:complexType name="ListOfCompartmentGRs2D"&gt;
+ &lt;xsd:complexContent&gt;
+  &lt;xsd:extension base="sl2:SBase"&gt;
+   &lt;xsd:sequence&gt;
+    &lt;xsd:element name="compartmentGR"
+	type="sl2:CompartmentGR2D" maxOccurs="unbounded"/&gt;
+   &lt;/xsd:sequence&gt;
+  &lt;/xsd:extension&gt;
+ &lt;/xsd:complexContent&gt;
+&lt;/xsd:complexType&gt;
+
+&lt;xsd:complexType name="ListOfCompartmentGRs3D"&gt;
+ &lt;xsd:complexContent&gt;
+  &lt;xsd:extension base="sl2:SBase"&gt;
+   &lt;xsd:sequence&gt;
+    &lt;xsd:element name="compartmentGR"
+	type="sl2:CompartmentGR3D" maxOccurs="unbounded"/&gt;
+   &lt;/xsd:sequence&gt;
+  &lt;/xsd:extension&gt;
+ &lt;/xsd:complexContent&gt;
+&lt;/xsd:complexType&gt;
+
+[likewise for ListOfSpeciesGRs, ListOfReactionGRs]
+
+
+&lt;xsd:complexType name="CompartmentGR2D"&gt;
+ &lt;xsd:complexContent&gt;
+  &lt;xsd:extension base="sl2:SBase"&gt;
+   &lt;xsd:attribute name="ref" type="sl2:SId" use="optional"/&gt;
+   &lt;xsd:attribute name="id" type="sl2:SId"/&gt;
+   &lt;xsd:attribute name="x" type="xsd:double"/&gt;
+   &lt;xsd:attribute name="y" type="xsd:double"/&gt;
+   &lt;xsd:attribute name="w" type="xsd:double"/&gt;
+   &lt;xsd:attribute name="h" type="xsd:double"/&gt;
+  &lt;/xsd:extension&gt;
+ &lt;/xsd:complexContent&gt;
+&lt;/xsd:complexType&gt;
+
+&lt;xsd:complexType name="CompartmentGR3D"&gt;
+ &lt;xsd:complexContent&gt;
+  &lt;xsd:extension base="CompartmentGR2D"&gt;
+   &lt;xsd:attribute name="z" type="xsd:double"/&gt;
+   &lt;xsd:attribute name="d" type="xsd:double"/&gt;
+  &lt;/xsd:extension&gt;
+ &lt;/xsd:complexContent&gt;
+&lt;/xsd:complexType&gt;
+
+&lt;!-- likewise to CompartmentGR --&gt;
+&lt;xsd:complexType name="SpeciesGR2D"&gt;
+ &lt;xsd:complexContent&gt;
+  &lt;xsd:extension base="sl2:SBase"&gt;
+   &lt;xsd:attribute name="ref" type="sl2:SId" use="optional"/&gt;
+   &lt;xsd:attribute name="id" type="sl2:SId"/&gt;
+   &lt;xsd:attribute name="x" type="xsd:double"/&gt;
+   &lt;xsd:attribute name="y" type="xsd:double"/&gt;
+   &lt;xsd:attribute name="w" type="xsd:double"/&gt;
+   &lt;xsd:attribute name="h" type="xsd:double"/&gt;
+  &lt;/xsd:extension&gt;
+ &lt;/xsd:complexContent&gt;
+&lt;/xsd:complexType&gt;
+
+&lt;xsd:complexType name="SpeciesGR3D"&gt;
+ &lt;xsd:complexContent&gt;
+  &lt;xsd:extension base="SpeciesGR2D"&gt;
+   &lt;xsd:attribute name="z" type="xsd:double"/&gt;
+   &lt;xsd:attribute name="d" type="xsd:double"/&gt;
+  &lt;/xsd:extension&gt;
+ &lt;/xsd:complexContent&gt;
+&lt;/xsd:complexType&gt;
+
+
+&lt;xsd:complexType name="ReactionGR2D"&gt;
+ &lt;xsd:complexContent&gt;
+  &lt;xsd:extension base="sl2:SBase"&gt;
+   &lt;xsd:sequence&gt;
+    &lt;xsd:element name="listOfSpeciesReferenceGRs" 
+type="sl2:ListOfSpeciesReferenceGRs" minOccurs="1" maxOccurs="1"/&gt;
+   &lt;/xsd:sequence&gt;
+   &lt;xsd:attribute name="ref" type="sl2:SId" use="optional"/&gt;
+   &lt;xsd:attribute name="id" type="sl2:SId"/&gt;
+   &lt;xsd:attribute name="x1" type="xsd:double"/&gt;
+   &lt;xsd:attribute name="y1" type="xsd:double"/&gt;
+   &lt;xsd:attribute name="x2" type="xsd:double"/&gt;
+   &lt;xsd:attribute name="y2" type="xsd:double"/&gt;
+  &lt;/xsd:extension&gt;
+ &lt;/xsd:complexContent&gt;
+&lt;/xsd:complexType&gt;
+
+&lt;xsd:complexType name="ReactionGR3D"&gt;
+ &lt;xsd:complexContent&gt;
+  &lt;xsd:extension base="ReactionGR2D"&gt;
+   &lt;xsd:attribute name="z1" type="xsd:double"/&gt;
+   &lt;xsd:attribute name="z2" type="xsd:double"/&gt;
+  &lt;/xsd:extension&gt;
+ &lt;/xsd:complexContent&gt;
+&lt;/xsd:complexType&gt;
+
+
+
+Note only the layout element has been renamed, so the only change to the 
+example file that would be required to make it validate to this revised 
+schema would be to rename the (only) layout element a layout2d element:
+
+&lt;sl2:layout2d id="layout1" &gt;
+...
+&lt;/sl2:layout2d&gt;
+
+But now if a 3D layout is added, the validator will check that it always 
+explicitly defines z,d/z1,z2 where appropriate.
+-- 
+Kevin D. Keck
+<A  HREF="http://vimss.lbl.gov/~kdkeck/">http://vimss.lbl.gov/~kdkeck/</A>
+510-486-4856
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00542" HREF="msg00542.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Eric Minch &lt;eric.minch@lionbioscience.com&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00530" HREF="msg00530.html">[sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Ralph Gauges &lt;ralph.gauges@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00540.html">Re: FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00542.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00580.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00542.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00541"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00541"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

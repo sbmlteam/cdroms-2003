@@ -1,0 +1,238 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] ALTREPS &#45; example representations -->
+<!--X-From-R13: Fubznf Yvruy <xvruyNerfrnepu.tr.pbz> -->
+<!--X-Date: Fri, 13 Jun 2003 10:17:09 &#45;0700 -->
+<!--X-Message-Id: 3EEA06E9.8000606@research.ge.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3ECD3EF1.5060504@research.ge.com -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] ALTREPS - example representations</TITLE>
+<LINK REV="made" HREF="mailto:kiehl@research.ge.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00461.html">Date Prev</A>][<A HREF="msg00463.html">Date Next</A>][<A HREF="msg00235.html">Thread Prev</A>][<A HREF="msg00237.html">Thread Next</A>][<A HREF="maillist.html#00462">Date Index</A>][<A HREF="threads.html#00462">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] ALTREPS - example representations</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] ALTREPS - example representations</LI>
+<LI><em>From</em>: Thomas Kiehl &lt;<A HREF="mailto:kiehl@research.ge.com">kiehl@research.ge.com</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 13 Jun 2003 13:16:25 -0400</LI>
+<LI><em>Organization</em>: GE Global Research</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Noting that there have been no replies to this message, let me see if I 
+can jump start some discussion. 
+
+I will demonstrate two reaction representations which I have had to 
+create using the annotations tag to be able to represent special 
+reaction types.
+
+These both came from trying to model lambda-phage using information from 
+Gibson, Arkin, and many others.
+
+One of the reaction abstractions put forth is the Gamma reaction...  
+This is used to define an abstraction of a sequence of identical 
+exponential distributions.  Using the number of events and the mean time 
+of each event (lambda) you can determine from a gamma distribution when 
+the final event will occur.  Below is the sbml for how we represented 
+this reaction type.  Of course this does not define how this reaction 
+type must be handled.  We handle it as follows... when ever the reactant 
+is found in the system ( in this case a complex consisting of RNA bound 
+to the cro gene/promoter) it is immediately consumed and the product is 
+scheduled to appear at some point in the future (this is essentially a 
+dynamically scheduled event)
+
+   &lt;reaction name="R03" reversible="false"&gt;
+     &lt;listOfReactants&gt;
+       &lt;specieReference specie="RNAP_DNA_cro" stoichiometry="1"/&gt;
+     &lt;/listOfReactants&gt;
+     &lt;listOfProducts&gt;
+       &lt;specieReference specie="RNAP_DNA_NUTR" stoichiometry="1"/&gt;
+     &lt;/listOfProducts&gt;
+
+     &lt;annotations xmlns:abstract="<A  HREF="http://research.ge.com/abstract">http://research.ge.com/abstract</A>"&gt;
+        &lt;abstract:gamma  abstract:lambda="30" abstract:numevents="24"/&gt;
+     &lt;/annotations&gt;
+   &lt;/reaction&gt;
+
+The second reaction type we had to represent in order to replicate this 
+model was the "fast equillibrium reaction."  This is an abstraction of 
+the promotor/repressor binding events.  As these  binding and unbinding 
+events happen all the time on very rapid time scales this method 
+essetially defines a probablility of the promotor being bound at a point 
+in time givent current speceies concentrations.   To properly represent 
+this reaction type we needed to represent a table of promotor binding 
+states and their relative free energies.  See the sbml below.  Again 
+with this reaction type it is not just a matter of representation, but 
+also how it is handled in the simulation.  The associated probability 
+distribution must be recalculated periodically.  Also you must sample 
+from the distribution periodically.
+
+  &lt;reaction name="R15" reversible="false"&gt;
+     &lt;listOfReactants&gt;
+       &lt;specieReference specie="RNAP" stoichiometry="1"/&gt;
+     &lt;/listOfReactants&gt;
+     &lt;listOfProducts&gt;
+       &lt;specieReference specie="RNAP_DNA_Pre_o" stoichiometry="1"/&gt;
+     &lt;/listOfProducts&gt;
+
+        &lt;!-- P_re Fast Equilibrium Reaction Table --&gt;
+        &lt;annotations xmlns:abstract="<A  HREF="http://research.ge.com/abstract">http://research.ge.com/abstract</A>"&gt;
+           &lt;abstract:fasteq abstract:numbindingsites="2" 
+abstract:multiplier="MOI"&gt;
+              &lt;abstract:fasteq-state  abstract:deltag="0" abstract:k="0"/&gt;
+              &lt;abstract:fasteq-state abstract:bind2="RNAP"  
+abstract:deltag="-9.9" abstract
+:k="0.00004"/&gt;
+              &lt;abstract:fasteq-state abstract:bind1="cII"  
+abstract:deltag="-9.7" abstract:
+k="0"/&gt;
+              &lt;abstract:fasteq-state abstract:bind1="cII" 
+abstract:bind2="RNAP"  abstract:d
+eltag="-21.5" abstract:k="0.015"/&gt;
+           &lt;/abstract:fasteq&gt;
+        &lt;/annotations&gt;
+   &lt;/reaction&gt;
+
+
+In both of these cases I have represented these as annotations.  I would 
+imagine tht I am not the only one who has "abused" sbml in this 
+fashion.  Are there other examples which you can share with us?
+
+peace,
+Tom
+
+
+Thomas Kiehl wrote:
+
+&gt; Charter of the SBML Alternative Reaction Representations Working Group 
+&gt; (ALTREPS)
+&gt; ------------------------------------------------------------------------------------------------------------
+&gt;
+&gt; BACKGROUND:
+&gt;
+&gt; At the recent SBML forum meeting in Florida it was decided to setup 
+&gt; working groups to develop proposals for incorporation into SBML.  
+&gt; Several people at the meeting signed up to participate in a working 
+&gt; group to develop a proposal for Alternative Representations of 
+&gt; Reactions. 
+&gt; MISSION &amp; SCOPE
+&gt;
+&gt; Define extensions and/or guidelines for the inclusion of Alternative 
+&gt; Representations of Reactions in SBML level3. Some reacton types and 
+&gt; methods are not readily represented by the existing SBML standard.  As 
+&gt; such there should be a standard means of incorporating these reactions 
+&gt; into an SBML model. 
+&gt; There are two main tasks which this group will need to undertake:
+&gt; 1) Further define the scope of this group. This should be completed by 
+&gt; the end of June.
+&gt; 2) Write a recommendation for SBML level 3 to be submitted by the next 
+&gt; SBML Forum.  This recommendation should include rationale derived from 
+&gt; task 1, as well as practical examples of the 
+&gt; process/guidelines/standards in use.
+&gt;
+&gt;
+&gt; PRIMARY CONTACT/ACTING CHAIR
+&gt;
+&gt; Tom Kiehl
+&gt; kiehl@research.ge.com
+&gt; GE Research
+&gt; phone(US): 518.387.4167
+&gt; fax(US): 518.387.6845
+&gt;
+&gt; Please volunteer if you would like to chair or co-chair this working 
+&gt; group.
+&gt;
+&gt; MEMBERS
+&gt; Wayne Rindone -  wrindone@arep.med.harvard.edu
+&gt; Maria Schilstra - M.J.1.Schilstra@herts.ac.uk
+&gt; Mike McCollum -  jmccoll2@utk.edu
+&gt; Greg Peterson -  gdp@utk.edu
+&gt; Takeshi Sakurada -   akurada@sfc.keio.ac.jp
+&gt;
+&gt; PARTICIPATION
+&gt; To express your interest in participating in this group, please email 
+&gt; the chair.
+&gt;
+&gt; HOMEWORK
+&gt; Please submit your hopes/expectations for this group as we further 
+&gt; define our scope.
+&gt;
+&gt; Catalogue the types of reactions which are readily represented in 
+&gt; SBML.  That is to say, primary representations which would be 
+&gt; distinguished alternative representations.
+&gt;
+&gt; Map out potential overlaps with other working groups.
+&gt;
+&gt;
+
+-- 
+-----------------------------------------------------------
+Tom Kiehl	               Email: kiehl@research.ge.com
+Computer Scientist                   Dial-Comm:  8*833.4167
+Advanced Computing Technologies      Phone:    518.387.4167
+General Electric Global Research     Fax:      518.387.6845
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00235" HREF="msg00235.html">[sbml-discuss] ALTREPS - ALTERNATIVE REACTION REPRESENTATIONS - working group announcement</A></STRONG>
+<UL><LI><EM>From:</EM> Thomas Kiehl &lt;kiehl@research.ge.com&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00461.html">[sbml-discuss] DWG: Suggestion for layout extension</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00463.html">RE: [sbml-discuss] DWG: Suggestion for layout extension</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00235.html">[sbml-discuss] ALTREPS - ALTERNATIVE REACTION REPRESENTATIONS - working group announcement</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00237.html">[sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00462"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00462"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

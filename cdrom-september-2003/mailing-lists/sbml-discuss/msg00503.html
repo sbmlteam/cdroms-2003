@@ -1,0 +1,213 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] [Hybrid] Re: Hybrid Models Working Group -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Wed, 18 Jun 2003 05:21:16 &#45;0700 -->
+<!--X-Message-Id: 1055938789.16322.194.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000801c331bc$23794a70$458cc593@herts.ac.uk -->
+<!--X-Reference: 1055521319.4051.57.camel@senin.e&#45;cell.org -->
+<!--X-Reference: 3EEA0129.1060204@research.ge.com -->
+<!--X-Reference: 3EEC54AD.8080204@cse.psu.edu -->
+<!--X-Reference: 1055702811.4051.223.camel@senin.e&#45;cell.org -->
+<!--X-Reference: 3EF045B1.5060409@cse.psu.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00502.html">Date Prev</A>][<A HREF="msg00504.html">Date Next</A>][<A HREF="msg00502.html">Thread Prev</A>][<A HREF="msg00504.html">Thread Next</A>][<A HREF="maillist.html#00503">Date Index</A>][<A HREF="threads.html#00503">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Vijay Saraswat &lt;<A HREF="mailto:saraswat@cse.psu.edu">saraswat@cse.psu.edu</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 18 Jun 2003 21:19:49 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>, <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi Vijay,
+
+
+Thank you for the response.  This discussion is really a fun for me.
+
+
+Well, the source of the fundamental difference between our ways of thinking is that
+you are working on formal languages, while I am a numeric simulator writer.
+Sometimes I find myself counting the number of possible assembler instructions and
+pointer dereferences when I think about a new algorithm.   I don't think you 
+think like this; you'd be rather thinking about formal consistency and the semantics
+of possible language representations when you hit on the new algorithm :)
+
+
+So,
+
+&gt; (Almost) All programming language research has made a clear distinction 
+&gt; between programs (syntax), their execution (operational semantics) and 
+&gt; their meaning (denotational semantics) since the 60s. Logic, the basis 
+&gt; of knowledge representation and modeling, has made a clear distinction 
+&gt; between syntax and semantics at least since the days of Tarski.....
+
+I completely agree on this.   I'm a computer scientist, basically.
+
+
+&gt; &gt;Another possible view, however, is to see simulation algorithms as indivisible
+&gt; &gt;parts of the models.    Every simulation model reflects its modeler's understanding
+&gt; &gt;of certain real phenomenon, and it can be thought that some part of the 'understanding'
+&gt; &gt;is implicitly coded in the computational procedure, or the simulation algorithm.
+&gt; &gt;The same model can produce completely different results when driven by different
+&gt; &gt;algorithms, and as we better understand the nature of the phenomenon, we becomes
+&gt; &gt;to be able to create more suitable algorithms, or just to choose more appropriate algorithms
+&gt; &gt;correctly.
+&gt; &gt;
+&gt; &gt;I don't think these two views conflict.   These are just parallel understanding of the
+&gt; &gt;same thing.
+&gt; &gt;
+&gt; I think they really conflict around inter-operability. 
+
+AND I still think these don't conflict.
+But wait, I admit I needed to clarify more about the difference between
+these two viewpoints.
+
+I was not talking about the syntax/semantics separation when I said algorithms
+are parts of models, though I was when I said we must distinguish models
+from implementations.   And I was not talking about languages.
+When talking about formal languages and induction engines
+it is the core concept, but in numerical simulators it is not always true.
+You may agree that if we need to assure the interoperability, it should be 
+done in the level of the higher level languages, not in data structures of
+implementations.
+
+I meant that when we choose to use differential equations it implicitly but definitely
+indicate we understand, or at least we are trying to understand the dynamics of 
+the model in terms of, continuous and deterministic computation (I meant this
+by 'algorithm').   
+
+
+
+&gt; So I would strongly encourage you to think hard about the semantics of 
+&gt; your language. 
+&gt; The fundamental question to ask is:  Can a user of your 
+&gt; notation understand whether  the particular program s/he is writing (in 
+&gt; your notation) is "correct" for the situation at hand, independent of 
+&gt; his/her knowledge of the details of your execution engine ("operational 
+&gt; semantics")?
+
+Of course this is a very important point.   
+Design of my software is layered; its language (EML) is basically just
+persistence of its simulator object model,
+and on top of that another higher level of semantic representation will be built (or just
+use SBML when it is ready to cover all the functionalities of the
+software).
+
+
+&gt; Though perhaps a point of agreement is that annotations to models may 
+&gt; certainly include references to preferred or known execution engines 
+&gt; that can be used with them. i.e. notes on the usage of the model. This 
+&gt; "pragmatic" view is perhaps a way to bridge the "conceptual" gap.
+
+Yes, this is what I was going to propose.   
+And I think there are some levels:   the model just 'can' be run with that
+algorithm, or the algorithm 'must' be used for it to guarantee validity
+of the model.   Or there can also be a 'should' level.   
+Another a bit more sophisticated, but slightly smells like the 'design by committee'
+antipattern, is to force all simulation engines to declare their capabilities in detail, 
+and let the model to indicate what is the requirement to run it correctly.
+
+
+&gt; &gt;Importance of the 'continuous/discrete hybrid' of course does not decreases
+&gt; &gt;here.  Rather the multi-algorithm framework is-a hybrid (I mean it is a subclass),
+&gt; &gt;and it is indispensable to elegantly design and implement it.
+&gt; &gt;
+&gt; Certainly the choice of the phrase "Hybrid Systems" to name the sub-area 
+&gt; we are talking about is highly unfortunate: each of the words is widely 
+&gt; applicable, as well as the combination. But given that this choice is 
+&gt; made, I would recommend not fighting it, but looking for other technical 
+&gt; names to name different concepts.
+
+In device simulation, such as SPICE, a hybrid electronic/electric
+digital/analog simulator, they call it mixed-mode.     
+(I used to call multi-algorithm mixed-mode, but I quited using this
+ term  for E-Cell when I knew they use it to mean this.)
+
+I think this is a fairly common term in that community.   I'm not sure this is
+the best name for us, though.
+
+
+
+regards,
+-Kouichi
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00504" HREF="msg00504.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00505" HREF="msg00505.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Vijay Saraswat &lt;saraswat@cse.psu.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00464" HREF="msg00464.html">[sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Vijay Saraswat &lt;saraswat@cse.psu.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00465" HREF="msg00465.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00502" HREF="msg00502.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+<UL><LI><EM>From:</EM> Vijay Saraswat &lt;saraswat@cse.psu.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00502.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00504.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00502.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00504.html">Re: [sbml-discuss] [Hybrid] Re: Hybrid Models Working Group</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00503"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00503"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

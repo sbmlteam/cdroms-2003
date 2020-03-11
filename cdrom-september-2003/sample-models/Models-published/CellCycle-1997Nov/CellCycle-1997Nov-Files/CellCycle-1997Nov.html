@@ -1,0 +1,292 @@
+<!doctype html public "-//w3c//dtd html 4.0 Transitional//en">
+<html>
+<head>
+<title>Novak and Tyson Cell Cycle Model (1997)</title>
+</head>
+<body>			<h1>Novak and Tyson Cell Cycle Model (1997)</h1>
+
+			<table border="0" cellspacing="0" cellpadding="2" >
+				<thead>
+					<tr>
+						<th align="left" valign="middle" bgcolor="#eeeeee">Citation</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Novak B, tyson JJ (1997)
+							 Modeling the control of DNA replication in fission yeast,
+							 PNAS, USA, 94:9147-9152.
+						<a href="http://www.pnas.org/
+							cgi/content/abstract/94/17/9147">
+							http://www.pnas.org/cgi/content/abstract/
+							94/17/9147
+						</a></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<table border="0" cellspacing="0" cellpadding="2" >
+				<thead>
+					<tr>
+						<th align="left" valign="middle" bgcolor="#eeeeee">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							A cell cycle model with 13 dynamic variables (
+							Cdc25,G1K,G1R=[Cig2/Cdc2/Rum1],G2K=[Cdc13/Cdc2],G2R=[Cdc13/Cdc2/Rum1],IE=[
+							Intermediary enzyme],mass,PG2=[Cdc13/P-Cdc2],PG2R=[Cdc13/P-Cdc2/Rum1],R=[
+							Rum1],UbE,UbE2,
+							Wee1} and two auxilllary variables MPF = G2K+
+							beta*PG2, SPF=MPF+alpha*G1K+Cig1, (alpha, beta, Cig1 constants)
+							. NOTE:
+							 The following switches in the published model are NOT described by the SBML:
+							 "Switches(i)
+							 When SPF crosses 0.1 from below,
+							S phase is initiated (Start).(ii)
+							 When UbE crosses 0.1 from above,
+							the cell divides functionally (mass->mass/2),
+							although visible cytokinesis may be delayed.(iii)
+							 60 min after Start,kp is divided by 2,
+							and at cell division kp is multiplied by 2." (
+							from Table 1 of the cited reference).</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<table border="0" cellspacing="0" cellpadding="2" >
+				<thead>
+					<tr>
+						<th align="left" valign="middle" bgcolor="#eeeeee">Rate&#160;constant&#160;&#160;&#160;&#160;&#160;&#160;</th>
+						<th align="left" valign="middle" bgcolor="#eeeeee">Reaction</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0</td>
+						<td>G1R&#160;->&#160;R</td>
+					</tr>
+					<tr>
+						<td>0.00175</td>
+						<td>EmptySet&#160;->&#160;G1K</td>
+					</tr>
+					<tr>
+						<td>0.00495*mass[t]</td>
+						<td>EmptySet&#160;->&#160;mass</td>
+					</tr>
+					<tr>
+						<td>0.0075*(1&#160;-&#160;UbE[t])&#160;+&#160;0.25*UbE[t]</td>
+						<td>G2K&#160;->&#160;EmptySet</td>
+					</tr>
+					<tr>
+						<td>0.0075*(1&#160;-&#160;UbE[t])&#160;+&#160;0.25*UbE[t]</td>
+						<td>PG2&#160;->&#160;EmptySet</td>
+					</tr>
+					<tr>
+						<td>0.015</td>
+						<td>EmptySet&#160;->&#160;G2K</td>
+					</tr>
+					<tr>
+						<td>0.025*(1&#160;-&#160;Cdc25[t])&#160;+&#160;0.5*Cdc25[t]</td>
+						<td>PG2&#160;->&#160;G2K</td>
+					</tr>
+					<tr>
+						<td>0.035*(1&#160;-&#160;Wee1[t])&#160;+&#160;0.35*Wee1[t]</td>
+						<td>G2K&#160;->&#160;PG2</td>
+					</tr>
+					<tr>
+						<td>0.0375*(1&#160;-&#160;UbE2[t])&#160;+&#160;7.5*UbE2[t]</td>
+						<td>G1K&#160;->&#160;EmptySet</td>
+					</tr>
+					<tr>
+						<td>0.05&#160;+&#160;0.0075*(1&#160;-&#160;UbE[t])&#160;+&#160;0.25*UbE[t]</td>
+						<td>G2R&#160;->&#160;R</td>
+					</tr>
+					<tr>
+						<td>0.05&#160;+&#160;0.0075*(1&#160;-&#160;UbE[t])&#160;+&#160;0.25*UbE[t]</td>
+						<td>PG2R&#160;->&#160;R</td>
+					</tr>
+					<tr>
+						<td>0.09375</td>
+						<td>EmptySet&#160;->&#160;R</td>
+					</tr>
+					<tr>
+						<td>0.1</td>
+						<td>G1R&#160;->&#160;G1K&#160;+&#160;R</td>
+					</tr>
+					<tr>
+						<td>0.1</td>
+						<td>G2R&#160;->&#160;G2K&#160;+&#160;R</td>
+					</tr>
+					<tr>
+						<td>0.1</td>
+						<td>PG2R&#160;->&#160;PG2&#160;+&#160;R</td>
+					</tr>
+					<tr>
+						<td>0.1875</td>
+						<td>G1R&#160;->&#160;G1K</td>
+					</tr>
+					<tr>
+						<td>0.1875</td>
+						<td>G2R&#160;->&#160;G2K</td>
+					</tr>
+					<tr>
+						<td>0.1875</td>
+						<td>PG2R&#160;->&#160;PG2</td>
+					</tr>
+					<tr>
+						<td>0.1875</td>
+						<td>R&#160;->&#160;EmptySet</td>
+					</tr>
+					<tr>
+						<td>0.4&#160;(G2K[t]&#160;+&#160;0.05&#160;PG2[t])&#160;=&#160;unassigned&#160;(
+							hill&#160;vmax)</td>
+						<td>1&#160;-&#160;IE&#160;|->&#160;IE</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>G1K&#160;+&#160;R&#160;->&#160;G1R</td>
+					</tr>
+					<tr>
+						<td>100</td>
+						<td>G2K&#160;+&#160;R&#160;->&#160;G2R</td>
+					</tr>
+					<tr>
+						<td>100</td>
+						<td>PG2&#160;+&#160;R&#160;->&#160;PG2R</td>
+					</tr>
+					<tr>
+						<td>3.25&#160;(0.25&#160;G1K[t]&#160;+&#160;G2K[t]&#160;+&#160;0.05&#160;PG2[t])
+							&#160;=&#160;unassigned&#160;(hill&#160;vmax)</td>
+						<td>mass&#160;+&#160;R&#160;|->&#160;mass&#160;+&#160;EmptySet</td>
+					</tr>
+					<tr>
+						<td>G2K[t]&#160;+&#160;0.05&#160;PG2[t]&#160;=&#160;unassigned&#160;(
+							hill&#160;vmax)</td>
+						<td>1&#160;-&#160;Cdc25&#160;|->&#160;Cdc25</td>
+					</tr>
+					<tr>
+						<td>G2K[t]&#160;+&#160;0.05&#160;PG2[t]&#160;=&#160;unassigned&#160;(
+							hill&#160;vmax)</td>
+						<td>1&#160;-&#160;UbE2&#160;|->&#160;UbE2</td>
+					</tr>
+					<tr>
+						<td>G2K[t]&#160;+&#160;0.05&#160;PG2[t]&#160;=&#160;unassigned&#160;(
+							hill&#160;vmax)</td>
+						<td>Wee1&#160;|->&#160;EmptySet</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table border="0" cellspacing="0" cellpadding="2" >
+				<thead>
+					<tr>
+						<th align="left" valign="middle" bgcolor="#eeeeee">Variable</th>
+						<th align="left" valign="middle" bgcolor="#eeeeee">IC&#160;&#160;</th>
+						<th align="left" valign="middle" bgcolor="#eeeeee">ODE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Cdc25</td>
+						<td>0</td>
+						<td>Cdc25'[t]&#160;==&#160;-((kcr*Cdc25[t])/(Kmcr&#160;+&#160;Cdc25[t]))&#160;+
+							&#160;(kc*(1&#160;-&#160;Cdc25[t])*(G2K[t]&#160;+&#160;beta*PG2[t]))/(1&#160;+
+							&#160;Kmc&#160;-&#160;Cdc25[t])</td>
+					</tr>
+					<tr>
+						<td>G1K</td>
+						<td>0</td>
+						<td>G1K'[t]&#160;==&#160;k5&#160;+&#160;k4*G1R[t]&#160;+&#160;k8r*G1R[t]&#160;-
+							&#160;k8*G1K[t]*R[t]&#160;-&#160;G1K[t]*(V6p*(1&#160;-&#160;UbE2[t])&#160;+
+							&#160;V6*UbE2[t])</td>
+					</tr>
+					<tr>
+						<td>G1R</td>
+						<td>0</td>
+						<td>G1R'[t]&#160;==&#160;-(k4*G1R[t])&#160;-&#160;k6p*G1R[t]&#160;-&#160;k8r*
+							G1R[t]&#160;+&#160;k8*G1K[t]*R[t]</td>
+					</tr>
+					<tr>
+						<td>G2K</td>
+						<td>0</td>
+						<td>G2K'[t]&#160;==&#160;k1&#160;+&#160;k4*G2R[t]&#160;+&#160;k7r*G2R[t]&#160;+
+							&#160;(V25p*(1&#160;-&#160;Cdc25[t])&#160;+&#160;V25*Cdc25[t])*PG2[t]&#160;-
+							&#160;k7*G2K[t]*R[t]&#160;-&#160;G2K[t]*(V2p*(1&#160;-&#160;UbE[t])&#160;+
+							&#160;V2*UbE[t])&#160;-&#160;G2K[t]*(Vwp*(1&#160;-&#160;Wee1[t])&#160;+&#160;Vw*
+							Wee1[t])</td>
+					</tr>
+					<tr>
+						<td>G2R</td>
+						<td>0</td>
+						<td>G2R'[t]&#160;==&#160;-(k4*G2R[t])&#160;-&#160;k7r*G2R[t]&#160;+&#160;k7*G2K[
+							t]*R[t]&#160;-&#160;G2R[t]*(k2p&#160;+&#160;V2p*(1&#160;-&#160;UbE[t])&#160;+
+							&#160;V2*UbE[t])</td>
+					</tr>
+					<tr>
+						<td>IE</td>
+						<td>0</td>
+						<td>IE'[t]&#160;==&#160;-((kir*IE[t])/(Kmir&#160;+&#160;IE[t]))&#160;+&#160;(ki*
+							(1&#160;-&#160;IE[t])*(G2K[t]&#160;+&#160;beta*PG2[t]))/(1&#160;+&#160;Kmi&#160;-
+							&#160;IE[t])</td>
+					</tr>
+					<tr>
+						<td>mass</td>
+						<td>0.4</td>
+						<td>mass'[t]&#160;==&#160;mu*mass[t]</td>
+					</tr>
+					<tr>
+						<td>PG2</td>
+						<td>0</td>
+						<td>PG2'[t]&#160;==&#160;-((V25p*(1&#160;-&#160;Cdc25[t])&#160;+&#160;V25*Cdc25[
+							t])*PG2[t])&#160;+&#160;k4*PG2R[t]&#160;+&#160;k7r*PG2R[t]&#160;-&#160;k7*PG2[t]
+							*R[t]&#160;-&#160;PG2[t]*(V2p*(1&#160;-&#160;UbE[t])&#160;+&#160;V2*UbE[t])
+							&#160;+&#160;G2K[t]*(Vwp*(1&#160;-&#160;Wee1[t])&#160;+&#160;Vw*Wee1[t])</td>
+					</tr>
+					<tr>
+						<td>PG2R</td>
+						<td>0</td>
+						<td>PG2R'[t]&#160;==&#160;-(k4*PG2R[t])&#160;-&#160;k7r*PG2R[t]&#160;+&#160;k7*
+							PG2[t]*R[t]&#160;-&#160;PG2R[t]*(k2p&#160;+&#160;V2p*(1&#160;-&#160;UbE[t])
+							&#160;+&#160;V2*UbE[t])</td>
+					</tr>
+					<tr>
+						<td>R</td>
+						<td>0</td>
+						<td>R'[t]&#160;==&#160;k3&#160;+&#160;k6p*G1R[t]&#160;+&#160;k8r*G1R[t]&#160;+
+							&#160;k7r*G2R[t]&#160;+&#160;k7r*PG2R[t]&#160;-&#160;k4*R[t]&#160;-&#160;k8*G1K[
+							t]*R[t]&#160;-&#160;k7*G2K[t]*R[t]&#160;-&#160;k7*PG2[t]*R[t]&#160;-&#160;(kp*
+							mass[t]*(Cig1&#160;+&#160;alpha*G1K[t]&#160;+&#160;G2K[t]&#160;+&#160;beta*PG2[t])*R[t]
+							)/(Kmp&#160;+&#160;R[t])&#160;+&#160;G2R[t]*(k2p&#160;+&#160;V2p*(1&#160;-
+							&#160;UbE[t])&#160;+&#160;V2*UbE[t])&#160;+&#160;PG2R[t]*(k2p&#160;+&#160;V2p*(
+							1&#160;-&#160;UbE[t])&#160;+&#160;V2*UbE[t])</td>
+					</tr>
+					<tr>
+						<td>UbE</td>
+						<td>0</td>
+						<td>UbE'[t]&#160;==&#160;(ku*IE[t]*(1&#160;-&#160;UbE[t]))/(1&#160;+
+							&#160;Kmu&#160;-&#160;UbE[t])&#160;-&#160;(kur*UbE[t])/(Kmur&#160;+&#160;UbE[t])</td>
+					</tr>
+					<tr>
+						<td>UbE2</td>
+						<td>0</td>
+						<td>UbE2'[t]&#160;==&#160;(ku2*(G2K[t]&#160;+&#160;beta*PG2[t])*(1&#160;-
+							&#160;UbE2[t]))/(1&#160;+&#160;Kmu2&#160;-&#160;UbE2[t])&#160;-&#160;(kur2*UbE2[
+							t])/(Kmur2&#160;+&#160;UbE2[t])</td>
+					</tr>
+					<tr>
+						<td>Wee1</td>
+						<td>0</td>
+						<td>Wee1'[t]&#160;==&#160;(kwr*(1&#160;-&#160;Wee1[t]))/(1&#160;+
+							&#160;Kmwr&#160;-&#160;Wee1[t])&#160;-&#160;(kw*(G2K[t]&#160;+&#160;beta*PG2[t])*
+							Wee1[t])/(Kmw&#160;+&#160;Wee1[t])</td>
+					</tr>
+				</tbody>
+			</table>
+<div style="font-style:italic;font-size:small;">
+<hr />
+Generated by Cellerator Version 1.0 update 2.1202 using Mathematica 4.2 for Mac OS X (June 4, 2002), December 2, 2002 13:02:53
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] thoughts on models and and model parameters -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Sun, 8 Dec 2002 02:07:38 &#45;0800 -->
+<!--X-Message-Id: 1039342028.4833.490.camel@fennel.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 89854932&#45;0861&#45;11D7&#45;BB27&#45;003065D603A8@mit.edu -->
+<!--X-Reference: 1156.213.22.6.166.1039301003.squirrel@webmail.vbi.vt.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] thoughts on models and and model parameters</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00046.html">Date Prev</A>][<A HREF="msg00042.html">Date Next</A>][<A HREF="msg00046.html">Thread Prev</A>][<A HREF="msg00047.html">Thread Next</A>][<A HREF="maillist.html#00050">Date Index</A>][<A HREF="threads.html#00050">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] thoughts on models and and model parameters</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] thoughts on models and and model parameters</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 08 Dec 2002 19:07:07 +0900</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>Hi Pedro and Drew,
+
+
+&gt; &gt; So, for me at least, I don't see the model and its parameter values as
+&gt; &gt; being separable at all.  It may be a long term issue though (i.e.,
+&gt; &gt; return to in 2010) and something that will be more relevant to protein
+&gt; &gt; interaction-based networks versus metabolic networks et cetera.
+&gt; 
+&gt; Actually I also agree that parameters and models are not independent. This
+&gt; is as true in metabolic networks as it is in protein binding networks. It
+&gt; turns out that enzymatic activity depends upon substrate binding to
+&gt; enzymes and this is also a spectrum of values (i.e. most dehydrogenases
+&gt; can use NADPH and NADH with different affinities, though some are small
+&gt; enough that we don´t usually consider the alternate substrate, but even
+&gt; this may be relevant at times)
+&gt; 
+&gt; Although models may be incomplete as some parameter values are not known
+&gt; (or uncertain), isolated parameter sets are completely meaningless. This
+&gt; is because parameter sets only exist in the context of a model. So even if
+&gt; one could have models with several parameter sets, there will never be a
+&gt; parameter set that applies to two models. This means, from a computational
+&gt; point of view, that making parameter sets independent from models is not
+&gt; useful. So, we have arguments from both the biochemical and computational
+&gt; sides to refuse this idea of separating parameter values from models.
+
+I don't think so.  For model *parameters*, ok, yes, because they can
+have arbitrary semantics valid only in the model.  But for *constants*,
+no, at least in some cases.   Given organism and measurement conditions
+defined, many constants in rate equations can be shared by different
+models.  In this way we can have a efficient means of collaborating with
+wet labs.
+This is especially true for mesoscopic constants such as affinities and
+small ks.  Even if the model include non-orthogonal nature of
+protein-ligands and protein-protein interaction networks, I think it
+should be constructed ab initio from these fundamental constants, at
+least from computational viewpoint.
+
+My idea was that if we decide to provide a separate format for parameter
+sets (or constants), it should be able to work as a means of
+facilitating publishing and exchanging of measured data for various
+organisms and measurement conditions.  
+
+But it is now depend on design decision of SBML itself;  to define the
+SBML document including the parameters, or to make it modular by
+defining the dynamic model (as opposed to just a model) as a set of a
+SBML document plus zero or more parameter set documents.   Being a
+high-level description of biological models (as opposed to
+simulator-specific low-level ones such as VCML and EML) I still think
+the latter is more elegant from software engineering viewpoint.   
+
+But this may need further discussions.  Because it is a design decision,
+I like the latter but I'd be happy with the former once decided.
+
+
+regards,
+Kouichi
+</PRE>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00022" HREF="msg00022.html">[sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+<UL><LI><EM>From:</EM> Drew Endy &lt;endy@MIT.EDU&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00046" HREF="msg00046.html">Re: [sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+<UL><LI><EM>From:</EM> Pedro Mendes &lt;mendes@vbi.vt.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00046.html">Re: [sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00042.html">Re: [sbml-discuss] SBML Level 2</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00046.html">Re: [sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00047.html">RE: [sbml-discuss] thoughts on models and and model parameters</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00050"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00050"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,278 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Layout Extension Update + controlled vocabularies -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Mon, 14 Jul 2003 03:55:37 &#45;0700 -->
+<!--X-Message-Id: 001401c349f6$49aa8400$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200307141116.45857.sven.sahle@eml.villa&#45;bosch.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Layout Extension Update + controlled vocabularies</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00560.html">Date Prev</A>][<A HREF="msg00562.html">Date Next</A>][<A HREF="msg00559.html">Thread Prev</A>][<A HREF="msg00566.html">Thread Next</A>][<A HREF="maillist.html#00561">Date Index</A>][<A HREF="threads.html#00561">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Layout Extension Update + controlled vocabularies</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Layout Extension Update + controlled vocabularies</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 14 Jul 2003 11:54:17 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Sven
+
+Many thanks for working on this proposal, I think yourselves
+and the people contributing to the discussion are obviously making
+good progress.
+
+I'd like to second John's comments.
+
+In short:
+
+a) somethingGR is not a great name for elements
+
+b) the 'role' attribute is really not graphical information
+and should be placed on the species reference.  Ideally
+the form and content of this attribute should be developed
+as part of the controlled vocabularies work. 
+
+c) the 'refRole' should be replaced by a 'speciesReference' attribute
+which contains the identifier of the speciesReference (given by
+a new field id field on species reference).
+
+(b) and (c) can be implemented in 2 ways:
+
+(i) as an annotation of SBML L2:
+create an annotation on speciesReference (not specieReferenceGR) in the
+SBML model.
+This annotation has an 'id' field and a 'role' field.
+
+example:
+
+&lt;speciesReference species="s1"&gt;
+	&lt;annotation&gt;
+		&lt;graphics:speciesReference id="sr99" role="substrate"/&gt;
+	&lt;/annotation&gt;
+&lt;/speciesReference&gt;
+...
+&lt;graphics:speciesReferenceGraphic speciesReference="sr99"&gt;
+...
+&lt;/graphics:speciesReferenceGraphic&gt;
+
+(ii)as a proposed form for L3 or L2 version 2:
+make the whole of your proposal an integrated part of SBML including new
+fields 'role' and 'id' on speciesReference.
+
+example:
+
+&lt;speciesReference species="s1" id="sr99" role="substrate"/&gt;
+...
+&lt;speciesReferenceGraphic speciesReference="sr99"&gt;
+...
+&lt;/speciesReferenceGraphic&gt;
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Sven Sahle
+&gt; Sent: 14 July 2003 10:17
+&gt; To: sbml-discuss@its.caltech.edu
+&gt; Subject: Re: [sbml-discuss] Layout Extension Update
+&gt; 
+&gt; 
+&gt; hello,
+&gt; 
+&gt; On Saturday 12 July 2003 04:56, John Wagner wrote:
+&gt; &gt; 0. With a few exceptions, SBML does not use abbreviations. 
+&gt; &gt; Abbreviations are a Bad Idea, because they rarely make 
+&gt; sense to anyone 
+&gt; &gt; but the person who thought them up in the first place. So, I would 
+&gt; &gt; change the "GR" and "GRs" to something more intuitive; I 
+&gt; like "Glyph" 
+&gt; &gt; and "Glyphs". 1. In SBML, things like reactants and products, in 
+&gt; &gt; referencing other things like species, use an attribute 
+&gt; name that is 
+&gt; &gt; specific to their context. For example, a speciesReference 
+&gt; element has
+&gt; &gt; a "species" attribute to refer to a species. The layout markup
+&gt; &gt; should follow this approach. Specifically:
+&gt; &gt; 	* &lt;compartmentGR id="cGR1" compartment="c1" ... /&gt;
+&gt; &gt; 	* &lt;speciesGR id="sGR1" species="s1" ... /&gt;
+&gt; &gt; 	* &lt;reactionGR id="rGR1" reaction="r1" ... /&gt;
+&gt; &gt; 	* &lt;speciesReferenceGR id="sRGR1" speciesGR="sGR1" ... /&gt;
+&gt; &gt; Consistency begets clarity, beauty, and all sorts of other
+&gt; &gt; wonderful nouns.
+&gt; 
+&gt; Since our proposal is only a suggestion, certainly the names 
+&gt; can be changed. 
+&gt; Especially your second remark makes sense to me.
+&gt; 
+&gt; &gt; 2. The whole "role" stuff in speciesReferenceGR elements 
+&gt; seems a bit 
+&gt; &gt; vague and misplaced to me, and unless someone can explain how a 
+&gt; &gt; graphical representation has a "role" in another graphical 
+&gt; &gt; representation (as is suggested by their 
+&gt; verbiage)--especially given 
+&gt; &gt; roles like "product" or "substrate", which are chemical 
+&gt; roles rather 
+&gt; &gt; than visual, graphical representation roles--I would like 
+&gt; to see this 
+&gt; &gt; overhauled. That is, these are either visual entities, or they are 
+&gt; &gt; chemistry. If they are visual entities, then the attribute 
+&gt; names (and 
+&gt; &gt; roles themselves) should be given names reflecting this. If 
+&gt; they are 
+&gt; &gt; chemistry, then they should be moved to model section; in 
+&gt; that case, 
+&gt; &gt; my initial reaction would be to make speciesReferenceGR elements
+&gt; &gt; specifically reference the speciesReference that they are
+&gt; &gt; visually representing, and then put the role info in the
+&gt; &gt; speciesReference elements. IN ANY CASE, a lot of the "role"
+&gt; &gt; stuff seems incredibly redundant and vague, and belongs
+&gt; &gt; (and indeed, already exists) elsewhere.
+&gt; 
+&gt; Let me explain why we did it like this:
+&gt; Our reaction glyph (as you would propably like to call it) 
+&gt; consists basically 
+&gt; of 2 nodes representing the points where the substrate arcs 
+&gt; and the product 
+&gt; arcs meet (additional information of how to connect these 2 
+&gt; nodes could be 
+&gt; added). Then the reaction glyph contains species reference 
+&gt; glyphs (graphical 
+&gt; representations of species references in our proposal). These species 
+&gt; reference glyphs contain the information which species glyphs 
+&gt; are connected 
+&gt; to which node of the reaction glyph and how the arc looks 
+&gt; like. The whole mess with the roles comes from the fact that 
+&gt; we need to reference a 
+&gt; specific species reference in the species reference glyph 
+&gt; (Because if we want 
+&gt; to have a graphical model editor it should be possible to 
+&gt; click on an arc and 
+&gt; then know which species reference it refers to). Since 
+&gt; species references do 
+&gt; not have an ID we refer to them by reaction, species, and 
+&gt; role. And even that 
+&gt; is still potentially ambiguous. So the first role ("refRole" 
+&gt; in our proposal) 
+&gt; is used to refer to a species reference in the model. The 
+&gt; second role ("role" 
+&gt; in our proposal) is used to tell a renderer with some 
+&gt; biochemical knowhow how 
+&gt; to render the connection between species glyph and the nodes 
+&gt; of the reaction 
+&gt; glyph. Propbably some renderers would draw a species 
+&gt; reference glyph with 
+&gt; "substrate" role as some arc connecting the species glyph to 
+&gt; the substrate 
+&gt; node of the reaction glyph. 
+&gt; 
+&gt; The reason why this two roles can differ was given in the 
+&gt; discussion on this 
+&gt; mailing list some time ago: Say we want to render a reaction 
+&gt; A-&gt;B catalized 
+&gt; by enzyme E (this reaction has three species references) as 
+&gt; A+E-&gt;B+E (four 
+&gt; species reference glyphs). In this case we have two species 
+&gt; reference glyphs 
+&gt; (with role "substrate" and "product") that refer to one 
+&gt; species reference (a 
+&gt; modifier species reference)
+&gt; 
+&gt; The underlying assumption for our proposal is of course that 
+&gt; the layout 
+&gt; description does not only focus on the graphics (in this case 
+&gt; we should use a 
+&gt; general graph description language) but on the biochemical 
+&gt; structure of the 
+&gt; layout. 
+&gt; 
+&gt; What we want to carry with a species reference glyph would be 
+&gt; in English: "Species glyph x is connected to Reaction y as a 
+&gt; substrate. The species 
+&gt; reference it refers to is z. If you want to know more there 
+&gt; is additional 
+&gt; information on how to render the arc."
+&gt; 
+&gt; We do not want to carry information like: "There are nodes 
+&gt; x,y,z, and they are 
+&gt; connected by arcs a,b,c, and we have information how to 
+&gt; render the arcs"  
+&gt; 
+&gt; Sven
+&gt; 
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00566" HREF="msg00566.html">Re: [sbml-discuss] Layout Extension Update + controlled vocabularies</A></STRONG>
+<UL><LI><EM>From:</EM> Sven Sahle &lt;sven.sahle@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00559" HREF="msg00559.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+<UL><LI><EM>From:</EM> Sven Sahle &lt;sven.sahle@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00560.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00562.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00559.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00566.html">Re: [sbml-discuss] Layout Extension Update + controlled vocabularies</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00561"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00561"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

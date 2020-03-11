@@ -1,0 +1,177 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Final Proof of SBML Level 2 specification -->
+<!--X-From-R13: <uhtu.q.fcraprNtfx.pbz> -->
+<!--X-Date: Wed, 25 Jun 2003 03:30:32 &#45;0700 -->
+<!--X-Message-Id: OF8154B715.27C48136&#45;ON80256D50.00369D60@sb.com -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Final Proof of SBML Level 2 specification</TITLE>
+<LINK REV="made" HREF="mailto:hugh.d.spence@gsk.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00512.html">Date Prev</A>][<A HREF="msg00514.html">Date Next</A>][<A HREF="msg00524.html">Thread Prev</A>][<A HREF="msg00517.html">Thread Next</A>][<A HREF="maillist.html#00513">Date Index</A>][<A HREF="threads.html#00513">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Final Proof of SBML Level 2 specification</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:kdkeck@lbl.gov">kdkeck@lbl.gov</A></LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Final Proof of SBML Level 2 specification</LI>
+<LI><em>From</em>: &lt;<A HREF="mailto:hugh.d.spence@gsk.com">hugh.d.spence@gsk.com</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 25 Jun 2003 11:26:15 +0100</LI>
+<LI>Cc: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;,  <A HREF="mailto:owner-sbml-discuss@its.caltech.edu">owner-sbml-discuss@its.caltech.edu</A>,  &quot;'Sbml-Discuss (E-mail)'&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+
+<br><font size=2 face="Arial">&nbsp; &nbsp; &nbsp; &nbsp; Delving into the math to determine whether a modifier is a catalyst (enzyme), inhibitor, or activator is not a very satisfactory answer. Herbert's case of flipping of behavior between activator and inhibitor means that the distinction between these two is blurred, but we should at least be able to tell that from an enzyme whose presence is absolutely required for the reaction to occur.</font>
+<br><font size=2 face="Arial">&nbsp; &nbsp; &nbsp; &nbsp; I guess transcription factors (repressors, activators) fit into the same mold.<br>
+<br>
+Hugh Spence<br>
+GSK Scientific Computing and Mathematical Modelling<br>
+Medicines Research Centre<br>
+Gunnels Wood Road<br>
+Stevenage<br>
+UK<br>
+SG1 2NY<br>
+<br>
+<br>
+</font>
+<br>
+<br>
+<br>
+<table width=100%>
+<tr valign=top>
+<td>
+<td><font size=1 face="sans-serif"><b>&quot;Kevin D. Keck&quot; &lt;kdkeck@lbl.gov&gt;</b></font>
+<br>
+<br><font size=1 face="sans-serif">Sent by: owner-sbml-discuss@its.caltech.edu</font>
+<p><font size=1 face="sans-serif">25-Jun-2003 01:53</font>
+<br>
+<td><font size=1 face="Arial">&nbsp; &nbsp; &nbsp; &nbsp; </font>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </font>
+<br>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; To: &nbsp; &nbsp; &nbsp; &nbsp;&quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;, &quot;'Sbml-Discuss (E-mail)'&quot; &lt;sbml-discuss@caltech.edu&gt;</font>
+<br>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; cc: &nbsp; &nbsp; &nbsp; &nbsp;</font>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; Subject: &nbsp; &nbsp; &nbsp; &nbsp;Re: [sbml-discuss] Final Proof of SBML Level 2 specification</font></table>
+<br>
+<br><font size=2 face="Courier New">It's been brought up before, but I never saw any resolution:<br>
+<br>
+http://www.sbw-sbml.org/sbml-discuss/archive/msg00155.html<br>
+<br>
+Even if it's best placed in an annotation, it would be nice to have a minimal <br>
+set of modifier types defined in the SBML namespace, rather than us all <br>
+having to invent our own. E.g.:<br>
+<br>
+...<br>
+&lt;modifierSpeciesReference species=&quot;S3&quot; modifierType=&quot;inhibiting&quot; /&gt;<br>
+...<br>
+<br>
+OR<br>
+<br>
+...<br>
+&lt;modifierSpeciesReference species=&quot;S3&quot; &gt;<br>
+ &nbsp;&lt;annotation&gt;&lt;modifierType value=&quot;inhibiting&quot; /&gt;&lt;/annotation&gt;<br>
+&lt;/modifierSpeciesReference&gt;<br>
+...<br>
+<br>
+I know you're trying to wrap things up, but this seems like a simple and <br>
+harmless addition. ; )<br>
+-- <br>
+Kevin D. Keck<br>
+http://vimss.lbl.gov/~kdkeck/<br>
+510-486-4856<br>
+<br>
+<br>
+On Tuesday 24 June 2003 06:12, Andrew Finney wrote:<br>
+&gt; &nbsp;SBML Level 2 Version 1 Final Proof<br>
+&gt; &nbsp;----------------------------------<br>
+&gt;<br>
+&gt; The last proof raised some technical issues<br>
+&gt; with a reviewer which are addressed in this<br>
+&gt; proof of the specification. &nbsp;Unless<br>
+&gt; further issues are raised this is the final<br>
+&gt; proof. &nbsp;Please review this specification and<br>
+&gt; reply with comments to afinney@cds.caltech.edu by<br>
+&gt; Saturday 28th June 2003 at 9am BST (UK time)<br>
+&gt;<br>
+&gt; THIS REALLY IS THE LAST CHANCE TO REVIEW THIS SPECIFICATION.<br>
+&gt;<br>
+&gt; We plan to publish and freeze SBML Level 2 Version 1<br>
+&gt; at 5pm BST (UK time) Saturday 28th June 2003.<br>
+&gt;<br>
+&gt; Technical changes have been made to the following<br>
+&gt; sections since the last proof was sent to SBML Discuss:<br>
+&gt;<br>
+&gt; 3.6.3<br>
+&gt; 4.6<br>
+&gt; 4.6.4<br>
+&gt; 4.8.2<br>
+&gt; 4.8.3<br>
+&gt; 4.10.5<br>
+&gt;<br>
+&gt; yours<br>
+&gt; Andrew Finney<br>
+&gt; +44 (0)1452 722487<br>
+&gt; from US - 011 44 1452 722487<br>
+&gt; University of Hertfordshire, UK<br>
+<br>
+<br>
+<br>
+</font>
+<br>
+<br>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00517" HREF="msg00517.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+<UL><LI><EM>From:</EM> Eric Minch &lt;eric.minch@lionbioscience.com&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00512.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00514.html">FW: [sbml-discuss] SPATIAL - Spatial Features Working Group</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00524.html">RE: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00517.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00513"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00513"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

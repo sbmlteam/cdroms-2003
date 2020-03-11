@@ -1,0 +1,6 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "CellDesigner1.0"
+CFBundleShortVersionString = "InstallAnywhere version 5.0 Installer"
+CFBundleGetInfoString = "InstallAnywhere version 5.0 Installer"
+NSHumanReadableCopyright = "Copyright © 2002 Zero G Software."

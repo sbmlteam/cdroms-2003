@@ -1,0 +1,147 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] support for membranes -->
+<!--X-From-R13: @vpbynf Zr @birer <yrabiNcnfgrhe.se> -->
+<!--X-Date: Fri, 23 May 2003 01:26:29 &#45;0700 -->
+<!--X-Message-Id: Pine.OSF.4.21.0305230949370.287385&#45;100000@electre.pasteur.fr -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD36E30@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] support for membranes</TITLE>
+<LINK REV="made" HREF="mailto:lenov@pasteur.fr">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00270.html">Date Prev</A>][<A HREF="msg00272.html">Date Next</A>][<A HREF="msg00248.html">Thread Prev</A>][<A HREF="msg00275.html">Thread Next</A>][<A HREF="maillist.html#00271">Date Index</A>][<A HREF="threads.html#00271">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] support for membranes</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] support for membranes</LI>
+<LI><em>From</em>: Nicolas Le Novere &lt;<A HREF="mailto:lenov@pasteur.fr">lenov@pasteur.fr</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 10:26:15 +0200 (CEST)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+On Thu, 22 May 2003, Wagner,John wrote:
+
+&gt; First, we HAVE TO HAVE membranes. 
+
+&gt; What we really want is a completely separate
+&gt; element, called membrane; this element will
+&gt; then serve as a container for all of the
+&gt; *other* membrane pieces we want/need
+
+I strongly disagree with that statement. We HAVE TO HAVE compartments of
+various dimensionality. The example you give just require a 2-D
+compartment, sandwiched between 3D-compartments. If we begin to create
+SBML elements representing biological components, we'll end up having a
+mapping between SBML and the component vocabulary of Gene Ontology.
+
+In the 1D, you'll have &lt;microfilament&gt;, &lt;microtubule&gt;, then in
+addition to the &lt;membrane&gt;, you'll need things like &lt;lipid_rafts&gt; etc.
+
+&lt;digression&gt;
+There is something to dig here. It would be potentially very useful to
+have an attribute "goid" attached to compartments and species.
+&lt;digression&gt;
+
+And we're just talking about the cell. But Systems Biology is about
+global study of biological systems, whatever the organizational
+level. Let's think to the Noble/Hunter simulations of whole organs and
+individuals ... 
+
+&gt; &lt;listOfCompartments&gt;
+&gt; 	&lt;compartment name="Extracellular" volume="1" ...&gt;
+&gt; 	&lt;membrane name="PlasmaMembrane"  area="17" outside="Extracellular" ...&gt;
+&gt; 	&lt;compartment name="Cytosol"  volume="1" outside="PlasmaMembrane" ...&gt;
+&gt; &lt;/listOfCompartments&gt;
+
+Why not really expand the compartment element to describe it? For
+instance (it is not a proposal, do not comment the specific elements)
+
+&lt;listOfCompartments&gt;
+	 &lt;compartment name="Cytosol" dimension="3" volume="4e-12" /&gt;
+	 &lt;compartment name="DendriteMembrane" dimension="2.5" length1="10" units="µm" /&gt;
+	 &lt;compartment name="RaftSurface" dimension="2" length1="50" length2="200" units="nm" /&gt;
+	 &lt;compartment name="VesicleMembrane" dimension="2" surface="1e-14" units="sqnm" /&gt;
+	 &lt;compartment name="Convoluted_compartment"&gt;
+		      &lt;geometry&gt;
+				&lt;math xmlns="<A  HREF="http://www.w3.org/1998/Math/MathML">http://www.w3.org/1998/Math/MathML</A>"&gt;
+                                ...
+				&lt;/math&gt;
+		      &lt;/geometry&gt;	      
+         &lt;compartment&gt;
+&lt;/listOfCompartments
+
+-- 
+Nicolas LE NOVÈRE
+Récepteurs et Cognition,   Institut Pasteur,   75724 Paris cedex,    FRANCE
+e-mail : lenov@pasteur.fr                  <A  HREF="http://www-alt.pasteur.fr/~lenov">http://www-alt.pasteur.fr/~lenov</A>
+tel : 33-(0)1-45-68-88-44                         fax : 33-(0)1-45-68-88-36
+
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00275" HREF="msg00275.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00248" HREF="msg00248.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00270.html">Re: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00272.html">RE: [sbml-discuss] DWG preliminary issues - SVG shapes</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00248.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00275.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00271"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00271"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

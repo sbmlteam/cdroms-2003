@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"><html><head><title>Gepasi 3 known bugs</title>
+
+<link rev="made" href="mailto:prm@aber.ac.uk">
+<link rel="home" href="http://gepasi.dbs.aber.ac.uk/home.htm"></head>
+
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#c06000" alink="#0000ff">
+<table width="600" border="0" cellspacing="0">
+  <tbody><tr>
+    <td align="left" width="110" valign="middle"><img src="gep3bugs_files/gepasi.png" alt="Gepasi"></td>
+    <td align="center" width="490" valign="middle"><h1><i>Known Bugs</i></h1></td>
+  </tr>
+  <tr>
+    <td align="center"><font size="-1"><a href="http://www.gepasi.org/gepasi.html">home page</a></font></td>
+    <td></td>
+   </tr>
+</tbody></table>
+
+<p>This page cites all the bugs that the author is aware of in all the Gepasi 3.xx 
+versions. The version that contains a fix is indicated (alpha and beta versions 
+available from author on request). Bugs marked <b>severe</b> can affect results of 
+simulations (<a href="mailto:mendes@vt.edu">contact the author</a> for further details).
+
+</p><p>Most recent bug is on top.
+
+</p><p>
+<table border="1" width="90%" align="center" cellpadding="3">
+<tbody><tr>
+<th><b>Description</b></th>
+<th><b>Severe</b></th>
+<th><b>Date</b></th>
+<th><b>Versions affected</b></th>
+<th><b>Version with fix</b></th>
+</tr>
+
+<tr>
+<td>The predefined Allosteric inhibition kinetic function is not being properly calculated, and the help 
+file is also wrong.</td> 
+<td align="center">yes</td>
+<td>November 2001</td>
+<td>3.00-3.21</td>
+<td>3.30</td>
+</tr>
+
+<tr>
+<td>When compartments have non-unit volumes Gepasi fails to calculate several kinetics properly.</td> 
+<td align="center">yes</td>
+<td>November 2000</td>
+<td>3.20-3.21</td>
+<td>3.30</td>
+</tr>
+
+<tr>
+<td>Gepasi crashes if an optimisation or fit are attempted without adjustable parameters.</td> 
+<td align="center">no</td>
+<td>July 2000</td>
+<td>3.20-3.21</td>
+<td>3.30</td>
+</tr>
+
+<tr>
+<td>The predefined Ping Pong Bi Bi kinetic function is not being properly calculated.</td> 
+<td align="center">yes</td>
+<td>25/9/1998</td>
+<td>3.00-3.20</td>
+<td>3.21</td>
+</tr>
+
+<tr>
+<td>The differential equations with mass action steps were incorrectly set up when the volumes involved were not unity</td> 
+<td align="center">yes</td>
+<td>June 1998</td>
+<td>3.10-3.20</td>
+<td>3.21</td>
+</tr>
+
+
+<tr>
+<td>Gepasi allows empty user-defined functions to be entered. These cause the program to crash when running.</td> 
+<td align="center">no</td>
+<td>26/3/1998</td>
+<td>3.00-3.10</td>
+<td>3.20</td>
+</tr>
+
+
+<tr>
+<td>If any volume of a compartment was not unity, the differential equations were not built correctly.</td> 
+<td align="center">yes</td>
+<td>29/8/1997</td>
+<td>3.00-3.03</td>
+<td>3.10</td>
+</tr>
+
+<tr>
+<td>An error in the file saving routine caused loss of precision on numbers smaller than 1e-16.</td> 
+<td align="center">no</td>
+<td>29/8/1997</td>
+<td>3.00-3.03</td>
+<td>3.10</td>
+</tr>
+
+
+<tr>
+<td>Perturbations on concentrations of a member of a conservation relation and their effect were not correctly calculated.</td> 
+<td align="center">yes</td>
+<td>29/8/1997</td>
+<td>3.00-3.03</td>
+<td>3.10</td>
+</tr>
+
+<tr>
+<td>When parameters are linked to <i>user-functions</i> (rather than other parameters) Gepasi does not calculate the correct value for the linked parameters.</td>
+<td align="center">yes</td>
+<td>4/06/1997</td>
+<td>3.00-3.03</td>
+<td>none yet</td>
+</tr>
+
+<tr>
+<td>Gepasi crashes when some reactions are added to models with a specific configuration of branches.</td>
+<td align="center">no</td>
+<td>18/03/1997</td>
+<td>3.00-3.02</td>
+<td>3.03</td>
+</tr>
+
+<tr>
+<td>Gepasi crashes if any of the output files are opened in exclusive mode by other programs (eg Excel) when the simulation runs.</td>
+<td align="center">no</td>
+<td>20/01/1997</td>
+<td>3.00-3.01</td>
+<td>3.02</td>
+</tr>
+
+<tr>
+<td>Under Windows 95 and Windows NT 4.0 (but not 3.51) the list boxes do not have a horizontal track.</td>
+<td align="center">no</td>
+<td>10/01/1997</td>
+<td>3.00-3.02</td>
+<td>none yet</td>
+</tr>
+
+<tr>
+<td>Divisions by zero are not trapped by the Intel executable. This may later on result in <i>error -3</i>
+in the integration routine (LSODA). This is only an incomplete error
+message (Gepasi should report a "division by zero"), not a bug. </td>
+<td align="center">no</td>
+<td>05/01/1997</td>
+<td>3.00-3.01</td>
+<td>3.02</td>
+</tr>
+
+<tr>
+<td>Help for Ordered Uni Bi kinetic type is not available.</td>
+<td align="center">no</td>
+<td>10/12/1996</td>
+<td>3.00</td>
+<td>3.01</td>
+</tr>
+
+<tr>
+<td>The user-defined kinetic type parser points all substrates to the
+first substrate and all products to the first product; the results of
+any model with user-defined kinetic types with more than one
+substrate/product are wrong.</td>
+<td align="center">yes</td>
+<td>10/12/1996</td>
+<td>3.00</td>
+<td>3.01</td>
+</tr>
+
+<tr>
+<td>If the steady state and time course filenames are equal the program crashes.</td>
+<td align="center">no</td>
+<td>10/12/1996</td>
+<td>3.00</td>
+<td>3.01</td>
+</tr>
+
+</tbody></table>
+
+</p><hr>
+
+<table width="100%" border="0" cellspacing="0">
+ <tbody><tr>
+  <td align="left">Last modified: <i>September 4, 2002</i></td>
+  <td align="right">Copyright © 1996-2002
+    <a href="http://www.vbi.vt.edu/%7Emendes/">Pedro Mendes</a></td>
+ </tr>
+ <tr>
+  <td height="60" align="center" valign="bottom" colspan="2">
+   <a href="http://www.gepasi.org/"><img height="40" width="400" border="0" src="gep3bugs_files/gepbann2.png" alt="Gepasi - biochemical simulation"></a></td>
+ </tr>
+</tbody></table>
+</body></html>

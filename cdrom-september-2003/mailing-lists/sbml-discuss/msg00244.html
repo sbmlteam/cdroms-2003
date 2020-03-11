@@ -1,0 +1,117 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] First real proposal -->
+<!--X-From-R13: "Intare,Xbua" <XIntareNafb.hpup.rqh> -->
+<!--X-Date: Thu, 22 May 2003 18:45:43 &#45;0700 -->
+<!--X-Message-Id: C7C279D983E9C4488C3BFDB43C2DAE2CD36E2F@ITEVS.uchc.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] First real proposal</TITLE>
+<LINK REV="made" HREF="mailto:JWagner@nso.uchc.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00243.html">Date Prev</A>][<A HREF="msg00245.html">Date Next</A>][<A HREF="msg00294.html">Thread Prev</A>][<A HREF="msg00249.html">Thread Next</A>][<A HREF="maillist.html#00244">Date Index</A>][<A HREF="threads.html#00244">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] First real proposal</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] First real proposal</LI>
+<LI><em>From</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 21:45:31 -0400</LI>
+<LI>Thread-Index: AcMgxqPnFytiRh2ARvChYXij/3FveQABLpyg</LI>
+<LI>Thread-Topic: [sbml-discuss] DWG Goals, Constraints, etc.</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+For some time now, I've been pushing to get
+diagram markup out of the &lt;model&gt; section
+and into a separate section, say, &lt;view&gt;.
+First of all, it offends my more sensitive
+"model-view-controller" feelings ;) but
+since my first discussion with Herbert about
+this, it became clear to me that this had to
+happen for a much more practical reason:
+embedding diagram data inside the model
+implicitly assumed that there could only
+be one diagram. Since many of the other
+developers (that is, in addition to the
+Virtual Cell group) need to have multiple
+diagrams, it seems clear that this separation
+must happen. Here's the (very rough) idea:
+&lt;sbml&gt;
+	&lt;model&gt; ... &lt;/model&gt;
+	&lt;view&gt;
+		&lt;diagram width="17" height="5" name="OverallDiagram"&gt;
+		...
+		&lt;/diagram&gt;
+		&lt;diagram width="5" height="5" name="Cytosol"&gt;
+		...
+		&lt;/diagram&gt;
+		&lt;diagram width=3" height="8" name="PlasmaMembrane"&gt;
+		...
+		&lt;/diagram&gt;
+	&lt;/view&gt;
+&lt;/sbml&gt;
+
+Also, there might need to be some kind of
+indication of a "default" diagram, one that
+an importing tool that only displays one
+diagram should choose (that is, if you can
+only display one diagram, this is the one
+to pick).
+
+John
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00243.html">RE: [sbml-discuss] DWG Goals, Constraints, etc.</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00245.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00294.html">RE: [sbml-discuss] DWG Goals, Constraints, etc.</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00249.html">RE: [sbml-discuss] First real proposal</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00244"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00244"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

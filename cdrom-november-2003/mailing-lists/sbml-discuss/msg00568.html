@@ -1,0 +1,256 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Layout Extension Update + controlled vocabularies -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 15 Jul 2003 01:59:10 &#45;0700 -->
+<!--X-Message-Id: 002a01c34aaf$3e4e58c0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200307151007.31173.sven.sahle@eml.villa&#45;bosch.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Layout Extension Update + controlled vocabularies</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00567.html">Date Prev</A>][<A HREF="msg00569.html">Date Next</A>][<A HREF="msg00566.html">Thread Prev</A>][<A HREF="msg00538.html">Thread Next</A>][<A HREF="maillist.html#00568">Date Index</A>][<A HREF="threads.html#00568">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Layout Extension Update + controlled vocabularies</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Layout Extension Update + controlled vocabularies</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 15 Jul 2003 09:58:15 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Sven
+
+IMHO we should be not too worried about the
+L2 annotated form of the diagram proposal.
+If we can get agreement on the diagram form
+over the summer we might be able to get it
+into SBML itself before the end of the year
+given community agreement either as L2 version 2
+or Level 3 version 1.  IMHO we should focus
+on developing a minimal graphics proposal
+that is obviously and easily extensible.
+It is natural that the diagram stuff is
+the next thing that should go into the standard
+as diagrams are widely supported by existing software.
+
+I'm not convinced (or at least need more convincing)
+that its a good idea
+to allow diagraming of reactions and structures
+that are not formally part of the main model.
+Doing this really implies that there are ways
+of modelling the same system which perhaps
+should be captured in another SBML model.
+In addition if this extra information is captured
+only in the diagram part of the model it becomes
+inaccessable to other tools that could make use
+of it.  I have no problem with unstructured
+pictures as part of the diagram but I think
+we should try to get as much biological information
+into the formal model and out of the diagrams.
+
+With respect to the L2 annotation:
+IMHO I think having an id field annotation on speciesReference
+and not having a refType field on the speciesReferenceGraphic
+element is the best approach:
+
+a) it leads us to the approach we're most likley to adopt
+in L3
+
+b) it allows us to support A+A-&gt;B reactions
+
+yours
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of Sven Sahle
+&gt; Sent: 15 July 2003 09:08
+&gt; To: Andrew Finney; sbml-discuss@its.caltech.edu
+&gt; Subject: Re: [sbml-discuss] Layout Extension Update + 
+&gt; controlled vocabularies
+&gt; 
+&gt; 
+&gt; Hello Andrew,
+&gt; 
+&gt; On Monday 14 July 2003 12:54, Andrew Finney wrote:
+&gt; &gt; I'd like to second John's comments.
+&gt; &gt;
+&gt; &gt; In short:
+&gt; &gt;
+&gt; &gt; a) somethingGR is not a great name for elements
+&gt; 
+&gt; I agree.
+&gt; 
+&gt; &gt;
+&gt; &gt; b) the 'role' attribute is really not graphical information 
+&gt; and should 
+&gt; &gt; be placed on the species reference.  Ideally the form and 
+&gt; content of 
+&gt; &gt; this attribute should be developed as part of the controlled 
+&gt; &gt; vocabularies work.
+&gt; &gt;
+&gt; &gt; c) the 'refRole' should be replaced by a 'speciesReference' 
+&gt; attribute 
+&gt; &gt; which contains the identifier of the speciesReference 
+&gt; (given by a new 
+&gt; &gt; field id field on species reference).
+&gt; &gt;
+&gt; &gt; (b) and (c) can be implemented in 2 ways:
+&gt; &gt;
+&gt; &gt; (i) as an annotation of SBML L2:
+&gt; &gt; create an annotation on speciesReference (not specieReferenceGR) in 
+&gt; &gt; the SBML model. This annotation has an 'id' field and a 
+&gt; 'role' field.
+&gt; &gt;
+&gt; &gt; example:
+&gt; &gt;
+&gt; &gt; &lt;speciesReference species="s1"&gt;
+&gt; &gt; 	&lt;annotation&gt;
+&gt; &gt; 		&lt;graphics:speciesReference id="sr99" role="substrate"/&gt;
+&gt; &gt; 	&lt;/annotation&gt;
+&gt; &gt; &lt;/speciesReference&gt;
+&gt; &gt; ...
+&gt; &gt; &lt;graphics:speciesReferenceGraphic speciesReference="sr99"&gt; ...
+&gt; &gt; &lt;/graphics:speciesReferenceGraphic&gt;
+&gt; &gt;
+&gt; &gt; (ii)as a proposed form for L3 or L2 version 2:
+&gt; &gt; make the whole of your proposal an integrated part of SBML 
+&gt; including 
+&gt; &gt; new fields 'role' and 'id' on speciesReference.
+&gt; &gt;
+&gt; &gt; example:
+&gt; &gt;
+&gt; &gt; &lt;speciesReference species="s1" id="sr99" role="substrate"/&gt; ...
+&gt; &gt; &lt;speciesReferenceGraphic speciesReference="sr99"&gt;
+&gt; &gt; ...
+&gt; &gt; &lt;/speciesReferenceGraphic&gt;
+&gt; &gt;
+&gt; 
+&gt; This are actually two alternatives we also considered. (ii) 
+&gt; is of course what 
+&gt; we would like to have for level 3. 
+&gt; We didn´t chose suggestion (i) because we thought it is not 
+&gt; terribly elegant 
+&gt; to have an id in an annotation. But that does of course not 
+&gt; mean that it can 
+&gt; not be the best interim solution for level2. 
+&gt; 
+&gt; concerning the roles I somehow agree that it is not really graphical 
+&gt; information. On the other hand it is not really clear that 
+&gt; the information 
+&gt; does not belong to the layout (see discussion that will 
+&gt; propably follow Johns 
+&gt; latest mail).
+&gt; 
+&gt; Independent from that there is still the problem I mentioned 
+&gt; with A-&gt;B 
+&gt; catalized by E displayed as A+E-&gt;B+E. I´m sorry I don´t 
+&gt; remember who brought 
+&gt; up that issue, but it was some weeks ago on the list. 
+&gt; In our proposal an arbitrary number of graphical 
+&gt; representations can refer to 
+&gt; any model object. This is necessary because some (most?) 
+&gt; layout programs can 
+&gt; display a species as several nodes to avoid long curves and 
+&gt; crossing lines. 
+&gt; Same could apply to reactions (in a very complex reaction 
+&gt; network you might 
+&gt; want to display an important reaction several times). The 
+&gt; same mechanism 
+&gt; works for species reference glyphs and solves the above 
+&gt; mentioned problem. 
+&gt; The reaction A-&gt;B, enzyme E has 3 species references. If you 
+&gt; want to render it 
+&gt; like A+E-&gt;B+E the one modifier species reference is refered 
+&gt; to by two species 
+&gt; reference glyphs. One of these has role="substrate" and the other 
+&gt; role="product". I think it makes sense to have this 
+&gt; information in the 
+&gt; species reference glyphs explicitly instead of only 
+&gt; implicitly (in the 
+&gt; definition of the curve).
+&gt; 
+&gt; By the way the reference to the model objects in the glyphs 
+&gt; is optional in our 
+&gt; proposal. While this might seem strange we think it makes 
+&gt; sense. Say you have 
+&gt; a very detailed sbml model. Then you want to draw a layout 
+&gt; where several of 
+&gt; the detailed reactions are displayed as one overall reaction. 
+&gt; This reaction 
+&gt; glyph would not refer to any single object in the model.  
+&gt; Actually this means that the layout part of an sbml can be 
+&gt; rendered without 
+&gt; looking at the model itself. 
+&gt; 
+&gt; Sven
+&gt; 
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00566" HREF="msg00566.html">Re: [sbml-discuss] Layout Extension Update + controlled vocabularies</A></STRONG>
+<UL><LI><EM>From:</EM> Sven Sahle &lt;sven.sahle@eml.villa-bosch.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00567.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00569.html">[sbml-discuss] how to do stochastic calculation?</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00566.html">Re: [sbml-discuss] Layout Extension Update + controlled vocabularies</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00538.html">FW: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00568"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00568"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

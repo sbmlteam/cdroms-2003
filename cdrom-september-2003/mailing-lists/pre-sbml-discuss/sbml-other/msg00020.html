@@ -1,0 +1,142 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;other] Comments on draft for level2 -->
+<!--X-From-R13: @vpbynf  Zr @birer <yrabiNcnfgrhe.se> -->
+<!--X-Date: Wed, 28 Aug 2002 09:50:53 &#45;0700 -->
+<!--X-Message-Id: Pine.OSF.4.21.0208281807260.60078&#45;100000@electre.pasteur.fr -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-other] Comments on draft for level2</TITLE>
+<LINK REV="made" HREF="mailto:lenov@pasteur.fr">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00019.html">Date Prev</A>][<A HREF="msg00021.html">Date Next</A>][<A HREF="msg00019.html">Thread Prev</A>][<A HREF="msg00021.html">Thread Next</A>][<A HREF="maillist.html#00020">Date Index</A>][<A HREF="threads.html#00020">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-other] Comments on draft for level2</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-other@symbio.jst.go.jp">sbml-other@symbio.jst.go.jp</A></LI>
+<LI><em>Subject</em>: [sbml-other] Comments on draft for level2</LI>
+<LI><em>From</em>: Nicolas  Le Novere &lt;<A HREF="mailto:lenov@pasteur.fr">lenov@pasteur.fr</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 28 Aug 2002 18:52:15 +0200 (CEST)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Main issues
+-----------
+
+(1)
+
+I propose to differentiate between type SId and a new SIdREF, mirroring the
+ID/IDREF of XML. There are constraints on id attributes (uniqueness and so
+on), which are not the same found for the reference to elements with a
+particular id (for instance, existance of a corresponding id). Therefore:
+
+Whatever the element, the attribute id is of type SId, while 
+
+species/compartment
+speciesConcentrationRule/species
+compartmentVolumeRule/compartment
+parameterRule/parameter
+modifierSpeciesReference/species
+speciesReference/species
+
+are of type SIdREF
+
+(2)
+
+Section 4.8.3: As for Level 1, I am uncomfortable with the output of 
+kineticLaw. The expression contained within the math element, as the former
+formula, should be in substance/volume/time, and not in substance/time. In
+section 3.6.2, it is written "When a specie identifier occurs in a ci
+element, it represents the concentration (i.e. substance/volume) of the
+species". So  
+&lt;kineticLaw&gt;
+    &lt;math xmlns="<A  HREF="http://www.w3.org/1998/MAth/MathML">http://www.w3.org/1998/MAth/MathML</A>"&gt;
+        &lt;apply&gt;
+            &lt;times /&gt;
+            &lt;ci&gt;k&lt;/ci&gt;
+	    &lt;ci&gt;A&lt;ci&gt;
+        &lt;/apply&gt;
+    &lt;/math&gt;
+&lt;/kineticLaw&gt;
+
+means k * [A], and should represent d[A]/dt
+
+Minor issues
+____________
+
+In the second example of section 4.3, the kind of unit is "liter", and not
+"liters". 
+
+Section 4.5, the sentence "The optional boolean field [...] of the reaction
+system" seems redundant and useless to me. Is it a fossil of former drafts?
+
+In some examples, all numerical values, like initialAmounts and parameters,
+equal 0. Are such models very useful? :-)
+
+Regards,
+
+PS: In section 6.1, I did not see any mention of a multistate
+enhancement for SBML3. Is the idea totally dropped, or could we keep on
+spending time on that issue? 
+
+--
+Nicolas LE NOVÈRE                                 
+Récepteurs et Cognition,   Institut Pasteur,    75724 Paris cedex,   FRANCE
+e-mail : lenov@pasteur.fr                  <A  HREF="http://www-alt.pasteur.fr/~lenov">http://www-alt.pasteur.fr/~lenov</A>
+tel : 33-(0)1-45-68-88-44                         fax : 33-(0)1-45-68-88-36
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00019.html">[sbml-other] RE: Systems Biology Markup Language Level 2 (SBML L2) Working Draft Revision 2</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00021.html">[sbml-other] Moving the L2 debate on</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00019.html">[sbml-other] RE: Systems Biology Markup Language Level 2 (SBML L2) Working Draft Revision 2</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00021.html">[sbml-other] Moving the L2 debate on</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00020"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00020"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

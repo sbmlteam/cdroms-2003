@@ -1,0 +1,215 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] Re: Proposal for change to rules -->
+<!--X-From-R13: [nep Hnff <zinffNig.rqh> -->
+<!--X-Date: by paradigm (mbox mhucka)(with Cubic Circle's cucipop (v1.31 1998/05/13) Mon Mar 17 12:46:54 2003) -->
+<!--X-Message-Id: 3E762AFC.6030801@vt.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 15986.32248.299214.240116@erato1.cds.caltech.edu -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] Re: Proposal for change to rules</TITLE>
+<LINK REV="made" HREF="mailto:mvass@vt.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00075.html">Date Prev</A>][<A HREF="msg00077.html">Date Next</A>][<A HREF="msg00072.html">Thread Prev</A>][<A HREF="msg00073.html">Thread Next</A>][<A HREF="maillist.html#00076">Date Index</A>][<A HREF="threads.html#00076">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] Re: Proposal for change to rules</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] Re: Proposal for change to rules</LI>
+<LI><em>From</em>: Marc Vass &lt;<A HREF="mailto:mvass@vt.edu">mvass@vt.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 17 Mar 2003 15:07:24 -0500</LI>
+<LI>CC: SBML Discussion List &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Michael Hucka wrote:
+
+&gt;Dear SBML users,
+&gt;
+&gt;As we're winding up for issuing an updated draft of the SBML
+&gt;L2 spec, I'd like to make a proposal for a change to Rules.
+&gt;This was not discussed at the Stockholm meeting, but I'd
+&gt;like to propose that we add this to SBML L2 for the next
+&gt;iteration.  We've talked it over among ourselves here, but
+&gt;we don't want to introduce this change without discussion by
+&gt;the wider community.
+&gt;
+&gt;The proposal is to get rid of everything except Rule,
+&gt;AlgebraicRule and AssignmentRule, and add a new field to
+&gt;AssignmentRule, so that the result looks like this:
+&gt;
+&gt;     ,--------------------------------------------------.
+&gt;     | Rule                                             |
+&gt;     |--------------------------------------------------|
+&gt;     | math: (MathML)  { namespace="http://...." }      |
+&gt;     `--------------------------------------------------'
+&gt;             ^                      ^
+&gt;             |                      |
+&gt;     ,---------------.              |
+&gt;     | AlgebraicRule |              |
+&gt;     `---------------'              |
+&gt;                                    |
+&gt;     ,--------------------------------------------------.
+&gt;     | AsssignmentRule                                  |
+&gt;     |--------------------------------------------------|
+&gt;     | variable: SId                                    |
+&gt;     | type: RuleType  { use="default" value="scalar" } |
+&gt;     `--------------------------------------------------'
+&gt;
+&gt;(Note: the attribute "variable" could be named something
+&gt;else.)
+&gt;
+&gt;Explanation: in the case of assignment rules, the symbols
+&gt;that they assign to have to be globally unique.  Therefore,
+&gt;a software tool can always unambiguously determine whether
+&gt;the left-hand side of an assignment is a species,
+&gt;compartment or parameter.  With the disappearance (in SBML
+&gt;L2) of a units field on ParameterRule, the three leaf types
+&gt;of Rules (SpeciesConcentrationRule, CompartmentVolumeRule,
+&gt;ParameterRule) are essentially identical.  This begs the
+&gt;question of why have them at all.  They can be folded into
+&gt;one generic AssignmentRule.
+&gt;
+&gt;In this new scheme, the meanings of assignments to species,
+&gt;compartments and parameters would be defined as they are
+&gt;currently.  So, for example, assigning to a compartment
+&gt;would have the meaning of setting the compartment volume.
+&gt;Although this would not be obvious from the names of the
+&gt;rules as it is with SpeciesConcentrationRule, etc., there is
+&gt;precedent in SBML for defining the meaning of something
+&gt;without having an explicitly-named XML element: we already
+&gt;do exactly this when we describe what it means to assign to
+&gt;the special variables "substance", "volume", and "time".
+&gt;And in any case, the "obviousness" issue is only an issue
+&gt;for humans reading the SBML, not for software; the software
+&gt;can surely keep track of whether a variable is the name of a
+&gt;compartment or a parameter or whatever.
+&gt;
+&gt;Here's an example of SBML (based on another example in the
+&gt;current SBML L2 spec) to show what this would look like.
+&gt;(Here, "k" is a parameter, "s2" is a species name and "A" is
+&gt;a compartment.)
+&gt;
+&gt;&lt;model&gt;
+&gt;    ...
+&gt;    &lt;listOfRules&gt;
+&gt;        &lt;algebraicRule&gt;
+&gt;            &lt;math xmlns="<A  HREF="http://www.w3.org/1998/Math/MathML">http://www.w3.org/1998/Math/MathML</A>"&gt;
+&gt;                &lt;apply&gt;
+&gt;                    &lt;plus/&gt;
+&gt;                    &lt;ci&gt; k1 &lt;/ci&gt;
+&gt;                    &lt;ci&gt; k2 &lt;/ci&gt;
+&gt;                &lt;/apply&gt;
+&gt;            &lt;/math&gt;
+&gt;        &lt;/algebraicRule&gt;
+&gt;        &lt;assignmentRule variable="k"&gt;
+&gt;            &lt;math xmlns="<A  HREF="http://www.w3.org/1998/Math/MathML">http://www.w3.org/1998/Math/MathML</A>"&gt;
+&gt;                &lt;apply&gt;
+&gt;                    &lt;divide/&gt;
+&gt;                    &lt;ci&gt; k3 &lt;/ci&gt;
+&gt;                    &lt;ci&gt; k2 &lt;/ci&gt;
+&gt;                &lt;/apply&gt;
+&gt;            &lt;/math&gt;
+&gt;        &lt;/assignmentRule&gt;
+&gt;        &lt;assignmentRule variable="s2"&gt;
+&gt;            &lt;math xmlns="<A  HREF="http://www.w3.org/1998/Math/MathML">http://www.w3.org/1998/Math/MathML</A>"&gt;
+&gt;                &lt;apply&gt;
+&gt;                    &lt;divide/&gt;
+&gt;                    &lt;apply&gt;
+&gt;                        &lt;times/&gt;
+&gt;                        &lt;ci&gt; k &lt;/ci&gt;
+&gt;                        &lt;ci&gt; t &lt;/ci&gt;
+&gt;                    &lt;/apply&gt;
+&gt;                    &lt;apply&gt;
+&gt;                        &lt;plus/&gt;
+&gt;                        &lt;cn&gt; 1 &lt;/cn&gt;
+&gt;                        &lt;ci&gt; k2 &lt;/ci&gt;
+&gt;                    &lt;/apply&gt;
+&gt;                &lt;/apply&gt;
+&gt;            &lt;/math&gt;
+&gt;        &lt;/assignmentRule&gt;&gt;
+&gt;        &lt;assignmentRule variable="A"&gt;
+&gt;            &lt;math xmlns="<A  HREF="http://www.w3.org/1998/Math/MathML">http://www.w3.org/1998/Math/MathML</A>"&gt;
+&gt;                &lt;apply&gt;
+&gt;                    &lt;times/&gt;
+&gt;                    &lt;cn&gt; 0.10 &lt;/cn&gt;
+&gt;                    &lt;ci&gt; t &lt;/ci&gt;
+&gt;                &lt;/apply&gt;
+&gt;            &lt;/math&gt;
+&gt;        &lt;/assignmentRule&gt;
+&gt;    &lt;/listOfRules&gt;
+&gt;    ...
+&gt;&lt;/model&gt;
+&gt;
+&gt;
+&gt;Does anyone see problems with this scheme?  Would anyone
+&gt;have objections to making this change?  In particular, how
+&gt;seriously would this affect people who have already
+&gt;implemented parsers for L2?
+&gt;
+&gt;MH
+&gt;
+&gt;  
+&gt;
+It wouldn't affect my parser seriously to change things around a bit for 
+this, nor would it for generating new models from JigCell's model builder.
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00072" HREF="msg00072.html">[sbml-discuss] Proposal for change to rules</A></STRONG>
+<UL><LI><EM>From:</EM> Michael Hucka &lt;mhucka@caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00075.html">Re: [sbml-discuss] Release Notice: libsbml 1.0.0</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00077.html">[sbml-discuss] Revision to model composition proposal</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00072.html">[sbml-discuss] Proposal for change to rules</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00073.html">RE: [sbml-discuss] Proposal for change to rules</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00076"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00076"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

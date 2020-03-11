@@ -1,0 +1,252 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sysbio&#45;team] rate law units issue -->
+<!--X-From-R13: "Vreoreg [ Enheb" <ufnhebNpqf.pnygrpu.rqh> -->
+<!--X-Date: Tue, 1 Oct 2002 12:15:47 &#45;0700 -->
+<!--X-Message-Id: NEBBILGLEMIIGIKFIEOLKEABCPAA.hsauro@cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000501c2691b$513cae80$832894d9@ANDREWLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sysbio-team] rate law units issue</TITLE>
+<LINK REV="made" HREF="mailto:hsauro@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00038.html">Date Prev</A>][<A HREF="msg00003.html">Date Next</A>][<A HREF="msg00038.html">Thread Prev</A>][<A HREF="msg00003.html">Thread Next</A>][<A HREF="maillist.html#00039">Date Index</A>][<A HREF="threads.html#00039">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sysbio-team] rate law units issue</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;sysbio-team&quot; &lt;<A HREF="mailto:sysbio-team@caltech.edu">sysbio-team@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sysbio-team] rate law units issue</LI>
+<LI><em>From</em>: &quot;Herbert M Sauro&quot; &lt;<A HREF="mailto:hsauro@cds.caltech.edu">hsauro@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Tue, 1 Oct 2002 12:21:58 -0700</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+
+Didn't quite understand your reply.
+
+&gt;the rates of change of amount are 
+
+&gt;A' = -k[A]
+&gt;B' = k[A]
+&gt;C' = k[A]
+
+i.e brackets are used here to indicate amount, but the agreed notation is
+to use brackets when referring to concentration.
+
+H
+-----Original Message-----
+From: Andrew Finney [<A  HREF="mailto:afinney@cds.caltech.edu">mailto:afinney@cds.caltech.edu</A>]
+Sent: Tuesday, October 01, 2002 12:22 AM
+To: 'Herbert M Sauro'
+Subject: RE: [sysbio-team] rate law units issue
+
+
+Herbert
+
+I was using square brackets 
+explicitly make the distinction.
+
+yours Andrew Finney
+ 
+afinney@cds.caltech.edu
++44 1452 722 487
+UK: 01452 722 487 - US: 011 44 1452 722 487
+
+ERATO Kitano SBW Development Group
+<A  HREF="http://www.cds.caltech.edu/erato">http://www.cds.caltech.edu/erato</A> 
+
+California Institute of Technology / University of Hertfordshire 
+
+&gt; -----Original Message-----
+&gt; From: owner-sysbio-team@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sysbio-team@its.caltech.edu">mailto:owner-sysbio-team@its.caltech.edu</A>] On Behalf Of 
+&gt; Herbert M Sauro
+&gt; Sent: 30 September 2002 18:13
+&gt; To: sysbio-team
+&gt; Subject: RE: [sysbio-team] rate law units issue
+&gt; 
+&gt; 
+&gt; 
+&gt; I quick notation correction, square brackets are used to 
+&gt; denote concentration, thus it is not wise to them in the
+&gt; context of amount, otherwise people will think you mean concentration.
+&gt; 
+&gt; Herbert
+&gt; 
+&gt; -----Original Message-----
+&gt; From: owner-sysbio-team@its.caltech.edu
+&gt; [<A  HREF="mailto:owner-sysbio-team@its.caltech.edu]On">mailto:owner-sysbio-team@its.caltech.edu]On</A> Behalf Of Andrew Finney
+&gt; Sent: Sunday, September 29, 2002 8:05 AM
+&gt; To: sysbio-team@caltech.edu
+&gt; Subject: [sysbio-team] rate law units issue
+&gt; 
+&gt; 
+&gt; Folks
+&gt; 
+&gt; The following is a draft message for
+&gt; sbml-discuss to justify our definition
+&gt; of rate laws of reactions to be in terms
+&gt; rate of change of amount as opposed
+&gt; to rate of change of concentration.
+&gt; 
+&gt; I need a sanity check on this before
+&gt; I post this to sbml-discuss.
+&gt; 
+&gt; [perhaps this justification could be
+&gt; inserted as an appendix to the L2 proposal
+&gt; document in a better form].
+&gt; 
+&gt; 
+&gt; Folks
+&gt; 
+&gt; Nicolas Le Novere raised the issue of the
+&gt; units of kinetic laws in SBML.
+&gt; 
+&gt; In both L1 and L2 the formula used to
+&gt; define the rate of a given reaction is defined
+&gt; to be amount/time (moles/second by default).
+&gt; This is reasonable since reactions change
+&gt; species amount directly and only species
+&gt; concentration indirectly.
+&gt; 
+&gt; We are aware that many modelers use
+&gt; concentration/time or amount/volume/time
+&gt; (moles/liter/second by default) when
+&gt; defining rate of change formulae
+&gt; for species.  Thus we defined
+&gt; speciesConcentration rules that have these
+&gt; units.
+&gt; 
+&gt; So at first this may seem to be inconsistent both
+&gt; within SBML and perhaps with the approach of the
+&gt; modeling community.
+&gt; 
+&gt; However there is a reason for this:
+&gt; 
+&gt; a) Kinetic laws on reactions don't define the
+&gt; rate of change of a single species. In fact
+&gt; the rate of change of species is composed
+&gt; from the rate laws of all reactions in which
+&gt; the species is either a reactant or product.
+&gt; The result is a formula that defines a rate of
+&gt; change of amount for the species.
+&gt; 
+&gt; b) A reaction can have a transport component
+&gt; i.e. move species from one compartment to another
+&gt; where each compartment can have a different volume.
+&gt; 
+&gt; Consider the situation where there are 3 species A, B and
+&gt; C all in separate compartments with volumes Va, Vb, and Vc
+&gt; respectively.  We define a transporting reaction A -&gt; B + C
+&gt; with a rate law k[A]
+&gt; 
+&gt; the rates of change of amount are
+&gt; 
+&gt; A' = -k[A]
+&gt; B' = k[A]
+&gt; C' = k[A]
+&gt; 
+&gt; and thus the rates of change of concentration are:
+&gt; 
+&gt; [A]' = -k[A]/Va
+&gt; [B]' = k[A]/Vb
+&gt; [C]' = k[A]/Vc
+&gt; 
+&gt; One immediate observation of this is if you
+&gt; don't care about volume and compartments:
+&gt; you just locate everything inside a single unit
+&gt; compartment and then [A] = A thus returning the
+&gt; math to the conventional representation.
+&gt; In fact one of the options for SBML L2
+&gt; is to have 'default' unit volume compartment
+&gt; i.e. if you don't supply a compartment the distinction
+&gt; between amount and concentration effectively disappears.
+&gt; 
+&gt; Lets consider a definition of rate laws that
+&gt; might seem rational: the rate law defines the rate of
+&gt; change of concentration of the species in the reaction.
+&gt; Thus we have
+&gt; 
+&gt; [A]' = -k[A]
+&gt; [B]' = k[A]
+&gt; [C]' = k[A]
+&gt; 
+&gt; therefore the rates of change of amount are
+&gt; 
+&gt; A' = -k[A]Va
+&gt; B' = k[A]Vb
+&gt; C' = k[A]Vc
+&gt; 
+&gt; Hopefully you'd agree that this is incorrect:
+&gt; this suggests that you can increase the rate of increate of
+&gt; amount of C simply by increasing the volume of C's compartment.
+&gt; 
+&gt; Can I rest my case?
+&gt; 
+&gt; yours Andrew Finney
+&gt; 
+&gt; afinney@cds.caltech.edu
+&gt; +44 1452 722 487
+&gt; UK: 01452 722 487 - US: 011 44 1452 722 487
+&gt; 
+&gt; ERATO Kitano SBW Development Group
+&gt; <A  HREF="http://www.cds.caltech.edu/erato">http://www.cds.caltech.edu/erato</A>
+&gt; 
+&gt; California Institute of Technology / University of Hertfordshire
+&gt; 
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00038.html">[sbml-discuss] units of kinetic laws</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00003.html">[sbml-discuss] SBW/SBML Forum - Dec 12th Stockholm</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00038.html">[sbml-discuss] units of kinetic laws</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00003.html">[sbml-discuss] SBW/SBML Forum - Dec 12th Stockholm</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00039"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00039"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

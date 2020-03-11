@@ -1,0 +1,153 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Layout Extension Update -->
+<!--X-From-R13: "Vreoreg Enheb" <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Mon, 14 Jul 2003 10:06:19 &#45;0700 -->
+<!--X-Message-Id: 601BBB4D9640CB4693A2384E4B37872E15B51F@dell2650&#45;0550.kgi.edu.96.173.134.in&#45;addr.arpa -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Layout Extension Update</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00561.html">Date Prev</A>][<A HREF="msg00563.html">Date Next</A>][<A HREF="msg00560.html">Thread Prev</A>][<A HREF="msg00563.html">Thread Next</A>][<A HREF="maillist.html#00562">Date Index</A>][<A HREF="threads.html#00562">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Layout Extension Update</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@its.caltech.edu">sbml-discuss@its.caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Layout Extension Update</LI>
+<LI><em>From</em>: &quot;Herbert Sauro&quot; &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 14 Jul 2003 10:05:06 -0700</LI>
+<LI>Thread-Index: AcNJ71W9Bt6DdMgdR7OUvkQtLiL6MwAOojCc</LI>
+<LI>Thread-Topic: [sbml-discuss] Layout Extension Update</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+I look at your picture and wondered why you need to visually indicate the center segment? Also why have a separate central segment? Why not join the arcs directly? Is there some biological significance to this?
+ 
+Herbert
+
+	-----Original Message----- 
+	From: Sven Sahle [<A  HREF="mailto:sven.sahle@eml.villa-bosch.de">mailto:sven.sahle@eml.villa-bosch.de</A>] 
+	Sent: Mon 7/14/2003 3:03 AM 
+	To: Herbert Sauro; sbml-discuss@its.caltech.edu 
+	Cc: 
+	Subject: Re: [sbml-discuss] Layout Extension Update
+	
+	
+
+	Hello, 
+
+	it seems that, again, we will have to make some general decision: 
+	Do we want to have several ways to represent reactions in our layout (to 
+	reflect the different way existing programs deal with reactions) or do we 
+	want to find one way to represent reactions. 
+	The one way would need to be fairly general to allow most other cases to be 
+	translated. It would therefore be unnecessarily complex for some simple 
+	cases. 
+
+	In our proposal we tried to find a compromise between generality and 
+	simplicity: 
+	A graphical representation of a reaction in our proposal consists of the 
+	coordinates of exactly two nodes. One node is where the substrate arcs meet, 
+	the other is where the product arcs meet. Optionally information about the 
+	curve connecting the nodes could be given (not yet in our proposal). Also the 
+	graphical representation of the reaction contains a list of graphical 
+	representations of species references. These contain information on which 
+	species glyphs connect to which node of the graphical representation of the 
+	reaction. Optionally also information on the form of the curve. 
+	(In the attached figure the red squares are the nodes of the graphical 
+	representaion of the reaction. The green curves are the graphical 
+	representations of the species references. The blue circles are the graphical 
+	representations of species. So the red and green objects together form the 
+	graphical repsresentation of the reaction) 
+
+	Of course more general graphical representations of reactions could be thought 
+	of (like an arbitrary number of nodes in the reaction). 
+
+	If a program internally deals with only one node (center of reaction) it could 
+	either give the two nodes the same coordinates or regard them as one point 
+	plus a tangent. 
+
+	So what do you think? Do we need a more general definition? Do we need several 
+	cases for simple reactions and complicated reactions? Or could there be a 
+	compromise similar to our proposal? 
+
+	Sven 
+
+	On Saturday 12 July 2003 21:22, Herbert Sauro wrote: 
+	&gt; You're correct, Jdesigner does have an explict reaction section, instead 
+	&gt; the whole line from reactants to products represents the reaction, thus 
+	&gt; clicking anywhere on the line will bring up the reaction property box. No 
+	&gt; harm though in allowing people to have special symbols or sections of the 
+	&gt; line that represent the reaction. 
+	&gt; 
+	&gt; 
+	&gt;       Herbert 
+	&gt; 
+	&gt;       &gt;I also agree with Herbert et al about line placement, but we 
+	&gt;       &gt;need to think pretty hard about it so that everyone is happy. 
+	&gt;       &gt;For example, JDesigner (as I recall) doesn't have a 
+	&gt;       &gt;graphical representation for the reaction; instead, the 
+	&gt;       &gt;reaction is represented by the collection of lines in 
+	&gt;       &gt;an implicit manner. On the other hand, the Virtual Cell 
+	&gt;       &gt;group takes an approach similar to the EML approach, with 
+	&gt;       &gt;two (x, y) points representing the reaction (one point 
+	&gt;       &gt;where reactants hook in, one where products hook in). 
+	&gt;       &gt;I think we need to treat both approaches. 
+	&gt;       &gt; 
+	&gt;       &gt;John 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00561.html">RE: [sbml-discuss] Layout Extension Update + controlled vocabularies</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00563.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00560.html">Re: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00563.html">RE: [sbml-discuss] Layout Extension Update</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00562"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00562"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

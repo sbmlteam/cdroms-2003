@@ -1,0 +1,217 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage"></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table>
+</div>
+
+
+<h1>MathSBML Model Builder:<span class="function"> eventToSBML</span> </h1>
+
+<hr/>
+
+			
+<p><span class="function">eventToSBML[options]</span> returns an SBML <span class="function">&lt;event.../&gt;</span> definition</p>
+
+<p><span class="function">eventToSBML[{{options},{options},...}]</span> returns a 
+<span class="function">&lt;listOfEvents.../&gt;</span>
+where each option list corresponds to the options for single event definition.</p>
+
+<p><span class="function">eventToSymbolicSBML[arguments]</span> returns Symbolic 
+SBML for a single <span class="function">&lt;event.../&gt;</span> definition</p>
+
+
+<span style="font-size:smaller;">New in version 2.1.5.</span>
+
+<hr />
+<h1>Options</h1>
+<table bgcolor="#C0C0C0" border="1">
+	<tr>
+		<td>
+			<table border="0" cellpadding="5">
+				<thead style="font-weight:bold;">
+					<tr>
+						<td>Option</td>
+						<td>Default</td>
+						<td>Description</td>
+					</tr>
+				</thead>
+				<tbody>
+				
+						<tr>
+							<td valign="top"><span class="function">id</span></td>
+							<td valign="top"><span class="function"></span>Assigned*</td>
+							<td valign="top">Value of SBML <span class="function">id</span>. If not provided, <span class="function">event<i>n</i></span>, where <span class="function"><i>n</i></span> is an integer, is generated.</td>
+						</tr>												
+				
+						<tr>
+							<td valign="top"><span class="function">name</span></td>
+							<td valign="top">Value of <span class="function">id</span></td>
+							<td valign="top">SBML <span class="function">name</span> field value. </td>
+						</tr>												
+						
+						<tr>
+							<td valign="top"><span class="function">trigger</span></td>
+							<td valign="top">none</td>
+							<td valign="top">Formula to use for provide SBML event <span class="function">&lt;trigger&gt;</span>.  
+							Must evaluate to a boolean value.</td>
+						</tr>												
+						<tr>
+							<td valign="top"><span class="function">delay</span></td>
+							<td valign="top"><span class="function">0</span></td>
+							<td valign="top">Optional expression that evaluates to a time delay before <span class="function">&lt;eventAssignment&gt;</span> is performed.</td>
+						</tr>												
+
+						<tr>
+							<td valign="top"><span class="function">timeUnits</span></td>
+							<td valign="top">none</td>
+							<td valign="top">Optional units for time, used for value of <span class="function">timeUnits</span> field of event.</td>
+						</tr>												
+
+						<tr>
+							<td valign="top"><span class="function">eventAssignment</span></td>
+							<td valign="top">none</td>
+							<td valign="top">
+							Required list of rules of the form <span class="function">{var<sub>1</sub>->expr<sub>1</sub>, 
+							var<sub>2</sub>->expr<sub>2</sub>,...}</span> where each <span class="function">var<sub>i</sub></span> is
+							a variable that should be assigned  the value of expression <span class="function">expr<sub>i</sub></span> when the event is triggered.
+							</td>
+						</tr>												
+
+
+					</tbody>
+			</table>
+		</td>
+	</tr>
+</table>
+
+
+<hr />
+
+<h1>Example 1: Single event definition:</h1>
+<pre style="font-size:larger;color:blue;">
+eventToSBML[
+     id->"foo", 
+     name->"A basic event", 
+     timeUnits->"hours",
+     trigger->(x>5), 
+     eventAssignment->{x->y+x, y->0}]
+</pre>
+
+returns the string
+<pre style="font-size:larger;color:blue;">
+&lt;event id"foo" name="A basic event" timeUnits="hours"&gt;
+ &lt;trigger&gt;
+  &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+   &lt;apply&gt;
+    &lt;gt/&gt;
+    &lt;ci&gt;x&lt;/ci&gt;
+    &lt;cn&gt;5&lt;/cn&gt;
+   &lt;/apply&gt;
+  &lt;/math&gt;
+ &lt;/trigger&gt;
+ &lt;listOfEventAssignments&gt;
+  &lt;eventAssignment variable="x"&gt;
+   &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+    &lt;apply&gt;
+     &lt;plus/&gt;
+     &lt;ci&gt;x&lt;/ci&gt;
+     &lt;ci&gt;y&lt;/ci&gt;
+    &lt;/apply&gt;
+   &lt;/math&gt;
+  &lt;/eventAssignment&gt;
+  &lt;eventAssignment variable="y"&gt;
+   &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+    &lt;cn&gt;0&lt;/cn&gt;
+   &lt;/math&gt;
+  &lt;/eventAssignment&gt;
+ &lt;/listOfEventAssignments&gt;
+&lt;/event&gt;
+</pre>
+
+<h1>Example 2: list of events:</h1>
+The input string:
+
+<pre style="font-size:larger;color:blue;">
+eventToSBML[{
+    {id-> "yon",
+     name-> "y turned on",
+     trigger-> x>17, 
+     eventAssignment->{y-> 0,z-> 100}
+     },
+    {id-> "yoff", 
+     name-> "y turned off", 
+     trigger-> x>20, 
+     eventAssignment->{y-> 100, z-> 0}}
+     }]
+</pre>
+
+returns
+
+<pre style="font-size:larger;color:blue;">
+&lt;listOfEvents&gt;
+ &lt;event id="yon" name="y turned on"&gt;
+  &lt;trigger&gt;
+   &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+    &lt;apply&gt;
+     &lt;gt/&gt;
+     &lt;ci&gt;x&lt;/ci&gt;
+     &lt;cn&gt;17&lt;/cn&gt;
+    &lt;/apply&gt;
+   &lt;/math&gt;
+  &lt;/trigger&gt;
+  &lt;listOfEventAssignments&gt;
+   &lt;eventAssignment variable="y"&gt;
+    &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+     &lt;cn&gt;0&lt;/cn&gt;
+    &lt;/math&gt;
+   &lt;/eventAssignment&gt;
+   &lt;eventAssignment variable="z"&gt;
+    &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+     &lt;cn&gt;100&lt;/cn&gt;
+    &lt;/math&gt;
+   &lt;/eventAssignment&gt;
+  &lt;/listOfEventAssignments&gt;
+ &lt;/event&gt;
+ &lt;event id="yoff" name="y turned off"&gt;
+  &lt;trigger&gt;
+   &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+    &lt;apply&gt;
+     &lt;gt/&gt;
+     &lt;ci&gt;x&lt;/ci&gt;
+     &lt;cn&gt;20&lt;/cn&gt;
+    &lt;/apply&gt;
+   &lt;/math&gt;
+  &lt;/trigger&gt;
+  &lt;listOfEventAssignments&gt;
+   &lt;eventAssignment variable="y"&gt;
+    &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+     &lt;cn&gt;100&lt;/cn&gt;
+    &lt;/math&gt;
+   &lt;/eventAssignment&gt;
+   &lt;eventAssignment variable="z"&gt;
+    &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+     &lt;cn&gt;0&lt;/cn&gt;
+    &lt;/math&gt;
+   &lt;/eventAssignment&gt;
+  &lt;/listOfEventAssignments&gt;
+ &lt;/event&gt;
+&lt;/listOfEvents&gt;
+</pre>
+	
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

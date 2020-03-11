@@ -1,0 +1,186 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Final Proof of SBML Level 2 specification -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Thu, 26 Jun 2003 21:12:56 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC9325@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Final Proof of SBML Level 2 specification</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00521.html">Date Prev</A>][<A HREF="msg00523.html">Date Next</A>][<A HREF="msg00521.html">Thread Prev</A>][<A HREF="msg00523.html">Thread Next</A>][<A HREF="maillist.html#00522">Date Index</A>][<A HREF="threads.html#00522">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Final Proof of SBML Level 2 specification</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A> '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Final Proof of SBML Level 2 specification</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 26 Jun 2003 21:11:55 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+ 
+Just so that I understand, what do you class as low-level/granular models?
+
+Herbert
+
+
+-----Original Message-----
+From: Kevin D. Keck
+To: Herbert Sauro; sbml-discuss@caltech.edu
+Sent: 6/26/03 6:00 PM
+Subject: Re: [sbml-discuss] Final Proof of SBML Level 2 specification
+
+Thank you. You're right, depending on the topic and level of abstraction
+of 
+the model, it's not very simple. And we're not going converge anytime
+soon on 
+labels for modifier types/classes for the general case.
+
+So the only question that remains, I think, is whether any substantial
+subset 
+of the current users are using SBML specifically for very
+low-level/granular 
+models in which it _is_ simple, and a set of very primitive modifier
+labels 
+would be all that's needed. If not, then obviously a simple set of
+labels 
+would only be solving the wrong problem.
+-- 
+Kevin D. Keck
+<A  HREF="http://vimss.lbl.gov/~kdkeck/">http://vimss.lbl.gov/~kdkeck/</A>
+510-486-4856
+
+
+On Thursday 26 June 2003 11:00, Herbert Sauro wrote:
+&gt; Off the top of my head:
+&gt;
+&gt; The rate law:
+&gt;
+&gt; k1*X - k2*X^2
+&gt;
+&gt; flips behaviour.
+&gt;
+&gt; The species X behaves as an activator at low concentrations and an
+&gt; inhibitor at high concentrations. This rate law has been used in the
+past
+&gt; to model positive feedback.
+&gt;
+&gt; pH of course is a classic example (hydrogen ion) of an effector where
+&gt; enzyme activity flips from activator to inhibitor.
+&gt;
+&gt; Other examples include the effect of bivalent ions and temperature.
+&gt;
+&gt; Herbert Sauro
+&gt;
+&gt;
+&gt; -----Original Message-----
+&gt; From: Kevin D. Keck [<A  HREF="mailto:kdkeck@lbl.gov">mailto:kdkeck@lbl.gov</A>]
+&gt; Sent: Thursday, June 26, 2003 10:15 AM
+&gt; To: sbml-discuss@caltech.edu
+&gt; Subject: Re: [sbml-discuss] Final Proof of SBML Level 2 specification
+&gt;
+&gt; On Thursday 26 June 2003 02:17, Eric Minch wrote:
+&gt; &gt; Can someone remind me where to find "Herbert's case of flipping of
+&gt;
+&gt; behavior
+&gt;
+&gt; &gt; between activator and inhibitor"? I can't seem to find it, and I'm
+&gt; &gt; working on something related, so would really like to see additional
+&gt; &gt; examples.
+&gt;
+&gt; I'll second that.
+&gt;
+&gt; &gt; In any case, it seems premature to include such functional roles as
+tags
+&gt; &gt; within the model. They are actually fairly high-level constructs,
+and I'd
+&gt; &gt; argue that they belong more in the presentation specification than
+in the
+&gt; &gt; model specification.
+&gt;
+&gt; Well, that's partly true, but unlike, say, graph layout or scaling,
+&gt; functional
+&gt; roles are not orthogonal to the semantics of the model. I'm happy to
+push
+&gt; the
+&gt; tags into the annotation elements in order to make the loose coupling
+&gt; explicit, but it would still be nice to have a simple standard set of
+tags
+&gt; if
+&gt; they're not controversial.
+&gt;
+&gt; &gt; Furthermore, wherever they are eventually to be included, it would
+seem
+&gt; &gt; prudent to enumerate them as part of the Controlled Vocabulary
+effort
+&gt; &gt; rather than as ad hoc fixes in the model.
+&gt;
+&gt; I think that depends upon how variable they will be. If everyone will
+wind
+&gt; up
+&gt; using essentially the same set of labels anyway, then use of
+generalized
+&gt; CVs
+&gt;
+&gt; for them would be gratuitously complex.
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00523" HREF="msg00523.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Kevin D. Keck&quot; &lt;kdkeck@lbl.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00521.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00523.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00521.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00523.html">Re: [sbml-discuss] Final Proof of SBML Level 2 specification</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00522"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00522"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

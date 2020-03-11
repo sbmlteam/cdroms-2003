@@ -1,0 +1,192 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG: SBML extension for layout -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Fri, 23 May 2003 11:02:13 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC91FE@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG: SBML extension for layout</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00296.html">Date Prev</A>][<A HREF="msg00298.html">Date Next</A>][<A HREF="msg00296.html">Thread Prev</A>][<A HREF="msg00329.html">Thread Next</A>][<A HREF="maillist.html#00297">Date Index</A>][<A HREF="threads.html#00297">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG: SBML extension for layout</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG: SBML extension for layout </LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 10:56:41 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Seems to make sense to me, seems to be a way out of their problem, just
+ignore the resolution specifier then you can assume what ever you like.
+
+Herbert
+
+-----Original Message-----
+From: Wagner,John [<A  HREF="mailto:JWagner@nso.uchc.edu">mailto:JWagner@nso.uchc.edu</A>]
+Sent: Friday, May 23, 2003 10:43 AM
+To: sbml-discuss@caltech.edu
+Subject: RE: [sbml-discuss] DWG: SBML extension for layout 
+
+
+If the SBML specifies that the dimensions are in
+points (that is, 1/72 of an inch), then it seems
+to me that simply ignoring the "resolution"
+attribute would allow the EML group to treat
+the entire diagram as though it were unitless.
+RIGHT?
+
+John
+
+&gt; -----Original Message-----
+&gt; From: Herbert Sauro [<A  HREF="mailto:Herbert_Sauro@kgi.edu">mailto:Herbert_Sauro@kgi.edu</A>]
+&gt; Sent: Friday, May 23, 2003 12:54 PM
+&gt; To: 'ur@eml.org '; 'sbml-discuss@caltech.edu '
+&gt; Subject: RE: [sbml-discuss] DWG: SBML extension for layout 
+&gt; 
+&gt; 
+&gt;  
+&gt; I don';t quite understand the argument in 1). Because the 
+&gt; dimensions have no
+&gt; units we have no idea how big the 200*50 node actually is, 
+&gt; the user might
+&gt; have drawn is as 200 meters by 50 meters (unlikely!). The 
+&gt; 10pt font size
+&gt; however has a physical size. I'm not sure how scaling can 
+&gt; help because we
+&gt; don't know by how much to scale unless you are implying that 
+&gt; the dimensions
+&gt; do have some units? The problem is we're mixing dimensionless 
+&gt; units with
+&gt; units with real units, I can't think at the moment of any way 
+&gt; to relate them
+&gt; with out making some assumption about the dimensionless units.
+&gt; 
+&gt; In your example I don't understand the scaling from 200*50 to 
+&gt; 100*25 because
+&gt; the font is 20pt? It looks like you're dividing by 2 and 
+&gt; multiplying by 10
+&gt; (in relation to the font size). The 20pt font is 20/72 inches 
+&gt; high, however
+&gt; we have no idea how high a 200 unit node is?
+&gt; I'm missing something here I think, could you explain your 
+&gt; approach a bit
+&gt; more.
+&gt; 
+&gt; Herbert
+&gt; 
+&gt; -----Original Message-----
+&gt; From: ur@eml.org
+&gt; To: sbml-discuss@caltech.edu
+&gt; Sent: 5/23/03 2:32 AM
+&gt; Subject: [sbml-discuss] DWG: SBML extension for layout 
+&gt; 
+&gt; 1.) Units
+&gt; 
+&gt; Maybe we miss some point but in our opinion it should not be necessary
+&gt; to specify units for diagrams. If all size constraints are specified
+&gt; relative to each other the diagram (including fonts) can be scaled to
+&gt; any resolution the user/application wants. Lets say we have a node as
+&gt; a text label, then we could specify the size of the node as being 200
+&gt; * 50 and the font being of size 20. Now, if we want to represent the
+&gt; text label with a 10pt font, this would mean that the node would have
+&gt; to be rescaled to have the size 100 * 25. If the application doesn't
+&gt; want the font to scale with the rest of the diagram, the render
+&gt; information for the font could e.g. include an attribute called
+&gt; "fixed".
+&gt; 
+&gt; 
+&gt; 2.) SVG as layout format
+&gt; 
+&gt; When we first discussed creating a layout extension for SBML, we also
+&gt; looked at SVG in order to store the pathway diagram/graph (that was
+&gt; also a reason why we did not include a 3rd dimension in the first
+&gt; draft). Finally, we dropped this alternative mainly because of the
+&gt; following reason: SVG is a vector graphics format and not a graph
+&gt; format. SVG does not allow to specify relations between objects as
+&gt; would be needed e.g. by any (reaction) graph or network.
+&gt; 
+&gt; 
+&gt; 3.) Using SVG tags as render information
+&gt; 
+&gt; Although the complete SVG would probably be an overkill, we agree that
+&gt; part of the SVG specification could be used as rendering
+&gt; information(elements like e.g. circles, defs,...). One point that
+&gt; should be considered is whether the individual SVG elements can easily
+&gt; be extended to port 3D information or if we want to limit ourselfs to
+&gt; 2D rendering information.
+&gt; 
+&gt; 4.) MathML rendering
+&gt; 
+&gt; There was the question whether there are any libraries that deal with
+&gt; rendering MathML. So far the only free widget that we found is a GTK
+&gt; widget(GtkMathView).
+&gt; The alternative would be to convert the MathML to LaTeX, run LaTex and
+&gt; convert the resulting DVI file to a bitmap file. For this there are
+&gt; free tools, but no libraries.
+&gt; For further tools see: <A  HREF="http://www.w3.org/Math/implementations.html">http://www.w3.org/Math/implementations.html</A>
+&gt; 
+&gt; 
+&gt; Ralph Gauges, Ursula Rost
+&gt; 
+&gt; 
+&gt; 
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00296.html">RE: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00298.html">[sbml-discuss] Minutes from SBML forum and BioCOMP MDL meetings</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00296.html">RE: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00329.html">Re: [sbml-discuss] DWG: SBML extension for layout</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00297"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00297"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

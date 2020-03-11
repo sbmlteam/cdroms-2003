@@ -1,0 +1,181 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: Re: [sbml&#45;discuss] Changing the units of initial amounts -->
+<!--X-From-R13: "Xbret D. Irvzne" <X.IrvzneNgh&#45;of.qr> -->
+<!--X-Date: Fri, 23 May 2003 02:55:19 &#45;0700 -->
+<!--X-Message-Id: 3ECDEFF4.9030404@tu&#45;bs.de -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: XFMail.20030522110530.ginkel@mpi&#45;magdeburg.mpg.de -->
+<!--X-Reference: 1053595906.4576.64.camel@senin.e&#45;cell.org -->
+<!--X-Reference: 20030522082048.21e49196.shoops@vt.edu -->
+<!--X-Reference: 3ECCD366.8040800@tu&#45;bs.de -->
+<!--X-Reference: 20030522103544.7387b9c7.shoops@vt.edu -->
+<!--X-Reference: 1053617560.23557.77.camel@senin.e&#45;cell.org -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Re: [sbml-discuss] Changing the units of initial amounts</TITLE>
+<LINK REV="made" HREF="mailto:J.Weimar@tu-bs.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00275.html">Date Prev</A>][<A HREF="msg00277.html">Date Next</A>][<A HREF="msg00230.html">Thread Prev</A>][<A HREF="msg00280.html">Thread Next</A>][<A HREF="maillist.html#00276">Date Index</A>][<A HREF="threads.html#00276">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>Re: [sbml-discuss] Changing the units of initial amounts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Subject</em>: Re: [sbml-discuss] Changing the units of initial amounts</LI>
+<LI><em>From</em>: &quot;Joerg R. Weimar&quot; &lt;<A HREF="mailto:J.Weimar@tu-bs.de">J.Weimar@tu-bs.de</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 11:55:00 +0200</LI>
+<LI>Cc: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Organization</em>: TU Braunschweig</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello everybody,
+
+I think there is an anbiguity about what I mean by changing the volume:
+The two interpretations are:
+
+1. The volume of a compartment changes in time during a simulation.
+
+2. A model is modified to use a different volume (1 litre), for example 
+it was written for a unit volume, but now somebody wants to use it with 
+a small volume (10^-18 litre) of just one cell.
+
+The second interpretation is what I referred to in the context of model 
+composition. For this case it is important to use concentrations as 
+initial values, since otherwise all initial conditions need to change.
+
+The first interpretation is what Shafi (Kouichi) had in mind, at least 
+this can be inferred from the "not permeable". BUT, SBML describes the 
+initial state of a model, and the equations describing how it changes, 
+it is NOT designed as a repository for the current state. The simulators 
+must of course keep track of amounts, otherwise they cannot correctly 
+implement time-dependent compartment volumes.
+
+ From the heated discussion, my opinion that we need both options 
+(initialAmount and initialConcentration) is reenforced.
+
+I disagree with Nicholas who wants to remove the two different units 
+used for the species id by making a species id in a rate law represent
+amout, not concentration. First of all, this would amount to a large 
+break from SBML level 1. Secondly rate laws would then have to loook 
+like (Level 1 syntax, since it is less verbose than MathML)
+
+formula="cell * (Vm * S0/cell)/(Km + (S0/cell)) "
+instead of
+formula="cell * (Vm * S0)/(Km + S0) "
+or
+formula="cell * uui(S0/cell,Vm,Km)"
+instead of
+formula="cell * uui(S0,Vm,Km)"
+
+(Here S0 is a species id, and cell is a compartment id).
+
+About the advantage of the last formulation, see the comment by Cliff 
+Schafer, who pointed out that there is a qualitative information in the 
+use of "uui" here (namely about the mechanism), which is very hard to 
+extract from the other formulas.
+
+Jörg Weimar.
+
+
+Nicolas LE NOVÈRE wrote:
+ &gt; You're right so (I know this has already been discussed, but I'm a
+ &gt; britton, hence stubborn), let's say that the species id represents the
+ &gt; amount by default except if otherwise stated in the definition of
+ &gt; Species.
+
+Kouichi Takahashi wrote:
+&gt;&gt;So if I understand you right. If I change the volume of a sub model I -- ALWAYS -- 
+&gt;&gt;want to keep the concentration and not the particle number. If this is the case you are right. 
+&gt;&gt;
+&gt;&gt;But I strongly believe this is will not always be the case.  We can not assume either
+&gt;&gt; concentration = const or amount = const. Therfore, the COMP group has to define
+&gt;&gt; an interface to a model specifying what has to be done in that case of a volume change. 
+&gt; 
+&gt; 
+&gt; I believe we should put a pivot on amount, not concentration.
+&gt; This is the standard semantics of changing volume of compartments.
+&gt; (for bigger molecules which is not permeable, and this is what SBML mainly targets)
+&gt; 
+
+
+-- 
+PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, TU-Braunschweig
+J.Weimar@tu-bs.de, <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+Tel. +49-531-391-3006  Mail: D-38092 Braunschweig
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00280" HREF="msg00280.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Nicolas Le Novere &lt;lenov@pasteur.fr&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00206" HREF="msg00206.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Martin Ginkel &lt;ginkel@mpi-magdeburg.mpg.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00208" HREF="msg00208.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00219" HREF="msg00219.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Stefan Hoops &lt;shoops@vt.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00223" HREF="msg00223.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00227" HREF="msg00227.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Stefan Hoops &lt;shoops@vt.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00230" HREF="msg00230.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> Kouichi Takahashi &lt;shafi@sfc.keio.ac.jp&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00275.html">RE: [sbml-discuss] support for membranes</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00277.html">Re: [sbml-discuss] DWG math display?</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00230.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00280.html">Re: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00276"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00276"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

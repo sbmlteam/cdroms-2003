@@ -1,0 +1,1918 @@
+<?xml version="1.0"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2" version="1" level="2">
+   <model id="Ecolirevisedfluxes" name="All the Palsson fluxes plus objective function flux in the E coli flux balance model">
+      <notes>
+         <body xmlns="http://www.w3.org/1999/xhtml">
+           <p>Glucokinase, glk, flux GLK1 </p>
+           <p>GLK1: GLC + ATP --&gt; G6P + ADP</p>
+           <p>Phosphoglucose isomerase, pgi, flux PGI1R </p>
+           <p>PGI1R: G6P &lt;--&gt; F6P</p>
+           <p>Phosphofructokinase, pfkA, flux PFKA </p>
+           <p>PFKA: F6P + ATP --&gt; FDP + ADP</p>
+           <p>Fructose-1,6-bisphosphatase, fbp, flux FBP </p>
+           <p>FBP: FDP --&gt; F6P + PI</p>
+           <p>Fructose-1,6-bisphosphatate aldolase, fbaA, flux FBAR </p>
+           <p>FBAR: FDP &lt;--&gt; T3P1 + T3P2</p>
+           <p>Triosphosphate Isomerase, tpiA, flux TPIAR </p>
+           <p>TPIAR: T3P1 &lt;--&gt; T3P2</p>
+           <p>Glyceraldehyde-3-phosphate dehydrogenase-A complex, gapA, flux GAPAR </p>
+           <p>GAPAR: T3P1 + PI + NAD &lt;--&gt; NADH + 13PDG</p>
+           <p>Phosphoglycerate kinase, pgk, flux PGKR </p>
+           <p>PGKR: 13PDG + ADP &lt;--&gt; 3PG + ATP</p>
+           <p>Phosphoglycerate mutase 1, gpmA, flux GPMAR </p>
+           <p>GPMAR: 3PG &lt;--&gt; 2PG</p>
+           <p>Enolase, eno, flux ENOR </p>
+           <p>ENOR: 2PG &lt;--&gt; PEP</p>
+           <p>Phosphoenolpyruvate synthase, ppsA, flux PPSA </p>
+           <p>PPSA: PYR + ATP --&gt; PEP + AMP + PI</p>
+           <p>Pyruvate Kinase I, pykF, flux PYKF </p>
+           <p>PYKF: PEP + ADP --&gt; PYR + ATP</p>
+           <p>Pyruvate dehydrogenase, lpdA, aceE, aceF, flux ACEE </p>
+           <p>ACEE: PYR + COA + NAD --&gt; NADH + CO2 + ACCOA</p>
+           <p>Glucose 6-phosphate-1-dehydrogenase, zwf, flux ZWFR </p>
+           <p>ZWFR: G6P + NADP &lt;--&gt; D6PGL + NADPH</p>
+           <p>6-Phosphogluconolactonase, pgl, flux PGL </p>
+           <p>PGL: D6PGL --&gt; D6PGC</p>
+           <p>6-Phosphogluconate dehydrogenase (decarboxylating), gnd, flux GND </p>
+           <p>GND: D6PGC + NADP --&gt; NADPH + CO2 + RL5P</p>
+           <p>Ribose-5-phosphate isomerase A, rpiA, flux RPIAR </p>
+           <p>RPIAR: RL5P &lt;--&gt; R5P</p>
+           <p>Ribulose phosphate 3-epimerase, rpe, flux RPER </p>
+           <p>RPER: RL5P &lt;--&gt; X5P</p>
+           <p>Transketolase I, tktA, flux TKTA1R </p>
+           <p>TKTA1R: R5P + X5P &lt;--&gt; T3P1 + S7P</p>
+           <p>Transketolase I, tktA, flux TKTA2R </p>
+           <p>TKTA2R: X5P + E4P &lt;--&gt; F6P + T3P1</p>
+           <p>Transaldolase B, talB, flux TALBR </p>
+           <p>TALBR: T3P1 + S7P &lt;--&gt; E4P + F6P</p>
+           <p>Citrate synthase, gltA, flux GLTA </p>
+           <p>GLTA: ACCOA + OA --&gt; COA + CIT</p>
+           <p>Aconitase A, acnA, flux ACNAR </p>
+           <p>ACNAR: CIT &lt;--&gt; ICIT</p>
+           <p>Isocitrate dehydrogenase, icdA, flux ICDAR </p>
+           <p>ICDAR: ICIT + NADP &lt;--&gt; CO2 + NADPH + AKG</p>
+           <p>   2-Ketoglutarate dehyrogenase, sucA,sucB, flux SUCA </p>
+           <p>SUCA: AKG + NAD + COA --&gt; CO2 + NADH + SUCCOA</p>
+           <p>Succinyl-CoA synthetase, sucC,sucD, flux SUCCR </p>
+           <p>SUCCR: SUCCOA + ADP + PI &lt;--&gt; ATP + COA + SUCC</p>
+           <p>Succinate dehydrogenase, sdhA,sdhB,sdhC,sdhD, flux SDHA1 </p>
+           <p>SDHA1: SUCC + FAD --&gt; FADH + FUM</p>
+           <p>Fumurate reductase, frdA,frdB,frdC,frdD, flux FRDA </p>
+           <p>FRDA: FUM + FADH --&gt; SUCC + FAD</p>
+           <p>Fumarase A, fumA, flux FUMAR </p>
+           <p>FUMAR: FUM &lt;--&gt; MAL</p>
+           <p>Malate dehydrogenase, mdh, flux MDHR </p>
+           <p>MDHR: MAL + NAD &lt;--&gt; NADH + OA</p>
+           <p>D-Lactate dehydrogenase 1, dld, flux DLD1R </p>
+           <p>DLD1R: PYR + NADH &lt;--&gt; NAD + LAC</p>
+           <p>Acetaldehyde dehydrogenase, adhE, flux ADHE2R </p>
+           <p>ADHE2R: ACCOA + 2 NADH &lt;--&gt; ETH + 2 NAD + COA</p>
+           <p>Pyruvate formate lyase 1, pflA,pflB, flux PFLA </p>
+           <p>PFLA: PYR + COA --&gt; ACCOA + FOR</p>
+           <p>Phosphotransacetylase, pta, flux PTAR </p>
+           <p>PTAR: ACCOA + PI &lt;--&gt; ACTP + COA</p>
+           <p>Acetate kinase A, ackA, flux ACKAR </p>
+           <p>ACKAR: ACTP + ADP &lt;--&gt; ATP + AC</p>
+           <p>Acetyl-CoA synthetase, acs, flux ACS </p>
+           <p>ACS: ATP + AC + COA --&gt; AMP + PPI + ACCOA</p>
+           <p>Phosphoenolpyruvate carboxykinase, pckA, flux PCKA </p>
+           <p>PCKA: OA + ATP --&gt; PEP + CO2 + ADP</p>
+           <p>Phosphoenolpyruvate carboxylase, ppc, flux PPC </p>
+           <p>PPC: PEP + CO2 --&gt; OA + PI</p>
+           <p>Malic enzyme (NADP), maeB, flux MAEB </p>
+           <p>MAEB: MAL + NADP --&gt; CO2 + NADPH + PYR</p>
+           <p>Malic enzyme (NAD), sfcA, flux SFCA </p>
+           <p>SFCA: MAL + NAD --&gt; CO2 + NADH + PYR</p>
+           <p>Isocitrate lyase, aceA, flux ACEA </p>
+           <p>ACEA: ICIT --&gt; GLX + SUCC</p>
+           <p>Malate synthase A, aceB, flux ACEB </p>
+           <p>ACEB: ACCOA + GLX --&gt; COA + MAL</p>
+           <p>Inorganic pyrophosphatase, ppa, flux PPA </p>
+           <p>PPA: PPI --&gt; 2 PI</p>
+           <p>NADH dehydrogenase I, nuoA,nuoB,nuoC,nuoE,nuoF,nuoG,nuoH,nuoI,nuoJ,nuoK,nuoL,nuoM,nuoN, flux NUOA </p>
+           <p>NUOA: NADH + Q --&gt; NAD + QH2 + 3.5 HEXT</p>
+           <p>Formate dehydrogenase-O, fdoI,fdoH,fdoG, flux FDOH </p>
+           <p>FDOH: FOR + Q --&gt; QH2 + CO2 + 2 HEXT</p>
+           <p>Glycerol-3-phosphate dehydrogenase (aerobic), glpD, flux GLPD </p>
+           <p>GLPD: GL3P + Q --&gt; T3P2 + QH2</p>
+           <p>Cytochrome oxidase bo3, cyoA,cyoB,cyoC,cyoD,cycA,cydA,cydB, flux CYOA </p>
+           <p>CYOA: QH2 + 0.5 O2 --&gt; Q + 2.5 HEXT</p>
+           <p>Succinate dehydrogenase complex, sdhA,sdhB,sdhC,sdhD, flux SDHA2R </p>
+           <p>SDHA2R: FADH + Q &lt;--&gt; FAD + QH2</p>
+           <p>Pyridine nucleotide transhydrogenase, pntA,pntB, flux PNT1A </p>
+           <p>PNT1A: NADPH + NAD --&gt; NADP + NADH</p>
+           <p>Pyridine nucleotide transhydrogenase, pntA,pntB, flux PNT2A </p>
+           <p>PNT2A: NADP + NADH + 2 HEXT --&gt; NADPH + NAD</p>
+           <p>F0F1-ATPase, atpA,atpB,atpC,atpD,atpE,atpF,atpG,atpH,atpI, flux ATPAR </p>
+           <p>ATPAR: ATP &lt;--&gt; ADP + PI + 4 HEXT</p>
+           <p>Glycerol kinase, glpK, flux GLPK </p>
+           <p>GLPK: GL + ATP --&gt; ADP + GL3P</p>
+           <p>Glycerol-3-phosphate-dehydrogenase-[NAD(P)+], gpsA, flux GPSA1R </p>
+           <p>GPSA1R: GL3P + NADP &lt;--&gt; T3P2 + NADPH</p>
+           <p>Ribokinase, rbsK, flux RBSK </p>
+           <p>RBSK: RIB + ATP --&gt; R5P + ADP</p>
+           <p>Glucose/galactose transporter, gluP, flux GLCUP2 </p>
+           <p>GLCUP2: GLCxt + HEXT --&gt; GLC</p>
+           <p>Glucose, ptsG,crr, flux GLCPTS </p>
+           <p>GLCPTS: GLCxt + PEP --&gt; G6P + PYR</p>
+           <p>Glycerol transport, lacY, flux GLUPR </p>
+           <p>GLUPR: GLxt &lt;--&gt; GL</p>
+           <p>Ribose transport, rbsA,rbsB,rbsC,rbsD,xylH, flux RIBUP </p>
+           <p>RIBUP: RIBxt --&gt; RIB + ATP + ADP + PI</p>
+           <p>Acetate transport, lldP, flux ACUPR </p>
+           <p>ACUPR: ACxt + HEXT &lt;--&gt; AC</p>
+           <p>L-Lactate transport, focA, flux LACUP2R </p>
+           <p>LACUP2R: LACxt + HEXT &lt;--&gt; LAC</p>
+           <p>Formate transport, flux FORUPR </p>
+           <p>FORUPR: FORxt &lt;--&gt; FOR</p>
+           <p>Ethanol transport, flux ETHUPR </p>
+           <p>ETHUPR: ETHxt + HEXT &lt;--&gt; ETH</p>
+           <p>Pyruvate transport, flux PYRUPR </p>
+           <p>PYRUPR: PYRxt + HEXT &lt;--&gt; PYR</p>
+           <p>Succinate transport, dcuA,dcuB,dctA, flux SUCCUP2R </p>
+           <p>SUCCUP2R: SUCCxt + HEXT &lt;--&gt; SUCC</p>
+           <p>Phosphate transport, pstA,pstB,pstC,pstS, flux PIUP1 </p>
+           <p>PIUP1: PIxt --&gt; PI</p>
+           <p>ATP drain flux for constant maintenance requirements, flux ATPM </p>
+           <p>ATPM: ATP --&gt; ADP + PI</p>
+           <p>Growth Flux, flux Growth </p>
+           <p>Growth: Biomass --&gt; BMxt + 23 ATP + 23 ADP + 23 PI</p>
+           <p>Biomass Production Flux, flux VGRO </p>
+           <p>VGRO: 41.257 ATP + 3.547 NAD + 18.225 NADPH + 0.205 G6P + 0.0709 F6P + 0.8977 R5P + 0.36 E4P + 0.129 T3P1 + 1.496 3PG + 0.5191 PEP + 2.8328 PYR + 3.7478 ACCOA --&gt; 3.7478 COA + 1.7867 OA + 1.0789 AKG + 41.257 ADP + 41.257 PI + 3.547 NADH + 18.225 NADP + Biomass</p>
+           <p>Adenylate kinase, adk, flux ADK1R </p>
+           <p>ADK1R: ATP + AMP &lt;--&gt; 2 ADP</p>
+           <p>GLC Exchange, flux GLCxt </p>
+           <p>GLCxt: GLCxt --&gt; GLC</p>
+           <p>O2 Exchange, flux O2xt </p>
+           <p>O2xt: O2xt --&gt; O2</p>
+           <p>GL Exchange, flux GLxt </p>
+           <p>GLxt: GL --&gt; GLxt</p>
+           <p>RIB Exchange, flux RIBxt </p>
+           <p>RIBxt: RIB --&gt; RIBxt</p>
+           <p>AC Exchange, flux ACxt </p>
+           <p>ACxt: AC --&gt; ACxt</p>
+           <p>LAC Exchange, flux LACxt </p>
+           <p>LACxt: LAC --&gt; LACxt</p>
+           <p>FOR Exchange, flux FORxt </p>
+           <p>FORxt: FOR --&gt; FORxt</p>
+           <p>ETH Exchange, flux ETHxt </p>
+           <p>ETHxt: ETH --&gt; ETHxt</p>
+           <p>PYR Exchange, flux PYRxt </p>
+           <p>PYRxt: PYR --&gt; PYRxt</p>
+           <p>PI Exchange, flux PIxt </p>
+           <p>PIxt: PI &lt;--&gt; PIxt</p>
+           <p>GL3P Exchange, flux GL3Pxt </p>
+           <p>GL3Pxt: GL3P --&gt; GL3Pxt</p>
+           <p>SUCC Exchange, flux SUCCxt </p>
+           <p>SUCCxt: SUCC --&gt; SUCCxt</p>
+           <p>CO2 Exchange, flux CO2xt </p>
+           <p>CO2xt: CO2 &lt;--&gt; CO2xt</p>
+           <p>BM Exchange, flux BMxt </p>
+           <p>BMxt: BM --&gt; BMxt</p>
+         </body>
+      </notes>
+      <listOfCompartments>
+         <compartment id="cytoplasm"/>
+         <compartment id="extracellular"/>
+      </listOfCompartments>
+      <listOfSpecies>
+	 <species id="AC" name="Acetate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="GL" name="Glycerol" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="S7P" name="sedo-Heptulose 7-phosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="COA" name="Coenzyme A" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="HEXT" name="External H+" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="O2xt" name="External Oxygen" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="NAD" name="Nicotinamide adenine dinucleotide" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="MAL" name="Malate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="GL3Pxt" name="External Glycerol 3-phosphate" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="X5P" name="D-Xylulose-5-phosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="FDP" name="Fructose 1,6-diphosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="D6PGL" name="D-6-Phosphate-glucono-delta-lactone" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="GLX" name="Glyoxylate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="FOR" name="Formate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="_13PDG" name="1,3-bis-Phosphoglycerate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="LACxt" name="External D-Lactate" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="GLxt" name="External Glycerol" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="FADH" name="Flavin adenine dinucleotide reduced" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="CO2xt" name="External Carbon dioxide" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="FORxt" name="External Formate" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="Biomass" name="Biomass" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="Q" name="Ubiquinone" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="ETH" name="Ethanol" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="SUCC" name="Succinate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="FUM" name="Fumarate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="GLC" name="a-D-Glucose" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="SUCCxt" name="External Succinate" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="LAC" name="D-Lactate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="AKG" name="a-Ketoglutarate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="ACTP" name="Acetyl-phosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="ICIT" name="Isocitrate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="SUCCOA" name="Succinyl-CoA or Succinate CoA " 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="RIB" name="Ribose" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="R5P" name="Ribose 5-phosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="RIBxt" name="External Ribose" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="PPI" name="Pyrophosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="QH2" name="Ubiquinol" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="T3P2" name="Dihydroxyacetone phosphate or glycerone phosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="NADP" name="Nicotinamide adenine dinucleotide phosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="AMP" name="Adenosine monophosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="ETHxt" name="External Ethanol" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="ATP" name="Adenosine triphosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="T3P1" name="Glyceraldehyde 3-phosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="BMxt" name="External Biomass" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="PIxt" name="External Phosphate (inorganic)" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="NADPH" name="Dihydronicotinamide adenine dinucleotide phosphate reduced" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="GL3P" name="Glycerol 3-phosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="PEP" name="Phosphoenolpyruvate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="PYR" name="Pyruvate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="ACCOA" name="Acetyl-CoA" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="CIT" name="Citrate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="CO2" name="Carbon dioxide" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="F6P" name="Fructose 6-phosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="PYRxt" name="External Pyruvate" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="D6PGC" name="D-6-Phosphate-gluconate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="_3PG" name="3-Phosphoglycerate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="BM" name="Biomass" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="ACxt" name="External Acetate" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="O2" name="Oxygen" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="E4P" name="Erythrose 4-phosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="FAD" name="Flavin adenine dinucleotide" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="RL5P" name="D-Ribulose 5-phosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="OA" name="Oxaloacetate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="ADP" name="Adenosine diphosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="G6P" name="Glucose 6-phosphate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="_2PG" name="2-Phosphoglycerate" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="PI" name="Phosphate (inorganic)" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="NADH" name="Nicotinamide adenine dinucleotide reduced" 
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="GLCxt" name="External a-D-Glucose" 
+		  compartment="extracellular" boundaryCondition="false"/>
+	 <species id="gapA" name="Glyceraldehyde-3-phosphate dehydrogenase-A complex"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="atpH" name="F0F1-ATPase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="sdhC" name="Succinate dehydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="ptsG" name="Glucose"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoI" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="gnd" name="6-Phosphogluconate dehydrogenase (decarboxylating)"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoC" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoM" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="dld" name="D-Lactate dehydrogenase 1"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="talB" name="Transaldolase B"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="atpF" name="F0F1-ATPase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoJ" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="ppc" name="Phosphoenolpyruvate carboxylase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="rpiA" name="Ribose-5-phosphate isomerase A"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoB" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pgi" name="Phosphoglucose isomerase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoH" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pstA" name="Phosphate transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="sucB" name="   2-Ketoglutarate dehyrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="sucA" name="   2-Ketoglutarate dehyrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pta" name="Phosphotransacetylase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="sucC" name="Succinyl-CoA synthetase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pstC" name="Phosphate transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pstB" name="Phosphate transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="acs" name="Acetyl-CoA synthetase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="sdhA" name="Succinate dehydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="tpiA" name="Triosphosphate Isomerase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="adhE" name="Acetaldehyde dehydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoG" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="maeB" name="Malic enzyme (NADP)"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="rbsD" name="Ribose transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="atpB" name="F0F1-ATPase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="glk" name="Glucokinase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pntB" name="Pyridine nucleotide transhydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="cyoB" name="Cytochrome oxidase bo3"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="rbsB" name="Ribose transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="fdoH" name="Formate dehydrogenase-O"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoN" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="frdB" name="Fumurate reductase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoA" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="fbaA" name="Fructose-1,6-bisphosphatate aldolase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="atpG" name="F0F1-ATPase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="cydA" name="Cytochrome oxidase bo3"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="glpD" name="Glycerol-3-phosphate dehydrogenase (aerobic)"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="focA" name="L-Lactate transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="rpe" name="Ribulose phosphate 3-epimerase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="atpE" name="F0F1-ATPase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="frdD" name="Fumurate reductase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="lldP" name="Acetate transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pgk" name="Phosphoglycerate kinase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="dcuB" name="Succinate transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="icdA" name="Isocitrate dehydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="rbsA" name="Ribose transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="atpD" name="F0F1-ATPase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pgl" name="6-Phosphogluconolactonase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pflB" name="Pyruvate formate lyase 1"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="cydB" name="Cytochrome oxidase bo3"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="mdh" name="Malate dehydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pstS" name="Phosphate transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="frdC" name="Fumurate reductase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="zwf" name="Glucose 6-phosphate-1-dehydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="gltA" name="Citrate synthase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoL" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="fumA" name="Fumarase A"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoK" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="rbsC" name="Ribose transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="fdoI" name="Formate dehydrogenase-O"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="frdA" name="Fumurate reductase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="sucD" name="Succinyl-CoA synthetase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="lpdA" name="Pyruvate dehydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="atpC" name="F0F1-ATPase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="glpK" name="Glycerol kinase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="ackA" name="Acetate kinase A"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="eno" name="Enolase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="acnA" name="Aconitase A"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pckA" name="Phosphoenolpyruvate carboxykinase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="cyoC" name="Cytochrome oxidase bo3"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="aceE" name="Pyruvate dehydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="ppa" name="Inorganic pyrophosphatase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="gluP" name="Glucose/galactose transporter"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoF" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="dctA" name="Succinate transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="nuoE" name="NADH dehydrogenase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="adk" name="Adenylate kinase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="atpI" name="F0F1-ATPase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="ppsA" name="Phosphoenolpyruvate synthase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="tktA" name="Transketolase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="cyoD" name="Cytochrome oxidase bo3"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="sfcA" name="Malic enzyme (NAD)"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pfkA" name="Phosphofructokinase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="cycA" name="Cytochrome oxidase bo3"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pflA" name="Pyruvate formate lyase 1"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="aceB" name="Malate synthase A"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="sdhD" name="Succinate dehydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="gpsA" name="Glycerol-3-phosphate-dehydrogenase-[NAD(P)+]"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="aceA" name="Isocitrate lyase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="dcuA" name="Succinate transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="rbsK" name="Ribokinase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="xylH" name="Ribose transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="aceF" name="Pyruvate dehydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="lacY" name="Glycerol transport"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="fdoG" name="Formate dehydrogenase-O"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="sdhB" name="Succinate dehydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="fbp" name="Fructose-1,6-bisphosphatase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="crr" name="Glucose"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="atpA" name="F0F1-ATPase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="cyoA" name="Cytochrome oxidase bo3"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pntA" name="Pyridine nucleotide transhydrogenase"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="pykF" name="Pyruvate Kinase I"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+	 <species id="gpmA" name="Phosphoglycerate mutase 1"
+		  compartment="cytoplasm" boundaryCondition="false"/>
+      </listOfSpecies>
+      <listOfReactions>
+         <reaction id="GLK1" name="Glucokinase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="GLC" stoichiometry="1"/>
+               <speciesReference species="ATP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="G6P" stoichiometry="1"/>
+               <speciesReference species="ADP" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="glk"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PGI1R" name="Phosphoglucose isomerase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="G6P" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="F6P" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="pgi"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PFKA" name="Phosphofructokinase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="F6P" stoichiometry="1"/>
+               <speciesReference species="ATP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="FDP" stoichiometry="1"/>
+               <speciesReference species="ADP" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="pfkA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="FBP" name="Fructose-1,6-bisphosphatase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="FDP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="F6P" stoichiometry="1"/>
+               <speciesReference species="PI" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="fbp"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="FBAR" name="Fructose-1,6-bisphosphatate aldolase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="FDP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="T3P1" stoichiometry="1"/>
+               <speciesReference species="T3P2" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="fbaA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="TPIAR" name="Triosphosphate Isomerase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="T3P1" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="T3P2" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="tpiA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="GAPAR" name="Glyceraldehyde-3-phosphate dehydrogenase-A complex" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="T3P1" stoichiometry="1"/>
+               <speciesReference species="PI" stoichiometry="1"/>
+               <speciesReference species="NAD" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="NADH" stoichiometry="1"/>
+               <speciesReference species="_13PDG" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="gapA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PGKR" name="Phosphoglycerate kinase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="_13PDG" stoichiometry="1"/>
+               <speciesReference species="ADP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="_3PG" stoichiometry="1"/>
+               <speciesReference species="ATP" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="pgk"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="GPMAR" name="Phosphoglycerate mutase 1" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="_3PG" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="_2PG" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="gpmA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ENOR" name="Enolase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="_2PG" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="PEP" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="eno"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PPSA" name="Phosphoenolpyruvate synthase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="PYR" stoichiometry="1"/>
+               <speciesReference species="ATP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="PEP" stoichiometry="1"/>
+               <speciesReference species="AMP" stoichiometry="1"/>
+               <speciesReference species="PI" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="ppsA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PYKF" name="Pyruvate Kinase I" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="PEP" stoichiometry="1"/>
+               <speciesReference species="ADP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="PYR" stoichiometry="1"/>
+               <speciesReference species="ATP" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="pykF"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ACEE" name="Pyruvate dehydrogenase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="PYR" stoichiometry="1"/>
+               <speciesReference species="COA" stoichiometry="1"/>
+               <speciesReference species="NAD" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="NADH" stoichiometry="1"/>
+               <speciesReference species="CO2" stoichiometry="1"/>
+               <speciesReference species="ACCOA" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="lpdA"/>
+               <modifierSpeciesReference species="aceE"/>
+               <modifierSpeciesReference species="aceF"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ZWFR" name="Glucose 6-phosphate-1-dehydrogenase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="G6P" stoichiometry="1"/>
+               <speciesReference species="NADP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="D6PGL" stoichiometry="1"/>
+               <speciesReference species="NADPH" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="zwf"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PGL" name="6-Phosphogluconolactonase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="D6PGL" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="D6PGC" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="pgl"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="GND" name="6-Phosphogluconate dehydrogenase (decarboxylating)" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="D6PGC" stoichiometry="1"/>
+               <speciesReference species="NADP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="NADPH" stoichiometry="1"/>
+               <speciesReference species="CO2" stoichiometry="1"/>
+               <speciesReference species="RL5P" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="gnd"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="RPIAR" name="Ribose-5-phosphate isomerase A" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="RL5P" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="R5P" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="rpiA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="RPER" name="Ribulose phosphate 3-epimerase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="RL5P" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="X5P" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="rpe"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="TKTA1R" name="Transketolase I" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="R5P" stoichiometry="1"/>
+               <speciesReference species="X5P" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="T3P1" stoichiometry="1"/>
+               <speciesReference species="S7P" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="tktA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="TKTA2R" name="Transketolase I" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="X5P" stoichiometry="1"/>
+               <speciesReference species="E4P" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="F6P" stoichiometry="1"/>
+               <speciesReference species="T3P1" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="tktA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="TALBR" name="Transaldolase B" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="T3P1" stoichiometry="1"/>
+               <speciesReference species="S7P" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="E4P" stoichiometry="1"/>
+               <speciesReference species="F6P" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="talB"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="GLTA" name="Citrate synthase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ACCOA" stoichiometry="1"/>
+               <speciesReference species="OA" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="COA" stoichiometry="1"/>
+               <speciesReference species="CIT" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="gltA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ACNAR" name="Aconitase A" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="CIT" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ICIT" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="acnA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ICDAR" name="Isocitrate dehydrogenase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ICIT" stoichiometry="1"/>
+               <speciesReference species="NADP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="CO2" stoichiometry="1"/>
+               <speciesReference species="NADPH" stoichiometry="1"/>
+               <speciesReference species="AKG" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="icdA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="SUCA" name="   2-Ketoglutarate dehyrogenase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="AKG" stoichiometry="1"/>
+               <speciesReference species="NAD" stoichiometry="1"/>
+               <speciesReference species="COA" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="CO2" stoichiometry="1"/>
+               <speciesReference species="NADH" stoichiometry="1"/>
+               <speciesReference species="SUCCOA" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="sucA"/>
+               <modifierSpeciesReference species="sucB"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="SUCCR" name="Succinyl-CoA synthetase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="SUCCOA" stoichiometry="1"/>
+               <speciesReference species="ADP" stoichiometry="1"/>
+               <speciesReference species="PI" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ATP" stoichiometry="1"/>
+               <speciesReference species="COA" stoichiometry="1"/>
+               <speciesReference species="SUCC" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="sucC"/>
+               <modifierSpeciesReference species="sucD"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="SDHA1" name="Succinate dehydrogenase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="SUCC" stoichiometry="1"/>
+               <speciesReference species="FAD" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="FADH" stoichiometry="1"/>
+               <speciesReference species="FUM" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="sdhA"/>
+               <modifierSpeciesReference species="sdhB"/>
+               <modifierSpeciesReference species="sdhC"/>
+               <modifierSpeciesReference species="sdhD"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="FRDA" name="Fumurate reductase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="FUM" stoichiometry="1"/>
+               <speciesReference species="FADH" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="SUCC" stoichiometry="1"/>
+               <speciesReference species="FAD" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="frdA"/>
+               <modifierSpeciesReference species="frdB"/>
+               <modifierSpeciesReference species="frdC"/>
+               <modifierSpeciesReference species="frdD"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="FUMAR" name="Fumarase A" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="FUM" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="MAL" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="fumA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="MDHR" name="Malate dehydrogenase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="MAL" stoichiometry="1"/>
+               <speciesReference species="NAD" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="NADH" stoichiometry="1"/>
+               <speciesReference species="OA" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="mdh"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="DLD1R" name="D-Lactate dehydrogenase 1" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="PYR" stoichiometry="1"/>
+               <speciesReference species="NADH" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="NAD" stoichiometry="1"/>
+               <speciesReference species="LAC" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="dld"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ADHE2R" name="Acetaldehyde dehydrogenase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ACCOA" stoichiometry="1"/>
+               <speciesReference species="NADH" stoichiometry="2"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ETH" stoichiometry="1"/>
+               <speciesReference species="NAD" stoichiometry="2"/>
+               <speciesReference species="COA" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="adhE"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PFLA" name="Pyruvate formate lyase 1" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="PYR" stoichiometry="1"/>
+               <speciesReference species="COA" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ACCOA" stoichiometry="1"/>
+               <speciesReference species="FOR" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="pflA"/>
+               <modifierSpeciesReference species="pflB"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PTAR" name="Phosphotransacetylase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ACCOA" stoichiometry="1"/>
+               <speciesReference species="PI" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ACTP" stoichiometry="1"/>
+               <speciesReference species="COA" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="pta"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ACKAR" name="Acetate kinase A" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ACTP" stoichiometry="1"/>
+               <speciesReference species="ADP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ATP" stoichiometry="1"/>
+               <speciesReference species="AC" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="ackA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ACS" name="Acetyl-CoA synthetase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ATP" stoichiometry="1"/>
+               <speciesReference species="AC" stoichiometry="1"/>
+               <speciesReference species="COA" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="AMP" stoichiometry="1"/>
+               <speciesReference species="PPI" stoichiometry="1"/>
+               <speciesReference species="ACCOA" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="acs"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PCKA" name="Phosphoenolpyruvate carboxykinase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="OA" stoichiometry="1"/>
+               <speciesReference species="ATP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="PEP" stoichiometry="1"/>
+               <speciesReference species="CO2" stoichiometry="1"/>
+               <speciesReference species="ADP" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="pckA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PPC" name="Phosphoenolpyruvate carboxylase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="PEP" stoichiometry="1"/>
+               <speciesReference species="CO2" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="OA" stoichiometry="1"/>
+               <speciesReference species="PI" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="ppc"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="MAEB" name="Malic enzyme (NADP)" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="MAL" stoichiometry="1"/>
+               <speciesReference species="NADP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="CO2" stoichiometry="1"/>
+               <speciesReference species="NADPH" stoichiometry="1"/>
+               <speciesReference species="PYR" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="maeB"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="SFCA" name="Malic enzyme (NAD)" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="MAL" stoichiometry="1"/>
+               <speciesReference species="NAD" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="CO2" stoichiometry="1"/>
+               <speciesReference species="NADH" stoichiometry="1"/>
+               <speciesReference species="PYR" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="sfcA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ACEA" name="Isocitrate lyase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ICIT" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="GLX" stoichiometry="1"/>
+               <speciesReference species="SUCC" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="aceA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ACEB" name="Malate synthase A" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ACCOA" stoichiometry="1"/>
+               <speciesReference species="GLX" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="COA" stoichiometry="1"/>
+               <speciesReference species="MAL" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="aceB"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PPA" name="Inorganic pyrophosphatase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="PPI" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="PI" stoichiometry="2"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="ppa"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="NUOA" name="NADH dehydrogenase I" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="NADH" stoichiometry="1"/>
+               <speciesReference species="Q" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="NAD" stoichiometry="1"/>
+               <speciesReference species="QH2" stoichiometry="1"/>
+               <speciesReference species="HEXT" stoichiometry="3.5"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="nuoA"/>
+               <modifierSpeciesReference species="nuoB"/>
+               <modifierSpeciesReference species="nuoC"/>
+               <modifierSpeciesReference species="nuoE"/>
+               <modifierSpeciesReference species="nuoF"/>
+               <modifierSpeciesReference species="nuoG"/>
+               <modifierSpeciesReference species="nuoH"/>
+               <modifierSpeciesReference species="nuoI"/>
+               <modifierSpeciesReference species="nuoJ"/>
+               <modifierSpeciesReference species="nuoK"/>
+               <modifierSpeciesReference species="nuoL"/>
+               <modifierSpeciesReference species="nuoM"/>
+               <modifierSpeciesReference species="nuoN"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="FDOH" name="Formate dehydrogenase-O" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="FOR" stoichiometry="1"/>
+               <speciesReference species="Q" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="QH2" stoichiometry="1"/>
+               <speciesReference species="CO2" stoichiometry="1"/>
+               <speciesReference species="HEXT" stoichiometry="2"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="fdoI"/>
+               <modifierSpeciesReference species="fdoH"/>
+               <modifierSpeciesReference species="fdoG"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="GLPD" name="Glycerol-3-phosphate dehydrogenase (aerobic)" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="GL3P" stoichiometry="1"/>
+               <speciesReference species="Q" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="T3P2" stoichiometry="1"/>
+               <speciesReference species="QH2" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="glpD"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="CYOA" name="Cytochrome oxidase bo3" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="QH2" stoichiometry="1"/>
+               <speciesReference species="O2" stoichiometry="0.5"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="Q" stoichiometry="1"/>
+               <speciesReference species="HEXT" stoichiometry="2.5"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="cyoA"/>
+               <modifierSpeciesReference species="cyoB"/>
+               <modifierSpeciesReference species="cyoC"/>
+               <modifierSpeciesReference species="cyoD"/>
+               <modifierSpeciesReference species="cycA"/>
+               <modifierSpeciesReference species="cydA"/>
+               <modifierSpeciesReference species="cydB"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="SDHA2R" name="Succinate dehydrogenase complex" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="FADH" stoichiometry="1"/>
+               <speciesReference species="Q" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="FAD" stoichiometry="1"/>
+               <speciesReference species="QH2" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="sdhA"/>
+               <modifierSpeciesReference species="sdhB"/>
+               <modifierSpeciesReference species="sdhC"/>
+               <modifierSpeciesReference species="sdhD"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PNT1A" name="Pyridine nucleotide transhydrogenase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="NADPH" stoichiometry="1"/>
+               <speciesReference species="NAD" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="NADP" stoichiometry="1"/>
+               <speciesReference species="NADH" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="pntA"/>
+               <modifierSpeciesReference species="pntB"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PNT2A" name="Pyridine nucleotide transhydrogenase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="NADP" stoichiometry="1"/>
+               <speciesReference species="NADH" stoichiometry="1"/>
+               <speciesReference species="HEXT" stoichiometry="2"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="NADPH" stoichiometry="1"/>
+               <speciesReference species="NAD" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="pntA"/>
+               <modifierSpeciesReference species="pntB"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ATPAR" name="F0F1-ATPase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ATP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ADP" stoichiometry="1"/>
+               <speciesReference species="PI" stoichiometry="1"/>
+               <speciesReference species="HEXT" stoichiometry="4"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="atpA"/>
+               <modifierSpeciesReference species="atpB"/>
+               <modifierSpeciesReference species="atpC"/>
+               <modifierSpeciesReference species="atpD"/>
+               <modifierSpeciesReference species="atpE"/>
+               <modifierSpeciesReference species="atpF"/>
+               <modifierSpeciesReference species="atpG"/>
+               <modifierSpeciesReference species="atpH"/>
+               <modifierSpeciesReference species="atpI"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="GLPK" name="Glycerol kinase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="GL" stoichiometry="1"/>
+               <speciesReference species="ATP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ADP" stoichiometry="1"/>
+               <speciesReference species="GL3P" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="glpK"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="GPSA1R" name="Glycerol-3-phosphate-dehydrogenase-[NAD(P)+]" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="GL3P" stoichiometry="1"/>
+               <speciesReference species="NADP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="T3P2" stoichiometry="1"/>
+               <speciesReference species="NADPH" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="gpsA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="RBSK" name="Ribokinase" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="RIB" stoichiometry="1"/>
+               <speciesReference species="ATP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="R5P" stoichiometry="1"/>
+               <speciesReference species="ADP" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="rbsK"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="GLCUP2" name="Glucose/galactose transporter" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="GLCxt" stoichiometry="1"/>
+               <speciesReference species="HEXT" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="GLC" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="gluP"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="GLCPTS" name="Glucose" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="GLCxt" stoichiometry="1"/>
+               <speciesReference species="PEP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="G6P" stoichiometry="1"/>
+               <speciesReference species="PYR" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="ptsG"/>
+               <modifierSpeciesReference species="crr"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="GLUPR" name="Glycerol transport" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="GLxt" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="GL" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="lacY"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="RIBUP" name="Ribose transport" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="RIBxt" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="RIB" stoichiometry="1"/>
+               <speciesReference species="ATP" stoichiometry="1"/>
+               <speciesReference species="ADP" stoichiometry="1"/>
+               <speciesReference species="PI" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="rbsA"/>
+               <modifierSpeciesReference species="rbsB"/>
+               <modifierSpeciesReference species="rbsC"/>
+               <modifierSpeciesReference species="rbsD"/>
+               <modifierSpeciesReference species="xylH"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ACUPR" name="Acetate transport" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ACxt" stoichiometry="1"/>
+               <speciesReference species="HEXT" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="AC" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="lldP"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="LACUP2R" name="L-Lactate transport" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="LACxt" stoichiometry="1"/>
+               <speciesReference species="HEXT" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="LAC" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="focA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="FORUPR" name="Formate transport" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="FORxt" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="FOR" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="ETHUPR" name="Ethanol transport" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ETHxt" stoichiometry="1"/>
+               <speciesReference species="HEXT" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ETH" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="PYRUPR" name="Pyruvate transport" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="PYRxt" stoichiometry="1"/>
+               <speciesReference species="HEXT" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="PYR" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="SUCCUP2R" name="Succinate transport" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="SUCCxt" stoichiometry="1"/>
+               <speciesReference species="HEXT" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="SUCC" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="dcuA"/>
+               <modifierSpeciesReference species="dcuB"/>
+               <modifierSpeciesReference species="dctA"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="PIUP1" name="Phosphate transport" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="PIxt" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="PI" stoichiometry="1"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="pstA"/>
+               <modifierSpeciesReference species="pstB"/>
+               <modifierSpeciesReference species="pstC"/>
+               <modifierSpeciesReference species="pstS"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="ATPM" name="ATP drain flux for constant maintenance requirements" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="7.6"/>
+                     <flux:limitation upper="7.6"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ATP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ADP" stoichiometry="1"/>
+               <speciesReference species="PI" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="Growth" name="Growth Flux" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="Biomass" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="BMxt" stoichiometry="1"/>
+               <speciesReference species="ATP" stoichiometry="23"/>
+               <speciesReference species="ADP" stoichiometry="23"/>
+               <speciesReference species="PI" stoichiometry="23"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="VGRO" name="Biomass Production Flux" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ATP" stoichiometry="41.257"/>
+               <speciesReference species="NAD" stoichiometry="3.547"/>
+               <speciesReference species="NADPH" stoichiometry="18.225"/>
+               <speciesReference species="G6P" stoichiometry="0.205"/>
+               <speciesReference species="F6P" stoichiometry="0.0709"/>
+               <speciesReference species="R5P" stoichiometry="0.8977"/>
+               <speciesReference species="E4P" stoichiometry="0.36"/>
+               <speciesReference species="T3P1" stoichiometry="0.129"/>
+               <speciesReference species="_3PG" stoichiometry="1.496"/>
+               <speciesReference species="PEP" stoichiometry="0.5191"/>
+               <speciesReference species="PYR" stoichiometry="2.8328"/>
+               <speciesReference species="ACCOA" stoichiometry="3.7478"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="COA" stoichiometry="3.7478"/>
+               <speciesReference species="OA" stoichiometry="1.7867"/>
+               <speciesReference species="AKG" stoichiometry="1.0789"/>
+               <speciesReference species="ADP" stoichiometry="41.257"/>
+               <speciesReference species="PI" stoichiometry="41.257"/>
+               <speciesReference species="NADH" stoichiometry="3.547"/>
+               <speciesReference species="NADP" stoichiometry="18.225"/>
+               <speciesReference species="Biomass" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="ADK1R" name="Adenylate kinase" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-INF"/>
+                     <flux:limitation upper="INF"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ATP" stoichiometry="1"/>
+               <speciesReference species="AMP" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ADP" stoichiometry="2"/>
+            </listOfProducts>
+            <listOfModifiers>
+               <modifierSpeciesReference species="adk"/>
+            </listOfModifiers>
+         </reaction>
+         <reaction id="GLCxt" name="GLC Exchange" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="10"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="GLCxt" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="GLC" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="O2xt" name="O2 Exchange" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="20"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="O2xt" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="O2" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="GLxt" name="GL Exchange" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="1000"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="GL" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="GLxt" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="RIBxt" name="RIB Exchange" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="1000"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="RIB" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="RIBxt" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="ACxt" name="AC Exchange" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="1000"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="AC" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ACxt" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="LACxt" name="LAC Exchange" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="1000"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="LAC" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="LACxt" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="FORxt" name="FOR Exchange" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="1000"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="FOR" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="FORxt" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="ETHxt" name="ETH Exchange" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="1000"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="ETH" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="ETHxt" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="PYRxt" name="PYR Exchange" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="1000"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="PYR" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="PYRxt" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="PIxt" name="PI Exchange" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-1000"/>
+                     <flux:limitation upper="1000"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="PI" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="PIxt" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="GL3Pxt" name="GL3P Exchange" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="1000"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="GL3P" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="GL3Pxt" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="SUCCxt" name="SUCC Exchange" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="1000"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="SUCC" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="SUCCxt" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="CO2xt" name="CO2 Exchange" reversible="true">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="-100"/>
+                     <flux:limitation upper="1000"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="CO2" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="CO2xt" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+         <reaction id="BMxt" name="BM Exchange" reversible="false">
+             <annotation xmlns:flux="http://arep.med.harvard.edu/fluxns">
+                     <flux:limitation lower="0"/>
+                     <flux:limitation upper="1000"/>
+             </annotation>
+            <listOfReactants>
+               <speciesReference species="BM" stoichiometry="1"/>
+            </listOfReactants>
+            <listOfProducts>
+               <speciesReference species="BMxt" stoichiometry="1"/>
+            </listOfProducts>
+         </reaction>
+      </listOfReactions>
+   </model>
+</sbml>

@@ -1,0 +1,122 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Changing the units of initial amounts -->
+<!--X-From-R13: Ybhvpuv Fnxnunfuv <funsvNfsp.xrvb.np.wc> -->
+<!--X-Date: Mon, 26 May 2003 21:58:40 &#45;0700 -->
+<!--X-Message-Id: 1054011385.3992.266.camel@senin.e&#45;cell.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7C279D983E9C4488C3BFDB43C2DAE2CD36E50@ITEVS.uchc.net -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Changing the units of initial amounts</TITLE>
+<LINK REV="made" HREF="mailto:shafi@sfc.keio.ac.jp">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00360.html">Date Prev</A>][<A HREF="msg00362.html">Date Next</A>][<A HREF="msg00341.html">Thread Prev</A>][<A HREF="msg00362.html">Thread Next</A>][<A HREF="maillist.html#00361">Date Index</A>][<A HREF="threads.html#00361">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Changing the units of initial amounts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;Wagner,John&quot; &lt;<A HREF="mailto:JWagner@nso.uchc.edu">JWagner@nso.uchc.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Changing the units of initial amounts</LI>
+<LI><em>From</em>: Kouichi Takahashi &lt;<A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>&gt;</LI>
+<LI><em>Date</em>: 27 May 2003 13:56:25 +0900</LI>
+<LI>Cc: <A HREF="mailto:shafi@sfc.keio.ac.jp">shafi@sfc.keio.ac.jp</A>, <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hi John,
+
+I didn't intend to raise a new discussion on this but..
+
+&gt; S0, and S0 catalyzes E? Then you would have
+&gt;  
+&gt; S0 --E--&gt; S0*   with rate Kcat1*E*[S0]/(Km1 + [S0])
+&gt; E --S0--&gt; E*    with rate Kcat2*S0*[E]/(Km2 + [E])
+&gt;  
+&gt; That is, you'd need different dimensions depending on use.
+
+I don't think this is problematic, as long as we have an explicit way to indicate which
+are in conc. and which are in amount.  (such as Conc( S0 ), or [S0] or S0.Concentration,
+or whatever)
+
+Vcell is going beyond enzyme kinetics.   You may agree with us that this flexibility to have
+both conc. and amount is very helpful in cell biology modeling.
+
+
+&gt; But, in the end, you aren't getting around the problem, because
+&gt; if your volume changes, you'd *STILL* have to scale Km.
+
+Something must be changed, depending on the pivot.   
+I know you have to change it because you want to preserve the reaction rate and the
+substances.    And the other case is to preserve rate constants and substances, allowing
+changes of the reaction rates.
+
+It seems this discussion is recurring.   I'll stop here.
+
+
+&gt; As I said, there is no way around this, so we're going to
+&gt; have to pick the lesser of two evils.
+
+Agreed.
+
+
+-Kouichi
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00341" HREF="msg00341.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Wagner,John&quot; &lt;JWagner@nso.uchc.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00360.html">RE: [sbml-discuss] DWG - from a devil's advocate - a plan and other suggestions</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00362.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00341.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00362.html">RE: [sbml-discuss] Changing the units of initial amounts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00361"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00361"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

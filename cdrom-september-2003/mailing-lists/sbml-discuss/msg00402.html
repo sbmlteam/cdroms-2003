@@ -1,0 +1,133 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] re: DWG: multiple layouts -->
+<!--X-From-R13: Eira Enuyr <f.fnuyrNtzk.qr> -->
+<!--X-Date: Mon, 2 Jun 2003 11:41:30 &#45;0700 -->
+<!--X-Message-Id: 2785.1054576227@www35.gmx.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] re: DWG: multiple layouts</TITLE>
+<LINK REV="made" HREF="mailto:s.sahle@gmx.de">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00401.html">Date Prev</A>][<A HREF="msg00403.html">Date Next</A>][<A HREF="msg00413.html">Thread Prev</A>][<A HREF="msg00403.html">Thread Next</A>][<A HREF="maillist.html#00402">Date Index</A>][<A HREF="threads.html#00402">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] re: DWG: multiple layouts</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+<LI><em>Subject</em>: [sbml-discuss] re: DWG: multiple layouts</LI>
+<LI><em>From</em>: Sven Sahle &lt;<A HREF="mailto:s.sahle@gmx.de">s.sahle@gmx.de</A>&gt;</LI>
+<LI><em>Date</em>: Mon, 2 Jun 2003 19:50:27 +0200 (MEST)</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Hello all, 
+ 
+Hugh Spence wrote: 
+&gt;If a substance is both a substrate and a product, you could cancel it out 
+&gt;as not taking part, or split the reaction into it's actual component 
+&gt;parts. 
+&gt;i.e  a+b&gt;C C+d&gt;e+a could have been joined to give a+b+d&gt;e+a. 
+&gt;        The two reaction process is more accurate and wouldn't cause 
+&gt;problems. 
+&gt;        The one reaction process could be written b+d&gt;e. In this case no 
+&gt;data is lost by eliminating the a from the reaction (if you put it in as 
+a 
+&gt;modifier to show that it must be there). The process of combining the 
+&gt;reactions compromises the model, not the elimination from both sides. 
+&gt; 
+&gt;The 2A-&gt;B is a case where the person doing the splitting is creating his 
+&gt;own problem. We have enough real problems without solving problems the 
+&gt;users should have avoided for themselves? How they represent it inside 
+&gt;their own software is their business. If it can be done in SBML, how 
+their 
+&gt;internal representations map to it is the users' problems. Certainly we 
+&gt;should advise them that the alternate representation could have this 
+&gt;problem. 
+ 
+I think we should base our diagrams on what models are allowed in SBML and 
+not on what model we think are good models. While I do agree that 
+generally 
+the reaction 2*A -&gt; B should have 1 speciesreference with multiplicity 2 
+it 
+is valid SBML to have to speciesreferences. So this 2 speciesreferences 
+are 
+identical and can not be referenced. 
+ 
+By the way, before focussing on details I would like to know if we all 
+could 
+agree on the following basic structure of a diagram or if we missed 
+something fundamental: 
+ 
+- a species can have several graphical representations. 
+- a reaction has a place in the diagram (this place could be the center of 
+the reaction, the place where the arrows meet) 
+- the graphical representation of a speciesreference is a line or curve in 
+the diagram leading from a reaction center to a graphical representation 
+of 
+a species. 
+ 
+So I think that if we want to separate diagram information from the model 
+information in the file (which makes sense) there must be a way to refer 
+to 
+a specific speciesreference. Just now there is no such way in SBML. 
+ 
+Sven 
+
+-- 
++++ GMX - Mail, Messaging &amp; more  <A  HREF="http://www.gmx.net">http://www.gmx.net</A> +++
+Bitte lächeln! Fotogalerie online mit GMX ohne eigene Homepage!
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00401.html">Re: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00403.html">[sbml-discuss] re: DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00413.html">RE: [sbml-discuss] DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00403.html">[sbml-discuss] re: DWG: multiple layouts</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00402"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00402"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

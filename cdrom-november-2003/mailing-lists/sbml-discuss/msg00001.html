@@ -1,0 +1,173 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: [sbml&#45;discuss] message from Warren Hedley &#45; common denominator vs. flexibility -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Wed, 11 Sep 2002 12:34:41 &#45;0700 -->
+<!--X-Message-Id: 000501c259ca$10789900$eb8f87d9@ANDREWLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>[sbml-discuss] message from Warren Hedley - common denominator vs. flexi</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00000.html">Date Prev</A>][<A HREF="msg00002.html">Date Next</A>][<A HREF="msg00000.html">Thread Prev</A>][<A HREF="msg00002.html">Thread Next</A>][<A HREF="maillist.html#00001">Date Index</A>][<A HREF="threads.html#00001">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>[sbml-discuss] message from Warren Hedley - common denominator vs. flexibility</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;SBML&quot; &lt;<A HREF="mailto:sbml-discuss@symbio.jst.go.jp">sbml-discuss@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: [sbml-discuss] message from Warren Hedley - common denominator vs. flexibility</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 11 Sep 2002 20:33:04 +0100</LI>
+<LI>Importance: Normal</LI>
+<LI><em>Organization</em>: ERATO Kitano</LI>
+<LI>Reply-To: &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+
+Hi folks,
+
+I couldn't resist commenting on this. Naturally from a CellML-centric
+viewpoint, 
+but I believe my comments hold for SBML too.
+
+Nicolas Le Novere wrote:
+&gt; 
+&gt; I'm not sure I share this view. SBML should not only be a language to 
+&gt; exchange models, but also to store models.
+
+As far as I'm concerned, CellML should only be used for the exchange of
+models, 
+and not for storage. And to ensure that it can be used by as many tools
+as 
+possible, CellML is as generic as possible, with compliant processors
+only 
+really having to be able to link together variables declared in
+different nodes 
+in a network, and be able to run simulations involving a system of ODEs.
+It was 
+intended that tool-specific optimisations be encoded as extensions,
+where 
+possible. Massive domain- and problem-level optimisations could be made,
+but at 
+the expense of compliance.
+
+I also think that CellML is a really bad option for storage. In general
+XML 
+documents are much more difficult and inefficient to deal with (load,
+grep, 
+etc.) than unstructured text files, which are traditionally what
+modelling tools 
+have used to store information. As more and more biological information
+is put 
+in databases, it is only a matter of time before everyone starts
+throwing their 
+models in too, and CellML was designed with this in mind.
+
+I would suggest to the developers of simulators with established text
+file 
+formats to stick with those formats as the primary export mechanism.
+SBML 
+(and/or CellML) is an additional format which will almost always be
+lossy, but 
+which can be used by other tools.
+
+&gt; Obviously all simulators do not
+&gt; need the same level of details. That does not mean we don't have to
+allow
+&gt; for the possibility to store all the information we possess. And the
+&gt; package system proposed in the document "miscellaneous features" is
+perfect
+&gt; for that.
+
+As you point out, if you want to avoid the loss, then extension
+mechanisms are 
+available in both languages. The use of XML namespaces makes these much
+more 
+explicit than the extensions that were added to HTML by M$/NS. So you're
+welcome 
+to use either language as a storage format too.
+
+I believe we need to slow down the development of these languages and
+take more 
+time to establish what people need and what the tools can reasonably
+support, 
+otherwise no software will ever be compliant.
+
+The W3C's system, where it is required that three tools support a
+standard 
+before it becomes a recommendation, has worked pretty well for them in
+ensuring 
+that their recommendations are stable and error-free. Why not use it as
+the 
+basis for extending SBML? For instance, if someone creates an extension
+element, 
+document it, and persuades the authors of two other tools to include
+support for 
+it, then and only then can it possible for that feature to be added to
+the next 
+revision of the SBML standard.
+
+Regards,
+Warren Hedley
+
+
+-- 
+Warren Hedley
+Alliance For Cell Signaling
+San Diego Supercomputer Center
+<A  HREF="http://www.afcs.org/molpages/automatedData/">http://www.afcs.org/molpages/automatedData/</A>
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00000.html">[sbml-discuss] Discussion of Systems Biology Markup Language (SBML) moves to sbml-discuss</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00002.html">Re: [sbml-discuss] message from Warren Hedley - common denominatorvs. flexibility</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00000.html">[sbml-discuss] Discussion of Systems Biology Markup Language (SBML) moves to sbml-discuss</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00002.html">Re: [sbml-discuss] message from Warren Hedley - common denominatorvs. flexibility</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00001"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00001"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

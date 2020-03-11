@@ -1,0 +1,341 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] stoichiometry in sbml level 2 version 1 -->
+<!--X-From-R13: uhtu.q.fcraprNtfx.pbz -->
+<!--X-Date: Wed, 11 Jun 2003 09:45:40 &#45;0700 -->
+<!--X-Message-Id: OF8E0CC96A.320DBE15&#45;ON80256D42.005BA9D1@sb.com -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</TITLE>
+<LINK REV="made" HREF="mailto:hugh.d.spence@gsk.com">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00444.html">Date Prev</A>][<A HREF="msg00446.html">Date Next</A>][<A HREF="msg00592.html">Thread Prev</A>][<A HREF="msg00432.html">Thread Next</A>][<A HREF="maillist.html#00445">Date Index</A>][<A HREF="threads.html#00445">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: <A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A></LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</LI>
+<LI><em>From</em>: <A HREF="mailto:hugh.d.spence@gsk.com">hugh.d.spence@gsk.com</A></LI>
+<LI><em>Date</em>: Wed, 11 Jun 2003 17:44:02 +0100</LI>
+<LI>Cc: <A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>, <A HREF="mailto:owner-sbml-discuss@its.caltech.edu">owner-sbml-discuss@its.caltech.edu</A>,  <A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+
+<br><font size=2 face="Arial">Andrew,</font>
+<br><font size=2 face="Arial">&nbsp; &nbsp; &nbsp; &nbsp; This would keep some level of compatability with level 1. It would allow but not require mathml. It would seem the most attractive solution.<br>
+<br>
+<br>
+<br>
+Hugh Spence<br>
+GSK Scientific Computing and Mathematical Modelling<br>
+Medicines Research Centre<br>
+Gunnels Wood Road<br>
+Stevenage<br>
+UK<br>
+SG1 2NY<br>
+<br>
+<br>
+</font>
+<br>
+<br>
+<br>
+<table width=100%>
+<tr valign=top>
+<td>
+<td><font size=1 face="sans-serif"><b>&quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</b></font>
+<br>
+<br><font size=1 face="sans-serif">Sent by: owner-sbml-discuss@its.caltech.edu</font>
+<p><font size=1 face="sans-serif">11-Jun-2003 17:09</font>
+<br>
+<td><font size=1 face="Arial">&nbsp; &nbsp; &nbsp; &nbsp; </font>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </font>
+<br>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; To: &nbsp; &nbsp; &nbsp; &nbsp;sbml-discuss@caltech.edu, biospice-mdl@bbn.com</font>
+<br>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; cc: &nbsp; &nbsp; &nbsp; &nbsp;</font>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; Subject: &nbsp; &nbsp; &nbsp; &nbsp;RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</font></table>
+<br>
+<br><font size=2 face="Courier New">Folks<br>
+<br>
+In a nutshell Wayne is proposing that a<br>
+scheme where species has two mutually exclusive stoichiometry fields<br>
+one of attribute type double, the other of element type MathML.<br>
+FYI doubles don't have to include a period or decimal point in XML<br>
+The attribute would default to 1.<br>
+<br>
+In this scheme the following would be valid speciesReference structures:<br>
+<br>
+&lt;speciesReference species=&quot;foo&quot;/&gt; &nbsp;(stoichiometery defaults to 1)<br>
+<br>
+&lt;speciesReference species=&quot;foo&quot; stoichiometry=&quot;2&quot;/&gt;<br>
+<br>
+&lt;speciesReference species=&quot;foo&quot; stoichiometry=&quot;2.5&quot;/&gt;<br>
+<br>
+&lt;speciesReference species=&quot;foo&quot;&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;stoichiometry&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;math xmlns=&quot;http:/www.w3.org/1998/Math/MathML&quot;&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;ci&gt;k&lt;/ci&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/math&gt;<br>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/stoichiometry&gt;<br>
+&lt;/speciesReference&gt;<br>
+<br>
+Does this seem a better interpretation of the communities wishes?<br>
+Please comment.<br>
+<br>
+yours<br>
+Andrew Finney<br>
++44 (0)1452 722487<br>
+from US - 011 44 1452 722487<br>
+University of Hertfordshire, UK<br>
+<br>
+&gt; -----Original Message-----<br>
+&gt; From: Wayne Rindone [mailto:wrindone@arep.med.harvard.edu] <br>
+&gt; Sent: 11 June 2003 16:47<br>
+&gt; To: Andrew Finney<br>
+&gt; Cc: sbml-discuss@caltech.edu; biospice-mdl@bbn.com<br>
+&gt; Subject: Re: [sbml-discuss] stoichiometry in sbml level 2 version 1<br>
+&gt; <br>
+&gt; <br>
+&gt; Hi Andrew,<br>
+&gt; <br>
+&gt; &nbsp; &nbsp; &nbsp;Well, I can speak to what one of the 9 (me) who was <br>
+&gt; among those who voted for the double or parameter choices was <br>
+&gt; thinking, rather than adding to the 8 who voted for the <br>
+&gt; double only choice.<br>
+&gt; <br>
+&gt; &nbsp; &nbsp; &nbsp;I came from the meeting believing that many thought it <br>
+&gt; would be helpful in some models to allow (rather than <br>
+&gt; require) MathML expressions. I was among them. &nbsp;However, when <br>
+&gt; I got to see the survey questions, I saw that that was not <br>
+&gt; provided as an option, there was one choice that required all <br>
+&gt; stoichimetries, simple as well as complicated, to use MathML <br>
+&gt; expressions, that was pretty clear from the way the question <br>
+&gt; was stated, and none of the other choices made any mention of <br>
+&gt; MathML, and left the impression that MathML would not be <br>
+&gt; involved in addressing them. &nbsp;Of course a considerable <br>
+&gt; majority voted for the non-MathML choices, split into three <br>
+&gt; levels of detail.<br>
+&gt; <br>
+&gt; &nbsp; &nbsp; &nbsp;I also got the impression from the meeting that there <br>
+&gt; might be a simpler method of representing parameter symbols <br>
+&gt; than a full MathML expression (required or otherwise), and <br>
+&gt; noticed in the third choice that no method of specifying a <br>
+&gt; symbolic parameter value was described. &nbsp;It even occurred to <br>
+&gt; me that an optional MathML reference might be one way of <br>
+&gt; accomplishing that, so I choose the third option since that <br>
+&gt; seemed to most closely match my own belief it would make <br>
+&gt; sense to provide MathML as an option for those who have use for it.<br>
+&gt; <br>
+&gt; &nbsp; &nbsp; &nbsp;However, since it was decided choosing option 3 meant we <br>
+&gt; favored required MathML, I would appreciate my vote being <br>
+&gt; recounted as being for option 2, which gives it the <br>
+&gt; unimpressive 9 to 8 lead over the double or parameter option. <br>
+&gt; &nbsp;It remains the case that 19 respondents choose not to select <br>
+&gt; the required MathML reference choice, while 13 did select that. <br>
+&gt; That is a lot more convincing difference than the single vote <br>
+&gt; difference between two of the non-MathML requiring choices. <br>
+&gt; <br>
+&gt; &nbsp; &nbsp; I also got the impression that people would prefer <br>
+&gt; changes that did not invalidate currently valid SBML models <br>
+&gt; unless there was a compelling reason for making them. &nbsp;To be <br>
+&gt; sure, we are not going to restrict ourselves from making <br>
+&gt; backward incompatible changes when they are well-motivated <br>
+&gt; and supported by the majority of respondents, and there are <br>
+&gt; examples of that.<br>
+&gt; <br>
+&gt; &nbsp; &nbsp; One like that that I can accept, given a clear majority <br>
+&gt; in favor of this simplification, is removal of the previous <br>
+&gt; denominator field. &nbsp;And I suspect it is possible to exactly <br>
+&gt; represent empirical stoichiometry values like 1 2/3 in MathML <br>
+&gt; expressions when that is needed. And only a tiny subset of <br>
+&gt; existing SBML models, like our flux balance model, made any <br>
+&gt; use of the denominator field, and are thus invalidated by <br>
+&gt; that change. &nbsp;<br>
+&gt; <br>
+&gt; &nbsp; &nbsp; I expect nearly every existing SBML file is invalidated <br>
+&gt; if this MathML utilization is required in all cases. &nbsp;To be <br>
+&gt; sure, the old default stoichiometry default value of 1 has <br>
+&gt; been logically replaced by the new more complicated MathML <br>
+&gt; representation of that, so if there are any models that did <br>
+&gt; not explicitly include any stoichiometry values beyond the <br>
+&gt; default 1 for any reactant or product, they would not need to <br>
+&gt; be changed to conform to the latest proposal. Other than <br>
+&gt; that, every single existing SBML (whether Level 1 or Level 2) <br>
+&gt; file needs to be changed to conform to this new requirement, <br>
+&gt; there is no other element of backward-compatibility.<br>
+&gt; <br>
+&gt; &nbsp; &nbsp; &nbsp;I assumed the reason the change to allow floating point <br>
+&gt; numbers was described with the computer language specific <br>
+&gt; term &quot;double&quot; was so people would not think we were going to <br>
+&gt; require decimal points in integer stoichimetries, which would <br>
+&gt; also invalidate nearly all existing SBML files, which calling <br>
+&gt; it a floating point number might imply.<br>
+&gt; <br>
+&gt; &nbsp; &nbsp; It never occurred to me that by choosing the allow a <br>
+&gt; parameter subchoice option among the non-MathML options, I <br>
+&gt; single handedly would supply a bare plurality among the 19 <br>
+&gt; selecting no required MathML that could be interpreted as <br>
+&gt; supporting the required MathML option. <br>
+&gt; <br>
+&gt; &nbsp; &nbsp; I do appreciate it is a fine art setting up survey <br>
+&gt; questions so that it is easy to interpret the results. &nbsp;I <br>
+&gt; doubt I am the only one among the 19 who did not favor <br>
+&gt; requiring MathML here who would not mind making that an <br>
+&gt; option as long as existing stoichiometry representations </font>
+<br><font size=2 face="Courier New">&gt; (with the addition of floating point numbers being accepted) <br>
+&gt; would still be valid for the vast majority of cases where <br>
+&gt; nothing uniquely provided by MathML is needed. If you split <br>
+&gt; the 4 choices along the lines of which allow floating point <br>
+&gt; representations and which don't, only 2 of the 32 respondents <br>
+&gt; expressed the wish that it remain with integers only allowed. <br>
+&gt; I really do not know, but perhaps those two were afraid that <br>
+&gt; by allowing doubles they would need to add decimal points to <br>
+&gt; all stoichimetry values, which I do not believe is required <br>
+&gt; by the choices mentioning doubles (am I wrong?).<br>
+&gt; <br>
+&gt; &nbsp; &nbsp; It does help (at the expense of further complication) to <br>
+&gt; restore the stoichiometry label, but that does not conform to <br>
+&gt; the wishes of the majority of the respondents if existing <br>
+&gt; notations like 'stoichimetry=&quot;2&quot;' are no longer valid. &nbsp;I did <br>
+&gt; not know until you confirmed it that it was necessary to use <br>
+&gt; the &quot;math&quot; label in a MathML reference (are there other valid <br>
+&gt; labels also?), perhaps there are also technical reasons that <br>
+&gt; one cannot readily present the existing stoichiometry <br>
+&gt; notation and also provide MathML expressions as an option <br>
+&gt; when they are needed? &nbsp;It is hard to know for certain given <br>
+&gt; the way the survey question was broken up, but I would think <br>
+&gt; that approach would most closely match the wishes of the <br>
+&gt; majority of the 32 respondents. &nbsp;The only way to know for <br>
+&gt; sure is to ask all 32 if they would prefer 1) required MathML <br>
+&gt; 2) optional MathML or 3) no MathML for stoichiometries. &nbsp;One <br>
+&gt; could also separately ask how many prefer to allow floating <br>
+&gt; point (double) values in addition to integers, although the <br>
+&gt; answer to that one appears relatively clear from the existing <br>
+&gt; survey question results, unless the &quot;double&quot; choices were <br>
+&gt; intended to require decimal points even in integer values. <br>
+&gt; <br>
+&gt; &nbsp; &nbsp; &nbsp; I am sorry, but I honestly do not see requiring MathML <br>
+&gt; with no simpler options for this well-established <br>
+&gt; stoichimetry field as an accurate interpretation of the <br>
+&gt; wishes of the community as expressed in this survey.<br>
+&gt; <br>
+&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Wayne<br>
+&gt; <br>
+&gt; &nbsp; <br>
+&gt; On Tue, 10 Jun 2003, Andrew Finney wrote:<br>
+&gt; <br>
+&gt; &gt; Folks<br>
+&gt; &gt; <br>
+&gt; &gt; We admit that the results of the survey with respect to <br>
+&gt; stoichiometry <br>
+&gt; &gt; did not show a consensus view, in the sense of having a majority of <br>
+&gt; &gt; people vote in favor of a particular alternative. &nbsp;(For a review of <br>
+&gt; &gt; the results, see<br>
+&gt; &gt; <br>
+&gt; &gt; &nbsp; http://www.surveymonkey.com/Report.asp?U=21467533723<br>
+&gt; &gt; <br>
+&gt; &gt; We took the path of taking the choice that received the most votes<br>
+&gt; &gt; (MathML) as the best way to store stoichiometry. &nbsp;This seems <br>
+&gt; &gt; reasonable since there was a clear majority in favour of <br>
+&gt; replacing the <br>
+&gt; &gt; L1 scheme with a mechanism for allowing stoichiometry to be <br>
+&gt; &gt; parameterized (i.e., taking choices c &amp; d together = 68.7%).<br>
+&gt; &gt; <br>
+&gt; &gt; In implementing this option in the final proof, we simply <br>
+&gt; replaced the <br>
+&gt; &gt; stoichiometry attribute with a MathML 'math' element as the <br>
+&gt; &gt; speciesReference element content. &nbsp;The use of a 'math' element is <br>
+&gt; &gt; required in MathML. &nbsp;The use of an extra level of nesting appeared <br>
+&gt; &gt; unnecessary in this case. Unfortunately, this was <br>
+&gt; apparently not very <br>
+&gt; &gt; intuitive.<br>
+&gt; &gt; <br>
+&gt; &gt; We therefore plan to change this in the final document by enclosing <br>
+&gt; &gt; the 'math' element within a 'stoichiometry' element, so in <br>
+&gt; the final <br>
+&gt; &gt; version, a speciesReference element would look like this:<br>
+&gt; &gt; <br>
+&gt; &gt; &lt;speciesReference species=&quot;foo&quot;&gt;<br>
+&gt; &gt; &nbsp; &nbsp; &lt;stoichiometry&gt;<br>
+&gt; &gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;math xmlns=&quot;http://www.w3c.og/1998/Math/MathML&quot;&gt;<br>
+&gt; &gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;cn&gt; 2 &lt;/cn&gt;<br>
+&gt; &gt; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/math&gt;<br>
+&gt; &gt; &nbsp; &nbsp; &lt;/stoichiometry&gt;<br>
+&gt; &gt; &lt;/speciesReference&gt;<br>
+&gt; &gt; <br>
+&gt; &gt; Please let us know if you think that overall this is a reasonable <br>
+&gt; &gt; interpretation of the wishes of the community.<br>
+&gt; &gt; <br>
+&gt; &gt; -- Andrew &amp; Mike<br>
+&gt; &gt; <br>
+&gt; &gt; Andrew Finney<br>
+&gt; &gt; +44 (0)1452 722487<br>
+&gt; &gt; from US - 011 44 1452 722487<br>
+&gt; &gt; University of Hertfordshire, UK<br>
+&gt; &gt; <br>
+&gt; &gt; <br>
+&gt; &gt; <br>
+&gt; &gt; <br>
+&gt; <br>
+&gt; <br>
+&gt; <br>
+&gt; <br>
+&gt; <br>
+<br>
+<br>
+<br>
+<br>
+</font>
+<br>
+<br>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00444.html">RE: [sbml-discuss] DWG: basic question</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00446.html">RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00592.html">Re: [sbml-discuss] test models for SBML level 2 compliant software...</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00432.html">[sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00445"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00445"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,118 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] stoichiometry in sbml level 2 version 1 -->
+<!--X-From-R13: [vpunry Vhpxn <zuhpxnNpnygrpu.rqh> -->
+<!--X-Date: Wed, 11 Jun 2003 10:51:15 &#45;0700 -->
+<!--X-Message-Id: 16103.27588.993498.578964@erato1.cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.OSF.3.94.1030611065000.4094A&#45;100000@arep.med.harvard.edu -->
+<!--X-Reference: 003e01c33033$d2cc3710$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</TITLE>
+<LINK REV="made" HREF="mailto:mhucka@caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00445.html">Date Prev</A>][<A HREF="msg00447.html">Date Next</A>][<A HREF="msg00443.html">Thread Prev</A>][<A HREF="msg00448.html">Thread Next</A>][<A HREF="maillist.html#00446">Date Index</A>][<A HREF="threads.html#00446">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;, &lt;<A HREF="mailto:biospice-mdl@bbn.com">biospice-mdl@bbn.com</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</LI>
+<LI><em>From</em>: Michael Hucka &lt;<A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Wed, 11 Jun 2003 10:49:56 -0700</LI>
+<LI>Reply-To: <A HREF="mailto:mhucka@caltech.edu">mhucka@caltech.edu</A></LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+One thing to note about this: I don't think we can use the
+same tag ('stochiometry') for both an attribute an an
+element on the same parent element in XML.  So one of them
+would need to be named something else.
+
+  afinney&gt; In a nutshell Wayne is proposing that a
+  afinney&gt; scheme where species has two mutually exclusive stoichiometry fields
+  afinney&gt; one of attribute type double, the other of element type MathML.
+  afinney&gt; FYI doubles don't have to include a period or decimal point in XML
+  afinney&gt; The attribute would default to 1.
+
+  afinney&gt; In this scheme the following would be valid speciesReference structures:
+
+  afinney&gt; &lt;speciesReference species="foo"/&gt;  (stoichiometery defaults to 1)
+
+  afinney&gt; &lt;speciesReference species="foo" stoichiometry="2"/&gt;
+
+  afinney&gt; &lt;speciesReference species="foo" stoichiometry="2.5"/&gt;
+
+  afinney&gt; &lt;speciesReference species="foo"&gt;
+  afinney&gt; &lt;stoichiometry&gt;
+  afinney&gt; &lt;math xmlns="http:/www.w3.org/1998/Math/MathML"&gt;
+  afinney&gt; &lt;ci&gt;k&lt;/ci&gt;
+  afinney&gt; &lt;/math&gt;
+  afinney&gt; &lt;/stoichiometry&gt;
+  afinney&gt; &lt;/speciesReference&gt;
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00448" HREF="msg00448.html">Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+<UL><LI><EM>From:</EM> Ben Bornstein &lt;bornstei@aig.jpl.nasa.gov&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00442" HREF="msg00442.html">Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+<UL><LI><EM>From:</EM> Wayne Rindone &lt;wrindone@arep.med.harvard.edu&gt;</LI></UL></LI>
+<LI><STRONG><A NAME="00443" HREF="msg00443.html">RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00445.html">RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00447.html">RE: [sbml-discuss] Someone please set me straight on this</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00443.html">RE: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00448.html">Re: [sbml-discuss] stoichiometry in sbml level 2 version 1</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00446"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00446"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

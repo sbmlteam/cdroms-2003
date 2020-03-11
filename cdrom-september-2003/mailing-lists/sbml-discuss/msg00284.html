@@ -1,0 +1,181 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] Changing the way stoichiometries are expresse -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Fri, 23 May 2003 05:01:18 &#45;0700 -->
+<!--X-Message-Id: 002301c32122$fa7df7f0$0200a8c0@AFINNEYLAPTOP -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3ECDF316.3010908@tu&#45;bs.de -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] Changing the way stoichiometries are expresse</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00283.html">Date Prev</A>][<A HREF="msg00285.html">Date Next</A>][<A HREF="msg00278.html">Thread Prev</A>][<A HREF="msg00233.html">Thread Next</A>][<A HREF="maillist.html#00284">Date Index</A>][<A HREF="threads.html#00284">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] Changing the way stoichiometries are expresse</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'SBML Discussion List '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] Changing the way stoichiometries are expresse</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Fri, 23 May 2003 13:00:58 +0100</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+Folks
+
+I found the following description of how this 
+is computed:
+
+<A  HREF="http://forums.wolfram.com/mathgroup/archive/1998/May/msg00272.html">http://forums.wolfram.com/mathgroup/archive/1998/May/msg00272.html</A>
+
+Andrew Finney
++44 (0)1452 722487
+from US - 011 44 1452 722487
+Systems Biology Workbench Development Group
+University of Hertfordshire, UK
+
+&gt; -----Original Message-----
+&gt; From: owner-sbml-discuss@its.caltech.edu 
+&gt; [<A  HREF="mailto:owner-sbml-discuss@its.caltech.edu">mailto:owner-sbml-discuss@its.caltech.edu</A>] On Behalf Of 
+&gt; Joerg R. Weimar
+&gt; Sent: 23 May 2003 11:08
+&gt; To: 'SBML Discussion List '
+&gt; Subject: Re: [sbml-discuss] Changing the way stoichiometries 
+&gt; are expresse
+&gt; 
+&gt; 
+&gt; Mathematica has a function Rationalize, which (quoting from 
+&gt; the help text)
+&gt; 
+&gt; Rationalize[x] takes Real numbers in x that are close to 
+&gt; rationals, and 
+&gt; converts them to exact Rational numbers.
+&gt; 
+&gt; Rationalize[x, dx] performs the conversion whenever the error made is 
+&gt; smaller in magnitude than dx.
+&gt; 
+&gt; Example: Rationalize[3.78] -&gt; 189/50
+&gt; 
+&gt; A rational number p/q is considered "sufficiently close" to a 
+&gt; Real x if
+&gt; 
+&gt; |p/q - x| &lt; c/q^2 , where c is chosen to be 10^-4.
+&gt; 
+&gt; Rationalize[x, 0] converts any x to rational form.
+&gt; 
+&gt; 
+&gt; End quote
+&gt; 
+&gt; 
+&gt; I imagine any software package doing rational arithmetic 
+&gt; could perform 
+&gt; this operation when reading in stoichiometries that are 
+&gt; floats. All the 
+&gt; other (actually most) programs/developers either support only 
+&gt; integers 
+&gt; anyway or use flotaing point. For them, life would get easier, since 
+&gt; they are not concerned with rational arithmetic, and they do 
+&gt; not need to 
+&gt; program this function just to create valid SBML.
+&gt; 
+&gt; Jörg Weimar.
+&gt; 
+&gt; 
+&gt; 
+&gt; Herbert Sauro wrote:
+&gt; &gt;  
+&gt; &gt; There is a whole class of analyses based on stoichiometry 
+&gt; alone. The 
+&gt; &gt; operations involve a lot of matrix manipulation, particularly 
+&gt; &gt; elementary row operations. For large systems &gt;100+, it's 
+&gt; far better to 
+&gt; &gt; use rational arithmetic in the math rather than floating 
+&gt; point numbers 
+&gt; &gt; because of the propagation of rounding error. For large 
+&gt; systems it is 
+&gt; &gt; therefore not possible to be 100% sure that the 
+&gt; conservation vectors 
+&gt; &gt; for example are actually the correct set without doing so post 
+&gt; &gt; analysis checking which I'm sure most simulator tools don't 
+&gt; do. These 
+&gt; &gt; vectors need to be computed for people doing dynamic 
+&gt; analysis as well 
+&gt; &gt; so the problem is not just confined to stoichiometry analysis.
+&gt; &gt; 
+&gt; &gt; I think Mike'd idea for alowing either float or rational 
+&gt; sounds like a 
+&gt; &gt; good idea, keeps everyone happy.
+&gt; &gt; 
+&gt; 
+&gt; -- 
+&gt; PD Dr. Joerg R. Weimar, Inst. f. Wissensch. Rechnen, 
+&gt; TU-Braunschweig J.Weimar@tu-bs.de, 
+&gt; <A  HREF="http://www.tu-bs.de/institute/WiR/weimar">http://www.tu-bs.de/institute/WiR/weimar</A>
+&gt; Tel. 
+&gt; +49-531-391-3006  Mail: D-38092 Braunschweig
+&gt; 
+&gt; 
+&gt; 
+
+
+
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<UL><LI><STRONG>References</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00278" HREF="msg00278.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Joerg R. Weimar&quot; &lt;J.Weimar@tu-bs.de&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00283.html">Re: [sbml-discuss] DWG Goals, Constraints, etc.</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00285.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00278.html">Re: [sbml-discuss] Changing the way stoichiometries are expresse</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00233.html">UNSUBSCRIBE sbml-discuss mkersz@pasteur.fr</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00284"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00284"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

@@ -1,0 +1,107 @@
+<html>
+<head>
+<LINK REL="STYLESHEET" HREF="../../site.css" TYPE="text/css" />
+<LINK REL="STYLESHEET" HREF="../../mathsbml.css" TYPE="text/css"/>
+<title>MathSBML</title>
+</head>
+<body >
+<a name="TopOfPage" ></a>
+<div align="center">
+<h1 style="color: #003399;">MathSBML</h1>
+<table border="0" cellspacing="6" cellpadding="2">
+  <tr>
+  <td class="button"><a href="../../mathsbml.html">MathSBML Home Page</a></td>
+  <td class="button"><a href="mathsbml-sitemap.html">MathSBML Site Map</a></td>
+  </tr>
+</table>
+</div>
+
+
+<h1>MathSBML Model Builder:<span class="function"> speciesToSBML</span> </h1>
+
+<hr/>
+
+			
+<p><span class="function">speciesToSBML[options]</span> returns a  single  <span class="function">&lt;species.../&gt;</span> definition.</p>
+<p><span class="function">speciesToSBML[{{options}, {options},...}]</span> returns a 
+	<span class="function">&lt;listOfSpecies.../&gt;</span> where each option list refers to a separate species.	</p>
+<p><span class="function">speciesToSymbolicSBML[arguments]</span> returns Symbolic SBML
+for a  <span class="function">&lt;species.../&gt;</span> definition.</p>
+
+
+<span style="font-size:smaller;">New in version 2.1.4.</span>
+
+<hr />
+<h1>Options</h1>
+The options for <span class="function">speciesToSMBML</span> 
+are identical to <span class="function">species</span> fields listed in the SBML spec, i.e., <span class="function">id</span>, 
+<span class="function">name</span>, 
+<span class="function">compartment</span>, <span class="function">initialAmount</span>, <span class="function">initialConcentration</span>, 
+<span class="function">units</span>,
+<span class="function">boundaryCondition</span>, 
+<span class="function">charge</span>, <span class="function">constant</span>.
+
+
+<hr />
+
+<h1>Example 1: Single Species</h1>
+<p>The following input expression will create a single <span class="function">species</span> definition (linefeeds and indentation added to emphasize syntax):</p>
+
+<pre style="font-size:larger;color:blue;">
+	speciesToSBML[id->"fred", 
+		name->"Fred Flintstone", 
+		compartment->"bedrock" , 
+		boundaryCondition->"false",
+		constant->"true", 
+		initialConcentration->5, 
+		units->"rocks", 
+		charge->17]
+</pre>
+
+<p>and will produce the following output (line feeds and indentation added to emphasize format):</p>
+
+<pre style="font-size:larger;color:blue;">
+	&lt;species id="fred" 
+		name="Fred Flintstone" 
+		compartment="bedrock" 
+		boundaryCondition="false" 
+		constant="true" 
+		initialConcentration="5" 
+		units="rocks" 
+		charge="17"/&gt;
+</pre>
+<br />
+<h1>Example 1: Multiple Species</h1>
+<p>The following will generate a <span class="function">listOfSpecies</span> SBML fragment:</p>
+
+<pre style="font-size:larger;color:blue;">
+	speciesToSBML[{{id-> "fred", compartment-> "bedrock"}, 
+	               {id-> "barney",compartment-> "bedrock"}
+	               }]
+
+</pre>
+<p>A string containing the following SBML, including embedded line feeds and spaces for indentations, will be returned:</p>
+<pre style="font-size:larger;color:blue;">
+	&lt;listOfSpecies&gt;
+	 &lt;species id="fred"
+	     name="fred"
+	     compartment="bedrock"
+	     boundaryCondition="false"
+	     constant="false"/&gt;
+	 &lt;species id="barney"
+	     name="barney"
+	     compartment="bedrock"
+	     boundaryCondition="false"
+	     constant="false"/&gt;
+	&lt;/listOfSpecies&gt;
+
+</pre>
+
+
+<br /><br />
+
+<a  href="#TopOfPage">Go to the top of this page</a>
+
+</body>
+</html>
+

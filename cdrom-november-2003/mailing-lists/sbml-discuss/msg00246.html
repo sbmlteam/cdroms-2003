@@ -1,0 +1,183 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: RE: [sbml&#45;discuss] DWG preliminary issues -->
+<!--X-From-R13: Vreoreg Enheb <Vreoreg_EnhebNxtv.rqh> -->
+<!--X-Date: Thu, 22 May 2003 19:14:07 &#45;0700 -->
+<!--X-Message-Id: 3FA493B792A6D311B51A009027D3B86101AC91ED@mail.kgi.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>RE: [sbml-discuss] DWG preliminary issues</TITLE>
+<LINK REV="made" HREF="mailto:Herbert_Sauro@kgi.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00245.html">Date Prev</A>][<A HREF="msg00247.html">Date Next</A>][<A HREF="msg00245.html">Thread Prev</A>][<A HREF="msg00272.html">Thread Next</A>][<A HREF="maillist.html#00246">Date Index</A>][<A HREF="threads.html#00246">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>RE: [sbml-discuss] DWG preliminary issues</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;'<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A> '&quot; &lt;<A HREF="mailto:sbml-discuss@caltech.edu">sbml-discuss@caltech.edu</A>&gt;</LI>
+<LI><em>Subject</em>: RE: [sbml-discuss] DWG preliminary issues</LI>
+<LI><em>From</em>: Herbert Sauro &lt;<A HREF="mailto:Herbert_Sauro@kgi.edu">Herbert_Sauro@kgi.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 22 May 2003 19:13:51 -0700</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+ 
+One thing I didn't like about SVG was the lack of support for predefined
+shapes such as triangles, hexagons etc. I know one can specify then using
+straight coordinates but ....
+
+Herbert
+
+-----Original Message-----
+From: Wagner,John
+To: sbml-discuss@caltech.edu
+Sent: 5/22/03 6:27 PM
+Subject: RE: [sbml-discuss] DWG preliminary issues
+
+As I said, I had only looked at it recently,
+but at the time I wasn't really thinking about
+using SVG in its entirety, just maybe borrowing
+pieces of it. SVG is a spec for painting vector-
+based graphics, whereas what we want is something
+that tells us how to lay out our pathways--far
+less difficult, and much more specific.
+
+Some of its constructs, however, could be
+useful. For example, how it specifies colors,
+shapes, lines/curves could be used to our
+purposes. For example, I kind of like their
+&lt;defs&gt;...&lt;/defs&gt;, something *like* that could
+be useful for defining standard shapes/elements.
+
+As to my first point, about lots of optional
+detail...my idea is that we allow tools to
+export a fairly detailed description of their
+diagram(s), and, upon importing a model, they
+can simply ignore anything they don't want to
+(or can't) deal with. For example, the Virtual
+Cell will export many, many diagrams, all but
+one of which JDesigner will iggy. When JDesigner
+exports a layout, it might specify that species
+are to be drawn as red rectangles with black
+borders; the Virtual Cell, when it imports that
+layout, will say, "Herbert wanted red rects with
+black borders...bummer...looks like little yellow
+circles it is". This fits with the idea of allow-
+ing a very fine level of detail in the diagrams.
+
+Best example is the size thing: let's allow a
+size to be specified, and any tool that doesn't
+have a size-based approach can simply iggy it.
+
+John
+
+&gt; -----Original Message-----
+&gt; From: Herbert Sauro [<A  HREF="mailto:Herbert_Sauro@kgi.edu">mailto:Herbert_Sauro@kgi.edu</A>]
+&gt; Sent: Thursday, May 22, 2003 8:43 PM
+&gt; To: Wagner,John; 'sbml-discuss@caltech.edu '
+&gt; Subject: RE: [sbml-discuss] DWG preliminary issues
+&gt; 
+&gt; 
+&gt;  
+&gt; I can live with SVG so long as someone is willing to write 
+&gt; the parser for it
+&gt; (portable C please), it's not pure XML so it might be some work at the
+&gt; software end.
+&gt; 
+&gt; Herbert
+&gt; 
+&gt; -----Original Message-----
+&gt; From: Wagner,John
+&gt; To: sbml-discuss@caltech.edu
+&gt; Sent: 5/22/03 3:22 PM
+&gt; Subject: [sbml-discuss] DWG preliminary issues
+&gt; 
+&gt; First, it looks like we are not going to use the forum.
+&gt; Several members expressed that they'd much prefer
+&gt; to use email. (That's why I didn't reply to your email
+&gt; earlier, Pedro.)
+&gt;  
+&gt; That said, without an indexing by working group
+&gt; and topic, this is pretty unworkable, especially
+&gt; given the tremendous volume of discussion now
+&gt; and, most likely, in the future; 39 of my last 50
+&gt; email messages have been sbml-discuss--and I
+&gt; have purposefully not sent any DWG messages
+&gt; out. What a complete pain in the ass.
+&gt;  
+&gt; Now, for the preliminary issues:
+&gt;  
+&gt; 1. It appears that some groups want a LOT of
+&gt; flexibility in diagrams, others want very little.
+&gt; Can we all agree on the general approach of
+&gt; "lots of optional details"? 
+&gt;  
+&gt; 2. A number of people have suggested SVG
+&gt; might be a viable approach. I hadn't read up
+&gt; on it until recently, but now that I have, I can
+&gt; see some distinct advantages. What is everyone's
+&gt; initial view on this: do you think SVG would
+&gt; be a good/viable approach, or would it be
+&gt; too much of a pain in the butt for people to
+&gt; jump on board?
+&gt;  
+&gt; John
+&gt; 
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<UL><LI><STRONG>Follow-Ups</STRONG>:
+<UL>
+<LI><STRONG><A NAME="00272" HREF="msg00272.html">RE: [sbml-discuss] DWG preliminary issues - SVG shapes</A></STRONG>
+<UL><LI><EM>From:</EM> &quot;Andrew Finney&quot; &lt;afinney@cds.caltech.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00245.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00247.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00245.html">RE: [sbml-discuss] DWG preliminary issues</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00272.html">RE: [sbml-discuss] DWG preliminary issues - SVG shapes</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00246"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00246"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>

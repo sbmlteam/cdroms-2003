@@ -1,0 +1,176 @@
+<!-- MHonArc v2.4.6 -->
+<!--X-Subject: FW: [sbml&#45;arrays] reply to victoria -->
+<!--X-From-R13: "Oaqerj Tvaarl" <nsvaarlNpqf.pnygrpu.rqh> -->
+<!--X-Date: Thu, 24 Jan 2002 13:56:29 &#45;0800 -->
+<!--X-Message-Id: OCEOLCAAEIFELNNEPMPLIEJCCIAA.afinney@cds.caltech.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>FW: [sbml-arrays] reply to victoria</TITLE>
+<LINK REV="made" HREF="mailto:afinney@cds.caltech.edu">
+</HEAD>
+<BODY BGCOLOR="white">
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<HR>
+[<A HREF="msg00003.html">Date Prev</A>][<A HREF="msg00005.html">Date Next</A>][<A HREF="msg00003.html">Thread Prev</A>][<A HREF="msg00005.html">Thread Next</A>][<A HREF="maillist.html#00004">Date Index</A>][<A HREF="threads.html#00004">Thread Index</A>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<H1>FW: [sbml-arrays] reply to victoria</H1>
+<HR>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<UL>
+<LI><em>To</em>: &quot;SBML Arrays&quot; &lt;<A HREF="mailto:sbml-arrays@symbio.jst.go.jp">sbml-arrays@symbio.jst.go.jp</A>&gt;</LI>
+<LI><em>Subject</em>: FW: [sbml-arrays] reply to victoria</LI>
+<LI><em>From</em>: &quot;Andrew Finney&quot; &lt;<A HREF="mailto:afinney@cds.caltech.edu">afinney@cds.caltech.edu</A>&gt;</LI>
+<LI><em>Date</em>: Thu, 24 Jan 2002 13:57:09 -0800</LI>
+<LI>Importance: Normal</LI>
+</UL>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<HR>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<PRE>
+More from Victoria...
+
+-----Original Message-----
+From: Victoria Gor [<A  HREF="mailto:gor@aig.jpl.nasa.gov">mailto:gor@aig.jpl.nasa.gov</A>]
+Sent: Tuesday, January 22, 2002 5:27 PM
+To: afinney@cds.caltech.edu
+Cc: bornstei@aig.jpl.nasa.gov; mjolsness@jpl.nasa.gov;
+bshapiro@jpl.nasa.gov
+Subject: Re: [sbml-arrays] reply to victoria
+
+
+Hello, Andrew.
+
+First of all, I would like to let you know that I have not written a 
+transformation to level 1 for given example. On the contrary, the level 1
+representation for specified model was produced by Bruce Shapiro's cellerator.
+I only took his SBML level1 example, back-engineered formulas that he used 
+and made up a concise SBML level 2 example for same formulas. But it is true,
+that while doing it, I always kept thinking of how the interpretor 
+transforming level2 into level1 will work.
+
+Now, about issues raced in your comments. First easy ones:
+1) empty brackets"[]" notation is indeed redundant.
+"List of dimensions" already tells you that the element above is an array.
+I also think that &lt;dimension symbol="[ii]"...&gt; that you included in your 
+example is also redundant. It is enough to specify species as following:
+ 
+    &lt;listOfSpecies&gt;
+      &lt;specie name="s" initialAmount="0" compartmentReference="cell"&gt;
+        &lt;listOfDimensions&gt;
+           &lt;dimension rangeReference ="i" /&gt;
+	&lt;/listOfDimensions&gt;
+      &lt;/specie&gt;
+    &lt;/listOfSpecies&gt;
+
+Since we already know that cell is a one dimensional array, we can
+interpret above statement as create a specie array for EACH element of cell array.
+And if you insist we can refer to this "two dimensional array" as you did in your 
+example as s[K][i]. But I would still prefer "cell[K].s[i]" because of following 
+reason: specie concentrations are inside the cell and it is logical to think
+of them as cell attributes. This inside/outside relationship is naturally depicted
+by "." as  "cell[K].s[i]". Keeping species in a separate 2-dimensional array is also
+possible. What do other people think?
+
+2) I did started out by including symbol for each dimension just like you suggest, 
+but I quickly figured that I usually need more then one name for each dimension 
+(just like you said). I think it is cleaner code if dimension always refers to range 
+name and ranges are listed separately, but it does not matter much to me one way or 
+the other. Both work.
+
+3) I agree with your suggestions about &lt;listOfInstances&gt; and 
+&lt;listOfAttributeAssignments&gt;. Your definition for this example 
+ (as below) is much better. 
+
+	    &lt;listOfAttributeAssignments&gt;
+	       &lt;attributeAssignment attribute="x" value="K div 3 + 1"/&gt;
+		 &lt;attributeAssignment attribute="y" value="K mod 3 + 1"/&gt;
+	    &lt;/listOfAttributeAssingments&gt;
+
+Nevertheless, in the future we might need explicit attributes as well. Then
+we should use your alternative scheme:
+		&lt;listOfAttributeAssignments&gt;
+			&lt;attributeAssignment id="1" attribute="x" value="3"/&gt;
+			&lt;attributeAssignment id="1" attribute="y" value="2"/&gt;
+			&lt;attributeAssignment id="2" attribute="x" value="2"/&gt;
+			&lt;attributeAssignment id="2" attribute="y" value="1"/&gt;
+			etc
+		&lt;/listOfAttributeAssingments&gt;
+
+Now, the harder issues:
+4) Where to define connections?
+Possibilities:
+	a) Within compartments as I did.
+        b) Within reactions as you did.
+        c) Outside of all elements with reference.
+The questions to ask are: 1)are connections needed only to represent the elements on 
+which some rules or reactions operate? 2) Can same set of connections support more 
+then one reaction and/or rule? The answer to first question is yes which suggest 
+implementation b). But the answer to second question is, I think, NO. For example,
+same set of connections can have a parameter rule defined on it and 
+SpecieConcentration rule defined on it and some kinetic rule defined on it... This 
+means that I would have to repeat the same connection description for each rule. Why 
+do that? It is easier to define connections within elements that these connections 
+connect as in a) and then in reactions just refer to connections.
+
+5) What about functions?
+I would try to avoid user-defined functions for as long as possible. SBML is model-
+description language and not that much of a functional language. If we include user-
+defined functions, we would have to write more complicated interpreters from SBML 
+level2 to SBML level1. If we continue at this pace, pretty soon we will be writing 
+full-blown compilers. Predefined or built-in functions are necessary and will help a 
+lot, but I would not allow user-defined functions for now. By the way Bruce and/or Eric 
+might disagree with me. Instead of calling a function, I would refer to connection 
+name "ngb". By the way LAMBDA in this example is a connection strength which is indeed
+0 when connection does not exist. But LAMBDA does not have to be 0 or 1 it will 
+eventually be a formula of cell coordinates and cell size and probably should be a 
+parameter Rule acting on connection "ngb". I think it is easier this way.
+
+Victoria
+
+</PRE>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<HR>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<UL>
+<LI>Prev by Date:
+<STRONG><A HREF="msg00003.html">[sbml-arrays] reply to victoria</A></STRONG>
+</LI>
+<LI>Next by Date:
+<STRONG><A HREF="msg00005.html">[sbml-arrays] reply to victoria</A></STRONG>
+</LI>
+<LI>Prev by thread:
+<STRONG><A HREF="msg00003.html">[sbml-arrays] reply to victoria</A></STRONG>
+</LI>
+<LI>Next by thread:
+<STRONG><A HREF="msg00005.html">[sbml-arrays] reply to victoria</A></STRONG>
+</LI>
+<LI>Index(es):
+<UL>
+<LI><A HREF="maillist.html#00004"><STRONG>Date</STRONG></A></LI>
+<LI><A HREF="threads.html#00004"><STRONG>Thread</STRONG></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</BODY>
+</HTML>
